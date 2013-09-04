@@ -27,7 +27,7 @@ class Return < ActiveRecord::Base
     species = {}
     fishs.each do | fish |
       if species.include?(fish.species)
-        species[fish.species] = heaviest(species[fish.species],fish.weight)
+        species[fish.species] = fish.weight if species[fish.species] < fish.weight 
       else
         species[fish.species] = fish.weight
       end
@@ -35,14 +35,5 @@ class Return < ActiveRecord::Base
     species
   end
 
-  def heaviest(weight1, weight2)
-    if weight1 > weight2
-      weight1
-    else
-      weight2
-    end
-  end
-
-  private :heaviest
 
 end
