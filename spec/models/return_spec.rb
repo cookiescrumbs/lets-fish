@@ -46,6 +46,6 @@ describe Return do
     @return.best_species.should == {"rainbow trout" => 10.5, "blue trout" => 20.5, "brown trout" => 15.7}
   end
 
-  it "has a best fly"
+  it "has a best fly" 
 
 end
