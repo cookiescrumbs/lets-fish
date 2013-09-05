@@ -27,7 +27,7 @@ class Return < ActiveRecord::Base
     species = {}
     fishs.each do | fish |
       if species.include?(fish.species)
-        species[fish.species] = fish.weight if species[fish.species] < fish.weight 
+        species[fish.species] = fish.weight if species[fish.species] < fish.weight
       else
         species[fish.species] = fish.weight
       end
@@ -35,5 +35,16 @@ class Return < ActiveRecord::Base
     species
   end
 
+  def most_successful_fly
+    flies = {}
+    fishs.each do | fish |
+      if flies.include?(fish.fly)
+        flies[fish.fly] = flies[fish.fly] + 1
+      else
+        flies[fish.fly] = 1
+      end
+    end
+    flies.sort_by{|k, v| v}.last[0]
+  end
 
 end
