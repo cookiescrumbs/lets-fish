@@ -11,29 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903220604) do
+ActiveRecord::Schema.define(version: 20140125170359) do
 
-  create_table "fish", force: true do |t|
-    t.string   "species"
-    t.float    "weight",     limit: 255
-    t.string   "fly"
-    t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "return_id"
-  end
-
-  add_index "fish", ["return_id"], name: "index_fish_on_return_id"
-
-  create_table "reports", force: true do |t|
-    t.string   "fishery"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "returns", force: true do |t|
+  create_table "fisheries", force: true do |t|
     t.string   "name"
-    t.string   "ticket"
+    t.string   "street"
+    t.string   "line2"
+    t.string   "city"
+    t.string   "region"
+    t.string   "postcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

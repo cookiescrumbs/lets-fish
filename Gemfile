@@ -32,6 +32,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'site_prism'
+  gem 'poltergeist'
+  gem 'database_cleaner'
   gem 'debugger'
 end
 
