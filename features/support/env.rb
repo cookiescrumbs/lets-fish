@@ -5,6 +5,13 @@
 # files.
 
 require 'cucumber/rails'
+require 'capybara/poltergeist'
+require 'site_prism'
+
+Capybara.javascript_driver = :poltergeist
+
+puts "Default app host: #{Capybara.app_host}"
+puts "Default wait: #{Capybara.default_wait_time}"
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

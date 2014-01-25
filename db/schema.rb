@@ -11,6 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140125170359) do
+
+  create_table "fisheries", force: true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "line2"
+    t.string   "city"
+    t.string   "region"
+    t.string   "postcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

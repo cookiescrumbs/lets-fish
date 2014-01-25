@@ -29,11 +29,12 @@ gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'site_prism'
 end
 
 group :test do
   gem 'cucumber-rails', :require => false
+  gem 'site_prism'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'debugger'
 end
