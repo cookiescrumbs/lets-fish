@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125170359) do
+ActiveRecord::Schema.define(version: 20140126120800) do
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
@@ -23,5 +23,26 @@ ActiveRecord::Schema.define(version: 20140125170359) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "fish", force: true do |t|
+    t.string   "species"
+    t.float    "weight"
+    t.integer  "return_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fish", ["return_id"], name: "index_fish_on_return_id"
+
+  create_table "returns", force: true do |t|
+    t.text     "description"
+    t.integer  "fisherman_id"
+    t.integer  "ticket_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "returns", ["fisherman_id"], name: "index_returns_on_fisherman_id"
+  add_index "returns", ["ticket_type_id"], name: "index_returns_on_ticket_type_id"
 
 end
