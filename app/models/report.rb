@@ -1,3 +1,3 @@
 class Report < ActiveRecord::Base
-  validates_presence_of :fishery
+  belongs_to :fishery
 end
