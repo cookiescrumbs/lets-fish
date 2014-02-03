@@ -4,11 +4,11 @@ Feature: Create Fishery
   As a fishery
   I want to add my fishery to the fishing log
 
-Scenario: Add fishery
-  Given I have the following fishery details
+Scenario: Add a fishery
+  Given I visit the fishery creation page
+  When I create Stocks Fly fishery
   | name               | street    | line2     | city      | region     | postcode |  
   | Stocks Fly fishery | Catlow Rd | Slaidburn | Clitheroe | Lancashire | BB7 3AQ  | 
-  When I create the fishery 
   Then "Stocks Fly fishery" should be in the list of fisheries
   
   
