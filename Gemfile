@@ -36,7 +36,7 @@ group :test do
   gem 'site_prism'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'debugger'
+  gem 'pry-debugger'
 end
 
 # Use ActiveModel has_secure_password
