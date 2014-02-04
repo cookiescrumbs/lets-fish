@@ -4,7 +4,7 @@ Feature: Create Fishery
   As a fishery
   I want to add my fishery to the fishing log
 
-Scenario: Add a fishery
+Scenario: Can add a fishery
   Given I visit the fishery creation page
   When I create Stocks Fly fishery
   | name               | street    | line2     | city      | region     | postcode |  
