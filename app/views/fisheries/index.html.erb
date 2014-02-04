@@ -2,11 +2,13 @@
 
 <table>
   <thead>
+     <% @fisheries.each do |fishery| %>
     <tr>
-      <th></th>
+      <th><%= fishery.name %></th>
       <th></th>
       <th></th>
     </tr>
+     <% end %>
   </thead>
 
   <tbody>

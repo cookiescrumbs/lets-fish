@@ -69,6 +69,6 @@ class FisheriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fishery_params
-      params[:fishery]
+       params.require(:fishery).permit(:name, :street, :line2, :city, :region, :postcode)
     end
 end

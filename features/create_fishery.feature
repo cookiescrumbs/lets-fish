@@ -10,8 +10,3 @@ Scenario: Add a fishery
   | name               | street    | line2     | city      | region     | postcode |  
   | Stocks Fly fishery | Catlow Rd | Slaidburn | Clitheroe | Lancashire | BB7 3AQ  | 
   Then "Stocks Fly fishery" should be in the list of fisheries
-  
-  
-  
-
-  

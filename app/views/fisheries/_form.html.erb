@@ -2,7 +2,6 @@
   <% if @fishery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@fishery.errors.count, "error") %> prohibited this fishery from being saved:</h2>
-
       <ul>
       <% @fishery.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,7 +9,31 @@
       </ul>
     </div>
   <% end %>
-
+ <label>
+    Name
+    <%= f.text_field :name %>
+  </label>
+   <label>
+    Street
+    <%= f.text_field :street %>
+  </label>  
+  <label>
+    Line 2
+    <%= f.text_field :line2 %>
+  </label>
+  <label>
+    City
+    <%= f.text_field :city %>
+  </label>
+  <label>
+    Region
+    <%= f.text_field :region %>
+  </label>
+   <label>
+    Postcode
+    <%= f.text_field :postcode %>
+  </label>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
