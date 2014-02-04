@@ -29,13 +29,13 @@ gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry-debugger'
 end
 
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'poltergeist'
-  gem 'pry-debugger'
 end
 
 # Use ActiveModel has_secure_password

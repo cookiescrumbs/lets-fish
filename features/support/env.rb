@@ -6,7 +6,6 @@
 
 require 'cucumber/rails'
 #require 'capybara/poltergeist'
-require 'pry-debugger'
 
 #Capybara.javascript_driver = :poltergeist
 
