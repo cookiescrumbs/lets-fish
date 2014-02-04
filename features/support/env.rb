@@ -5,10 +5,10 @@
 # files.
 
 require 'cucumber/rails'
-require 'capybara/poltergeist'
+#require 'capybara/poltergeist'
 require 'pry-debugger'
 
-Capybara.javascript_driver = :poltergeist
+#Capybara.javascript_driver = :poltergeist
 
 puts "Default app host: #{Capybara.app_host}"
 puts "Default wait: #{Capybara.default_wait_time}"
