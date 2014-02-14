@@ -17,5 +17,3 @@ Scenario: Validation of fishery details
   | name | street | line2 | city | region | postcode |  
   |      |        |       |      |        |          |  
   Then I should see the message "You need to add a fishery name"
-
-
