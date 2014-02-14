@@ -14,7 +14,7 @@ When(/^I create Stocks Fly fishery$/) do |fishery_details|
     fill_in 'fishery_postcode', with: form_fields['postcode']
   end
 
-  click_on 'Create Fishery'
+  click_on 'Submit'
 end
 
 Then(/^"(.*?)" should be in the list of fisheries$/) do |fishery|

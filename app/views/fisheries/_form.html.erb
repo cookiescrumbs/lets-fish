@@ -1,4 +1,4 @@
-<%= form_for(@fishery) do |f| %>
+<%= form_for(@fishery, :html => {:role => "form"}) do |f| %>
   <% if @fishery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@fishery.errors.count, "error") %> prohibited this fishery from being saved:</h2>
@@ -9,32 +9,29 @@
       </ul>
     </div>
   <% end %>
- <label>
-    Name
-    <%= f.text_field :name %>
-  </label>
-   <label>
-    Street
-    <%= f.text_field :street %>
-  </label>  
-  <label>
-    Line 2
-    <%= f.text_field :line2 %>
-  </label>
-  <label>
-    City
-    <%= f.text_field :city %>
-  </label>
-  <label>
-    Region
-    <%= f.text_field :region %>
-  </label>
-   <label>
-    Postcode
-    <%= f.text_field :postcode %>
-  </label>
-  
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <label for="fishery_name">Name</label>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter fishery name"%>
   </div>
+  <div class="form-group">
+    <label for="fishery_street">Street</label>
+    <%= f.text_field :street, class: "form-control", id:"fishery_street", placeholder: "Street"%>
+  </div>
+  <div class="form-group">
+    <label for="fishery_line2">Line Two</label>
+    <%= f.text_field :line2, class: "form-control", id:"fishery_line2", placeholder: "Line two"%>
+  </div>
+  <div class="form-group">
+    <label for="fishery_city">City</label>
+    <%= f.text_field :city, class: "form-control", id:"fishery_city", placeholder: "City"%>
+  </div>
+  <div class="form-group">
+    <label for="fishery_region">County</label>
+    <%= f.text_field :region, class: "form-control", id:"fishery_region", placeholder: "County"%>
+  </div>
+  <div class="form-group">
+    <label for="fishery_region">Postcode</label>
+    <%= f.text_field :postcode, class: "form-control", id:"fishery_postcode", placeholder: "Postcode"%>
+  </div>
+    <%= button_tag "Submit", class: "btn btn-default" %>
 <% end %>
