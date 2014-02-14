@@ -5,10 +5,9 @@
 # files.
 
 require 'cucumber/rails'
-require 'capybara/poltergeist'
-require 'site_prism'
+#require 'capybara/poltergeist'
 
-Capybara.javascript_driver = :poltergeist
+#Capybara.javascript_driver = :poltergeist
 
 puts "Default app host: #{Capybara.app_host}"
 puts "Default wait: #{Capybara.default_wait_time}"

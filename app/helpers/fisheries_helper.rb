@@ -1,0 +1,2 @@
+module FisheriesHelper
+end
