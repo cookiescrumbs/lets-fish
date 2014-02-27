@@ -19,5 +19,9 @@ end
 
 Then(/^"(.*?)" should be in the list of fisheries$/) do |fishery|
   visit '/fisheries/'
-  page.should have_content(fishery)
+  page.should have_content fishery
+end
+
+Then(/^I should see the message "(.*?)"$/) do |message|
+  page.should have_content message
 end

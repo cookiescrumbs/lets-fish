@@ -53,7 +53,6 @@ describe FisheriesController do
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Fishery" do
-        binding.pry
         expect {
           post :create, {:fishery => valid_attributes}, valid_session
         }.to change(Fishery, :count).by(1)

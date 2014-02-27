@@ -16,4 +16,7 @@ Scenario: Validation of fishery details
   When I create a fishery
   | name | street | line2 | city | region | postcode |  
   |      |        |       |      |        |          |  
-  Then I should see the message "You need to add a fishery name"
+  Then I should see the message "Name can't be blank"
+  Then I should see the message "Street can't be blank"
+  Then I should see the message "City can't be blank"
+  Then I should see the message "Region can't be blank"

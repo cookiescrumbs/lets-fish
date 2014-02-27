@@ -1,4 +1,4 @@
-class FisheriesController < ApplicationController
+  class FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   # GET /fisheries
