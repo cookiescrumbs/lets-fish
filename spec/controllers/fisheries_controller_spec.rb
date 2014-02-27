@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe FisheriesController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Fishery. As you add validations to Fishery, be sure to
-  # adjust the attributes here as well.
   let(:valid_attributes) do 
     {
       name: 'Stockies', 
@@ -16,11 +13,8 @@ describe FisheriesController do
     }
   end
 
-  let(:invalid_attributes) { {name: 'invalid params'} } 
+  let(:invalid_attributes) { { name: 'invalid params' } } 
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # FisheriesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET index" do
@@ -113,7 +107,6 @@ describe FisheriesController do
     describe "with invalid params" do
       it "assigns the fishery as @fishery" do
         fishery = Fishery.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Fishery.any_instance.stub(:save).and_return(false)
         put :update, {id: fishery.to_param, fishery:invalid_attributes}, valid_session
         assigns(:fishery).should eq(fishery)
@@ -121,7 +114,6 @@ describe FisheriesController do
 
       it "re-renders the 'edit' template" do
         fishery = Fishery.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
         Fishery.any_instance.stub(:save).and_return(false)
         put :update, {id: fishery.to_param, fishery: invalid_attributes}, valid_session
         response.should render_template("edit")
