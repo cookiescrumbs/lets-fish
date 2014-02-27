@@ -5,14 +5,16 @@ describe FisheriesController do
   # This should return the minimal set of attributes required to create a valid
   # Fishery. As you add validations to Fishery, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {
-    name: 'Stockies', 
-    street: 'Fish Street',
-    line2: 'Fish town', 
-    city: 'Fish city', 
-    region: 'Fish region', 
-    postcode:'Fish Postcode'
-    } }
+  let(:valid_attributes) do 
+    {
+      name: 'Stockies', 
+      street: 'Fish Street',
+      line2: 'Fish town', 
+      city: 'Fish city', 
+      region: 'Fish region', 
+      postcode:'Fish Postcode'
+    }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -74,14 +76,14 @@ describe FisheriesController do
       it "assigns a newly created but unsaved fishery as @fishery" do
         # Trigger the behavior that occurs when invalid params are submitted
         Fishery.any_instance.stub(:save).and_return(false)
-        post :create, {:fishery => {  }}, valid_session
+        post :create, {:fishery => valid_attributes}, valid_session
         assigns(:fishery).should be_a_new(Fishery)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Fishery.any_instance.stub(:save).and_return(false)
-        post :create, {:fishery => {  }}, valid_session
+        post :create, {:fishery => valid_attributes}, valid_session
         response.should render_template("new")
       end
     end
@@ -91,12 +93,8 @@ describe FisheriesController do
     describe "with valid params" do
       it "updates the requested fishery" do
         fishery = Fishery.create! valid_attributes
-        # Assuming there are no other fisheries in the database, this
-        # specifies that the Fishery created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Fishery.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => fishery.to_param, :fishery => { "these" => "params" }}, valid_session
+        Fishery.any_instance.should_receive(:update).with({'name' => 'has changed'})
+        put :update, { id: fishery.to_param, fishery: {'name' => 'has changed'}}, valid_session
       end
 
       it "assigns the requested fishery as @fishery" do
@@ -117,7 +115,7 @@ describe FisheriesController do
         fishery = Fishery.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Fishery.any_instance.stub(:save).and_return(false)
-        put :update, {:id => fishery.to_param, :fishery => {  }}, valid_session
+        put :update, {:id => fishery.to_param, :fishery => valid_attributes}, valid_session
         assigns(:fishery).should eq(fishery)
       end
 
@@ -125,7 +123,7 @@ describe FisheriesController do
         fishery = Fishery.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Fishery.any_instance.stub(:save).and_return(false)
-        put :update, {:id => fishery.to_param, :fishery => {  }}, valid_session
+        put :update, {:id => fishery.to_param, :fishery => valid_attributes}, valid_session
         response.should render_template("edit")
       end
     end
