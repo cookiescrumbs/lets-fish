@@ -1,25 +1,29 @@
 <h1>Listing fisheries</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
-     <% @fisheries.each do |fishery| %>
     <tr>
-      <th><%= fishery.name %></th>
+      <th>#</th>
+      <th>name</th>
+      <th>show</th> 
+      <th>edit</th>
+      <th>destroy</th>
     </tr>
-     <% end %>
   </thead>
 
   <tbody>
     <% @fisheries.each do |fishery| %>
       <tr>
-        <td><%= link_to 'Show', fishery %></td>
-        <td><%= link_to 'Edit', edit_fishery_path(fishery) %></td>
-        <td><%= link_to 'Destroy', fishery_path(fishery), method: :delete, data: { confirm: "Are you sure you want to delete #{fishery.name}" } %></td>
+        <td><%= fishery.id %></td>
+        <td><%= fishery.name %></td>
+        <td><%= link_to 'show', fishery %></td>
+        <td><%= link_to 'edit', edit_fishery_path(fishery) %></td>
+        <td><%= link_to 'destroy', fishery_path(fishery), method: :delete, data: { confirm: "Are you sure you want to delete #{fishery.name}" } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<br />
 
 <%= link_to 'New Fishery', new_fishery_path %>
