@@ -1,7 +1,0 @@
-      
-  #fishery has many reports, has many ticket_types,
-  #   report belongs to a fishery (fishery:references), has many returns
-  #     return belongs to a report (report:references), belongs to fisherman (fisherman:reference), belongs to ticket_type (ticket_type:reference), has many fishs
-  #       fisherman has many returns, belongs to a fishery (fishery:references)
-  #       ticket_type has many returns, belongs to a fishery (fishery:references)
-  #       fish belongs to a return (return:references)
