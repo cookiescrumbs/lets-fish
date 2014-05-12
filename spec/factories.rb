@@ -8,4 +8,9 @@ FactoryGirl.define do
     postcode "TR0 UT"
   end
 
+  factory :report do
+    todays_fishing "Was ok"
+    prospects "Going to get better"
+  end
+
 end
