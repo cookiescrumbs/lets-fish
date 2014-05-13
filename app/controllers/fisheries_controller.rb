@@ -1,4 +1,4 @@
-class FisheriesController < ApplicationController
+  class FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   # GET /fisheries
@@ -10,6 +10,10 @@ class FisheriesController < ApplicationController
   # GET /fisheries/1
   # GET /fisheries/1.json
   def show
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @fishery}
+    end
   end
 
   # GET /fisheries/new
