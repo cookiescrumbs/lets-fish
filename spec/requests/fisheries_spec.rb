@@ -20,6 +20,7 @@ describe "Fisheries" do
       fill_in 'fishery_line2', :with => "Fishery line 2"
       fill_in 'fishery_city', :with => "Fishery City"
       fill_in 'fishery_region', :with => "Fishery Region"
+      fill_in 'fishery_telephone', :with => "12345678"
       fill_in 'fishery_postcode', :with => "Fishery Postcode"
 
       click_on 'Submit'

@@ -6,11 +6,9 @@ describe Fishery do
     @fishery = Fishery.new
   end
 
-  it "is not valid without a name, street, city and region" do
+  it "is not valid without a name" do
     @fishery.name = nil
-    @fishery.street = nil
-    @fishery.city = nil
-    @fishery.region = nil
-    @fishery.should_not be_valid
+    expect(@fishery).not_to be_valid
   end
+
 end
