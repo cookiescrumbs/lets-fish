@@ -5,6 +5,7 @@ FactoryGirl.define do
     line2 "Address Line 2"
     city "Trout City"
     region "Trout Region"
+    telephone "123456789"
     postcode "TR0 UT"
   end
 
