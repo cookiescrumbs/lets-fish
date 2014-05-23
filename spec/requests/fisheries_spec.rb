@@ -29,7 +29,7 @@ describe "Fisheries" do
 
   end
 
-   context "GET /fisheries/1" do
+  context "GET /fisheries/1" do
     it "Show a fisheries details" do
       fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
       visit fishery_path fishery.id
