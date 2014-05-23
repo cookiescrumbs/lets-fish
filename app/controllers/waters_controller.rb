@@ -69,6 +69,6 @@ class WatersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def water_params
-      params[:water]
+      params.require(:water).permit(:name, :lng, :lat)
     end
 end

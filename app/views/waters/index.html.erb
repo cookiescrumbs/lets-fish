@@ -5,7 +5,7 @@
     <tr>
       <th>#</th>
       <th>Name</th>
-      <th>longitude,latitude</th>
+      <th>Longitude,Latitude</th>
       <th>Show</th>
       <th>Edit</th>
       <th>Destroy</th>
@@ -18,10 +18,9 @@
         <td><%= water.id %></td>
         <td><%= water.name %></td>
         <td><%= water.lng.to_s + "," + water.lat.to_s %></td>
-        <td><%= water.lat %></td>
         <td><%= link_to 'Show', water %></td>
         <td><%= link_to 'Edit', edit_water_path(water) %></td>
-        <td><%= link_to 'destroy', fishery_path(fishery), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" } %></td>
+        <td><%= link_to 'Destroy', water_path(water), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" } %></td>
       </tr>
     <% end %>
   </tbody>
