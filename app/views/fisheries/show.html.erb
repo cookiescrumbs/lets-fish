@@ -9,10 +9,13 @@
       <th>Name</th>
       <th>Street</th> 
       <th>Line Two</th>
-      <th>City</th>
       <th>County</th>
+      <th>Country</th>
       <th>Postcode</th>
       <th>Telephone</th>
+      <th>Email</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
     </tr>
   </thead>
 
@@ -22,16 +25,19 @@
         <td><%= @fishery.name %></td>
         <td><%= @fishery.street %></td>
         <td><%= @fishery.line2 %></td>
-        <td><%= @fishery.city %></td>
         <td><%= @fishery.region %></td>
+        <td><%= @fishery.country %></td>
         <td><%= @fishery.postcode %></td>
         <td><%= @fishery.telephone %></td>
+        <td><%= @fishery.email %></td>
+        <td><%= @fishery.lng %></td>
+        <td><%= @fishery.lat %></td>
       </tr>
   </tbody>
 </table>
-
-
-
-
 <%= link_to 'Edit', edit_fishery_path(@fishery) %> |
 <%= link_to 'Back', fisheries_path %>
+<%= render '/waters/form' %>
+<% unless @fishery.waters.first.id.nil? %>
+  <%= render '/waters/list' %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522222626) do
+ActiveRecord::Schema.define(version: 20140526114131) do
 
   create_table "fish", force: true do |t|
     t.string   "species"
@@ -27,12 +27,15 @@ ActiveRecord::Schema.define(version: 20140522222626) do
     t.string   "name"
     t.string   "street"
     t.string   "line2"
-    t.string   "city"
     t.string   "region"
     t.string   "postcode"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "telephone"
+    t.string   "country"
+    t.string   "email"
+    t.float    "lng"
+    t.float    "lat"
   end
 
   create_table "fishermen", force: true do |t|
@@ -78,6 +81,9 @@ ActiveRecord::Schema.define(version: 20140522222626) do
     t.float    "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fishery_id"
   end
+
+  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
 
 end
