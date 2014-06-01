@@ -10,10 +10,8 @@
   # GET /fisheries/1
   # GET /fisheries/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @fishery}
-    end
+    @fishery = Fishery.find(params[:id])
+    @water = @fishery.waters.build
   end
 
   # GET /fisheries/new
@@ -39,6 +37,7 @@
         format.json { render json: @fishery.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /fisheries/1
@@ -73,6 +72,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fishery_params
-       params.require(:fishery).permit(:name, :street, :line2, :city, :region, :postcode, :telephone)
+       params.require(:fishery).permit(:name, :street, :line2, :region, :country, :postcode, :telephone, :email, :lng, :lat)
     end
 end

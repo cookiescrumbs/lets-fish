@@ -1,24 +1,23 @@
 require 'spec_helper'
 
-describe "Fisheries" do
+describe "Fishery pages" do
   
-  context "GET /fisheries" do
-    it "displays fisheries" do
+  context "index" do
+    it "lists all fisheries" do
       FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
       visit fisheries_path
       expect(page).to have_content "Stevo's Big trout fishery"
     end
   end
 
-  context "POST /fisheries" do
-    it "create a fisheries" do
+  context "create" do
+    it "should create a fishery" do
       visit fisheries_path
       click_link 'New Fishery'
 
       fill_in 'fishery_name', :with => "Bob's mega fishy fishery"
       fill_in 'fishery_street', :with => "Fishery Street"
       fill_in 'fishery_line2', :with => "Fishery line 2"
-      fill_in 'fishery_city', :with => "Fishery City"
       fill_in 'fishery_region', :with => "Fishery Region"
       fill_in 'fishery_telephone', :with => "12345678"
       fill_in 'fishery_postcode', :with => "Fishery Postcode"
@@ -29,16 +28,16 @@ describe "Fisheries" do
 
   end
 
-  context "GET /fisheries/1" do
-    it "Show a fisheries details" do
+  context "show" do
+    it "lists a selected fisheries details" do
       fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
       visit fishery_path fishery.id
       expect(page).to have_content "Stevo's Big trout fishery"
     end
   end
 
-  context "PUT /fisheries/1/edit" do
-    it "Updates a fisheries details" do
+  context "edit" do
+    it "updates a fisheries details" do
       fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
       visit edit_fishery_path fishery.id
       expect(page.find_field('fishery_name').value).to eql "Stevo's Big trout fishery"
@@ -50,8 +49,8 @@ describe "Fisheries" do
     end
   end
 
-  context "DELETE /fisheries/edit/1" do
-    it "Deletes a fisheries details", :js => true do
+  context "delete" do
+    it "deletes a fisheries details", :js => true do
       fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
       visit fisheries_path
       expect(page).to have_content "Stevo's Big trout fishery"
