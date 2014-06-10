@@ -1,6 +1,10 @@
 class WatersController < ApplicationController
   #before_action :set_water, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @waters = Water.all
+  end
+
   def create
     @fishery = Fishery.find(params[:fishery_id])
     @water = @fishery.waters.build(water_params)

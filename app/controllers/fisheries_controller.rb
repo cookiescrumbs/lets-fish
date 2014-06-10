@@ -1,30 +1,22 @@
   class FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
-
-  # GET /fisheries
-  # GET /fisheries.json
+ 
   def index
     @fisheries = Fishery.all
   end
 
-  # GET /fisheries/1
-  # GET /fisheries/1.json
   def show
     @fishery = Fishery.find(params[:id])
     @water = @fishery.waters.build
   end
 
-  # GET /fisheries/new
   def new
     @fishery = Fishery.new
   end
 
-  # GET /fisheries/1/edit
   def edit
   end
 
-  # POST /fisheries
-  # POST /fisheries.json
   def create
     @fishery = Fishery.new(fishery_params)
 
@@ -40,8 +32,6 @@
 
   end
 
-  # PATCH/PUT /fisheries/1
-  # PATCH/PUT /fisheries/1.json
   def update
     respond_to do |format|
       if @fishery.update(fishery_params)
@@ -54,8 +44,6 @@
     end
   end
 
-  # DELETE /fisheries/1
-  # DELETE /fisheries/1.json
   def destroy
     @fishery.destroy
     respond_to do |format|
