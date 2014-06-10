@@ -39,5 +39,5 @@
 <%= link_to 'Back', fisheries_path %>
 <%= render '/waters/form' %>
 <% unless @fishery.waters.first.id.nil? %>
-  <%= render '/waters/list' %>
+  <%= render 'list_fishery_waters' %>
 <% end %>
