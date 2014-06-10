@@ -35,6 +35,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'pry-debugger'
   gem 'shotgun'
+  gem 'faker'
 end
 
 # Use ActiveModel has_secure_password

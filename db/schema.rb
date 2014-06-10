@@ -11,77 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526114131) do
-
-  create_table "fish", force: true do |t|
-    t.string   "species"
-    t.float    "weight"
-    t.integer  "return_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "fish", ["return_id"], name: "index_fish_on_return_id"
+ActiveRecord::Schema.define(version: 20140522222626) do
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
+    t.string   "contact_name"
     t.string   "street"
     t.string   "line2"
     t.string   "region"
-    t.string   "postcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "telephone"
     t.string   "country"
+    t.string   "postcode"
+    t.string   "telephone"
     t.string   "email"
+    t.string   "website"
     t.float    "lng"
     t.float    "lat"
-  end
-
-  create_table "fishermen", force: true do |t|
-    t.string   "name"
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "reports", force: true do |t|
-    t.text     "todays_fishing"
-    t.text     "prospects"
-    t.integer  "fishery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "reports", ["fishery_id"], name: "index_reports_on_fishery_id"
-
-  create_table "returns", force: true do |t|
-    t.text     "description"
-    t.integer  "fisherman_id"
-    t.integer  "ticket_type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "returns", ["fisherman_id"], name: "index_returns_on_fisherman_id"
-  add_index "returns", ["ticket_type_id"], name: "index_returns_on_ticket_type_id"
-
-  create_table "tickets", force: true do |t|
-    t.string   "ticket_type"
-    t.integer  "fishery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tickets", ["fishery_id"], name: "index_tickets_on_fishery_id"
 
   create_table "waters", force: true do |t|
-    t.string   "name"
-    t.float    "lat"
-    t.float    "lng"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "fishery_id"
+    t.string  "name"
+    t.float   "lng"
+    t.float   "lat"
+    t.integer "fishery_id"
   end
 
   add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
