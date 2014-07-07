@@ -15,7 +15,7 @@
     <% @insects.each do |insect| %>
       <tr>
         <td><%= insect.id %></td>
-        <td><%= insect.name %></td>
+        <td><%= insect.name.capitalize %></td>
         <td><%= link_to 'Show', insect %></td>
         <td><%= link_to 'Edit', edit_insect_path(insect) %></td>
         <td><%= link_to 'Destroy', insect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
