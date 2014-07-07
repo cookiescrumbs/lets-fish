@@ -1,0 +1,29 @@
+<h1>Listing insects</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Show</th> 
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @insects.each do |insect| %>
+      <tr>
+        <td><%= insect.id %></td>
+        <td><%= insect.name %></td>
+        <td><%= link_to 'Show', insect %></td>
+        <td><%= link_to 'Edit', edit_insect_path(insect) %></td>
+        <td><%= link_to 'Destroy', insect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insect', new_insect_path %>

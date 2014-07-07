@@ -11,21 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522222626) do
+ActiveRecord::Schema.define(version: 20140623094255) do
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
     t.string   "contact_name"
     t.string   "street"
     t.string   "line2"
+    t.string   "line3"
     t.string   "region"
     t.string   "country"
     t.string   "postcode"
     t.string   "telephone"
+    t.string   "mobile"
     t.string   "email"
     t.string   "website"
+    t.string   "description"
     t.float    "lng"
     t.float    "lat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fisheries_insects", id: false, force: true do |t|
+    t.integer "fishery_id"
+    t.integer "insect_id"
+  end
+
+  create_table "insects", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

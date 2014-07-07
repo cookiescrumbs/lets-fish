@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Insect Details</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @insect.id %></td>
+        <td><%= @insect.name %></td>
+      </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_insect_path(@insect) %> |
+<%= link_to 'Back', insects_path %>

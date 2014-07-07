@@ -14,6 +14,7 @@
       <th>Postcode</th>
       <th>Telephone</th>
       <th>Email</th>
+      <th>Insects</th>
       <th>Longitude</th>
       <th>Latitude</th>
     </tr>
@@ -30,6 +31,7 @@
         <td><%= @fishery.postcode %></td>
         <td><%= @fishery.telephone %></td>
         <td><%= @fishery.email %></td>
+        <td><%= @fishery.insects.map {|i| i.name}.join(', ') %></td>
         <td><%= @fishery.lng %></td>
         <td><%= @fishery.lat %></td>
       </tr>
