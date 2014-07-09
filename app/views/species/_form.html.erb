@@ -1,0 +1,22 @@
+<%= form_for(@species) do |f| %>
+  <% if @species.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@species.errors.count, "error") %> prohibited this fish species from being saved:</h2>
+
+      <ul>
+      <% @species.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="form-group">
+    <label for="species_name">Name</label>
+    <%= f.text_field :name, class: "form-control", placeholder: "Fish name"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
