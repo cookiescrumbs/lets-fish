@@ -2,17 +2,17 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-# require 'rspec/autorun'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'faker'
 
-
 Capybara.javascript_driver = :poltergeist
 
 require 'pry-debugger'
+
+ActiveRecord::Base.logger = nil
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -25,6 +25,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
