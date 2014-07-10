@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :insect do
     name "MyString"
-    fishery nil
   end
 end
