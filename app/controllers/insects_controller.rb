@@ -5,6 +5,7 @@ class InsectsController < ApplicationController
   # GET /insects.json
   def index
     @insects = Insect.all
+    new
   end
 
   # GET /insects/1
@@ -28,7 +29,7 @@ class InsectsController < ApplicationController
 
     respond_to do |format|
       if @insect.save
-        format.html { redirect_to @insect, notice: 'Insect was successfully created.' }
+        format.html { redirect_to insects_path, notice: 'Insect was successfully created.' }
         format.json { render action: 'show', status: :created, location: @insect }
       else
         format.html { render action: 'new' }

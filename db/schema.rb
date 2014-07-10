@@ -55,13 +55,4 @@ ActiveRecord::Schema.define(version: 20140707215143) do
     t.datetime "updated_at"
   end
 
-  create_table "waters", force: true do |t|
-    t.string  "name"
-    t.float   "lng"
-    t.float   "lat"
-    t.integer "fishery_id"
-  end
-
-  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
-
 end

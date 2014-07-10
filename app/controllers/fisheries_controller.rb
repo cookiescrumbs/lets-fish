@@ -7,7 +7,6 @@
 
   def show
     @fishery = Fishery.find(params[:id])
-    @water = @fishery.waters.build
   end
 
   def new

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Fisheries" do
+describe "Fisheries", :type => :request do
   describe "Manage fisheries" do
       it "lists all fisheries" do
         FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
@@ -32,14 +32,6 @@ describe "Fisheries" do
 
         click_on 'Submit'
         expect(page).to have_content "Dave's Big Trout Fishery"
-      end
-
-      it "Deletes a fishery and associated waters", :js => true do
-        fishery = FactoryGirl.create(:fishery_with_waters)
-        expect(fishery.waters.count).to eql 5
-        visit fisheries_path
-        expect { click_on 'destroy' }.to change(Fishery, :count).from(1).to(0)
-        expect(Water.all.count).to eql 0
       end
   end
 end
