@@ -1,11 +1,8 @@
 FishingLog::Application.routes.draw do
-  resources :fisheries do
-    resources :waters
-  end
-
+  resources :fisheries
   resources :insects
   resources :species
-  resources :waters
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

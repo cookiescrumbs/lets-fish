@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Fishery do
+describe Fishery, :type => :model do
   
   before(:each) do
     @fishery = Fishery.new
