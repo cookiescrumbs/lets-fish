@@ -14,6 +14,13 @@ describe "Insects", :type => :request do
         click_on 'Create Insect'
         expect(page).to have_content "Big massive hairy bug"
       end
+
+      it "Delete an insect" do
+        FactoryGirl.create(:insect, name: "Big fat bug")
+        visit insects_path
+        click_on 'Destroy'
+        expect(page).not_to have_content "Big fat bug"
+      end
   end
 end
 
