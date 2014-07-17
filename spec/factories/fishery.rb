@@ -12,12 +12,5 @@ FactoryGirl.define do
     website Faker::Internet.url
     lat Faker::Address.latitude
     lng Faker::Address.longitude
-
-    factory :fishery_with_waters do
-   
-      after(:create) do |fishery, evaluator|
-          FactoryGirl.create_list(:water, 5, :fishery => fishery)
-      end
-    end
   end
 end
