@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140707215143) do
     t.string   "description"
     t.float    "lng"
     t.float    "lat"
+    t.text     "prices"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
