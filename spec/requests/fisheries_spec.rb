@@ -18,6 +18,7 @@ describe "Fisheries", :type => :request do
         fill_in 'fishery_region', :with => "Fishery Region"
         fill_in 'fishery_telephone', :with => "12345678"
         fill_in 'fishery_postcode', :with => "Fishery Postcode"
+        fill_in 'fishery_prices', with: "8hrs £20 (4 fish); 6hrs £17.50 (3fish);"
 
         click_on 'Submit'
         expect(page).to have_content "Bob's mega fishy fishery"
