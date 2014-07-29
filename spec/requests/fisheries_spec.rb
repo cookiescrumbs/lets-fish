@@ -39,7 +39,7 @@ describe "Fisheries", :type => :request do
         expect(page).to have_content "Dave's Big Trout Fishery"
       end
 
-      it "Shows an individual fishery's details", focus: true do
+      it "Shows an individual fishery's details" do
         fishery = FactoryGirl.create(:fishery)
         visit fishery_path fishery.id
         expect(page).to have_content fishery.name
