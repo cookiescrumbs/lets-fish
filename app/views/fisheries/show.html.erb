@@ -13,11 +13,17 @@
       <th>Country</th>
       <th>Postcode</th>
       <th>Telephone</th>
+      <th>Mobile</th>
       <th>Email</th>
       <th>Fish Species</th>
       <th>Insects</th>
       <th>Longitude</th>
       <th>Latitude</th>
+      <th>Description</th>
+      <th>Prices</th>
+      <th>Records</th>
+      <th>Season</th>
+      <th>Facilities</th>
     </tr>
   </thead>
 
@@ -31,11 +37,18 @@
         <td><%= @fishery.country %></td>
         <td><%= @fishery.postcode %></td>
         <td><%= @fishery.telephone %></td>
+        <td><%= @fishery.mobile%></td>
         <td><%= @fishery.email %></td>
+        <td><%= @fishery.website%></td>
         <td><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></td>
         <td><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></td>
         <td><%= @fishery.lng %></td>
         <td><%= @fishery.lat %></td>
+        <td><%= @fishery.description %></td>
+        <td><%= @fishery.prices %></td>
+        <td><%= @fishery.record %></td>
+        <td><%= @fishery.season %></td>
+        <td><%= @fishery.facilities %></td>
       </tr>
   </tbody>
 </table>

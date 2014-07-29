@@ -18,7 +18,11 @@ describe "Fisheries", :type => :request do
         fill_in 'fishery_region', :with => "Fishery Region"
         fill_in 'fishery_telephone', :with => "12345678"
         fill_in 'fishery_postcode', :with => "Fishery Postcode"
+        fill_in 'fishery_description', :with => "Three spring-fed trout lakes totalling two acres"
         fill_in 'fishery_prices', with: "8hrs £20 (4 fish); 6hrs £17.50 (3fish);"
+        fill_in 'fishery_record', with: "Rainbow 26lb 4oz"
+        fill_in 'fishery_season', with: "All season"
+        fill_in 'fishery_facilities', with: "Lodge, tackle shop and toilets"
 
         click_on 'Submit'
         expect(page).to have_content "Bob's mega fishy fishery"
@@ -34,6 +38,26 @@ describe "Fisheries", :type => :request do
         click_on 'Submit'
         expect(page).to have_content "Dave's Big Trout Fishery"
       end
+
+      it "Shows an individual fishery's details", focus: true do
+        fishery = FactoryGirl.create(:fishery)
+        visit fishery_path fishery.id
+        expect(page).to have_content fishery.name
+        expect(page).to have_content fishery.street
+        expect(page).to have_content fishery.line2
+        expect(page).to have_content fishery.region
+        expect(page).to have_content fishery.telephone
+        expect(page).to have_content fishery.mobile
+        expect(page).to have_content fishery.postcode
+        expect(page).to have_content fishery.email
+        expect(page).to have_content fishery.website
+        expect(page).to have_content fishery.description
+        expect(page).to have_content fishery.prices
+        expect(page).to have_content fishery.record
+        expect(page).to have_content fishery.season
+        expect(page).to have_content fishery.facilities
+      end
   end
 end
+
 

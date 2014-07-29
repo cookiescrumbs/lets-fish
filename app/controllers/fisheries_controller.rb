@@ -59,6 +59,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fishery_params
-       params.require(:fishery).permit(:name, :street, :line2, :region, :country, :postcode, :telephone, :email, :lng, :lat, :species_ids => [],:insect_ids => [])
+       params.require(:fishery).permit(:name, :street, :line2, :region, :country, :postcode, :telephone, :email, :lng, :lat, :description, :prices, :record, :species_ids => [],:insect_ids => [])
     end
 end
