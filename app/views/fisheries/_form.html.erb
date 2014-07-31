@@ -7,7 +7,39 @@ function geocodePosition(pos) {
     latLng: pos
   }, function(responses) {
     if (responses && responses.length > 0) {
+      console.log (responses[0].address_components);
+      console.log (responses[0].address_components[0].long_name);
+      console.log (responses[0].address_components[1].long_name);
+      console.log (responses[0].address_components[2].long_name);
+      console.log (responses[0].address_components[3].long_name);
+      console.log (responses[0].address_components[4].long_name);
+      
+      
+      street = [
+        responses[0].address_components[0].long_name,
+        responses[0].address_components[1].long_name
+      ].join(', ')
+
+      address_components = responses[0].address_components
+      address_components_number = address_components.length
+      for (index = 0; index < address_components_number; ++index) {
+        if (address_components[index].types[0] == "administrative_area_level_2") {
+          region = address_components[index].long_name
+          updateRegion(region);
+        }
+        if (address_components[index].types[0] == "country") {
+          country = address_components[index].long_name
+          updateCountry(country);
+        }
+        if (address_components[index].types[0] == "postal_code") {
+          postcode = address_components[index].long_name
+          updatePostCode(postcode);
+        }
+      }
+
+      updateStreet(street);
       updateMarkerAddress(responses[0].formatted_address);
+
     } else {
       updateMarkerAddress('Cannot determine address at this location.');
     }
@@ -19,10 +51,26 @@ function updateMarkerStatus(str) {
 }
 
 function updateMarkerPosition(latLng) {
-  document.getElementById('info').innerHTML = [
+  document.getElementById('fishery_lat_lng').value = [
     latLng.lat(),
     latLng.lng()
   ].join(', ');
+}
+
+function updateStreet(street) {
+  document.getElementById('fishery_street').value = street;
+}
+
+function updatePostCode(postcode) {
+  document.getElementById('fishery_postcode').value = postcode;
+}
+
+function updateCountry(country) {
+  document.getElementById('fishery_country').value = country;
+}
+
+function updateRegion(region) {
+  document.getElementById('fishery_region').value = region;
 }
 
 function updateMarkerAddress(str) {
@@ -86,8 +134,26 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div id="infoPanel">
       <b>Marker status:</b>
       <div id="markerStatus"><i>Click and drag the marker.</i></div>
-      <b>Current position:</b>
-      <div id="info"></div>
+      <div class="form-group">
+        <label for="fishery_lat_lng">Latitude,Longitude</label>
+        <%= f.text_field :lat_lng, class: "form-control", id: "fishery_lat_lng", placeholder: "Enter longitude"%>
+    </div>
+    <div class="form-group">
+      <label for="fishery_street">Street</label>
+      <%= f.text_field :street, class: "form-control", id:"fishery_street", placeholder: "Street"%>
+    </div>
+    <div class="form-group">
+      <label for="fishery_region">County</label>
+      <%= f.text_field :region, class: "form-control", id:"fishery_region", placeholder: "County"%>
+    </div>
+    <div class="form-group">
+      <label for="fishery_country">Country</label>
+      <%= f.text_field :country, class: "form-control", id:"fishery_country", placeholder: "Country"%>
+    </div>
+    <div class="form-group">
+      <label for="fishery_postcode">Postcode</label>
+      <%= f.text_field :postcode, class: "form-control", id:"fishery_postcode", placeholder: "Postcode"%>
+    </div>
       <b>Closest matching address:</b>
       <div id="address"></div>
     </div>
@@ -101,24 +167,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <%= f.text_field :contact_name, class: "form-control", placeholder: "Enter contact name"%>
   </div>
   <div class="form-group">
-    <label for="fishery_street">Street</label>
-    <%= f.text_field :street, class: "form-control", id:"fishery_street", placeholder: "Street"%>
-  </div>
-  <div class="form-group">
     <label for="fishery_line2">Line Two</label>
     <%= f.text_field :line2, class: "form-control", id:"fishery_line2", placeholder: "Line two"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_region">County</label>
-    <%= f.text_field :region, class: "form-control", id:"fishery_region", placeholder: "County"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_country">Country</label>
-    <%= f.text_field :country, class: "form-control", id:"fishery_country", placeholder: "Country"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_postcode">Postcode</label>
-    <%= f.text_field :postcode, class: "form-control", id:"fishery_postcode", placeholder: "Postcode"%>
   </div>
   <div class="form-group">
     <label for="fishery_telephone">Telephone Number</label>
@@ -145,14 +195,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <%= b.label %>
     </div>
     <% end %>
-  </div>
-  <div class="form-group">
-    <label for="fishery_longitude">Longitude</label>
-    <%= f.text_field :lng, class: "form-control", placeholder: "Enter longitude"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_latitude">Latitude</label>
-    <%= f.text_field :lat, class: "form-control", placeholder: "Enter latitude"%>
   </div>
   <div class="form-group">
     <label for="fishery_description">Description</label>
