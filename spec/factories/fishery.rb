@@ -1,7 +1,7 @@
 FactoryGirl.define do
     factory :fishery do
         name Faker::Company.name
-        contact_name Faker::Name.name 
+        contact_name Faker::Name.name
         street Faker::Address.street_address
         line2 Faker::Address.street_address
         country Faker::Address.country
