@@ -4,7 +4,8 @@ class SpeciesController < ApplicationController
   # GET /species
   # GET /species.json
   def index
-    @species = Species.all
+    @all_species = Species.all
+    new
   end
 
   # GET /species/1
@@ -28,7 +29,7 @@ class SpeciesController < ApplicationController
 
     respond_to do |format|
       if @species.save
-        format.html { redirect_to @species, notice: 'Species was successfully created.' }
+        format.html { redirect_to species_index_path, notice: 'Species was successfully created.' }
         format.json { render action: 'show', status: :created, location: @species }
       else
         format.html { render action: 'new' }

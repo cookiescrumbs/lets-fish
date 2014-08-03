@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :insect do
-    name "MyString"
+    name "Mayfly"
   end
 end

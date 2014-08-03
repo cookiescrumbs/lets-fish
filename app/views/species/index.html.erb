@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @species.each do |species| %>
+    <% @all_species.each do |species| %>
       <tr>
         <td><%= species.id %></td>
         <td><%= species.name.capitalize %></td>
@@ -26,5 +26,6 @@
 
 <br>
 
-<%= link_to 'New Species', new_species_path %>
+<%= render 'form' %>
+
 
