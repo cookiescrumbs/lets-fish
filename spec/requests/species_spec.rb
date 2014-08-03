@@ -1,10 +1,34 @@
 require 'rails_helper'
 
-RSpec.describe "Species", :type => :request do
-  describe "GET /species" do
-    it "works! (now write some real specs)" do
-      get species_index_path
-      expect(response.status).to be(200)
-    end
+describe "Species", :type => :request do
+  describe "Manage species" do
+      it "Lists all species" do
+        FactoryGirl.create(:species, name: "Rainbow trout")
+        visit species_index_path
+        expect(page).to have_content "Rainbow trout"
+      end
+
+      it "Create a species and show the results" do
+        visit species_index_path
+        fill_in 'species_name', :with => "Rainbow trout"
+        click_on 'Create Species'
+        expect(page).to have_content "Rainbow trout"
+      end
+
+      it "Delete a species" do
+        FactoryGirl.create(:species, name: "Rainbow trout")
+        visit species_index_path
+        click_on 'Destroy'
+        expect(page).not_to have_content "Rainbow trout "
+      end
+
+      it "Show a species details" do
+        FactoryGirl.create(:species, name: "Rainbow trout")
+        FactoryGirl.create(:species, name: "Brown trout")
+        visit species_index_path
+        page.all("a",text: "Show")[0].click
+        expect(page).to have_content "Rainbow trout"
+        expect(page).not_to have_content "Brown trout"
+      end
   end
 end
