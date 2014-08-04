@@ -16,6 +16,7 @@
       <th>Telephone</th>
       <th>Mobile</th>
       <th>Email</th>
+      <th>Website</th>
       <th>Fish Species</th>
       <th>Insects</th>
       <th>Latitude,Longitude</th>
@@ -26,7 +27,6 @@
       <th>Facilities</th>
     </tr>
   </thead>
-
   <tbody>
       <tr>
         <td><%= @fishery.id %></td>
@@ -38,9 +38,9 @@
         <td><%= @fishery.country %></td>
         <td><%= @fishery.postcode %></td>
         <td><%= @fishery.telephone %></td>
-        <td><%= @fishery.mobile%></td>
+        <td><%= @fishery.mobile %></td>
         <td><%= @fishery.email %></td>
-        <td><%= @fishery.website%></td>
+        <td><%= @fishery.website %></td>
         <td><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></td>
         <td><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></td>
         <td><%= @fishery.lat_lng %></td>
