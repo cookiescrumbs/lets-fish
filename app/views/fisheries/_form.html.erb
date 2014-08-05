@@ -1,6 +1,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script type="text/javascript">
   var geocoder = new google.maps.Geocoder();
+  
+  function getLatLng() {
+    if(document.getElementById('fishery_lat_lng').value.length > 0 ) {
+      return document.getElementById('fishery_lat_lng').value.split(','); 
+    }
+    return [ '54.43869834845736', '-2.2472353515624945']
+  }
 
   function updateMarkerPosition(latLng) {
     document.getElementById('fishery_lat_lng').value = [
@@ -10,7 +17,8 @@
   }
 
   function initialize() {
-    var latLng = new google.maps.LatLng(54.43869834845736, -2.2472353515624945);
+    latLng = getLatLng();
+    var latLng = new google.maps.LatLng(latLng[0],latLng[1]);
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 5,
       center: latLng,
@@ -22,7 +30,7 @@
       map: map,
       draggable: true
     });
-    
+
     // Update current position info.
     updateMarkerPosition(latLng);
     // Add dragging event listeners.
@@ -33,7 +41,6 @@
   // Onload handler to fire off the app.
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
 <%= form_for(@fishery, :html => {:role => "form"}) do |f| %>
   <% if @fishery.errors.any? %>
     <div class="alert alert-danger">
