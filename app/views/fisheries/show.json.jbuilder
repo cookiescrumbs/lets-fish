@@ -1,1 +1,1 @@
-json.extract! @fishery, :id, :created_at, :updated_at
+json.extract! @fishery, :id, :name, :created_at, :updated_at
