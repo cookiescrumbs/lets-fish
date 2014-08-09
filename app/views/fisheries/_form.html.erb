@@ -19,7 +19,7 @@
   function initialize() {
     latLng = getLatLng();
     var latLng = new google.maps.LatLng(latLng[0],latLng[1]);
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById('form-map'), {
       zoom: 5,
       center: latLng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -62,7 +62,7 @@
   </div>
   <div class="form-group">
     <label for="fishery_name">Fishery Location</label>
-      <div id="map" style='width: 600px; height: 400px;'></div>
+      <div id="form-map"></div>
       <div class="form-group">
         <label for="fishery_lat_lng">Latitude,Longitude</label>
         <%= f.text_field :lat_lng, class: "form-control", id: "fishery_lat_lng", placeholder: "Enter longitude"%>
@@ -138,6 +138,7 @@
     <label for="fishery_facilities">Facilities</label>
     <%= f.text_field :facilities, class: "form-control", placeholder: "Enter facilities"%>
   </div>
-
-    <%= button_tag "Submit", class: "btn btn-default" %>
+  <div class="form-group">
+    <%= button_tag "Submit", class: "btn btn-primary" %>
+  </div>
 <% end %>

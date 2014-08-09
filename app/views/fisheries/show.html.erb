@@ -1,57 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Fishery Details</h1>
+<h1><%= @fishery.name %></h1>
+<div class="panel panel-default">
+  <div class="panel-heading">Description</div>
+  <div class="panel-body">
+    <%= @fishery.description %>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Location</div>
+  <div class="panel-body">
+    <dl>
+      <dt>Address:</dt>
+      <dd>
+        <%= @fishery.street %>,
+         <%= @fishery.line2 %>, 
+         <%= @fishery.region %>, 
+         <%= @fishery.country %>,
+         <%= @fishery.postcode %>
+      </dd>
+    <dl>
+  </div>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Contact</th>
-      <th>Street</th> 
-      <th>Line Two</th>
-      <th>County</th>
-      <th>Country</th>
-      <th>Postcode</th>
-      <th>Telephone</th>
-      <th>Mobile</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th>Fish Species</th>
-      <th>Insects</th>
-      <th>Latitude,Longitude</th>
-      <th>Description</th>
-      <th>Prices</th>
-      <th>Records</th>
-      <th>Season</th>
-      <th>Facilities</th>
-    </tr>
-  </thead>
+<div class="panel panel-default">
+  <div class="panel-heading">Contact Details</div>
+  <div class="panel-body">
+     <dl class="dl-horizontal">
+        <dt>Contact name:</dt>
+          <dd><%= @fishery.contact_name %></dd>
+        <dt>Telephone:<dt>
+          <dd><%= @fishery.telephone %></dd>
+        <dt>Mobile:</dt>
+          <dd><%= @fishery.mobile %></dd>
+        <dt>Email:</dt>
+          <dd><%= @fishery.email %></dd>
+        <dt>Wedsite:</dt>
+          <dd><%= @fishery.website %></dd>
+    </dl>
+  </div>
+</div>
 
-  <tbody>
-      <tr>
-        <td><%= @fishery.id %></td>
-        <td><%= @fishery.name %></td>
-        <td><%= @fishery.contact_name %></td>
-        <td><%= @fishery.street %></td>
-        <td><%= @fishery.line2 %></td>
-        <td><%= @fishery.region %></td>
-        <td><%= @fishery.country %></td>
-        <td><%= @fishery.postcode %></td>
-        <td><%= @fishery.telephone %></td>
-        <td><%= @fishery.mobile%></td>
-        <td><%= @fishery.email %></td>
-        <td><%= @fishery.website%></td>
-        <td><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></td>
-        <td><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></td>
-        <td><%= @fishery.lat_lng %></td>
-        <td><%= @fishery.description %></td>
-        <td><%= @fishery.prices %></td>
-        <td><%= @fishery.record %></td>
-        <td><%= @fishery.season %></td>
-        <td><%= @fishery.facilities %></td>
-      </tr>
-  </tbody>
-</table>
-<%= link_to 'Edit', edit_fishery_path(@fishery) %> |
-<%= link_to 'Back', fisheries_path %>
+<div class="panel panel-default">
+  <div class="panel-heading">Other Details</div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+        <dt>Fish Species:</dt>
+          <dd><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></dd>
+        <dt>Insects:</dt>
+          <dd><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></dd>
+        <dt>Record:</dt>
+          <dd><%= @fishery.record %></dd>
+        <dt>Season:</dt>
+          <dd><%= @fishery.season %></dd>
+        <dt>Facilities:</dt>
+          <dd><%= @fishery.facilities %></dd>
+        <dt>Prices:</dt>
+          <dd><%= @fishery.prices %></dd>
+    </dl>
+  </div>
+</div>
