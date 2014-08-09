@@ -1,7 +1,6 @@
 class HomepageController < ApplicationController
-  
-  def index
-     @fisheries = Fishery.all
-  end
 
+  def index
+  end
+  
 end
