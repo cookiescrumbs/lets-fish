@@ -1,4 +1,4 @@
-class InsectsController < ApplicationController
+class Admin::InsectsController < ApplicationController
   before_action :set_insect, only: [:show, :edit, :update, :destroy]
 
   # GET /insects
