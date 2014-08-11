@@ -1,6 +1,6 @@
 class Admin::SpeciesController < ApplicationController
   before_action :set_species, only: [:show, :edit, :update, :destroy]
-
+  layout "admin"
   # GET /species
   # GET /species.json
   def index

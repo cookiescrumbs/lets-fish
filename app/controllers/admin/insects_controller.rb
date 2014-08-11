@@ -1,6 +1,6 @@
 class Admin::InsectsController < ApplicationController
   before_action :set_insect, only: [:show, :edit, :update, :destroy]
-
+  layout "admin"
   # GET /insects
   # GET /insects.json
   def index
