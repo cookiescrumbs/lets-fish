@@ -1,6 +1,7 @@
-  class FisheriesController < ApplicationController
+  class Admin::FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
- 
+  layout "admin"
+
   def index
     @fisheries = Fishery.all
   end

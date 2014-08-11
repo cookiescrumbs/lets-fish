@@ -1,8 +1,10 @@
 FishingLog::Application.routes.draw do
-  get "homepage/index"
-  resources :fisheries
-  resources :insects
-  resources :species
+  namespace 'admin' do
+    resources :fisheries, :insects, :species
+  end
+  scope module: 'admin' do
+    resources :fisheries, :insects, :species
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -44,7 +46,7 @@ FishingLog::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
