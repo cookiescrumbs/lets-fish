@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'rails_12factor'
 gem 'pg'
+ gem 'unicorn'
 
 group :development, :test do
   gem 'rspec-rails'
