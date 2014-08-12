@@ -22,7 +22,7 @@ FishingLog::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
 
-  config.assets.prefix = 'shared/assets'
+  config.assets.prefix = '/shared/assets'
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
