@@ -1,8 +1,6 @@
 FishingLog::Application.routes.draw do
+  
   namespace 'admin' do
-    resources :fisheries, :insects, :species
-  end
-  scope module: 'admin' do
     resources :fisheries, :insects, :species
   end
 

@@ -16,7 +16,7 @@ class CreateFisheries < ActiveRecord::Migration
       t.text :description
       t.string :lat_lng
       t.string :prices
-      t.string :record
+      t.string :records
       t.string :season
       t.string :facilities
       t.timestamps
