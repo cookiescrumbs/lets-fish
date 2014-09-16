@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140707215143) do
     t.text     "description"
     t.string   "lat_lng"
     t.string   "prices"
-    t.string   "record"
+    t.string   "records"
     t.string   "season"
     t.string   "facilities"
     t.datetime "created_at"

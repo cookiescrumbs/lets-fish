@@ -10,8 +10,6 @@ require 'faker'
 
 Capybara.javascript_driver = :poltergeist
 
-require 'pry-debugger'
-
 ActiveRecord::Base.logger = nil
 
 # Requires supporting ruby files with custom matchers and macros, etc,
