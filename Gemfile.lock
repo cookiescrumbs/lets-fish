@@ -52,6 +52,7 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    excon (0.39.6)
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -87,6 +88,8 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
+    postcodes_io (0.1.1)
+      excon (~> 0.39)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -188,6 +191,7 @@ DEPENDENCIES
   jquery-rails
   pg
   poltergeist
+  postcodes_io
   pry-byebug
   rails (= 4.1.0)
   rails_12factor
