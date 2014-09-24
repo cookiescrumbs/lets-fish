@@ -1,4 +1,4 @@
-<%= form_for(@insect) do |f| %>
+<%= form_for([:admin, @insect], :html => {:role => "form"}) do |f| %>
   <% if @insect.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@insect.errors.count, "error") %> prohibited this insect from being saved:</h2>
