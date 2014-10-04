@@ -22,7 +22,7 @@
 
     respond_to do |format|
       if @fishery.save
-        format.html { redirect_to @fishery, notice: 'Fishery was successfully created.' }
+        format.html { redirect_to admin_fishery_path @fishery, notice: 'Fishery was successfully created.' }
         format.json { render action: 'show', status: :created, location: @fishery }
       else
         format.html { render action: 'new' }
@@ -35,7 +35,7 @@
   def update
     respond_to do |format|
       if @fishery.update(fishery_params)
-        format.html { redirect_to @fishery, notice: 'Fishery was successfully updated.' }
+        format.html { redirect_to admin_fisheries_path, notice: 'Fishery was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -47,7 +47,7 @@
   def destroy
     @fishery.destroy
     respond_to do |format|
-      format.html { redirect_to fisheries_url }
+      format.html { redirect_to admin_fisheries_path }
       format.json { head :no_content }
     end
   end

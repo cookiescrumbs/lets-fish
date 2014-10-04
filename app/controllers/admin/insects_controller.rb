@@ -29,7 +29,7 @@ class Admin::InsectsController < ApplicationController
 
     respond_to do |format|
       if @insect.save
-        format.html { redirect_to insects_path, notice: 'Insect was successfully created.' }
+        format.html { redirect_to admin_insects_path @insect, notice: 'Insect was successfully created.' }
         format.json { render action: 'show', status: :created, location: @insect }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class Admin::InsectsController < ApplicationController
   def update
     respond_to do |format|
       if @insect.update(insect_params)
-        format.html { redirect_to @insect, notice: 'Insect was successfully updated.' }
+        format.html { redirect_to admin_insects_path @insect, notice: 'Insect was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +57,7 @@ class Admin::InsectsController < ApplicationController
   def destroy
     @insect.destroy
     respond_to do |format|
-      format.html { redirect_to insects_url }
+      format.html { redirect_to admin_insects_url }
       format.json { head :no_content }
     end
   end

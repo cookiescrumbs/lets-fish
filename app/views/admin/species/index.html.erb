@@ -16,9 +16,9 @@
       <tr>
         <td><%= species.id %></td>
         <td><%= species.name.capitalize %></td>
-        <td><%= link_to 'Show', species %></td>
-        <td><%= link_to 'Edit', edit_species_path(species) %></td>
-        <td><%= link_to 'Destroy', species, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_species_path(species) %></td>
+        <td><%= link_to 'Edit',  edit_admin_species_path(species) %></td>
+        <td><%= link_to 'Destroy', admin_species_path(species), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
