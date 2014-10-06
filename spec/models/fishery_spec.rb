@@ -1,7 +1,16 @@
-require 'rails_helper'
-
 describe Fishery, :type => :model do
   
+  describe "validate fields" do
+    
+    before { @fishery = FactoryGirl.create(:fishery) }
+
+    it "is not valid without a name" do
+      @fishery.name = nil
+      expect(@fishery).not_to be_valid
+    end
+
+  end
+
   before(:all) do
     @fishery = FactoryGirl.create(
         :fishery, 
@@ -26,16 +35,10 @@ describe Fishery, :type => :model do
       )
   end
 
-  it "is not valid without a name" do
-
-    @fishery.name = nil
-    expect(@fishery).not_to be_valid
-
-  end
 
   describe "#contact_details" do
     
-    it "returns a hash of 'contact details' which are not empty" do
+    it "returns a hash of 'contact details' which aren't empty" do
       
       expect(@fishery.contact_details).to eql (
         { 
@@ -88,4 +91,7 @@ describe Fishery, :type => :model do
     end
 
   end
+
+  after(:all) { @fishery.destroy }
+
 end

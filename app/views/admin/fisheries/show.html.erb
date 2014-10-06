@@ -7,18 +7,14 @@
     <%= @fishery.description %>
   </div>
 </div>
+
 <div class="panel panel-default">
   <div class="panel-heading">Location</div>
   <div class="panel-body">
-    <dl>
-      <dt>Address:</dt>
-      <dd>
-        <%= @fishery.street %>,
-         <%= @fishery.line2 %>, 
-         <%= @fishery.region %>, 
-         <%= @fishery.country %>,
-         <%= @fishery.postcode %>
-      </dd>
+    <dl class="dl-horizontal">
+      <% @fishery.location.each do | value | %> 
+        <dt><%= value[0]%>&#58;</dt><dd><%= value[1]%></dd>
+      <% end %>
     <dl>
   </div>
 </div>
@@ -27,16 +23,9 @@
   <div class="panel-heading">Contact Details</div>
   <div class="panel-body">
      <dl class="dl-horizontal">
-        <dt>Contact name:</dt>
-          <dd><%= @fishery.contact_name %></dd>
-        <dt>Telephone:<dt>
-          <dd><%= @fishery.telephone %></dd>
-        <dt>Mobile:</dt>
-          <dd><%= @fishery.mobile %></dd>
-        <dt>Email:</dt>
-          <dd><%= @fishery.email %></dd>
-        <dt>Wedsite:</dt>
-          <dd><%= @fishery.website %></dd>
+        <% @fishery.contact_details.each do | value | %>
+          <dt><%=value[0]%>&#58;</dt><dd><%= value[1] %></dd>
+        <% end %>
     </dl>
   </div>
 </div>
@@ -49,14 +38,9 @@
           <dd><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></dd>
         <dt>Insects:</dt>
           <dd><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></dd>
-        <dt>Record:</dt>
-          <dd><%= @fishery.records %></dd>
-        <dt>Season:</dt>
-          <dd><%= @fishery.season %></dd>
-        <dt>Facilities:</dt>
-          <dd><%= @fishery.facilities %></dd>
-        <dt>Prices:</dt>
-          <dd><%= @fishery.prices %></dd>
+        <% @fishery.other_details.each do | value | %>
+          <dt><%=value[0]%>&#58;</dt><dd><%= value[1] %></dd>
+        <% end %>
     </dl>
   </div>
 </div>
