@@ -1,3 +1,25 @@
 <div class="jumbotron">
-  <h1>Where would you like to go fishing?</h1>
+  <h2>Where would you like to go fishing?</h2>
+
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label class="sr-only" for="location">Pick a location</label>
+      <input type="text" class="form-control" id="location" placeholder="Pick a location">
+    </div>
+    <div class="form-group">
+      <select class="form-control">
+        <option>Type of angling</option>
+        <option>Fly</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <select class="form-control">
+        <option>Species</option>
+        <option>Trout</option>
+        <option>Salmon</option>
+        <option>Sea trout</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
 </div>
