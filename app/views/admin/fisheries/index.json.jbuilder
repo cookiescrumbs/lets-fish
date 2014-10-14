@@ -7,5 +7,5 @@ json.array!(@fisheries) do |fishery|
   json.extract! fishery, :id, :name
   json.lat lat_lng[0]
   json.lng lat_lng[1]
-  json.url fishery_url(fishery, format: :json)
+  json.url admin_fishery_url(fishery, format: :json)
 end

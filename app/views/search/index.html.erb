@@ -23,7 +23,7 @@
 
   function loadMarkers() {
       // load marker jSon data    
-      $.getJSON('/fisheries.json', function(data) {
+      $.getJSON('/admin/fisheries.json', function(data) {
           // loop all the markers
           $.each(data, function(i,item){
               // add marker to map
