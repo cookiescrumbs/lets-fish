@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Species, :type => :model do
   
   before(:each) do

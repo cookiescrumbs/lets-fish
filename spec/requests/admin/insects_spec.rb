@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe "Insects", :type => :request do
   describe "Manage insects" do
       it "Lists all insects" do

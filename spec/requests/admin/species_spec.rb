@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe "Species", :type => :request do
   describe "Manage species" do
       it "Lists all species" do
