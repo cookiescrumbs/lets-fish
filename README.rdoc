@@ -3,4 +3,4 @@
 Gone Fishing
 ================
 
-An app to fins and list fisheries
+An app to find and list fisheries
