@@ -17,9 +17,12 @@ describe Water, :type => :model do
 
       describe "seasons" do
 
-        it "changes the year of the date to 2012 (a leap year)" do
+        it "changes the seasons year of the date to 2012 (a leap year)" do
           water.season_start = Date.new(2002).to_s
           expect(water.season_start).to eql Date.new(2012)
+
+          water.season_end = Date.new(2002).to_s
+          expect(water.season_end).to eql Date.new(2012)
         end
 
       end
