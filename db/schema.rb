@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020182309) do
+ActiveRecord::Schema.define(version: 20141020183650) do
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20141020182309) do
 
   create_table "waters", force: true do |t|
     t.string   "name"
-    t.string   "lat_lng"
     t.text     "description"
     t.string   "prices"
     t.date     "season_start"
