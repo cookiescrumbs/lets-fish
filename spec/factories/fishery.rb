@@ -11,11 +11,5 @@ FactoryGirl.define do
     postcode Faker::Address.postcode
     email Faker::Internet.email
     website Faker::Internet.url
-    lat_lng Faker::Address.latitude + ',' + Faker::Address.longitude
-    description Faker::Lorem.sentence
-    prices Faker::Commerce.price
-    records Faker::Lorem.sentence
-    season Faker::Lorem.sentence
-    facilities Faker::Lorem.sentence
   end
 end
