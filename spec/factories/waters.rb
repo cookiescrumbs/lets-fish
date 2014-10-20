@@ -3,7 +3,8 @@
 FactoryGirl.define do
   factory :water do
     name Faker::Lorem.word
-    lat_lng "#{Faker::Address.latitude},#{Faker::Address.longitude}"
+    latitude Faker::Address.latitude
+    longitude Faker::Address.longitude
     description Faker::Lorem.paragraph
     prices Faker::Commerce.price
     season_start "2014-10-20"
