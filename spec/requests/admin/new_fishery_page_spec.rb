@@ -24,5 +24,4 @@ describe "New fishery page", :type => :request do
       expect(page).to have_content "bobs@gmail.com"
       expect(page).to have_content "www.bobs.com"
     end
-
 end 

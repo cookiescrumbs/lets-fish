@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20141020182309) do
     t.date     "season_end"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "fisheries_id"
+    t.integer  "fishery_id"
     t.float    "longitude"
     t.float    "latitude"
   end
 
-  add_index "waters", ["fisheries_id"], name: "index_waters_on_fisheries_id"
+  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
 
 end

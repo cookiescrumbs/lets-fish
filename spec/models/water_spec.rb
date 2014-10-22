@@ -7,6 +7,11 @@ describe Water, :type => :model do
       expect(water).not_to be_valid
     end
 
+    it "is not valid without a fishery id" do
+      water.fishery_id = nil
+      expect(water).not_to be_valid
+    end
+
     describe "location" do
 
       it "validates the longitude and latitude" do

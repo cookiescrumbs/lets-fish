@@ -10,7 +10,7 @@ class CreateWaters < ActiveRecord::Migration
 
       t.timestamps
 
-      t.references :fisheries, index: true
+      t.references :fishery, index: true
     end
   end
 end
