@@ -67,11 +67,6 @@
   </div>
   <div class="form-group">
     <label for="fishery_name">Fishery Location</label>
-      <div id="form-map"></div>
-      <div class="form-group">
-        <label for="fishery_lat_lng">Latitude,Longitude</label>
-        <%= f.text_field :lat_lng, class: "form-control", id: "fishery_lat_lng", placeholder: "Enter longitude"%>
-      </div>
     <div class="form-group">
       <label for="fishery_street">Street</label>
       <%= f.text_field :street, class: "form-control", id:"fishery_street", placeholder: "Street"%>
@@ -124,33 +119,13 @@
     <% end %>
   </div>
   <div class="form-group">
-    <label for="fishery_description">Description</label>
-    <%= f.text_area :description, class: "form-control", placeholder: "Enter descripiton", size: "24x6"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_records">Record</label>
-    <%= f.text_field :records, class: "form-control", placeholder: "Enter fishery records"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_prices">Prices</label>
-    <%= f.text_field :prices, class: "form-control", placeholder: "Enter prices"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_season">Season</label>
-    <%= f.text_field :season, class: "form-control", placeholder: "Enter season"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_facilities">Facilities</label>
-    <%= f.text_field :facilities, class: "form-control", placeholder: "Enter facilities"%>
-  </div>
-  <div class="form-group">
     <%= button_tag "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <script type="text/javascript">
   //set error handler for jQuery AJAX requests
-  $.ajaxSetup({"error":function(XMLHttpRequest,textStatus, errorThrown) {   
+  $.ajaxSetup({"error":function(XMLHttpRequest,textStatus, errorThrown) {
       console.log(textStatus + ' / ' + errorThrown + ' / ' + XMLHttpRequest.responseText);
   }});
 

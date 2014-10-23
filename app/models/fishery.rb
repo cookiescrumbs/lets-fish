@@ -1,4 +1,5 @@
 class Fishery < ActiveRecord::Base
+
   has_and_belongs_to_many :insects
   has_and_belongs_to_many :species
 
@@ -9,17 +10,8 @@ class Fishery < ActiveRecord::Base
     return_filled_fields ['contact_name', 'telephone', 'mobile', 'email', 'website']
   end
 
-  def other_details
-    return_filled_fields ['records', 'season', 'facilities', 'prices']
-  end
-
   def location
     location = { "Address" => address }
-    if lat_lng?
-      location['Latitude']  = lat_lng.split(',')[0]
-      location['Longitude'] = lat_lng.split(',')[1]
-    end
-    location
   end
 
   def address

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707215143) do
+ActiveRecord::Schema.define(version: 20141020183650) do
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20140707215143) do
     t.string   "mobile"
     t.string   "email"
     t.string   "website"
-    t.text     "description"
-    t.string   "lat_lng"
-    t.string   "prices"
-    t.string   "records"
-    t.string   "season"
-    t.string   "facilities"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,5 +51,20 @@ ActiveRecord::Schema.define(version: 20140707215143) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "waters", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "prices"
+    t.date     "season_start"
+    t.date     "season_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "fishery_id"
+    t.float    "longitude"
+    t.float    "latitude"
+  end
+
+  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
 
 end

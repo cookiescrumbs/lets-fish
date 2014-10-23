@@ -9,14 +9,8 @@ describe "Show fishery details page", :type => :request do
       expect(page).to have_content @fishery.name
     end
 
-    it "has a description" do
-      expect(page).to have_content @fishery.description
-    end
-
     it "has details of the location" do
       expect(page).to have_content @fishery.location["Address"]
-      expect(page).to have_content @fishery.location["Latitude"]
-      expect(page).to have_content @fishery.location["Longitude"]
     end
 
     it "has a google map" do
@@ -31,10 +25,4 @@ describe "Show fishery details page", :type => :request do
       expect(page).to have_content @fishery.contact_details['Website']
     end
 
-    it "has other details" do
-      expect(page).to have_content @fishery.other_details['Records']
-      expect(page).to have_content @fishery.other_details['Season']
-      expect(page).to have_content @fishery.other_details['Facilities']
-      expect(page).to have_content @fishery.other_details['Prices']
-    end
 end

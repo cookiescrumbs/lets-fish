@@ -1,12 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @fishery.name %></h1>
-<div class="panel panel-default">
-  <div class="panel-heading">Description</div>
-  <div class="panel-body">
-    <%= @fishery.description %>
-  </div>
-</div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Location</div>
@@ -38,9 +32,6 @@
           <dd><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></dd>
         <dt>Insects:</dt>
           <dd><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></dd>
-        <% @fishery.other_details.each do | value | %>
-          <dt><%=value[0]%>&#58;</dt><dd><%= value[1] %></dd>
-        <% end %>
     </dl>
   </div>
 </div>
