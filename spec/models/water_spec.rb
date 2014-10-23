@@ -19,20 +19,18 @@ describe Water, :type => :model do
         water.latitude = 100000
         expect(water).not_to be_valid
       end
+      
+    end
 
-      describe "seasons" do
+    describe "seasons" do
 
-        it "changes the seasons year of the date to 2012 (a leap year)" do
-          water.season_start = Date.new(2002).to_s
-          expect(water.season_start).to eql Date.new(2012)
+      it "changes the seasons year to 2012 (a leap year)" do
+        water.season_start = Date.new(2002).to_s
+        expect(water.season_start).to eql Date.new(2012)
 
-          water.season_end = Date.new(2002).to_s
-          expect(water.season_end).to eql Date.new(2012)
-        end
-
+        water.season_end = Date.new(2002).to_s
+        expect(water.season_end).to eql Date.new(2012)
       end
-
-
 
     end
 end
