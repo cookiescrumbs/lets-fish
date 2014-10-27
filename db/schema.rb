@@ -66,5 +66,5 @@ ActiveRecord::Schema.define(version: 20141020183650) do
   end
 
   add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
-
+  
 end

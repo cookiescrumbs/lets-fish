@@ -11,5 +11,11 @@ FactoryGirl.define do
     postcode Faker::Address.postcode
     email Faker::Internet.email
     website Faker::Internet.url
+
+    factory :fishery_with_waters do
+        after(:create) do |fishery, evaluator|
+           FactoryGirl.create_list(:water, 5, :fishery => fishery)
+        end
+    end
   end
 end

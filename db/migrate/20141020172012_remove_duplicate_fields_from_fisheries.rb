@@ -1,4 +1,4 @@
-class RemoteDuplicateFieldsFromFisheries < ActiveRecord::Migration
+class RemoveDuplicateFieldsFromFisheries < ActiveRecord::Migration
   def change
     
     change_table :fisheries do |t|

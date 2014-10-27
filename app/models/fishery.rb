@@ -1,4 +1,5 @@
 class Fishery < ActiveRecord::Base
+  has_many :waters
 
   has_and_belongs_to_many :insects
   has_and_belongs_to_many :species

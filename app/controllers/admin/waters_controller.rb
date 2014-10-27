@@ -1,7 +1,8 @@
 class Admin::WatersController < ApplicationController
 
   def index
-    @waters = Water.all
+    @fishery = Fishery.find(params[:fishery_id])
+    flash.now[:notice] = 'There are no waters associated with this fishery. Please add a water.' if @fishery.waters.empty?
   end
 
 end

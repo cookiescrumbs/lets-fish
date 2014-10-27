@@ -25,5 +25,4 @@ describe "Manage fisheries page", :type => :request do
       visit admin_fisheries_path
       expect(page).to have_content "Stevo's Big trout fishery"
     end
-
 end

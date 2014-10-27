@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'rails_12factor'
 gem 'pg'
 gem 'unicorn'
+gem 'possessive'
 
 group :development, :test do
   gem 'rspec-rails'
