@@ -52,12 +52,11 @@
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_fishery
       @fishery = Fishery.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def fishery_params
        params.require(:fishery).permit(:name, :contact_name, :street, :line2, :region, :country, :postcode, :telephone, :mobile, :email, :website, :species_ids => [],:insect_ids => [])
     end

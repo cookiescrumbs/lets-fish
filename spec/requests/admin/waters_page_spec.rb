@@ -20,7 +20,7 @@ describe "Manage waters page", :type => :request do
     expect(page).to have_content "#{@fishery.name.possessive} waters"
   end
 
-  context "there are no waters" do
+  context "There are no waters" do
 
     before(:each) do
       @fishery_without_waters = FactoryGirl.create :fishery
@@ -36,7 +36,5 @@ describe "Manage waters page", :type => :request do
     end
 
   end
-
-
 
 end
