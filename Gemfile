@@ -30,6 +30,7 @@ gem 'rails_12factor'
 gem 'pg'
 gem 'unicorn'
 gem 'possessive'
+gem 'raygun4ruby'
 
 group :development, :test do
   gem 'rspec-rails'
