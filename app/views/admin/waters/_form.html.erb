@@ -1,0 +1,29 @@
+<%= form_for([:admin, @fishery, @fishery.waters.last], :html => {:role => "form"}) do |f| %>
+  <% if @fishery.errors.any? %>
+    <div class="alert alert-danger">
+      <strong><%= pluralize(@fishery.waters.last.errors.count, "error") %> prohibited this water from being saved:</strong>
+        <ul>
+        <% @fishery.waters.last.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="water_name">Water Name</label>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter water name"%>
+  </div>
+  <div class="form-group">
+    <label for="water_latitude">Latitude</label>
+    <%= f.text_field :latitude, class: "form-control", placeholder: "latitude"%>
+  </div>
+
+  <div class="form-group">
+    <label for="water_longitude">Longitude</label>
+    <%= f.text_field :longitude, class: "form-control", placeholder: "longitude"%>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 describe "New fishery page", :type => :request do
-
+    
     it "Creates a fishery and show the results" do
       visit new_admin_fishery_path
 
@@ -24,4 +24,5 @@ describe "New fishery page", :type => :request do
       expect(page).to have_content "bobs@gmail.com"
       expect(page).to have_content "www.bobs.com"
     end
+    
 end 

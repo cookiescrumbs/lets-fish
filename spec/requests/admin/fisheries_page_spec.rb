@@ -26,4 +26,14 @@ describe "Manage fisheries page", :type => :request do
       expect(page).to have_content "Stevo's Big trout fishery"
     end
 
+    it "has a link to a fisheries waters" do
+      visit admin_fisheries_path
+      expect(page).to have_link 'show', href: admin_fishery_waters_path(@fishery)
+    end
+
+    it "has a button to add a water to a fishery" do
+      visit admin_fisheries_path
+      expect(page).to have_link 'add', href: new_admin_fishery_water_path(@fishery)
+
+    end
 end
