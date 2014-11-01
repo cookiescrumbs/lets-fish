@@ -6,15 +6,16 @@ class Admin::WatersController < ApplicationController
   end
 
   def new
+    @fishery.waters.build
   end
 
   def create
     @fishery.waters.create(water_params)
-
     respond_to do |format|
       if @fishery.save
         format.html { redirect_to admin_fishery_waters_path @fishery, notice: 'Water was successfully created' }
-        format.json { render action: 'show', status: :created, location: @fishery }
+      else
+        format.html { render action: 'new' }
       end
     end
   end
