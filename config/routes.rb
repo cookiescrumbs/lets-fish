@@ -1,13 +1,12 @@
 FishingLog::Application.routes.draw do
   
   namespace :admin do
-    resources :fisheries, :insects, :species
+    resources :species
     resources :fisheries do
       resources :waters
     end
   end
 
-  resources :search
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,6 +14,8 @@ FishingLog::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
+
+  get 'search' => 'search#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
