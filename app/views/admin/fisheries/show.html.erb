@@ -23,15 +23,3 @@
     </dl>
   </div>
 </div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">Other Details</div>
-  <div class="panel-body">
-    <dl class="dl-horizontal">
-        <dt>Fish Species:</dt>
-          <dd><%= @fishery.species.map {|i| i.name.capitalize}.join(', ') %></dd>
-        <dt>Insects:</dt>
-          <dd><%= @fishery.insects.map {|i| i.name.capitalize}.join(', ') %></dd>
-    </dl>
-  </div>
-</div>
