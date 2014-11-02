@@ -1,5 +1,6 @@
 describe "Manage fisheries page", :type => :request do
 
+  context "there is a fisheries to manage" do
     before(:each) do 
       @fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
     end
@@ -34,6 +35,21 @@ describe "Manage fisheries page", :type => :request do
     it "has a button to add a water to a fishery" do
       visit admin_fisheries_path
       expect(page).to have_link 'add', href: new_admin_fishery_water_path(@fishery)
-
     end
+  end
+
+  context "there are no fisheries to manage" do
+
+    it "has a lovely message telling you to create a fishery" do
+      visit admin_fisheries_path
+      expect(page).to have_content "There are no fisheries. Please add a fishery."
+    end
+
+    it "doesn't have a table of fisheries" do
+      expect(page).to have_no_css 'table.waters'
+    end
+
+
+  end
+
 end

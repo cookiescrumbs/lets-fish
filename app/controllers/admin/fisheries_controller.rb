@@ -3,6 +3,7 @@
   
   def index
     @fisheries = Fishery.all
+    flash.now[:notice] = 'There are no fisheries. Please add a fishery.' if @fisheries.empty?
   end
 
   def show
