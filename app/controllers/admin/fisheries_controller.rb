@@ -22,7 +22,7 @@
 
     respond_to do |format|
       if @fishery.save
-        format.html { redirect_to admin_fishery_path @fishery, notice: 'Fishery was successfully created.' }
+        format.html { redirect_to admin_fisheries_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"}
         format.json { render action: 'show', status: :created, location: @fishery }
       else
         format.html { render action: 'new' }
