@@ -16,13 +16,7 @@ describe "New fishery page", :type => :request do
 
       click_on 'Submit'
 
-      expect(page).to have_content "Bob's mega fishy fishery"
-      expect(page).to have_content "Bob is the contact name"
-      expect(page).to have_content "Fishery Street, Fishery line 2, Fishery Region, Fishery Postcode"
-      expect(page).to have_content "12345678"
-      expect(page).to have_content "67676767676"
-      expect(page).to have_content "bobs@gmail.com"
-      expect(page).to have_content "www.bobs.com"
+      expect(page).to have_content "Bob's mega fishy fishery was successfully create. Would you like to add a water?"
     end
     
 end 
