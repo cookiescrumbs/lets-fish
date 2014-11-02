@@ -13,12 +13,6 @@ class CreateFisheries < ActiveRecord::Migration
       t.string :mobile
       t.string :email
       t.string :website
-      t.text :description
-      t.string :lat_lng
-      t.string :prices
-      t.string :records
-      t.string :season
-      t.string :facilities
       t.timestamps
     end
   end

@@ -9,7 +9,6 @@ FactoryGirl.define do
     latitude Faker::Address.latitude
     longitude Faker::Address.longitude
     description Faker::Lorem.paragraph
-    prices Faker::Commerce.price
     season_start "2014-10-20"
     season_end "2014-10-20"
 
