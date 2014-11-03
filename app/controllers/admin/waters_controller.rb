@@ -13,7 +13,7 @@ class Admin::WatersController < ApplicationController
     @fishery.waters.create(water_params)
     respond_to do |format|
       if @fishery.save
-        format.html { redirect_to admin_fishery_waters_path @fishery, notice: 'Water was successfully created' }
+        format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}" }
       else
         format.html { render action: 'new' }
       end
@@ -22,11 +22,11 @@ class Admin::WatersController < ApplicationController
 
   private
 
-    def set_fishery
-      @fishery = Fishery.find(params[:fishery_id])
-    end
+  def set_fishery
+    @fishery = Fishery.find(params[:fishery_id])
+  end
 
-    def water_params
-       params.require(:water).permit(:name, :latitude, :longitude)
-    end
+  def water_params
+    params.require(:water).permit(:name, :latitude, :longitude, :species_ids => [])
+  end
 end

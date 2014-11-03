@@ -1,11 +1,11 @@
 <h1><%= @fishery.name.possessive %> waters</h1>
 <% if @fishery.waters.exists? %>
-<h1>Listing Waters</h1>
   <table class="table table-striped waters">
     <thead>
       <tr>
         <th>#</th>
         <th>Name</th>
+        <th>Species of fish</th>
         <th>Show</th> 
         <th>Edit</th>
         <th>Destroy</th>
@@ -17,6 +17,10 @@
         <tr class="water">
           <td><%= water.id %></td>
           <td><%= water.name %></td>
+          <td><%= water.species.map{|s| s.name }.join(', ') %></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       <% end %>
     </tbody>
