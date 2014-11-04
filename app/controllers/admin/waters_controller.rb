@@ -20,6 +20,15 @@ class Admin::WatersController < ApplicationController
     end
   end
 
+  def destroy
+    @fishery = Fishery.find(params[:fishery_id])
+    @water = Water.find(params[:id])
+    @water.destroy
+    respond_to do | format |
+      format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully deleted" }
+    end
+  end
+
   private
 
   def set_fishery

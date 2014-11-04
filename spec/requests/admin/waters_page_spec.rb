@@ -22,6 +22,12 @@ describe "Manage waters page", :type => :request do
       expect(page).to have_content "#{@fishery.name.possessive} waters"
     end
 
+    it "can delete a water with a nice message" do
+      first_water = page.all('.destroy').first
+      expect {first_water.click}.to change(@fishery.waters, :count).from(5).to(4)
+      expect(page.find('.alert')).to have_content "#{@fishery.waters.first.name} was successfully deleted"
+    end
+
   end
 
   context "there is a fishery without waters" do

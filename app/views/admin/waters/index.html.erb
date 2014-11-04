@@ -20,7 +20,10 @@
           <td><%= water.species.map{|s| s.name }.join(', ') %></td>
           <td></td>
           <td></td>
-          <td></td>
+          <td>
+            <%= link_to 'destroy', admin_fishery_water_path(@fishery, water), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" }, class: 'btn btn-default btn-sm btn-danger destroy'
+            %>
+          </td>
         </tr>
       <% end %>
     </tbody>
