@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20141102101148) do
     t.datetime "updated_at"
   end
 
-  create_table "species_waters", force: true do |t|
+  create_table "species_waters", id: false, force: true do |t|
     t.integer "species_id"
-    t.integer "waters_id"
+    t.integer "water_id"
   end
 
   create_table "waters", force: true do |t|

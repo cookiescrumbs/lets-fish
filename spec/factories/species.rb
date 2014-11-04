@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :species do
-    name "Brown trout"
+    name { Faker::Name.name }
   end
 end

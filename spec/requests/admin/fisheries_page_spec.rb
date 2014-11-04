@@ -1,11 +1,11 @@
 describe "Manage fisheries page", :type => :request do
 
-  context "there is a fisheries to manage" do
+  context "there is a fishery to manage" do
     before(:each) do 
       @fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
     end
 
-    it "Updates a fishery's details" do
+    it "updates a fishery's details" do
       visit edit_admin_fishery_path @fishery.id
       expect(page.find_field('fishery_name').value).to eql "Stevo's Big trout fishery"
 
@@ -16,7 +16,7 @@ describe "Manage fisheries page", :type => :request do
       expect(page).to have_content "Dave's Big Trout Fishery"
     end
 
-    it "Delete a fishery" do
+    it "delete a fishery" do
       visit admin_fisheries_path
       click_on 'destroy'
       expect(page).not_to have_content "Stevo's Big trout fishery"

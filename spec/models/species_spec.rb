@@ -1,7 +1,7 @@
 describe Species, :type => :model do
   
   before(:each) do
-    @species = Species.new
+    @species = FactoryGirl.create :species
   end
 
   it "is not valid without a name" do
