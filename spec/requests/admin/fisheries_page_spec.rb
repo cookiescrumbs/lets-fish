@@ -2,7 +2,7 @@ describe "Manage fisheries page", :type => :request do
 
   context "there is a fishery to manage" do
     before(:each) do 
-      @fishery = FactoryGirl.create(:fishery, name: "Stevo's Big trout fishery")
+      @fishery = FactoryGirl.create(:fishery_with_waters, name: "Stevo's Big trout fishery")
     end
 
     it "updates a fishery's details" do
@@ -16,10 +16,14 @@ describe "Manage fisheries page", :type => :request do
       expect(page).to have_content "Dave's Big Trout Fishery"
     end
 
-    it "delete a fishery" do
+    it "deletes a fishery" do
       visit admin_fisheries_path
-      click_on 'destroy'
-      expect(page).not_to have_content "Stevo's Big trout fishery"
+      expect {click_on 'destroy'}.to change(Fishery, :count).from(1).to(0)
+    end
+
+    it "deletes associated waters" do
+      visit admin_fisheries_path
+      expect {click_on 'destroy'}.to change(Water, :count).from(5).to(0)
     end
 
     it "lists all fisheries" do
