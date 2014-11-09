@@ -1,5 +1,5 @@
 describe "New water page", type: :request do
-  
+
   before :each do
     @fishery = FactoryGirl.create :fishery, name: "Bob's big fishery"
     @species = FactoryGirl.create_list :species, 5
@@ -9,7 +9,7 @@ describe "New water page", type: :request do
 
   it "has the name of the fishery" do
     expect(page).to have_content "New water for Bob's big fishery"
-  end 
+  end
 
   context "form is filled out correctly" do
 
@@ -37,7 +37,7 @@ describe "New water page", type: :request do
       fill_in 'water_name',       with: ''
       fill_in 'water_latitude',   with: ''
       fill_in 'water_longitude',  with: ''
-      
+
       click_on "Submit"
 
       expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Name can't be blank Latitude is not a number Longitude is not a number"

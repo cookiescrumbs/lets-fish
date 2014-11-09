@@ -1,13 +1,12 @@
   class Admin::FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @fisheries = Fishery.all
     flash.now[:notice] = 'There are no fisheries. Please add a fishery.' if @fisheries.empty?
   end
 
   def show
-    @fishery = Fishery.find(params[:id])
   end
 
   def new
