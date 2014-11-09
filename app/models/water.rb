@@ -1,6 +1,6 @@
 class Water < ActiveRecord::Base
   belongs_to :fishery
-  
+
   has_and_belongs_to_many :species
 
   validates_presence_of :name, :fishery_id

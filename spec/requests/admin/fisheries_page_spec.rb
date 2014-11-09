@@ -1,7 +1,7 @@
 describe "Manage fisheries page", :type => :request do
 
   context "there is a fishery to manage" do
-    before(:each) do 
+    before(:each) do
       @fishery = FactoryGirl.create(:fishery_with_waters, name: "Stevo's Big trout fishery")
     end
 

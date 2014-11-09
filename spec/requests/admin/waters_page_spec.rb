@@ -4,7 +4,6 @@ describe "Manage waters page", :type => :request do
 
     before(:each) do
       @fishery = FactoryGirl.create :fishery_with_waters
-      FactoryGirl.create :water
       visit admin_fishery_waters_path @fishery.id
     end
 
@@ -26,6 +25,42 @@ describe "Manage waters page", :type => :request do
       first_water = page.all('.destroy').first
       expect {first_water.click}.to change(@fishery.waters, :count).from(5).to(4)
       expect(page.find('.alert')).to have_content "#{@fishery.waters.first.name} was successfully deleted"
+    end
+
+    context "water has one species of fish" do
+
+      before(:each) do
+        @species = FactoryGirl.create_list :species, 4
+        @fishery.waters.first.species_ids = [4]
+      end
+
+      let(:water){ @fishery.waters.first }
+      let(:checked_species_name){ @species.last.name }
+      let(:first_species_name){ @species.first.name }
+      let(:edit_button){ page.all('.edit').first }
+
+      it "has the correct fields in the edit form" do
+        edit_button.click
+        expect(page.find_field('Water Name').value).to eql water.name
+        expect(page.find_field('Latitude').value.to_f).to eql water.latitude
+        expect(page.find_field('Longitude').value.to_f).to eql water.longitude
+        expect(page.has_checked_field? checked_species_name).to be true
+      end
+
+      it "updates a waters details and returns a nice message" do
+        edit_button.click
+
+        fill_in 'water_name', with: 'loch dooooooon'
+        fill_in 'water_latitude', with: '-80'
+        fill_in 'water_longitude', with: '150'
+        check first_species_name
+        click_on 'Submit'
+
+        expect(page).to have_content 'loch dooooooon'
+        expect(page).to have_content "#{first_species_name}, #{checked_species_name}"
+        expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
+
+      end
     end
 
   end

@@ -23,7 +23,7 @@
     <%= f.text_field :longitude, class: "form-control", placeholder: "longitude"%>
   </div>
 
-  <div class="form-group"> 
+  <div class="form-group">
     <label for="water_species">Fish species</label>
     <%= collection_check_boxes(:water, :species_ids, Species.all, :id, :name) do |b|%>
     <div class="checkbox">
