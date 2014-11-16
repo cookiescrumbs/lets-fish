@@ -6,11 +6,11 @@ class Admin::WatersController < ApplicationController
   end
 
   def new
-    @fishery.waters.build
+    @water = @fishery.waters.build
   end
 
   def create
-    @fishery.waters.create(water_params)
+    @water = @fishery.waters.build(water_params)
     respond_to do |format|
       if @fishery.save
         format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}" }
