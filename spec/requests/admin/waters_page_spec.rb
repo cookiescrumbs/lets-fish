@@ -4,9 +4,15 @@ describe "Manage waters page", :type => :request do
 
     before(:each) do
       @fishery = FactoryGirl.create :fishery_with_waters
+      @species = FactoryGirl.create_list :species, 4
+      @fishery.waters.first.species_ids = [4]
       visit admin_fishery_waters_path @fishery.id
     end
 
+    let(:water){ @fishery.waters.first }
+    let(:checked_species_name){ @species.last.name }
+    let(:first_species_name){ @species.first.name }
+    let(:edit_button){ page.all('.edit').first }
     let(:number_of_waters){ @fishery.waters.count }
 
     it "lists a fisheries waters" do
@@ -27,23 +33,18 @@ describe "Manage waters page", :type => :request do
       expect(page.find('.alert')).to have_content "#{@fishery.waters.first.name} was successfully deleted"
     end
 
-    context "water has one species of fish" do
+    describe "a water can be edited" do
 
-      before(:each) do
-        @species = FactoryGirl.create_list :species, 4
-        @fishery.waters.first.species_ids = [4]
-      end
-
-      let(:water){ @fishery.waters.first }
-      let(:checked_species_name){ @species.last.name }
-      let(:first_species_name){ @species.first.name }
-      let(:edit_button){ page.all('.edit').first }
+      it "has the waters name as a title" do
+        edit_button.click
+        expect(page.find('h1').text).to eql "Editing #{water.name.capitalize.possessive} details"
+      end 
 
       it "has the correct fields in the edit form" do
         edit_button.click
-        expect(page.find_field('Water Name').value).to eql water.name
-        expect(page.find_field('Latitude').value.to_f).to eql water.latitude
-        expect(page.find_field('Longitude').value.to_f).to eql water.longitude
+        expect(page.find_field('water_name').value).to eql water.name
+        expect(page.find('#latitude').value.to_f).to eql water.latitude
+        expect(page.find('#longitude').value.to_f).to eql water.longitude
         expect(page.has_checked_field? checked_species_name).to be true
       end
 
@@ -51,16 +52,28 @@ describe "Manage waters page", :type => :request do
         edit_button.click
 
         fill_in 'water_name', with: 'loch dooooooon'
-        fill_in 'water_latitude', with: '-80'
-        fill_in 'water_longitude', with: '150'
+        #had to use find as the fields are hidden
+        find('#latitude').set -90 
+        find('#longitude').set -180
         check first_species_name
         click_on 'Submit'
-
         expect(page).to have_content 'loch dooooooon'
-        expect(page).to have_content "#{first_species_name}, #{checked_species_name}"
+        expect(page).to have_content "#{checked_species_name}, #{first_species_name}"
         expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
-
       end
+
+      it "shows a helpful validation messages for required fields" do
+        edit_button.click
+
+        fill_in 'water_name', with: ''
+        #had to use find as the fields are hidden
+        find('#latitude').set ''
+        find('#longitude').set ''
+        click_on "Submit"
+
+        expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Name can't be blank Latitude is not a number Longitude is not a number"
+      end
+
     end
 
   end

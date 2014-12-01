@@ -28,7 +28,6 @@
         format.json { render json: @fishery.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def update
