@@ -30,9 +30,11 @@
     var latitude  = getLatitude();
     var longitude = getLongitude();
 
+    var zoom = (latitude == 54.43869834845736 ) ? 5 : 15;
+
     var latLng = new google.maps.LatLng(latitude,longitude);
     var map = new google.maps.Map(document.getElementById('form-map'), {
-      zoom: 15,
+      zoom: zoom,
       center: latLng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
