@@ -1,4 +1,4 @@
-class Admin::WatersController < ApplicationController
+class Admin::WatersController < AdminController
   before_action :set_fishery, only: [ :index, :new, :update, :create, :edit]
   before_action :set_water, only: [:edit, :update]
 

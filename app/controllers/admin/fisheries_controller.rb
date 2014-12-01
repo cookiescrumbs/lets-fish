@@ -1,4 +1,5 @@
-  class Admin::FisheriesController < ApplicationController
+class Admin::FisheriesController < AdminController
+
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index

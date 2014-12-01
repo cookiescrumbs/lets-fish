@@ -37,7 +37,7 @@ describe "Manage waters page", :type => :request do
 
       it "has the waters name as a title" do
         edit_button.click
-        expect(page.find('h1').text).to eql "Editing #{water.name.capitalize.possessive} details"
+        expect(page.find('h3').text).to eql "#{@fishery.name.possessive} - #{water.name}"
       end 
 
       it "has the correct fields in the edit form" do
