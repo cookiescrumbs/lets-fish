@@ -1,2 +1,2 @@
-<h1>Editing <%= @water.name.capitalize.possessive unless @water.name.empty? %> details</h1>
+<h3><%= @fishery.name.possessive unless @fishery.name.empty? %> - <%= @water.name unless @water.name.empty? %></h3>
 <%= render 'form' %>

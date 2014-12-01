@@ -53,9 +53,9 @@
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<div id="form-map" class="pull-left"></div>
+<div id="form-map" class="pull-right"></div>
 
-<div class="pull-right">
+<div class="pull-left">
 <%= form_for([:admin,  @fishery, @water], :html => {:role => "form"}) do |f| %>
   <% if @water.errors.any? %>
     <div class="alert alert-danger">
