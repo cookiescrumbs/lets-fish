@@ -13,10 +13,6 @@ describe "Show fishery details page", :type => :request do
       expect(page).to have_content @fishery.location["Address"]
     end
 
-    it "has a google map" do
-      #pending
-    end
-
     it "has contact details" do
       expect(page).to have_content @fishery.contact_details['Contact name']
       expect(page).to have_content @fishery.contact_details['Telephone']
