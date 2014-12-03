@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#form-map { 
-  width: 550px; 
-  height:500px;
+#form-map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height:450px !important;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #form-map{ width: 75%; }
 }

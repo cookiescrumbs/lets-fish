@@ -44,6 +44,13 @@
       draggable: true
     });
 
+    
+    google.maps.event.addDomListener(window, "resize", function() {
+      var center = map.getCenter();
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(center); 
+    });
+
     // Update current position info.
     updateMarkerPosition(latLng);
     // Add dragging event listeners.
