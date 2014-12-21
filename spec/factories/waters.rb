@@ -1,7 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
-require 'fishery'
-
-
+# require 'fishery'
 FactoryGirl.define do
   factory :water do
 
