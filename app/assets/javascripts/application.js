@@ -19,3 +19,4 @@
 //= require jqBootstrapValidation
 //= require contact_me
 //= require main
+//= require homepage
