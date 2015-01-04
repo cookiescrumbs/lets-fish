@@ -1,10 +1,9 @@
 describe "New fishery page", :type => :request do
     
-    it "creates a fishery and show the results" do
+    it "creates a fishery and show the results", focus: true do
       visit new_admin_fishery_path
 
       fill_in 'fishery_name', :with => "Bob's mega fishy fishery"
-      fill_in 'fishery_contact_name', :with => "Bob is the contact name"
       fill_in 'fishery_street', :with => "Fishery Street"
       fill_in 'fishery_line2', :with => "Fishery line 2"
       fill_in 'fishery_region', :with => "Fishery Region"
