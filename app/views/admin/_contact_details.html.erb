@@ -1,0 +1,24 @@
+<div class="form-group" id="contact-details">
+    <%= form.fields_for :contact_details do |f| %>
+      <div class="form-group">
+        <label for="contact-name">Contact</label>
+        <%= f.text_field :name, class: "form-control", id:"contact-name", placeholder: "Enter contact name"%>
+      </div>
+      <div class="form-group">
+        <label for="telephone">Telephone Number</label>
+        <%= f.text_field :telephone, class: "form-control", id:"telephone", placeholder: "Telephone Number"%>
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile Number</label>
+        <%= f.text_field :mobile, class: "form-control", id:"mobile", placeholder: "Mobile Number"%>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <%= f.text_field :email, class: "form-control", id:"email", placeholder: "Email Address"%>
+      </div>
+      <div class="form-group">
+        <label for="website">Website </label>
+        <%= f.text_field :website, class: "form-control", id:"website", placeholder: "Website"%>
+      </div>
+    <% end %>
+</div>

@@ -8,17 +8,7 @@ describe Fishery, :type => :model do
       @fishery.name = nil
       expect(@fishery).not_to be_valid
     end
-
-    it "is not valid without an address" do
-      @fishery.address = nil
-      expect(@fishery).not_to be_valid
-    end
-
-    it "is not valid without contact details" do
-      @fishery.contact_details = nil
-      expect(@fishery).not_to be_valid
-    end
-
+    
   end
 
 end

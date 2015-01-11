@@ -38,6 +38,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+  gem 'site_prism'
   gem 'pry-byebug'
   gem 'shotgun'
   gem 'faker'

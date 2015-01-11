@@ -13,7 +13,7 @@ describe Water, :type => :model do
     end
 
     describe "location" do
-
+      
       it "validates the longitude and latitude" do
         @water.longitude = -100000
         @water.latitude = 100000

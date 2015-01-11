@@ -4,11 +4,12 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'faker'
-require 'capybara/rspec'
-require 'capybara/rails'
-require 'capybara/poltergeist'
+# require 'capybara/rspec'
+# require 'capybara/rails'
+# require 'capybara/poltergeist'
+# require 'site_prism'
 
-Capybara.javascript_driver = :poltergeist
+# Capybara.javascript_driver = :poltergeist
 
 ActiveRecord::Base.logger = nil
 
@@ -23,7 +24,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
-  config.include Capybara::DSL
+  # config.include Capybara::DSL
 
   # ## Mock Framework
   #

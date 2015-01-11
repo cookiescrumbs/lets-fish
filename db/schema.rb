@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141220172611) do
 
   create_table "contact_details", force: true do |t|
     t.integer  "fishery_id"
-    t.string   "contact_name"
+    t.string   "name"
     t.string   "telephone"
     t.string   "mobile"
     t.string   "email"

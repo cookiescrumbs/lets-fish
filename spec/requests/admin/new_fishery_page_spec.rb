@@ -1,21 +1,80 @@
+require_relative '../requests_helper'
+
 describe "New fishery page", :type => :request do
+
+  context "form is filled out correctly" do
     
-    it "creates a fishery and show the results", focus: true do
-      visit new_admin_fishery_path
+    before do
 
-      fill_in 'fishery_name', :with => "Bob's mega fishy fishery"
-      fill_in 'fishery_street', :with => "Fishery Street"
-      fill_in 'fishery_line2', :with => "Fishery line 2"
-      fill_in 'fishery_region', :with => "Fishery Region"
-      fill_in 'fishery_telephone', :with => "12345678"
-      fill_in 'fishery_mobile', :with => "67676767676"
-      fill_in 'fishery_email', :with => "bobs@gmail.com"
-      fill_in 'fishery_website', :with => "www.bobs.com"
-      fill_in 'fishery_postcode', :with => "Fishery Postcode"
+      @fishery_details = FactoryGirl.build(:fishery)
+      
+      @new_fishery = PageObjects::App.new.new_fishery
+      @new_fishery.load
 
-      click_on 'Submit'
+      @new_fishery.name.set                        @fishery_details.name
 
-      expect(page).to have_content "Bob's mega fishy fishery was successfully create. Would you like to add a water?"
+      @new_fishery.contact_details.name.set        @fishery_details.contact_details.name
+      @new_fishery.contact_details.telephone.set   @fishery_details.contact_details.telephone
+      @new_fishery.contact_details.mobile.set      @fishery_details.contact_details.mobile
+      @new_fishery.contact_details.email.set       @fishery_details.contact_details.email
+      @new_fishery.contact_details.website.set     @fishery_details.contact_details.website
+
+      @new_fishery.address.postcode.set            @fishery_details.address.postcode
+      @new_fishery.address.street.set              @fishery_details.address.street
+      @new_fishery.address.line2.set               @fishery_details.address.line2
+      @new_fishery.address.region.set              @fishery_details.address.region
+      @new_fishery.address.country.set             @fishery_details.address.country
+
+      @new_fishery.submit.click
+
     end
+
+    it "creates a fishery with contact details and address" do
+
+      fishery         = Fishery.first
+
+      contact_details = fishery.contact_details
+      address         = fishery.address
+
+      expect(fishery.name).to               eql   @fishery_details.name
+
+      expect(contact_details.name).to       eql   @fishery_details.contact_details.name
+      expect(contact_details.telephone).to  eql   @fishery_details.contact_details.telephone
+      expect(contact_details.mobile).to     eql   @fishery_details.contact_details.mobile
+      expect(contact_details.email).to      eql   @fishery_details.contact_details.email
+      expect(contact_details.website).to    eql   @fishery_details.contact_details.website
+
+      expect(address.postcode).to           eql   @fishery_details.address.postcode
+      expect(address.street).to             eql   @fishery_details.address.street
+      expect(address.line2).to              eql   @fishery_details.address.line2
+      expect(address.region).to             eql   @fishery_details.address.region
+      expect(address.country).to            eql   @fishery_details.address.country
+    end
+      
+    it "creates a fishery and says a nice thing" do
+      expect(page).to have_content "#{@fishery_details.name} was successfully create. Would you like to add a water?"
+    end
+
+  end
+
+  context "form is filled out incorrectly" do
     
-end 
+    before do
+        visit new_admin_fishery_path
+        click_on 'Submit'
+    end
+
+    it "shows a helpful validation messages for required fields" do
+      expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery Name can't be blank"
+    end
+
+  end
+end
+
+
+
+
+
+
+
+

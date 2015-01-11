@@ -1,3 +1,5 @@
+require_relative 'requests_helper'
+
 describe "Search page", type: :request do
 
   it "has a page route" do

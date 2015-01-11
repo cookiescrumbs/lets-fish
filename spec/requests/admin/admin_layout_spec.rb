@@ -1,3 +1,5 @@
+require_relative '../requests_helper'
+
 describe "Admin layout", type: feature do
 
   before do
