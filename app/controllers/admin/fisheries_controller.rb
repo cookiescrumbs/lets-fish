@@ -3,7 +3,7 @@ class Admin::FisheriesController < AdminController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fisheries = Fishery.all
+    @fisheries         = Fishery.all
     flash.now[:notice] = 'There are no fisheries. Please add a fishery.' if @fisheries.empty?
   end
 
@@ -11,7 +11,9 @@ class Admin::FisheriesController < AdminController
   end
 
   def new
-    @fishery = Fishery.new
+    @fishery                 = Fishery.new
+    @fishery.contact_details = ContactDetails.new
+    @fishery.address         = Address.new
   end
 
   def edit
@@ -58,6 +60,6 @@ class Admin::FisheriesController < AdminController
     end
 
     def fishery_params
-       params.require(:fishery).permit(:name, :contact_name, :street, :line2, :region, :country, :postcode, :telephone, :mobile, :email, :website)
+       params.require(:fishery).permit(:name, contact_details_attributes: [ :name, :telephone, :mobile, :email, :website], address_attributes: [ :postcode, :street, :line2, :region, :country ])
     end
 end

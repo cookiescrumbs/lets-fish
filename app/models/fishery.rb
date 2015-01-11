@@ -1,34 +1,12 @@
 class Fishery < ActiveRecord::Base
+  
   has_many :waters, dependent: :destroy
 
-  validates_presence_of :name
+  has_one  :contact_details
+  accepts_nested_attributes_for :contact_details
 
-  def contact_details
-    return_filled_fields ['contact_name', 'telephone', 'mobile', 'email', 'website']
-  end
-
-  def location
-    location = { "Address" => address }
-  end
-
-  def address
-    return_filled_fields(['street', 'line2', 'region', 'country', 'postcode']).values.join(', ')
-  end
-
-  private
-
-  def return_filled_fields(fields)
-    filled_fields = {}
-      fields.each do | field |
-        if send("#{field}?")
-          filled_fields[ human_readable_format field ] = send("#{field}")
-        end
-      end
-    filled_fields
-  end
-
-  def human_readable_format(string)
-    self.class.human_attribute_name string
-  end
+  has_one  :address
+  accepts_nested_attributes_for :address
   
+  validates_presence_of :name, message: "Fishery Name can't be blank"
 end

@@ -1,3 +1,5 @@
+require_relative '../requests_helper'
+
 describe "New water page", type: :request do
 
   before :each do

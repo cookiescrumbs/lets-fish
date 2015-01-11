@@ -1,3 +1,5 @@
+require_relative '../requests_helper'
+
 describe "Manage waters page", :type => :request do
 
   context "there is a fishery with waters" do

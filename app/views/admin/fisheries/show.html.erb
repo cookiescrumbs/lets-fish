@@ -3,9 +3,6 @@
   <div class="panel-heading">Location</div>
   <div class="panel-body">
     <dl class="dl-horizontal">
-      <% @fishery.location.each do | value | %> 
-        <dt><%= value[0]%>&#58;</dt><dd><%= value[1]%></dd>
-      <% end %>
     <dl>
   </div>
 </div>
@@ -14,9 +11,6 @@
   <div class="panel-heading">Contact Details</div>
   <div class="panel-body">
      <dl class="dl-horizontal">
-        <% @fishery.contact_details.each do | value | %>
-          <dt><%=value[0]%>&#58;</dt><dd><%= value[1] %></dd>
-        <% end %>
     </dl>
   </div>
 </div>

@@ -46,56 +46,20 @@
     <div class="alert alert-danger">
       <strong><%= pluralize(@fishery.errors.count, "error") %> prohibited this fishery from being saved:</strong>
       <ul>
-      <% @fishery.errors.full_messages.each do |msg| %>
+      <% @fishery.errors.each do | attr, msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
   <div class="form-group">
-    <label for="fishery_name">Fishery Name</label>
-    <%= f.text_field :name, class: "form-control", placeholder: "Enter fishery name"%>
+    <label for="fishery-name">Fishery Name</label>
+    <%= f.text_field :name, class: "form-control", id:"fishery-name", placeholder: "Enter fishery name"%>
   </div>
-  <div class="form-group">
-    <label for="fishery_contact_name">Contact</label>
-    <%= f.text_field :contact_name, class: "form-control", placeholder: "Enter contact name"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_postcode">Postcode</label>
-    <%= f.text_field :postcode, class: "form-control", id:"fishery_postcode", placeholder: "Postcode"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_street">Street</label>
-    <%= f.text_field :street, class: "form-control", id:"fishery_street", placeholder: "Street"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_line2">Line Two</label>
-    <%= f.text_field :line2, class: "form-control", id:"fishery_line2", placeholder: "Line two"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_region">County</label>
-    <%= f.text_field :region, class: "form-control", id:"fishery_region", placeholder: "County"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_country">Country</label>
-    <%= f.text_field :country, class: "form-control", id:"fishery_country", placeholder: "Country"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_telephone">Telephone Number</label>
-    <%= f.text_field :telephone, class: "form-control", id:"fishery_telephone", placeholder: "Telephone Number"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_mobile">Mobile Number</label>
-    <%= f.text_field :mobile, class: "form-control", id:"fishery_mobile", placeholder: "Mobile Number"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_email">Email Address</label>
-    <%= f.text_field :email, class: "form-control", id:"fishery_email", placeholder: "Email Address"%>
-  </div>
-  <div class="form-group">
-    <label for="fishery_website">Website </label>
-    <%= f.text_field :website, class: "form-control", id:"fishery_website", placeholder: "Website"%>
-  </div>
+
+  <%= render 'contact_details', form: f %>
+  <%= render 'address',         form: f %>
+
   <div class="form-group">
     <%= button_tag "Submit", class: "btn btn-primary" %>
   </div>

@@ -1,3 +1,5 @@
+require_relative '../requests_helper'
+
 describe "Manage fisheries page", :type => :request do
 
   context "there is a fishery to manage" do
@@ -7,9 +9,9 @@ describe "Manage fisheries page", :type => :request do
 
     it "updates a fishery's details" do
       visit edit_admin_fishery_path @fishery.id
-      expect(page.find_field('fishery_name').value).to eql "Stevo's Big trout fishery"
+      expect(page.find_field('fishery-name').value).to eql "Stevo's Big trout fishery"
 
-      fill_in "fishery_name", :with => "Dave's Big Trout Fishery"
+      fill_in "fishery-name", :with => "Dave's Big Trout Fishery"
 
       click_on 'Submit'
 
