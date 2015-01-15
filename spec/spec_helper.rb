@@ -4,12 +4,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'faker'
-# require 'capybara/rspec'
-# require 'capybara/rails'
-# require 'capybara/poltergeist'
-# require 'site_prism'
-
-# Capybara.javascript_driver = :poltergeist
 
 ActiveRecord::Base.logger = nil
 

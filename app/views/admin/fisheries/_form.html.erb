@@ -78,7 +78,6 @@
         if(status == 'success'){
           country = postcodes['result']['country'];
           $('#fishery_country').val(country);
-          console.log(postcodes);
           latLng = new google.maps.LatLng(postcodes['result']['latitude'],postcodes['result']['longitude'])
           marker.setPosition(latLng);
           map.setCenter(latLng);

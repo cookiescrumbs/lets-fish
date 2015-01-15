@@ -11,6 +11,7 @@
 
     <title>Gone fishing! - Discovery &amp; Share new fishing destinations</title>
 
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places" %>
     <link href="assets/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -18,7 +19,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places" %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -95,3 +96,4 @@
     
 </body>
 </html>
+
