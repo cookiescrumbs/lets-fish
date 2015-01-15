@@ -4,7 +4,6 @@ FishingLog::Application.routes.draw do
     resources :species
     resources :fisheries do
       resources :waters
-      resources :contact_details
     end
   end
 
