@@ -1,3 +1,4 @@
+$(document).ready(function() {
   var marker;
   var map;
 
@@ -27,10 +28,10 @@
   function initialize() {
     var latitude  = getLatitude();
     var longitude = getLongitude();
-    var latLng = new google.maps.LatLng(latitude,longitude);
 
     var zoom = (latitude == 54.43869834845736 ) ? 5 : 15;
 
+    var latLng = new google.maps.LatLng(latitude,longitude);
     var map = new google.maps.Map(document.getElementById('form-map'), {
       zoom: zoom,
       center: latLng,
@@ -56,15 +57,5 @@
       updateMarkerPosition(marker.getPosition());
     });
   }
-
-  function loadScript() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-        'callback=initialize';
-    document.body.appendChild(script);
-  }
-
-$(window).load(function() {
-  loadScript();
+  initialize();
 });
