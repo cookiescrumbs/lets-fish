@@ -1,22 +1,22 @@
-<header>
-    <div class="image-trans">
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Where would you like to go fly fishing?</div>
-                <div class="intro-heading">Let's go fishing!</div>
+    <header>
+        <div class="image-trans">
+            <div class="container">
+                <div class="intro-text">
+                    <div class="intro-lead-in">Where would you like to go fly fishing?</div>
+                    <div class="intro-heading">Let's go fishing!</div>
+                </div>
+            </div>
+            <div class="row search">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                      <label class="sr-only form-control" for="location">Pick a location</label>
+                      <input type="text" class="form-control" id="location" placeholder="Pick a location">
+                    </div>
+                    <button type="submit" class="btn btn-info">Search</button>
+                </form>
             </div>
         </div>
-        <div class="row search">
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                  <label class="sr-only form-control" for="location">Pick a location</label>
-                  <input type="text" class="form-control" id="location" placeholder="Pick a location">
-                </div>
-                <button type="submit" class="btn btn-info">Search</button>
-            </form>
-        </div>
-    </div>
-</header>
+    </header>
 
-<%= render "list_a_fishery" %>
-<%= render "how_it_works" %>
+    <%= render "list_a_fishery" %>
+    <%= render "how_it_works" %>
