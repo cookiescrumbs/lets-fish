@@ -1,6 +1,6 @@
 require_relative '../requests_helper'
 
-describe "Manage fisheries page", :type => :request do
+describe "Manage fisheries page", type: :feature do
 
   context "there is a fishery to manage" do
     before(:each) do

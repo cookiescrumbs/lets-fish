@@ -1,6 +1,6 @@
 require_relative '../requests_helper'
 
-describe "New fishery page", :type => :request do
+describe "New fishery page", type: :feature do
 
   context "form is filled out correctly" do
     

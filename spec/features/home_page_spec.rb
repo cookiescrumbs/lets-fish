@@ -1,6 +1,6 @@
 require_relative 'requests_helper'
 
-describe "Home page", type: :request do
+describe "Home page", type: :feature do
   
   it "has a page route" do
     visit '/'
