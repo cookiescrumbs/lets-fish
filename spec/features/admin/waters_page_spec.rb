@@ -1,6 +1,6 @@
 require_relative '../requests_helper'
 
-describe "Manage waters page", :type => :request do
+describe "Manage waters page", type: :feature do
 
   context "there is a fishery with waters" do
 

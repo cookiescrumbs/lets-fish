@@ -1,6 +1,6 @@
 require_relative '../requests_helper'
 
-describe "New water page", type: :request do
+describe "New water page", type: :feature do
 
   before :each do
     @fishery = FactoryGirl.create :fishery, name: "Bob's big fishery"

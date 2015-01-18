@@ -1,6 +1,6 @@
 require_relative '../requests_helper'
 
-describe "Show fishery details page", :type => :request do
+describe "Show fishery details page", type: :feature do
 
     before(:each) do
       @fishery = FactoryGirl.create(:fishery)

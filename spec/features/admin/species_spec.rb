@@ -1,6 +1,6 @@
 require_relative '../requests_helper'
 
-describe "Species", :type => :request do
+describe "Species", type: :feature do
   describe "Manage species" do
       it "lists all species" do
         FactoryGirl.create(:species, name: "Rainbow trout")
