@@ -21,15 +21,10 @@ class Admin::FisheriesController < AdminController
 
   def create
     @fishery = Fishery.new(fishery_params)
-
-    respond_to do |format|
-      if @fishery.save
-        format.html { redirect_to admin_fisheries_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"}
-        format.json { render action: 'show', status: :created, location: @fishery }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @fishery.errors, status: :unprocessable_entity }
-      end
+    if @fishery.save
+      format.html { redirect_to redirect_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"}
+    else
+      format.html { render action: 'new' }
     end
   end
 
@@ -54,6 +49,10 @@ class Admin::FisheriesController < AdminController
   end
 
   private
+
+    def redirect_path
+      request.env["ORIGINAL_FULLPATH"] == "/list/fishery" ? '/#list-a-fishery' : admin_fisheries_path
+    end
 
     def set_fishery
       @fishery = Fishery.find(params[:id])

@@ -6,9 +6,10 @@ describe "New fishery page", type: :feature do
     
     before do
 
-      @fishery_details = FactoryGirl.build(:fishery)
+      @fishery_details         = FactoryGirl.build(:fishery)
       
-      @new_fishery = PageObjects::App.new.new_fishery
+      @new_fishery             = PageObjects::NewFishery.new
+
       @new_fishery.load
 
       @new_fishery.name.set                        @fishery_details.name
