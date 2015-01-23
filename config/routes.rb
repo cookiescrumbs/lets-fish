@@ -7,13 +7,14 @@ FishingLog::Application.routes.draw do
     end
   end
 
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
+
+  post '/list/fishery',   to: "homepage#list_fishery"
+  get   '/add/water/:id', to: "homepage#add_water"
 
   get 'search' => 'search#index'
 

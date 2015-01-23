@@ -17,8 +17,6 @@
 //= require bootstrap.min
 //= require classie
 //= require cbpAnimatedHeader
-//= require jqBootstrapValidation
-//= require contact_me
 //= require main
 //= require homepage
 //= require turbolinks
