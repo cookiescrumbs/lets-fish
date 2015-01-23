@@ -27,6 +27,7 @@ describe "New fishery page", type: :feature do
       @new_fishery.address.country.set             @fishery_details.address.country
 
       @new_fishery.submit.click
+  
 
     end
 

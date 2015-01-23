@@ -14,7 +14,7 @@ FishingLog::Application.routes.draw do
   root 'homepage#index'
 
   post '/list/fishery',   to: "homepage#list_fishery"
-  get   '/add/water/:id', to: "homepage#index"
+  get   '/add/water/:id', to: "homepage#add_water"
 
   get 'search' => 'search#index'
 

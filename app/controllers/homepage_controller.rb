@@ -5,12 +5,19 @@ class HomepageController < ApplicationController
   end
 
   def list_fishery
-    @fishery = CreateFishery.new(params)
-    if @fishery.create?
-      redirect_to "/add/water/#{@fishery.model.id}", notice: '#{@fishery.model.name} was successfully create. Would you like to add a water?"'
+    @fishery = Fishery.new(fishery_params)
+    if @fishery.save
+      redirect_to "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@fishery.name} was successfully create. Please now add a water to your fishery."
+    else
+      render action: "index"
     end
   end
-  
+
+  def add_water
+    set_fishery
+    render "index"
+  end
+
   private
 
   def create_fishery
@@ -21,6 +28,10 @@ class HomepageController < ApplicationController
 
   def set_fishery
     @fishery = Fishery.find(params[:id])
+  end
+
+  def fishery_params
+    params.require(:fishery).permit(:name, contact_details_attributes: [ :name, :telephone, :mobile, :email, :website], address_attributes: [ :postcode, :street, :line2, :region, :country ])
   end
 
 end

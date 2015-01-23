@@ -694,6 +694,11 @@ section#list-a-fishery .text-danger {
     color: #e74c3c;
 }
 
+input#location{
+    width: 500px;
+    margin: 0 auto;
+}
+
 footer {
     padding: 25px 0;
     text-align: center;

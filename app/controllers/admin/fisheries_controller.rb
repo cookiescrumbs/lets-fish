@@ -22,30 +22,23 @@ class Admin::FisheriesController < AdminController
   def create
     @fishery = Fishery.new(fishery_params)
     if @fishery.save
-      format.html { redirect_to redirect_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"}
+      redirect_to redirect_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"
     else
-      format.html { render action: 'new' }
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @fishery.update(fishery_params)
-        format.html { redirect_to admin_fisheries_path, notice: 'Fishery was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @fishery.errors, status: :unprocessable_entity }
-      end
+    if @fishery.update(fishery_params)
+      redirect_to admin_fisheries_path, notice: 'Fishery was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @fishery.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_fisheries_path }
-      format.json { head :no_content }
-    end
+    redirect_to admin_fisheries_path
   end
 
   private
