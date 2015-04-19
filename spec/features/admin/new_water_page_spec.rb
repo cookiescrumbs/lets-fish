@@ -1,4 +1,4 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "New water page", type: :feature do
 
@@ -19,7 +19,7 @@ describe "New water page", type: :feature do
 
       fill_in 'water_name', with: "Total Loch Doon"
       #had to use find as the fields are hidden
-      find('#latitude').set -90 
+      find('#latitude').set -90
       find('#longitude').set -180
       check @species.first.name
       check @species.last.name
@@ -28,7 +28,7 @@ describe "New water page", type: :feature do
       expect(page).to have_content "Total Loch Doon"
       expect(page).to have_content @species.first.name + ', ' + @species.last.name
       expect(page.find('.alert')).to have_content "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}"
-    
+
     end
 
   end
@@ -36,7 +36,7 @@ describe "New water page", type: :feature do
   context "form is filled out incorrectly" do
 
     it "shows a helpful validation messages for required fields" do
-      
+
       fill_in 'water_name', with: ''
       #had to use find as the fields are hidden
       find('#latitude').set ''

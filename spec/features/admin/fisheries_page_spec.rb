@@ -1,4 +1,4 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "Manage fisheries page", type: :feature do
 

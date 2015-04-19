@@ -1,4 +1,4 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "Admin layout", type: :feature do
 
@@ -25,7 +25,7 @@ describe "Admin layout", type: :feature do
     it "has a sign out link" do
       expect(nav_bar.has_link? "Sign out")
     end
-    
+
   end
 
 

@@ -1,4 +1,4 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "Manage waters page", type: :feature do
 
@@ -40,7 +40,7 @@ describe "Manage waters page", type: :feature do
       it "has the waters name as a title" do
         edit_button.click
         expect(page.find('h3').text).to eql "#{@fishery.name.possessive} - #{water.name}"
-      end 
+      end
 
       it "has the correct fields in the edit form" do
         edit_button.click
@@ -55,7 +55,7 @@ describe "Manage waters page", type: :feature do
 
         fill_in 'water_name', with: 'loch dooooooon'
         #had to use find as the fields are hidden
-        find('#latitude').set -90 
+        find('#latitude').set -90
         find('#longitude').set -180
         check first_species_name
         click_on 'Submit'

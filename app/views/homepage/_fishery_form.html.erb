@@ -1,4 +1,4 @@
-<%= form_for(@fishery, url: "/list/fishery/#list-a-fishery", :html => {:role => "form"}) do |f| %>
+<%= form_for(@fishery, url: "/list/fishery/#list-a-fishery", :html => {:role => "form", id: "fishery-form"}) do |f| %>
  <% if @fishery.errors.any? %>
     <div class="alert alert-danger">
       <strong><%= pluralize(@fishery.errors.count, "error") %> prohibited this fishery from being saved:</strong>

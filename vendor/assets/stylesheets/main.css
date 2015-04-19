@@ -777,3 +777,20 @@ body {
     margin-left: 0px;
     margin-right: 0px;
 }
+
+#form-map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height:450px !important;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#water-form label, #display-latitude, #display-longitude{
+    color: #fff;
+}
+
+#fishery-form label {
+    display: none;
+}
