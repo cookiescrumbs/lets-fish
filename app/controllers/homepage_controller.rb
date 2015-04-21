@@ -1,7 +1,7 @@
 class HomepageController < ApplicationController
   before_action :set_fishery, only: [:new_water, :create_water]
   before_action :new_fishery, only: [:index]
-  before_action :set_form_partial, only: [:index, :new_water, :create_fishery]
+  before_action :set_form_partial, only: [:index, :new_water, :create_fishery, :create_water]
 
   def index
   end
@@ -9,7 +9,7 @@ class HomepageController < ApplicationController
   def create_fishery
     @fishery = Fishery.new(fishery_params)
     if @fishery.save
-      redirect_to "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@fishery.name} was successfully create. Please now add a water to your fishery."
+      redirect_to "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@fishery.name} was successfully create. Please add a water to the fishery."
     else
       render action: "index"
     end
@@ -22,11 +22,10 @@ class HomepageController < ApplicationController
 
   def create_water
     @water = @fishery.waters.build(water_params)
-
     if @fishery.save
-     redirect_to  "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@water.name} was successfully added to #{@fishery.name}. Add another water to your fishery."
+     redirect_to  "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@water.name} was successfully added to #{@fishery.name}. Add another water to #{@fishery.name}."
     else
-      render action: "new_water"
+      render action: "index"
     end
   end
 

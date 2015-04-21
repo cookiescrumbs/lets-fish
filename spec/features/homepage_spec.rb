@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe "Homepage", type: :feature do
+describe "Homepage", type: :feature, focus: true  do
 
   describe "list a fishery" do
 
@@ -24,10 +24,13 @@ describe "Homepage", type: :feature do
         expect(@homepage.current_url).to end_with "/add/water/#{fishery.id}"
       end
 
+      it "has a nice message saying that the fishery was created and to add a water" do
+        expect(@homepage.alert).to have_content "#{fishery.name} was successfully create. Please add a water to the fishery."
+      end
+
     end
 
     context "form is filled out incorrectly" do
-
       before do
         @homepage = PageObjects::Homepage.new
         @homepage.load
@@ -35,7 +38,7 @@ describe "Homepage", type: :feature do
       end
 
       it "shows a helpful validation messages for required fields" do
-        expect(@homepage.alert).to have_content "1 error prohibited this fishery from being saved: Fishery Name can't be blank"
+        expect(@homepage.alert).to have_content "1 error prohibited this fishery from being saved: Fishery name can't be blank"
       end
 
     end
@@ -67,7 +70,31 @@ describe "Homepage", type: :feature do
         expect(water.name).to eql @water.name
       end
 
+      it "has a nice message saying that the water was successfully added to the fishery" do
+        expect(@homepage_add_water.alert).to have_content "#{@water.name} was successfully added to #{@fishery.name}. Add another water to #{@fishery.name}."
+      end
     end
+
+    context "water form is filled out incorrectly" do
+
+      before do
+        @fishery    = FactoryGirl.create(:fishery)
+
+        @homepage_add_water = PageObjects::HomepageAddWater.new
+        @homepage_add_water.load(id: @fishery.id)
+        @homepage_add_water.latitude.set -90
+        @homepage_add_water.longitude.set -180
+        @homepage_add_water.submit.click
+      end
+
+      it "shows a helpful validation messages for required fields" do
+        expect(@homepage_add_water.alert).to have_content "1 error prohibited this water from being saved: Water name can't be blank"
+      end
+
+    end
+
+
+
   end
 
 end
