@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe "Homepage", type: :feature, focus: true  do
+describe "Homepage", type: :feature do
 
   describe "list a fishery" do
 
@@ -53,19 +53,21 @@ describe "Homepage", type: :feature, focus: true  do
         @fishery    = FactoryGirl.create(:fishery)
         @water      = FactoryGirl.build(:water)
         @species    = FactoryGirl.create_list :species, 5
+        @water_type = FactoryGirl.create_list :water_type, 5
 
         @homepage_add_water = PageObjects::HomepageAddWater.new
         @homepage_add_water.load(id: @fishery.id)
         @homepage_add_water.name.set @water.name
+
         @homepage_add_water.latitude.set -90
         @homepage_add_water.longitude.set -180
         check @species.first.name
         check @species.last.name
+        choose @water_type.first.category
         @homepage_add_water.submit.click
       end
 
       let(:water) { Fishery.first.waters.first }
-
       it "creates a water for the fishery" do
         expect(water.name).to eql @water.name
       end
@@ -88,7 +90,7 @@ describe "Homepage", type: :feature, focus: true  do
       end
 
       it "shows a helpful validation messages for required fields" do
-        expect(@homepage_add_water.alert).to have_content "1 error prohibited this water from being saved: Water name can't be blank"
+        expect(@homepage_add_water.alert).to have_content "3 errors prohibited this water from being saved: Water name can't be blank You need to select at least one fish species You need to select a water type"
       end
 
     end

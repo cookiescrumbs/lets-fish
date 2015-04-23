@@ -6,7 +6,8 @@ class Water < ActiveRecord::Base
 
   validates_presence_of :fishery_id
   validates_presence_of :name, message: "Water name can't be blank"
-
+  validates_presence_of :species, message: "You need to select at least one fish species"
+  validates_presence_of :water_type_id, message: "You need to select a water type"
   validates :latitude , numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
   validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
 

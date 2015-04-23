@@ -1,6 +1,5 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :water_type do
+    category { Faker::Name.first_name }
   end
 end
