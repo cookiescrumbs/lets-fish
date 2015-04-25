@@ -50,14 +50,13 @@ describe "Homepage", type: :feature do
     context "water form is filled out correctly" do
 
       before do
-        @fishery    = FactoryGirl.create(:fishery)
-        @water      = FactoryGirl.build(:water)
         @species    = FactoryGirl.create_list :species, 5
         @water_type = FactoryGirl.create_list :water_type, 5
+        @fishery    = FactoryGirl.create(:fishery)
 
         @homepage_add_water = PageObjects::HomepageAddWater.new
         @homepage_add_water.load(id: @fishery.id)
-        @homepage_add_water.name.set @water.name
+        @homepage_add_water.name.set 'fishing loch'
 
         @homepage_add_water.latitude.set -90
         @homepage_add_water.longitude.set -180
@@ -68,12 +67,13 @@ describe "Homepage", type: :feature do
       end
 
       let(:water) { Fishery.first.waters.first }
+
       it "creates a water for the fishery" do
-        expect(water.name).to eql @water.name
+        expect(water.name).to eql 'fishing loch'
       end
 
       it "has a nice message saying that the water was successfully added to the fishery" do
-        expect(@homepage_add_water.alert).to have_content "#{@water.name} was successfully added to #{@fishery.name}. Add another water to #{@fishery.name}."
+        expect(@homepage_add_water.alert).to have_content "#{water.name} was successfully added to #{@fishery.name}. Add another water to #{@fishery.name}."
       end
     end
 

@@ -5,9 +5,9 @@ describe "Manage waters page", type: :feature do
   context "there is a fishery with waters" do
 
     before(:each) do
-      @fishery = FactoryGirl.create :fishery_with_waters
-      @species = FactoryGirl.create_list :species, 4
-      @fishery.waters.first.species_ids = [4]
+      @species    = FactoryGirl.create_list :species, 4
+      @water_type = FactoryGirl.create_list :water_type, 4
+      @fishery    = FactoryGirl.create :fishery_with_waters
       visit admin_fishery_waters_path @fishery.id
     end
 
@@ -69,11 +69,12 @@ describe "Manage waters page", type: :feature do
 
         fill_in 'water_name', with: ''
         #had to use find as the fields are hidden
-        find('#latitude').set ''
-        find('#longitude').set ''
+        # find('#latitude').set ''
+        # find('#longitude').set ''
+
         click_on "Submit"
 
-        expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Name can't be blank Latitude is not a number Longitude is not a number"
+        expect(page.find('.alert')).to have_content "1 error prohibited this water from being saved: Water name can't be blank"
       end
 
     end

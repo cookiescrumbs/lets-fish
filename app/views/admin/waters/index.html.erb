@@ -5,6 +5,7 @@
       <tr>
         <th>#</th>
         <th>Name</th>
+        <th>Water Type</th>
         <th>Species of fish</th>
         <th>Edit</th>
         <th>Destroy</th>
@@ -16,6 +17,7 @@
         <tr class="water">
           <td><%= water.id %></td>
           <td><%= water.name %></td>
+          <td><%= water.water_type.category %></td>
           <td><%= water.species.map{|s| s.name }.join(', ') %></td>
           <td>
             <%= link_to 'edit', edit_admin_fishery_water_path(@fishery, water), class: 'btn btn-default btn-sm edit' %>

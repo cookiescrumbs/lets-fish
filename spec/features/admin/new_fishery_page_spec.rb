@@ -67,7 +67,7 @@ describe "New fishery page", type: :feature do
     end
 
     it "shows a helpful validation messages for required fields" do
-      expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery Name can't be blank"
+      expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery name can't be blank"
     end
 
   end
