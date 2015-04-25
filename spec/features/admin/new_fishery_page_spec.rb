@@ -1,13 +1,13 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "New fishery page", type: :feature do
 
   context "form is filled out correctly" do
-    
+
     before do
 
       @fishery_details         = FactoryGirl.build(:fishery)
-      
+
       @new_fishery             = PageObjects::NewFishery.new
 
       @new_fishery.load
@@ -27,7 +27,7 @@ describe "New fishery page", type: :feature do
       @new_fishery.address.country.set             @fishery_details.address.country
 
       @new_fishery.submit.click
-  
+
 
     end
 
@@ -52,7 +52,7 @@ describe "New fishery page", type: :feature do
       expect(address.region).to             eql   @fishery_details.address.region
       expect(address.country).to            eql   @fishery_details.address.country
     end
-      
+
     it "creates a fishery and says a nice thing" do
       expect(page).to have_content "#{@fishery_details.name} was successfully create. Would you like to add a water?"
     end
@@ -60,14 +60,14 @@ describe "New fishery page", type: :feature do
   end
 
   context "form is filled out incorrectly" do
-    
+
     before do
         visit new_admin_fishery_path
         click_on 'Submit'
     end
 
     it "shows a helpful validation messages for required fields" do
-      expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery Name can't be blank"
+      expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery name can't be blank"
     end
 
   end

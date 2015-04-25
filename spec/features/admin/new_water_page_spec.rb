@@ -1,10 +1,11 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "New water page", type: :feature do
 
   before :each do
+    @species    = FactoryGirl.create_list :species, 5
+    @water_type = FactoryGirl.create_list :water_type, 5
     @fishery = FactoryGirl.create :fishery, name: "Bob's big fishery"
-    @species = FactoryGirl.create_list :species, 5
 
     visit new_admin_fishery_water_path @fishery.id
   end
@@ -19,16 +20,19 @@ describe "New water page", type: :feature do
 
       fill_in 'water_name', with: "Total Loch Doon"
       #had to use find as the fields are hidden
-      find('#latitude').set -90 
+      find('#latitude').set -90
       find('#longitude').set -180
       check @species.first.name
       check @species.last.name
+      choose @water_type.first.category
+
       click_on "Submit"
 
       expect(page).to have_content "Total Loch Doon"
       expect(page).to have_content @species.first.name + ', ' + @species.last.name
+      expect(page).to have_content @water_type.first.category
       expect(page.find('.alert')).to have_content "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}"
-    
+
     end
 
   end
@@ -36,14 +40,14 @@ describe "New water page", type: :feature do
   context "form is filled out incorrectly" do
 
     it "shows a helpful validation messages for required fields" do
-      
+
       fill_in 'water_name', with: ''
       #had to use find as the fields are hidden
-      find('#latitude').set ''
-      find('#longitude').set ''
+      find('#latitude').set -90
+      find('#longitude').set -180
       click_on "Submit"
 
-      expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Name can't be blank Latitude is not a number Longitude is not a number"
+      expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Water name can't be blank You need to select at least one fish species You need to select a water type"
     end
 
   end

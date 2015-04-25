@@ -1,10 +1,12 @@
-require_relative '../requests_helper'
+require_relative '../features_helper'
 
 describe "Manage fisheries page", type: :feature do
 
   context "there is a fishery to manage" do
     before(:each) do
-      @fishery = FactoryGirl.create(:fishery_with_waters, name: "Stevo's Big trout fishery")
+      @species    = FactoryGirl.create_list :species, 5
+      @water_type = FactoryGirl.create_list :water_type, 5
+      @fishery    = FactoryGirl.create(:fishery_with_waters, name: "Stevo's Big trout fishery")
     end
 
     it "updates a fishery's details" do

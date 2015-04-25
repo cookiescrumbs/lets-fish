@@ -5,7 +5,7 @@
     <div class="alert alert-danger">
       <strong><%= pluralize(@water.errors.count, "error") %> prohibited this water from being saved:</strong>
         <ul>
-        <% @water.errors.full_messages.each do |msg| %>
+        <% @water.errors.each do | attr, msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -37,7 +37,17 @@
     </div>
     <% end %>
   </div>
-  
+
+  <div class="form-group">
+    <label for="water_types">Water Type</label>
+      <%= collection_radio_buttons(:water, :water_type_id, WaterType.all, :id, :category) do |b| %>
+      <div class="radio">
+        <%= b.radio_button%>
+        <%= b.label %>
+      </div>
+      <% end %>
+  </div>
+
   <div class="form-group">
     <%= button_tag "Submit", class: "btn btn-primary" %>
   </div>

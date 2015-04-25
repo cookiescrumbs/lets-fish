@@ -3,6 +3,7 @@ $(document).ready(function() {
   var map;
 
   function getLatitude() {
+
     if(document.getElementById('latitude').value.length > 0 ) {
       return document.getElementById('latitude').value
     }
@@ -47,7 +48,7 @@ $(document).ready(function() {
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
       google.maps.event.trigger(map, "resize");
-      map.setCenter(center); 
+      map.setCenter(center);
     });
 
     // Update current position info.
@@ -57,5 +58,9 @@ $(document).ready(function() {
       updateMarkerPosition(marker.getPosition());
     });
   }
+
+ if(document.getElementById('form-map') == null)
+    return;
+
   initialize();
 });

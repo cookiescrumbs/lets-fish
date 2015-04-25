@@ -55,6 +55,6 @@ class Admin::WatersController < AdminController
   end
 
   def water_params
-    params.require(:water).permit(:name, :latitude, :longitude, :species_ids => [])
+    params.require(:water).permit(:name, :latitude, :longitude, :water_type_id, :species_ids => [])
   end
 end
