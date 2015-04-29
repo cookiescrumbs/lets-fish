@@ -43,7 +43,7 @@ class Admin::SpeciesController < AdminController
   def update
     respond_to do |format|
       if @species.update(species_params)
-        format.html { redirect_to @species, notice: 'Species was successfully updated.' }
+        format.html { redirect_to admin_species_index_path, notice: 'Species was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
