@@ -1,6 +1,7 @@
 FishingLog::Application.routes.draw do
 
   namespace :admin do
+    resources :water_types
     resources :species
     resources :fisheries do
       resources :waters

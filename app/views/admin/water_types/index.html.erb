@@ -1,0 +1,29 @@
+<h1>Listing water types</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Category</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @water_types.each do |water_type| %>
+      <tr>
+        <td><%= water_type.id %></td>
+        <td><%= water_type.category.capitalize %></td>
+        <td><%= link_to 'Show', admin_water_type_path(water_type)%></td>
+        <td><%= link_to 'Edit', edit_admin_water_type_path(water_type) %></td>
+        <td><%= link_to 'Destroy', admin_water_type_path(water_type), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= render 'form' %>

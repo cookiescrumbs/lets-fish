@@ -11,7 +11,7 @@ describe "Species", type: :feature do
       it "create a species and show the results" do
         visit admin_species_index_path
         fill_in 'species_name', :with => "Rainbow trout"
-        click_on 'Create Species'
+        click_on 'Submit'
         expect(page).to have_content "Rainbow trout"
       end
 
