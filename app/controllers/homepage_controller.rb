@@ -9,7 +9,8 @@ class HomepageController < ApplicationController
   def create_fishery
     @fishery = Fishery.new(fishery_params)
     if @fishery.save
-      redirect_to "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@fishery.name} was successfully create. Please add a water to the fishery."
+      notice = "#{@fishery.name} was successfully create. Please add a water to #{@fishery.name}" unless @fishery.name.empty?
+      redirect_to "/add/water/#{@fishery.id}#add-a-water", notice: notice
     else
       render action: "index"
     end
@@ -23,13 +24,20 @@ class HomepageController < ApplicationController
   def create_water
     @water = @fishery.waters.build(water_params)
     if @fishery.save
-     redirect_to  "/add/water/#{@fishery.id}#list-a-fishery", notice: "#{@water.name} was successfully added to #{@fishery.name}. Add another water to #{@fishery.name}."
+     redirect_to  "/add/water/#{@fishery.id}#add-a-water", notice: water_notice(@fishery, @water)
     else
       render action: "index"
     end
   end
 
   private
+
+  def water_notice(fishery, water)
+    if fishery.name.empty?
+      return "#{water.name} was successfully added. You can add another water, if you like."
+    end
+    "#{water.name} was successfully added to #{fishery.name}. You can add another water to #{fishery.name}, if you like."
+  end
 
   def new_fishery
     @fishery                 = Fishery.new

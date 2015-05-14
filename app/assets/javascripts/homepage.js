@@ -18,4 +18,12 @@ $(document).ready(function() {
 
 	});
 
+	$('div.row.fishery-name').hide();
+
+	$('#yes').click(function () {
+		$('#fishery-question').hide();
+		$('#fishery-question').hide();
+		$('div.row.fishery-name').fadeIn();
+	});
+
 });
