@@ -11,8 +11,9 @@ Capybara.ignore_hidden_elements = false
 RSpec.configure do |config|
  config.include Capybara::DSL
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :truncation
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
+
 end
