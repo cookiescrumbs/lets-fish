@@ -6,8 +6,12 @@ module PageObjects
     set_url "/"
 
     element :alert, "div.alert"
+    element :fishery_name_row, "div.row.fishery-name"
     element :name, "input#fishery-name"
-    element :submit, "button[name='button']"
+    element :yes, "button[name='yes']"
+    element :no, "button[name='no']"
+    element :submit, "button[name='submit fishery name']"
+    element :unknown, "button[name='unknown']"
 
   end
 end

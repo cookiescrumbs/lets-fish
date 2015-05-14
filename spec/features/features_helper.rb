@@ -7,7 +7,13 @@ require 'site_prism'
 Dir[Rails.root.join("spec/page_objects/**/*.rb")].each { |f| require f }
 
 Capybara.javascript_driver = :poltergeist
-
+Capybara.ignore_hidden_elements = false
 RSpec.configure do |config|
  config.include Capybara::DSL
+
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :truncation
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
+
 end

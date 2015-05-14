@@ -59,18 +59,18 @@ describe "New fishery page", type: :feature do
 
   end
 
-  context "form is filled out incorrectly" do
+  # context "form is filled out incorrectly" do
 
-    before do
-        visit new_admin_fishery_path
-        click_on 'Submit'
-    end
+  #   before do
+  #       visit new_admin_fishery_path
+  #       click_on 'Submit'
+  #   end
 
-    it "shows a helpful validation messages for required fields" do
-      expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery name can't be blank"
-    end
+  #   it "shows a helpful validation messages for required fields" do
+  #     expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery name can't be blank"
+  #   end
 
-  end
+  # end
 end
 
 

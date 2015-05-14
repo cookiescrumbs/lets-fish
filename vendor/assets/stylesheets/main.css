@@ -117,7 +117,8 @@ fieldset[disabled] .btn-primary.active {
     background-color: #fff;
 }
 
-.btn-xl {
+.btn-xl, #fishery-question {
+    margin-top: 5px;
     padding: 20px 40px;
     border-color: #fed136;
     border-radius: 3px;
@@ -127,6 +128,12 @@ fieldset[disabled] .btn-primary.active {
     font-weight: 700;
     color: #fff;
     background-color: #fed136;
+}
+
+#fishery-question {
+    background-color: transparent;
+    text-transform: lowercase;
+
 }
 
 .btn-xl:hover,
@@ -623,74 +630,76 @@ section h3.section-subheading {
     .timeline>li.timeline-inverted>.timeline-panel {
         padding: 0 20px 20px;
     }
+
+    .btn-xl { margin-top: 0; }
 }
 
 aside.sponsors img {
     margin: 50px auto;
 }
 
-section#list-a-fishery {
+section#add-a-water {
     background-color: #222;
     background-image: url(map-image.png);
     background-position: center;
     background-repeat: no-repeat;
 }
 
-section#list-a-fishery .section-heading {
+section#add-a-water .section-heading {
     color: #fff;
 }
 
-section#list-a-fishery .form-group {
+section#add-a-water .form-group {
     margin-bottom: 25px;
 }
 
-section#list-a-fishery .form-group input,
-section#list-a-fishery .form-group textarea {
+section#add-a-water .form-group input,
+section#add-a-water .form-group textarea {
     padding: 20px;
 }
 
-section#list-a-fishery .form-group input.form-control {
+section#add-a-water .form-group input.form-control {
     height: auto;
 }
 
-section#list-a-fishery .form-group textarea.form-control {
+section#add-a-water .form-group textarea.form-control {
     height: 236px;
 }
 
-section#list-a-fishery .form-control:focus {
+section#add-a-water .form-control:focus {
     border-color: #fed136;
     box-shadow: none;
 }
 
-section#list-a-fishery::-webkit-input-placeholder {
+section#add-a-water::-webkit-input-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#list-a-fishery:-moz-placeholder {
+section#add-a-water:-moz-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#list-a-fishery::-moz-placeholder {
+section#add-a-water::-moz-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#list-a-fishery:-ms-input-placeholder {
+section#add-a-water:-ms-input-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#list-a-fishery .text-danger {
+section#add-a-water .text-danger {
     color: #e74c3c;
 }
 
@@ -794,3 +803,5 @@ body {
 #fishery-form label {
     display: none;
 }
+
+
