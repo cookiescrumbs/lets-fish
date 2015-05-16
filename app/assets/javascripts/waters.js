@@ -51,6 +51,12 @@ $(document).ready(function() {
       map.setCenter(center);
     });
 
+    google.maps.event.addListener(map, 'dragend', function() {
+      var center = map.getCenter();
+      console.log(center);
+      marker.setPosition(center);
+    });
+
     // Update current position info.
     updateMarkerPosition(latLng);
     // Add dragging event listeners.
