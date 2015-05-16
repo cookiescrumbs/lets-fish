@@ -34,6 +34,10 @@ describe "Homepage", type: :feature do
           expect(@homepage.alert).to have_content "#{fishery.name} was successfully create. Please add a water to #{fishery.name}"
         end
 
+        it "has an 'add a water to fishery name' section title without fishery name" do
+          expect(@homepage.add_water_section_title.text).to eql "Add a water to #{@fishery_details.name}"
+        end
+
       end
 
       describe "user clicks the 'don't know!' button" do
@@ -60,6 +64,10 @@ describe "Homepage", type: :feature do
 
       it "redirects to 'add a water' form on the homepage"   do
         expect(@homepage.current_url).to end_with "/add/water/#{fishery.id}"
+      end
+
+      it "has an 'add a water' section title without fishery name" do
+        expect(@homepage.add_water_section_title.text).to eql "Add a water"
       end
 
       context "water form filled out correctly" do
