@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Add a water to <%= @fishery.name %></h2>
+                <h2 class="section-heading">
+                    Add a water <%= " to #{@fishery.name}" unless @fishery.name.empty? %>
+                </h2>
                 <% if flash[:notice] %>
                     <div class="alert alert-success"><%= notice %></div>
                 <% end %>

@@ -6,6 +6,7 @@ module PageObjects
     set_url "/"
 
     element :alert, "div.alert"
+    element :add_water_section_title, "#add-a-water h2.section-heading"
     element :fishery_name_row, "div.row.fishery-name"
     element :name, "input#fishery-name"
     element :yes, "button[name='yes']"
