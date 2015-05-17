@@ -26,6 +26,13 @@ $(document).ready(function() {
     $('#display-longitude').text(lng);
   }
 
+  function addAndOpenInfoWindow(map, marker, content){
+     var infowindow = new google.maps.InfoWindow({
+      content: content
+    });
+    infowindow.open(map, marker);
+  }
+
   function initialize() {
     var latitude  = getLatitude();
     var longitude = getLongitude();
@@ -45,6 +52,12 @@ $(document).ready(function() {
       draggable: true
     });
 
+    addAndOpenInfoWindow(
+      map,
+      marker,
+      content = "Drag and drop this marker onto the water you'd like to add."
+    );
+
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
       google.maps.event.trigger(map, "resize");
@@ -53,7 +66,11 @@ $(document).ready(function() {
 
     google.maps.event.addListener(map, 'dragend', function() {
       var center = map.getCenter();
-      console.log(center);
+      marker.setPosition(center);
+    });
+
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      var center = map.getCenter();
       marker.setPosition(center);
     });
 
