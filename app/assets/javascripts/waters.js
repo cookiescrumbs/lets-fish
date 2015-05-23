@@ -80,7 +80,32 @@ $(document).ready(function() {
     google.maps.event.addListener(marker, 'drag', function() {
       updateMarkerPosition(marker.getPosition());
     });
+
+  // Create the search box and link it to the UI element.
+  var input = (document.getElementById('map-search-box'));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  var searchBox = new google.maps.places.SearchBox((input));
+
+  // Listen for the event fired when the user selects an item from the
+  // pick list. Retrieve the matching places for that item.
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+
+    var places = searchBox.getPlaces();
+
+    if (places.length <= 0) {
+      return;
+    }
+    // get the first selected result if there are multiple matches
+    var firstResult = places[0];
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(firstResult.geometry.location);
+    map.fitBounds(bounds);
+    map.setZoom(15);
+  });
+
   }
+
+
 
  if(document.getElementById('form-map') == null)
     return;
