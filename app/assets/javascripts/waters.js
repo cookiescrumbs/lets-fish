@@ -67,7 +67,44 @@ $(document).ready(function() {
     google.maps.event.addListener(map, 'dragend', function() {
       var center = map.getCenter();
       marker.setPosition(center);
+
+      bounds = map.getBounds();
+      northEast  = bounds.getNorthEast();
+      southWest  = bounds.getSouthWest();
+
+      var maxNumberOfWaters = null;
+
+      if (map.zoom <= 6) {
+        maxNumberOfWaters = 2;
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: '/waters/within_bounding_box',
+        data: JSON.stringify({
+          'bounds': [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()],
+          'max_number_of_waters': maxNumberOfWaters
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: addWatersToMap,
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+      })
+
     });
+
+    function addWatersToMap(waters){
+      for (i = 0; i < waters.length; i++) {
+        var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
+        new google.maps.Marker({
+          position: latLng,
+          map: map,
+          draggable: false
+        });
+      }
+    }
 
     google.maps.event.addListener(map, 'zoom_changed', function() {
       var center = map.getCenter();
@@ -104,8 +141,6 @@ $(document).ready(function() {
   });
 
   }
-
-
 
  if(document.getElementById('form-map') == null)
     return;

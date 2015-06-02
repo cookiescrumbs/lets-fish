@@ -14,9 +14,11 @@ FishingLog::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'homepage#index'
 
-  post '/list/fishery',   to: "homepage#create_fishery"
-  get   '/add/water/:id', to: "homepage#new_water"
-  post  '/add/water/:id', to: "homepage#create_water"
+  post '/list/fishery',   to: 'homepage#create_fishery'
+  get   '/add/water/:id', to: 'homepage#new_water'
+  post  '/add/water/:id', to: 'homepage#create_water'
+
+  post '/waters/within_bounding_box', to: 'admin/waters#within_bounding_box'
 
   get 'search' => 'search#index'
 
