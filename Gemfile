@@ -34,6 +34,7 @@ gem 'pg'
 gem 'unicorn'
 gem 'possessive'
 gem 'raygun4ruby'
+gem 'geocoder'
 
 group :development, :test do
   gem 'rspec-rails'
