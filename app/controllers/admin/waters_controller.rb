@@ -2,6 +2,8 @@ class Admin::WatersController < AdminController
   before_action :set_fishery, only: [ :index, :new, :update, :create, :edit]
   before_action :set_water, only: [:edit, :update]
 
+  skip_before_action :verify_authenticity_token
+
 
   def index
     flash.now[:notice] = 'There are no waters associated with this fishery. Please add a water.' if @fishery.waters.empty?
@@ -44,6 +46,13 @@ class Admin::WatersController < AdminController
     end
   end
 
+  def within_bounding_box
+    @waters = Water.within_bounding_box(bounds)
+    respond_to do |format|
+      format.json { @waters }
+    end
+  end
+
   private
 
   def set_fishery
@@ -57,4 +66,9 @@ class Admin::WatersController < AdminController
   def water_params
     params.require(:water).permit(:name, :latitude, :longitude, :water_type_id, :species_ids => [])
   end
+
+  def bounds
+    params[:bounds]
+  end
+
 end
