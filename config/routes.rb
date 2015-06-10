@@ -20,6 +20,8 @@ FishingLog::Application.routes.draw do
 
   get 'search' => 'search#index'
 
+  post '/waters/within_bounding_box', to: 'admin/waters#within_bounding_box'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
