@@ -22,6 +22,7 @@ GoneFishing::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = true
 
+
   config.assets.prefix = '/shared/assets'
 
   # Compress JavaScripts and CSS.
