@@ -22,7 +22,6 @@ GoneFishing::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = true
 
-
   config.assets.prefix = '/shared/assets'
 
   # Compress JavaScripts and CSS.
@@ -34,8 +33,7 @@ GoneFishing::Application.configure do
   # config.assets.compile = true
   # config.assets.precompile = ['*.js', '*.css', '*.css.erb']
 
-  # Generate digests for assets URLs. This will cache bust the static assets by
-  # giving them a unique file name everytime the asset file is changed.
+  # Generate digests for assets URLs.
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
@@ -65,7 +63,7 @@ GoneFishing::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( homepage.js )
+  # config.assets.precompile += %w( homepage.js search.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
