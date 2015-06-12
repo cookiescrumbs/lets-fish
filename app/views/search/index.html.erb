@@ -9,10 +9,10 @@
   // variable for marker info window
   var infowindow;
   // set error handler for jQuery AJAX requests
-  $.ajaxSetup({"error":function(XMLHttpRequest,textStatus, errorThrown) {   
+  $.ajaxSetup({"error":function(XMLHttpRequest,textStatus, errorThrown) {
       console.log(textStatus + ' / ' + errorThrown + ' / ' + XMLHttpRequest.responseText);
   }});
-        
+
   function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 5,
@@ -25,14 +25,14 @@
   }
 
   function loadMarkers() {
-      // load marker jSon data    
+      // load marker jSon data
       $.getJSON('/admin/fisheries.json', function(data) {
           // loop all the markers
           $.each(data, function(i,item){
               // add marker to map
-              loadMarker(item); 
+              loadMarker(item);
           });
-      }); 
+      });
   }
 
   function loadMarker(markerData){
@@ -46,7 +46,7 @@
         id: id,
         url: url,
         position: latLng,
-        map: map, 
+        map: map,
         title: name
       });
       // add marker to list used later to get content and additional marker information
@@ -68,12 +68,12 @@
             // // show marker window
             infowindow.setContent(data.name);
             infowindow.open(map,marker);
-        }); 
+        });
     }else{
        console.log('Error marker not found: ' + markerId);
     }
-  } 
- 
+  }
+
   // Onload handler to fire off the app.
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
