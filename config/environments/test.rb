@@ -35,4 +35,7 @@ GoneFishing::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.assets.raise_runtime_errors = true
+  config.assets.raise_asset_errors = true
 end

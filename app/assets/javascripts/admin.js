@@ -14,6 +14,5 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
-//= require waters
 //= require turbolinks
 

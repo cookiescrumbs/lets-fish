@@ -26,4 +26,8 @@ GoneFishing::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.assets.raise_runtime_errors = true
+  #Shows asset errors that you will get in production in the development environment
+  config.assets.raise_asset_errors = true
 end

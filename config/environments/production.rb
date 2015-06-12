@@ -29,11 +29,12 @@ GoneFishing::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  # config.assets.compile = false
-  config.assets.compile = true
-  config.assets.precompile = ['*.js', '*.css', '*.css.erb']
+  config.assets.compile = false
+  # config.assets.compile = true
+  # config.assets.precompile = ['*.js', '*.css', '*.css.erb']
 
-  # Generate digests for assets URLs.
+  # Generate digests for assets URLs. This will cache bust the static assets by
+  # giving them a unique file name everytime the asset file is changed.
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
@@ -63,7 +64,7 @@ GoneFishing::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( homepage.js search.js )
+  # config.assets.precompile += %w( homepage.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
