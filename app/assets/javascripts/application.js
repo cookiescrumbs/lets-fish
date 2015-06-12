@@ -17,7 +17,4 @@
 //= require bootstrap.min
 //= require classie
 //= require cbpAnimatedHeader
-//= require main
-//= require waters
-//= require homepage
 //= require turbolinks
