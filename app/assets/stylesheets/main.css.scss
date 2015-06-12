@@ -273,7 +273,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(header-bg.jpg);
+    background-image: image-url('header-bg.jpg');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -286,7 +286,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(header-bg.jpg);
+    background-image: image-url('header-bg.jpg');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -640,7 +640,7 @@ aside.sponsors img {
 
 section#add-a-water {
     background-color: #222;
-    background-image: url(map-image.png);
+    background-image: image-url('map-image.png');
     background-position: center;
     background-repeat: no-repeat;
 }
