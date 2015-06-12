@@ -1,10 +1,18 @@
 require_relative 'features_helper'
 
-describe "Search page", type: :feature do
+describe "Search page", type: :feature, focus: true do
+
+  before do
+    @search = PageObjects::Search.new
+    @search.load
+  end
 
   it "has a page route" do
-    visit '/search'
-    expect(page.status_code).to eql 200
+    expect(@search.status_code).to eql 200
+  end
+
+  it "has a map" do
+    expect(@search).to have_map
   end
 
 end

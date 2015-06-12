@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-FishingLog::Application.config.secret_key_base = '4655732c3fc46fe3f36ea72e7400c74216f73a1cbc7695657ccd75ede733f8da947f33f1808083ec9fb6786a6c5aef5153e356f0c31b49a9e6ce52778b5c90bf'
+GoneFishing::Application.config.secret_key_base = '4655732c3fc46fe3f36ea72e7400c74216f73a1cbc7695657ccd75ede733f8da947f33f1808083ec9fb6786a6c5aef5153e356f0c31b49a9e6ce52778b5c90bf'

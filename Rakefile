@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-FishingLog::Application.load_tasks
+GoneFishing::Application.load_tasks
