@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe "Search page", type: :feature, focus: true do
+describe "Search", type: :feature do
 
   before do
     @search = PageObjects::Search.new
