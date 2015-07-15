@@ -12,9 +12,4 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery_ujs
-//= require jquery.easing.min
-//= require bootstrap.min
-//= require classie
-//= require cbpAnimatedHeader
 //= require turbolinks
