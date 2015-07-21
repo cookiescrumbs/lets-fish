@@ -4,6 +4,8 @@ $(document).ready(function() {
 
   function initialize() {
 
+    alert(window.location.search);
+
     var latitude  = 54.43869834845736;
     var longitude =  -2.2472353515624945;
 
@@ -35,14 +37,14 @@ $(document).ready(function() {
     });
 
     function addMakersWithInBoundingBox(map){
-      var bounds = getBoundsFromMap(map);
+      var bounds = getBoundingBoxFromMap(map);
       getMarkerData(bounds);
     }
 
-    function getBoundsFromMap(map) {
-      bounds = map.getBounds();
-      northEast  = bounds.getNorthEast();
-      southWest  = bounds.getSouthWest();
+    function getBoundingBoxFromMap(map) {
+      var bounds = map.getBounds();
+      var northEast  = bounds.getNorthEast();
+      var southWest  = bounds.getSouthWest();
       return [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()];
     }
 

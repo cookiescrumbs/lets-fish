@@ -31,13 +31,16 @@ $(document).ready(function() {
         if (places.length <= 0) {
             return;
         }
-
-        // get the first selected result if there are multiple matches
-        var firstResult = places[0];
-
-        console.log(firstResult.geometry.location.lng(), firstResult.geometry.location.lat());
-
+        var location = places[0];
+        var bounds = getBoundingBoxFromLocation(location);
+        console.log(bounds);
     });
+
+    function getBoundingBoxFromLocation(location) {
+      var northEast = location.geometry.viewport.getNorthEast();
+      var southWest = location.geometry.viewport.getSouthWest();
+      return [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()];
+    }
     ////////////////////////////////////////////
 
     /////Hide / show fishery form/////////////////
