@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe "Homepage", type: :feature do
+describe "Homepage", type: :feature, focus: true do
 
   context "user searches for a water and clicks submit " do
     before do
@@ -10,7 +10,7 @@ describe "Homepage", type: :feature do
       @homepage.submit_search.click
     end
 
-    it "routes to the search page with correct parameters in the url" do
+    it "routes to the search page with correct parameters in the url", js: true do
       expect(@homepage.current_url).to end_with "location=Manchester&lat=&lng="
     end
   end
