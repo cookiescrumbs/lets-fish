@@ -13,6 +13,7 @@ module PageObjects
     element :no, "button[name='no']"
     element :submit, "button[name='submit fishery name']"
     element :unknown, "button[name='unknown']"
-
+    element :search, "input[name='location']"
+    element :submit_search, ".search form button"
   end
 end
