@@ -1,7 +1,7 @@
 class HomepageController < ApplicationController
   before_action :set_fishery, only: [:new_water, :create_water]
   before_action :new_fishery, only: [:index]
-  before_action :set_form_partial, only: [:index, :new_water, :create_fishery, :create_water]
+  # before_action :set_form_partial, only: [:index, :new_water, :create_fishery, :create_water]
 
   def index
   end

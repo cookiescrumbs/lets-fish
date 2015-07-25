@@ -50,6 +50,7 @@ group :development, :test do
   gem 'faker'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'selenium-webdriver'
 end
 
 # Use ActiveModel has_secure_password
