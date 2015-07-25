@@ -179,6 +179,8 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default {
     border-color: transparent;
     background-color: #222;
+    border-radius: 0px;
+    margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand {
@@ -710,6 +712,7 @@ input#location{
 
 footer {
     padding: 25px 0;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -717,7 +720,7 @@ footer span.copyright {
     text-transform: uppercase;
     text-transform: none;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 40px;
+    line-height: 25px;
 }
 
 footer ul.quicklinks {
@@ -725,7 +728,7 @@ footer ul.quicklinks {
     text-transform: uppercase;
     text-transform: none;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 40px;
+    line-height: 25px;
 }
 
 ul.social-buttons {
@@ -787,11 +790,11 @@ body {
     margin-right: 0px;
 }
 
-#form-map {
+#map {
   margin: 0;
   padding: 0;
   width: 100%;
-  height:450px !important;
+  height: 675px !important;
   margin-top: 0px;
   margin-bottom: 10px;
 }
