@@ -4,14 +4,20 @@ $(document).ready(function() {
 
   function initialize() {
 
-    alert(window.location.search);
-
     var latitude  = 54.43869834845736;
     var longitude =  -2.2472353515624945;
-
     var zoom = (latitude == 54.43869834845736 ) ? 5 : 15;
-
     var latLng = new google.maps.LatLng(latitude,longitude);
+
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null){
+         return null;
+      }
+      else{
+         return results[1] || 0;
+      }
+    }
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: zoom,
@@ -28,17 +34,38 @@ $(document).ready(function() {
     ///////////////////////////
 
     google.maps.event.addListenerOnce(map,'idle', function(){
-      addMakersWithInBoundingBox(map);
+      centerMapToLocation(map);
+      zoomMapToLevel(map, 10);
+      var boundingBox = getBoundingBoxFromMap(map);
+      addMakersWithInBoundingBox(boundingBox);
     });
 
     google.maps.event.addListener(map, 'dragend', function() {
       removeAndResetMarkers();
-      addMakersWithInBoundingBox(map);
+      var boundingBox = getBoundingBoxFromMap(map);
+      addMakersWithInBoundingBox(boundingBox);
     });
 
-    function addMakersWithInBoundingBox(map){
-      var bounds = getBoundingBoxFromMap(map);
-      getMarkerData(bounds);
+    function centerMapToLocation(map) {
+      var latLng = getLatLngFromUrl();
+      if (latLng) map.setCenter(latLng);
+    }
+
+    function getLatLngFromUrl() {
+      var lat = $.urlParam('lat'),
+      lng = $.urlParam('lng');
+      if(lat && lng) {
+        return new google.maps.LatLng(lat,lng);
+      }
+      return false;
+    }
+
+    function zoomMapToLevel(map, level) {
+      map.setZoom(level);
+    }
+
+    function addMakersWithInBoundingBox(boundingBox){
+      getMarkerData(boundingBox);
     }
 
     function getBoundingBoxFromMap(map) {

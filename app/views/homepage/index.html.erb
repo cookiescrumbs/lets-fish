@@ -8,10 +8,12 @@
             </div>
         </div>
         <div class="row search">
-            <form class="form-inline" role="form" method="get" action="search" >
+            <form accept-charset="UTF-8" class="form-inline" role="form" method="GET" action="search">
                 <div class="form-group">
-                  <label class="sr-only form-control" for="location">Pick a location</label>
-                  <input type="text" class="form-control" id="location" placeholder="Pick a location">
+                    <label class="sr-only form-control" for="location">Pick a location</label>
+                    <input type="text" class="form-control" id="location" name="location" placeholder="Pick a location">
+                    <input type="hidden" name="lat" value="" >
+                    <input type="hidden" name="lng" value="" >
                 </div>
                 <button type="submit" class="btn btn-info">Search</button>
             </form>

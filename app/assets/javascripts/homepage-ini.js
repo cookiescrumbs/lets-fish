@@ -32,15 +32,17 @@ $(document).ready(function() {
             return;
         }
         var location = places[0];
-        var bounds = getBoundingBoxFromLocation(location);
-        console.log(bounds);
+        var lat = location.geometry.location.lat();
+        var lng = location.geometry.location.lng();
+        // var searchLocation = encodeURI('/search?lat='+lat+'&lng='+lng);
+        $('.search form input[name=lat]').attr('value', lat);
+        $('.search form input[name=lng]').attr('value', lng);
+       // alert(location.geometry.location.lat() + ',' + location.geometry.location.lng());
     });
 
-    function getBoundingBoxFromLocation(location) {
-      var northEast = location.geometry.viewport.getNorthEast();
-      var southWest = location.geometry.viewport.getSouthWest();
-      return [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()];
-    }
+    // function getLngLatForLocation(location) {
+    //   return [location.geometry.location.lng(), location.geometry.location.lat()];
+    // }
     ////////////////////////////////////////////
 
     /////Hide / show fishery form/////////////////
