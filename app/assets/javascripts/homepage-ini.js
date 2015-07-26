@@ -34,8 +34,8 @@ $(document).ready(function() {
         var location = places[0];
         var lat = location.geometry.location.lat();
         var lng = location.geometry.location.lng();
-        $('.search form input[name=lat]').attr('value', lat);
-        $('.search form input[name=lng]').attr('value', lng);
+        $('.search form .form-group').append('<input type="hidden" name="lat" value="'+lat+'">');
+        $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
     });
 
     // function getLngLatForLocation(location) {
