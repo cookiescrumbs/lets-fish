@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe "Homepage location search", type: :feature, focus: true, js: true do
+describe "Homepage location search", type: :feature, js: true do
 
   context "user searches for a water and clicks submit " do
 
