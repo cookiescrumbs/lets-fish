@@ -34,10 +34,8 @@ $(document).ready(function() {
         var location = places[0];
         var lat = location.geometry.location.lat();
         var lng = location.geometry.location.lng();
-        // var searchLocation = encodeURI('/search?lat='+lat+'&lng='+lng);
         $('.search form input[name=lat]').attr('value', lat);
         $('.search form input[name=lng]').attr('value', lng);
-       // alert(location.geometry.location.lat() + ',' + location.geometry.location.lng());
     });
 
     // function getLngLatForLocation(location) {
