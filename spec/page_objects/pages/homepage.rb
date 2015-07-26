@@ -14,6 +14,8 @@ module PageObjects
     element :submit, "button[name='submit fishery name']"
     element :unknown, "button[name='unknown']"
     element :search, "input[name='location']"
+    element :lng, "input[name='lng']"
+    element :lat, "input[name='lat']"
     element :submit_search, ".search form button"
   end
 end
