@@ -1,12 +1,18 @@
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'selenium-webdriver'
 require 'site_prism'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 
 #require page objects
 Dir[Rails.root.join("spec/page_objects/**/*.rb")].each { |f| require f }
 
-Capybara.javascript_driver = :poltergeist
+# Capybara.default_wait_time = 60
+Capybara.javascript_driver = :selenium
 Capybara.ignore_hidden_elements = false
 RSpec.configure do |config|
  config.include Capybara::DSL
