@@ -246,10 +246,14 @@ fieldset[disabled] .btn-xl.active {
         margin: 0 auto;
     }
 
-  /*  .search form button {
-        float: none;
-        margin-left: 5px;
-    }*/
+    #search .navbar-brand{
+        padding: 5px 0 0 0;
+        margin: 0 0 0 5px;
+    }
+
+    #search .navbar .container {
+        margin-left: 0;
+    }
 
     .navbar-default {
         padding: 25px 0;
@@ -802,7 +806,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 675px !important;
+  height: 450px !important;
   margin-top: 0px;
   margin-bottom: 10px;
 }
@@ -837,15 +841,28 @@ body {
     width: 400px;
   }
 
-  #map-serach-box:focus {
+#map-serach-box:focus {
     border-color: #4d90fe;
-  }
+}
 
-  .search form input.form-control{
+.search form input.form-control{
     width: 65%;
     float: left;
-  }
+}
 
-  .search form button {
+.search form button {
     margin-left: 5px;
-  }
+}
+
+#how-it-works p.text-muted{
+    line-height: 1.5;
+}
+
+#how-it-works h3.text-muted {
+    line-height: 1.5;
+}
+
+body#search footer{
+    display: none;
+}
+
