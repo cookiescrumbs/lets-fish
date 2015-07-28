@@ -1,6 +1,9 @@
 $(document).ready(function() {
-  var map;
-  var markers =[];
+  var map,
+  markers =[],
+  boundingBox,
+  boundingBoxStart;
+
 
   function initialize() {
 
@@ -36,14 +39,24 @@ $(document).ready(function() {
     google.maps.event.addListenerOnce(map,'idle', function(){
       centerMapToLocation(map);
       zoomMapToLevel(map, 10);
-      var boundingBox = getBoundingBoxFromMap(map);
+      boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
     });
 
+    google.maps.event.addListener(map, 'dragstart', function() {
+      boundingBoxStart = getBoundingBoxFromMap(map);
+    });
+
     google.maps.event.addListener(map, 'dragend', function() {
-      removeAndResetMarkers();
-      var boundingBox = getBoundingBoxFromMap(map);
-      addMakersWithInBoundingBox(boundingBox);
+      boundingBox = getBoundingBoxFromMap(map);
+      var start = Math.round(boundingBoxStart[0] + boundingBoxStart[1] + boundingBoxStart[2] + boundingBoxStart[3]);
+      var end = Math.round(boundingBox[0] + boundingBox[1] + boundingBox[2] + boundingBox[3]);
+      if (start !== end) {
+        removeAndResetMarkers();
+        addMakersWithInBoundingBox(boundingBox);
+      }
+      console.log("boundingBoxStart",start);
+      console.log("boundingBox",end);
     });
 
     function centerMapToLocation(map) {
