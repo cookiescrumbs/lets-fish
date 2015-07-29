@@ -39,6 +39,7 @@ $(document).ready(function() {
     google.maps.event.addListenerOnce(map,'idle', function(){
       centerMapToLocation(map);
       zoomMapToLevel(map, 10);
+      removeAndResetMarkers();
       boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
     });
