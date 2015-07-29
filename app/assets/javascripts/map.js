@@ -1,8 +1,7 @@
 $(document).ready(function() {
   var map,
   markers =[],
-  boundingBox,
-  boundingBoxStart;
+  boundingBox;
 
 
   function initialize() {
@@ -83,12 +82,13 @@ $(document).ready(function() {
     }
 
     function addMarkers(waters){
+      var markerCluster = null;
       for (i = 0; i < waters.length; i++) {
         var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
         var marker = new google.maps.Marker({ position: latLng});
         markers.push(marker);
       }
-      var markerCluster = new MarkerClusterer(map, markers);
+      markerCluster = new MarkerClusterer(map, markers);
     }
 
     function removeAndResetMarkers() {
