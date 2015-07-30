@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var map,
   markers =[],
+  MarkerCluster,
   boundingBox,
   boundingBoxStart;
 
@@ -88,10 +89,11 @@ $(document).ready(function() {
         var marker = new google.maps.Marker({ position: latLng});
         markers.push(marker);
       }
-      var markerCluster = new MarkerClusterer(map, markers);
+      MarkerCluster = new MarkerClusterer(map, markers);
     }
 
     function removeAndResetMarkers() {
+      MarkerCluster = null;
       for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
       }
