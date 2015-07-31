@@ -42,10 +42,6 @@ $(document).ready(function() {
       addMakersWithInBoundingBox(boundingBox);
     });
 
-    google.maps.event.addListener(map, 'dragstart', function() {
-      // removeAndResetMarkers();
-    });
-
     google.maps.event.addListener(map, 'dragend', function() {
       boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
@@ -88,7 +84,6 @@ $(document).ready(function() {
         markers.push(marker);
       }
       new MarkerClusterer(map, markers);
-      console.log("waters after:", waters);
     }
 
     function removeAndResetMarkers() {
@@ -108,6 +103,7 @@ $(document).ready(function() {
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
+        async: false,
         success: addMarkers,
         failure: function(errMsg) {
             alert(errMsg);
