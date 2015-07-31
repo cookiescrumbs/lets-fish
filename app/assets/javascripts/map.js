@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var map,
   markers =[],
-  MarkerCluster,
   boundingBox,
   boundingBoxStart;
 
@@ -84,16 +83,18 @@ $(document).ready(function() {
     }
 
     function addMarkers(waters){
+      console.log("water before:", waters);
       for (i = 0; i < waters.length; i++) {
         var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
         var marker = new google.maps.Marker({ position: latLng});
         markers.push(marker);
       }
-      MarkerCluster = new MarkerClusterer(map, markers);
+      new MarkerClusterer(map, markers);
+      console.log("waters after:", waters);
+
     }
 
     function removeAndResetMarkers() {
-      MarkerCluster = null;
       for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
       }
