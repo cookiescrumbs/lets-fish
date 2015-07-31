@@ -1,12 +1,10 @@
 $(document).ready(function() {
   var map,
   markers =[],
-  boundingBox,
-  boundingBoxStart;
+  boundingBox;
 
 
   function initialize() {
-
     var latitude  = 54.43869834845736;
     var longitude =  -2.2472353515624945;
     var zoom = (latitude == 54.43869834845736 ) ? 5 : 15;
@@ -45,7 +43,7 @@ $(document).ready(function() {
     });
 
     google.maps.event.addListener(map, 'dragstart', function() {
-      removeAndResetMarkers();
+      // removeAndResetMarkers();
     });
 
     google.maps.event.addListener(map, 'dragend', function() {
@@ -83,7 +81,7 @@ $(document).ready(function() {
     }
 
     function addMarkers(waters){
-      console.log("water before:", waters);
+      removeAndResetMarkers();
       for (i = 0; i < waters.length; i++) {
         var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
         var marker = new google.maps.Marker({ position: latLng});
@@ -91,7 +89,6 @@ $(document).ready(function() {
       }
       new MarkerClusterer(map, markers);
       console.log("waters after:", waters);
-
     }
 
     function removeAndResetMarkers() {
