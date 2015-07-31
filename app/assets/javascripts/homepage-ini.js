@@ -51,5 +51,4 @@ $(document).ready(function() {
         $('div.row.fishery-name').fadeIn();
     });
     ///////////////////////////////////////////////
-
 });
