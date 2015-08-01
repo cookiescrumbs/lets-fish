@@ -45,6 +45,7 @@ $(document).ready(function() {
     google.maps.event.addListener(map, 'dragend', function() {
       boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
+      console.log(markers);
     });
 
     function centerMapToLocation(map) {
@@ -103,7 +104,6 @@ $(document).ready(function() {
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        async: false,
         success: addMarkers,
         failure: function(errMsg) {
             alert(errMsg);
