@@ -81,10 +81,11 @@ $(document).ready(function() {
       removeAndResetMarkers();
       for (i = 0; i < waters.length; i++) {
         var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
-        var marker = new google.maps.Marker({ position: latLng});
+        var marker = new google.maps.Marker({ position: latLng, map: map});
+        marker.setMap(map);
         markers.push(marker);
       }
-      new MarkerClusterer(map, markers);
+      // new MarkerClusterer(map, markers);
     }
 
     function removeAndResetMarkers() {
