@@ -20,10 +20,30 @@ $(document).ready(function() {
       }
     }
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: zoom,
-      center: latLng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+    var map = new google.maps.Map(document.getElementById('map'));
+
+    // Create the search box and link it to the UI element.
+    var input = (document.getElementById('map-search-box'));
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    var searchBox = new google.maps.places.SearchBox((input));
+
+    // Listen for the event fired when the user selects an item from the
+    // pick list. Retrieve the matching places for that item.
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+
+      var places = searchBox.getPlaces();
+
+      if (places.length <= 0) {
+        return;
+      }
+      // get the first selected result if there are multiple matches
+      var firstResult = places[0];
+      var bounds = new google.maps.LatLngBounds();
+      bounds.extend(firstResult.geometry.location);
+      map.fitBounds(bounds);
+      map.setZoom(10);
+      boundingBox = getBoundingBoxFromMap(map);
+      addMakersWithInBoundingBox(boundingBox);
     });
 
     ///////Responsive map
@@ -36,7 +56,7 @@ $(document).ready(function() {
 
     google.maps.event.addListenerOnce(map,'idle', function(){
       centerMapToLocation(map);
-      zoomMapToLevel(map, 10);
+      map.setZoom(10);
       boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
     });
@@ -44,7 +64,6 @@ $(document).ready(function() {
     google.maps.event.addListener(map, 'dragend', function() {
       boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
-      console.log(markers);
     });
 
     function centerMapToLocation(map) {
@@ -59,10 +78,6 @@ $(document).ready(function() {
         return new google.maps.LatLng(lat,lng);
       }
       return false;
-    }
-
-    function zoomMapToLevel(map, level) {
-      map.setZoom(level);
     }
 
     function addMakersWithInBoundingBox(boundingBox){
