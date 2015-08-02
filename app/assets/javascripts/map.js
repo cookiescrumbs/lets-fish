@@ -37,7 +37,6 @@ $(document).ready(function() {
     google.maps.event.addListenerOnce(map,'idle', function(){
       centerMapToLocation(map);
       zoomMapToLevel(map, 10);
-      removeAndResetMarkers();
       boundingBox = getBoundingBoxFromMap(map);
       addMakersWithInBoundingBox(boundingBox);
     });
@@ -81,10 +80,10 @@ $(document).ready(function() {
       removeAndResetMarkers();
       for (i = 0; i < waters.length; i++) {
         var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
-        var marker = new google.maps.Marker({ position: latLng});
+        var marker = new google.maps.Marker({ position: latLng, map: map});
+        marker.setMap(map);
         markers.push(marker);
       }
-      new MarkerClusterer(map, markers);
     }
 
     function removeAndResetMarkers() {
