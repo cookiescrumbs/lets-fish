@@ -1,9 +1,18 @@
 $(document).ready(function() {
   var map,
+  mapOptions = {
+    mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      mapTypeIds: [
+        google.maps.MapTypeId.SATELLITE,
+        google.maps.MapTypeId.ROADMAP
+      ]
+    }
+  },
   markers =[],
   boundingBox;
 
-  map = new google.maps.Map(document.getElementById('map'));
+  map = new google.maps.Map(document.getElementById('map'), mapOptions);
   ///////Search Box
   // Create the search box and link it to the UI element.
   var input = (document.getElementById('map-search-box'));
@@ -45,7 +54,7 @@ $(document).ready(function() {
   });
   //////////////////////////
 
-  ///////Adding markers when map is dragend
+  ///////Adding markers when the user drags the map
   google.maps.event.addListener(map, 'dragend', function() {
     boundingBox = getBoundingBoxFromMap(map);
     addMakersWithInBoundingBox(boundingBox);
