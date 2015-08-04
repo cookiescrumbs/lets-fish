@@ -1,6 +1,5 @@
 $(document).ready(function() {
-  var map,
-  mapOptions = {
+  var mapOptions = {
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
       mapTypeIds: [
@@ -10,14 +9,19 @@ $(document).ready(function() {
     }
   },
   markers =[],
-  boundingBox;
+  boundingBox,
+  defaultLatitude = 55.43869834845736,
+  defaultLongitude = -2.2472353515624945,
+  defaultLatLng = new google.maps.LatLng(defaultLatitude, defaultLongitude);
 
-  map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  //make the a new instance of google maps available on window, so we can access it anywhere
+  //anywhere on the page.
+  window.map = new google.maps.Map(document.getElementById('map'), mapOptions);
   ///////Search Box
   // Create the search box and link it to the UI element.
   var input = (document.getElementById('map-search-box'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  var searchBox = new google.maps.places.SearchBox((input));
+  window.searchBox = new google.maps.places.SearchBox((input));
 
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.
@@ -47,7 +51,14 @@ $(document).ready(function() {
 
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
-    centerMapToLocation(map);
+    var latLng;
+    if(getLatLngFromUrl()) {
+      latLng = getLatLngFromUrl();
+    } else {
+      latLng = defaultLatLng;
+    }
+    map.setCenter(latLng);
+    // centerMapToLocation(map);
     map.setZoom(10);
     boundingBox = getBoundingBoxFromMap(map);
     addMakersWithInBoundingBox(boundingBox);
@@ -61,10 +72,10 @@ $(document).ready(function() {
   });
   /////////////////////////
 
-  function centerMapToLocation(map) {
-    var latLng = getLatLngFromUrl();
-    if (latLng) map.setCenter(latLng);
-  }
+  // function centerMapToLocation(map) {
+  //   var latLng = getLatLngFromUrl();
+  //   if (latLng) map.setCenter(latLng);
+  // }
 
   function getLatLngFromUrl() {
     var lat = $.urlParam('lat'),

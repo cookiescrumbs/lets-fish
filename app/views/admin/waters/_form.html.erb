@@ -1,5 +1,5 @@
 <input id="map-search-box" class="controls" type="text" placeholder="Search Box">
-<div id="add-water-map" class="pull-right"></div>
+<div id="map" class="pull-right"></div>
 <div class="pull-left">
 <%= form_for([:admin,  @fishery, @water], :html => {:role => "form"}) do |f| %>
   <% if @water.errors.any? %>
