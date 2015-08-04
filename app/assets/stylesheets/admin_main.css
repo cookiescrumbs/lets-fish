@@ -2,7 +2,7 @@ body {
   margin-top: 70px;
 }
 
-#add-water-map {
+#map {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -13,7 +13,7 @@ body {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  #add-water-map{ width: 75%; }
+  #map{ width: 75%; }
 }
 
 #map-search-box {
@@ -27,6 +27,6 @@ body {
     width: 50%;
   }
 
-#map-serach-box:focus {
+#map-search-box:focus {
     border-color: #4d90fe;
 }
