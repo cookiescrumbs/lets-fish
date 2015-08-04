@@ -34,6 +34,8 @@ $(document).ready(function() {
        google.maps.event.addListener(marker, 'drag', function() {
           updateMarkerPosition(marker.getPosition());
         });
+        google.maps.event.addListener(searchBox, 'places_changed', function() {
+        });
     });
 
 });

@@ -16,4 +16,4 @@
 //= require bootstrap.min
 //= require turbolinks
 //= require map
-//= require add_marker
+//= require water_marker
