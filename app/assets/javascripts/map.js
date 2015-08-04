@@ -21,7 +21,7 @@ $(document).ready(function() {
   // Create the search box and link it to the UI element.
   var input = (document.getElementById('map-search-box'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  var searchBox = new google.maps.places.SearchBox((input));
+  window.searchBox = new google.maps.places.SearchBox((input));
 
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.

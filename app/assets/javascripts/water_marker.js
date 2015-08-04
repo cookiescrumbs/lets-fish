@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var latLng;
-    var marker;
 
     function addAndOpenInfoWindow(map, marker, content){
         var infowindow = new google.maps.InfoWindow({
@@ -20,7 +18,7 @@ $(document).ready(function() {
 
     //wait till map has loaded and add a draggable marker
     google.maps.event.addListenerOnce(map,'idle', function(){
-        marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: map.getCenter(),
           map: map,
           draggable: true
@@ -34,7 +32,15 @@ $(document).ready(function() {
        google.maps.event.addListener(marker, 'drag', function() {
           updateMarkerPosition(marker.getPosition());
         });
+
+        google.maps.event.addListener(map, 'dragend', function() {
+          var center = map.getCenter();
+          marker.setPosition(center);
+        });
+
         google.maps.event.addListener(searchBox, 'places_changed', function() {
+          var center = map.getCenter();
+          marker.setPosition(center);
         });
     });
 
