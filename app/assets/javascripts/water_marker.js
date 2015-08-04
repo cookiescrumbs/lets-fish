@@ -38,6 +38,11 @@ $(document).ready(function() {
           marker.setPosition(center);
         });
 
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          var center = map.getCenter();
+          marker.setPosition(center);
+        });
+
         google.maps.event.addListener(searchBox, 'places_changed', function() {
           var center = map.getCenter();
           marker.setPosition(center);
