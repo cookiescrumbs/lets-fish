@@ -1,5 +1,7 @@
 GoneFishing::Application.routes.draw do
 
+  resources :users
+
   namespace :admin do
     resources :water_types
     resources :species
