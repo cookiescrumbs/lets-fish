@@ -1,5 +1,5 @@
 describe Species, :type => :model do
-  
+
   before(:each) do
     @species = FactoryGirl.create :species
   end
