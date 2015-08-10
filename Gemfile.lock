@@ -31,6 +31,7 @@ GEM
     archive-zip (0.7.0)
       io-like (~> 0.3.0)
     arel (5.0.1.20140414130214)
+    bcrypt-ruby (3.0.1)
     builder (3.2.2)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -214,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.0.0)
   capybara
   chromedriver-helper
   coffee-rails (~> 4.0.0)

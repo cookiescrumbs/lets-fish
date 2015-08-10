@@ -55,7 +55,7 @@ group :development, :test do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
