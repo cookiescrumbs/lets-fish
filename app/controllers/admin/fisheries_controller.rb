@@ -1,5 +1,6 @@
 class Admin::FisheriesController < AdminController
 
+  before_filter :authorize
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index

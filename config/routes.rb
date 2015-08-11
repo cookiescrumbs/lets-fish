@@ -22,6 +22,10 @@ GoneFishing::Application.routes.draw do
 
   post '/waters/within_bounding_box', to: 'admin/waters#within_bounding_box'
 
+  get '/admin/login' => 'admin/sessions#new'
+  post '/admin/login' => 'admin/sessions#create'
+  get '/admin/logout' => 'admin/sessions#destroy'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
