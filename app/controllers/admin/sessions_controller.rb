@@ -9,7 +9,8 @@ class Admin::SessionsController < AdminController
       session[:user_id] = user.id
       redirect_to admin_fisheries_path
     else
-      redirect_to admin_login_path
+      flash.now[:notice] = 'Email or Password is invalid';
+      render 'new'
     end
   end
 
