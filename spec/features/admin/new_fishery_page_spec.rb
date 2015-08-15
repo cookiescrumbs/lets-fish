@@ -2,6 +2,10 @@ require_relative '../features_helper'
 
 describe "New fishery page", type: :feature do
 
+  before(:each) do
+    login FactoryGirl::create :user
+  end
+
   context "form is filled out correctly" do
 
     before do
