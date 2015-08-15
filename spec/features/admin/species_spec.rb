@@ -1,7 +1,14 @@
 require_relative '../features_helper'
 
 describe "Species", type: :feature do
+
+  before(:each) do
+    login FactoryGirl.create :user
+  end
+
   describe "Manage species" do
+
+
       it "lists all species" do
         FactoryGirl.create(:species, name: "Rainbow trout")
         visit admin_species_index_path

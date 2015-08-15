@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe "User login", type: :feature, focus: true do
+describe "User login", type: :feature do
 
   describe "user has an account" do
 

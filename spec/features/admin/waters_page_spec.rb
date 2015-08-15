@@ -2,6 +2,10 @@ require_relative '../features_helper'
 
 describe "Manage waters page", type: :feature do
 
+  before(:each) do
+    login FactoryGirl::create :user
+  end
+
   context "there is a fishery with waters" do
 
     before(:each) do

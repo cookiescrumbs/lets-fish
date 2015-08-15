@@ -1,5 +1,6 @@
 class Admin::SpeciesController < AdminController
 
+  before_filter :authorize
   before_action :set_species, only: [:show, :edit, :update, :destroy]
   # GET /species
   # GET /species.json

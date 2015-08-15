@@ -3,6 +3,8 @@ require_relative '../features_helper'
 describe "Show fishery details page", type: :feature do
 
     before(:each) do
+      login FactoryGirl.create :user
+
       @fishery = FactoryGirl.create(:fishery)
       visit admin_fishery_path @fishery.id
     end
