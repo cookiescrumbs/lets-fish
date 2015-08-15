@@ -1,6 +1,6 @@
 class Admin::WatersController < AdminController
 
-  before_filter :authorize
+  before_filter :authorize, except: [ :within_bounding_box ]
   before_action :set_fishery, only: [ :index, :new, :update, :create, :edit]
   before_action :set_water, only: [:edit, :update]
 
