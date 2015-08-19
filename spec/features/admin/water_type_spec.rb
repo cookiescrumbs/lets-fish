@@ -1,6 +1,10 @@
 require_relative '../features_helper'
 
 describe "Water Type", type: :feature do
+  before(:each) do
+    login FactoryGirl.create :user
+
+  end
   describe "Manage water types" do
       it "lists all water  types" do
         FactoryGirl.create(:water_type, category: "loch")

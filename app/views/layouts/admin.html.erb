@@ -26,7 +26,12 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/admin/fisheries">Fisheries</a>
-            <li><a href="">Sign out</a></li>
+            <% if current_user %>
+              <li> Signed in as <%= current_user.email %>
+              <li><%= link_to "Logout", '/admin/logout'%></li>
+            <% else %>
+              <li><%= link_to 'Login', '/admin/login' %></li>
+            <% end %>
           </ul>
         </div>
       </div>
