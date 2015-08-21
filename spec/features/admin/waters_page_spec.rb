@@ -15,9 +15,9 @@ describe "Manage waters page", type: :feature do
       visit admin_fishery_waters_path @fishery.id
     end
 
-    let(:water){ @fishery.waters.first }
-    let(:checked_species_name){ @species.last.name }
-    let(:first_species_name){ @species.first.name }
+    let(:water){ @fishery.waters.first}
+    let(:checked_species_name){ @species.last.name}
+    let(:first_species_name){ @species.first.name}
     let(:edit_button){ page.all('.edit').first }
     let(:number_of_waters){ @fishery.waters.count }
 
@@ -56,7 +56,6 @@ describe "Manage waters page", type: :feature do
 
       it "updates a waters details and returns a nice message" do
         edit_button.click
-
         fill_in 'water_name', with: 'loch dooooooon'
         #had to use find as the fields are hidden
         find('#latitude').set -90

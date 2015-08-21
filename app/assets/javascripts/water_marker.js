@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     function addAndOpenInfoWindow(map, marker, content){
         var infowindow = new google.maps.InfoWindow({
             content: content
@@ -16,10 +15,32 @@ $(document).ready(function() {
       $('#display-longitude').text(lng);
     }
 
+    function getMarkerPosition(map){
+      var editFormLatLng = getLatLngFromEditWaterForm();
+      return !editFormLatLng ? map.getCenter() : editFormLatLng
+    }
+
+    function getLatLngFromEditWaterForm(){
+      var lat = $('input#latitude').attr('value');
+      var lng = $('input#longitude').attr('value');
+      if( lat && lng ) {
+        return new google.maps.LatLng(lat,lng);
+      }
+      return false;
+    }
+
+    function displayInitialLatLng(){
+      var lat = $('input#latitude').attr('value');
+      var lng = $('input#longitude').attr('value');
+      $('#display-latitude').text(lat);
+      $('#display-longitude').text(lng);
+    }
+
+    displayInitialLatLng();
     //wait till map has loaded and add a draggable marker
     google.maps.event.addListenerOnce(map,'idle', function(){
         var marker = new google.maps.Marker({
-          position: map.getCenter(),
+          position: getMarkerPosition(map),
           map: map,
           draggable: true
         });
