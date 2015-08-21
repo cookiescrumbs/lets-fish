@@ -9,4 +9,9 @@ describe WaterType, :type => :model do
     expect(@water_type).not_to be_valid
   end
 
+  it "titilizes the category" do
+    @water_type.category = 'reservoir'
+    expect(@water_type.category).to eql 'Reservoir'
+  end
+
 end

@@ -15,7 +15,7 @@
     <% @all_species.each do |species| %>
       <tr>
         <td><%= species.id %></td>
-        <td><%= species.name.capitalize %></td>
+        <td><%= species.name %></td>
         <td><%= link_to 'Show', admin_species_path(species) %></td>
         <td><%= link_to 'Edit',  edit_admin_species_path(species) %></td>
         <td><%= link_to 'Destroy', admin_species_path(species), method: :delete, data: { confirm: 'Are you sure?' } %></td>
