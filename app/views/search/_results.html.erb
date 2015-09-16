@@ -1,0 +1,29 @@
+<div id="results-container">
+
+<% @waters.each_slice(2) do | waters | %>
+    <div class="row">
+        <% waters.each do | water | %>
+            <div class="col-md-6 col-sm-6 result-item" itemscope itemtype="http://schema.org/Place">
+                <div itemscope itemtype="http://schema.org/BodyOfWater">
+                    <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+                        <meta itemprop="latitude" content="<%= water.latitude %>" />
+                        <meta itemprop="longitude" content="<%= water.longitude %>" />
+                    </div>
+                    <a href="#" class="result-link" itemprop="url" >
+                        <div itemscope itemtype="http://schema.org/ImageObject">
+                            <h2 itemprop="name" class="hidden"><%= water.name %></h2>
+                            <img src="<%= asset_path('test-image.jpg') %>" class="img-responsive" alt="" itemprop="contentUrl">
+                        </div>
+                    </a>
+                    <div class="result-caption">
+                        <h4 itemprop="name" ><%= water.name %></h4>
+                            <p itemprop="description" class="hidden" > <%= water.description %></p>
+                            <p class="text-muted">Settle, North Yorkshire</p>
+                            <p class="text-muted" ><%= water.species.map{|s| s.name }.join(', ') %>
+                            <p class="text-muted"><%= water.water_type.category %></p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>

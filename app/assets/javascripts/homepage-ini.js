@@ -31,16 +31,14 @@ $(document).ready(function() {
         if (places.length <= 0) {
             return;
         }
+        window.places = places[0]
         var location = places[0];
         var lat = location.geometry.location.lat();
         var lng = location.geometry.location.lng();
+
         $('.search form .form-group').append('<input type="hidden" name="lat" value="'+lat+'">');
         $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
     });
-
-    // function getLngLatForLocation(location) {
-    //   return [location.geometry.location.lng(), location.geometry.location.lat()];
-    // }
     ////////////////////////////////////////////
 
     /////Hide / show fishery form/////////////////
