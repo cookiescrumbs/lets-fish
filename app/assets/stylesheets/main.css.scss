@@ -240,6 +240,16 @@ fieldset[disabled] .btn-xl.active {
 }
 
 @media(min-width:768px) {
+    .sidebar {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        bottom: 0;
+        width: 60%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+     /*   background: #f7f7f7;*/
+    }
 
     input#location{
         width: 500px;
@@ -402,11 +412,11 @@ section h3.section-subheading {
     margin: 0 0 15px;
 }
 
-#explore .explore-item .explore-link {
+#explore .explore-item .explore-link, .result-link{
     display: block;
     position: relative;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 650px;
 }
 
 #explore .explore-item .explore-link .explore-hover {
@@ -444,20 +454,25 @@ section h3.section-subheading {
     margin: 0;
 }
 
-#explore .explore-item .explore-caption {
+#explore .explore-item .explore-caption, .result-caption {
     margin: 0 auto;
     padding: 25px;
-    max-width: 400px;
+    max-width: 650px;
     text-align: center;
     background-color: #fff;
 }
 
-#explore .explore-item .explore-caption h4 {
+#explore .explore-item .explore-caption h4, .result-caption h4 {
     margin: 0;
     text-transform: none;
 }
 
-#explore .explore-item .explore-caption p {
+
+.result-item{
+    padding: 0;
+}
+
+#explore .explore-item .explore-caption p, .result-caption p{
     margin: 0;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
@@ -892,7 +907,9 @@ body {
     line-height: 1.5;
 }
 
+body#search{
+    background-color: #f7f7f7; /*bg-light-gray*/
+}
 body#search footer{
     display: none;
 }
-
