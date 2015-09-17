@@ -1,27 +1,53 @@
 require_relative 'features_helper'
 
-describe "Search", type: :feature, focus: true do
+describe "Search", type: :feature do
 
-  context "with the url params location, lat and lng" do
-    before do
-      @search = PageObjects::Search.new
-      @search.load(query: {
-      location: 'Manchester',
-      lat: ,
-      lng:
-      })
+  describe "for a fishery in Manchester" do
+
+    context "there is a fishery in Manchester with five waters" do
+
+      before(:each) do
+        @species    = FactoryGirl.create_list :species, 5
+        @water_type = FactoryGirl.create_list :water_type, 5
+        @fishery    = FactoryGirl.create :fishery_with_waters
+
+        @search = PageObjects::Search.new
+        @search.load(
+          query: {
+            location: 'Manchester, United Kingdom',
+            lat: 53.4807593,
+            lng: -2.2426305000000184
+          }
+        )
+      end
+
+      it "has a map" do
+        expect(@search).to have_map
+      end
+
+      it "has results for Manchester" do
+        expect(@search.results.count).to eql 5
+      end
+
     end
 
-    it "has a page route" do
-      expect(@search.status_code).to eql 200
-    end
+    context "there are no waters in Manchester" do
 
-    it "has a map" do
-      expect(@search).to have_map
-    end
+      before(:each) do
+        @search = PageObjects::Search.new
+        @search.load(
+          query: {
+            location: 'Manchester, United Kingdom',
+            lat: 53.4807593,
+            lng: -2.2426305000000184
+          }
+        )
+      end
 
-    it "has a result list of waters" do
-      binding.pry
+      it "has no results for Manchester" do
+        expect(@search.results.count).to eql 0
+      end
+
     end
 
   end
