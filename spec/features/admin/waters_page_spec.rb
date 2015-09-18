@@ -15,9 +15,9 @@ describe "Manage waters page", type: :feature do
       visit admin_fishery_waters_path @fishery.id
     end
 
-    let(:water){ @fishery.waters.first}
-    let(:checked_species_name){ @species.last.name}
-    let(:first_species_name){ @species.first.name}
+    let(:water){ @fishery.waters.first }
+    let(:checked_species_name){ @species.last.name }
+    let(:first_species_name){ @species.first.name }
     let(:edit_button){ page.all('.edit').first }
     let(:number_of_waters){ @fishery.waters.count }
 
@@ -34,9 +34,10 @@ describe "Manage waters page", type: :feature do
     end
 
     it "can delete a water with a nice message" do
+      name = water.name
       first_water = page.all('.destroy').first
       expect {first_water.click}.to change(@fishery.waters, :count).from(5).to(4)
-      expect(page.find('.alert')).to have_content "#{@fishery.waters.first.name} was successfully deleted"
+      expect(page.find('.alert')).to have_content "#{name} was successfully deleted"
     end
 
     describe "a water can be edited" do
