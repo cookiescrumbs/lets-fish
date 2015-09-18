@@ -34,7 +34,7 @@ $(document).ready(function() {
     map.fitBounds(bounds);
     map.setZoom(10);
     boundingBox = getBoundingBoxFromMap(map);
-    addMakersWithInBoundingBox(boundingBox);
+    getMarkersAndResultsFromBounds(boundingBox);
   });
   ///////////////////////////
 
