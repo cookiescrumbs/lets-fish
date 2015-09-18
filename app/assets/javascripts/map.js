@@ -9,10 +9,7 @@ $(document).ready(function() {
     }
   },
   markers =[],
-  boundingBox,
-  defaultLatitude = 55.43869834845736,
-  defaultLongitude = -2.2472353515624945,
-  defaultLatLng = new google.maps.LatLng(defaultLatitude, defaultLongitude);
+  boundingBox;
 
   //make the a new instance of google maps available on window, so we can access it anywhere
   //anywhere on the page.
@@ -41,54 +38,39 @@ $(document).ready(function() {
   });
   ///////////////////////////
 
-  ///////Responsive map
-  google.maps.event.addDomListener(window, "resize", function() {
-    var center = map.getCenter();
-    google.maps.event.trigger(map, "resize");
-    map.setCenter(center);
-  });
-  ///////////////////////////
-
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
     var latLng;
     if(getLatLngFromUrl()) {
       latLng = getLatLngFromUrl();
-    } else {
-      latLng = defaultLatLng;
     }
-    map.setCenter(latLng);
-    // centerMapToLocation(map);
+    map.setCenter(
+      new google.maps.LatLng(latLng[0],latLng[1])
+    );
     map.setZoom(10);
-    boundingBox = getBoundingBoxFromMap(map);
-    addMakersWithInBoundingBox(boundingBox);
+    getMarkersFromLatLng(latLng[0],latLng[1]);
   });
   //////////////////////////
 
   ///////Adding markers when the user drags the map
   google.maps.event.addListener(map, 'dragend', function() {
     boundingBox = getBoundingBoxFromMap(map);
-    addMakersWithInBoundingBox(boundingBox);
+    getMarkersAndResultsFromBounds(boundingBox);
   });
   /////////////////////////
-
-  // function centerMapToLocation(map) {
-  //   var latLng = getLatLngFromUrl();
-  //   if (latLng) map.setCenter(latLng);
-  // }
 
   function getLatLngFromUrl() {
     var lat = $.urlParam('lat'),
     lng = $.urlParam('lng');
     if(lat && lng) {
-      return new google.maps.LatLng(lat,lng);
+      return [lat, lng]
     }
     return false;
   }
 
-  function addMakersWithInBoundingBox(boundingBox){
-    getMarkerData(boundingBox);
-  }
+  // function addMakersWithInBoundingBox(boundingBox){
+  //   getMarkerData(boundingBox);
+  // }
 
   function getBoundingBoxFromMap(map) {
     var bounds = map.getBounds();
@@ -107,6 +89,22 @@ $(document).ready(function() {
     }
   }
 
+  function searchResults(searchResults){
+      var waters = searchResults.markers,
+      results = searchResults.results;
+      addMarkers(waters);
+      addResultsToPage(results);
+  }
+
+  function initialMarkers(searchResults){
+    var waters = searchResults.markers;
+    addMarkers(waters);
+  }
+
+  function addResultsToPage(results){
+    $('#results-container').replaceWith(results);
+  }
+
   function removeAndResetMarkers() {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
@@ -114,23 +112,38 @@ $(document).ready(function() {
     markers = [];
   }
 
-  function getMarkerData(bounds){
+  function getMarkersAndResultsFromBounds(bounds){
     $.ajax({
       type: 'POST',
-      url: '/waters/within_bounding_box',
+      url: '/search',
       data: JSON.stringify({
-        'bounds': bounds,
-        'max_number_of_waters': null
+        'bounds': bounds
       }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-      success: addMarkers,
+      success: searchResults,
       failure: function(errMsg) {
           alert(errMsg);
       }
     });
   }
 
+  function getMarkersFromLatLng(lat,lng){
+    $.ajax({
+      type: 'POST',
+      url: '/search',
+      data: JSON.stringify({
+        'lat': lat,
+        'lng': lng
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: initialMarkers,
+      failure: function(errMsg) {
+          alert(errMsg);
+      }
+    });
+  }
   $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null){
@@ -141,4 +154,3 @@ $(document).ready(function() {
     }
   }
 });
-

@@ -19,8 +19,7 @@ GoneFishing::Application.routes.draw do
   post  '/add/water/:id', to: "homepage#create_water"
 
   get 'search' => 'search#index'
-
-  post '/waters/within_bounding_box', to: 'admin/waters#within_bounding_box'
+  post 'search' => 'search#index'
 
   get '/admin/login' => 'admin/sessions#new'
   post '/admin/login' => 'admin/sessions#create'
