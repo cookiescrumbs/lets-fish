@@ -82,8 +82,14 @@ $(document).ready(function() {
   function addMarkers(waters){
     removeAndResetMarkers();
     for (i = 0; i < waters.length; i++) {
+      markerCount = i;
+      markerCount++;
       var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
-      var marker = new google.maps.Marker({ position: latLng, map: map});
+      var marker = new google.maps.Marker({
+        position: latLng,
+        label: markerCount.toString(),
+        map: map
+      });
       marker.setMap(map);
       markers.push(marker);
     }
