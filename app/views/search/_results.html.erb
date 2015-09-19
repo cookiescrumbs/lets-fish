@@ -1,8 +1,12 @@
 <div id="results-container">
 <% if @waters.exists? %>
-    <% @waters.each_slice(2) do | waters | %>
+<%
+    count = 0
+    @waters.each_slice(2).with_index do | waters | %>
         <div class="row">
-            <% waters.each do | water | %>
+            <% waters.each do | water |
+                count +=1
+            %>
                 <div class="col-md-6 col-sm-6 result-item" itemscope itemtype="http://schema.org/Place">
                     <div itemscope itemtype="http://schema.org/BodyOfWater">
                         <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
@@ -16,11 +20,12 @@
                             </div>
                         </a>
                         <div class="result-caption">
+                            <h3><span class="label label-default item-count"><%= count %></span></h3>
                             <h4 itemprop="name" ><%= water.name %></h4>
-                                <p itemprop="description" class="hidden" > <%= water.description %></p>
-                                <p class="text-muted">Settle, North Yorkshire</p>
-                                <p class="text-muted" ><%= water.species.map{|s| s.name }.join(', ') %>
-                                <p class="text-muted"><%= water.water_type.category %></p>
+                            <p itemprop="description" class="hidden" ><%= water.description %></p>
+                            <p class="text-muted">Settle, North Yorkshire</p>
+                            <p class="text-muted" ><%= water.species.map{|s| s.name }.join(', ') %>
+                            <p class="text-muted"><%= water.water_type.category %></p>
                         </div>
                     </div>
                 </div>
