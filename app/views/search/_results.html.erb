@@ -20,7 +20,10 @@
                             </div>
                         </a>
                         <div class="result-caption">
-                            <h3><span class="label label-default item-count"><%= count %></span></h3>
+                            <span class="fa-stack fa-3x pull-left">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-stack-1x fa-inverse"><%= count %></i>
+                            </span>
                             <h4 itemprop="name" ><%= water.name %></h4>
                             <p itemprop="description" class="hidden" ><%= water.description %></p>
                             <p class="text-muted">Settle, North Yorkshire</p>
