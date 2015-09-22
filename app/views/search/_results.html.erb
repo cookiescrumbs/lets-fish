@@ -19,16 +19,19 @@
                                 <img src="<%= asset_path('test-image.jpg') %>" class="img-responsive" alt="" itemprop="contentUrl">
                             </div>
                         </a>
-                        <div class="result-caption">
+                        <div class="result-caption clearfix">
                             <span class="fa-stack fa-3x pull-left">
                                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                                 <i class="fa fa-stack-1x fa-inverse"><%= count %></i>
                             </span>
-                            <h4 itemprop="name" ><%= water.name %></h4>
-                            <p itemprop="description" class="hidden" ><%= water.description %></p>
-                            <p class="text-muted">Settle, North Yorkshire</p>
-                            <p class="text-muted" ><%= water.species.map{|s| s.name }.join(', ') %>
-                            <p class="text-muted"><%= water.water_type.category %></p>
+                            <span class="pull-right">
+                                <h4 itemprop="name" ><%= water.name %></h4>
+                                <p itemprop="description" class="hidden" ><%= water.description %></p>
+                                <p class="text-muted">Settle, North Yorkshire</p>
+                                <p class="text-muted" ><%= water.species.map{|s| s.name }.join(', ') %>
+                                <p class="text-muted"><%= water.water_type.category %></p>
+                            </span>
+
                         </div>
                     </div>
                 </div>
