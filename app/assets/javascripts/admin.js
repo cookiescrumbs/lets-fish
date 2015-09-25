@@ -15,5 +15,4 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require turbolinks
-//= require map
-//= require water_marker
+//= require add_edit_map

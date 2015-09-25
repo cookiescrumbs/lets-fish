@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  var mapOptions = {
+  var map,
+  mapOptions = {
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
       mapTypeIds: [
@@ -11,14 +12,13 @@ $(document).ready(function() {
   markers =[],
   boundingBox;
 
-  //make the a new instance of google maps available on window, so we can access it anywhere
-  //anywhere on the page.
-  window.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  //make the a new instance of google maps
+  map = new google.maps.Map(document.getElementById('map'), mapOptions);
   ///////Search Box
   // Create the search box and link it to the UI element.
   var input = (document.getElementById('map-search-box'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  window.searchBox = new google.maps.places.SearchBox((input));
+  searchBox = new google.maps.places.SearchBox((input));
 
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.
