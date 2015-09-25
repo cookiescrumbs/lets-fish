@@ -1,9 +1,12 @@
 $(document).ready(function() {
   var map,
   searchBox,
+  searchInput,
+  marker,
   mapOptions = {
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: google.maps.ControlPosition.LEFT_BOTTOM,
       mapTypeIds: [
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
@@ -14,23 +17,21 @@ $(document).ready(function() {
   ////////Map
   //make the a new instance of google maps
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  map.setCenter(
-    getLatLngFromEditWaterForm()
-  );
+  map.setCenter(initialiseMap());
   map.setZoom(10);
   //////////////////////////////////////////////////////
 
   ///////Search Box
   // Create the search box and link it to the UI element.
-  var input = (document.getElementById('map-search-box'));
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  searchBox = new google.maps.places.SearchBox((input));
+  searchInput = (document.getElementById('map-search-box'));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchInput);
+  searchBox = new google.maps.places.SearchBox(searchInput);
   ///////////////////////////////////////////////////////
   displayInitialLatLng();
   //wait till map has loaded and add a draggable marker
   google.maps.event.addListenerOnce(map,'idle', function(){
 
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         position: getMarkerPosition(map),
         map: map,
         draggable: true
@@ -50,6 +51,7 @@ $(document).ready(function() {
       google.maps.event.addListener(map, 'dragend', function() {
         var center = map.getCenter();
         marker.setPosition(center);
+        updateMarkerPosition(marker.getPosition());
       });
 
       google.maps.event.addListener(map, 'zoom_changed', function() {
@@ -72,17 +74,17 @@ $(document).ready(function() {
   });
 
   function addAndOpenInfoWindow(map, marker, content){
-      var infowindow = new google.maps.InfoWindow({
-          content: content
-      });
-      infowindow.open(map, marker);
+    var infowindow = new google.maps.InfoWindow({
+        content: content
+    });
+    infowindow.open(map, marker);
   }
 
   function updateMarkerPosition(latLng) {
     var lat = latLng.lat();
     var lng = latLng.lng();
-    document.getElementById('latitude').value = lat;
-    document.getElementById('longitude').value = lng;
+    $('#latitude').value = lat;
+    $('#longitude').value = lng;
     $('#display-latitude').text(lat);
     $('#display-longitude').text(lng);
   }
@@ -104,8 +106,14 @@ $(document).ready(function() {
   function displayInitialLatLng(){
     var lat = $('input#latitude').attr('value');
     var lng = $('input#longitude').attr('value');
-    $('#display-latitude').text(lat);
-    $('#display-longitude').text(lng);
+
+    if(lat & lng){
+      $('#display-latitude').text(lat);
+      $('#display-longitude').text(lng);
+    }
   }
 
+  function initialiseMap(){
+    return (getLatLngFromEditWaterForm())? getLatLngFromEditWaterForm() : {lat: 53.4807593, lng: -2.2426305000000184};
+  }
 });

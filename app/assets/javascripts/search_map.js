@@ -2,7 +2,8 @@ $(document).ready(function() {
   var map,
   mapOptions = {
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: google.maps.ControlPosition.LEFT_BOTTOM,
       mapTypeIds: [
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
@@ -17,7 +18,9 @@ $(document).ready(function() {
   ///////Search Box
   // Create the search box and link it to the UI element.
   var input = (document.getElementById('map-search-box'));
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  map.controls[
+    google.maps.ControlPosition.TOP_LEFT
+  ].push(input);
   searchBox = new google.maps.places.SearchBox((input));
 
   // Listen for the event fired when the user selects an item from the
