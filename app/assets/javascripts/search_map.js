@@ -1,7 +1,9 @@
 $(document).ready(function() {
-  var mapOptions = {
+  var map,
+  mapOptions = {
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: google.maps.ControlPosition.LEFT_BOTTOM,
       mapTypeIds: [
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
@@ -11,14 +13,15 @@ $(document).ready(function() {
   markers =[],
   boundingBox;
 
-  //make the a new instance of google maps available on window, so we can access it anywhere
-  //anywhere on the page.
-  window.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  //make the a new instance of google maps
+  map = new google.maps.Map(document.getElementById('map'), mapOptions);
   ///////Search Box
   // Create the search box and link it to the UI element.
   var input = (document.getElementById('map-search-box'));
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  window.searchBox = new google.maps.places.SearchBox((input));
+  map.controls[
+    google.maps.ControlPosition.TOP_LEFT
+  ].push(input);
+  searchBox = new google.maps.places.SearchBox((input));
 
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.
@@ -49,6 +52,14 @@ $(document).ready(function() {
     );
     map.setZoom(10);
     getMarkersFromLatLng(latLng[0],latLng[1]);
+
+    /////Adding markers when the user zooms the map
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      //add markers to map within bounding box
+      boundingBox = getBoundingBoxFromMap(map);
+      getMarkersAndResultsFromBounds(boundingBox);
+    });
+    //////////////////////////
   });
   //////////////////////////
 
@@ -67,10 +78,6 @@ $(document).ready(function() {
     }
     return false;
   }
-
-  // function addMakersWithInBoundingBox(boundingBox){
-  //   getMarkerData(boundingBox);
-  // }
 
   function getBoundingBoxFromMap(map) {
     var bounds = map.getBounds();
