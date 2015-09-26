@@ -85,6 +85,7 @@ $(document).ready(function() {
         //add markers to map within bounding box
         boundingBox = getBoundingBoxFromMap(map);
         getMarkersAndResultsFromBounds(boundingBox);
+        updateMarkerPosition(marker.getPosition());
       });
   });
 
