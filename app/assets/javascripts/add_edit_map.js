@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var map,
+  markers =[],
   searchBox,
   searchInput,
   marker,
@@ -43,6 +44,12 @@ $(document).ready(function() {
         content = "Drag and drop this marker onto the water you'd like to add."
       );
 
+      //add markers to map within bounding box
+      boundingBox = getBoundingBoxFromMap(map);
+      getMarkersAndResultsFromBounds(boundingBox);
+
+      updateMarkerPosition(marker.getPosition());
+
       //Add listener to update lat / lng marker details on the form
       google.maps.event.addListener(marker, 'drag', function() {
         updateMarkerPosition(marker.getPosition());
@@ -52,11 +59,16 @@ $(document).ready(function() {
         var center = map.getCenter();
         marker.setPosition(center);
         updateMarkerPosition(marker.getPosition());
+        boundingBox = getBoundingBoxFromMap(map);
+        getMarkersAndResultsFromBounds(boundingBox);
       });
 
       google.maps.event.addListener(map, 'zoom_changed', function() {
         var center = map.getCenter();
         marker.setPosition(center);
+        //add markers to map within bounding box
+        boundingBox = getBoundingBoxFromMap(map);
+        getMarkersAndResultsFromBounds(boundingBox);
       });
 
       google.maps.event.addListener(searchBox, 'places_changed', function() {
@@ -70,6 +82,9 @@ $(document).ready(function() {
         bounds.extend(firstResult.geometry.location);
         map.fitBounds(bounds);
         map.setZoom(10);
+        //add markers to map within bounding box
+        boundingBox = getBoundingBoxFromMap(map);
+        getMarkersAndResultsFromBounds(boundingBox);
       });
   });
 
@@ -83,8 +98,8 @@ $(document).ready(function() {
   function updateMarkerPosition(latLng) {
     var lat = latLng.lat();
     var lng = latLng.lng();
-    $('#latitude').value = lat;
-    $('#longitude').value = lng;
+    $('#latitude')[0].value = lat;
+    $('#longitude')[0].value = lng;
     $('#display-latitude').text(lat);
     $('#display-longitude').text(lng);
   }
@@ -116,4 +131,56 @@ $(document).ready(function() {
   function initialiseMap(){
     return (getLatLngFromEditWaterForm())? getLatLngFromEditWaterForm() : {lat: 53.4807593, lng: -2.2426305000000184};
   }
+
+  function getBoundingBoxFromMap(map) {
+    var bounds = map.getBounds();
+    var northEast  = bounds.getNorthEast();
+    var southWest  = bounds.getSouthWest();
+    return [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()];
+  }
+
+  function getMarkersAndResultsFromBounds(bounds){
+    $.ajax({
+      type: 'POST',
+      url: '/search',
+      data: JSON.stringify({
+        'bounds': bounds
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: searchResults,
+      failure: function(errMsg) {
+          alert(errMsg);
+      }
+    });
+  }
+
+  function searchResults(searchResults){
+    var waters = searchResults.markers;
+    addMarkers(waters);
+  }
+
+  function addMarkers(waters){
+    removeAndResetMarkers();
+    for (i = 0; i < waters.length; i++) {
+      markerCount = i;
+      markerCount++;
+      var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
+      var marker = new google.maps.Marker({
+        position: latLng,
+        label: markerCount.toString(),
+        map: map
+      });
+      marker.setMap(map);
+      markers.push(marker);
+    }
+  }
+
+  function removeAndResetMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers = [];
+  }
+
 });

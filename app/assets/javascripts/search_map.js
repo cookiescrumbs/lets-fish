@@ -52,6 +52,14 @@ $(document).ready(function() {
     );
     map.setZoom(10);
     getMarkersFromLatLng(latLng[0],latLng[1]);
+
+    /////Adding markers when the user zooms the map
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      //add markers to map within bounding box
+      boundingBox = getBoundingBoxFromMap(map);
+      getMarkersAndResultsFromBounds(boundingBox);
+    });
+    //////////////////////////
   });
   //////////////////////////
 
@@ -70,10 +78,6 @@ $(document).ready(function() {
     }
     return false;
   }
-
-  // function addMakersWithInBoundingBox(boundingBox){
-  //   getMarkerData(boundingBox);
-  // }
 
   function getBoundingBoxFromMap(map) {
     var bounds = map.getBounds();
