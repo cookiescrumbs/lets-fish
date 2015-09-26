@@ -38,17 +38,14 @@ $(document).ready(function() {
         $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
     });
 
-    // function getLngLatForLocation(location) {
-    //   return [location.geometry.location.lng(), location.geometry.location.lat()];
-    // }
-    ////////////////////////////////////////////
-
-    /////Hide / show fishery form/////////////////
-    // $('div.row.fishery-name').hide();
-    // $('#yes').click(function () {
-    //     $('#fishery-question').hide();
-    //     $('#fishery-question').hide();
-    //     $('div.row.fishery-name').fadeIn();
-    // });
-    ///////////////////////////////////////////////
+    //validate search form
+    $('form#search').submit(function() {
+      var lat = $("form#search input[name='lat']");
+      var lng = $("form#search input[name='lng']");
+      if ((lng.length <= 0) || (lat.length <= 0)) {
+        $('.alert-location').remove();
+        $('header').append('<div class="alert alert-danger alert-location" role="alert"><span class="sr-only">Error:</span>Please select a location.</div>');
+        return false;
+      }
+    });
 });

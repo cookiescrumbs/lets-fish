@@ -1,5 +1,5 @@
 <div id="results-container">
-<% if @waters.exists? %>
+<% if !@waters.nil? && @waters.exists? %>
 <%
     count = 0
     @waters.each_slice(2).with_index do | waters | %>

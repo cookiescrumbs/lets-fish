@@ -251,7 +251,7 @@ fieldset[disabled] .btn-xl.active {
      /*   background: #f7f7f7;*/
     }
 
-    input#location{
+    input#location, .location-alert{
         width: 500px;
         margin: 0 auto;
     }
@@ -911,5 +911,10 @@ body#search{
 }
 body#search footer{
     display: none;
+}
+
+.alert-location {
+    position: absolute;
+    width: 100%;
 }
 
