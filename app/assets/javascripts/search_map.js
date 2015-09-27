@@ -52,7 +52,10 @@ $(document).ready(function() {
     );
     map.setZoom(10);
     getMarkersFromLatLng(latLng[0],latLng[1]);
-
+    //show search box
+    if($( window ).width() > 768) {
+      $('#map-search-box').show("slow");
+    }
     /////Adding markers when the user zooms the map
     google.maps.event.addListener(map, 'zoom_changed', function() {
       //add markers to map within bounding box
