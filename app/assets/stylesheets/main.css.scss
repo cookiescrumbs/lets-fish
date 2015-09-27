@@ -51,7 +51,7 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
@@ -917,4 +917,28 @@ body#search footer{
     position: absolute;
     width: 100%;
 }
+
+.title-header-outer {
+    position: relative;
+}
+
+.title-header {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.water-count {
+    position: absolute !important;
+    right: 20px;
+    top: 10px;
+}
+
+.water-name {
+    width: 85%;
+    margin-left: 10px;
+    color: #fff;
+}
+
+
 
