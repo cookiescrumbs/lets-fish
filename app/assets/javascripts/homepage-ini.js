@@ -22,20 +22,27 @@ $(document).ready(function() {
 
     //Search box //////////////////////////////////
     var input = document.getElementById("location");
-    var searchBox = new google.maps.places.SearchBox(input);
-
-    google.maps.event.addListener(searchBox, 'places_changed', function() {
-
-        var places = searchBox.getPlaces();
-
-        if (places.length <= 0) {
-            return;
+    var autoComplete = new google.maps.places.Autocomplete(
+      input,
+      {
+        types: ['geocode'],
+        componentRestrictions: {
+            country: 'uk'
         }
-        var location = places[0];
-        var lat = location.geometry.location.lat();
-        var lng = location.geometry.location.lng();
-        $('.search form .form-group').append('<input type="hidden" name="lat" value="'+lat+'">');
-        $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
+      }
+    );
+
+    autoComplete.addListener('place_changed', function(){
+
+        var place = autoComplete.getPlace();
+
+        if (place.geometry) {
+          var lat = place.geometry.location.lat();
+          var lng = place.geometry.location.lng();
+          $('.search form .form-group').append('<input type="hidden" name="lat" value="'+lat+'">');
+          $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
+        }
+
     });
 
     //validate search form
