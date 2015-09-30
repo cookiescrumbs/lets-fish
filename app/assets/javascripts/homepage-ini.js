@@ -41,6 +41,7 @@ $(document).ready(function() {
           var lng = place.geometry.location.lng();
           $('.search form .form-group').append('<input type="hidden" name="lat" value="'+lat+'">');
           $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
+          $('form#search').submit();
         }
 
     });
