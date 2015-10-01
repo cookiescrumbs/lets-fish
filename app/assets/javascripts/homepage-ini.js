@@ -45,15 +45,4 @@ $(document).ready(function() {
         }
 
     });
-
-    //validate search form
-    $('form#search').submit(function() {
-      var lat = $("form#search input[name='lat']");
-      var lng = $("form#search input[name='lng']");
-      if ((lng.length <= 0) || (lat.length <= 0)) {
-        $('.alert-location').remove();
-        $('header').append('<div class="alert alert-danger alert-location" role="alert"><span class="sr-only">Error:</span>Please select a location.</div>');
-        return false;
-      }
-    });
 });
