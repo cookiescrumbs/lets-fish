@@ -12,7 +12,6 @@ describe "Homepage location search", type: :feature, js: true do
       @homepage.google_places.first.click
       @homepage.wait_for_lat
       @homepage.wait_for_lng
-      @homepage.submit.click
     end
 
     it "routes to the search page with correct location, lat and lng parameters in the url" do

@@ -15,7 +15,6 @@ module PageObjects
     element :location, "input[name='location']"
     element :lng, "input[name='lng']"
     element :lat, "input[name='lat']"
-    element :submit, ".search form button"
     elements :google_places, ".pac-item"
   end
 end
