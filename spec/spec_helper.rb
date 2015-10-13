@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'faker'
+require 'webmock/rspec'
 
 ActiveRecord::Base.logger = nil
 
