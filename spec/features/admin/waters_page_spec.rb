@@ -9,6 +9,7 @@ describe "Manage waters page", type: :feature do
   context "there is a fishery with waters" do
 
     before(:each) do
+      stub_google_geocode
       @species    = FactoryGirl.create_list :species, 4
       @water_type = FactoryGirl.create_list :water_type, 4
       @fishery    = FactoryGirl.create :fishery_with_waters

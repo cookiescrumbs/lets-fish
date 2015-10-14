@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810182206) do
+ActiveRecord::Schema.define(version: 20151013074929) do
 
   create_table "addresses", force: true do |t|
     t.integer  "fishery_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150810182206) do
     t.datetime "updated_at"
     t.integer  "water_type_id"
     t.integer  "fishery_id"
+    t.text     "address"
   end
 
   add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"

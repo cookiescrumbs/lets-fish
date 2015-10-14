@@ -55,6 +55,10 @@ group :development, :test do
   gem 'chromedriver-helper'
 end
 
+group :test do
+  gem 'webmock'
+end
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 

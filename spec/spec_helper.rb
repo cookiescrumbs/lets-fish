@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'faker'
+require 'webmock/rspec'
 
 ActiveRecord::Base.logger = nil
 
@@ -17,6 +18,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.include ActiveRecordHelpers
+  config.include WebMockHelpers::GoogleApis
   config.include SessionHelpers, type: :feature
   config.include Requests::JsonHelpers, type: :request
   config.include FactoryGirl::Syntax::Methods

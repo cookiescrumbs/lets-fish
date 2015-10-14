@@ -1,9 +1,10 @@
 describe Water, :type => :model do
 
   before do
+    stub_google_geocode
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
-    @water = FactoryGirl.create(:water)
+    @water = FactoryGirl.create(:water, latitude: -41.21924848834151 , longitude: -70.70650221597815 )
   end
 
     it "is not valid without a name" do
@@ -44,6 +45,14 @@ describe Water, :type => :model do
 
         @water.season_end = Date.new(2002).to_s
         expect(@water.season_end).to eql Date.new(2012)
+      end
+
+    end
+
+    describe "Address" do
+
+      it "is the 'formatted address' from google maps goecode api" do
+        expect(@water.address).to eql("Pilcaniyeu, Río Negro, Argentina")
       end
 
     end

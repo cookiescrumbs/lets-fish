@@ -1,0 +1,137 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Pilcaniyeu",
+               "short_name" : "Pilcaniyeu",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Río Negro",
+               "short_name" : "Río Negro",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Argentina",
+               "short_name" : "AR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Pilcaniyeu, Río Negro, Argentina",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : -39.8780012,
+                  "lng" : -69.77569
+               },
+               "southwest" : {
+                  "lat" : -41.5458636,
+                  "lng" : -71.22881099999999
+               }
+            },
+            "location" : {
+               "lat" : -40.735337,
+               "lng" : -70.6216794
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -39.8780012,
+                  "lng" : -69.77569
+               },
+               "southwest" : {
+                  "lat" : -41.5458636,
+                  "lng" : -71.22881099999999
+               }
+            }
+         },
+         "place_id" : "ChIJ2SnJfcocEJYRU03MUrYBV7Q",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Río Negro",
+               "short_name" : "Río Negro",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Argentina",
+               "short_name" : "AR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Río Negro, Argentina",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : -37.5789663,
+                  "lng" : -62.78731459999999
+               },
+               "southwest" : {
+                  "lat" : -42.0024983,
+                  "lng" : -71.9029079
+               }
+            },
+            "location" : {
+               "lat" : -40.8261434,
+               "lng" : -63.0266339
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -37.5789663,
+                  "lng" : -62.78731459999999
+               },
+               "southwest" : {
+                  "lat" : -42.0024984,
+                  "lng" : -71.9029079
+               }
+            }
+         },
+         "place_id" : "ChIJC1OmsMSC4pUR266wM__G38I",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Argentina",
+               "short_name" : "AR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Argentina",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : -21.7810459,
+                  "lng" : -53.637481
+               },
+               "southwest" : {
+                  "lat" : -55.05727899999999,
+                  "lng" : -73.5603601
+               }
+            },
+            "location" : {
+               "lat" : -38.416097,
+               "lng" : -63.61667199999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -21.7810459,
+                  "lng" : -53.637481
+               },
+               "southwest" : {
+                  "lat" : -55.05727899999999,
+                  "lng" : -73.5603601
+               }
+            }
+         },
+         "place_id" : "ChIJZ8b99fXKvJURqA_wKpl3Lz0",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
