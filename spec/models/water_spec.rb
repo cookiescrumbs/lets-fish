@@ -1,14 +1,10 @@
 describe Water, :type => :model do
 
   before do
-    stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?language=en&latlng=-41.21924848834151,-70.70650221597815&sensor=false").
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => File.read('spec/fixtures/googleapis/geocode/pilcaniyeu_rio_negro_argentina.json'), :headers => {})
-
+    stub_google_geocode
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
     @water = FactoryGirl.create(:water, latitude: -41.21924848834151 , longitude: -70.70650221597815 )
-
   end
 
     it "is not valid without a name" do
@@ -53,9 +49,9 @@ describe Water, :type => :model do
 
     end
 
-    describe "Address", focus: true  do
+    describe "Address" do
 
-      it "is the 'formatted address' from google maps goecode" do
+      it "is the 'formatted address' from google maps goecode api" do
         expect(@water.address).to eql("Pilcaniyeu, Río Negro, Argentina")
       end
 

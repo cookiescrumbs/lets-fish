@@ -4,7 +4,7 @@ describe "New water page", type: :feature do
 
   before :each do
     login FactoryGirl.create :user
-
+    stub_google_geocode
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
     @fishery = FactoryGirl.create :fishery, name: "Bob's big fishery"

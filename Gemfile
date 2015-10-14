@@ -49,11 +49,14 @@ group :development, :test do
   gem 'shotgun'
   gem 'faker'
   gem 'rack_session_access'
-  gem 'webmock'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+end
+
+group :test do
+  gem 'webmock'
 end
 
 # Use ActiveModel has_secure_password
