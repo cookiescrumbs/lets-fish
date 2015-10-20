@@ -26,4 +26,4 @@ config/secrets.yml
 /vendor/bundle
 
 ##aws details
-config/aws.yml
+/config/aws.yml
