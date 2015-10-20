@@ -30,4 +30,11 @@ GoneFishing::Application.configure do
   config.assets.raise_runtime_errors = true
   #Shows asset errors that you will get in production in the development environment
   config.assets.raise_asset_errors = true
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :bucket => 'gone-fishing',
+    :url => ':s3_domain_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename'
+  }
 end

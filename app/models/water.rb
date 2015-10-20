@@ -4,6 +4,8 @@ class Water < ActiveRecord::Base
 
   has_and_belongs_to_many :species
 
+  has_many :images
+
   validates_presence_of :fishery_id
   validates_presence_of :name, message: "Water name can't be blank"
   validates_presence_of :species, message: "You need to select at least one fish species"
