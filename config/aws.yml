@@ -1,8 +1,0 @@
-development:
-  access_key_id: AKIAICQWTXOF7CG5HYZA
-  secret_access_key: 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
-
-## Not needed for Heroku https://devcenter.heroku.com/articles/paperclip-s3#configuration
-# production:
-#   access_key_id: AWS_ACCESS_KEY_ID
-#   secret_access_key: AWS_SECRET_KEY_ID
