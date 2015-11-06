@@ -242,7 +242,7 @@ fieldset[disabled] .btn-xl.active {
 @media(min-width:768px) {
     .sidebar {
         position: fixed;
-        top: 50px;
+        top: 200px;
         left: 0;
         bottom: 0;
         width: 60%;
@@ -262,7 +262,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     #search .navbar .container {
-        margin-left: 0;
+        /*margin-left: 0;*/
     }
 
     .navbar-default {
@@ -287,7 +287,7 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #222;
+        background-color: #037EB2;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -840,7 +840,7 @@ body {
         left: auto;
         bottom: 0;
         width: 100%;
-        top: 50px;
+        top: 200px;
     }
 
     #map {
@@ -898,7 +898,7 @@ body {
 }
 
 body#search{
-    background-color: #f7f7f7; /*bg-light-gray*/
+    background-color: #fff; /*bg-light-gray*/
 }
 body#search footer{
     display: none;
