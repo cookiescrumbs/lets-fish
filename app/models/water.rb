@@ -4,7 +4,7 @@ class Water < ActiveRecord::Base
 
   has_and_belongs_to_many :species
 
-  has_many :images
+  has_many :images, dependent: :destroy
 
   validates_presence_of :fishery_id
   validates_presence_of :name, message: "Water name can't be blank"

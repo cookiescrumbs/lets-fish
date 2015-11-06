@@ -4,7 +4,8 @@
 
   has_attached_file :image,
                     styles: {
-                        medium: '650x350'
+                        medium: '650x350',
+                        large: '1286x960'
                     }
 
   # Validate the attached image is image/jpg, image/png, etc
