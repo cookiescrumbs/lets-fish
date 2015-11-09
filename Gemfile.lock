@@ -31,6 +31,11 @@ GEM
     archive-zip (0.7.0)
       io-like (~> 0.3.0)
     arel (5.0.1.20140414130214)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt-ruby (3.0.1)
     builder (3.2.2)
     byebug (2.7.0)
@@ -47,7 +52,11 @@ GEM
     chromedriver-helper (1.0.0)
       archive-zip (~> 0.7.0)
       nokogiri (~> 1.6)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
     cliver (0.3.2)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -97,12 +106,19 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mimemagic (0.3.0)
     mini_portile (0.6.0)
     minitest (5.7.0)
     multi_json (1.11.1)
     multi_xml (0.5.5)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    paperclip (4.3.1)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     pg (0.17.1)
     poltergeist (1.5.1)
       capybara (~> 2.1)
@@ -224,6 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk (< 2.0)
   bcrypt-ruby (~> 3.0.0)
   capybara
   chromedriver-helper
@@ -236,6 +253,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
+  paperclip
   pg
   poltergeist
   possessive
