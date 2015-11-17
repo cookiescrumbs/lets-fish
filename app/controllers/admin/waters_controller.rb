@@ -54,7 +54,7 @@ class Admin::WatersController < AdminController
   end
 
   def image_params
-    params[:images][0][:image]
+    params[:images][0][:image] unless params[:images].nil?
   end
 
   def set_fishery
