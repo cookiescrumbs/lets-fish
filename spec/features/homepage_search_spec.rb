@@ -5,7 +5,6 @@ describe "Homepage location search", type: :feature, js: true do
   context "user searches for a water and clicks submit " do
 
     before do
-      WebMock.disable!
       @homepage = PageObjects::Homepage.new
       @homepage.load
       @homepage.location.set 'man'
