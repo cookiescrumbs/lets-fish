@@ -27,6 +27,7 @@ describe "New water page", type: :feature do
       check @species.first.name
       check @species.last.name
       choose @water_type.first.category
+      attach_file('file', File.join(Rails.root, 'spec/fixtures/files/loch.jpg' ))
 
       click_on "Submit"
 
@@ -53,4 +54,6 @@ describe "New water page", type: :feature do
     end
 
   end
+
+
 end

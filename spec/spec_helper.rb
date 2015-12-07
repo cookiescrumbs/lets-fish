@@ -8,6 +8,7 @@ require 'webmock/rspec'
 
 ActiveRecord::Base.logger = nil
 
+#Allow local connetions, including those made by capybara (http://127.0.0.1:9887/__identify__)
 WebMock.disable_net_connect!(:allow_localhost => true)
 
 # Requires supporting ruby files with custom matchers and macros, etc,

@@ -37,8 +37,9 @@ gem 'unicorn'
 gem 'possessive'
 gem 'raygun4ruby'
 gem 'geocoder'
-gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
+gem 'sidekiq'
+gem 'delayed_paperclip'
 
 group :development, :test do
   gem 'rspec-rails'

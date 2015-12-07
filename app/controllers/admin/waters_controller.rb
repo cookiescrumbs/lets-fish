@@ -50,11 +50,7 @@ class Admin::WatersController < AdminController
   private
 
   def build_image(water)
-    water.images.build image: image_params unless image_params.nil?
-  end
-
-  def image_params
-    params[:images][0][:image] unless params[:images].nil?
+    water.images.build image: image_params[:image] unless image_params.nil?
   end
 
   def set_fishery
@@ -62,11 +58,14 @@ class Admin::WatersController < AdminController
   end
 
   def set_water
-    @water = Water.find(params['id'])
+    @water = Water.find(params[:id])
   end
 
   def water_params
     params.require(:water).permit(:name, :latitude, :longitude, :water_type_id, :species_ids => [])
   end
 
+  def image_params
+    params.require(:file).permit(:image) unless params[:file].nil?
+  end
 end
