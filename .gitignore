@@ -24,3 +24,6 @@ config/secrets.yml
 ## Environment normalisation:
 /.bundle
 /vendor/bundle
+
+##aws details
+/config/aws.yml

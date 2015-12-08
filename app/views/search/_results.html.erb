@@ -22,10 +22,10 @@
                             <meta itemprop="latitude" content="<%= water.latitude %>" />
                             <meta itemprop="longitude" content="<%= water.longitude %>" />
                         </div>
-                        <!-- <a href="#" class="result-link" itemprop="url" > -->
+                       <!--  <a href="#" class="result-link" itemprop="url" > -->
                             <div itemscope itemtype="http://schema.org/ImageObject">
                                 <h2 itemprop="name" class="hidden"><%= water.name %></h2>
-                                <img src="<%= asset_path('test-image.jpg') %>" class="img-responsive" alt="" itemprop="contentUrl">
+                                <img src="<%= water.images.first.image.url :medium unless water.images.first.nil? %>" class="img-responsive" alt="" itemprop="contentUrl">
                             </div>
                         <!-- </a> -->
                         <div class="result-caption">

@@ -19,6 +19,9 @@ Species.create(
     },
     {
       name: 'sea trout'
+    },
+    {
+      name: 'grayling'
     }
   ]
 )
@@ -26,13 +29,10 @@ Species.create(
 WaterType.create(
   [
     {
-      category: 'loch'
+      category: 'lake'
     },
     {
       category: 'river'
-    },
-    {
-      category: 'reservoir'
     }
   ]
 )
