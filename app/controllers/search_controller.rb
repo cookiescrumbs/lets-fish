@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
 
-  skip_before_action :verify_authenticity_token
   respond_to :html, :json
 
   def index
@@ -11,8 +10,8 @@ class SearchController < ApplicationController
   private
 
   def bounds
-    if !params[:bounds].nil?
-      params[:bounds]
+    if params[:bounds]
+      params[:bounds].split ','
     else
       calculate_bounds
     end
@@ -23,19 +22,15 @@ class SearchController < ApplicationController
   end
 
   def center_point
-    center_point_from_url || center_point_from_location
+    center_point_from_lat_lng || center_point_from_location
   end
 
-  def center_point_from_url
+  def center_point_from_lat_lng
     [params[:lat],params[:lng]] unless params[:lat].nil? || params[:lng].nil?
   end
 
   def center_point_from_location
     Geocoder.coordinates(params[:location]) unless params[:location].nil?
-  end
-
-  def within_bounding_box
-    @waters = Water.within_bounding_box(bounds)
   end
 
 end

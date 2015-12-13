@@ -1,0 +1,334 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Greater Manchester",
+               "short_name" : "Gt Man",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "England",
+               "short_name" : "England",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Manchester, UK",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 53.5445879,
+                  "lng" : -2.1470875
+               },
+               "southwest" : {
+                  "lat" : 53.39990299999999,
+                  "lng" : -2.3000969
+               }
+            },
+            "location" : {
+               "lat" : 53.4807593,
+               "lng" : -2.2426305
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 53.5445879,
+                  "lng" : -2.1470875
+               },
+               "southwest" : {
+                  "lat" : 53.39990299999999,
+                  "lng" : -2.3000969
+               }
+            }
+         },
+         "place_id" : "ChIJ2_UmUkxNekgRqmv-BDgUvtk",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Hillsborough County",
+               "short_name" : "Hillsborough County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New Hampshire",
+               "short_name" : "NH",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Manchester, NH, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 43.0514741,
+                  "lng" : -71.37540890000001
+               },
+               "southwest" : {
+                  "lat" : 42.889586,
+                  "lng" : -71.5127129
+               }
+            },
+            "location" : {
+               "lat" : 42.9956397,
+               "lng" : -71.4547891
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 43.0514741,
+                  "lng" : -71.37540890000001
+               },
+               "southwest" : {
+                  "lat" : 42.889586,
+                  "lng" : -71.5127129
+               }
+            }
+         },
+         "place_id" : "ChIJo2xmaNZO4okReXE1H0YyBGs",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Greater Manchester",
+               "short_name" : "Gt Man",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "England",
+               "short_name" : "England",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Manchester, UK",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 53.5445879,
+                  "lng" : -2.1470875
+               },
+               "southwest" : {
+                  "lat" : 53.3401062,
+                  "lng" : -2.3198961
+               }
+            },
+            "location" : {
+               "lat" : 53.4456021,
+               "lng" : -2.2224473
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 53.5445879,
+                  "lng" : -2.1470875
+               },
+               "southwest" : {
+                  "lat" : 53.3401062,
+                  "lng" : -2.3198961
+               }
+            }
+         },
+         "place_id" : "ChIJoceAoT2ye0gREDRt7Z75DAQ",
+         "types" : [ "administrative_area_level_3", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Hartford County",
+               "short_name" : "Hartford County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Connecticut",
+               "short_name" : "CT",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Manchester, CT, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 41.820298,
+                  "lng" : -72.463793
+               },
+               "southwest" : {
+                  "lat" : 41.7337989,
+                  "lng" : -72.5835331
+               }
+            },
+            "location" : {
+               "lat" : 41.7759301,
+               "lng" : -72.52150089999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 41.820298,
+                  "lng" : -72.463793
+               },
+               "southwest" : {
+                  "lat" : 41.7337989,
+                  "lng" : -72.5835331
+               }
+            }
+         },
+         "place_id" : "ChIJ3UEi0mJX5okRuCPMX8n8ius",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Manchester",
+               "short_name" : "Manchester",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Coffee County",
+               "short_name" : "Coffee County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Tennessee",
+               "short_name" : "TN",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Manchester, TN, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 35.5090069,
+                  "lng" : -86.0066568
+               },
+               "southwest" : {
+                  "lat" : 35.4106149,
+                  "lng" : -86.13592779999999
+               }
+            },
+            "location" : {
+               "lat" : 35.4817431,
+               "lng" : -86.0885993
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 35.5090069,
+                  "lng" : -86.0066568
+               },
+               "southwest" : {
+                  "lat" : 35.4106149,
+                  "lng" : -86.13592779999999
+               }
+            }
+         },
+         "place_id" : "ChIJY3D9NGFoYYgR5Ertvu1VmgA",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Greater Manchester",
+               "short_name" : "Gt Man",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "England",
+               "short_name" : "England",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Greater Manchester, UK",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 53.6857033,
+                  "lng" : -1.9096223
+               },
+               "southwest" : {
+                  "lat" : 53.3272977,
+                  "lng" : -2.7305208
+               }
+            },
+            "location" : {
+               "lat" : 53.4575955,
+               "lng" : -2.1578377
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 53.6857033,
+                  "lng" : -1.9096223
+               },
+               "southwest" : {
+                  "lat" : 53.3272977,
+                  "lng" : -2.7305208
+               }
+            }
+         },
+         "place_id" : "ChIJsS6I01Sme0gRgYDGISLYxyw",
+         "types" : [ "administrative_area_level_2", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

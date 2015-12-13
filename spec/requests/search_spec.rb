@@ -4,38 +4,48 @@ describe "Search API", type: :request do
     stub_google_geocode
     FactoryGirl.create_list :species, 5
     FactoryGirl.create_list :water_type, 5
-    FactoryGirl.create_list :water, 2, latitude: 54.43869834845736, longitude: -2.2472353515624945
-    FactoryGirl.create_list :water, 5
-
+    FactoryGirl.create_list :water, 2, latitude: 53.501942, longitude: -2.245983
   end
 
-  it "POST /search with bounds" do
+  it "GET /search with bounds" do
 
     params = {
-      bounds: [ 50.372397505869166, -9.495465332031245, 56.266804507181014, 6.1051206054687555],
-      lat: 54.43869834845736,
-      lng: -2.2472353515624945
+      bounds: [53.39990299999999,-2.3000969,53.5445879,-2.1470875]
     }
 
-    post '/search', params, { "Accept" => "application/json" }
+    get '/search', params, { "Accept" => "application/json" }
 
     expect(response).to be_success
     expect(json.length).to eq 2
     expect(json['markers'].first['name']).to eql waters.first.name
   end
 
-  it "POST /search without bounds" do
+  it "GET /search without bounds" do
 
     params = {
-      lat: 54.43869834845736,
-      lng: -2.2472353515624945
+      lat: 53.501942,
+      lng: -2.245983
     }
 
-    post '/search', params, { "Accept" => "application/json" }
+    get '/search', params, { "Accept" => "application/json" }
 
     expect(response).to be_success
     expect(json.length).to eq 2
     expect(json['markers'].first['name']).to eql waters.first.name
   end
+
+  it "GET /search with location only" do
+    stub_google_geocode_address
+    params = {
+      location: 'manchester'
+    }
+
+    get '/search', params, { "Accept" => "application/json" }
+
+    expect(response).to be_success
+    expect(json.length).to eq 2
+    expect(json['markers'].first['name']).to eql waters.first.name
+  end
+
 
 end

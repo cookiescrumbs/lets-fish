@@ -19,7 +19,6 @@ GoneFishing::Application.routes.draw do
   post  '/add/water/:id', to: "homepage#create_water"
 
   get 'search' => 'search#index'
-  post 'search' => 'search#index'
 
   get '/admin/login' => 'admin/sessions#new'
   post '/admin/login' => 'admin/sessions#create'
