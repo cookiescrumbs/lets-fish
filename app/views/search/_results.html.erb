@@ -25,7 +25,7 @@
                        <!--  <a href="#" class="result-link" itemprop="url" > -->
                             <div class="image-background" itemscope itemtype="http://schema.org/ImageObject">
                                 <h2 itemprop="name" class="hidden"><%= water.name %></h2>
-                                <img src="<%= (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>" class="img-responsive" alt="<%= water.name %>" itemprop="contentUrl">
+                                <img src="<%= (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>" class="img-responsive img-centered" alt="<%= water.name %>" itemprop="contentUrl">
                             </div>
                         <!-- </a> -->
                         <div class="result-caption">
