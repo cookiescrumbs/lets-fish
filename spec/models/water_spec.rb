@@ -52,7 +52,7 @@ describe Water, :type => :model do
     describe "Address" do
 
       it "is the 'formatted address' from google maps goecode api" do
-        expect(@water.address).to eql("Pilcaniyeu, Río Negro, Argentina")
+        expect(@water.address).to eql("Manchester, UK")
       end
 
     end
