@@ -55,7 +55,7 @@ $(document).ready(function() {
           case 'locality':
             address.lineTwo = component.long_name;
             break;
-          case 'postal_town'
+          case 'postal_town':
             address.lineTwo = component.long_name;
             break;
           case 'administrative_area_level_2':
@@ -72,6 +72,7 @@ $(document).ready(function() {
         }
       }
     });
+    // console.log(address);
     return address;
   }
 
