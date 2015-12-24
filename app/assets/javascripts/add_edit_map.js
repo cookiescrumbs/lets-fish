@@ -142,11 +142,11 @@ $(document).ready(function() {
 
   function getMarkersAndResultsFromBounds(bounds){
     $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: '/search',
-      data: JSON.stringify({
+      data: {
         'bounds': bounds
-      }),
+      },
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: searchResults,
