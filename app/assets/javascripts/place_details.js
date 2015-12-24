@@ -1,9 +1,9 @@
 $(document).ready(function() {
   //Search Fishery for fishery details //////////////////////////////////
-  disableFisheryFormSubmit();
   if(typeof $('#search-details')[0] == 'undefined') {
     return;
   }
+  disableFisheryFormSubmit();
   var input = $('#search-details')[0];
   var autoComplete = new google.maps.places.Autocomplete(
     input,
