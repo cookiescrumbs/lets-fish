@@ -1,5 +1,9 @@
 $(document).ready(function() {
-  //Search box //////////////////////////////////
+  //Search Fishery for fishery details //////////////////////////////////
+  disableFisheryFormSubmit();
+  if(typeof $('#search-details')[0] == 'undefined') {
+    return;
+  }
   var input = $('#search-details')[0];
   var autoComplete = new google.maps.places.Autocomplete(
     input,
@@ -77,6 +81,16 @@ $(document).ready(function() {
     $('#line2').val(fishery.lineTwo);
     $('#region').val(fishery.county);
     $('#country').val(fishery.country);
+  }
+
+  function disableFisheryFormSubmit() {
+    $('.edit_fishery').on('keyup keypress', function(e) {
+      var code = e.keyCode || e.which;
+      if (code == 13) {
+        e.preventDefault();
+        return false;
+      }
+    });
   }
 
 });

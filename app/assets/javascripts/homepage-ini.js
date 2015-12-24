@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
       //Scrolling animation for bootstrap theme
       $('a.page-scroll').bind('click', function(event) {
           var $anchor = $(this);
@@ -21,6 +20,7 @@ $(document).ready(function() {
      ////////////////////////////////////////////////////////////
 
     //Search box //////////////////////////////////
+    disableSearchFormSubmit();
     var input = document.getElementById("location");
     var autoComplete = new google.maps.places.Autocomplete(
       input,
@@ -45,4 +45,13 @@ $(document).ready(function() {
         }
 
     });
+    function disableSearchFormSubmit() {
+      $('#search').on('keyup keypress', function(e) {
+        var code = e.keyCode || e.which;
+        if (code == 13) {
+          e.preventDefault();
+          return false;
+        }
+      });
+    }
 });
