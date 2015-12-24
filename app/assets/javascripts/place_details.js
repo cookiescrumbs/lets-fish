@@ -14,65 +14,69 @@ $(document).ready(function() {
   autoComplete.addListener('place_changed', function(){
     var place = autoComplete.getPlace();
     window.place = place;
-    if (typeof place !== 'undefined') {
-        var address = buildAddress(place.address_components);
-        var fishery = {
-          name: place.name || null,
-          telephoneNumber: place.formatted_phone_number || null,
-          website: place.website || null,
-          postcode: address.postcode || null,
-          street: address.street || null,
-          lineTwo: address.lineTwo || null,
-          county: address.county || null,
-          country: address.country || null
-        }
-        $('#fishery-name').val(fishery.name);
-        $('#telephone').val(fishery.telephoneNumber);
-        $('#website').val(fishery.website);
-        $('#postcode').val(fishery.postcode);
-        $('#street').val(fishery.street);
-        $('#line2').val(fishery.lineTwo);
-        $('#region').val(fishery.county);
-        $('#country').val(fishery.country);
-    }
+    var fishery;
+    fishery = buildFisheryFromPlaceDetails(place);
+    insertFisheryDetailsIntoForm(fishery);
   });
+
+  function buildFisheryFromPlaceDetails(place) {
+    var address;
+    var fishery;
+
+    if (typeof place !== 'undefined') {
+      address = buildAddress(place.address_components);
+      fishery = {
+        name: place.name || null,
+        telephoneNumber: place.formatted_phone_number || null,
+        website: place.website || null,
+        postcode: address.postcode || null,
+        street: address.street || null,
+        lineTwo: address.lineTwo || null,
+        county: address.county || null,
+        country: address.country || null
+      }
+      return fishery;
+    }
+    return false;
+  }
 
   function buildAddress(addressComponents) {
     var address = {};
     addressComponents.forEach(function(component) {
       if(typeof component.types !== 'undefined') {
-
-        if (street = getAddressComponent(component, 'route')) {
-            address.street = street;
-        }
-
-        if (lineTwo = getAddressComponent(component, 'locality')) {
-            address.lineTwo = lineTwo;
-        }
-
-        if (county = getAddressComponent(component, 'administrative_area_level_2')) {
-            address.county = county;
-        }
-
-        if (country = getAddressComponent(component, 'country')) {
-            address.country = country;
-        }
-
-        if (postcode = getAddressComponent(component, 'postal_code')) {
-            address.postcode = postcode;
+        switch (component.types[0]) {
+          case 'route':
+            address.street = component.long_name;
+            break;
+          case 'locality':
+            address.lineTwo = component.long_name;
+            break;
+          case 'administrative_area_level_2':
+            address.county = component.long_name;
+            break;
+          case 'country':
+            address.country= component.long_name
+            break;
+          case 'postal_code':
+            address.postcode = component.long_name;
+            break;
+          case 'undefined':
+            break;
         }
       }
     });
     return address;
   }
 
-  function getAddressComponent(component, name) {
-    if (typeof component.types[0] !== 'undefined' && component.types[0] == name ) {
-        return component.long_name;
-    }
-    return false;
+  function insertFisheryDetailsIntoForm(fishery) {
+    $('#fishery-name').val(fishery.name);
+    $('#telephone').val(fishery.telephoneNumber);
+    $('#website').val(fishery.website);
+    $('#postcode').val(fishery.postcode);
+    $('#street').val(fishery.street);
+    $('#line2').val(fishery.lineTwo);
+    $('#region').val(fishery.county);
+    $('#country').val(fishery.country);
   }
 
 });
-
-
