@@ -55,6 +55,9 @@ $(document).ready(function() {
           case 'locality':
             address.lineTwo = component.long_name;
             break;
+          case 'postal_town'
+            address.lineTwo = component.long_name;
+            break;
           case 'administrative_area_level_2':
             address.county = component.long_name;
             break;
