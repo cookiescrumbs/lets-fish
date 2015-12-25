@@ -27,7 +27,7 @@ $(document).ready(function() {
     var address;
     var fishery;
 
-    if (typeof place !== 'undefined') {
+    if (typeof place !== 'undefined' &&  typeof place.address_components !== 'undefined' ) {
       address = buildAddress(place.address_components);
       fishery = {
         name: place.name || null,
@@ -88,7 +88,8 @@ $(document).ready(function() {
   }
 
   function disableFisheryFormSubmit() {
-    $('.edit_fishery').on('keyup keypress', function(e) {
+
+    $('.new_fishery, .edit_fishery').on('keyup keypress', function(e) {
       var code = e.keyCode || e.which;
       if (code == 13) {
         e.preventDefault();
