@@ -13,6 +13,7 @@ $(document).ready(function() {
   markers =[],
   boundingBox;
 
+
   //make the a new instance of google maps
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
   ///////Search Box
@@ -97,7 +98,7 @@ $(document).ready(function() {
       var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
       var marker = new google.maps.Marker({
         position: latLng,
-        label: markerCount.toString(),
+        icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|" + markerCount,
         map: map
       });
       marker.setMap(map);
