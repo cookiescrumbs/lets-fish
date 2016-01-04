@@ -13,16 +13,15 @@ GoneFishing::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
-
   post '/list/fishery',   to: "homepage#create_fishery"
-  get   '/add/water/:id', to: "homepage#new_water"
-  post  '/add/water/:id', to: "homepage#create_water"
+  get  '/add/water/:id',  to: "homepage#new_water"
+  post '/add/water/:id',  to: "homepage#create_water"
+  get 'search',           to: 'search#index'
+  get '/waters/:id',      to: 'waters#show'
 
-  get 'search' => 'search#index'
-
-  get '/admin/login' => 'admin/sessions#new'
-  post '/admin/login' => 'admin/sessions#create'
-  get '/admin/logout' => 'admin/sessions#destroy'
+  get '/admin/login',     to: 'admin/sessions#new'
+  post '/admin/login',    to: 'admin/sessions#create'
+  get '/admin/logout',    to: 'admin/sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
