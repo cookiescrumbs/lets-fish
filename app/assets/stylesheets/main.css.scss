@@ -260,12 +260,12 @@ fieldset[disabled] .btn-xl.active {
         margin: 0 auto;
     }
 
-    #search .navbar-brand{
+    #search .navbar-brand, #waters .navbar-brand{
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container {
+    #search .navbar .container, #waters .navbar .container {
         margin-left: 0;
     }
 
@@ -935,4 +935,8 @@ body#search footer{
     width: 85%;
     margin-left: 10px;
     color: #fff;
+}
+
+#waters section {
+    padding: 0 0 0 0;
 }

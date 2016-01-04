@@ -1,0 +1,56 @@
+<%= render 'navigation' %>
+<section d="photos">
+    <div class="container">
+        <div class="result-item">
+            <div class="title-header-outer">
+                <div class="title-header">
+                    <h4 class="water-name" itemprop="name" ><%= @water.name %></h4>
+                </div>
+            </div>
+            <div class="image-background" itemscope itemtype="http://schema.org/ImageObject">
+                <img src="<%= (@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png' %>" class="img-responsive img-centered" alt="<%= @water.name %>">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about-this-water">
+    <div class="container">
+        <h4>About this water</h4>
+        <p class="text-muted"><p><%= @water.description %></p>
+        <p class="text-muted"><%= @water.species.map{|s| s.name }.to_sentence %>
+        <p class="text-muted"><%= @water.water_type.category %></p>
+    </div>
+</section>
+
+<section id="location">
+    <div class="container">
+        <h4>The Location</h4>
+        <p class="text-muted"><%= @water.address %></p>
+    </div>
+</section>
+
+<section id="the-fishery">
+    <div class="container">
+        <h4>The Fishery</h4>
+        <p class="text-muted"><%= @fishery.name %></p>
+        <p class="text-muted"><%= @fishery.contact_details.name %></p>
+        <p class="text-muted"><%= @fishery.address.street %>, <%= @fishery.address.line2 %>, <%= @fishery.address.region %>, <%= @fishery.address.postcode %>, <%= @fishery.address.country%></p>
+        <p class="text-muted"><%= @fishery.contact_details.telephone %></p>
+        <p class="text-muted"><%= @fishery.contact_details.mobile %></p>
+        <p class="text-muted"><%= @fishery.contact_details.email %></p>
+        <p class="text-muted"><%= @fishery.contact_details.website %></p>
+    </div>
+<section>
+
+<section id="other-water-run-by-this-fishery">
+    <div class="container">
+        <h4>Other waters run by this fishery</h4>
+        <%= render '/search/results' %>
+    </div>
+<section>
+
+
+
+
+
+
