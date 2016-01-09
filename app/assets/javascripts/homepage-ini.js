@@ -25,7 +25,6 @@ $(document).ready(function() {
     var autoComplete = new google.maps.places.Autocomplete(
       input,
       {
-        types: ['geocode'],
         componentRestrictions: {
             country: 'uk'
         }

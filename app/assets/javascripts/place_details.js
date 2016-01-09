@@ -8,7 +8,6 @@ $(document).ready(function() {
   var autoComplete = new google.maps.places.Autocomplete(
     input,
     {
-      types: ['establishment'],
       componentRestrictions: {
           country: 'uk'
       }

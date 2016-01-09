@@ -11,5 +11,11 @@ module WebMockHelpers
          with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
          to_return(:status => 200, :body => body, :headers => {})
     end
+    def stub_google_place_details(place_id)
+      body = File.read("spec/fixtures/googleapis/place/details/curleys_fishery.json")
+      stub_request(:get, "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyBPbxg6pkw4DGWeXdWsv6JGpLPikkKyqPY&language=en&placeid=#{place_id}").
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => body, :headers => {})
+    end
   end
 end
