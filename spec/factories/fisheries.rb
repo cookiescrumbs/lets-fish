@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :fishery do
     name Faker::Company.name
+    place_id Faker::Bitcoin.address
     address { create(:address) }
     contact_details { create(:contact_details)}
     factory :fishery_with_waters do
