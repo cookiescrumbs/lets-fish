@@ -243,6 +243,11 @@ fieldset[disabled] .btn-xl.active {
     background-color: #fec503;
 }
 
+input#location, .location-alert{
+    height: 45px;
+    margin: 0 auto;
+}
+
 @media(min-width:768px) {
     .sidebar {
         position: fixed;
@@ -257,7 +262,6 @@ fieldset[disabled] .btn-xl.active {
 
     input#location, .location-alert{
         width: 500px;
-        margin: 0 auto;
     }
 
     #search .navbar-brand, #waters .navbar-brand{
