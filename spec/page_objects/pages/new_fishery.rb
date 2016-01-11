@@ -6,6 +6,7 @@ module PageObjects
     set_url "/admin/fisheries/new"
 
     element :name, "input#fishery-name"
+    element :place_id, "input#place-id"
     section :contact_details, ContactDetails, "#contact-details"
     section :address, Address, "#address"
     element :submit, "button[name='button']"

@@ -23,7 +23,7 @@ class Admin::FisheriesController < AdminController
   def create
     @fishery = Fishery.new(fishery_params)
     if @fishery.save
-      redirect_to redirect_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"
+      redirect_to admin_fisheries_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"
     else
       render action: 'new'
     end
@@ -44,15 +44,11 @@ class Admin::FisheriesController < AdminController
 
   private
 
-    def redirect_path
-      request.env["ORIGINAL_FULLPATH"] == "/list/fishery" ? '/#list-a-fishery' : admin_fisheries_path
-    end
-
     def set_fishery
       @fishery = Fishery.find(params[:id])
     end
 
     def fishery_params
-       params.require(:fishery).permit(:name, contact_details_attributes: [ :name, :telephone, :mobile, :email, :website], address_attributes: [ :postcode, :street, :line2, :region, :country ])
+       params.require(:fishery).permit(:name, :place_id, contact_details_attributes: [ :name, :telephone, :mobile, :email, :website], address_attributes: [ :postcode, :street, :line2, :region, :country ])
     end
 end

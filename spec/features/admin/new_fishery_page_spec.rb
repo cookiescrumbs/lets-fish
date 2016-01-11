@@ -17,6 +17,7 @@ describe "New fishery page", type: :feature do
       @new_fishery.load
 
       @new_fishery.name.set                        @fishery_details.name
+      @new_fishery.place_id.set                    @fishery_details.place_id
 
       @new_fishery.contact_details.name.set        @fishery_details.contact_details.name
       @new_fishery.contact_details.telephone.set   @fishery_details.contact_details.telephone
@@ -43,6 +44,7 @@ describe "New fishery page", type: :feature do
       address         = fishery.address
 
       expect(fishery.name).to               eql   @fishery_details.name
+      expect(fishery.place_id).to           eql   @fishery_details.place_id
 
       expect(contact_details.name).to       eql   @fishery_details.contact_details.name
       expect(contact_details.telephone).to  eql   @fishery_details.contact_details.telephone

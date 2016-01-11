@@ -8,7 +8,6 @@ $(document).ready(function() {
   var autoComplete = new google.maps.places.Autocomplete(
     input,
     {
-      // types: ['lodging'],
       componentRestrictions: {
           country: 'uk'
       }
@@ -20,7 +19,7 @@ $(document).ready(function() {
     window.place = place;
     var fishery;
     fishery = buildFisheryFromPlaceDetails(place);
-    console.log(fishery);
+    window.fishery = fishery;
     insertFisheryDetailsIntoForm(fishery);
   });
 
@@ -37,7 +36,7 @@ $(document).ready(function() {
         website: place.website || null,
         streetNumberOrHouseName: address.streetNumberOrHouseName || null,
         street: address.street || null,
-        cityOrTown: address.cityOrTown || null,
+        line2: address.line2 || null,
         county: address.county || null,
         country: address.country || null,
         postcode: address.postcode || null,
@@ -67,13 +66,13 @@ $(document).ready(function() {
             address.street = component.long_name;
             break;
           case 'locality':
-            if(typeof address.cityOrTown === 'undefined') {
-                address.cityOrTown = component.long_name;
+            if(typeof address.line2 === 'undefined') {
+                address.line2 = component.long_name;
             }
             break;
           case 'postal_town':
-            if(typeof address.cityOrTown === 'undefined') {
-                address.cityOrTown = component.long_name;
+            if(typeof address.line2 === 'undefined') {
+                address.line2 = component.long_name;
             }
             break;
           case 'administrative_area_level_2':
@@ -95,17 +94,18 @@ $(document).ready(function() {
 
   function insertFisheryDetailsIntoForm(fishery) {
     $('#fishery-name').val(fishery.name);
+    $('#place-id').val(fishery.placeId);
+    $('#google-formatted-address').val(fishery.formattedAddress);
     $('#telephone').val(fishery.telephoneNumber);
     $('#website').val(fishery.website);
     $('#postcode').val(fishery.postcode);
     $('#street').val(fishery.street);
-    // $('#city-town').val(fishery.cityOrTown);
+    $('#line2').val(fishery.line2);
     $('#region').val(fishery.county);
     $('#country').val(fishery.country);
   }
 
   function disableFisheryFormSubmit() {
-
     $('.new_fishery, .edit_fishery').on('keyup keypress', function(e) {
       var code = e.keyCode || e.which;
       if (code == 13) {
