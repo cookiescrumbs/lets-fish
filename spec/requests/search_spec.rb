@@ -1,10 +1,10 @@
-describe "Search API", type: :request do
+describe "Search API", type: :request, focus: true do
 
   before(:each) do
     stub_google_geocode
     FactoryGirl.create_list :species, 5
     FactoryGirl.create_list :water_type, 5
-    FactoryGirl.create_list :water, 2, latitude: 53.501942, longitude: -2.245983
+    FactoryGirl.create_list :water, 23, latitude: 53.501942, longitude: -2.245983
   end
 
   it "GET /search with bounds" do
@@ -47,5 +47,17 @@ describe "Search API", type: :request do
     expect(json['markers'].first['name']).to eql waters.first.name
   end
 
+  it "GET /search limits to 20" do
+
+    params = {
+      bounds: [53.39990299999999,-2.3000969,53.5445879,-2.1470875]
+    }
+
+    get '/search', params, { "Accept" => "application/json" }
+
+    expect(response).to be_success
+    expect(json["markers"].length).to eq 20
+    expect(json['markers'].first['name']).to eql waters.first.name
+  end
 
 end

@@ -57,7 +57,7 @@ describe Water, :type => :model do
 
     end
 
-    describe "short address", focus: true do
+    describe "short address" do
 
       it "handles an address with a postcode" do
         @water.address = "Unnamed Road, Morpeth, Northumberland NE65 7LG, UK"
