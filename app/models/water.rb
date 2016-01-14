@@ -24,4 +24,8 @@ class Water < ActiveRecord::Base
     super(Date.parse(value).change({year: 2012}))
   end
 
+  def short_address
+    address_comps = address.split(', ', 2)[1].split(' ')
+    address_comps[0] + ' ' +  address_comps[1]
+  end
 end
