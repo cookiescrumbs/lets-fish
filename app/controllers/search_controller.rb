@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   respond_to :html, :json
 
   def index
-    @waters = Water.within_bounding_box(bounds) unless bounds.nil?
+    @waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
     respond_with(@waters)
   end
 
