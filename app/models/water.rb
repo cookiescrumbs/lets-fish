@@ -25,7 +25,8 @@ class Water < ActiveRecord::Base
   end
 
   def short_address
-    address_comps = address.split(', ', 2)[1].split(' ')
-    address_comps[0] + ' ' +  address_comps[1]
+    split = address.split(', ')
+    range = split.count > 1 ? 1..2 : 0..1
+    address.split(', ')[range].map {|c| c.split(' ', 2)[0] }.join(", ") unless address.empty?
   end
 end
