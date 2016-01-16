@@ -317,6 +317,18 @@ header {
     -o-background-size: cover;
 }
 
+#waters header {
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
  section#discover {
     text-align: center;
     color: #fff;
@@ -355,6 +367,12 @@ header .intro-text .intro-heading, section .intro-text .intro-heading {
 header div.image-trans, section div.image-trans{
     background: rgba(0, 0, 0, 0.3);
 }
+
+#waters header div.image-trans, section div.image-trans{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
 
 @media(min-width:768px) {
     header .intro-text, section .intro-text{
@@ -941,6 +959,7 @@ body#search footer{
     color: #fff;
 }
 
-#waters section {
+/*#waters section {
     padding: 0 0 0 0;
 }
+*/
