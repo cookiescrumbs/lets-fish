@@ -959,17 +959,12 @@ body#search footer{
     color: #fff;
 }
 
-#map {
+#location-map {
   margin: 0;
   padding: 0;
   width: 100%;
   height:450px !important;
   margin-top: 0px;
   margin-bottom: 10px;
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  /*#map{ width: 75%; }*/
 }
 

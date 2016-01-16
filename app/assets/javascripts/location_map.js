@@ -5,7 +5,10 @@ $(document).ready(function() {
   lng,
   marker,
   mapOptions = {
-    draggable: false,
+    draggable: !("ontouchend" in document),
+    zoomControl: !("ontouchend" in document),
+    scrollwheel: !("ontouchend" in document),
+    disableDoubleClickZoom: !("ontouchend" in document),
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
@@ -18,7 +21,7 @@ $(document).ready(function() {
 
   ////////Map
   //make a new instance of google maps
-  mapElement = document.getElementById('map');
+  mapElement = document.getElementById('location-map');
   lat = parseFloat(mapElement.dataset.lat);
   lng = parseFloat(mapElement.dataset.lng);
   map = new google.maps.Map(mapElement, mapOptions);
