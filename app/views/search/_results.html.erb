@@ -11,7 +11,7 @@
                     <div class="title-header-outer">
                         <div class="title-header">
                             <h4 class="water-name" itemprop="name" ><%= water.name %></h4>
-                            <span class="fa-stack fa-2x water-count">
+                            <span class="fa-stack fa-2x water-count <%=(local_assigns.has_key? :hide_water_count)? 'hide' : '' %>">
                                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                                 <i class="fa fa-stack-1x fa-inverse"><%= count %></i>
                             </span>
