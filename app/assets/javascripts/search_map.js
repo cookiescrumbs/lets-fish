@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var map,
   mapOptions = {
+    scrollwheel: false,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
