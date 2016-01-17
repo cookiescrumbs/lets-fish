@@ -5,13 +5,10 @@ $(document).ready(function() {
   lng,
   marker,
   mapOptions = {
-    draggable: !("ontouchend" in document),
-    zoomControl: !("ontouchend" in document),
-    scrollwheel: !("ontouchend" in document),
-    disableDoubleClickZoom: !("ontouchend" in document),
+    draggable: true,
+    scrollwheel: false,
+    streetViewControl: true,
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-      position: google.maps.ControlPosition.LEFT_BOTTOM,
       mapTypeIds: [
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
@@ -19,6 +16,16 @@ $(document).ready(function() {
     }
   };
 
+    // $('#location').click(function () {
+    //   $('#location-map').css("pointer-events", "auto");
+    // });
+
+  if ("ontouchend" in document) {
+    mapOptions.streetViewControl = false;
+    mapOptions.mapTypeControl = false;
+    mapOptions.zoomControl = false;
+    mapOptions.draggable = false;
+  }
   ////////Map
   //make a new instance of google maps
   mapElement = document.getElementById('location-map');
