@@ -404,7 +404,7 @@ header div.image-trans, section div.image-trans{
 }
 
 section {
-    padding: 100px 0;
+    padding: 0px 0;
 }
 
 section h2.section-heading {
@@ -420,6 +420,10 @@ section h3.section-subheading {
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
+}
+
+#waters section {
+    padding: 50px 0 0 0;
 }
 
 @media(min-width:768px) {
@@ -966,5 +970,13 @@ body#search footer{
   height:450px !important;
   margin-top: 0px;
   margin-bottom: 10px;
+}
+
+section#waters-managed-by-this-fishery{
+    padding-bottom: 60px;
+}
+
+section#waters-managed-by-this-fishery h2.section-heading {
+    padding-bottom: 20px;
 }
 
