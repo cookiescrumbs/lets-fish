@@ -10,9 +10,17 @@ describe "Manage waters page", type: :feature do
 
     before(:each) do
       stub_google_geocode
-      @species    = FactoryGirl.create_list :species, 4
-      @water_type = FactoryGirl.create_list :water_type, 4
+
+      @species    =  ["brown trout", "rainbow trout", "grayling", "sea trout"].map do |name|
+        FactoryGirl.create :species, name: name
+      end
+
+      @water_type = ["lake", "river"].map do |category|
+        FactoryGirl.create :water_type, category: category
+      end
+
       @fishery    = FactoryGirl.create :fishery_with_waters
+
       visit admin_fishery_waters_path @fishery.id
     end
 

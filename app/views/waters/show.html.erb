@@ -12,17 +12,9 @@
 <section id="about-this-water">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">About this water</h2>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-3">
-                <img src="/images/river.png" />
-                <p><%= @water.water_type.category %></p>
-                <% @water.species.each do | s | %>
-                    <%= render 'fish/'+ s.name.downcase.gsub(' ', '_') %>
-                <% end %>
+                <%= render 'water_types/' + @water.water_type.category.downcase.gsub(' ', '_') %>
+                <%= render "species/list", object: @species %>
             </div>
             <div class="col-md-9">
                 <h4>Description</h4>
@@ -42,22 +34,24 @@
 
 <section id="location">
     <div class="container">
-        <h4>Location</h4>
-        <p class="text-muted"><%= @water.address %></p>
         <div id="location-map" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
+        <p class="pull-right">
+            <i class="fa fa-map-marker fa-2x fa-pull-left"></i>
+            <%= @water.address %>
+        <p>
     </div>
 </section>
 
 <section id="the-fishery">
     <div class="container">
         <h4>Fishery</h4>
-        <p class="text-muted"><%= @fishery.name %></p>
-        <p class="text-muted"><%= @fishery.contact_details.name %></p>
-        <p class="text-muted"><%= @fishery.address.street %>, <%= @fishery.address.line2 %>, <%= @fishery.address.region %>, <%= @fishery.address.postcode %>, <%= @fishery.address.country%></p>
-        <p class="text-muted"><%= @fishery.contact_details.telephone %></p>
-        <p class="text-muted"><%= @fishery.contact_details.mobile %></p>
-        <p class="text-muted"><%= @fishery.contact_details.email %></p>
-        <p class="text-muted"><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
+        <p><%= @fishery.name %></p>
+        <p><%= @fishery.contact_details.name %></p>
+        <p><%= @fishery.address.street %>, <%= @fishery.address.line2 %>, <%= @fishery.address.region %>, <%= @fishery.address.postcode %>, <%= @fishery.address.country%></p>
+        <p><%= @fishery.contact_details.telephone %></p>
+        <p><%= @fishery.contact_details.mobile %></p>
+        <p><%= @fishery.contact_details.email %></p>
+        <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 <section>
 <section id="waters-managed-by-this-fishery" class="bg-light-gray">

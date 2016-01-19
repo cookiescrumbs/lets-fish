@@ -1,0 +1,5 @@
+<ul class="species list-unstyled">
+    <% @species.each do | s | %>
+        <%= render 'species/'+ s.name.downcase.gsub(' ', '_') %>
+    <% end %>
+</ul>
