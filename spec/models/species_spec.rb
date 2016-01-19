@@ -9,9 +9,9 @@ describe Species, :type => :model do
     expect(@species).not_to be_valid
   end
 
-  it "titilizes the name" do
+  it "capitalize the name" do
     @species.name = 'brown trout'
-    expect(@species.name).to eql 'Brown Trout'
+    expect(@species.name).to eql 'Brown trout'
   end
 
 end

@@ -3,7 +3,6 @@ require_relative '../features_helper'
 describe "Water Type", type: :feature do
   before(:each) do
     login FactoryGirl.create :user
-
   end
   describe "Manage water types" do
       it "lists all water  types" do
@@ -31,7 +30,6 @@ describe "Water Type", type: :feature do
         visit admin_water_types_path
         page.all("a",text: "Show")[0].click
         expect(page).to have_content @water_types.first.category
-        expect(page).not_to have_content @water_types.last.category
       end
   end
 end
