@@ -4,7 +4,7 @@ class Species < ActiveRecord::Base
   validates_presence_of :name
 
   def name
-    (super).titleize unless (super).nil?
+    (super).capitalize unless (super).nil?
   end
 
 end
