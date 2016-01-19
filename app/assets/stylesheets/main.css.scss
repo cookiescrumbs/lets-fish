@@ -403,15 +403,12 @@ header div.image-trans, section div.image-trans{
     background: rgba(0, 0, 0, 0.7);
 }
 
-section {
-    padding: 0px 0;
-}
 
-section h2.section-heading {
+/*section h2.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
-    /*font-size: 40px;*/
-}
+    /*font-size: 40px;
+}*/
 
 section h3.section-subheading {
     margin-bottom: 75px;
@@ -426,10 +423,8 @@ section h3.section-subheading {
     padding: 50px 0 0 0;
 }
 
-@media(min-width:768px) {
-    section {
-        padding: 100px 0;
-    }
+section {
+    padding: 70px 0;
 }
 
 .how-it-works-heading {
