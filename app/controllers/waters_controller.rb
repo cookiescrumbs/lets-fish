@@ -3,6 +3,8 @@ class WatersController < ApplicationController
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
+  before_action :set_species, only: [:show]
+
 
   def show
   end
@@ -16,5 +18,8 @@ class WatersController < ApplicationController
     end
     def set_fishery
       @fishery = Water.find(params[:id]).fishery
+    end
+    def set_species
+      @species = Water.find(params[:id]).species
     end
 end
