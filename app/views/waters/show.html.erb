@@ -14,14 +14,27 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">About this water</h2>
-                <h3 class="section-subheading text-muted"></h3>
             </div>
         </div>
         <div class="row">
-            <div class="container">
-                <p class="text-muted"><p><%= @water.description %></p>
-                <p class="text-muted"><%= @water.species.map{|s| s.name }.to_sentence %>
-                <p class="text-muted"><%= @water.water_type.category %></p>
+            <div class="col-md-3">
+                <img src="/images/river.png" />
+                <p><%= @water.water_type.category %></p>
+                <% @water.species.each do | s | %>
+                    <%= render 'fish/'+ s.name.downcase.gsub(' ', '_') %>
+                <% end %>
+            </div>
+            <div class="col-md-9">
+                <h4>Description</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum turpis non augue volutpat, dictum fringilla sapien dapibus. Sed consectetur, tortor sit amet ultricies maximus, ipsum urna bibendum sem, ac venenatis diam leo ut tortor. Maecenas id dolor efficitur, tempor sapien ut, bibendum sem. Cras aliquet urna non posuere consequat. Nullam aliquet pharetra nunc ac imperdiet. Nulla sollicitudin dapibus accumsan. Praesent eget ipsum tristique eros pulvinar vulputate. Praesent volutpat posuere mauris ac tempus. Nullam iaculis felis in neque finibus, id mattis augue fringilla. Vivamus laoreet vestibulum fermentum. Sed ultrices purus non diam ornare, ac viverra nunc dignissim.</p>
+
+                    <p>Proin bibendum rutrum ipsum, vel aliquet metus porttitor in. Suspendisse potenti. Ut eget erat lacus. Phasellus eu mi molestie, ultricies justo vitae, sagittis dui. Aliquam euismod velit tortor, id ultricies risus viverra non. Proin quam quam, mollis at placerat a, tempus non risus. Donec eu egestas ante, et mattis urna. Donec magna lectus, ornare a lobortis ut, volutpat non nulla. Suspendisse dictum magna ut varius aliquam. Vivamus molestie arcu vel libero pellentesque, ut pretium enim vulputate. Nulla egestas rutrum mollis. Sed molestie lectus at justo lobortis, ac dapibus mauris euismod. Duis elementum, ligula at bibendum porttitor, nisi quam pellentesque tellus, eu rutrum odio risus eu nunc. Sed vulputate, risus nec tincidunt imperdiet, elit ipsum bibendum elit, vulputate imperdiet velit velit at leo. Vivamus id vulputate turpis.</p>
+                <h4>Tickets &amp; permission</h4>
+                     <p>Proin bibendum rutrum ipsum, vel aliquet metus porttitor in. Suspendisse potenti. Ut eget erat lacus. Phasellus eu mi molestie, ultricies justo vitae, sagittis dui. Aliquam euismod velit tortor, id ultricies risus viverra non. Proin quam quam, mollis at placerat a, tempus non risus. Donec eu egestas ante, et mattis urna. Donec magna lectus, ornare a lobortis ut, volutpat non nulla. Suspendisse dictum magna ut varius aliquam. Vivamus molestie arcu vel libero pellentesque, ut pretium enim vulputate. Nulla egestas rutrum mollis. Sed molestie lectus at justo lobortis, ac dapibus mauris euismod. Duis elementum, ligula at bibendum porttitor, nisi quam pellentesque tellus, eu rutrum odio risus eu nunc. Sed vulputate, risus nec tincidunt imperdiet, elit ipsum bibendum elit, vulputate imperdiet velit velit at leo. Vivamus id vulputate turpis.</p>
+                <h4>Rules</h4>
+                    <p>Proin bibendum rutrum ipsum, vel aliquet metus porttitor in. Suspendisse potenti. Ut eget erat lacus. Phasellus eu mi molestie, ultricies justo vitae, sagittis dui. Aliquam euismod velit tortor, id ultricies risus viverra non. Proin quam quam, mollis at placerat a, tempus non risus. Donec eu egestas ante, et mattis urna. Donec magna lectus, ornare a lobortis ut, volutpat non nulla. Suspendisse dictum magna ut varius aliquam. Vivamus molestie arcu vel libero pellentesque, ut pretium enim vulputate. Nulla egestas rutrum mollis. Sed molestie lectus at justo lobortis, ac dapibus mauris euismod. Duis elementum, ligula at bibendum porttitor, nisi quam pellentesque tellus, eu rutrum odio risus eu nunc. Sed vulputate, risus nec tincidunt imperdiet, elit ipsum bibendum elit, vulputate imperdiet velit velit at leo. Vivamus id vulputate turpis.</p>
+                <h4>Recommended tackle</h4>
+                    <p>Proin bibendum rutrum ipsum, vel aliquet metus porttitor in. Suspendisse potenti. Ut eget erat lacus. Phasellus eu mi molestie, ultricies justo vitae, sagittis dui. Aliquam euismod velit tortor, id ultricies risus viverra non. Proin quam quam, mollis at placerat a, tempus non risus. Donec eu egestas ante, et mattis urna. Donec magna lectus, ornare a lobortis ut, volutpat non nulla. Suspendisse dictum magna ut varius aliquam. Vivamus molestie arcu vel libero pellentesque, ut pretium enim vulputate. Nulla egestas rutrum mollis. Sed molestie lectus at justo lobortis, ac dapibus mauris euismod. Duis elementum, ligula at bibendum porttitor, nisi quam pellentesque tellus, eu rutrum odio risus eu nunc. Sed vulputate, risus nec tincidunt imperdiet, elit ipsum bibendum elit, vulputate imperdiet velit velit at leo. Vivamus id vulputate turpis.</p>
             </div>
         </div>
     </div>
@@ -37,28 +50,25 @@
 
 <section id="the-fishery">
     <div class="container">
-        <h4>The Fishery</h4>
+        <h4>Fishery</h4>
         <p class="text-muted"><%= @fishery.name %></p>
         <p class="text-muted"><%= @fishery.contact_details.name %></p>
         <p class="text-muted"><%= @fishery.address.street %>, <%= @fishery.address.line2 %>, <%= @fishery.address.region %>, <%= @fishery.address.postcode %>, <%= @fishery.address.country%></p>
         <p class="text-muted"><%= @fishery.contact_details.telephone %></p>
         <p class="text-muted"><%= @fishery.contact_details.mobile %></p>
         <p class="text-muted"><%= @fishery.contact_details.email %></p>
-        <p class="text-muted"><%= @fishery.contact_details.website %></p>
+        <p class="text-muted"><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 <section>
-<section id="other-water-run-by-this-fishery" class="bg-light-gray">
+<section id="waters-managed-by-this-fishery" class="bg-light-gray">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Waters managed by this fishery</h2>
-                <h3 class="section-subheading text-muted"></h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <%= render '/search/results', { hide_water_count: true } %>
-            </div>
+             <%= render '/search/results', { hide_water_count: true } %>
         </div>
     </div>
 </section>
