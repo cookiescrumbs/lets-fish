@@ -975,14 +975,21 @@ section#waters-managed-by-this-fishery h2.section-heading {
     padding-bottom: 20px;
 }
 
-.river, .lake{
-    padding-bottom: 10px;
-}
 
 ul.species {
     padding-bottom: 10px;
 }
 
-.lake img, .river img {
+.water-type, .fish {
+    padding-bottom: 10px;
+}
+
+
+.water-type img, .fish img, .location img{
     padding-right: 5px;
+}
+
+.water-type h6, .fish h6, .location h6{
+    font-weight: normal;
+    line-height: 15px;
 }

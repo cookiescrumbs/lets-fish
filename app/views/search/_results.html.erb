@@ -31,12 +31,9 @@
                         <div class="result-caption">
                             <p itemprop="name" class="hidden"><%= water.name %></p>
                             <p itemprop="description" class="hidden"><%= water.description %></p>
-                            <%= render 'water_types/' + water.water_type.category.downcase.gsub(' ', '_') %>
-                            <%= render partial: "species/list", object: @species = water.species %>
-                            <p>
-                                <i class="fa fa-map-marker fa-2x fa-pull-left"></i>
-                                <%= water.address %>
-                            </p>
+                            <%= render '/shared/water_type', locals: { category: water.water_type.category }%>
+                            <%= render '/shared/fish_species', locals: { fish: water.species.map{|s| s.name }.to_sentence } %>
+                            <%= render '/shared/location', locals: { location: water.address } %>
                         </div>
                     </div>
                 </div>

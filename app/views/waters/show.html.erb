@@ -13,8 +13,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <%= render 'water_types/' + @water.water_type.category.downcase.gsub(' ', '_') %>
-                <%= render "species/list", object: @species %>
+                <%= render '/shared/water_type', locals: { category: @water.water_type.category }%>
+                <%= render '/shared/fish_species', locals: { fish: @water.species.map{|s| s.name }.to_sentence } %>
+                <%= render '/shared/location', locals: { location: @water.address } %>
             </div>
             <div class="col-md-9">
                 <h4>Description</h4>
@@ -35,10 +36,7 @@
 <section id="location">
     <div class="container">
         <div id="location-map" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
-        <p class="pull-right">
-            <i class="fa fa-map-marker fa-2x fa-pull-left"></i>
-            <%= @water.address %>
-        <p>
+        <%= render '/shared/location', locals: { location: @water.address } %>
     </div>
 </section>
 
