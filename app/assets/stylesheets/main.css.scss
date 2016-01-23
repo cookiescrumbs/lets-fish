@@ -967,7 +967,7 @@ body#search footer{
   margin-bottom: 10px;
 }
 
-section#waters-managed-by-this-fishery{
+section#waters-managed-by-this-fishery {
     padding-bottom: 60px;
 }
 
@@ -980,16 +980,22 @@ ul.species {
     padding-bottom: 10px;
 }
 
-.water-type, .fish {
+.water-type, .fish, .location {
     padding-bottom: 10px;
 }
 
 
-.water-type img, .fish img, .location img{
+.water-type img, .fish img, .location img {
     padding-right: 5px;
 }
 
-.water-type h6, .fish h6, .location h6{
+.water-type h6, .fish h6, .location h6 {
     font-weight: normal;
     line-height: 15px;
 }
+
+.water-type h6, .fish h6 {
+    line-height: 25px;
+}
+
+
