@@ -375,6 +375,11 @@ header div.image-trans, section div.image-trans{
 
 
 @media(min-width:768px) {
+
+    #waters section {
+        padding: 50px 0 0 0 !important;
+    }
+
     header .intro-text, section .intro-text{
         padding-top: 200px;
     }
@@ -419,9 +424,6 @@ section h3.section-subheading {
     font-weight: 400;
 }
 
-#waters section {
-    padding: 50px 0 0 0;
-}
 
 section {
     padding: 70px 0;
@@ -696,6 +698,7 @@ section {
 aside.sponsors img {
     margin: 50px auto;
 }
+
 
 section#add-a-water {
     background-color: #222;
@@ -996,6 +999,10 @@ ul.species {
 
 .water-type h6, .fish h6 {
     line-height: 25px;
+}
+
+#waters section {
+    padding: 10px 0 0 0;
 }
 
 
