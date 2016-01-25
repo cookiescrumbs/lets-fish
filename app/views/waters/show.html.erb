@@ -18,10 +18,10 @@
                 <%= render '/shared/location', locals: { location: @water.address } %>
             </div>
             <div class="col-md-9">
-                <h4>Description</h4>
+                <% if !@water.description.blank? %>
+                    <h4>Description</h4>
                     <%= simple_format @water.description %>
-                <h4>Tickets &amp; permission</h4>
-                     <p>Proin bibendum rutrum ipsum, vel aliquet metus porttitor in. Suspendisse potenti. Ut eget erat lacus. Phasellus eu mi molestie, ultricies justo vitae, sagittis dui. Aliquam euismod velit tortor, id ultricies risus viverra non. Proin quam quam, mollis at placerat a, tempus non risus. Donec eu egestas ante, et mattis urna. Donec magna lectus, ornare a lobortis ut, volutpat non nulla. Suspendisse dictum magna ut varius aliquam. Vivamus molestie arcu vel libero pellentesque, ut pretium enim vulputate. Nulla egestas rutrum mollis. Sed molestie lectus at justo lobortis, ac dapibus mauris euismod. Duis elementum, ligula at bibendum porttitor, nisi quam pellentesque tellus, eu rutrum odio risus eu nunc. Sed vulputate, risus nec tincidunt imperdiet, elit ipsum bibendum elit, vulputate imperdiet velit velit at leo. Vivamus id vulputate turpis.</p>
+                <% end %>
             </div>
         </div>
     </div>
