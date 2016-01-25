@@ -33,7 +33,8 @@ GoneFishing::Application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :bucket => 'gone-fishing-dev',
+    :bucket => 'gone-fishing',
+    # :bucket => 'gone-fishing-dev',
     :url => ':s3_domain_url',
     :path => '/:class/:attachment/:id_partition/:style/:filename'
   }

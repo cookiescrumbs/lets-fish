@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160111080155) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: true do |t|
     t.integer  "fishery_id"
     t.string   "street"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.datetime "updated_at"
   end
 
-  add_index "addresses", ["fishery_id"], name: "index_addresses_on_fishery_id"
+  add_index "addresses", ["fishery_id"], name: "index_addresses_on_fishery_id", using: :btree
 
   create_table "contact_details", force: true do |t|
     t.integer  "fishery_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.datetime "updated_at"
   end
 
-  add_index "contact_details", ["fishery_id"], name: "index_contact_details_on_fishery_id"
+  add_index "contact_details", ["fishery_id"], name: "index_contact_details_on_fishery_id", using: :btree
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.datetime "image_updated_at"
   end
 
-  add_index "images", ["water_id"], name: "index_images_on_water_id"
+  add_index "images", ["water_id"], name: "index_images_on_water_id", using: :btree
 
   create_table "species", force: true do |t|
     t.string   "name"
@@ -95,6 +98,6 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.text     "address"
   end
 
-  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
+  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id", using: :btree
 
 end
