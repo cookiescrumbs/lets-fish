@@ -2,7 +2,7 @@ describe Address, :type => :model do
 
   before { @address = FactoryGirl.create(:address) }
 
-  describe "formatted address", focus: true do
+  describe "formatted address" do
 
     it "returns a formatted address" do
       expect(@address.formatted).to eql "#{@address.street}, #{@address.line2}, #{@address.region}, #{@address.postcode}, #{@address.country}"

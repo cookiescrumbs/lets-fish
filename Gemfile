@@ -52,8 +52,7 @@ group :development, :test do
   gem 'shotgun'
   gem 'faker'
   gem 'rack_session_access'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'pg'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
