@@ -23,8 +23,7 @@ describe "Manage waters page", type: :feature do
 
       visit admin_fishery_waters_path @fishery.id
     end
-
-    let(:water){ @fishery.waters.first }
+    let(:water){ @fishery.waters.last }
     let(:checked_species_name){ @species.last.name }
     let(:first_species_name){ @species.first.name }
     let(:edit_button){ page.all('.edit').first }
@@ -72,8 +71,9 @@ describe "Manage waters page", type: :feature do
         find('#longitude').set -180
         check first_species_name
         click_on 'Submit'
+
         expect(page).to have_content 'loch dooooooon'
-        expect(page).to have_content "#{checked_species_name}, #{first_species_name}"
+        expect(page).to have_content "#{first_species_name}, #{checked_species_name}"
         expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
       end
 
