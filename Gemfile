@@ -40,6 +40,7 @@ gem 'geocoder'
 gem 'aws-sdk', '< 2.0'
 gem 'sidekiq'
 gem 'delayed_paperclip'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'rspec-rails'

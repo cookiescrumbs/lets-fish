@@ -10,7 +10,7 @@
             <% if !@waters.nil? && @waters.exists? %>
                 <% @waters.each do | water | %>
                     <div class="col-md-4 col-sm-12 explore-item">
-                        <a href="/waters/<%= water.id %>" class="explore-link" >
+                        <a href="/waters/<%= water.slug %>" class="explore-link" >
                             <img src="<%= (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>" class="img-responsive img-centered" alt="<%= water.name %>" itemprop="contentUrl">
                         </a>
                         <div class="explore-caption">
