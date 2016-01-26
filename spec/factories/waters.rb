@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 FactoryGirl.define do
   factory :water do
-    name { 3.times.map{ Faker::Lorem.word }.join( ' ') }
+    name { Array(1..3).map{ Faker::Lorem.word }.join( ' ') }
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
     description { Faker::Lorem.paragraph }
