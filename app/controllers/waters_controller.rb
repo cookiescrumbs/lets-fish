@@ -11,15 +11,15 @@ class WatersController < ApplicationController
 
   private
     def set_water
-      @water = Water.find(params[:id])
+      @water = Water.find_by(slug: params[:id])
     end
     def set_waters
-      @waters = Water.find(params[:id]).fishery.waters
+      @waters = Water.find_by(slug: params[:id]).fishery.waters
     end
     def set_fishery
-      @fishery = Water.find(params[:id]).fishery
+      @fishery = Water.find_by(slug: params[:id]).fishery
     end
     def set_species
-      @species = Water.find(params[:id]).species
+      @species = Water.find_by(slug: params[:id]).species
     end
 end

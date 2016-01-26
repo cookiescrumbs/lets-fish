@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111080155) do
+ActiveRecord::Schema.define(version: 20160126054855) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
     t.integer  "fishery_id"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.datetime "updated_at"
   end
 
-  add_index "addresses", ["fishery_id"], name: "index_addresses_on_fishery_id"
+  add_index "addresses", ["fishery_id"], name: "index_addresses_on_fishery_id", using: :btree
 
   create_table "contact_details", force: true do |t|
     t.integer  "fishery_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.datetime "updated_at"
   end
 
-  add_index "contact_details", ["fishery_id"], name: "index_contact_details_on_fishery_id"
+  add_index "contact_details", ["fishery_id"], name: "index_contact_details_on_fishery_id", using: :btree
 
   create_table "fisheries", force: true do |t|
     t.string   "name"
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.datetime "image_updated_at"
   end
 
-  add_index "images", ["water_id"], name: "index_images_on_water_id"
+  add_index "images", ["water_id"], name: "index_images_on_water_id", using: :btree
 
   create_table "species", force: true do |t|
     t.string   "name"
@@ -93,8 +96,10 @@ ActiveRecord::Schema.define(version: 20160111080155) do
     t.integer  "water_type_id"
     t.integer  "fishery_id"
     t.text     "address"
+    t.string   "slug"
   end
 
-  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id"
+  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id", using: :btree
+  add_index "waters", ["slug"], name: "index_waters_on_slug", unique: true, using: :btree
 
 end

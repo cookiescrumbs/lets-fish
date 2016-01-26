@@ -1,4 +1,8 @@
 class Water < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
+
   belongs_to              :fishery
   belongs_to              :water_type
 
