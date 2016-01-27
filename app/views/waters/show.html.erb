@@ -30,7 +30,6 @@
 <section id="location">
     <div class="container">
         <div id="location-map" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
-        <%= render '/shared/location', locals: { location: @water.address } %>
     </div>
 </section>
 
