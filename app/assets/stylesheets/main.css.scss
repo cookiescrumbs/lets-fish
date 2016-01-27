@@ -992,6 +992,11 @@ ul.species {
     padding-right: 5px;
 }
 
+.water-type img, .fish img, .location img {
+    padding-right: 5px;
+    width:55px;
+}
+
 .water-type h6, .fish h6, .location h6 {
     font-weight: normal;
     line-height: 15px;
@@ -1005,4 +1010,10 @@ ul.species {
     padding: 10px 0 0 0;
 }
 
+#search .missing-image, #results-container .missing-image{
+    padding: 12px 0;
+}
 
+#recently-added .missing-image {
+    height: 188px;
+}
