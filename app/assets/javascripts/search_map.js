@@ -1,5 +1,10 @@
 $(document).ready(function() {
+  //If small screen don't load the map JS
+  if($( window ).width() < 768) {
+    return;
+  }
   var map,
+  geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
     mapTypeControlOptions: {
@@ -45,44 +50,39 @@ $(document).ready(function() {
 
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
-    var latLng;
-    if(getLatLngFromUrl()) {
-      latLng = getLatLngFromUrl();
-    }
-    map.setCenter(
-      new google.maps.LatLng(latLng[0],latLng[1])
-    );
-    map.setZoom(10);
-    getMarkersFromLatLng(latLng[0],latLng[1]);
-    //show search box
-    if($( window ).width() > 768) {
-      $('#map-search-box').show("slow");
-    }
-    /////Adding markers when the user zooms the map
-    google.maps.event.addListener(map, 'zoom_changed', function() {
-      //add markers to map within bounding box
-      boundingBox = getBoundingBoxFromMap(map);
-      getMarkersAndResultsFromBounds(boundingBox);
+    var location = decodeURIComponent($.urlParam('location'));
+    geocoder.geocode({'address': location}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        window.results = results;
+        var resultBounds = new google.maps.LatLngBounds(
+          results[0].geometry.viewport.getSouthWest(),
+          results[0].geometry.viewport.getNorthEast()
+        );
+        map.fitBounds(resultBounds);
+        map.setZoom(10);
+        boundingBox = getBoundingBoxFromMap(map);
+        getMarkersAndResultsFromBounds(boundingBox, false);
+        $('#map-search-box').show("slow");
+      } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
     });
-    //////////////////////////
+    /////Adding markers when the user zooms the map
+    // google.maps.event.addListener(map, 'zoom_changed', function() {
+    //   //add markers to map within bounding box
+    //   boundingBox = getBoundingBoxFromMap(map);
+    //   getMarkersAndResultsFromBounds(boundingBox, true);
+    // });
+    ////////////////////////////
   });
   //////////////////////////
 
   ///////Adding markers when the user drags the map
   google.maps.event.addListener(map, 'dragend', function() {
     boundingBox = getBoundingBoxFromMap(map);
-    getMarkersAndResultsFromBounds(boundingBox);
+    getMarkersAndResultsFromBounds(boundingBox, true);
   });
   /////////////////////////
-
-  function getLatLngFromUrl() {
-    var lat = $.urlParam('lat'),
-    lng = $.urlParam('lng');
-    if(lat && lng) {
-      return [lat, lng]
-    }
-    return false;
-  }
 
   function getBoundingBoxFromMap(map) {
     var bounds = map.getBounds();
@@ -107,11 +107,13 @@ $(document).ready(function() {
     }
   }
 
-  function searchResults(searchResults){
-      var waters = searchResults.markers,
-      results = searchResults.results;
+  function searchResults(searchResults, insertResult){
+      var waters = searchResults.markers;
+      var results = searchResults.results;
       addMarkers(waters);
-      addResultsToPage(results);
+      if(insertResult) {
+        addResultsToPage(results);
+      }
   }
 
   function initialMarkers(searchResults){
@@ -130,38 +132,25 @@ $(document).ready(function() {
     markers = [];
   }
 
-  function getMarkersAndResultsFromBounds(bounds){
+  function getMarkersAndResultsFromBounds(bounds, insertResult){
     $.ajax({
       type: 'GET',
       url: '/search',
       data:{
-        'bounds': bounds
+        'bounds': bounds,
       },
+      insertResult: insertResult,
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-      success: searchResults,
+      success: function(data) {
+        searchResults(data, this.insertResult);
+      },
       failure: function(errMsg) {
           alert(errMsg);
       }
     });
   }
 
-  function getMarkersFromLatLng(lat,lng){
-    $.ajax({
-      type: 'GET',
-      url: '/search',
-      data: {
-        'lat': lat,
-        'lng': lng
-      },
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: initialMarkers,
-      failure: function(errMsg) {
-          alert(errMsg);
-      }
-    });
-  }
   $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null){
