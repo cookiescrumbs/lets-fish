@@ -2,7 +2,7 @@ require_relative 'features_helper'
 
 describe "Homepage location search", type: :feature, js: true do
 
-  context "user searches for a water and clicks submit " do
+  context "user searches for a water" do
 
     before do
       @homepage = PageObjects::Homepage.new
@@ -10,14 +10,13 @@ describe "Homepage location search", type: :feature, js: true do
       @homepage.location.set 'manchester uk'
       @homepage.wait_until_google_places_visible
       @homepage.google_places.first.click
-      @homepage.wait_for_lat
-      @homepage.wait_for_lng
+      @homepage.click_button('Search')
     end
 
-    it "routes to the search page with correct location, lat and lng parameters in the url" do
+    it "routes to the search page with correct location in the url" do
       search = PageObjects::Search.new
       search.wait_for_map
-      expect(search.current_url).to end_with 'location=Manchester%2C+UK&lat=53.4807593&lng=-2.2426305000000184'
+      expect(search.current_url).to end_with 'location=Manchester%2C+UK'
     end
 
   end

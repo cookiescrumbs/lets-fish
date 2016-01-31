@@ -20,9 +20,9 @@ $(document).ready(function() {
      ////////////////////////////////////////////////////////////
 
     //Search box //////////////////////////////////
-    disableSearchFormSubmit();
+    // disableSearchFormSubmit();
     var input = document.getElementById("location");
-    var autoComplete = new google.maps.places.Autocomplete(
+    new google.maps.places.Autocomplete(
       input,
       {
         types: ['geocode'],
@@ -31,27 +31,4 @@ $(document).ready(function() {
         }
       }
     );
-
-    autoComplete.addListener('place_changed', function(){
-
-        var place = autoComplete.getPlace();
-
-        if (place.geometry) {
-          var lat = place.geometry.location.lat();
-          var lng = place.geometry.location.lng();
-          $('.search form .form-group').append('<input type="hidden" name="lat" value="'+lat+'">');
-          $('.search form .form-group').append('<input type="hidden" name="lng" value="'+lng+'">');
-          $('form#search').submit();
-        }
-
-    });
-    function disableSearchFormSubmit() {
-      $('#search').on('keyup keypress', function(e) {
-        var code = e.keyCode || e.which;
-        if (code == 13) {
-          e.preventDefault();
-          return false;
-        }
-      });
-    }
 });
