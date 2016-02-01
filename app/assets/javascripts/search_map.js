@@ -24,28 +24,28 @@ $(document).ready(function() {
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
   ///////Search Box
   // Create the search box and link it to the UI element.
-  var input = (document.getElementById('map-search-box'));
-  map.controls[
-    google.maps.ControlPosition.TOP_LEFT
-  ].push(input);
-  searchBox = new google.maps.places.SearchBox((input));
+  // var input = (document.getElementById('map-search-box'));
+  // map.controls[
+  //   google.maps.ControlPosition.TOP_LEFT
+  // ].push(input);
+  // searchBox = new google.maps.places.SearchBox((input));
 
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.
-  google.maps.event.addListener(searchBox, 'places_changed', function() {
-    var places = searchBox.getPlaces();
-    if (places.length <= 0) {
-      return;
-    }
-    // get the first selected result if there are multiple matches
-    var firstResult = places[0];
-    var bounds = new google.maps.LatLngBounds();
-    bounds.extend(firstResult.geometry.location);
-    map.fitBounds(bounds);
-    map.setZoom(10);
-    boundingBox = getBoundingBoxFromMap(map);
-    getMarkersAndResultsFromBounds(boundingBox);
-  });
+  // google.maps.event.addListener(searchBox, 'places_changed', function() {
+  //   var places = searchBox.getPlaces();
+  //   if (places.length <= 0) {
+  //     return;
+  //   }
+  //   // get the first selected result if there are multiple matches
+  //   var firstResult = places[0];
+  //   var bounds = new google.maps.LatLngBounds();
+  //   bounds.extend(firstResult.geometry.location);
+  //   map.fitBounds(bounds);
+  //   map.setZoom(10);
+  //   boundingBox = getBoundingBoxFromMap(map);
+  //   getMarkersAndResultsFromBounds(boundingBox);
+  // });
   ///////////////////////////
 
   ////////Adding markers when map first loads
@@ -67,15 +67,16 @@ $(document).ready(function() {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
     });
-    /////Adding markers when the user zooms the map
+    ////////////////////////////
+  });
+
+    // /////Adding markers when the user zooms the map
     // google.maps.event.addListener(map, 'zoom_changed', function() {
     //   //add markers to map within bounding box
     //   boundingBox = getBoundingBoxFromMap(map);
     //   getMarkersAndResultsFromBounds(boundingBox, true);
     // });
-    ////////////////////////////
-  });
-  //////////////////////////
+    //////////////////////////
 
   ///////Adding markers when the user drags the map
   google.maps.event.addListener(map, 'dragend', function() {
