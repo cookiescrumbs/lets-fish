@@ -1,4 +1,4 @@
-Let's Fishing
+Let's Fish
 ================
 
-An app to find, list and write guides to fisheries
+An app to find, list and write guides to fisheries and waters.
