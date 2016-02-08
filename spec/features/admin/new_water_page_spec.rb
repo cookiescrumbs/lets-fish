@@ -22,7 +22,7 @@ describe "New water page", type: :feature do
     expect(page).to have_content "New water for Bob's big fishery"
   end
 
-  context "form is filled out correctly" do
+  context "form is filled out correctly", focus: true do
 
     it "adds a water to a fishery, shows the water's details and says a nice thing" do
 
@@ -41,7 +41,6 @@ describe "New water page", type: :feature do
       expect(page).to have_content @species.first.name + ', ' + @species.last.name
       expect(page).to have_content @water_type.first.category
       expect(page.find('.alert')).to have_content "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}"
-
     end
 
   end

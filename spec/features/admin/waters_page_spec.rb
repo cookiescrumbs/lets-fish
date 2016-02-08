@@ -55,8 +55,9 @@ describe "Manage waters page", type: :feature do
         expect(page.find('h3').text).to eql "#{@fishery.name.possessive} - #{water.name}"
       end
 
-      it "has the correct fields in the edit form" do
+      it "has the correct fields in the edit form", focus: true do
         edit_button.click
+        binding.pry
         expect(page.find_field('water_name').value).to eql water.name
         expect(page.find('#latitude').value.to_f).to eql water.latitude
         expect(page.find('#longitude').value.to_f).to eql water.longitude
@@ -79,12 +80,7 @@ describe "Manage waters page", type: :feature do
 
       it "shows a helpful validation messages for required fields" do
         edit_button.click
-
         fill_in 'water_name', with: ''
-        #had to use find as the fields are hidden
-        # find('#latitude').set ''
-        # find('#longitude').set ''
-
         click_on "Submit"
 
         expect(page.find('.alert')).to have_content "1 error prohibited this water from being saved: Water name can't be blank"
