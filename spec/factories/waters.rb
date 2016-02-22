@@ -10,6 +10,7 @@ FactoryGirl.define do
     water_type_id 2
     species_ids [4]
     slug { name }
+    images { create_list(:image, 2) }
     fishery
   end
 end

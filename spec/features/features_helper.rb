@@ -5,6 +5,8 @@ require 'rack_session_access/capybara'
 require 'selenium-webdriver'
 require 'site_prism'
 
+include ActionDispatch::TestProcess
+
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
