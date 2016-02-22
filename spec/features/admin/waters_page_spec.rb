@@ -57,7 +57,6 @@ describe "Manage waters page", type: :feature do
 
       it "has the correct fields in the edit form", focus: true do
         edit_button.click
-        binding.pry
         expect(page.find_field('water_name').value).to eql water.name
         expect(page.find('#latitude').value.to_f).to eql water.latitude
         expect(page.find('#longitude').value.to_f).to eql water.longitude
