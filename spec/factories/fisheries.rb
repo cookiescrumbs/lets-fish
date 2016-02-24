@@ -12,7 +12,7 @@ FactoryGirl.define do
             :fishery => fishery,
             latitude: 53.4807593,
             longitude: -2.2426305000000184,
-            images: []
+            images: create_list(:image, 1)
           )
         end
     end

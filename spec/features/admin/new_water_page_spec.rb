@@ -22,7 +22,7 @@ describe "New water page", type: :feature do
     expect(page).to have_content "New water for Bob's big fishery"
   end
 
-  context "form is filled out correctly", focus: true do
+  context "form is filled out correctly" do
 
     it "adds a water to a fishery, shows the water's details and says a nice thing" do
 
@@ -33,7 +33,7 @@ describe "New water page", type: :feature do
       check @species.first.name
       check @species.last.name
       choose @water_type.first.category
-      attach_file('file', File.join(Rails.root, 'spec/fixtures/files/loch.jpg' ))
+      attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
 
       click_on "Submit"
 
