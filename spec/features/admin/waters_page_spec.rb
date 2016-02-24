@@ -11,7 +11,7 @@ describe "Manage waters page", type: :feature do
     before(:each) do
       stub_google_geocode
 
-      @species    =  ["brown trout", "rainbow trout", "grayling", "sea trout"].map do |name|
+      @species = ["brown trout", "rainbow trout", "grayling", "sea trout"].map do |name|
         FactoryGirl.create :species, name: name
       end
 
@@ -19,10 +19,10 @@ describe "Manage waters page", type: :feature do
         FactoryGirl.create :water_type, category: category
       end
 
-      @fishery    = FactoryGirl.create :fishery_with_waters
-
+      @fishery = FactoryGirl.create :fishery_with_waters
       visit admin_fishery_waters_path @fishery.id
     end
+
     let(:water){ @fishery.waters.last }
     let(:checked_species_name){ @species.last.name }
     let(:first_species_name){ @species.first.name }
@@ -55,12 +55,13 @@ describe "Manage waters page", type: :feature do
         expect(page.find('h3').text).to eql "#{@fishery.name.possessive} - #{water.name}"
       end
 
-      it "has the correct fields in the edit form", focus: true do
+      it "has the correct fields in the edit form" do
         edit_button.click
         expect(page.find_field('water_name').value).to eql water.name
         expect(page.find('#latitude').value.to_f).to eql water.latitude
         expect(page.find('#longitude').value.to_f).to eql water.longitude
         expect(page.has_checked_field? checked_species_name).to be true
+        expect(page.find('img.water')[:src]).to include 'loch.jpg'
       end
 
       it "updates a waters details and returns a nice message" do
@@ -70,11 +71,13 @@ describe "Manage waters page", type: :feature do
         find('#latitude').set -90
         find('#longitude').set -180
         check first_species_name
+        attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg' ))
         click_on 'Submit'
 
         expect(page).to have_content 'loch dooooooon'
         expect(page).to have_content "#{first_species_name}, #{checked_species_name}"
         expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
+        expect(water.images[0].image_file_name).to eql 'another-loch.jpg'
       end
 
       it "shows a helpful validation messages for required fields" do
