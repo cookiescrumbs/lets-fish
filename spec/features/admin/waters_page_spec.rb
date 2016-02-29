@@ -62,6 +62,7 @@ describe "Manage waters page", type: :feature do
         expect(page.find('#longitude').value.to_f).to eql water.longitude
         expect(page.has_checked_field? checked_species_name).to be true
         expect(page.find('img.water')[:src]).to include 'loch.jpg'
+        expect(page.find('#image_geograph_photo_id').value.to_i).to eql water.images.last.geograph_photo_id
       end
 
       it "updates a waters details and returns a nice message" do
@@ -72,12 +73,14 @@ describe "Manage waters page", type: :feature do
         find('#longitude').set -180
         check first_species_name
         attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg' ))
+        find('#image_geograph_photo_id').set 987654
         click_on 'Submit'
 
         expect(page).to have_content 'loch dooooooon'
         expect(page).to have_content "#{first_species_name}, #{checked_species_name}"
         expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
-        expect(water.images[0].image_file_name).to eql 'another-loch.jpg'
+        expect(water.images.last.image_file_name).to eql 'another-loch.jpg'
+        expect(water.images.last.geograph_photo_id).to eql 987654
       end
 
       it "shows a helpful validation messages for required fields" do
