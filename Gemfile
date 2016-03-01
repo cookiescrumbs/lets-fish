@@ -41,6 +41,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'sidekiq'
 gem 'delayed_paperclip'
 gem 'friendly_id', '~> 5.1.0'
+gem 'httparty'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -53,7 +54,6 @@ group :development, :test do
   gem 'shotgun'
   gem 'faker'
   gem 'rack_session_access'
-  gem 'pg'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
