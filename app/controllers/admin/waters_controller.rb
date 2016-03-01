@@ -3,10 +3,12 @@ class Admin::WatersController < AdminController
   before_filter :authorize
   before_action :set_fishery, only: [ :index, :new, :update, :create, :edit]
   before_action :set_water, only: [:edit, :update]
+  before_action :set_image, only: [:edit, :update]
 
   def index
     flash.now[:notice] = 'There are no waters associated with this fishery. Please add a water.' if @fishery.waters.empty?
   end
+
 
   def new
     @water = @fishery.waters.build
@@ -15,7 +17,9 @@ class Admin::WatersController < AdminController
 
   def create
     @water = @fishery.waters.build(water_params)
-    build_image @water
+    image = build_image @water
+    add_geograph_photo_id_to(image) unless image.nil?
+
     respond_to do |format|
       if @fishery.save
         format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully added to #{@fishery.name}" }
@@ -27,7 +31,7 @@ class Admin::WatersController < AdminController
 
   def update
     respond_to do |format|
-      if update_water(@water) && update_image(@water)
+      if update_water(@water) && update_image(@water) && update_image_geograph_photo_id(@image)
         format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully updated."}
       else
         format.html { render action: 'edit' }
@@ -53,9 +57,18 @@ class Admin::WatersController < AdminController
     water.images.build image: image_params[:image] unless image_params.nil?
   end
 
+  def add_geograph_photo_id_to(image)
+    image.geograph_photo_id = geograph_photo_id_param['geograph_photo_id'] unless geograph_photo_id_param.nil?
+  end
+
   def update_image(water)
     return true if image_params.nil?
     water.images.first.update image: image_params[:image]
+  end
+
+  def update_image_geograph_photo_id(image)
+    return true if geograph_photo_id_param.nil?
+    image.update geograph_photo_id: geograph_photo_id_param['geograph_photo_id']
   end
 
   def update_water(water)
@@ -70,6 +83,10 @@ class Admin::WatersController < AdminController
     @water = Water.find_by(slug: params[:id])
   end
 
+  def set_image
+    @image = Water.find_by(slug: params[:id]).images.first
+  end
+
   def water_params
     params.require(:water).permit(:name, :description, :latitude, :longitude, :water_type_id, :species_ids => [])
   end
@@ -77,4 +94,9 @@ class Admin::WatersController < AdminController
   def image_params
     params.require(:file).permit(:image) unless params[:file].nil?
   end
+
+  def geograph_photo_id_param
+    params.require(:image).permit(:geograph_photo_id) unless params[:image][:geograph_photo_id].nil?
+  end
+
 end
