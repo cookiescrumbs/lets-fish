@@ -7,7 +7,7 @@
 test: &test
   adapter: postgresql
   encoding: unicode
-  database: gone_fishing_test
+  database: lets_fish_test
   username: stevencook
   password:
   pool: 5
@@ -16,7 +16,7 @@ test: &test
 development:
   adapter: postgresql
   encoding: unicode
-  database: gone_fishing_development
+  database: lets_fish_development
   username: stevencook
   password:
   pool: 5
