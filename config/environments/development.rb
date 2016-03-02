@@ -1,4 +1,4 @@
-GoneFishing::Application.configure do
+LetsFish::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -33,8 +33,7 @@ GoneFishing::Application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :bucket => 'gone-fishing',
-    # :bucket => 'gone-fishing-dev',
+    :bucket => 'lets-fish',
     :url => ':s3_domain_url',
     :path => '/:class/:attachment/:id_partition/:style/:filename'
   }

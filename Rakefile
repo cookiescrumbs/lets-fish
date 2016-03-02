@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-GoneFishing::Application.load_tasks
+LetsFish::Application.load_tasks

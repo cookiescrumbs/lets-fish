@@ -1,4 +1,4 @@
-GoneFishing::Application.routes.draw do
+LetsFish::Application.routes.draw do
 
   namespace :admin do
     resources :water_types
