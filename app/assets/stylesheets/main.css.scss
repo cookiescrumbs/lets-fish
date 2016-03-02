@@ -370,7 +370,7 @@ header .intro-text .intro-lead-in, section .intro-text .intro-lead-in {
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 22px;
     font-style: italic;
-    line-height: 22px;
+    line-height: 25px;
 }
 
 header .intro-text .intro-heading, section .intro-text .intro-heading {
@@ -1039,5 +1039,14 @@ ul.species {
     padding-top: 7px;
 }
 
+.attribution {
+    font-size: 9px;
+}
 
+@media(min-width:768px) {
+   .attribution {
+        font-size: 12px;
+    }
+
+}
 
