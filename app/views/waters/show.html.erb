@@ -8,6 +8,13 @@
             </div>
         </div>
     </div>
+    <% if !@image_attribution.blank? %>
+       Image &copy; Copyright
+        <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+        and licensed for reuse under this
+        <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
+        <a href="<%= @image_attribution[:photo_url]%>">More information about this image &amp; Geograph</a>.
+    <% end %>
 </header>
 <section id="about-this-water">
     <div class="container">
@@ -41,7 +48,7 @@
         <p><%= @fishery.address.formatted %></p>
         <p><%= @fishery.contact_details.telephone %></p>
         <p><%= @fishery.contact_details.mobile %></p>
-        <p><%= @fishery.contact_details.email %></p>
+        <p><a href="mailto:<%= @fishery.contact_details.email %>?Subject=Enquiry regarding fishing at <%= @water.name %>"><%= @fishery.contact_details.email %></a></p>
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 <section>

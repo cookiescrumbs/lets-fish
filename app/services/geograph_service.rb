@@ -3,11 +3,13 @@ class GeographService
     include HTTParty
     base_uri 'api.geograph.org.uk'
 
-    def self.user_attribution_from(photo_id:)
+    def self.user_attribution_from(photo_id)
       response = get("/api/photo/#{photo_id}?output=json")
+      return {} unless response.code === 200
       {
         name: response['realname'],
-        profile_url: 'http://www.geograph.org.uk/' + response['profile_link'],
+        profile_url: 'http://www.geograph.org.uk' + response['profile_link'],
+        photo_url: "http://www.geograph.org.uk/photo/#{photo_id}",
         licence: 'http://creativecommons.org/licenses/by-sa/2.0/'
       }
     end

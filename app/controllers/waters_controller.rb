@@ -28,22 +28,21 @@ class WatersController < ApplicationController
     end
 
     def set_image_attribution
-      binding.pry
-      if !geograph_photo_id.nil?
+      if first_image? && geograph_photo_id?
         @image_attribution = GeographService::user_attribution_from geograph_photo_id
       end
     end
 
     def geograph_photo_id
-      first_image.geograph_photo_id unless first_image.nil? || first_image.geograph_photo_id.nil?
+      Water.find_by(slug: params[:id]).images.first.geograph_photo_id
     end
 
-    def images
-      Water.find_by(slug: params[:id]).images
+    def first_image?
+      !Water.find_by(slug: params[:id]).images.first.nil?
     end
 
-    def first_image
-      images.first unless images.first.nil?
+    def geograph_photo_id?
+      !Water.find_by(slug: params[:id]).images.first.geograph_photo_id.nil?
     end
 
 end
