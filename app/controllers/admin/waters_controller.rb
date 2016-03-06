@@ -62,7 +62,7 @@ class Admin::WatersController < AdminController
   end
 
   def update_image_geograph_photo_id(water)
-    return true if geograph_photo_id_param.nil?
+    return true if geograph_photo_id_param.nil? || water.images.length === 0
     image = water.images.first
     image.update geograph_photo_id: geograph_photo_id_param['geograph_photo_id']
   end
