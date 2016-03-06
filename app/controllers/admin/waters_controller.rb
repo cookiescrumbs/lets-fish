@@ -31,7 +31,7 @@ class Admin::WatersController < AdminController
 
   def update
     respond_to do |format|
-      if update_water(@water) && update_image(@water) && update_image_geograph_photo_id(@image)
+      if update_water(@water) && update_image(@water) && update_image_geograph_photo_id(@water)
         format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully updated."}
       else
         format.html { render action: 'edit' }
@@ -61,14 +61,20 @@ class Admin::WatersController < AdminController
     image.geograph_photo_id = geograph_photo_id_param['geograph_photo_id'] unless geograph_photo_id_param.nil?
   end
 
-  def update_image(water)
-    return true if image_params.nil?
-    water.images.first.update image: image_params[:image]
+  def update_image_geograph_photo_id(water)
+    return true if geograph_photo_id_param.nil?
+    image = water.images.first
+    image.update geograph_photo_id: geograph_photo_id_param['geograph_photo_id']
   end
 
-  def update_image_geograph_photo_id(image)
-    return true if geograph_photo_id_param.nil?
-    image.update geograph_photo_id: geograph_photo_id_param['geograph_photo_id']
+  def update_image(water)
+    return true if image_params.nil?
+    if water.images.length > 0
+      water.images.first.update image: image_params[:image]
+    else
+      build_image(water)
+      water.save
+    end
   end
 
   def update_water(water)
