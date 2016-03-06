@@ -89,6 +89,11 @@ describe Water, :type => :model do
         expect(@water.short_address).to eql "Cumnor, Oxfordshire"
      end
 
+      it "handles a nil address" do
+        @water.address = nil
+        expect(@water.short_address).to eql nil
+      end
+
 
 
     end
