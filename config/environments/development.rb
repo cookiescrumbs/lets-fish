@@ -37,4 +37,6 @@ LetsFish::Application.configure do
     :url => ':s3_domain_url',
     :path => '/:class/:attachment/:id_partition/:style/:filename'
   }
+
+  config.geograph_api_key = 'a5ecd893c8'
 end

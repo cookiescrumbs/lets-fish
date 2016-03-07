@@ -92,4 +92,6 @@ LetsFish::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  config.geography_api_key = 'a5ecd893c8'
 end
