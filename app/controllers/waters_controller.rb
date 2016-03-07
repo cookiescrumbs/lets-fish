@@ -28,7 +28,7 @@ class WatersController < ApplicationController
     end
 
     def set_image_attribution
-      if first_image? && geograph_photo_id? && geograph_api_key?
+      if first_image? && geograph_photo_id?
         @image_attribution = GeographService::user_attribution_from geograph_photo_id, geograph_api_key
       end
     end
@@ -49,9 +49,6 @@ class WatersController < ApplicationController
       !Water.find_by(slug: params[:id]).images.first.geograph_photo_id.nil?
     end
 
-    def geograph_api_key?
-      !Rails.application.config.geograph_api_key.nil?
-    end
 
 
 end

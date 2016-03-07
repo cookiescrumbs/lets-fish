@@ -93,5 +93,5 @@ LetsFish::Application.configure do
     }
   }
 
-  config.geography_api_key = 'a5ecd893c8'
+  config.geograph_api_key = 'a5ecd893c8'
 end
