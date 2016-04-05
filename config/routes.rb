@@ -13,11 +13,10 @@ LetsFish::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
-  post '/list/fishery',   to: "homepage#create_fishery"
-  get  '/add/water/:id',  to: "homepage#new_water"
-  post '/add/water/:id',  to: "homepage#create_water"
+  get '/add/water/:id',   to: 'homepage#new_water'
   get 'search',           to: 'search#index'
   get '/waters/:id',      to: 'waters#show'
+  get '/trips/:username/:id',  to: 'trips#show'
 
   get '/admin/login',     to: 'admin/sessions#new'
   post '/admin/login',    to: 'admin/sessions#create'
