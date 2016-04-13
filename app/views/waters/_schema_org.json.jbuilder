@@ -1,6 +1,6 @@
 json.ignore_nil!
 
-json.set! :@context, 'http://schema.org/'
+json.set! :@context, "http:\/\/schema.org\/"
 json.set! :@type, 'Organization'
 json.name @fishery.name
 json.url @fishery.contact_details.website
@@ -11,7 +11,7 @@ json.telephone @fishery.contact_details.telephone
 json.set! :areaServed do
   json.set! :@type, 'LakeBodyOfWater'
   json.name @water.name
-  json.hasMap "https://www.google.com/maps?ll=#{@water.latitude},#{@water.longitude}&q=#{@water.latitude},#{@water.longitude}&hl=en&t=m&z=12"
+  json.hasMap "https:\/\/www.google.com\/maps?ll=#{@water.latitude},#{@water.longitude}&q=#{@water.latitude},#{@water.longitude}&hl=en&t=m&z=12"
   json.set! :geo do
     json.set! :@type, 'GeoCoordinates'
     json.latitude @water.latitude
