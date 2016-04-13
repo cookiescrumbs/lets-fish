@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-3">
                 <%= render '/shared/water_type', locals: { category: @water.water_type.category }%>
-                <%= render '/shared/fish_species', locals: { fish: @water.species.map{|s| s.name }.to_sentence } %>
+                <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.name }.to_sentence } %>
                 <%= render '/shared/location', locals: { location: @water.address } %>
             </div>
             <div class="col-md-9">
@@ -66,6 +66,10 @@
         </div>
     </div>
 </section>
+
+<script type="application/ld+json">
+    <%= raw render 'schema_org.json.jbuilder' %>
+</script>
 
 
 
