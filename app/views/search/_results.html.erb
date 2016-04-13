@@ -7,7 +7,7 @@
             <% waters.each do | water |
                 count +=1
             %>
-                <div class="col-md-6 col-sm-12 result-item" itemscope itemtype="http://schema.org/Place">
+                <div class="col-md-6 col-sm-12 result-item">
                     <div class="title-header-outer">
                         <div class="title-header">
                             <h4 class="water-name" itemprop="name" ><%= water.name %></h4>
@@ -17,24 +17,20 @@
                             </span>
                         </div>
                     </div>
-                    <div itemscope itemtype="http://schema.org/BodyOfWater">
-                        <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-                            <meta itemprop="latitude" content="<%= water.latitude %>" />
-                            <meta itemprop="longitude" content="<%= water.longitude %>" />
-                        </div>
+                    <div>
                         <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
                         <% image_styles = (water.images.first)? '' : 'missing-image' %>
                         <a href="/waters/<%= water.slug %>" class="result-link" itemprop="url" >
-                            <div class="image-background" itemscope itemtype="http://schema.org/ImageObject">
+                            <div class="image-background">
                                 <h2 itemprop="name" class="hidden"><%= water.name %></h2>
-                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>" itemprop="contentUrl">
+                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
                             </div>
                         </a>
                         <div class="result-caption">
                             <p itemprop="name" class="hidden"><%= water.name %></p>
                             <p itemprop="description" class="hidden"><%= water.description %></p>
                             <%= render '/shared/water_type', locals: { category: water.water_type.category }%>
-                            <%= render '/shared/fish_species', locals: { fish: water.species.map{|s| s.name }.to_sentence } %>
+                            <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name }.to_sentence } %>
                             <%= render '/shared/location', locals: { location: water.address } %>
                         </div>
                     </div>
