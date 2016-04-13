@@ -6,7 +6,6 @@ class WatersController < ApplicationController
   before_action :set_species, only: [:show]
   before_action :set_image_attribution, only: [:show]
 
-
   def show
   end
 
@@ -24,7 +23,7 @@ class WatersController < ApplicationController
     end
 
     def set_species
-      @species = Water.find_by(slug: params[:id]).species
+      @species = Water.find_by(slug: params[:id]).species.select(:name).distinct
     end
 
     def set_image_attribution
