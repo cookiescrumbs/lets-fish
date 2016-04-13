@@ -5,7 +5,8 @@ Let's Fish
 
 An app to find, list and write guides to fisheries and waters.
 
-####Restore DB from dump
+####Restore development db (data only) from /db/pg_backups
+```rake pg_db:restore```
 
-```pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
-
+```https://devcenter.heroku.com/articles/heroku-postgres-import-export```
+```http://www.postgresql.org/docs/9.5/static/backup-dump.html```
