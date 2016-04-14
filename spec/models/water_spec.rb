@@ -66,42 +66,23 @@ describe Water, :type => :model do
 
     end
 
-    describe "short address" do
-
-      it "handles an address with a postcode" do
-        @water.address = "Unnamed Road, Morpeth, Northumberland NE65 7LG, UK"
-        expect(@water.short_address).to eql "Morpeth, Northumberland"
-      end
+    describe "short address", focus: true do
 
       it "handles an address with no elements" do
         @water.address = ""
         expect(@water.short_address).to eql nil
       end
 
-      it "handles an address with one element" do
-        @water.address = "Northumberland"
-        expect(@water.short_address).to eql "Northumberland"
-      end
-
-      it "handles an address with two elements and no postcode" do
-        @water.address = "Unnamed Road, Northumberland"
-        expect(@water.short_address).to eql "Northumberland"
-      end
-
-      it "handles an address with three element and no postcode " do
-        @water.address = "Unnamed Road, Northumberland, UK"
-        expect(@water.short_address).to eql "Northumberland, UK"
-      end
-
-     it "handles an address with four elements and no postcode" do
-        @water.address = "Unnamed Road, Cumnor, Oxfordshire, UK"
-        expect(@water.short_address).to eql "Cumnor, Oxfordshire"
-     end
-
       it "handles a nil address" do
         @water.address = nil
         expect(@water.short_address).to eql nil
       end
+
+      it "returns the first two items of the formatted address" do
+        @water.address = "Somewhere, Northumberland, UK"
+        expect(@water.short_address).to eql "Somewhere, Northumberland"
+      end
+
 
     end
 end

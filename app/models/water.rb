@@ -31,10 +31,8 @@ class Water < ActiveRecord::Base
   end
 
   def short_address
-    return nil if address.nil?
-    split = address.split(', ')
-    range = split.count > 1 ? 1..2 : 0..1
-    address.split(', ')[range].map {|c| c.split(' ', 2)[0] }.join(", ") unless address.empty?
+    return nil if address.blank?
+    address.split(', ')[0..1].join(", ")
   end
 
   private
