@@ -5,7 +5,7 @@ describe "Water Type", type: :feature do
     login FactoryGirl.create :user
   end
   describe "Manage water types" do
-      it "lists all water  types" do
+      it "lists all water types" do
         FactoryGirl.create(:water_type, category: "loch")
         visit admin_water_types_path
         expect(page).to have_content "Loch"
