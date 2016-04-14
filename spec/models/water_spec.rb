@@ -50,7 +50,7 @@ describe Water, :type => :model do
 
     end
 
-    describe "Address", focus: true do
+    describe "Address" do
 
       context "water without an address" do
         it "is the 'formatted address' from google maps goecode api" do
