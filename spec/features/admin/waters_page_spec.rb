@@ -71,6 +71,7 @@ describe "Manage waters page", type: :feature do
         #had to use find as the fields are hidden
         find('#latitude').set -90
         find('#longitude').set -180
+        find('#water_address').set 'Somewhere, Wales'
         check first_species_name
         attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg' ))
         find('#image_geograph_photo_id').set 987654
@@ -81,6 +82,7 @@ describe "Manage waters page", type: :feature do
         expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
         expect(water.images.last.image_file_name).to eql 'another-loch.jpg'
         expect(water.images.last.geograph_photo_id).to eql 987654
+        expect(water.address).to eql 'Somewhere, Wales'
       end
 
       it "shows a helpful validation messages for required fields" do

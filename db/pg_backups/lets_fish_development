@@ -1,0 +1,2803 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+-- Started on 2016-04-13 12:30:37 BST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12623)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2471 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 192 (class 1259 OID 16434)
+-- Name: addresses; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE addresses (
+    id integer NOT NULL,
+    fishery_id integer,
+    street character varying(255),
+    line2 character varying(255),
+    region character varying(255),
+    country character varying(255),
+    postcode character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- TOC entry 191 (class 1259 OID 16432)
+-- Name: addresses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE addresses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2472 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: addresses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE addresses_id_seq OWNED BY addresses.id;
+
+
+--
+-- TOC entry 190 (class 1259 OID 16422)
+-- Name: contact_details; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE contact_details (
+    id integer NOT NULL,
+    fishery_id integer,
+    name character varying(255),
+    telephone character varying(255),
+    mobile character varying(255),
+    email character varying(255),
+    website character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- TOC entry 189 (class 1259 OID 16420)
+-- Name: contact_details_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE contact_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2473 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: contact_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE contact_details_id_seq OWNED BY contact_details.id;
+
+
+--
+-- TOC entry 183 (class 1259 OID 16391)
+-- Name: fisheries; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE fisheries (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    place_id character varying(255)
+);
+
+
+--
+-- TOC entry 182 (class 1259 OID 16389)
+-- Name: fisheries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE fisheries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2474 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: fisheries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE fisheries_id_seq OWNED BY fisheries.id;
+
+
+--
+-- TOC entry 198 (class 1259 OID 16465)
+-- Name: images; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE images (
+    id integer NOT NULL,
+    water_id integer,
+    image_file_name character varying(255),
+    image_content_type character varying(255),
+    image_file_size integer,
+    image_updated_at timestamp without time zone,
+    geograph_photo_id integer
+);
+
+
+--
+-- TOC entry 197 (class 1259 OID 16463)
+-- Name: images_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2475 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE images_id_seq OWNED BY images.id;
+
+
+--
+-- TOC entry 181 (class 1259 OID 16385)
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+--
+-- TOC entry 187 (class 1259 OID 16411)
+-- Name: species; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE species (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- TOC entry 186 (class 1259 OID 16409)
+-- Name: species_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE species_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2476 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: species_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE species_id_seq OWNED BY species.id;
+
+
+--
+-- TOC entry 188 (class 1259 OID 16417)
+-- Name: species_waters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE species_waters (
+    species_id integer,
+    water_id integer
+);
+
+
+--
+-- TOC entry 196 (class 1259 OID 16454)
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    name character varying(255),
+    email character varying(255),
+    password_digest character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- TOC entry 195 (class 1259 OID 16452)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2477 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 16446)
+-- Name: water_types; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE water_types (
+    id integer NOT NULL,
+    category character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- TOC entry 193 (class 1259 OID 16444)
+-- Name: water_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE water_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2478 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: water_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE water_types_id_seq OWNED BY water_types.id;
+
+
+--
+-- TOC entry 185 (class 1259 OID 16399)
+-- Name: waters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE waters (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    season_start date,
+    season_end date,
+    longitude double precision,
+    latitude double precision,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    water_type_id integer,
+    fishery_id integer,
+    address text,
+    slug character varying(255)
+);
+
+
+--
+-- TOC entry 184 (class 1259 OID 16397)
+-- Name: waters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE waters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2479 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: waters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE waters_id_seq OWNED BY waters.id;
+
+
+--
+-- TOC entry 2307 (class 2604 OID 16490)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY addresses ALTER COLUMN id SET DEFAULT nextval('addresses_id_seq'::regclass);
+
+
+--
+-- TOC entry 2306 (class 2604 OID 16491)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contact_details ALTER COLUMN id SET DEFAULT nextval('contact_details_id_seq'::regclass);
+
+
+--
+-- TOC entry 2303 (class 2604 OID 16492)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY fisheries ALTER COLUMN id SET DEFAULT nextval('fisheries_id_seq'::regclass);
+
+
+--
+-- TOC entry 2310 (class 2604 OID 16493)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::regclass);
+
+
+--
+-- TOC entry 2305 (class 2604 OID 16494)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY species ALTER COLUMN id SET DEFAULT nextval('species_id_seq'::regclass);
+
+
+--
+-- TOC entry 2309 (class 2604 OID 16495)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- TOC entry 2308 (class 2604 OID 16496)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY water_types ALTER COLUMN id SET DEFAULT nextval('water_types_id_seq'::regclass);
+
+
+--
+-- TOC entry 2304 (class 2604 OID 16497)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY waters ALTER COLUMN id SET DEFAULT nextval('waters_id_seq'::regclass);
+
+
+--
+-- TOC entry 2458 (class 0 OID 16434)
+-- Dependencies: 192
+-- Data for Name: addresses; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY addresses (id, fishery_id, street, line2, region, country, postcode, created_at, updated_at) FROM stdin;
+1	\N						2015-04-29 12:05:21.86757	2015-04-29 12:38:03.486223
+3	2	Stoer	North Assynt Estate	Sutherland	Scotland	IV27 4JE	2015-04-29 15:35:01.181642	2015-04-29 15:35:01.181642
+2	\N						2015-04-29 12:38:03.50218	2015-04-29 15:42:52.581165
+4	\N						2015-04-29 15:42:52.595171	2015-04-29 15:43:09.487684
+5	1						2015-04-29 15:43:09.499972	2015-04-29 15:43:09.499972
+6	3						2015-04-29 16:55:45.351168	2015-04-29 16:55:45.351168
+7	4						2015-05-05 14:58:44.785298	2015-05-05 14:58:44.785298
+8	5						2015-05-07 10:28:52.46543	2015-05-07 10:28:52.46543
+9	26						2015-09-17 22:32:25.257521	2015-09-17 22:32:25.257521
+14	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:00:56.44856	2015-12-09 14:02:40.626532
+17	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:12.537046	2015-12-09 14:26:23.007824
+19	34	60 Carleton Road	Chorley	Lancashire	United Kingdom	PR6 8UB	2015-12-10 08:40:07.806168	2015-12-10 08:40:07.806168
+21	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:28.69828	2015-12-16 08:44:49.911193
+23	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:19.451041	2015-12-16 08:54:33.414222
+24	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:33.424165	2015-12-16 16:42:21.992164
+26	37	Reservoir Road	Thornton	Lincolnshire	United Kingdom	LE67 1AR	2015-12-16 16:42:22.025448	2015-12-16 16:42:22.025448
+25	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-16 16:42:02.466611	2015-12-19 11:44:39.041974
+30	\N	Church Ln	Withern, Alford	Lincolnshire 	United Kingdom	LN13 0NG	2015-12-19 12:04:43.153037	2015-12-24 10:57:42.937789
+11	\N	Low Mill Caton	Lancaster	Lancashire	United Kingdom	LA2 9HX	2015-12-09 06:57:31.185886	2015-12-24 10:59:41.12663
+12	\N	Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-09 07:58:40.553359	2015-12-24 11:01:32.47419
+13	\N	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-09 08:09:09.166424	2015-12-24 11:02:30.338409
+34	30	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-24 11:02:30.351774	2015-12-24 11:02:30.351774
+15	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:02:40.638359	2015-12-24 11:04:12.242251
+16	\N	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-09 14:16:27.194939	2015-12-24 11:26:41.644867
+36	32	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-24 11:26:41.651624	2015-12-24 11:26:41.651624
+18	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:23.016264	2015-12-24 11:28:09.940247
+37	\N	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:28:09.9494	2015-12-24 11:59:42.289282
+38	33	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:59:42.298863	2015-12-24 11:59:42.298863
+20	\N	Mere Lane	 Mere Brow, Tarleton	Lancashire	United Kingdom	PR4 6JU	2015-12-16 08:23:17.447292	2015-12-24 12:01:11.997928
+22	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:49.927973	2015-12-24 12:01:42.899
+40	36	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-24 12:01:42.920076	2015-12-24 12:01:42.920076
+28	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-19 11:44:39.056902	2015-12-24 12:05:27.400222
+41	38	Low Farm	Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-24 12:05:27.421254	2015-12-24 12:05:27.421254
+27	\N	Ludford Market	Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-19 11:39:54.79475	2015-12-24 12:05:49.39052
+29	\N	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-19 11:55:09.384112	2015-12-24 12:06:24.66354
+43	40	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-24 12:06:24.671782	2015-12-24 12:06:24.671782
+31	\N	Church Lane	Withern	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 10:57:42.951738	2015-12-24 12:06:37.412972
+44	41	Church Lane	Alford	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 12:06:37.421657	2015-12-24 12:06:37.421657
+33	\N	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 11:01:32.491813	2015-12-24 12:07:05.065402
+45	29	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 12:07:05.074978	2015-12-24 12:07:05.074978
+35	\N	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 11:04:12.252656	2015-12-24 12:07:15.436035
+46	31	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 12:07:15.455164	2015-12-24 12:07:15.455164
+39	\N	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:01:12.017757	2015-12-24 12:07:21.019399
+47	35	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:07:21.044391	2015-12-24 12:07:21.044391
+42	\N	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:05:49.405691	2015-12-24 12:07:27.376121
+48	39	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:07:27.397133	2015-12-24 12:07:27.397133
+49	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:13:53.665236	2015-12-24 12:24:54.210719
+50	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:24:54.226232	2015-12-24 12:27:29.164357
+51	42	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:27:29.174792	2015-12-24 12:27:29.174792
+52	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:35:36.277013	2015-12-24 12:36:08.629419
+53	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:36:08.639182	2015-12-24 12:37:41.185017
+54	43	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:37:41.196107	2015-12-24 12:37:41.196107
+55	44		Northampton	Northamptonshire	United Kingdom	NN6 9BB	2015-12-24 14:32:59.93119	2015-12-24 14:32:59.93119
+57	46						2015-12-24 14:33:35.712368	2015-12-24 14:33:35.712368
+56	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:33:11.299852	2015-12-24 14:35:20.985601
+59	47						2015-12-24 14:38:32.151802	2015-12-24 14:38:32.151802
+58	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:35:20.993075	2015-12-24 14:50:59.087072
+60	45	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:50:59.100872	2015-12-24 14:50:59.100872
+61	\N						2015-12-24 14:57:52.251917	2015-12-24 15:00:52.544166
+62	48	Main Rd	King's Lynn	Norfolk	United Kingdom	PE32 1TE	2015-12-24 15:00:52.556316	2015-12-24 15:00:52.556316
+63	\N						2015-12-24 22:43:12.890877	2015-12-24 22:45:20.180615
+64	49	Chapel Street	Attleborough	Norfolk	United Kingdom	NR17 1UJ	2015-12-24 22:45:20.203693	2015-12-24 22:45:20.203693
+65	\N						2015-12-24 23:53:42.120819	2015-12-25 00:01:12.9304
+66	50	Lowick Road	Kettering	Northamptonshire	United Kingdom	NN14 3EE	2015-12-25 00:01:12.963802	2015-12-25 00:01:12.963802
+67	51	Brixworth Road	Northampton	Northamptonshire	United Kingdom	NN6 9SJ	2015-12-25 00:10:20.132825	2015-12-25 00:10:20.132825
+68	52	Teeton Rd	Northampton	Northamptonshire	United Kingdom	NN6 8EJ	2015-12-25 00:27:16.081342	2015-12-25 00:27:16.081342
+69	53	Grange Rd	Kettering	Northamptonshire	United Kingdom	NN14 4DT	2015-12-25 00:31:38.648645	2015-12-25 00:31:38.648645
+70	54		Rothbury	Northumberland	United Kingdom	NE65 7LG	2015-12-25 00:55:28.984531	2015-12-25 00:55:28.984531
+71	\N						2015-12-25 01:26:03.958977	2015-12-25 01:31:28.35101
+72	55		Alnwick	Northumberland	United Kingdom	NE66 5RF	2015-12-25 01:31:28.360167	2015-12-25 01:31:28.360167
+73	56						2015-12-25 08:48:23.750278	2015-12-25 08:48:23.750278
+75	58						2015-12-25 08:49:50.72218	2015-12-25 08:49:50.72218
+74	\N						2015-12-25 08:49:45.498	2015-12-30 09:58:46.507926
+10	\N	Catlow Rd	Slaidburn	Lancashire	United Kingdom	BB7 3AQ	2015-12-09 06:45:43.882643	2016-01-13 07:06:51.807448
+32	\N	Low Mill Caton		Lancashire	United Kingdom	LA2 9HX	2015-12-24 10:59:41.133543	2016-01-13 07:07:26.324511
+76	\N				United Kingdom		2015-12-30 09:58:46.624659	2016-01-24 19:08:25.646522
+77	59	Higham Dykes	Ponteland	Northumberland	United Kingdom	NE20 0DH	2015-12-30 12:29:30.141461	2015-12-30 12:29:30.141461
+78	60	Beech House	Langley-on-Tyne	Northumberland	United Kingdom	NE47 5LD	2015-12-30 12:38:03.95705	2015-12-30 12:38:03.95705
+80	61	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:25:25.630725	2015-12-30 13:25:25.630725
+81	62	Hallington Reservoir	Colwell, Hexham	Northumberland	United Kingdom	NE46 4TP	2015-12-30 13:29:15.853208	2015-12-30 13:29:15.853208
+79	\N	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:23:23.714802	2015-12-30 13:25:25.583666
+82	63	Woodhouse Lane	Carlton in Lindrick	North Notts	United Kingdom	S81 9AQ	2015-12-31 11:58:48.812538	2015-12-31 11:58:48.812538
+83	64	Standlake	Witney	Oxfordshire	United Kingdom	OX29 7QB	2015-12-31 12:45:08.188795	2015-12-31 12:45:08.188795
+84	65	Cumnor Rd		Oxford	United Kingdom	OX2 9NS	2015-12-31 12:55:53.922169	2015-12-31 12:55:53.922169
+85	66	Rectory Farm	Chipping Norton	Oxfordshire	United Kingdom	OX7 5YZ	2015-12-31 13:06:29.363146	2015-12-31 13:06:29.363146
+86	67	Normanton Road	Oakham	Leicestershire	United Kingdom	LE15 8HD	2015-12-31 13:10:33.111637	2015-12-31 13:10:33.111637
+87	68	Astbury Terrace	Bridgnorth	Shropshire	United Kingdom	WV16 6AT	2015-12-31 13:19:22.958268	2015-12-31 13:19:22.958268
+88	\N	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 13:27:38.308778	2015-12-31 19:01:26.590158
+89	69	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 19:01:26.601817	2015-12-31 19:01:26.601817
+90	70	Ellerdine Hall Farm	Telford	Shropshire 	United Kingdom	TF6 6QR	2015-12-31 19:16:06.238205	2015-12-31 19:16:06.238205
+91	71	Lower Heathwaen	nr Oswestry	Shropshire	United Kingdom	SY10 8DA	2016-01-02 11:32:39.923814	2016-01-02 11:32:39.923814
+92	72	Little Heath	Gamlingay	Bedfordshire	United Kingdom	SG19 3LL	2016-01-11 22:12:42.313814	2016-01-11 22:12:42.313814
+93	73		Slaidburn	Lancashire	United Kingdom		2016-01-12 22:35:24.24231	2016-01-12 22:35:24.24231
+94	\N	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:07:52.678593	2016-01-12 23:11:15.514472
+95	74	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:11:15.530898	2016-01-12 23:11:15.530898
+96	75	Howe Lane	Bracknell	Berkshire	United Kingdom	RG42 5QL	2016-01-12 23:17:40.324134	2016-01-12 23:17:40.324134
+97	76	Station Road	Theale	Berkshire	United Kingdom	RG7 4AS	2016-01-12 23:32:03.253899	2016-01-12 23:32:03.253899
+98	77	Swanbourne Road	Mursley	Buckinghamshire	United Kingdom	MK17 0JA	2016-01-12 23:40:20.869171	2016-01-12 23:40:20.869171
+99	27	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-01-13 07:06:51.812518	2016-01-13 07:06:51.812518
+100	28		Caton	Lancashire	United Kingdom	LA2 9HX	2016-01-13 07:07:26.329829	2016-01-13 07:07:26.329829
+101	78	Holme Fen Drove	Huntingdon	Cambridgeshire	United Kingdom	PE28 3RE	2016-01-13 07:36:54.649752	2016-01-13 07:36:54.649752
+102	79	West Perry	Huntingdon	Cambridgeshire	United Kingdom	PE28 0BX	2016-01-13 07:46:50.20189	2016-01-13 07:46:50.20189
+103	80		East Witton	North Yorkshire	United Kingdom	DL8 4SQ	2016-01-14 13:43:35.828777	2016-01-14 13:43:35.828777
+104	81		Settle	North Yorkshire	United Kingdom	BD24 9PU	2016-01-15 07:56:08.242181	2016-01-15 07:56:08.242181
+106	83		Mobberley	Cheshire East	United Kingdom	WA16 7BH	2016-01-15 17:27:25.479379	2016-01-15 17:27:25.479379
+107	84	Pike Low Farm	Macclesfield	Cheshire	United Kingdom	SK11 9HD	2016-01-15 18:38:29.952721	2016-01-15 18:38:29.952721
+108	85	Warrington Road	Mickle Trafford	Cheshire	United Kingdom		2016-01-15 18:50:13.385824	2016-01-15 18:50:13.385824
+109	86	Mill Lane	Bishopton	Cleveland	United Kingdom	TS21 1LL	2016-01-15 19:14:29.221682	2016-01-15 19:14:29.221682
+105	\N		Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-15 08:33:51.839494	2016-01-16 12:18:39.673204
+110	82	Ardlussa House	Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-16 12:18:39.688032	2016-01-16 12:18:39.688032
+111	\N	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 12:37:29.450167	2016-01-17 13:29:55.800999
+112	\N		Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:29:55.807252	2016-01-17 13:32:11.497048
+113	87	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:32:11.503636	2016-01-17 13:32:11.503636
+114	57	Abbey Rd		County Durham	United Kingdom	 DH1 5FJ	2016-01-24 19:08:25.660795	2016-01-24 19:08:25.660795
+115	88	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-02-22 22:02:37.779104	2016-02-22 22:02:37.779104
+116	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:51:43.851865	2016-03-06 23:52:26.649959
+117	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:52:26.658698	2016-03-07 08:41:28.300932
+118	89	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-07 08:41:28.310275	2016-03-07 08:41:28.310275
+119	\N				United Kingdom		2016-03-13 21:46:45.217044	2016-03-13 21:47:28.024219
+120	\N				United Kingdom		2016-03-13 21:47:28.06825	2016-03-13 21:54:51.051527
+121	\N				United Kingdom		2016-03-13 21:54:51.056262	2016-03-14 14:36:29.113386
+122	90				United Kingdom		2016-03-14 14:36:29.123878	2016-03-14 14:36:29.123878
+\.
+
+
+--
+-- TOC entry 2480 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: addresses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('addresses_id_seq', 122, true);
+
+
+--
+-- TOC entry 2456 (class 0 OID 16422)
+-- Dependencies: 190
+-- Data for Name: contact_details; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY contact_details (id, fishery_id, name, telephone, mobile, email, website, created_at, updated_at) FROM stdin;
+1	\N						2015-04-29 12:05:21.859652	2015-04-29 12:38:03.473494
+3	2		01571855298		 admin@assyntcrofters.co.uk	www.sportingassynt.co.uk	2015-04-29 15:35:01.148559	2015-04-29 15:35:01.148559
+2	\N						2015-04-29 12:38:03.496279	2015-04-29 15:42:52.57073
+4	\N					www.assyntangling.co.uk	2015-04-29 15:42:52.586615	2015-04-29 15:43:09.475012
+5	1					www.assyntangling.co.uk	2015-04-29 15:43:09.493581	2015-04-29 15:43:09.493581
+6	3						2015-04-29 16:55:45.336926	2015-04-29 16:55:45.336926
+7	4						2015-05-05 14:58:44.772765	2015-05-05 14:58:44.772765
+8	5						2015-05-07 10:28:52.453144	2015-05-07 10:28:52.453144
+9	26						2015-09-17 22:32:25.247906	2015-09-17 22:32:25.247906
+14	\N						2015-12-09 14:00:56.443216	2015-12-09 14:02:40.610159
+17	\N	Alex Young		07818 880327	fyldetroutfishery@yahoo.co.uk	www.fyldetroutfishery.co.uk	2015-12-09 14:26:12.53322	2015-12-09 14:26:22.998217
+19	34	Paul Bateson	01257 274258	07887 722909 	enquiries@hdffc.co.uk 	http://www.hdffc.co.uk/	2015-12-10 08:40:07.802264	2015-12-10 08:40:07.802264
+21	\N	Ann Mills	01536 772930		fishing.lodge@tatasteel.com		2015-12-16 08:44:28.691812	2015-12-16 08:44:49.894993
+23	\N		01530 230807	07846463086	lodge@flyfishthornton.co.uk	www.flyfishthornton.co.uk	2015-12-16 08:54:19.437891	2015-12-16 08:54:33.406198
+24	\N		01530 230807		lodge@flyfishthornton.co.uk	www.flyfishthornton.co.uk	2015-12-16 08:54:33.41909	2015-12-16 16:42:21.979073
+26	37		01530 230807		lodge@flyfishthornton.co.uk	www.flyfishthornton.co.uk	2015-12-16 16:42:22.014013	2015-12-16 16:42:22.014013
+25	\N		01724 764161			www.cleathamtroutfishery.com	2015-12-16 16:42:02.455572	2015-12-19 11:44:39.03018
+30	\N	Sara Grundy	01507 450356	07760 625557	info@withernmilltroutfarm.co.uk	www.withernmilltroutfarm.co.uk	2015-12-19 12:04:43.151216	2015-12-24 10:57:42.929509
+11	\N	Ben Dobson	01524 770412		info@stocksreservoir.com	www.bankhouseflyfishery.co.uk	2015-12-09 06:57:31.179479	2015-12-24 10:59:41.11972
+12	\N	Frank Casson	0199561583	07834416209	casv6@aol.com	www.barnsfoldwaters.co.uk	2015-12-09 07:58:40.547542	2015-12-24 11:01:32.464465
+13	\N	Roger Burnside	01525 793644	07711 055544	sales@cleveleymere.com	www.cleveleymere.com	2015-12-09 08:09:09.162799	2015-12-24 11:02:30.327639
+34	30	Roger Burnside	01525 793644	07711 055544	sales@cleveleymere.com	http://www.cleveleymere.com/	2015-12-24 11:02:30.346341	2015-12-24 11:02:30.346341
+15	\N		01706 260363		keithbenson1@talktalk.net	www.cowpeflyanglers.co.uk	2015-12-09 14:02:40.63285	2015-12-24 11:04:12.235441
+16	\N	Stephen Kershaw	01204 691199		curleystroutfisherys@gmail.com	www.curleysfishery.co.uk	2015-12-09 14:16:27.187424	2015-12-24 11:26:41.637031
+36	32	Stephen Kershaw	01204 691199		curleystroutfisherys@gmail.com	http://www.curleysfishery.co.uk/	2015-12-24 11:26:41.648141	2015-12-24 11:26:41.648141
+18	\N	Alex Young		07818 880327	fyldetroutfishery@yahoo.co.uk	www.fyldetroutfishery.co.uk	2015-12-09 14:26:23.012856	2015-12-24 11:28:09.929901
+37	\N	Alex Young	07818 880327	07818 880327	fyldetroutfishery@yahoo.co.uk	http://www.fyldetroutfishery.co.uk/	2015-12-24 11:28:09.944591	2015-12-24 11:59:42.274229
+38	33	Alex Young	07818 880327	07818 880327	fyldetroutfishery@yahoo.co.uk	http://www.fyldetroutfishery.co.uk/	2015-12-24 11:59:42.2941	2015-12-24 11:59:42.2941
+20	\N	Gordon Imrie	01704 821006	0776 1120843	 flyfishing@merebeck.co.uk	www.merebeck.co.uk	2015-12-16 08:23:17.425857	2015-12-24 12:01:11.98432
+22	\N	Ann Mills	01536 772930		fishing.lodge@tatasteel.com	www.eyebrook.com	2015-12-16 08:44:49.92167	2015-12-24 12:01:42.87926
+40	36	Ann Mills	01536 772930		fishing.lodge@tatasteel.com	http://www.eyebrook.com/	2015-12-24 12:01:42.908465	2015-12-24 12:01:42.908465
+28	\N		01724 764161			www.cleathamtroutfishery.com	2015-12-19 11:44:39.047648	2015-12-24 12:05:27.36164
+41	38		01724 764161			http://www.cleathamtroutfishery.com/	2015-12-24 12:05:27.413891	2015-12-24 12:05:27.413891
+27	\N	George Wildsmith	01472 398978			http://www.thorpe-le-vale.co.uk	2015-12-19 11:39:54.790995	2015-12-24 12:05:49.380051
+29	\N	Jason Foster	07806 400878	07806 400878	jason@toftnewton.com	www.toftnewton.com	2015-12-19 11:55:09.379752	2015-12-24 12:06:24.655106
+43	40	Jason Foster	07806 400878	07806 400878	jason@toftnewton.com	http://www.toftnewton.com/	2015-12-24 12:06:24.668605	2015-12-24 12:06:24.668605
+31	\N	Sara Grundy	01507 450356	07760 625557	info@withernmilltroutfarm.co.uk	http://www.withernmilltroutfarm.co.uk/	2015-12-24 10:57:42.94612	2015-12-24 12:06:37.39876
+44	41	Sara Grundy	01507 450356	07760 625557	info@withernmilltroutfarm.co.uk	http://www.withernmilltroutfarm.co.uk/	2015-12-24 12:06:37.418133	2015-12-24 12:06:37.418133
+33	\N	Frank Casson	01995 61583	07834416209	casv6@aol.com	http://www.barnsfoldwaters.co.uk/	2015-12-24 11:01:32.485407	2015-12-24 12:07:05.053117
+45	29	Frank Casson	01995 61583	07834416209	casv6@aol.com	http://www.barnsfoldwaters.co.uk/	2015-12-24 12:07:05.070854	2015-12-24 12:07:05.070854
+35	\N		01706 260363		keithbenson1@talktalk.net	http://www.cowpeflyanglers.co.uk/	2015-12-24 11:04:12.25008	2015-12-24 12:07:15.418835
+46	31		01706 260363		keithbenson1@talktalk.net	http://www.cowpeflyanglers.co.uk/	2015-12-24 12:07:15.446628	2015-12-24 12:07:15.446628
+39	\N	Gordon Imrie	01704 821006	0776 1120843	 flyfishing@merebeck.co.uk	http://www.merebeck.co.uk/	2015-12-24 12:01:12.01109	2015-12-24 12:07:21.01107
+47	35	Gordon Imrie	01704 821006	0776 1120843	 flyfishing@merebeck.co.uk	http://www.merebeck.co.uk/	2015-12-24 12:07:21.027059	2015-12-24 12:07:21.027059
+42	\N	George Wildsmith	01472 398978			http://www.thorpe-le-vale.co.uk/	2015-12-24 12:05:49.400041	2015-12-24 12:07:27.353089
+48	39	George Wildsmith	01472 398978			http://www.thorpe-le-vale.co.uk/	2015-12-24 12:07:27.388898	2015-12-24 12:07:27.388898
+49	\N		07956 378138			http://alburyestatefisheries.co.uk/	2015-12-24 12:13:53.661519	2015-12-24 12:24:54.202155
+50	\N		07956 378138			http://alburyestatefisheries.co.uk/	2015-12-24 12:24:54.222769	2015-12-24 12:27:29.149818
+51	42			07956 378138	andy.allen@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:27:29.170643	2015-12-24 12:27:29.170643
+52	\N	Tony Hern	01483 202323	07976 810737\tS	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:35:36.273497	2015-12-24 12:36:08.620365
+53	\N	Tony Hern	01483 202323	07976 810737\tS	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:36:08.636023	2015-12-24 12:37:41.177764
+54	43	Tony Hern	01483 202323	07976 810737\tS	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:37:41.193312	2015-12-24 12:37:41.193312
+55	44		07743 966286			http://www.pitsfordfishery.com/	2015-12-24 14:32:59.927883	2015-12-24 14:32:59.927883
+57	46						2015-12-24 14:33:35.709702	2015-12-24 14:33:35.709702
+56	\N		07525 730447			http://www.blackdykefishing.co.uk/	2015-12-24 14:33:11.296955	2015-12-24 14:35:20.977765
+59	47						2015-12-24 14:38:32.147985	2015-12-24 14:38:32.147985
+58	\N		07525 730447			http://www.blackdykefishing.co.uk/	2015-12-24 14:35:20.990158	2015-12-24 14:50:59.058937
+60	45	Paul Speed	07525 730447		contact@blackdykefishing.co.uk	http://www.blackdykefishing.co.uk/	2015-12-24 14:50:59.092826	2015-12-24 14:50:59.092826
+61	\N						2015-12-24 14:57:52.247579	2015-12-24 15:00:52.537481
+62	48	Ray Pritchard	01760 338005		narfish@supanet.com	http://narfish.co.uk/	2015-12-24 15:00:52.551146	2015-12-24 15:00:52.551146
+63	\N						2015-12-24 22:43:12.883288	2015-12-24 22:45:20.153244
+64	49	James Harold	01953 483971	07900 004953	rocklandsmerefishery@gmail.com	http://www.rocklandsmere.co.uk/	2015-12-24 22:45:20.197741	2015-12-24 22:45:20.197741
+65	\N						2015-12-24 23:53:42.115464	2015-12-25 00:01:12.891564
+32	\N	Ben Dobson	01524 770412		info@stocksreservoir.com	http://www.stocksreservoir.com/	2015-12-24 10:59:41.130921	2016-01-13 07:07:26.320637
+66	50	Ed Foster	01832 720786		elinortf@alo.com	http://www.elinortf.co.uk/	2015-12-25 00:01:12.955391	2015-12-25 00:01:12.955391
+68	52		01604 770875	07885 135453	fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure/	2015-12-25 00:27:16.072019	2015-12-25 00:27:16.072019
+72	55		01668 215226		chatton.fishery@googlemail.com	http://www.chattontroutfishery.com/	2015-12-25 01:31:28.35778	2015-12-25 01:31:28.35778
+75	58						2015-12-25 08:49:50.719624	2015-12-25 08:49:50.719624
+67	51	Nathan Clayton	01604 781350	07885 135453	fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure	2015-12-25 00:10:20.12326	2015-12-25 00:10:20.12326
+69	53	Harold Foster	01933 622960		fly-wizard@hotmail.co.uk	http://www.ringsteadtroutfishery.co.uk/index.php	2015-12-25 00:31:38.645323	2015-12-25 00:31:38.645323
+71	\N						2015-12-25 01:26:03.956956	2015-12-25 01:31:28.344702
+73	56						2015-12-25 08:48:23.748143	2015-12-25 08:48:23.748143
+74	\N						2015-12-25 08:49:45.487636	2015-12-30 09:58:46.488557
+70	54	Ricky Chatteron	07972 759401		ricky@caistrontroutfishery.co.uk	http://www.caistrontroutfisheryandriver.com	2015-12-25 00:55:28.968493	2015-12-25 00:55:28.968493
+77	59	Andrew Cannon		07950 428159	highamlakes@hotmail.co.uk	http://www.highamlakes.com/	2015-12-30 12:29:30.126926	2015-12-30 12:29:30.126926
+78	60		01434 688846	07929184902	anthonykelly75@yahoo.com	http://www.langleydam.co.uk/	2015-12-30 12:38:03.948092	2015-12-30 12:38:03.948092
+79	\N		01830 540349		info@sweethopeadventure.co.uk	http://sweethopeadventure.co.uk/fishing/	2015-12-30 13:23:23.700342	2015-12-30 13:25:25.466614
+80	61		01830 540349		info@sweethopeadventure.co.uk	http://sweethopeadventure.co.uk/fishing/	2015-12-30 13:25:25.623278	2015-12-30 13:25:25.623278
+81	62		01434 681405		info@westwaterangling.co.uk	http://www.westwaterangling.co.uk/	2015-12-30 13:29:15.847652	2015-12-30 13:29:15.847652
+82	63			07980 799166	Sales@roxholmetrout.com	http://www.roxholmetrout.com/	2015-12-31 11:58:48.807374	2015-12-31 11:58:48.807374
+83	64	Janet Barnes	01865 300343				2015-12-31 12:45:08.186146	2015-12-31 12:45:08.186146
+84	65		01865 863033		farmoor.info@thameswater.co.uk	http://www.thameswater.co.uk/about-us/16820.htm	2015-12-31 12:55:53.916561	2015-12-31 12:55:53.916561
+85	66		01608 643209	07531 073813	info@salfordtroutlakes.co.uk	http://www.salfordtroutlakes.co.uk/	2015-12-31 13:06:29.357283	2015-12-31 13:06:29.357283
+86	67		01780 686441		fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure/water-parks/rutland/fishing/	2015-12-31 13:10:33.099957	2015-12-31 13:10:33.099957
+87	68		01746 766797	07976 256436			2015-12-31 13:19:22.956052	2015-12-31 13:19:22.956052
+88	\N	Andy Farnell 	01584 841267	07970 844094	wrigley@delbury.co.uk	http://www.delbury.co.uk/information/55a66bfd8dc41/Trout-Fishery/	2015-12-31 13:27:38.306729	2015-12-31 19:01:26.562716
+89	69	Andy Farnell 	01584 841267	07970 844094	wrigley@delbury.co.uk	http://www.delbury.co.uk/information/55a66bfd8dc41/Trout-Fishery/	2015-12-31 19:01:26.595994	2015-12-31 19:01:26.595994
+90	70	Edward 		07860 299342 	enquiries@ellerdinelakes.co.uk	http://www.ellerdine-lakes.co.uk/	2015-12-31 19:16:06.232716	2015-12-31 19:16:06.232716
+91	71		01691 682788			http://www.springheath.co.uk/	2016-01-02 11:32:39.917566	2016-01-02 11:32:39.917566
+92	72		01767 650301				2016-01-11 22:12:42.307412	2016-01-11 22:12:42.307412
+93	73		01200 446268				2016-01-12 22:35:24.23968	2016-01-12 22:35:24.23968
+94	\N	Rosemary	0118 974 4744	07768 581785	roe@barnelmsfishery.co.uk	http://www.barnelmsfishery.co.uk/	2016-01-12 23:07:52.677299	2016-01-12 23:11:15.490852
+95	74	Rosemary Balsdon	0118 974 4744	07768 581785	roe@barnelmsfishery.co.uk	http://www.barnelmsfishery.co.uk/	2016-01-12 23:11:15.523092	2016-01-12 23:11:15.523092
+96	75		0118 934 5527	07768 853449	felix.farm@yahoo.co.uk	http://www.felixfarmtroutfishery.co.uk/	2016-01-12 23:17:40.322667	2016-01-12 23:17:40.322667
+97	76	Michael Stratton	0118 932 3422		info@haywardsfarmfishery.co.uk	http://www.haywardsfarmfishery.co.uk/	2016-01-12 23:32:03.251671	2016-01-12 23:32:03.251671
+98	77	Jonathan Whaley	01296 720524		trout@church-hill-fishery.co.uk	http://www.thetrouthunter.co.uk/test-post-by-dan/	2016-01-12 23:40:20.866124	2016-01-12 23:40:20.866124
+10	\N	Ben Dobson	01200 446602		info@stocksreservoir.com	http://www.stocksreservoir.com	2015-12-09 06:45:43.820174	2016-01-13 07:06:51.804077
+99	27	Ben Dobson	01200 446602		info@stocksreservoir.com	http://stocksreservoir.com/	2016-01-13 07:06:51.810633	2016-01-13 07:06:51.810633
+100	28	Ben Dobson	01524 770412		info@stocksreservoir.com	http://www.stocksreservoir.com/	2016-01-13 07:07:26.328102	2016-01-13 07:07:26.328102
+101	78		01487 740301			http://www.earithlakes.com/	2016-01-13 07:36:54.648334	2016-01-13 07:36:54.648334
+102	79	Angela Terry	01480 810531	07801 674683	fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure/	2016-01-13 07:46:50.194475	2016-01-13 07:46:50.194475
+103	80		01969 623250		enquiries@thecoverbridgeinn.co.uk	http://thecoverbridgeinn.co.uk/	2016-01-14 13:43:34.945233	2016-01-14 13:43:34.945233
+104	81		01729 830331			http://www.field-studies-council.org/	2016-01-15 07:56:08.238974	2016-01-15 07:56:08.238974
+106	83	Brain Cooper	01565 873337			http://www.claylanetroutfishery.co.uk/	2016-01-15 17:27:25.473253	2016-01-15 17:27:25.473253
+107	84	David and Ann Taylor	01260 224231			http://www.martonheath.co.uk/	2016-01-15 18:38:29.942965	2016-01-15 18:38:29.942965
+108	85		01244 300236			http://www.meadowfishery.com/	2016-01-15 18:50:13.381739	2016-01-15 18:50:13.381739
+109	86	David Leak	07836 330157		sales@hadrianequine.co.uk	http://www.westhouse-troutlakes.co.uk/	2016-01-15 19:14:29.210886	2016-01-15 19:14:29.210886
+105	\N	Andrew or Claire Fletcher	01496 820323 		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-01-15 08:33:51.837055	2016-01-16 12:18:39.664459
+110	82	Andrew or Claire Fletcher	01496 820323 		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-01-16 12:18:39.682699	2016-01-16 12:18:39.682699
+111	\N				enquires@ruantallian.co.uk	http://www.ruantallain.co.uk/	2016-01-17 12:37:29.447803	2016-01-17 13:29:55.796039
+112	\N				enquires@ruantallian.co.uk	http://www.ruantallain.co.uk/	2016-01-17 13:29:55.803701	2016-01-17 13:32:11.491469
+113	87				enquires@ruantallian.co.uk	http://www.ruantallain.co.uk/	2016-01-17 13:32:11.500571	2016-01-17 13:32:11.500571
+76	\N	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	www.nwl.co.uk	2015-12-30 09:58:46.586028	2016-01-24 19:08:25.638571
+114	57	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	https://www.nwl.co.uk/your-home/leisure/go-fishing.aspx	2016-01-24 19:08:25.655964	2016-01-24 19:08:25.655964
+115	88	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-02-22 22:02:37.773484	2016-02-22 22:02:37.773484
+116	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com		2016-03-06 23:51:43.847148	2016-03-06 23:52:26.642608
+117	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com		2016-03-06 23:52:26.656621	2016-03-07 08:41:28.292538
+118	89	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-03-07 08:41:28.30557	2016-03-07 08:41:28.30557
+119	\N		01768 772 334			http://www.unitedutilities.com/haweswater-recreation.aspx	2016-03-13 21:46:45.214449	2016-03-13 21:47:27.710514
+120	\N		01768 772 334			http://www.unitedutilities.com/haweswater-recreation.aspx	2016-03-13 21:47:28.05465	2016-03-13 21:54:51.036941
+121	\N		01768 772 334			http://lakedistrictfishing.net/component/option,com_chsearch/Itemid,8/lang,en/index.php?option=com_mtree&task=viewlink&link_id=54&Itemid=8	2016-03-13 21:54:51.054204	2016-03-14 14:36:29.105275
+122	90		01768 772 334			http://bit.ly/1QXUvd1	2016-03-14 14:36:29.118472	2016-03-14 14:36:29.118472
+\.
+
+
+--
+-- TOC entry 2481 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: contact_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('contact_details_id_seq', 122, true);
+
+
+--
+-- TOC entry 2449 (class 0 OID 16391)
+-- Dependencies: 183
+-- Data for Name: fisheries; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY fisheries (id, name, created_at, updated_at, place_id) FROM stdin;
+30	Cleveley Mere Fishing	2015-12-09 08:09:09.159421	2015-12-09 08:09:09.159421	\N
+32	Curley's Trout Fishery	2015-12-09 14:16:27.176386	2015-12-09 14:16:27.176386	\N
+33	Fylde Trout Fishery	2015-12-09 14:26:12.528569	2015-12-09 14:26:12.528569	\N
+34	Horwich Fly Fishing Club	2015-12-10 08:40:07.798435	2015-12-10 08:40:07.798435	\N
+36	Eyebrook Trout Fishery	2015-12-16 08:44:28.682295	2015-12-16 08:44:28.682295	\N
+37	Thornton Trout Fishery	2015-12-16 08:54:19.406117	2015-12-16 08:54:19.406117	\N
+38	Cleatham Trout Fishery	2015-12-16 16:42:02.446028	2015-12-16 16:42:02.446028	\N
+40	Toft Newton Trout Fishery	2015-12-19 11:55:09.376696	2015-12-19 11:55:09.376696	\N
+41	Withern Mill Trout Farm	2015-12-19 12:04:43.148578	2015-12-24 10:57:42.942046	\N
+29	Barnsfold Waters Trout Fishery	2015-12-09 07:58:40.541761	2015-12-24 11:01:32.479206	\N
+31	Cowpe fly anglers	2015-12-09 14:00:56.437189	2015-12-24 11:04:12.246273	\N
+35	Mere Beck Fly Fishing	2015-12-16 08:23:17.401362	2015-12-24 12:01:12.004554	\N
+39	Thorpe-le-vale Trout Fishery	2015-12-19 11:39:54.775957	2015-12-24 12:05:49.395329	\N
+42	Syon Park - Albury Estate Fisheries	2015-12-24 12:13:52.923541	2015-12-24 12:24:54.215936	\N
+43	Albury Estate Fisheries	2015-12-24 12:35:36.270518	2015-12-24 12:37:41.189166	\N
+45	Blackdyke Trout Fishery	2015-12-24 14:33:11.292554	2015-12-24 14:33:11.292554	\N
+48	Narborough Trout & Coarse Lakes	2015-12-24 14:57:52.235337	2015-12-24 15:00:52.5477	\N
+49	Rocklands Mere Fishery	2015-12-24 22:43:12.855745	2015-12-24 22:45:20.186378	\N
+50	Elinor Trout Fishery	2015-12-24 23:53:42.11059	2015-12-25 00:01:12.936027	\N
+51	Pitsford Water Fishing Lodge	2015-12-25 00:10:20.113531	2015-12-25 00:10:20.113531	\N
+52	Ravensthorpe Fishing Lodge	2015-12-25 00:27:16.068215	2015-12-25 00:27:16.068215	\N
+53	Ringstead Grange Trout Fishery	2015-12-25 00:31:38.642122	2015-12-25 00:31:38.642122	\N
+54	Caistron Trout Fishery	2015-12-25 00:55:28.959039	2015-12-25 00:55:28.959039	\N
+59	Higham Lakes	2015-12-30 12:29:30.106919	2015-12-30 12:29:30.106919	\N
+60	Langley Dam	2015-12-30 12:38:03.942696	2015-12-30 12:38:03.942696	\N
+61	Sweethope Fly Fishing	2015-12-30 13:23:23.684905	2015-12-30 13:23:23.684905	\N
+62	Westwater Angling Ltd	2015-12-30 13:29:15.844149	2015-12-30 13:29:15.844149	\N
+63	Roxholme Fly Fishery	2015-12-31 11:58:48.802046	2015-12-31 11:58:48.802046	\N
+64	Barnes Lake Fishery	2015-12-31 12:45:08.183929	2015-12-31 12:45:08.183929	\N
+65	Farmoor Trout Fishery	2015-12-31 12:55:53.912369	2015-12-31 12:55:53.912369	\N
+66	Salford Trout Lakes	2015-12-31 13:06:29.352989	2015-12-31 13:06:29.352989	\N
+67	Rutland Water Fishing Lodge	2015-12-31 13:10:33.096958	2015-12-31 13:10:33.096958	\N
+69	Delbury Hall Trout Fishery	2015-12-31 13:27:38.304673	2015-12-31 13:27:38.304673	\N
+70	Ellerdine Lakes Trout Fisheries	2015-12-31 19:16:06.226565	2015-12-31 19:16:06.226565	\N
+72	Little Heath Trout Fishery	2016-01-11 22:12:42.299147	2016-01-11 22:12:42.299147	ChIJZ5ix0izOd0gRnJylP9O4nq4
+73	Slaidburn Estate	2016-01-12 22:35:24.236673	2016-01-12 22:35:24.236673	
+74	Barn Elms Fly Fishery	2016-01-12 23:07:52.67589	2016-01-12 23:07:52.67589	ChIJ8bREDI-YdkgRNlWIj6Q--Vo
+75	Felix Farm Fishery	2016-01-12 23:17:40.321312	2016-01-12 23:17:40.321312	ChIJrwBVkGyHdkgRt9QHTQS1tcw
+77	Church Hill Fishery	2016-01-12 23:40:20.857345	2016-01-12 23:40:20.857345	ChIJufWpnSj_dkgRea0P9GcuK1M
+27	Stocks Fly Fishery	2015-12-09 06:45:43.783131	2016-01-13 07:06:51.809156	ChIJXxOaekeBe0gRMJYBk_tTT1I
+78	Earith Lakes Fisheries - Trout and Carp Lakes	2016-01-13 07:36:54.647006	2016-01-13 07:36:54.647006	ChIJw14X1tEK2EcRLwuNtgjjR8U
+79	Grafham Water Fishing Lodge	2016-01-13 07:46:50.188681	2016-01-13 07:46:50.188681	ChIJq96-LDrBd0gRk5U-DGfzLf0
+80	Cover Bridge Inn	2016-01-14 13:43:34.0787	2016-01-14 13:43:34.0787	ChIJ0SfFqpocfEgReBcTrLJ0Nw8
+81	Malham Tarn Field Studies Centre	2016-01-15 07:56:08.233576	2016-01-15 07:56:08.233576	ChIJo-xW5651fEgRid1aH7yHqd8
+83	Clay Lane Farm Trout Fishery	2016-01-15 17:27:25.466126	2016-01-15 17:27:25.466126	ChIJAXig4UVSekgR3LV0XQQzgWM
+84	Marton Heath Trout Pools	2016-01-15 18:38:29.934621	2016-01-15 18:38:29.934621	ChIJTXoWVelPekgRBEkbD1g5dqs
+86	West House Trout Lakes	2016-01-15 19:14:29.202812	2016-01-15 19:14:29.202812	ChIJCe8m4NmRfkgRPEJ9mm7-GAg
+57	Northumbrian Water 	2015-12-25 08:49:45.481874	2016-01-24 19:08:25.651534	
+88	Rhayader and Elan Valley Angling Association	2016-02-22 22:02:37.767704	2016-02-22 22:02:37.767704	
+89	Cambrian Angling Association	2016-03-06 23:51:43.842262	2016-03-06 23:52:26.653281	
+90	Haweswater estate	2016-03-13 21:46:45.208608	2016-03-13 21:47:28.040562	
+\.
+
+
+--
+-- TOC entry 2482 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: fisheries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('fisheries_id_seq', 90, true);
+
+
+--
+-- TOC entry 2464 (class 0 OID 16465)
+-- Dependencies: 198
+-- Data for Name: images; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY images (id, water_id, image_file_name, image_content_type, image_file_size, image_updated_at, geograph_photo_id) FROM stdin;
+17	90	Barn_Elms_in_summer.jpg	image/jpeg	63891	2016-01-12 23:10:39.618386	\N
+18	92	churchill-fishery.png	image/png	845690	2016-01-12 23:46:06.234778	\N
+22	96	river-cover.jpg	image/jpeg	122100	2016-01-14 13:55:21.589109	\N
+27	102	marton-heath.jpg	image/jpeg	187698	2016-01-15 18:46:12.707819	\N
+41	74	geograph-2057952-by-Mike-Quinn.jpg	image/jpeg	86042	2016-03-06 11:50:44.536251	2057952
+51	71	geograph-855008-by-Mick-Garratt.jpg	image/jpeg	244669	2016-03-06 12:58:42.540816	855008
+42	75	geograph-662620-by-Pete-Saunders.jpg	image/jpeg	91219	2016-03-06 11:53:19.483932	662620
+43	77	geograph-247432-by-Bill-Cresswell.jpg	image/jpeg	51398	2016-03-06 11:56:12.375159	247432
+61	116	geograph-162441-by-Nigel-Davies.jpg	image/jpeg	159195	2016-03-07 08:14:17.52949	162441
+44	76	geograph-2968825-by-Oliver-Dixon.jpg	image/jpeg	101486	2016-03-06 11:56:58.52978	2968825
+52	70	geograph-4587621-by-JThomas.jpg	image/jpeg	45732	2016-03-06 13:00:25.66697	4587621
+32	111	geograph-902833-by-Anthony--Gostling.jpg	image/jpeg	113306	2016-03-02 23:21:45.727631	902833
+45	81	geograph-442342-by-Brian-Robert-Marshall.jpg	image/jpeg	82777	2016-03-06 12:05:20.959501	442342
+33	112	geograph-2526885-by-Andrew-Hill.jpg	image/jpeg	310365	2016-03-03 08:04:20.813185	2526885
+28	107	geograph-3675417-by-Peter-McDermott.jpg	image/jpeg	1019027	2016-03-03 08:13:18.97399	3675417
+46	80	geograph-028649-by-Tom-Pullman.jpg	image/jpeg	210211	2016-03-06 12:07:46.479499	28649
+12	35	geograph-2859435-by-David-Dixon.jpg	image/jpeg	406237	2016-03-03 08:26:06.636783	2859435
+62	117	geograph-162447-by-Nigel-Davies.jpg	image/jpeg	164010	2016-03-07 08:20:29.628919	162447
+13	36	geograph-1553606-by-Peter-Bond.jpg	image/jpeg	57800	2016-03-03 08:31:30.07134	1553606
+47	84	geograph-1004986-by-Mat-Fascione.jpg	image/jpeg	96251	2016-03-06 12:13:27.091393	1004986
+10	32	geograph-006450-by-David-Medcalf.jpg	image/jpeg	100133	2016-03-06 10:53:28.954062	6450
+53	69	geograph-692167-by-Peter-McDermott.jpg	image/jpeg	23968	2016-03-06 13:01:24.573066	692167
+34	42	geograph-538064-by-Mat-Fascione.jpg	image/jpeg	95840	2016-03-06 11:00:46.434842	538064
+48	87	geograph-685271-by-A-Holmes.jpg	image/jpeg	80968	2016-03-06 12:17:15.651214	685271
+35	43	geograph-2191149-by-Trevor-Rickard.jpg	image/jpeg	222140	2016-03-06 11:03:51.127001	2191149
+36	46	geograph-179242-by-Richard-Croft.jpg	image/jpeg	52444	2016-03-06 11:11:16.425457	179242
+16	89	geograph-739520-by-Alexander-P-Kapp.jpg	image/jpeg	181750	2016-03-06 12:21:22.20409	739520
+9	31	geograph-4467571-by-Ian-Greig.jpg	image/jpeg	6398589	2016-03-06 11:16:48.326268	4467571
+54	68	geograph-1226100-by-Peter-McDermott.jpg	image/jpeg	87641	2016-03-06 13:02:46.262517	1226100
+11	34	geograph-124136-by-michael-ely.jpg	image/jpeg	113184	2016-03-06 11:21:34.576013	124136
+49	91	geograph-814099-by-Andrew-Smith.jpg	image/jpeg	150768	2016-03-06 12:23:32.04946	814099
+37	54	geograph-422079-by-Martin-Pearman.jpg	image/jpeg	101476	2016-03-06 11:31:00.634794	422079
+38	57	geograph-1809047-by-Richard-Croft.jpg	image/jpeg	77806	2016-03-06 11:36:34.075695	1809047
+63	118	geograph-1942933-by-Chris-Andrews.jpg	image/jpeg	807471	2016-03-07 20:34:34.402998	1942933
+39	58	geograph-2486701-by-E-Gammie.jpg	image/jpeg	101979	2016-03-06 11:40:30.857724	2486701
+7	29	geograph-2908631-by-John-Topping_(1).jpg	image/jpeg	75862	2016-03-06 12:31:48.796012	2908631
+40	59	geograph-1381994-by-Michael-Trolove.jpg	image/jpeg	92484	2016-03-06 11:46:15.477107	1381994
+55	67	geograph-1342186-by-Andrew-Smith.jpg	image/jpeg	138993	2016-03-06 13:04:42.464556	1342186
+19	93	geograph-4270745-by-Hugh-Venables.jpg	image/jpeg	620374	2016-03-06 12:35:29.96158	4270745
+56	66	geograph-2139074-by-Oliver-Dixon.jpg	image/jpeg	88680	2016-03-06 13:06:33.883683	2139074
+20	94	geograph-1552523-by-Shaun-Ferguson.jpg	image/jpeg	72103	2016-03-06 12:38:30.712207	1552523
+64	119	geograph-2427702-by-Peter-.jpg	image/jpeg	3197936	2016-03-07 20:56:33.414967	2427702
+57	65	geograph-4094791-by-Pauline-E.jpg	image/jpeg	433405	2016-03-06 13:09:14.688777	4094791
+23	97	geograph-617053-by-Philip-Halling.jpg	image/jpeg	84694	2016-03-06 12:51:43.654071	617053
+50	72	geograph-2396306-by-David-Brown.jpg	image/jpeg	43209	2016-03-06 12:57:12.337106	2396306
+65	120	geograph-3084104-by-Kev-Williams.jpg	image/jpeg	66237	2016-03-08 07:58:40.79789	3084104
+66	121	geograph-4067839-by-Ian-Medcalf.jpg	image/jpeg	3753710	2016-03-08 08:09:02.030825	4067839
+67	122	geograph-389385-by-Gerallt-Pennant.jpg	image/jpeg	113732	2016-03-08 08:30:21.924127	389385
+24	98	geograph-449110-by-Andrew-Smith.jpg	image/jpeg	136026	2016-03-06 13:14:28.449715	449110
+58	113	geograph-502575-by-Trix71.jpg	image/jpeg	98706	2016-03-06 14:51:32.101411	502575
+68	123	geograph-024152-by-Bob-Tinley.jpg	image/jpeg	93504	2016-03-13 21:54:25.590007	24152
+59	114	geograph-2480315-by-Phillip-Perry.jpg	image/jpeg	2093161	2016-03-06 22:53:15.944736	2480315
+60	115	geograph-3646538-by-Nigel-Brown.jpg	image/jpeg	457031	2016-03-06 23:03:49.890186	3646538
+\.
+
+
+--
+-- TOC entry 2483 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('images_id_seq', 68, true);
+
+
+--
+-- TOC entry 2447 (class 0 OID 16385)
+-- Dependencies: 181
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY schema_migrations (version) FROM stdin;
+20141102092127
+20141102093154
+20141102100130
+20141102101148
+20141220172136
+20141220172611
+20150210084453
+20150810182206
+20151013074929
+20151018090327
+20151018091745
+20160111080155
+20160126054855
+20160226112027
+20160229124853
+20160229125727
+\.
+
+
+--
+-- TOC entry 2453 (class 0 OID 16411)
+-- Dependencies: 187
+-- Data for Name: species; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY species (id, name, created_at, updated_at) FROM stdin;
+1	brown trout	2015-04-29 12:07:44.509585	2015-04-29 12:07:44.509585
+2	sea trout	2015-04-29 12:07:48.02629	2015-04-29 12:07:48.02629
+3	rainbow trout	2015-04-29 12:07:51.483125	2015-04-29 12:07:51.483125
+7	Brook Trout	2015-12-09 18:17:30.678634	2015-12-09 18:17:30.678634
+8	Grayling	2016-01-12 22:49:30.29396	2016-01-12 22:49:30.29396
+4	Atlantic Salmon	2015-04-29 12:07:54.757344	2016-01-19 14:54:12.138678
+\.
+
+
+--
+-- TOC entry 2484 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: species_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('species_id_seq', 9, true);
+
+
+--
+-- TOC entry 2454 (class 0 OID 16417)
+-- Dependencies: 188
+-- Data for Name: species_waters; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY species_waters (species_id, water_id) FROM stdin;
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	29
+1	31
+3	31
+3	32
+1	34
+3	34
+3	35
+1	36
+3	36
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	107
+3	107
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+\.
+
+
+--
+-- TOC entry 2462 (class 0 OID 16454)
+-- Dependencies: 196
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY users (id, name, email, password_digest, created_at, updated_at) FROM stdin;
+1	steven cook	stevenjamescook@gmail.com	$2a$10$/yy4qns4Gzdi5aj0QFANmulgKAHVItpXoGWooGinvtnQJzL14qryi	2015-08-10 20:23:01.825879	2015-09-17 22:31:22.595804
+\.
+
+
+--
+-- TOC entry 2485 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- TOC entry 2460 (class 0 OID 16446)
+-- Dependencies: 194
+-- Data for Name: water_types; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY water_types (id, category, created_at, updated_at) FROM stdin;
+1	lake	2015-04-29 12:05:31.722117	2015-10-14 07:49:33.528036
+2	river	2015-04-29 12:06:02.717915	2015-10-14 07:49:51.384281
+\.
+
+
+--
+-- TOC entry 2486 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: water_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('water_types_id_seq', 2, true);
+
+
+--
+-- TOC entry 2451 (class 0 OID 16399)
+-- Dependencies: 185
+-- Data for Name: waters; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY waters (id, name, description, season_start, season_end, longitude, latitude, created_at, updated_at, water_type_id, fishery_id, address, slug) FROM stdin;
+34	Cowpe Reservoir		\N	\N	-2.23994494285284418	53.6772468992804548	2015-12-09 14:11:03.72167	2016-03-06 11:21:32.892796	1	31	2 The Dr, Cowpe Rd, Rossendale, Lancashire BB4 7AE, UK	cowpe-reservoir
+54	Narborough Trout & Coarse Lakes		\N	\N	0.582851600000026338	52.6886311000000092	2015-12-24 15:02:31.899772	2016-03-06 11:30:59.13379	1	48	The Lodge, Narborough, King's Lynn, Norfolk PE32 1TE, UK	narborough-trout-coarse-lakes
+57	Pitford water 		\N	\N	-0.845821999999998297	52.322585399999987	2015-12-25 00:11:57.510869	2016-03-06 11:36:32.660348	1	51	7 Brixworth Rd, Holcot, Northampton, Northamptonshire NN6 9SJ, UK	pitford-water
+36	Fylde Trout Fishery		\N	\N	-2.91793299999994815	53.8178539999999757	2015-12-09 14:29:51.341319	2016-03-03 14:53:41.781697	1	33	Back Ln, Preston, Lancashire PR4, UK	fylde-trout-fishery
+58	Ravensthorpe Reservoir 		\N	\N	-1.01647079999997914	52.3255744999999948	2015-12-25 00:29:31.54258	2016-03-06 11:40:29.154664	1	52	Ivy Cottage, 26 Teeton Rd, Ravensthorpe, Northampton, Northamptonshire NN6 8EJ, UK	ravensthorpe-reservoir
+42	Eyebrook Reservoir		\N	\N	-0.743592100000000755	52.5495412000000002	2015-12-16 08:48:10.699121	2016-03-06 11:00:44.841113	1	36	Unnamed Road, Leicestershire, UK	eyebrook-reservoir
+111	Craig Goch Reservoir		\N	\N	-3.61999200000002475	52.3146396000000138	2016-02-22 22:12:54.620173	2016-03-02 23:21:41.669855	1	88	Unnamed Road, Rhayader, Powys LD6 5HS, UK	craig-goch-reservoir
+107	Upper Roddlesworth Reservoir	The lake is 24 acres in size and situated 3 miles from junction 3 of the M65 Preston to Colne, on the A675 at Abbey Village, so is easy to find.\r\n\r\nThere is a good variation in the level of difficulty in casting. For novices the dam wall is very easy to fish as is most of the right hand bank. The left hand bank is more difficult to fish but the extra effort required can be rewarded with excellent fishing, as the fish are often fairly close to the shore and roll casting will cover the water adequately.\r\n\r\nFly life is the same as most upland reservoirs with Buzzers catching throughout the season and Daddies coming in from August onwards. We are lucky that most years we have a fairly substantial Mayfly hatch which can produce fantastic visual fishing given the right conditions. Lures can be effective at times but more and more fish are being taken on the dry fly, which must be the most satisfying and exciting way to catch trout.	\N	\N	-2.5180560000000014	53.6930559999999915	2016-01-16 12:27:14.262646	2016-03-03 08:13:16.226841	1	34	Tockholes Rd, Darwen, Blackburn with Darwen BB3, UK	upper-roddlesworth-reservoir
+59	Ringstead Grange Trout Fishery		\N	\N	-0.571548099999972692	52.3615482000000085	2015-12-25 00:36:42.066202	2016-03-06 11:46:13.816079	1	53	Station Rd, Ringstead, Kettering, Northamptonshire NN14 4DT, UK	ringstead-grange-trout-fishery
+81	Farmoor Reservoir South		\N	\N	-1.35608676884771739	51.7504643168908913	2015-12-31 13:00:00.36938	2016-03-06 12:05:19.542038	1	65	Unnamed Road, Cumnor, Oxfordshire, UK	farmoor-reservoir-south
+43	Thornton Reservoir		\N	\N	-1.30260620000001381	52.6642415000000241	2015-12-16 08:56:36.271171	2016-03-06 11:03:49.317472	1	37	Reservoir Rd, Coalville, Leicestershire LE67, UK	thornton-reservoir
+46	Toft Newton Reservoir		\N	\N	-0.449129999999968277	53.37261400000002	2015-12-19 11:57:49.304356	2016-03-06 11:11:14.95166	1	40	Unnamed Road, Market Rasen, Lincolnshire LN8 3NQ, UK	toft-newton-reservoir
+31	Barns Fold Reservoirs		\N	\N	-2.64374618703311626	53.8674783783228648	2015-12-09 08:02:11.467886	2016-03-06 11:16:40.502676	1	29	Stoney Ln, Preston, Lancashire PR3 2WH, UK	barns-fold-reservoirs
+29	Stocks Reservoir	Stocks Reservoir is the largest fly fishery in the North West of England. The reservoir has Four and a half miles of fishable shoreline and 350 acres of open water. Situated at the head of the Hodder Valley in an Area of Outstanding Natural Beauty, Stocks has a wild and unspoiled quality the perfect place for a days fly fishing.	\N	\N	-2.41256079999993744	53.9992233999999982	2015-12-09 06:51:57.41728	2016-03-06 12:31:47.128989	1	27	Hole House Ln, Clitheroe, Lancashire BB7 4TS, UK	stocks-reservoir
+120	Llyn Ffridd y bwlch	Close to the road, this water easy to access, with parking next to the lake and a good footpath. \r\nHome to a head of Wild Brown trout  and is occasionally stock with Rainbow trout. 	\N	\N	-3.9465188000000353	53.013970300000004	2016-03-08 07:58:39.516255	2016-03-08 07:58:39.516255	1	89	A470, Blaenau Ffestiniog, Gwynedd LL41 3ND, UK	llyn-ffridd-y-bwlch
+119	Llyn Cwmorthin	Fairly easily accessible on foot, ideal for those looking to wet a line for a couple of hours. Holds a good stock of wild fish.	\N	\N	-3.97263653914262704	52.9978185506403108	2016-03-07 20:56:30.476774	2016-03-07 20:58:42.885372	1	89	18 Cwmorthin Rd, Blaenau Ffestiniog, Gwynedd LL41 3ST, UK	llyn-cwmorthin-lake
+49	Vale End Lake	\N	\N	\N	-0.506622558197022954	51.2185586131232782	2015-12-24 12:39:03.489334	2016-01-26 08:42:48.330795	1	43	7 Albury St, Albury, Guildford GU5 9AQ, UK	vale-end-lake
+113	Claerwen Reservoir		\N	\N	-3.68496219999997265	52.2733664000000289	2016-03-06 14:51:30.023355	2016-03-06 23:16:55.76806	1	88	Unnamed Road, Rhayader, Powys LD6 5HF, UK	claerwen-reservoir
+118	Llyn Conglog	Situated a short distance from the  summit of Allt Fawr makes this remote lake worth a visit for the views alone. It was stocked in the 90's and has become an excellent fishery.  Wild browns over 1lb are regularly caught with fish of 4lbs are landed every season.\r\n\r\n	\N	\N	-3.97754294410708553	53.007076167458699	2016-03-07 20:34:31.613178	2016-03-07 20:58:51.458981	1	89	3 Dinas Rd, Rhiwbryfdir, Blaenau Ffestiniog, Gwynedd LL41 3LR, UK	llyn-conglog
+121	 Llynnau Barlwyd	Two lakes, one ten acres the other five.\r\nBoth lakes are thirty minute walk from the lay-by at the top of the Crimea Pass. 	\N	\N	-3.92446742527158676	53.0170914033299425	2016-03-08 08:08:58.518644	2016-03-08 08:09:51.79477	1	89	Drafft, Blaenau Ffestiniog, Gwynedd LL41 3NB, UK	llynnau-barlwyd
+122	Llyn Du bach 	Thirty minute walk from the Blaenau Ffestiniog. \r\nThe lake is shelter from a northeasterly wind. Plenty of wild brown trout. 	\N	\N	-3.90878846299279825	52.9961901095916161	2016-03-08 08:30:20.424513	2016-03-08 08:30:20.424513	1	89	Unnamed Road, Blaenau Ffestiniog, Gwynedd LL41 3EX, UK	llyn-du-bach
+123	Hayeswater Tarn		\N	\N	-2.88005029999999351	54.5019601000000122	2016-03-13 21:54:22.233827	2016-03-13 21:54:22.233827	1	90	Unnamed Road, Penrith, Cumbria CA11 0NY, UK	hayeswater-tarn
+47	Withern Mill Trout Fishery	\N	\N	\N	0.136655499999960739	53.3167363000000023	2015-12-19 12:06:18.554455	2016-01-26 08:42:48.115485	1	41	9 Church Ln, Withern, Alford, Lincolnshire LN13 0NG, UK	withern-mill-trout-fishery
+48	Syon Park	\N	\N	\N	-0.315213068786647455	51.4771593731816992	2015-12-24 12:23:34.914771	2016-01-26 08:42:48.223363	1	42	1A Park Rd, Isleworth, Greater London TW7 6AZ, UK	syon-park
+41	Mere Beck	\N	\N	\N	-2.87782110000000557	53.6495863000000313	2015-12-16 08:24:13.884527	2016-01-26 08:42:47.480026	1	35	Woodside, Mere Ln, Mere Brow, Preston, Lancashire PR4 6JU, UK	mere-beck
+45	Thorpe-le-vale	\N	\N	\N	-0.274105899999995017	53.3955457999999865	2015-12-19 11:43:41.098262	2016-01-26 08:42:47.874465	1	39	Thorpe Ln, Market Rasen, Lincolnshire LN8 3YE, UK	thorpe-le-vale
+50	Weston	\N	\N	\N	-0.492310290893556157	51.2215690840422511	2015-12-24 12:40:12.403516	2016-01-26 08:42:48.414182	1	43	21 Albury St, Albury, Guildford GU5 9AB, UK	weston
+51	Albury Park	\N	\N	\N	-0.473296442883338386	51.2184534997795495	2015-12-24 12:41:07.084918	2016-01-26 08:42:48.51087	1	43	Chantry Ln, Shere, Guildford, Surrey GU5 9JB, UK	albury-park
+53	Blackdyke Trout Fishery	\N	\N	\N	0.486794300000042313	52.4683701000000084	2015-12-24 14:56:26.36854	2016-01-26 08:42:48.765164	1	45	Burdock Ln, Hockwold cum Wilton, Thetford, Norfolk IP26, UK	blackdyke-trout-fishery
+55	Rocklands Mere Fishery	\N	\N	\N	0.929514000000040141	52.5443770000000185	2015-12-24 22:46:18.484268	2016-01-26 08:42:49.026912	1	49	Unnamed Road, Attleborough, Norfolk NR17, UK	rocklands-mere-fishery
+56	Elinor Trout Fishery	\N	\N	\N	-0.531777899999951842	52.4199725999999728	2015-12-25 00:06:50.564277	2016-01-26 08:42:49.152965	1	50	Lowick Rd, Kettering, Northamptonshire NN14 3EN, UK	elinor-trout-fishery
+82	North lake	\N	\N	\N	-1.56888377980953919	51.9580360987765175	2015-12-31 13:08:21.329112	2016-01-26 08:42:52.241226	1	66	Unnamed Road, Chipping Norton, Oxfordshire OX7 5YY, UK	north-lake
+83	South Lake	\N	\N	\N	-1.56877649144893994	51.9534606925373765	2015-12-31 13:09:10.278057	2016-01-26 08:42:52.370381	1	66	Unnamed Road, Chipping Norton, Oxfordshire OX7 5YY, UK	south-lake
+86	Corve Lake	\N	\N	\N	-2.72169598049549544	52.4600415185960571	2015-12-31 13:32:39.29775	2016-01-26 08:42:52.66381	1	69	Mill Ln, Craven Arms, Shropshire SY7 9DH, UK	corve-lake
+112	Garreg-ddu Reservoir		\N	\N	-3.59352339999998094	52.2728543999999857	2016-02-22 22:20:46.413236	2016-03-03 08:04:18.02394	1	88	Unnamed Road, Rhayader, Powys LD6 5HE, UK	garreg-ddu-reservoir
+114	Caban-coch Reservoir		\N	\N	-3.58913370000004761	52.2576876000000325	2016-03-06 22:43:55.670784	2016-03-06 22:53:11.665612	1	88	Unnamed Road, Rhayader, Powys LD6 5HE, UK	caban-coch-reservoir
+84	Rutland Water Reservoir		\N	\N	-0.642426800000066578	52.644925100000016	2015-12-31 13:11:46.735237	2016-03-06 12:13:25.623651	1	67	Gibbet Ln, Edith Weston, Oakham, Rutland LE15 8HJ, UK	rutland-water-reservoir
+115	Penygarreg Reservoir		\N	\N	-3.6109475000000657	52.2949476000000359	2016-03-06 23:03:47.855063	2016-03-06 23:03:47.855063	1	88	Unnamed Road, Rhayader, Powys LD6, UK	penygarreg-reservoir
+35	Curley's Fishery	 Nestled amongst the hills of the Wet Pennine Moors, on the edge of the beautiful Rivington Country Park. This 200 year old reservoir  is a 6 acre fly only water and is stocked with hard fighting trout, fully finned, triploid Rainbows, Blues and Goldies up to double figures.	\N	\N	-2.51900729999999839	53.5988402999999849	2015-12-09 14:19:08.763754	2016-03-03 08:26:04.339195	1	32	12 Wallsuches, Horwich, Bolton BL6, UK	curley-s-fishery
+32	Cleveleymere	A beautifully peaceful 24 acre lake surrounded by fields and woodland adjoining the River Wyre. The first trout were introduced in 1967 and have thrived in the lake ever since. \r\nThere is a natural water in-flow to the lake, which is rich in fly and insect life, providing excellent growing conditions for rainbow and brown trout weighing up to 24lbs, which are supplemented at regular intervals.\r\n	\N	\N	-2.76202008996585846	53.9456261836760262	2015-12-09 08:16:21.824397	2016-03-06 10:53:26.517036	1	30	M6, Preston, Lancashire PR3, UK	cleveleymere
+87	Ellerdine Lakes 		\N	\N	-2.59167432613367055	52.7903816641208152	2015-12-31 19:22:54.056594	2016-03-06 12:17:14.246525	1	70	Unnamed Road, Telford, Telford and Wrekin TF6 6QR, UK	ellerdine-lakes
+89	River Hodder		\N	\N	-2.43801462011560943	53.9657370011748085	2016-01-12 22:51:54.19218	2016-03-06 12:21:20.434004	2	73	21 Chapel St, Slaidburn, Clitheroe, Lancashire BB7 3ES, UK	river-hodder
+90	Barns Elms Lake	\N	\N	\N	-1.12272263897853275	51.4549847137627978	2016-01-12 23:10:37.758919	2016-01-26 08:42:53.023745	1	74	Unnamed Road, Reading, West Berkshire RG7 6DF, UK	barns-elms-lake
+91	Felix Farm Lake		\N	\N	-0.777954416216289246	51.4625771728323755	2016-01-12 23:24:17.746014	2016-03-06 12:23:30.466002	1	75	M4, United Kingdom	felix-farm-lake
+93	Earith Lake		\N	\N	0.0363489999999728752	52.3689169999999891	2016-01-13 07:39:07.405381	2016-03-06 12:35:27.345878	1	78	Holme Drove, Earith, Huntingdon, Cambridgeshire PE28, UK	earith-lake
+97	Malham Tarn	Malham Tarn is a glacial lake near the village of Malham in the Yorkshire Dales, England. It is 377 metres above sea level, making it the highest lake in England. The lake is one of only eight upland alkaline lakes in Europe. \r\n\r\nIts 150 acres of limestone bedrock are a perfect habitat for invertebrates which are prayed upon by a population of fast-growing large wild brown trout. \r\n\r\nThe Tarn has the reputation of being England's best wild trout fishery. Not an easy place to catch but perseverance and patience can be rewarded with a fish of a lifetime.  	\N	\N	-2.16367909999996755	54.0967150000000032	2016-01-15 07:58:23.899767	2016-03-06 12:51:42.018059	1	81	Pennine Way, Settle, North Yorkshire BD24 9PU, UK	malham-tarn
+66	Fontburn Reservoir		\N	\N	-1.92828120000001491	55.2362719999999925	2015-12-30 10:08:44.499196	2016-03-06 13:06:32.284718	1	57	5 Fontburn Cottages, Ewesley, Morpeth, Northumberland NE61 4PL, UK	fontburn-reservoir
+65	Derwent Reservoir		\N	\N	-1.9799239999999827	54.8652717000000081	2015-12-30 10:04:55.433347	2016-03-06 13:09:12.662218	1	57	B6306, Consett, County Durham DH8, UK	derwent-reservoir
+117	Llyn Adar	Llyn Adar is not very accessible, involving a good two hour walk from Tan y Grisiau.\r\nIt's well worth the slog, situated in beautiful surroundings with trout of 2lbs regularly caught.\r\n	\N	\N	-4.00567867199708871	53.0122703519324006	2016-03-07 08:20:27.870612	2016-03-07 20:59:00.310601	1	89	Unnamed Road, Blaenau Ffestiniog, Gwynedd LL41 3TP, UK	llyn-adar-lake
+116	Llyn Llagi	An 8 acre lake that's a good hike but well worth the effort. A good average size of hard fighting wild brown trout.\r\nTry your flies below the steep cliffs. \r\n\r\n	\N	\N	-4.01510413969799629	53.0143542402072683	2016-03-07 08:14:15.06549	2016-03-07 20:59:09.461006	1	89	Unnamed Road, Caernarfon, Gwynedd LL55 4NL, UK	llyn-llagi-lake
+105	Fox Lake	\N	\N	\N	-1.4190333420501644	54.5987717412911806	2016-01-15 19:26:01.723673	2016-01-26 08:42:53.764616	1	86	Mill Ln, Stockton-on-Tees, Darlington TS21 1LJ, UK	fox-lake
+44	Cleatham Trout Fishery	\N	\N	\N	-0.625985700000001088	53.4941286000000034	2015-12-16 16:55:04.596343	2016-01-26 08:42:47.781615	1	38	Stone Cottage, Scotter Rd, Gainsborough, North Lincolnshire DN21 3HZ, UK	cleatham-trout-fishery
+106	Mill Lake	\N	\N	\N	-1.41801410262450522	54.597684066729073	2016-01-15 19:26:53.667987	2016-01-26 08:42:53.81739	1	86	Mill Ln, Stockton-on-Tees, Darlington TS21 1LJ, UK	mill-lake
+52	Powder Mills Lake	\N	\N	\N	-0.533755784591685156	51.2179806877020738	2015-12-24 12:42:48.97014	2016-01-26 08:42:48.660826	1	43	Blacksmith Ln, Chilworth, Guildford, Surrey GU4 8NL, UK	powder-mills-lake
+60	Big Loch	\N	\N	\N	-2.00053626026612585	55.3042797449553873	2015-12-25 01:02:24.335978	2016-01-26 08:42:49.801547	1	54	2 Caistron Cottages, Thropton, Morpeth, Northumberland NE65 7LG, UK	big-loch
+61	Lodge Lake	\N	\N	\N	-1.99812093104821509	55.3061912048662947	2015-12-25 01:10:57.017041	2016-01-26 08:42:49.949744	1	54	Unnamed Road, Morpeth, Northumberland NE65 7LG, UK	lodge-lake
+62	East lake	\N	\N	\N	-1.99237698044282263	55.3059286135900621	2015-12-25 01:14:03.688646	2016-01-26 08:42:50.038021	1	54	2 Little Tosson Cottages, Thropton, Morpeth, Northumberland NE65 7NQ, UK	east-lake
+63	River Coquet	\N	\N	\N	-2.0045273872802909	55.3048171615209654	2015-12-25 01:15:54.966384	2016-01-26 08:42:50.166503	2	54	2 Caistron Cottages, Thropton, Morpeth, Northumberland NE65 7LG, UK	river-coquet
+85	Garden Lake	\N	\N	\N	-2.72217073149113276	52.4609305737347711	2015-12-31 13:31:15.318495	2016-01-26 08:42:52.555593	1	69	Mill Ln, Craven Arms, Shropshire SY7 9DH, UK	garden-lake
+88	Little Heath Lake	\N	\N	\N	-0.203484339703434713	52.1462359367280186	2016-01-11 22:22:26.039946	2016-01-26 08:42:52.841526	1	72	Little Heath, Gamlingay, Sandy, Cambridgeshire SG19 3LL, UK	little-heath-lake
+92	Church Hill Lake	\N	\N	\N	-0.818840824914559562	51.9441715393260282	2016-01-12 23:46:03.434835	2016-01-26 08:42:53.194543	1	77	2 Swanbourne Rd, Mursley, Milton Keynes, Buckinghamshire MK17 0JA, UK	church-hill-lake
+73	Higham Lakes	\N	\N	\N	-1.79287569999996776	55.0725348000000139	2015-12-30 12:30:19.063093	2016-01-26 08:42:51.38528	1	59	Westgate House, Higham Dykes Ponteland, Milbourne, Newcastle upon Tyne, Northumberland NE20 0DH, UK	higham-lakes
+78	Roxholme Lake	\N	\N	\N	-1.10912083259290251	53.3577011913932964	2015-12-31 12:12:48.472927	2016-01-26 08:42:51.91969	1	63	Woodhouse Ln, Carlton in Lindrick, Worksop, Nottinghamshire S81, UK	roxholme-lake
+79	Barnes Lake Fishery	\N	\N	\N	-1.42622549999998682	51.7173381999999933	2015-12-31 12:47:23.800282	2016-01-26 08:42:51.96229	1	64	A415, Witney, Oxfordshire OX29, UK	barnes-lake-fishery
+96	River Cover	\N	\N	\N	-1.78113252963862578	54.278279174859847	2016-01-14 13:55:20.010908	2016-01-26 08:42:53.372709	2	80	Clarkson Dairy Services Ltd, East Witton, Leyburn, North Yorkshire DL8 4SQ, UK	river-cover
+101	Clay Lane Farm	\N	\N	\N	-2.28809242631984944	53.3100381282842548	2016-01-15 17:32:46.577813	2016-01-26 08:42:53.524393	1	83	Knutsford Rd, Mobberley, Knutsford, Cheshire East WA16, UK	clay-lane-farm
+102	Trout Pools	\N	\N	\N	-2.21406091838525754	53.2180732707476523	2016-01-15 18:46:08.312601	2016-01-26 08:42:53.577025	1	84	National Route 55, Macclesfield, Cheshire East SK11 9HA, UK	trout-pools
+103	West Lake	\N	\N	\N	-1.42044954841002768	54.5985728543984266	2016-01-15 19:20:30.987059	2016-01-26 08:42:53.628744	1	86	10 Mount Pleasant Rd, Stillington, Stockton-on-Tees, Stockton-on-Tees TS21 1LR, UK	west-lake
+104	Horseshoe Lake	\N	\N	\N	-1.41988628451690024	54.5987375576756904	2016-01-15 19:22:52.733991	2016-01-26 08:42:53.688925	1	86	8 Mount Pleasant Rd, Stillington, Stockton-on-Tees, Stockton-on-Tees TS21 1LS, UK	horseshoe-lake
+70	Scaling Reservoir		\N	\N	-0.849895693115286122	54.5026449206994812	2015-12-30 10:19:35.330985	2016-03-06 13:00:24.30379	1	57	A171, Saltburn-by-the-Sea, North Yorkshire TS13 4TP, UK	scaling-reservoir
+74	Langley Dam Reservoir		\N	\N	-2.27176489999999376	54.9431025000000091	2015-12-30 12:40:22.495831	2016-03-06 11:50:43.029796	1	60	2 Nilston Rigg Cottages, Langley, Hexham, Northumberland NE47 5LD, UK	langley-dam-reservoir
+75	Sweethope Loughs		\N	\N	-2.09302836248775748	55.1363150660387333	2015-12-30 13:26:14.096756	2016-03-06 11:53:18.053791	1	61	Unnamed Road, Northumberland, UK	sweethope-loughs
+77	Hallington Reservoir		\N	\N	-2.05619369999999435	55.0775079000000005	2015-12-30 13:32:24.351326	2016-03-06 11:56:10.981248	1	62	2 Crawley Cottages, Colwell, Hexham, Northumberland NE46 4TP, UK	hallington-reservoir
+76	Hallington Reservoir East		\N	\N	-2.04358600000000479	55.0825468999999828	2015-12-30 13:31:52.792566	2016-03-06 11:56:56.986044	1	62	2 Crawley Cottages, Colwell, Hexham, Northumberland NE46 4TP, UK	hallington-reservoir-east
+80	Farmoor Reservoir North		\N	\N	-1.35634426091314708	51.756787143209948	2015-12-31 12:58:49.785723	2016-03-06 12:07:44.650621	1	65	1 Meadow Cl, Cumnor, Oxford, Oxfordshire OX2 9NY, UK	farmoor-reservoir-north
+94	Grafham Water		\N	\N	-0.310596156005885859	52.2955567169197622	2016-01-13 07:49:06.172107	2016-03-06 12:38:29.063687	1	79	26 Roundhouse Dr, Perry, Huntingdon, Cambridgeshire PE28 0DJ, UK	grafham-water
+72	Selset Reservoir		\N	\N	-2.13488770000003569	54.5865968999999964	2015-12-30 10:22:40.774301	2016-03-06 12:57:10.991344	1	57	B6276, Barnard Castle, County Durham DL12 0PA, UK	selset-reservoir
+71	Balderhead Reservoir		\N	\N	-2.12614159999998265	54.5620744000000144	2015-12-30 10:21:18.146329	2016-03-06 12:58:40.051418	1	57	Unnamed Road, Barnard Castle, County Durham DL12 9UX, UK	balderhead-reservoir
+69	Kielder Water		\N	\N	-2.48480110000002696	55.181328700000023	2015-12-30 10:18:08.118429	2016-03-06 13:01:23.42502	1	57	Unnamed Road, Hexham, Northumberland NE48 1AU, UK	kielder-water
+68	Hury Reservoir		\N	\N	-2.06287710000003699	54.5693356999999892	2015-12-30 10:16:11.933683	2016-03-06 13:02:44.767082	1	57	Unnamed Road, Barnard Castle, County Durham DL12, UK	hury-reservoir
+67	Grassholme Reservoir		\N	\N	-2.09729049999998551	54.5961655999999991	2015-12-30 10:14:37.64345	2016-03-06 13:04:40.300568	1	57	Kelton Ln, Barnard Castle, County Durham DL12 0PW, UK	grassholme-reservoir
+98	Cow Green Reservoir	It is a large reservoir at 312 hectares (770 acres), located high in upper Teesdale. This makes it the largest largest reserve of wild brown trout in the North East.\r\n\r\nSurrounded by the fantastic scenery of the North Pennine grouse moors, there are few more tranquil and relaxing ways to spend a day’s fishing than roaming the banks of these waters, and even fewer places where you can catch truly wild browns.\r\n\r\nKeep on the move, use a team of traditional wets and you'll have an enjoyable days fishing in beautifully secluded surroundings.  \r\n\r\n\r\n\r\n	\N	\N	-2.31439567412712677	54.6686850702675073	2016-01-15 08:21:59.77437	2016-03-06 13:14:25.886932	1	57	Unnamed Road, Alston, County Durham CA9 3HF, UK	cow-green-reservoir
+\.
+
+
+--
+-- TOC entry 2487 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: waters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('waters_id_seq', 123, true);
+
+
+--
+-- TOC entry 2324 (class 2606 OID 16442)
+-- Name: addresses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY addresses
+    ADD CONSTRAINT addresses_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2321 (class 2606 OID 16430)
+-- Name: contact_details_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contact_details
+    ADD CONSTRAINT contact_details_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2313 (class 2606 OID 16396)
+-- Name: fisheries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY fisheries
+    ADD CONSTRAINT fisheries_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2331 (class 2606 OID 16470)
+-- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY images
+    ADD CONSTRAINT images_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2319 (class 2606 OID 16416)
+-- Name: species_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY species
+    ADD CONSTRAINT species_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2329 (class 2606 OID 16462)
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2327 (class 2606 OID 16451)
+-- Name: water_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY water_types
+    ADD CONSTRAINT water_types_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2317 (class 2606 OID 16407)
+-- Name: waters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY waters
+    ADD CONSTRAINT waters_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2325 (class 1259 OID 16443)
+-- Name: index_addresses_on_fishery_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_addresses_on_fishery_id ON addresses USING btree (fishery_id);
+
+
+--
+-- TOC entry 2322 (class 1259 OID 16431)
+-- Name: index_contact_details_on_fishery_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_contact_details_on_fishery_id ON contact_details USING btree (fishery_id);
+
+
+--
+-- TOC entry 2332 (class 1259 OID 16471)
+-- Name: index_images_on_water_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_images_on_water_id ON images USING btree (water_id);
+
+
+--
+-- TOC entry 2314 (class 1259 OID 16408)
+-- Name: index_waters_on_fishery_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_waters_on_fishery_id ON waters USING btree (fishery_id);
+
+
+--
+-- TOC entry 2315 (class 1259 OID 16478)
+-- Name: index_waters_on_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_waters_on_slug ON waters USING btree (slug);
+
+
+--
+-- TOC entry 2311 (class 1259 OID 16388)
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+-- Completed on 2016-04-13 12:30:37 BST
+
+--
+-- PostgreSQL database dump complete
+--
+
