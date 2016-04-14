@@ -4,7 +4,8 @@ describe Water, :type => :model do
     stub_google_geocode
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
-    @water = FactoryGirl.create(:water, latitude: -41.21924848834151 , longitude: -70.70650221597815 )
+    @water = FactoryGirl.create(:water, address: nil, latitude: -41.21924848834151 , longitude: -70.70650221597815 )
+    @water_with_address = FactoryGirl.create(:water, address: "Somewhere, Wales", latitude: -41.21924848834151 , longitude: -70.70650221597815 )
   end
 
     it "is not valid without a name" do
@@ -51,8 +52,16 @@ describe Water, :type => :model do
 
     describe "Address" do
 
-      it "is the 'formatted address' from google maps goecode api" do
-        expect(@water.address).to eql "Manchester, UK"
+      context "water without an address" do
+        it "is the 'formatted address' from google maps goecode api" do
+          expect(@water.address).to eql "Manchester, UK"
+        end
+      end
+
+      context "water with an address" do
+        it "uses the address given" do
+          expect(@water_with_address.address).to eql "Somewhere, Wales"
+        end
       end
 
     end
@@ -93,8 +102,6 @@ describe Water, :type => :model do
         @water.address = nil
         expect(@water.short_address).to eql nil
       end
-
-
 
     end
 end
