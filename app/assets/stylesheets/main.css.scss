@@ -936,3 +936,19 @@ ul.species {
 #trips section {
     padding:  30px 0 0 0;
 }
+
+.event-count {
+    margin-left: 100px !important;
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.event-count-inverted {
+    margin-left: -200px !important;
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.event {
+    cursor: pointer;
+}
