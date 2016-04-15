@@ -9,6 +9,6 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require mustache
+//= require vue
 //= require trip_map
 
