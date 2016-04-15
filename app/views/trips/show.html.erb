@@ -18,73 +18,34 @@
     </div>
 </header>
 <section id="location">
-    <div class="container">
-        <div id="location-map" data-lat="52.2733664" data-lng="-3.68496219999997" data-kml="" %>"></div>
+    <div class="container-fluid">
+        <div id="location-map" data-lat="53.004138" data-lng="-3.9881797"></div>
     </div>
 </section>
 <section id="about">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="/images/start.png" alt="">
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>10:26:43 AM</h4>
-                                <h4 class="subheading">Start</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">I decided to walk up to Llyn Clonglog and fish
-                                Llyn Cwmorthin and Llyn Cwm Corsiog on the way
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="/images/water1.jpg" alt="">
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>12:06:03 PM</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">April was living up to its reputation. It was was hitting all its tragets. It was wet, very very wet, as I trudged up to Llyn Clonglog.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="/images/pic-nic.png" alt="">
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>02:09:49 PM</h4>
-                                <h4 class="subheading">The Picnic</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">It was cold and windy up at Llyn Clonglog. I fished for a while, had a soggy lunch and made my way back down.
-                                Llyn Clonglog has loads of potential. I'll be back when it's wamer.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4 style="margin-top: 40%">The End</h4>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>05:58:04 PM</h4>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
+
+<script id="event-temp" type="text/template">
+    <div class="timeline-image event">
+        <img class="img-circle img-responsive" src="/images/start.png" alt="">
+    </div>
+    <div class="timeline-panel">
+        <div class="timeline-heading">
+            <h4>{{dateTime}}</h4>
+            <h4 class="subheading">{{subheading}}</h4>
+        </div>
+        <div class="timeline-body">
+            <p class="text-muted">{{description}}</p>
+        </div>
+    </div>
+</script>
 
 
