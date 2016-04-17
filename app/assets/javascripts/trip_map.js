@@ -28,14 +28,113 @@ $(document).ready(function() {
   map.data.setControls(['LineString','Point']);
   map.data.setStyle({
     editable: true,
-    draggable: true,
-    icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|1"
+    draggable: true
   });
 
   bindDataLayerListeners(map.data);
 
+  function addTimelineEventTemplateToTheView(event){
+    var template = $('#event-temp').html(),
+    html = Mustache.render(template, event.properties),
+    eventId = event.styles.id,
+    countClass = event.styles.count,
+    timeline = event.styles.timeline,
+    eventNum = (event.id + 1),
+    countElement = '<div class="timeline-image '+ countClass +'"><h1>'+ eventNum +'</h1></div>',
+    listItem = '<li id="'+ eventId +'" class="'+ timeline +'">'+ countElement + html +'</li>';
+
+    $(listItem).appendTo("ul.timeline");
+    editable(event);
+  }
+
+  function editable(event){
+    var eventId = event.styles.id,
+    feature = event.feature;
+
+    $('#'+eventId+' h4.date-time').editable("dblclick", function(e){
+      feature.setProperty('dateTime', e.value);
+    });
+
+    $('#'+eventId+' h4.subheading').editable("dblclick", function(e){
+      feature.setProperty('subheading', e.value);
+    });
+
+    $('#'+eventId+' p.description').editable(
+      {
+        type: 'textarea',
+        action: 'dblclick'
+      },
+      function(e){
+        feature.setProperty('description', e.value);
+      }
+    );
+
+
+  }
+
+  function getLocalStorageItem(item) {
+    return JSON.parse(localStorage.getItem(item));
+  }
+
+  function buildTimelineEventFromFeature(feature){
+      dateTime = feature.getProperty('dateTime'),
+      subheading = feature.getProperty('subheading'),
+      description = feature.getProperty('description');
+      return {
+        dateTime: (typeof dateTime === 'undefined' || !dateTime)? 'Double click here to add a date/time': dateTime,
+        subheading: (typeof subheading === 'undefined' || !subheading)? 'Double click here to add a title': subheading,
+        description:  (typeof description === 'undefined' || !description)? 'Double click here to add a description': description
+      };
+  }
+
+  function buildTimelineEvent(num){
+    return {
+      id: num,
+      properties: {},
+      feature: {},
+      styles: {
+          id:'event-'+num,
+          count: (num % 2)? 'event-count' : 'event-count-inverted',
+          timeline: (num % 2)? '' : 'timeline-inverted'
+      }
+    };
+  }
+
+  function bindDataLayerListeners(dataLayer) {
+
+    dataLayer.addListener('addfeature',function(mapData){
+      var feature = mapData.feature,
+      type = feature.getGeometry().getType(),
+      id = markerCount,
+      timelineEvent = {};
+
+      if (type == 'Point') {
+        markerCount++;
+        map.data.overrideStyle(
+          feature,
+          {
+            icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|" + markerCount
+          }
+        );
+
+        timelineEvent = buildTimelineEvent(id);
+        timelineEvent.properties = buildTimelineEventFromFeature(feature);
+        timelineEvent.feature = feature;
+        addTimelineEventTemplateToTheView(timelineEvent);
+      }
+      saveDataLayer();
+    });
+
+    dataLayer.addListener('setproperty', saveDataLayer);
+    dataLayer.addListener('removefeature', saveDataLayer);
+    dataLayer.addListener('setgeometry', saveDataLayer);
+  }
+
   function saveDataLayer() {
     map.data.toGeoJson(function (json) {
+      json.features.forEach(function(feature, index){
+        feature.id = index;
+      });
       localStorage.setItem('geoData', JSON.stringify(json));
     });
   }
@@ -45,43 +144,10 @@ $(document).ready(function() {
     map.data.forEach(function (f) {
         map.data.remove(f);
     });
-    map.data.addGeoJson(data)
-  }
-
-  function addEventToTimeLine(eventCount){
-    var event = {
-      dateTime: "Add a date/time",
-      subheading: "Add an event heading here...",
-      description: "Add a description of the event here...."
-    },
-    template = $('#event-temp').html(),
-    html = Mustache.to_html(template, event),
-    eventCountClass = (eventCount % 2)? 'event-count' : 'event-count-inverted',
-    eventCountElement = '<div class="timeline-image '+eventCountClass+'"><h1>'+eventCount+'</h1></div>',
-    listItem = (eventCount % 2)? '<li>'+eventCountElement+html+'</li>' : '<li class="timeline-inverted">'+eventCountElement+html+'</li>';
-    $(listItem).appendTo("ul.timeline");
-  }
-
-  function bindDataLayerListeners(dataLayer) {
-    dataLayer.addListener('addfeature',function(event){
-      var type = event.feature.getGeometry().getType();
-      if (type == 'Point') {
-        markerCount++;
-        event.feature.setProperty('markerCount', markerCount);
-        map.data.overrideStyle(
-          event.feature,
-          {
-            icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|" + markerCount
-          }
-        );
-        addEventToTimeLine(markerCount);
-      }
-      saveDataLayer();
-    });
-
-    dataLayer.addListener('removefeature', saveDataLayer);
-    dataLayer.addListener('setgeometry', saveDataLayer);
+    map.data.addGeoJson(data);
   }
 
   loadDataLayer(map);
 });
+
+
