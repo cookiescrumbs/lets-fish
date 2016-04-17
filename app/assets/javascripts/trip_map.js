@@ -62,7 +62,7 @@ $(document).ready(function() {
     $('#'+eventId+' p.description').editable(
       {
         type: 'textarea',
-        action: 'click'
+        action: 'dblclick'
       },
       function(e){
         feature.setProperty('description', e.value);
