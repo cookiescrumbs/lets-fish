@@ -44,6 +44,32 @@ $(document).ready(function() {
     listItem = '<li id="'+ eventId +'" class="'+ timeline +'">'+ countElement + html +'</li>';
 
     $(listItem).appendTo("ul.timeline");
+    editable(event);
+  }
+
+  function editable(event){
+    var eventId = event.styles.id,
+    feature = event.feature;
+
+    $('#'+eventId+' h4.date-time').editable("dblclick", function(e){
+      feature.setProperty('dateTime', e.value);
+    });
+
+    $('#'+eventId+' h4.subheading').editable("dblclick", function(e){
+      feature.setProperty('subheading', e.value);
+    });
+
+    $('#'+eventId+' p.description').editable(
+      {
+        type: 'textarea',
+        action: 'click'
+      },
+      function(e){
+        feature.setProperty('description', e.value);
+      }
+    );
+
+
   }
 
   function getLocalStorageItem(item) {
@@ -55,9 +81,9 @@ $(document).ready(function() {
       subheading = feature.getProperty('subheading'),
       description = feature.getProperty('description');
       return {
-        dateTime: (typeof dateTime === 'undefined' || !dateTime)? 'Click here to add a date/time': dateTime,
-        subheading: (typeof subheading === 'undefined' || !subheading)? 'Click here to add a subheading': subheading,
-        description:  (typeof description === 'undefined' || !description)? 'Click here to add a description': description
+        dateTime: (typeof dateTime === 'undefined' || !dateTime)? 'Double click here to add a date/time': dateTime,
+        subheading: (typeof subheading === 'undefined' || !subheading)? 'Double click here to add a title': subheading,
+        description:  (typeof description === 'undefined' || !description)? 'Double click here to add a description': description
       };
   }
 
@@ -65,6 +91,7 @@ $(document).ready(function() {
     return {
       id: num,
       properties: {},
+      feature: {},
       styles: {
           id:'event-'+num,
           count: (num % 2)? 'event-count' : 'event-count-inverted',
@@ -90,24 +117,15 @@ $(document).ready(function() {
           }
         );
 
-        // feature.setProperty('dateTime', '10:00am');
-        // feature.setProperty('subheading', 'this is a subheading');
-        // feature.setProperty('description', 'this is a description');
-
-        // console.log(feature);
-        // console.log(feature.getId());
-        // console.log(feature.getProperty('dateTime'));
-        // console.log(feature.getProperty('subheading'));
-        // console.log(feature.getProperty('description'));
-
         timelineEvent = buildTimelineEvent(id);
         timelineEvent.properties = buildTimelineEventFromFeature(feature);
-        //add timeline event to the view
+        timelineEvent.feature = feature;
         addTimelineEventTemplateToTheView(timelineEvent);
       }
       saveDataLayer();
     });
 
+    dataLayer.addListener('setproperty', saveDataLayer);
     dataLayer.addListener('removefeature', saveDataLayer);
     dataLayer.addListener('setgeometry', saveDataLayer);
   }
