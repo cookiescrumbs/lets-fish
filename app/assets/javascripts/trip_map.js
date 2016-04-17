@@ -3,7 +3,6 @@ $(document).ready(function() {
   mapElement,
   lat,
   lng,
-  event = {},
   markerCount = 0,
   mapOptions = {
     draggable: true,
@@ -29,71 +28,43 @@ $(document).ready(function() {
   map.data.setControls(['LineString','Point']);
   map.data.setStyle({
     editable: true,
-    draggable: true,
-    icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|1"
+    draggable: true
   });
 
   bindDataLayerListeners(map.data);
 
-  function saveDataLayer() {
-    map.data.toGeoJson(function (json) {
-      localStorage.setItem('geoData', JSON.stringify(json));
-    });
-  }
-
-  function loadDataLayer(map) {
-    var data = JSON.parse(localStorage.getItem('geoData'));
-    map.data.forEach(function (f) {
-        map.data.remove(f);
-    });
-    map.data.addGeoJson(data)
-  }
-
-  function addEventTemplateToTheView(event){
-    var html = $('#event-temp').html(),
+  function addTimelineEventTemplateToTheView(event){
+    var template = $('#event-temp').html(),
+    html = Mustache.render(template, event.properties),
     eventId = event.styles.id,
     countClass = event.styles.count,
     timeline = event.styles.timeline,
-    eventNum = event.num,
-    countElement = '<div class="timeline-image '+ countClass +'"><h1>'+ event.num +'</h1></div>',
+    eventNum = (event.id + 1),
+    countElement = '<div class="timeline-image '+ countClass +'"><h1>'+ eventNum +'</h1></div>',
     listItem = '<li id="'+ eventId +'" class="'+ timeline +'">'+ countElement + html +'</li>';
 
     $(listItem).appendTo("ul.timeline");
   }
 
-  function bindDataToTheView(event){
-    var eventId = event.styles.id,
-    data = event.data;
-
-    new Vue({
-      el: '#'+ eventId,
-      data: data,
-      methods: {
-        save: function(){
-        }
-      }
-    });
-
+  function getLocalStorageItem(item) {
+    return JSON.parse(localStorage.getItem(item));
   }
 
-  function eventDataFromLocalStorage(num){
-      var geoData = JSON.parse(localStorage.getItem('geoData'));
-      num = (num-1),
-      dateTime = geoData.features[num].properties.dateTime,
-      subheading = geoData.features[num].properties.subheading,
-      description = geoData.features[num].properties.description;
-
+  function buildTimelineEventFromFeature(feature){
+      dateTime = feature.getProperty('dateTime'),
+      subheading = feature.getProperty('subheading'),
+      description = feature.getProperty('description');
       return {
-        dateTime: dateTime,
-        subheading: subheading,
-        description: description
+        dateTime: (typeof dateTime === 'undefined' || !dateTime)? 'Click here to add a date/time': dateTime,
+        subheading: (typeof subheading === 'undefined' || !subheading)? 'Click here to add a subheading': subheading,
+        description:  (typeof description === 'undefined' || !description)? 'Click here to add a description': description
       };
   }
 
-  function buildEventObject(num){
+  function buildTimelineEvent(num){
     return {
-      num: num,
-      data: eventDataFromLocalStorage(num),
+      id: num,
+      properties: {},
       styles: {
           id:'event-'+num,
           count: (num % 2)? 'event-count' : 'event-count-inverted',
@@ -104,26 +75,35 @@ $(document).ready(function() {
 
   function bindDataLayerListeners(dataLayer) {
 
-    dataLayer.addListener('addfeature',function(event){
-      var type = event.feature.getGeometry().getType();
+    dataLayer.addListener('addfeature',function(mapData){
+      var feature = mapData.feature,
+      type = feature.getGeometry().getType(),
+      id = markerCount,
+      timelineEvent = {};
+
       if (type == 'Point') {
         markerCount++;
-        event.feature.setProperty('markerCount', markerCount);
-        event.feature.setProperty('dateTime', 'Add date / time here stupid');
-        event.feature.setProperty('subheading', 'Add subheading here stupid');
-        event.feature.setProperty('description', 'Add description here stupid');
-        saveDataLayer();
         map.data.overrideStyle(
-          event.feature,
+          feature,
           {
             icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|" + markerCount
           }
         );
 
-        event = {};
-        event = buildEventObject(markerCount);
-        addEventTemplateToTheView(event);
-        bindDataToTheView(event);
+        // feature.setProperty('dateTime', '10:00am');
+        // feature.setProperty('subheading', 'this is a subheading');
+        // feature.setProperty('description', 'this is a description');
+
+        // console.log(feature);
+        // console.log(feature.getId());
+        // console.log(feature.getProperty('dateTime'));
+        // console.log(feature.getProperty('subheading'));
+        // console.log(feature.getProperty('description'));
+
+        timelineEvent = buildTimelineEvent(id);
+        timelineEvent.properties = buildTimelineEventFromFeature(feature);
+        //add timeline event to the view
+        addTimelineEventTemplateToTheView(timelineEvent);
       }
       saveDataLayer();
     });
@@ -132,5 +112,24 @@ $(document).ready(function() {
     dataLayer.addListener('setgeometry', saveDataLayer);
   }
 
+  function saveDataLayer() {
+    map.data.toGeoJson(function (json) {
+      json.features.forEach(function(feature, index){
+        feature.id = index;
+      });
+      localStorage.setItem('geoData', JSON.stringify(json));
+    });
+  }
+
+  function loadDataLayer(map) {
+    var data = JSON.parse(localStorage.getItem('geoData'));
+    map.data.forEach(function (f) {
+        map.data.remove(f);
+    });
+    map.data.addGeoJson(data);
+  }
+
   loadDataLayer(map);
 });
+
+
