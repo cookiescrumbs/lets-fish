@@ -27,3 +27,5 @@ config/secrets.yml
 
 ##aws details
 /config/aws.yml
+
+/public/assets/*

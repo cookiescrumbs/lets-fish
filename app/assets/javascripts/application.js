@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require bootstrap.min
+//= require moment
 //= require turbolinks

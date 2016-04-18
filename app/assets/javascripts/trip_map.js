@@ -48,27 +48,46 @@ $(document).ready(function() {
   }
 
   function editable(event){
+    $.fn.editable.defaults.mode = 'inline';
     var eventId = event.styles.id,
     feature = event.feature;
 
-    $('#'+eventId+' h4.date-time').editable("dblclick", function(e){
-      feature.setProperty('dateTime', e.value);
-    });
+    $('#'+eventId+' h4.date-time').editable(
+      {
+        type: 'combodate',
+        format: 'MMMM Do YYYY, h:mm a',
+        template: 'MMMM Do YYYY, h:mm a',
+        combodate: {
+          minYear: 2015,
+          maxYear: 2016,
+          minuteStep: 15
+        },
+        success: function(response, newValue) {
+          feature.setProperty('dateTime', newValue.format());
+        }
+      }
+    );
 
-    $('#'+eventId+' h4.subheading').editable("dblclick", function(e){
-      feature.setProperty('subheading', e.value);
-    });
+    $('#'+eventId+' h4.subheading').editable(
+      {
+        type: 'text',
+        title: 'Title',
+        success: function(response, newValue) {
+          feature.setProperty('subheading', newValue);
+
+        }
+      }
+    );
 
     $('#'+eventId+' p.description').editable(
       {
         type: 'textarea',
-        action: 'dblclick'
-      },
-      function(e){
-        feature.setProperty('description', e.value);
+        title: 'Description',
+        success: function(response, newValue) {
+          feature.setProperty('description', newValue);
+        }
       }
     );
-
 
   }
 
@@ -77,14 +96,15 @@ $(document).ready(function() {
   }
 
   function buildTimelineEventFromFeature(feature){
-      dateTime = feature.getProperty('dateTime'),
-      subheading = feature.getProperty('subheading'),
-      description = feature.getProperty('description');
-      return {
-        dateTime: (typeof dateTime === 'undefined' || !dateTime)? 'Double click here to add a date/time': dateTime,
-        subheading: (typeof subheading === 'undefined' || !subheading)? 'Double click here to add a title': subheading,
-        description:  (typeof description === 'undefined' || !description)? 'Double click here to add a description': description
-      };
+    var dateTime = feature.getProperty('dateTime'),
+    subheading = feature.getProperty('subheading'),
+    description = feature.getProperty('description');
+
+    return {
+      dateTime: (typeof dateTime === 'undefined' || !dateTime)?  moment().format('MMMM Do YYYY, h:mm a') : moment(dateTime).format('MMMM Do YYYY, h:mm a'),
+      subheading: (typeof subheading === 'undefined' || !subheading)? 'Click to edit the title': subheading,
+      description:  (typeof description === 'undefined' || !description)? 'Click edit the description': description
+    };
   }
 
   function buildTimelineEvent(num){
