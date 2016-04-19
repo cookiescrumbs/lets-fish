@@ -1,0 +1,14 @@
+<%= render "navigation" %>
+<section id="waters" class="bg-light-gray">
+    <div class="container sitemap">
+        <div class="row">
+            <h2 class="section-heading">Fly fishing destinations</h2>
+            <h4 class="how-it-works-heading">Waters in the United Kingdom</h4>
+            <ol class="list-unstyled">
+                <%  @waters.each do | water| %>
+                    <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>
+                <% end %>
+            </ol>
+        </div>
+    </div>
+</section>

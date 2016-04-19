@@ -35,14 +35,14 @@ a.active {
 }
 
 a {
-    color: #fed136;
+    color: #F6B300;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #fec503;
+    color: #F6B300;
 }
 
 h1,
@@ -128,16 +128,16 @@ fieldset[disabled] .btn-primary.active {
 #search button {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
-    border-color: #ff5a5f;
-    border-bottom-color: #e00007;
-    background-color: #ff5a5f;
+    border-color: #fed136;
+    border-bottom-color: #fed136;
+    background-color: #f6b300;
     color: #fff;
 }
 
 #search button:hover, #search button:focus {
-    border-color: #ff7e82;
-    border-bottom-color: #fa0008;
-    background-color: #ff7e82;
+    border-color: #fed136;
+    border-bottom-color: #fed136;
+    background-color: #fed136;
     color: #fff;
 }
 
@@ -169,7 +169,7 @@ fieldset[disabled] .btn-primary.active {
 
 .navbar-default .navbar-brand {
     font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #fed136;
+    color: #fec503;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -184,8 +184,8 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #fed136;
-    background-color: #fed136;
+    border-color: #f6b300;
+    background-color: #f6b300;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -214,13 +214,13 @@ fieldset[disabled] .btn-primary.active {
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #fed136;
+    background-color: #f6b300;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     color: #fff;
-    background-color: #fec503;
+    background-color: #fed136;
 }
 
 @media(min-width:768px) {
@@ -234,12 +234,12 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #waters .navbar-brand, #trips .navbar-brand{
+    #search .navbar-brand, #waters .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand{
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #waters .navbar .container, #trips .navbar .container {
+    #search .navbar .container, #waters .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
         margin-left: 0;
     }
 
@@ -253,7 +253,7 @@ fieldset[disabled] .btn-primary.active {
     }
 
     .navbar-default .navbar-brand {
-        font-size: 2em;
+        font-size: 3em;
         -webkit-transition: all .3s;
         -moz-transition: all .3s;
         transition: all .3s;
@@ -278,7 +278,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: image-url('header-bg.jpg');
+    background-image: url('/images/header-bg.jpg');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -299,11 +299,11 @@ header {
     -o-background-size: cover;
 }
 
- section#discover {
+section#discover {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: image-url('header-bg.jpg');
+    background-image: url('/images/header-bg.jpg');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -956,4 +956,9 @@ ul.species {
 
 #trips ul.timeline textarea {
     width: 360px;
+}
+
+
+.sitemap {
+    line-height: 1.5;
 }
