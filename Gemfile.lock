@@ -37,9 +37,6 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt-ruby (3.0.1)
-    bootstrap-glyphicons (0.0.1)
-      railties (>= 3.0)
-      sass (>= 3.2)
     builder (3.2.2)
     byebug (8.2.2)
     capybara (2.6.2)
@@ -259,7 +256,6 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (< 2.0)
   bcrypt-ruby (~> 3.0.0)
-  bootstrap-glyphicons
   capybara
   chromedriver-helper
   coffee-rails (~> 4.0.0)
