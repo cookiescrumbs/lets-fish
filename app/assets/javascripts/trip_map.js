@@ -55,7 +55,7 @@ $(document).ready(function() {
       {
         type: 'combodate',
         format: 'MMMM Do YYYY, h:mm a',
-        template: 'MMMM Do YYYY, h:mm a',
+        template: 'MMMM D YYYY h:mm a',
         combodate: {
           minYear: 2015,
           maxYear: 2016,
