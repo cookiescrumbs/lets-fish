@@ -6,4 +6,11 @@ class Address < ActiveRecord::Base
       !send(address_comp).blank?
     end.map {|address_comp| send(address_comp) }.join(', ')
   end
+
+  def short
+    ['region','country'].select do |address_comp|
+      !send(address_comp).blank?
+    end.map {|address_comp| send(address_comp) }.join(', ')
+  end
+
 end

@@ -1,0 +1,59 @@
+<%= render 'navigation' %>
+<header style="background-image: url(<%=(@water.images.first)? @water.images.first.image.url(:large) : '/images/missing.png'%>)" class="img-responsive img-centered" alt="<%= @water.name %>">
+    <div class="image-trans">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-heading"></div>
+                <h1><div class="intro-lead-in"><%= @fishery.name %></div></h1>
+            </div>
+        </div>
+        <% if !@image_attribution.blank? %>
+            <div class="attribution">
+               Image &copy; Copyright
+                <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+                and licensed for reuse under this
+                <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
+                <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
+            </div>
+        <% end %>
+    </div>
+</header>
+<section id="the-fishery">
+    <div class="container">
+        <h4>Fishery Contact Details</h4>
+        <p><%= @fishery.name %></p>
+        <p><%= @fishery.contact_details.name %></p>
+        <p><%= @fishery.address.formatted %></p>
+        <p><%= @fishery.contact_details.telephone %></p>
+        <p><%= @fishery.contact_details.mobile %></p>
+        <p><a href="mailto:<%= @fishery.contact_details.email %>?Subject=Enquiry regarding fishing at <%= @water.name %>"><%= @fishery.contact_details.email %></a></p>
+        <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
+    </div>
+<section>
+<section id="location">
+    <div class="container">
+        <div id="location-map" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
+    </div>
+</section>
+<section id="waters-managed-by-this-fishery" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Waters managed by <%= @fishery.name %> </h2>
+            </div>
+        </div>
+        <div class="row">
+             <%= render '/search/results', { hide_water_count: true } %>
+        </div>
+    </div>
+</section>
+
+<script type="application/ld+json">
+    <%= raw render 'schema_org.json.jbuilder' %>
+</script>
+
+
+
+
+
+
