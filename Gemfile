@@ -35,7 +35,6 @@ gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'unicorn'
 gem 'possessive'
-gem 'raygun4ruby'
 gem 'geocoder'
 gem 'aws-sdk', '< 2.0'
 gem 'sidekiq'

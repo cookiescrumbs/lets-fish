@@ -166,10 +166,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.16.0)
     rake (10.5.0)
-    raygun4ruby (1.1.9)
-      httparty (~> 0.11)
-      json
-      rack
     redis (3.2.2)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
@@ -275,7 +271,6 @@ DEPENDENCIES
   rack_session_access
   rails (= 4.1.0)
   rails_12factor
-  raygun4ruby
   rspec-rails
   sass-rails (~> 4.0.0)
   selenium-webdriver
