@@ -48,6 +48,4 @@ class WatersController < ApplicationController
       !Water.find_by(slug: params[:id]).images.first.geograph_photo_id.nil?
     end
 
-
-
 end
