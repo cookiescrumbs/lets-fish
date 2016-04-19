@@ -9,7 +9,9 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.min
+//= require editable/bootstrap-editable
+//= require editable/rails
+//= require moment
 //= require mustache
 //= require trip_map
 
