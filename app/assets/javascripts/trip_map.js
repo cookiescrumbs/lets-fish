@@ -48,10 +48,9 @@ $(document).ready(function() {
   }
 
   function editable(event){
-    $.fn.editable.defaults.mode = 'inline';
     var eventId = event.styles.id,
     feature = event.feature;
-
+    $.fn.editable.defaults.mode = 'inline';
     $('#'+eventId+' h4.date-time').editable(
       {
         type: 'combodate',

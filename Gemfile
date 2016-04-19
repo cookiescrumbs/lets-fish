@@ -42,7 +42,6 @@ gem 'sidekiq'
 gem 'delayed_paperclip'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
-gem 'x-editable-rails'
 
 group :development, :test do
   gem 'rspec-rails'
