@@ -30,7 +30,7 @@ RAILS_ENV=production bundle exec rake assets:precompile
 RAILS_ENV=production bundle exec rails s
 ```
 
-####Example /config/data.yml
+####Example /config/database.yml
 ```
 test: &test
   adapter: postgresql
