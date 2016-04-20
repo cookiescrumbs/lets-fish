@@ -11,14 +11,14 @@ class Fishery < ActiveRecord::Base
   has_one  :address
   accepts_nested_attributes_for :address
 
-  #Move this stuff out into an object
-
   def latitude
-    google_places_details["geometry"]["location"]["lat"] if google_places_details?
+    return google_places_details["geometry"]["location"]["lat"] if google_places_details?
+    address.latitude
   end
 
   def longitude
-    google_places_details["geometry"]["location"]["lng"] if google_places_details?
+    return google_places_details["geometry"]["location"]["lng"] if google_places_details?
+    address.longitude
   end
 
   private
