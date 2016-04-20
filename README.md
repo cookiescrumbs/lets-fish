@@ -9,6 +9,13 @@ An app to find, list and write guides to fisheries and waters.
 
 ```pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
 
+```
+rake pg_db:restore                      # Restore development db (data only) from /db/pg_backups
+```
+
+Use ```rake pg_db:restore ``` locally to add test data to your dev app. It grabs the data from from /db/pg_backups. 
+I'll periodically backup the directory with live data. So you should have somthing similiar to "live" data. 
+
 ###Removes DB config
 
 Removed so I can run the app in production on my dev machine without having to alert this file or worry about it.
