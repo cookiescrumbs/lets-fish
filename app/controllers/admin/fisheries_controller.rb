@@ -45,7 +45,7 @@ class Admin::FisheriesController < AdminController
   private
 
     def set_fishery
-      @fishery = Fishery.find(params[:id])
+      @fishery = Fishery.find_by(slug: params[:id])
     end
 
     def fishery_params

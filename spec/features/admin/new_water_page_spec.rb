@@ -15,7 +15,7 @@ describe "New water page", type: :feature do
     end
 
     @fishery = FactoryGirl.create :fishery, name: "Bob's big fishery"
-    visit new_admin_fishery_water_path @fishery.id
+    visit new_admin_fishery_water_path @fishery.slug
   end
 
   it "has the name of the fishery" do
@@ -39,7 +39,7 @@ describe "New water page", type: :feature do
       click_on "Submit"
 
       expect(page).to have_content "Total Loch Doon"
-      expect(page).to have_content @species.first.name + ', ' + @species.last.name
+      expect(page).to have_content [@species.first.name , @species.last.name].to_sentence
       expect(page).to have_content @water_type.first.category
       expect(page.find('.alert')).to have_content "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}"
       expect(@fishery.waters.last.images.first.geograph_photo_id).to eql 987654

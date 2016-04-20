@@ -66,7 +66,7 @@ describe Water, :type => :model do
 
     end
 
-    describe "short address", focus: true do
+    describe "short address" do
 
       it "handles an address with no elements" do
         @water.address = ""

@@ -43,7 +43,7 @@ class Admin::WatersController < AdminController
   end
 
   def destroy
-    @fishery = Fishery.find(params[:fishery_id])
+    @fishery = Fishery.find_by(slug: params[:fishery_id])
     @water = Water.find_by(slug: params[:id])
     @water.destroy
     respond_to do | format |
@@ -82,7 +82,7 @@ class Admin::WatersController < AdminController
   end
 
   def set_fishery
-    @fishery = Fishery.find(params[:fishery_id])
+    @fishery = Fishery.find_by(slug: params[:fishery_id])
   end
 
   def set_water

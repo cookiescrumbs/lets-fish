@@ -6,7 +6,7 @@ describe "Show fishery details page", type: :feature do
       login FactoryGirl.create :user
 
       @fishery = FactoryGirl.create(:fishery)
-      visit admin_fishery_path @fishery.id
+      visit admin_fishery_path @fishery.slug
     end
 
     it "has a name" do
