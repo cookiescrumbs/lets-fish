@@ -10,42 +10,44 @@ class WatersController < ApplicationController
   end
 
   private
-    def set_water
-      @water = Water.find_by(slug: params[:id])
-    end
 
-    def set_waters
-      @waters = Water.find_by(slug: params[:id]).fishery.waters
-    end
+  def set_water
+    @water = Water.friendly.find(params[:id])
+  end
 
-    def set_fishery
-      @fishery = Water.find_by(slug: params[:id]).fishery
-    end
+  def set_waters
+    @waters = Water.friendly.find(params[:id]).fishery.waters
+  end
 
-    def set_species
-      @species = Water.find_by(slug: params[:id]).species.select(:name).distinct
-    end
+  def set_fishery
+    @fishery = Water.friendly.find(params[:id]).fishery
+  end
 
-    def set_image_attribution
-      if first_image? && geograph_photo_id?
-        @image_attribution = GeographService::user_attribution_from geograph_photo_id, geograph_api_key
-      end
-    end
+  def set_species
+    @species = Water.friendly.find(params[:id]).species.select(:name).distinct
+  end
 
-    def first_image?
-      !Water.find_by(slug: params[:id]).images.first.nil?
+  #add this stuff to the image model
+  def set_image_attribution
+    if first_image? && geograph_photo_id?
+      @image_attribution = GeographService::user_attribution_from geograph_photo_id, geograph_api_key
     end
+  end
 
-    def geograph_photo_id
-      Water.find_by(slug: params[:id]).images.first.geograph_photo_id
-    end
+  def first_image?
+    !Water.friendly.find(params[:id]).images.first.nil?
+  end
 
-    def geograph_api_key
-      return Rails.application.config.geograph_api_key
-    end
+  def geograph_photo_id
+    Water.friendly.find(params[:id]).images.first.geograph_photo_id
+  end
 
-    def geograph_photo_id?
-      !Water.find_by(slug: params[:id]).images.first.geograph_photo_id.nil?
-    end
+  def geograph_api_key
+    return Rails.application.config.geograph_api_key
+  end
+
+  def geograph_photo_id?
+    !Water.friendly.find(params[:id]).images.first.geograph_photo_id.nil?
+  end
 
 end

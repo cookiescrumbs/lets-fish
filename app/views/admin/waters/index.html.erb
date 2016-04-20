@@ -18,7 +18,7 @@
           <td><%= water.id %></td>
           <td><%= water.name %></td>
           <td><%= water.water_type.category %></td>
-          <td><%= water.species.map{|s| s.name }.join(', ') %></td>
+          <td><%= water.species.uniq{|s| s.name}.map{|s| s.name }.to_sentence %></td>
           <td>
             <%= link_to 'edit', edit_admin_fishery_water_path(@fishery, water), class: 'btn btn-default btn-sm edit' %>
           </td>

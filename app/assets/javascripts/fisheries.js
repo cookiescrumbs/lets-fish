@@ -9,9 +9,4 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
-//= require bootstrap.min
-//= require jquery
-//= require jquery.turbolinks
-//= require jquery_ujs
-//= require turbolinks
+//= require location_map

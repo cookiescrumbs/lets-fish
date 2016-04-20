@@ -1,11 +1,11 @@
-<% if @fisheries.exists? %> 
+<% if @fisheries.exists? %>
   <h1>Fisheries</h1>
   <table class="table table-striped fisheries">
     <thead>
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Show</th> 
+        <th>Show</th>
         <th>Edit</th>
         <th>Destroy</th>
         <th></th>
@@ -31,6 +31,7 @@
                 <li><%= link_to 'add', new_admin_fishery_water_path(fishery) %></li>
                 <li><%= link_to 'show', admin_fishery_waters_path(fishery) %></li>
               </ul>
+
             </div>
           </td>
         </tr>

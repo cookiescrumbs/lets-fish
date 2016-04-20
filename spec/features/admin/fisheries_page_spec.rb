@@ -15,7 +15,7 @@ describe "Manage fisheries page", type: :feature do
     end
 
     it "updates a fishery's details" do
-      visit edit_admin_fishery_path @fishery.id
+      visit edit_admin_fishery_path @fishery.slug
       expect(page.find_field('fishery-name').value).to eql "Stevo's Big trout fishery"
 
       fill_in "fishery-name", :with => "Dave's Big Trout Fishery"

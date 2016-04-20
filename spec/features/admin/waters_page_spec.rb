@@ -20,7 +20,7 @@ describe "Manage waters page", type: :feature do
       end
 
       @fishery = FactoryGirl.create :fishery_with_waters
-      visit admin_fishery_waters_path @fishery.id
+      visit admin_fishery_waters_path @fishery.slug
     end
 
     let(:water){ @fishery.waters.last }
@@ -78,7 +78,7 @@ describe "Manage waters page", type: :feature do
         click_on 'Submit'
 
         expect(page).to have_content 'loch dooooooon'
-        expect(page).to have_content "#{first_species_name}, #{checked_species_name}"
+        expect(page).to have_content [first_species_name,checked_species_name].to_sentence
         expect(page.find('.alert')).to have_content "loch dooooooon was successfully updated."
         expect(water.images.last.image_file_name).to eql 'another-loch.jpg'
         expect(water.images.last.geograph_photo_id).to eql 987654
@@ -101,7 +101,7 @@ describe "Manage waters page", type: :feature do
 
     before(:each) do
       @fishery_without_waters = FactoryGirl.create :fishery
-      visit admin_fishery_waters_path @fishery_without_waters.id
+      visit admin_fishery_waters_path @fishery_without_waters.slug
     end
 
     it "has a lovely message telling you to create a water" do

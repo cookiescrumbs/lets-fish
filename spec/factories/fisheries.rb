@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :fishery do
-    name Faker::Company.name
+    name { Array(1..3).map{ Faker::Lorem.word }.join( ' ') }
+    slug {name}
     place_id Faker::Bitcoin.address
     address { create(:address) }
     contact_details { create(:contact_details)}
