@@ -12,20 +12,20 @@ class FisheriesController < ApplicationController
   private
 
   def set_fishery
-    @fishery = Fishery.find_by(slug: params[:id])
+    @fishery = Fishery.friendly.find(params[:id])
   end
 
   def set_waters
-    @waters = Fishery.find_by(slug: params[:id]).waters
+    @waters = Fishery.friendly.find(params[:id]).waters
   end
 
   def set_water
-    @water = Fishery.find_by(slug: params[:id]).waters.first
+    @water = Fishery.friendly.find(params[:id]).waters.first
   end
 
   #need to get all species form across all waters
   def set_species
-    @species = Fishery.find_by(slug: params[:id]).waters.first.species.select(:name).distinct
+    @species = Fishery.friendly.find(params[:id]).waters.first.species.select(:name).distinct
   end
 
   #Add this stuff to the image model

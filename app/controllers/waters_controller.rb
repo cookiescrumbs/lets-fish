@@ -12,19 +12,19 @@ class WatersController < ApplicationController
   private
 
   def set_water
-    @water = Water.find_by(slug: params[:id])
+    @water = Water.friendly.find(params[:id])
   end
 
   def set_waters
-    @waters = Water.find_by(slug: params[:id]).fishery.waters
+    @waters = Water.friendly.find(params[:id]).fishery.waters
   end
 
   def set_fishery
-    @fishery = Water.find_by(slug: params[:id]).fishery
+    @fishery = Water.friendly.find(params[:id]).fishery
   end
 
   def set_species
-    @species = Water.find_by(slug: params[:id]).species.select(:name).distinct
+    @species = Water.friendly.find(params[:id]).species.select(:name).distinct
   end
 
   #add this stuff to the image model
@@ -35,11 +35,11 @@ class WatersController < ApplicationController
   end
 
   def first_image?
-    !Water.find_by(slug: params[:id]).images.first.nil?
+    !Water.friendly.find(params[:id]).images.first.nil?
   end
 
   def geograph_photo_id
-    Water.find_by(slug: params[:id]).images.first.geograph_photo_id
+    Water.friendly.find(params[:id]).images.first.geograph_photo_id
   end
 
   def geograph_api_key
@@ -47,7 +47,7 @@ class WatersController < ApplicationController
   end
 
   def geograph_photo_id?
-    !Water.find_by(slug: params[:id]).images.first.geograph_photo_id.nil?
+    !Water.friendly.find(params[:id]).images.first.geograph_photo_id.nil?
   end
 
 end

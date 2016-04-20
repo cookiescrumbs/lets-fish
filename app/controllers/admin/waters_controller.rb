@@ -43,8 +43,8 @@ class Admin::WatersController < AdminController
   end
 
   def destroy
-    @fishery = Fishery.find_by(slug: params[:fishery_id])
-    @water = Water.find_by(slug: params[:id])
+    @fishery = Fishery.friendly.find(params[:fishery_id])
+    @water = Water.friendly.find(params[:id])
     @water.destroy
     respond_to do | format |
       format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully deleted" }
