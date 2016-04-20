@@ -21,6 +21,8 @@ class Fishery < ActiveRecord::Base
     google_places_details["geometry"]["location"]["lng"] if google_places_details?
   end
 
+  private
+
   def google_places_details
     return nil if place_id.blank?
     Geocoder.search(place_id, :lookup => :google_places_details).first.data

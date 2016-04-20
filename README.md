@@ -9,36 +9,46 @@ An app to find, list and write guides to fisheries and waters.
 
 ```pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
 
+###Removes DB config
 
-####Trip Spike Notes
+Removed so I can run the app in production on my dev machine without having to alert this file or worry about it.
+I can precompile my production assets and debug locally.
+Heroku was swtiching the asset folder from ```/assets ``` to ```/shared/assets```
 
-##Trip Model
+```
+RAILS_ENV=production bundle exec rake assets:clobber
+RAILS_ENV=production bundle exec rake assets:precompile
+```
+```
+RAILS_ENV=production bundle exec rails s
+```
 
-Trip:
-    belongs_to: user
-    title: "Sutherlands magical hill lochs"
-    kml_file_id: (stored in s3)
-    weather: (not sure where we get this data)
-    has_many: events
-    belongs_to: water
+####Example /config/data.yml
+```
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: lets_fish_test
+  username: stevencook
+  password:
+  pool: 5
+  timeout: 5000
 
-##Event Model
-Event:
-    trip_id:
-    title:
-    Discription:
-    belongs_to: event_type
-    longitude: float
-    latitude: float
-    weather: (not sure where we get this data)
-    date/time:
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: lets_fish_development
+  username: stevencook
+  password:
+  pool: 5
+  timeout: 5000
 
-Event_type:
-    type: fish-caught, lunch, set-up-camp, ...
-
-
-
-
-
-
-
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: lets_fish_development
+  username: stevencook
+  password:
+  pool: 5
+  timeout: 5000
+```
