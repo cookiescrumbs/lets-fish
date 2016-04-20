@@ -14,7 +14,7 @@ rake pg_db:restore                      # Restore development db (data only) fro
 ```
 
 Use ```rake pg_db:restore ``` locally to add test data to your dev app. It grabs the data from from /db/pg_backups. 
-I'll periodically backup the directory with live data. So you should have somthing similiar to "live" data. 
+I'll periodically backup the directory with live data. So you should have somthing similiar to "live".
 
 ###Removes DB config
 
