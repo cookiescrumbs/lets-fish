@@ -958,7 +958,10 @@ ul.species {
     width: 360px;
 }
 
-
 .sitemap {
-    line-height: 1.5;
+    line-height: 1.8;
 }
+
+.top17 { padding-top:17px; }
+
+footer { background-color: #222; }
