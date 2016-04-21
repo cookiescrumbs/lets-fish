@@ -1,4 +1,4 @@
-describe Fishery, :type => :model, focus: true do
+describe Fishery, :type => :model do
 
   describe "validate fields" do
 
