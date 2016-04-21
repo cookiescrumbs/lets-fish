@@ -1,18 +1,32 @@
 <%= render "navigation" %>
-<section id="waters" class="bg-light-gray">
+<section id="waters">
     <div class="container sitemap">
         <div class="row">
-     <h2 class="section-heading">Fly fishing destinations in the United Kingdom</h2>
+            <div class="col-md-12">
+                <h2>Fly fishing destinations</h2>
+                <h4>England, Scotland and Wales</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>by location</h4>
+                <ol class="list-unstyled">
+                    <li><a href="/search?location=Elan+Valley">Elan Valley, Wales</a></li>
+                    <li><a href="/search?location=Lancashire">Lancashire</a></li>
+                    <li><a href="/search?location=Snowdonia+National+Park">Snowdonia National Park, Wales</a></li>
+                    <li><a href="/search?location=Forest+in+Teesdale">Forest in Teesdale, County Durham</a></li>
+                </ol>
+            </div>
             <div class="col-md-4">
-                <h4>Fisheries</h4>
+                <h4>by fishery</h4>
                 <ol class="list-unstyled">
                     <%  @fisheries.each do | fishery | %>
-                        <li><a href="/fisheries/<%= fishery.slug %>"><%= fishery.name %></a></li>
+                        <li><a href="/fisheries/<%= fishery.slug %>"><%= fishery.name %></span></a></li>
                     <% end %>
                 </ol>
             </div>
             <div class="col-md-3">
-                <h4>Waters</h4>
+                <h4>by water</h4>
                 <ol class="list-unstyled">
                     <%  @waters.each do | water| %>
                         <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>

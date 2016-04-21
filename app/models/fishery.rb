@@ -3,6 +3,8 @@ class Fishery < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
+  validates_presence_of :name, message: "Fishery name can't be blank"
+
   has_many :waters, dependent: :destroy
 
   has_one  :contact_details
