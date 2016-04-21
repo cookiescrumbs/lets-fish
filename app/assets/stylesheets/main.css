@@ -644,10 +644,16 @@ body {
     line-height: 1.5;
 }
 
-body#search{
+body#search {
     background-color: #f7f7f7; /*bg-light-gray*/
 }
-body#search footer{
+
+body#trips{
+   background-color: #fff;
+}
+
+
+body#search footer, body#trips footer{
     display: none;
 }
 
@@ -963,5 +969,12 @@ ul.species {
 }
 
 .top17 { padding-top:17px; }
+.top30 { padding-top:30px; }
+.top40 { padding-top:40px; }
+.top70 { padding-top:70px; }
+
+#trips header .intro-text {
+    padding-top: 100px;
+}
 
 footer { background-color: #222; }

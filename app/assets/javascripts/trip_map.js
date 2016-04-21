@@ -17,7 +17,7 @@ $(document).ready(function() {
     mapTypeId: google.maps.MapTypeId.SATELLITE
   };
 
-  mapElement = document.getElementById('location-map');
+  mapElement = document.getElementById('map');
   lat = parseFloat(mapElement.dataset.lat);
   lng = parseFloat(mapElement.dataset.lng);
   map = new google.maps.Map(mapElement, mapOptions);
