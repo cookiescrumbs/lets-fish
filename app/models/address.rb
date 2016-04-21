@@ -1,6 +1,9 @@
 class Address < ActiveRecord::Base
   belongs_to :fishery
 
+  geocoded_by :formatted
+  after_validation :geocode
+
   def formatted
     ['street','line2','region','postcode','country'].select do |address_comp|
       !send(address_comp).blank?

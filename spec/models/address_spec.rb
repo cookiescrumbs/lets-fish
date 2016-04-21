@@ -1,6 +1,9 @@
 describe Address, :type => :model do
 
-  before { @address = FactoryGirl.create(:address) }
+  before do
+    stub_google_geocode_address
+    @address = FactoryGirl.create(:address)
+  end
 
   describe "formatted address" do
 

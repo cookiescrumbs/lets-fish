@@ -2,13 +2,23 @@
 <section id="waters" class="bg-light-gray">
     <div class="container sitemap">
         <div class="row">
-            <h2 class="section-heading">Fly fishing destinations</h2>
-            <h4 class="how-it-works-heading">Waters in the United Kingdom</h4>
-            <ol class="list-unstyled">
-                <%  @waters.each do | water| %>
-                    <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>
-                <% end %>
-            </ol>
+     <h2 class="section-heading">Fly fishing destinations in the United Kingdom</h2>
+            <div class="col-md-4">
+                <h4>Fisheries</h4>
+                <ol class="list-unstyled">
+                    <%  @fisheries.each do | fishery | %>
+                        <li><a href="/fisheries/<%= fishery.slug %>"><%= fishery.name %></a></li>
+                    <% end %>
+                </ol>
+            </div>
+            <div class="col-md-3">
+                <h4>Waters</h4>
+                <ol class="list-unstyled">
+                    <%  @waters.each do | water| %>
+                        <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>
+                    <% end %>
+                </ol>
+            </div>
         </div>
     </div>
 </section>

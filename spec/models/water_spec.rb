@@ -1,7 +1,8 @@
-describe Water, :type => :model do
+describe Water, :type => :model, focus: true do
 
   before do
-    stub_google_geocode
+    stub_google_geocode_lat_lng
+    stub_google_geocode_address
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
     @water = FactoryGirl.create(:water, address: nil, latitude: -41.21924848834151 , longitude: -70.70650221597815 )
@@ -82,7 +83,6 @@ describe Water, :type => :model do
         @water.address = "Somewhere, Northumberland, UK"
         expect(@water.short_address).to eql "Somewhere, Northumberland"
       end
-
 
     end
 end

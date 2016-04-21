@@ -4,7 +4,9 @@ describe "New water page", type: :feature do
 
   before :each do
     login FactoryGirl.create :user
-    stub_google_geocode
+
+    stub_google_geocode_lat_lng
+    stub_google_geocode_address
 
     @species    =  ["brown trout", "rainbow trout", "grayling", "sea trout"].map do |name|
       FactoryGirl.create :species, name: name
