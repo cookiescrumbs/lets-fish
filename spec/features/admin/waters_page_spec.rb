@@ -3,13 +3,15 @@ require_relative '../features_helper'
 describe "Manage waters page", type: :feature do
 
   before(:each) do
+    stub_google_geocode_address
     login FactoryGirl::create :user
   end
 
   context "there is a fishery with waters" do
 
     before(:each) do
-      stub_google_geocode
+      stub_google_geocode_lat_lng
+      stub_google_geocode_address
 
       @species = ["brown trout", "rainbow trout", "grayling", "sea trout"].map do |name|
         FactoryGirl.create :species, name: name

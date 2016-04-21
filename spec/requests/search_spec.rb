@@ -1,7 +1,9 @@
 describe "Search API", type: :request do
 
   before(:each) do
-    stub_google_geocode
+    stub_google_geocode_lat_lng
+    stub_google_geocode_address
+
     FactoryGirl.create_list :species, 5
     FactoryGirl.create_list :water_type, 5
     FactoryGirl.create_list :water, 23, latitude: 53.501942, longitude: -2.245983

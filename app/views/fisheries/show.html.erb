@@ -18,6 +18,12 @@
         <% end %>
     </div>
 </header>
+<section id="location">
+    <div class="container">
+        <div id="location-map" data-lat="<%=@fishery.latitude %>" data-lng="<%=@fishery.longitude%>"></div>
+    </div>
+</section>
+
 <section id="the-fishery">
     <div class="container">
         <h4>Fishery Contact Details</h4>
@@ -30,11 +36,6 @@
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 <section>
-<section id="location">
-    <div class="container">
-        <div id="location-map" data-lat="<%=@fishery.latitude %>" data-lng="<%=@fishery.longitude%>"></div>
-    </div>
-</section>
 <section id="waters-managed-by-this-fishery" class="bg-light-gray">
     <div class="container">
         <div class="row">

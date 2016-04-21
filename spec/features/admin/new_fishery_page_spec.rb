@@ -3,6 +3,8 @@ require_relative '../features_helper'
 describe "New fishery page", type: :feature do
 
   before(:each) do
+    stub_google_geocode_address
+
     login FactoryGirl::create :user
   end
 

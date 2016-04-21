@@ -7,7 +7,8 @@ describe "Search", type: :feature do
     context "there is a fishery in Manchester with five waters" do
 
       before(:each) do
-        stub_google_geocode
+        stub_google_geocode_lat_lng
+        stub_google_geocode_address
         @species    = FactoryGirl.create_list :species, 5
         @water_type = FactoryGirl.create_list :water_type, 5
         @fishery    = FactoryGirl.create :fishery_with_waters

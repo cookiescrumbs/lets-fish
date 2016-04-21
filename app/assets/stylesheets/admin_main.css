@@ -30,3 +30,8 @@ body {
 #map-search-box:focus {
     border-color: #4d90fe;
 }
+
+form img.preview {
+  width: 25%;
+  height: 25%;
+}
