@@ -113,8 +113,10 @@ $(document).ready(function() {
       feature: {},
       styles: {
           id:'event-'+num,
-          count: (num % 2)? 'event-count' : 'event-count-inverted',
-          timeline: (num % 2)? '' : 'timeline-inverted'
+          // count: (num % 2)? 'event-count' : 'event-count-inverted',
+          count: 'event-count-inverted',
+          // timeline: (num % 2)? '' : 'timeline-inverted'
+          timeline: 'timeline-inverted'
       }
     };
   }
