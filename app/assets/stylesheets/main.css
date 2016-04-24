@@ -338,7 +338,7 @@ header div.image-trans, section div.image-trans{
     background: rgba(0, 0, 0, 0.3);
 }
 
-#waters header div.image-trans, section div.image-trans{
+#waters header div.image-trans, section div.image-trans, #fisheries header div.image-trans{
     background: rgba(0, 0, 0, 0.1);
 }
 
