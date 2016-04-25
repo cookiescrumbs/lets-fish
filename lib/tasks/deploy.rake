@@ -1,6 +1,6 @@
 namespace :deploy do
   desc "Builds and deploys to Heroku like Codeship"
-  task :heroku do |t, args|
+  task heroku: :environment do
     sh 'bundle install'
     sh 'RAILS_ENV=test bundle exec rake db:schema:load'
     sh 'RAILS_ENV=test bundle exec rake db:migrate'
