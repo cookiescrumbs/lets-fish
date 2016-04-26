@@ -5,7 +5,8 @@ Let's Fish
 
 An app to find, list and write guides to fisheries and waters.
 
-####Getting your development machine setup
+##Getting your development machine setup
+
 ```
 git clone ..... 
 ```
@@ -20,7 +21,7 @@ initdb /usr/local/var/postgres
 pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
 
 ```
-(More information about installing Postgres for Rails)[http://railscasts.com/episodes/342-migrating-to-postgresql]
+[More information about installing Postgres for Rails](http://railscasts.com/episodes/342-migrating-to-postgresql)
 
 #####Start Postgres
 ```
