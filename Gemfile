@@ -41,6 +41,7 @@ gem 'sidekiq'
 gem 'delayed_paperclip'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
+gem 'meta-tags'
 
 group :development, :test do
   gem 'rspec-rails'
