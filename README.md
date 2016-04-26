@@ -5,12 +5,53 @@ Let's Fish
 
 An app to find, list and write guides to fisheries and waters.
 
+####Getting your development machine setup
+```
+git clone ..... 
+```
+
+###Setting up your Postgres DB
+
+#####Install Postgres via brew
+```
+psql --version
+brew install postgresql
+initdb /usr/local/var/postgres
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+```
+(More information about installing Postgres for Rails)[http://railscasts.com/episodes/342-migrating-to-postgresql]
+
+#####Start Postgres
+```
+bundle exec rake pg_db:start 
+```
+
+#####Create development and test db
+
+```
+bundle exec rake pg_db:create_development #create and load the dev db
+bundle exec rake pg_db:create_test #create and load the test db
+
+```
+#####Add some development data to your database
+```
+bundle exec rake pg_db:restore #Restore development db (data only) from /db/pg_backups (using "live" data)
+
+``` 
+
+#####Setup Heroku
+
+```
+heroku git:remote -a lets-fish #add Heroku remote to git repo
+```
+
 ####Restore DB from dump
 
 ```pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
 
 ```
-rake pg_db:restore                      # Restore development db (data only) from /db/pg_backups
+rake pg_db:restore  # Restore development db (data only) from /db/pg_backups
 ```
 
 Use ```rake pg_db:restore ``` locally to add test data to your dev app. It grabs the data from from /db/pg_backups. 

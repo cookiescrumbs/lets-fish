@@ -16,10 +16,18 @@ namespace :pg_db do
   end
 
   desc "Create and load the development database"
-  task create: :environment do
+  task create_development: :environment do
     sh 'RAILS_ENV=development bundle exec rake db:create'
     sh 'RAILS_ENV=development bundle exec rake db:schema:load'
   end
+
+
+  desc "Create and load the test database"
+  task create_test: :environment do
+    sh 'RAILS_ENV=test bundle exec rake db:create'
+    sh 'RAILS_ENV=test bundle exec rake db:schema:load'
+  end
+
 
 
 end
