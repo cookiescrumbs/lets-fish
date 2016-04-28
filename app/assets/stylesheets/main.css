@@ -758,13 +758,13 @@ ul.species {
 
 }
 
-#explore h2.area{
+#locations h2.area{
     text-align: center;
     color: #fff;
     font-weight: normal;
 }
 
-#explore .title-header{
+#locations .title-header{
     top: 40px;
     background-color: unset;
     background-color: transparent;
