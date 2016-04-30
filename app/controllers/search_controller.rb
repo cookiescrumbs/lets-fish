@@ -4,7 +4,8 @@ class SearchController < ApplicationController
 
   def index
     @waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
-    respond_with(@waters)
+    expires_in 1.day
+    fresh_when @waters
   end
 
   private
