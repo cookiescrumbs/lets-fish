@@ -9,10 +9,14 @@ class SitemapsController < ApplicationController
 
   def set_waters
     @waters = Water.order(name: :asc)
+    expires_in 1.day
+    fresh_when @waters
   end
 
   def set_fisheries
     @fisheries = Fishery.order(name: :asc)
+    expires_in 1.day
+    fresh_when @fisheries
   end
 
 end
