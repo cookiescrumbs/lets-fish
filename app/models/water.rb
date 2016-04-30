@@ -4,7 +4,7 @@ class Water < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   belongs_to              :fishery, touch: true
-  belongs_to              :water_type, touch: true
+  belongs_to              :water_type
 
   has_and_belongs_to_many :species
 

@@ -13,6 +13,8 @@ class FisheriesController < ApplicationController
 
   def set_fishery
     @fishery = Fishery.friendly.find(params[:id])
+    expires_in 1.day
+    fresh_when @fishery
   end
 
   def set_waters
