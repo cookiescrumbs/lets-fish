@@ -14,6 +14,8 @@ class WatersController < ApplicationController
 
   def set_water
     @water = Water.friendly.find(params[:id])
+    expires_in 1.day
+    fresh_when @water
   end
 
   def set_waters

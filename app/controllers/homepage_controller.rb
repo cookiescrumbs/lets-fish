@@ -1,18 +1,13 @@
 class HomepageController < ApplicationController
 
   def index
-    @waters = recently_add_waters 3
-    @fisheries = recently_add_fisheries 3
-  end
+    @waters = Water.order('id desc').limit(3)
+    expires_in 10.minutes
+    fresh_when @waters
 
-  private
-
-  def recently_add_waters(number)
-    Water.limit(number).order('id desc')
-  end
-
-  def recently_add_fisheries(number)
-    Fishery.limit(number).order('id desc')
+    @fisheries =  Fishery.order('id desc').limit(3)
+    expires_in 10.minutes
+    fresh_when @fishery
   end
 
 end
