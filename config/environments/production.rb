@@ -20,7 +20,9 @@ LetsFish::Application.configure do
   config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  # config.serve_static_assets = true
+  config.serve_static_assets = false
+  #cache static assets for 30 days - 2592000 seconds
+  config.static_cache_control = "public, max-age=2592000"
 
   config.assets.prefix = '/assets'
 

@@ -14,10 +14,12 @@ class WatersController < ApplicationController
 
   def set_water
     @water = Water.friendly.find(params[:id])
+    fresh_when @water
   end
 
   def set_waters
     @waters = Water.friendly.find(params[:id]).fishery.waters
+    fresh_when @waters
   end
 
   def set_fishery
