@@ -15,7 +15,8 @@ describe "Manage fisheries page", type: :feature do
       @fishery    = FactoryGirl.create(:fishery_with_waters, name: "Stevo's Big trout fishery")
     end
 
-    it "updates a fishery's details" do
+    it "updates a fishery's details", focus: true do
+      binding.pry
       visit edit_admin_fishery_path @fishery.slug
       expect(page.find_field('fishery-name').value).to eql "Stevo's Big trout fishery"
 
