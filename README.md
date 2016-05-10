@@ -3,7 +3,7 @@
 Let's Fish
 ================
 
-An app to find, list and write guides to fisheries and waters.
+A website for finding places to go fly fishing.
 
 ##Getting your development machine setup
 
