@@ -43,6 +43,8 @@ bundle exec rake pg_db:restore #Restore development db (data only) from /db/pg_b
 
 #####Setup Heroku
 
+[Download the toolbelt](https://toolbelt.heroku.com/)
+
 ```
 heroku git:remote -a lets-fish #add Heroku remote to git repo
 ```
