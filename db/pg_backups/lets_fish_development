@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.2
 -- Dumped by pg_dump version 9.5.2
 
--- Started on 2016-04-13 12:30:37 BST
+-- Started on 2016-05-11 13:33:52 BST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2471 (class 0 OID 0)
+-- TOC entry 2472 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
@@ -39,7 +39,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 192 (class 1259 OID 16434)
+-- TOC entry 182 (class 1259 OID 16387)
 -- Name: addresses; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -52,12 +52,14 @@ CREATE TABLE addresses (
     country character varying(255),
     postcode character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    latitude double precision,
+    longitude double precision
 );
 
 
 --
--- TOC entry 191 (class 1259 OID 16432)
+-- TOC entry 181 (class 1259 OID 16385)
 -- Name: addresses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -70,8 +72,8 @@ CREATE SEQUENCE addresses_id_seq
 
 
 --
--- TOC entry 2472 (class 0 OID 0)
--- Dependencies: 191
+-- TOC entry 2473 (class 0 OID 0)
+-- Dependencies: 181
 -- Name: addresses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -79,7 +81,7 @@ ALTER SEQUENCE addresses_id_seq OWNED BY addresses.id;
 
 
 --
--- TOC entry 190 (class 1259 OID 16422)
+-- TOC entry 184 (class 1259 OID 16399)
 -- Name: contact_details; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -97,7 +99,7 @@ CREATE TABLE contact_details (
 
 
 --
--- TOC entry 189 (class 1259 OID 16420)
+-- TOC entry 183 (class 1259 OID 16397)
 -- Name: contact_details_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -110,8 +112,8 @@ CREATE SEQUENCE contact_details_id_seq
 
 
 --
--- TOC entry 2473 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2474 (class 0 OID 0)
+-- Dependencies: 183
 -- Name: contact_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -119,7 +121,7 @@ ALTER SEQUENCE contact_details_id_seq OWNED BY contact_details.id;
 
 
 --
--- TOC entry 183 (class 1259 OID 16391)
+-- TOC entry 186 (class 1259 OID 16411)
 -- Name: fisheries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -128,12 +130,13 @@ CREATE TABLE fisheries (
     name character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    place_id character varying(255)
+    place_id character varying(255),
+    slug character varying(255)
 );
 
 
 --
--- TOC entry 182 (class 1259 OID 16389)
+-- TOC entry 185 (class 1259 OID 16409)
 -- Name: fisheries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -146,8 +149,8 @@ CREATE SEQUENCE fisheries_id_seq
 
 
 --
--- TOC entry 2474 (class 0 OID 0)
--- Dependencies: 182
+-- TOC entry 2475 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: fisheries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -155,7 +158,7 @@ ALTER SEQUENCE fisheries_id_seq OWNED BY fisheries.id;
 
 
 --
--- TOC entry 198 (class 1259 OID 16465)
+-- TOC entry 188 (class 1259 OID 16423)
 -- Name: images; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -171,7 +174,7 @@ CREATE TABLE images (
 
 
 --
--- TOC entry 197 (class 1259 OID 16463)
+-- TOC entry 187 (class 1259 OID 16421)
 -- Name: images_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -184,8 +187,8 @@ CREATE SEQUENCE images_id_seq
 
 
 --
--- TOC entry 2475 (class 0 OID 0)
--- Dependencies: 197
+-- TOC entry 2476 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -193,7 +196,7 @@ ALTER SEQUENCE images_id_seq OWNED BY images.id;
 
 
 --
--- TOC entry 181 (class 1259 OID 16385)
+-- TOC entry 198 (class 1259 OID 16476)
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -203,7 +206,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- TOC entry 187 (class 1259 OID 16411)
+-- TOC entry 190 (class 1259 OID 16435)
 -- Name: species; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -216,7 +219,7 @@ CREATE TABLE species (
 
 
 --
--- TOC entry 186 (class 1259 OID 16409)
+-- TOC entry 189 (class 1259 OID 16433)
 -- Name: species_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -229,8 +232,8 @@ CREATE SEQUENCE species_id_seq
 
 
 --
--- TOC entry 2476 (class 0 OID 0)
--- Dependencies: 186
+-- TOC entry 2477 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: species_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -238,7 +241,7 @@ ALTER SEQUENCE species_id_seq OWNED BY species.id;
 
 
 --
--- TOC entry 188 (class 1259 OID 16417)
+-- TOC entry 191 (class 1259 OID 16441)
 -- Name: species_waters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -249,7 +252,7 @@ CREATE TABLE species_waters (
 
 
 --
--- TOC entry 196 (class 1259 OID 16454)
+-- TOC entry 193 (class 1259 OID 16446)
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -264,7 +267,7 @@ CREATE TABLE users (
 
 
 --
--- TOC entry 195 (class 1259 OID 16452)
+-- TOC entry 192 (class 1259 OID 16444)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -277,8 +280,8 @@ CREATE SEQUENCE users_id_seq
 
 
 --
--- TOC entry 2477 (class 0 OID 0)
--- Dependencies: 195
+-- TOC entry 2478 (class 0 OID 0)
+-- Dependencies: 192
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -286,7 +289,7 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- TOC entry 194 (class 1259 OID 16446)
+-- TOC entry 195 (class 1259 OID 16457)
 -- Name: water_types; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -299,7 +302,7 @@ CREATE TABLE water_types (
 
 
 --
--- TOC entry 193 (class 1259 OID 16444)
+-- TOC entry 194 (class 1259 OID 16455)
 -- Name: water_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -312,8 +315,8 @@ CREATE SEQUENCE water_types_id_seq
 
 
 --
--- TOC entry 2478 (class 0 OID 0)
--- Dependencies: 193
+-- TOC entry 2479 (class 0 OID 0)
+-- Dependencies: 194
 -- Name: water_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -321,7 +324,7 @@ ALTER SEQUENCE water_types_id_seq OWNED BY water_types.id;
 
 
 --
--- TOC entry 185 (class 1259 OID 16399)
+-- TOC entry 197 (class 1259 OID 16465)
 -- Name: waters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -343,7 +346,7 @@ CREATE TABLE waters (
 
 
 --
--- TOC entry 184 (class 1259 OID 16397)
+-- TOC entry 196 (class 1259 OID 16463)
 -- Name: waters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -356,8 +359,8 @@ CREATE SEQUENCE waters_id_seq
 
 
 --
--- TOC entry 2479 (class 0 OID 0)
--- Dependencies: 184
+-- TOC entry 2480 (class 0 OID 0)
+-- Dependencies: 196
 -- Name: waters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -365,7 +368,7 @@ ALTER SEQUENCE waters_id_seq OWNED BY waters.id;
 
 
 --
--- TOC entry 2307 (class 2604 OID 16490)
+-- TOC entry 2303 (class 2604 OID 16390)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -373,7 +376,7 @@ ALTER TABLE ONLY addresses ALTER COLUMN id SET DEFAULT nextval('addresses_id_seq
 
 
 --
--- TOC entry 2306 (class 2604 OID 16491)
+-- TOC entry 2304 (class 2604 OID 16402)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -381,7 +384,7 @@ ALTER TABLE ONLY contact_details ALTER COLUMN id SET DEFAULT nextval('contact_de
 
 
 --
--- TOC entry 2303 (class 2604 OID 16492)
+-- TOC entry 2305 (class 2604 OID 16414)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -389,7 +392,7 @@ ALTER TABLE ONLY fisheries ALTER COLUMN id SET DEFAULT nextval('fisheries_id_seq
 
 
 --
--- TOC entry 2310 (class 2604 OID 16493)
+-- TOC entry 2306 (class 2604 OID 16426)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -397,7 +400,7 @@ ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::reg
 
 
 --
--- TOC entry 2305 (class 2604 OID 16494)
+-- TOC entry 2307 (class 2604 OID 16438)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -405,7 +408,7 @@ ALTER TABLE ONLY species ALTER COLUMN id SET DEFAULT nextval('species_id_seq'::r
 
 
 --
--- TOC entry 2309 (class 2604 OID 16495)
+-- TOC entry 2308 (class 2604 OID 16449)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -413,7 +416,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- TOC entry 2308 (class 2604 OID 16496)
+-- TOC entry 2309 (class 2604 OID 16460)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -421,7 +424,7 @@ ALTER TABLE ONLY water_types ALTER COLUMN id SET DEFAULT nextval('water_types_id
 
 
 --
--- TOC entry 2304 (class 2604 OID 16497)
+-- TOC entry 2310 (class 2604 OID 16468)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -429,140 +432,140 @@ ALTER TABLE ONLY waters ALTER COLUMN id SET DEFAULT nextval('waters_id_seq'::reg
 
 
 --
--- TOC entry 2458 (class 0 OID 16434)
--- Dependencies: 192
+-- TOC entry 2449 (class 0 OID 16387)
+-- Dependencies: 182
 -- Data for Name: addresses; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY addresses (id, fishery_id, street, line2, region, country, postcode, created_at, updated_at) FROM stdin;
-1	\N						2015-04-29 12:05:21.86757	2015-04-29 12:38:03.486223
-3	2	Stoer	North Assynt Estate	Sutherland	Scotland	IV27 4JE	2015-04-29 15:35:01.181642	2015-04-29 15:35:01.181642
-2	\N						2015-04-29 12:38:03.50218	2015-04-29 15:42:52.581165
-4	\N						2015-04-29 15:42:52.595171	2015-04-29 15:43:09.487684
-5	1						2015-04-29 15:43:09.499972	2015-04-29 15:43:09.499972
-6	3						2015-04-29 16:55:45.351168	2015-04-29 16:55:45.351168
-7	4						2015-05-05 14:58:44.785298	2015-05-05 14:58:44.785298
-8	5						2015-05-07 10:28:52.46543	2015-05-07 10:28:52.46543
-9	26						2015-09-17 22:32:25.257521	2015-09-17 22:32:25.257521
-14	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:00:56.44856	2015-12-09 14:02:40.626532
-17	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:12.537046	2015-12-09 14:26:23.007824
-19	34	60 Carleton Road	Chorley	Lancashire	United Kingdom	PR6 8UB	2015-12-10 08:40:07.806168	2015-12-10 08:40:07.806168
-21	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:28.69828	2015-12-16 08:44:49.911193
-23	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:19.451041	2015-12-16 08:54:33.414222
-24	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:33.424165	2015-12-16 16:42:21.992164
-26	37	Reservoir Road	Thornton	Lincolnshire	United Kingdom	LE67 1AR	2015-12-16 16:42:22.025448	2015-12-16 16:42:22.025448
-25	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-16 16:42:02.466611	2015-12-19 11:44:39.041974
-30	\N	Church Ln	Withern, Alford	Lincolnshire 	United Kingdom	LN13 0NG	2015-12-19 12:04:43.153037	2015-12-24 10:57:42.937789
-11	\N	Low Mill Caton	Lancaster	Lancashire	United Kingdom	LA2 9HX	2015-12-09 06:57:31.185886	2015-12-24 10:59:41.12663
-12	\N	Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-09 07:58:40.553359	2015-12-24 11:01:32.47419
-13	\N	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-09 08:09:09.166424	2015-12-24 11:02:30.338409
-34	30	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-24 11:02:30.351774	2015-12-24 11:02:30.351774
-15	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:02:40.638359	2015-12-24 11:04:12.242251
-16	\N	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-09 14:16:27.194939	2015-12-24 11:26:41.644867
-36	32	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-24 11:26:41.651624	2015-12-24 11:26:41.651624
-18	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:23.016264	2015-12-24 11:28:09.940247
-37	\N	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:28:09.9494	2015-12-24 11:59:42.289282
-38	33	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:59:42.298863	2015-12-24 11:59:42.298863
-20	\N	Mere Lane	 Mere Brow, Tarleton	Lancashire	United Kingdom	PR4 6JU	2015-12-16 08:23:17.447292	2015-12-24 12:01:11.997928
-22	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:49.927973	2015-12-24 12:01:42.899
-40	36	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-24 12:01:42.920076	2015-12-24 12:01:42.920076
-28	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-19 11:44:39.056902	2015-12-24 12:05:27.400222
-41	38	Low Farm	Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-24 12:05:27.421254	2015-12-24 12:05:27.421254
-27	\N	Ludford Market	Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-19 11:39:54.79475	2015-12-24 12:05:49.39052
-29	\N	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-19 11:55:09.384112	2015-12-24 12:06:24.66354
-43	40	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-24 12:06:24.671782	2015-12-24 12:06:24.671782
-31	\N	Church Lane	Withern	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 10:57:42.951738	2015-12-24 12:06:37.412972
-44	41	Church Lane	Alford	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 12:06:37.421657	2015-12-24 12:06:37.421657
-33	\N	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 11:01:32.491813	2015-12-24 12:07:05.065402
-45	29	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 12:07:05.074978	2015-12-24 12:07:05.074978
-35	\N	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 11:04:12.252656	2015-12-24 12:07:15.436035
-46	31	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 12:07:15.455164	2015-12-24 12:07:15.455164
-39	\N	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:01:12.017757	2015-12-24 12:07:21.019399
-47	35	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:07:21.044391	2015-12-24 12:07:21.044391
-42	\N	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:05:49.405691	2015-12-24 12:07:27.376121
-48	39	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:07:27.397133	2015-12-24 12:07:27.397133
-49	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:13:53.665236	2015-12-24 12:24:54.210719
-50	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:24:54.226232	2015-12-24 12:27:29.164357
-51	42	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:27:29.174792	2015-12-24 12:27:29.174792
-52	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:35:36.277013	2015-12-24 12:36:08.629419
-53	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:36:08.639182	2015-12-24 12:37:41.185017
-54	43	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:37:41.196107	2015-12-24 12:37:41.196107
-55	44		Northampton	Northamptonshire	United Kingdom	NN6 9BB	2015-12-24 14:32:59.93119	2015-12-24 14:32:59.93119
-57	46						2015-12-24 14:33:35.712368	2015-12-24 14:33:35.712368
-56	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:33:11.299852	2015-12-24 14:35:20.985601
-59	47						2015-12-24 14:38:32.151802	2015-12-24 14:38:32.151802
-58	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:35:20.993075	2015-12-24 14:50:59.087072
-60	45	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:50:59.100872	2015-12-24 14:50:59.100872
-61	\N						2015-12-24 14:57:52.251917	2015-12-24 15:00:52.544166
-62	48	Main Rd	King's Lynn	Norfolk	United Kingdom	PE32 1TE	2015-12-24 15:00:52.556316	2015-12-24 15:00:52.556316
-63	\N						2015-12-24 22:43:12.890877	2015-12-24 22:45:20.180615
-64	49	Chapel Street	Attleborough	Norfolk	United Kingdom	NR17 1UJ	2015-12-24 22:45:20.203693	2015-12-24 22:45:20.203693
-65	\N						2015-12-24 23:53:42.120819	2015-12-25 00:01:12.9304
-66	50	Lowick Road	Kettering	Northamptonshire	United Kingdom	NN14 3EE	2015-12-25 00:01:12.963802	2015-12-25 00:01:12.963802
-67	51	Brixworth Road	Northampton	Northamptonshire	United Kingdom	NN6 9SJ	2015-12-25 00:10:20.132825	2015-12-25 00:10:20.132825
-68	52	Teeton Rd	Northampton	Northamptonshire	United Kingdom	NN6 8EJ	2015-12-25 00:27:16.081342	2015-12-25 00:27:16.081342
-69	53	Grange Rd	Kettering	Northamptonshire	United Kingdom	NN14 4DT	2015-12-25 00:31:38.648645	2015-12-25 00:31:38.648645
-70	54		Rothbury	Northumberland	United Kingdom	NE65 7LG	2015-12-25 00:55:28.984531	2015-12-25 00:55:28.984531
-71	\N						2015-12-25 01:26:03.958977	2015-12-25 01:31:28.35101
-72	55		Alnwick	Northumberland	United Kingdom	NE66 5RF	2015-12-25 01:31:28.360167	2015-12-25 01:31:28.360167
-73	56						2015-12-25 08:48:23.750278	2015-12-25 08:48:23.750278
-75	58						2015-12-25 08:49:50.72218	2015-12-25 08:49:50.72218
-74	\N						2015-12-25 08:49:45.498	2015-12-30 09:58:46.507926
-10	\N	Catlow Rd	Slaidburn	Lancashire	United Kingdom	BB7 3AQ	2015-12-09 06:45:43.882643	2016-01-13 07:06:51.807448
-32	\N	Low Mill Caton		Lancashire	United Kingdom	LA2 9HX	2015-12-24 10:59:41.133543	2016-01-13 07:07:26.324511
-76	\N				United Kingdom		2015-12-30 09:58:46.624659	2016-01-24 19:08:25.646522
-77	59	Higham Dykes	Ponteland	Northumberland	United Kingdom	NE20 0DH	2015-12-30 12:29:30.141461	2015-12-30 12:29:30.141461
-78	60	Beech House	Langley-on-Tyne	Northumberland	United Kingdom	NE47 5LD	2015-12-30 12:38:03.95705	2015-12-30 12:38:03.95705
-80	61	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:25:25.630725	2015-12-30 13:25:25.630725
-81	62	Hallington Reservoir	Colwell, Hexham	Northumberland	United Kingdom	NE46 4TP	2015-12-30 13:29:15.853208	2015-12-30 13:29:15.853208
-79	\N	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:23:23.714802	2015-12-30 13:25:25.583666
-82	63	Woodhouse Lane	Carlton in Lindrick	North Notts	United Kingdom	S81 9AQ	2015-12-31 11:58:48.812538	2015-12-31 11:58:48.812538
-83	64	Standlake	Witney	Oxfordshire	United Kingdom	OX29 7QB	2015-12-31 12:45:08.188795	2015-12-31 12:45:08.188795
-84	65	Cumnor Rd		Oxford	United Kingdom	OX2 9NS	2015-12-31 12:55:53.922169	2015-12-31 12:55:53.922169
-85	66	Rectory Farm	Chipping Norton	Oxfordshire	United Kingdom	OX7 5YZ	2015-12-31 13:06:29.363146	2015-12-31 13:06:29.363146
-86	67	Normanton Road	Oakham	Leicestershire	United Kingdom	LE15 8HD	2015-12-31 13:10:33.111637	2015-12-31 13:10:33.111637
-87	68	Astbury Terrace	Bridgnorth	Shropshire	United Kingdom	WV16 6AT	2015-12-31 13:19:22.958268	2015-12-31 13:19:22.958268
-88	\N	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 13:27:38.308778	2015-12-31 19:01:26.590158
-89	69	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 19:01:26.601817	2015-12-31 19:01:26.601817
-90	70	Ellerdine Hall Farm	Telford	Shropshire 	United Kingdom	TF6 6QR	2015-12-31 19:16:06.238205	2015-12-31 19:16:06.238205
-91	71	Lower Heathwaen	nr Oswestry	Shropshire	United Kingdom	SY10 8DA	2016-01-02 11:32:39.923814	2016-01-02 11:32:39.923814
-92	72	Little Heath	Gamlingay	Bedfordshire	United Kingdom	SG19 3LL	2016-01-11 22:12:42.313814	2016-01-11 22:12:42.313814
-93	73		Slaidburn	Lancashire	United Kingdom		2016-01-12 22:35:24.24231	2016-01-12 22:35:24.24231
-94	\N	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:07:52.678593	2016-01-12 23:11:15.514472
-95	74	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:11:15.530898	2016-01-12 23:11:15.530898
-96	75	Howe Lane	Bracknell	Berkshire	United Kingdom	RG42 5QL	2016-01-12 23:17:40.324134	2016-01-12 23:17:40.324134
-97	76	Station Road	Theale	Berkshire	United Kingdom	RG7 4AS	2016-01-12 23:32:03.253899	2016-01-12 23:32:03.253899
-98	77	Swanbourne Road	Mursley	Buckinghamshire	United Kingdom	MK17 0JA	2016-01-12 23:40:20.869171	2016-01-12 23:40:20.869171
-99	27	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-01-13 07:06:51.812518	2016-01-13 07:06:51.812518
-100	28		Caton	Lancashire	United Kingdom	LA2 9HX	2016-01-13 07:07:26.329829	2016-01-13 07:07:26.329829
-101	78	Holme Fen Drove	Huntingdon	Cambridgeshire	United Kingdom	PE28 3RE	2016-01-13 07:36:54.649752	2016-01-13 07:36:54.649752
-102	79	West Perry	Huntingdon	Cambridgeshire	United Kingdom	PE28 0BX	2016-01-13 07:46:50.20189	2016-01-13 07:46:50.20189
-103	80		East Witton	North Yorkshire	United Kingdom	DL8 4SQ	2016-01-14 13:43:35.828777	2016-01-14 13:43:35.828777
-104	81		Settle	North Yorkshire	United Kingdom	BD24 9PU	2016-01-15 07:56:08.242181	2016-01-15 07:56:08.242181
-106	83		Mobberley	Cheshire East	United Kingdom	WA16 7BH	2016-01-15 17:27:25.479379	2016-01-15 17:27:25.479379
-107	84	Pike Low Farm	Macclesfield	Cheshire	United Kingdom	SK11 9HD	2016-01-15 18:38:29.952721	2016-01-15 18:38:29.952721
-108	85	Warrington Road	Mickle Trafford	Cheshire	United Kingdom		2016-01-15 18:50:13.385824	2016-01-15 18:50:13.385824
-109	86	Mill Lane	Bishopton	Cleveland	United Kingdom	TS21 1LL	2016-01-15 19:14:29.221682	2016-01-15 19:14:29.221682
-105	\N		Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-15 08:33:51.839494	2016-01-16 12:18:39.673204
-110	82	Ardlussa House	Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-16 12:18:39.688032	2016-01-16 12:18:39.688032
-111	\N	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 12:37:29.450167	2016-01-17 13:29:55.800999
-112	\N		Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:29:55.807252	2016-01-17 13:32:11.497048
-113	87	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:32:11.503636	2016-01-17 13:32:11.503636
-114	57	Abbey Rd		County Durham	United Kingdom	 DH1 5FJ	2016-01-24 19:08:25.660795	2016-01-24 19:08:25.660795
-115	88	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-02-22 22:02:37.779104	2016-02-22 22:02:37.779104
-116	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:51:43.851865	2016-03-06 23:52:26.649959
-117	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:52:26.658698	2016-03-07 08:41:28.300932
-118	89	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-07 08:41:28.310275	2016-03-07 08:41:28.310275
-119	\N				United Kingdom		2016-03-13 21:46:45.217044	2016-03-13 21:47:28.024219
-120	\N				United Kingdom		2016-03-13 21:47:28.06825	2016-03-13 21:54:51.051527
-121	\N				United Kingdom		2016-03-13 21:54:51.056262	2016-03-14 14:36:29.113386
-122	90				United Kingdom		2016-03-14 14:36:29.123878	2016-03-14 14:36:29.123878
+COPY addresses (id, fishery_id, street, line2, region, country, postcode, created_at, updated_at, latitude, longitude) FROM stdin;
+1	\N						2015-04-29 12:05:21.86757	2015-04-29 12:38:03.486223	\N	\N
+3	2	Stoer	North Assynt Estate	Sutherland	Scotland	IV27 4JE	2015-04-29 15:35:01.181642	2015-04-29 15:35:01.181642	\N	\N
+2	\N						2015-04-29 12:38:03.50218	2015-04-29 15:42:52.581165	\N	\N
+4	\N						2015-04-29 15:42:52.595171	2015-04-29 15:43:09.487684	\N	\N
+5	1						2015-04-29 15:43:09.499972	2015-04-29 15:43:09.499972	\N	\N
+6	3						2015-04-29 16:55:45.351168	2015-04-29 16:55:45.351168	\N	\N
+7	4						2015-05-05 14:58:44.785298	2015-05-05 14:58:44.785298	\N	\N
+8	5						2015-05-07 10:28:52.46543	2015-05-07 10:28:52.46543	\N	\N
+9	26						2015-09-17 22:32:25.257521	2015-09-17 22:32:25.257521	\N	\N
+14	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:00:56.44856	2015-12-09 14:02:40.626532	\N	\N
+17	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:12.537046	2015-12-09 14:26:23.007824	\N	\N
+19	34	60 Carleton Road	Chorley	Lancashire	United Kingdom	PR6 8UB	2015-12-10 08:40:07.806168	2015-12-10 08:40:07.806168	\N	\N
+21	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:28.69828	2015-12-16 08:44:49.911193	\N	\N
+23	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:19.451041	2015-12-16 08:54:33.414222	\N	\N
+24	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:33.424165	2015-12-16 16:42:21.992164	\N	\N
+26	37	Reservoir Road	Thornton	Lincolnshire	United Kingdom	LE67 1AR	2015-12-16 16:42:22.025448	2015-12-16 16:42:22.025448	\N	\N
+25	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-16 16:42:02.466611	2015-12-19 11:44:39.041974	\N	\N
+30	\N	Church Ln	Withern, Alford	Lincolnshire 	United Kingdom	LN13 0NG	2015-12-19 12:04:43.153037	2015-12-24 10:57:42.937789	\N	\N
+11	\N	Low Mill Caton	Lancaster	Lancashire	United Kingdom	LA2 9HX	2015-12-09 06:57:31.185886	2015-12-24 10:59:41.12663	\N	\N
+12	\N	Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-09 07:58:40.553359	2015-12-24 11:01:32.47419	\N	\N
+13	\N	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-09 08:09:09.166424	2015-12-24 11:02:30.338409	\N	\N
+34	30	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-24 11:02:30.351774	2015-12-24 11:02:30.351774	\N	\N
+15	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:02:40.638359	2015-12-24 11:04:12.242251	\N	\N
+16	\N	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-09 14:16:27.194939	2015-12-24 11:26:41.644867	\N	\N
+36	32	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-24 11:26:41.651624	2015-12-24 11:26:41.651624	\N	\N
+18	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:23.016264	2015-12-24 11:28:09.940247	\N	\N
+37	\N	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:28:09.9494	2015-12-24 11:59:42.289282	\N	\N
+38	33	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:59:42.298863	2015-12-24 11:59:42.298863	\N	\N
+20	\N	Mere Lane	 Mere Brow, Tarleton	Lancashire	United Kingdom	PR4 6JU	2015-12-16 08:23:17.447292	2015-12-24 12:01:11.997928	\N	\N
+22	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:49.927973	2015-12-24 12:01:42.899	\N	\N
+40	36	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-24 12:01:42.920076	2015-12-24 12:01:42.920076	\N	\N
+28	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-19 11:44:39.056902	2015-12-24 12:05:27.400222	\N	\N
+41	38	Low Farm	Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-24 12:05:27.421254	2015-12-24 12:05:27.421254	\N	\N
+27	\N	Ludford Market	Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-19 11:39:54.79475	2015-12-24 12:05:49.39052	\N	\N
+29	\N	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-19 11:55:09.384112	2015-12-24 12:06:24.66354	\N	\N
+43	40	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-24 12:06:24.671782	2015-12-24 12:06:24.671782	\N	\N
+31	\N	Church Lane	Withern	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 10:57:42.951738	2015-12-24 12:06:37.412972	\N	\N
+44	41	Church Lane	Alford	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 12:06:37.421657	2015-12-24 12:06:37.421657	\N	\N
+33	\N	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 11:01:32.491813	2015-12-24 12:07:05.065402	\N	\N
+45	29	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 12:07:05.074978	2015-12-24 12:07:05.074978	\N	\N
+35	\N	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 11:04:12.252656	2015-12-24 12:07:15.436035	\N	\N
+46	31	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 12:07:15.455164	2015-12-24 12:07:15.455164	\N	\N
+39	\N	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:01:12.017757	2015-12-24 12:07:21.019399	\N	\N
+47	35	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:07:21.044391	2015-12-24 12:07:21.044391	\N	\N
+42	\N	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:05:49.405691	2015-12-24 12:07:27.376121	\N	\N
+48	39	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:07:27.397133	2015-12-24 12:07:27.397133	\N	\N
+49	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:13:53.665236	2015-12-24 12:24:54.210719	\N	\N
+50	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:24:54.226232	2015-12-24 12:27:29.164357	\N	\N
+51	42	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:27:29.174792	2015-12-24 12:27:29.174792	\N	\N
+52	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:35:36.277013	2015-12-24 12:36:08.629419	\N	\N
+53	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:36:08.639182	2015-12-24 12:37:41.185017	\N	\N
+54	43	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:37:41.196107	2015-12-24 12:37:41.196107	\N	\N
+55	44		Northampton	Northamptonshire	United Kingdom	NN6 9BB	2015-12-24 14:32:59.93119	2015-12-24 14:32:59.93119	\N	\N
+57	46						2015-12-24 14:33:35.712368	2015-12-24 14:33:35.712368	\N	\N
+56	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:33:11.299852	2015-12-24 14:35:20.985601	\N	\N
+59	47						2015-12-24 14:38:32.151802	2015-12-24 14:38:32.151802	\N	\N
+58	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:35:20.993075	2015-12-24 14:50:59.087072	\N	\N
+60	45	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:50:59.100872	2015-12-24 14:50:59.100872	\N	\N
+61	\N						2015-12-24 14:57:52.251917	2015-12-24 15:00:52.544166	\N	\N
+62	48	Main Rd	King's Lynn	Norfolk	United Kingdom	PE32 1TE	2015-12-24 15:00:52.556316	2015-12-24 15:00:52.556316	\N	\N
+63	\N						2015-12-24 22:43:12.890877	2015-12-24 22:45:20.180615	\N	\N
+64	49	Chapel Street	Attleborough	Norfolk	United Kingdom	NR17 1UJ	2015-12-24 22:45:20.203693	2015-12-24 22:45:20.203693	\N	\N
+65	\N						2015-12-24 23:53:42.120819	2015-12-25 00:01:12.9304	\N	\N
+66	50	Lowick Road	Kettering	Northamptonshire	United Kingdom	NN14 3EE	2015-12-25 00:01:12.963802	2015-12-25 00:01:12.963802	\N	\N
+67	51	Brixworth Road	Northampton	Northamptonshire	United Kingdom	NN6 9SJ	2015-12-25 00:10:20.132825	2015-12-25 00:10:20.132825	\N	\N
+68	52	Teeton Rd	Northampton	Northamptonshire	United Kingdom	NN6 8EJ	2015-12-25 00:27:16.081342	2015-12-25 00:27:16.081342	\N	\N
+69	53	Grange Rd	Kettering	Northamptonshire	United Kingdom	NN14 4DT	2015-12-25 00:31:38.648645	2015-12-25 00:31:38.648645	\N	\N
+70	54		Rothbury	Northumberland	United Kingdom	NE65 7LG	2015-12-25 00:55:28.984531	2015-12-25 00:55:28.984531	\N	\N
+71	\N						2015-12-25 01:26:03.958977	2015-12-25 01:31:28.35101	\N	\N
+72	55		Alnwick	Northumberland	United Kingdom	NE66 5RF	2015-12-25 01:31:28.360167	2015-12-25 01:31:28.360167	\N	\N
+73	56						2015-12-25 08:48:23.750278	2015-12-25 08:48:23.750278	\N	\N
+75	58						2015-12-25 08:49:50.72218	2015-12-25 08:49:50.72218	\N	\N
+74	\N						2015-12-25 08:49:45.498	2015-12-30 09:58:46.507926	\N	\N
+10	\N	Catlow Rd	Slaidburn	Lancashire	United Kingdom	BB7 3AQ	2015-12-09 06:45:43.882643	2016-01-13 07:06:51.807448	\N	\N
+32	\N	Low Mill Caton		Lancashire	United Kingdom	LA2 9HX	2015-12-24 10:59:41.133543	2016-01-13 07:07:26.324511	\N	\N
+76	\N				United Kingdom		2015-12-30 09:58:46.624659	2016-01-24 19:08:25.646522	\N	\N
+77	59	Higham Dykes	Ponteland	Northumberland	United Kingdom	NE20 0DH	2015-12-30 12:29:30.141461	2015-12-30 12:29:30.141461	\N	\N
+78	60	Beech House	Langley-on-Tyne	Northumberland	United Kingdom	NE47 5LD	2015-12-30 12:38:03.95705	2015-12-30 12:38:03.95705	\N	\N
+80	61	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:25:25.630725	2015-12-30 13:25:25.630725	\N	\N
+81	62	Hallington Reservoir	Colwell, Hexham	Northumberland	United Kingdom	NE46 4TP	2015-12-30 13:29:15.853208	2015-12-30 13:29:15.853208	\N	\N
+79	\N	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:23:23.714802	2015-12-30 13:25:25.583666	\N	\N
+82	63	Woodhouse Lane	Carlton in Lindrick	North Notts	United Kingdom	S81 9AQ	2015-12-31 11:58:48.812538	2015-12-31 11:58:48.812538	\N	\N
+83	64	Standlake	Witney	Oxfordshire	United Kingdom	OX29 7QB	2015-12-31 12:45:08.188795	2015-12-31 12:45:08.188795	\N	\N
+84	65	Cumnor Rd		Oxford	United Kingdom	OX2 9NS	2015-12-31 12:55:53.922169	2015-12-31 12:55:53.922169	\N	\N
+85	66	Rectory Farm	Chipping Norton	Oxfordshire	United Kingdom	OX7 5YZ	2015-12-31 13:06:29.363146	2015-12-31 13:06:29.363146	\N	\N
+86	67	Normanton Road	Oakham	Leicestershire	United Kingdom	LE15 8HD	2015-12-31 13:10:33.111637	2015-12-31 13:10:33.111637	\N	\N
+87	68	Astbury Terrace	Bridgnorth	Shropshire	United Kingdom	WV16 6AT	2015-12-31 13:19:22.958268	2015-12-31 13:19:22.958268	\N	\N
+88	\N	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 13:27:38.308778	2015-12-31 19:01:26.590158	\N	\N
+89	69	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 19:01:26.601817	2015-12-31 19:01:26.601817	\N	\N
+90	70	Ellerdine Hall Farm	Telford	Shropshire 	United Kingdom	TF6 6QR	2015-12-31 19:16:06.238205	2015-12-31 19:16:06.238205	\N	\N
+91	71	Lower Heathwaen	nr Oswestry	Shropshire	United Kingdom	SY10 8DA	2016-01-02 11:32:39.923814	2016-01-02 11:32:39.923814	\N	\N
+92	72	Little Heath	Gamlingay	Bedfordshire	United Kingdom	SG19 3LL	2016-01-11 22:12:42.313814	2016-01-11 22:12:42.313814	\N	\N
+93	73		Slaidburn	Lancashire	United Kingdom		2016-01-12 22:35:24.24231	2016-01-12 22:35:24.24231	\N	\N
+94	\N	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:07:52.678593	2016-01-12 23:11:15.514472	\N	\N
+95	74	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:11:15.530898	2016-01-12 23:11:15.530898	\N	\N
+96	75	Howe Lane	Bracknell	Berkshire	United Kingdom	RG42 5QL	2016-01-12 23:17:40.324134	2016-01-12 23:17:40.324134	\N	\N
+97	76	Station Road	Theale	Berkshire	United Kingdom	RG7 4AS	2016-01-12 23:32:03.253899	2016-01-12 23:32:03.253899	\N	\N
+98	77	Swanbourne Road	Mursley	Buckinghamshire	United Kingdom	MK17 0JA	2016-01-12 23:40:20.869171	2016-01-12 23:40:20.869171	\N	\N
+99	27	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-01-13 07:06:51.812518	2016-01-13 07:06:51.812518	\N	\N
+100	28		Caton	Lancashire	United Kingdom	LA2 9HX	2016-01-13 07:07:26.329829	2016-01-13 07:07:26.329829	\N	\N
+101	78	Holme Fen Drove	Huntingdon	Cambridgeshire	United Kingdom	PE28 3RE	2016-01-13 07:36:54.649752	2016-01-13 07:36:54.649752	\N	\N
+102	79	West Perry	Huntingdon	Cambridgeshire	United Kingdom	PE28 0BX	2016-01-13 07:46:50.20189	2016-01-13 07:46:50.20189	\N	\N
+103	80		East Witton	North Yorkshire	United Kingdom	DL8 4SQ	2016-01-14 13:43:35.828777	2016-01-14 13:43:35.828777	\N	\N
+104	81		Settle	North Yorkshire	United Kingdom	BD24 9PU	2016-01-15 07:56:08.242181	2016-01-15 07:56:08.242181	\N	\N
+106	83		Mobberley	Cheshire East	United Kingdom	WA16 7BH	2016-01-15 17:27:25.479379	2016-01-15 17:27:25.479379	\N	\N
+107	84	Pike Low Farm	Macclesfield	Cheshire	United Kingdom	SK11 9HD	2016-01-15 18:38:29.952721	2016-01-15 18:38:29.952721	\N	\N
+108	85	Warrington Road	Mickle Trafford	Cheshire	United Kingdom		2016-01-15 18:50:13.385824	2016-01-15 18:50:13.385824	\N	\N
+109	86	Mill Lane	Bishopton	Cleveland	United Kingdom	TS21 1LL	2016-01-15 19:14:29.221682	2016-01-15 19:14:29.221682	\N	\N
+105	\N		Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-15 08:33:51.839494	2016-01-16 12:18:39.673204	\N	\N
+110	82	Ardlussa House	Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-16 12:18:39.688032	2016-01-16 12:18:39.688032	\N	\N
+111	\N	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 12:37:29.450167	2016-01-17 13:29:55.800999	\N	\N
+112	\N		Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:29:55.807252	2016-01-17 13:32:11.497048	\N	\N
+113	87	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:32:11.503636	2016-01-17 13:32:11.503636	\N	\N
+114	57	Abbey Rd		County Durham	United Kingdom	 DH1 5FJ	2016-01-24 19:08:25.660795	2016-01-24 19:08:25.660795	\N	\N
+115	88	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-02-22 22:02:37.779104	2016-02-22 22:02:37.779104	\N	\N
+116	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:51:43.851865	2016-03-06 23:52:26.649959	\N	\N
+117	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:52:26.658698	2016-03-07 08:41:28.300932	\N	\N
+118	89	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-07 08:41:28.310275	2016-03-07 08:41:28.310275	\N	\N
+119	\N				United Kingdom		2016-03-13 21:46:45.217044	2016-03-13 21:47:28.024219	\N	\N
+120	\N				United Kingdom		2016-03-13 21:47:28.06825	2016-03-13 21:54:51.051527	\N	\N
+121	\N				United Kingdom		2016-03-13 21:54:51.056262	2016-03-14 14:36:29.113386	\N	\N
+122	90				United Kingdom		2016-03-14 14:36:29.123878	2016-03-14 14:36:29.123878	\N	\N
 \.
 
 
 --
--- TOC entry 2480 (class 0 OID 0)
--- Dependencies: 191
+-- TOC entry 2481 (class 0 OID 0)
+-- Dependencies: 181
 -- Name: addresses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -570,8 +573,8 @@ SELECT pg_catalog.setval('addresses_id_seq', 122, true);
 
 
 --
--- TOC entry 2456 (class 0 OID 16422)
--- Dependencies: 190
+-- TOC entry 2451 (class 0 OID 16399)
+-- Dependencies: 184
 -- Data for Name: contact_details; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -702,8 +705,8 @@ COPY contact_details (id, fishery_id, name, telephone, mobile, email, website, c
 
 
 --
--- TOC entry 2481 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2482 (class 0 OID 0)
+-- Dependencies: 183
 -- Name: contact_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -711,69 +714,69 @@ SELECT pg_catalog.setval('contact_details_id_seq', 122, true);
 
 
 --
--- TOC entry 2449 (class 0 OID 16391)
--- Dependencies: 183
+-- TOC entry 2453 (class 0 OID 16411)
+-- Dependencies: 186
 -- Data for Name: fisheries; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY fisheries (id, name, created_at, updated_at, place_id) FROM stdin;
-30	Cleveley Mere Fishing	2015-12-09 08:09:09.159421	2015-12-09 08:09:09.159421	\N
-32	Curley's Trout Fishery	2015-12-09 14:16:27.176386	2015-12-09 14:16:27.176386	\N
-33	Fylde Trout Fishery	2015-12-09 14:26:12.528569	2015-12-09 14:26:12.528569	\N
-34	Horwich Fly Fishing Club	2015-12-10 08:40:07.798435	2015-12-10 08:40:07.798435	\N
-36	Eyebrook Trout Fishery	2015-12-16 08:44:28.682295	2015-12-16 08:44:28.682295	\N
-37	Thornton Trout Fishery	2015-12-16 08:54:19.406117	2015-12-16 08:54:19.406117	\N
-38	Cleatham Trout Fishery	2015-12-16 16:42:02.446028	2015-12-16 16:42:02.446028	\N
-40	Toft Newton Trout Fishery	2015-12-19 11:55:09.376696	2015-12-19 11:55:09.376696	\N
-41	Withern Mill Trout Farm	2015-12-19 12:04:43.148578	2015-12-24 10:57:42.942046	\N
-29	Barnsfold Waters Trout Fishery	2015-12-09 07:58:40.541761	2015-12-24 11:01:32.479206	\N
-31	Cowpe fly anglers	2015-12-09 14:00:56.437189	2015-12-24 11:04:12.246273	\N
-35	Mere Beck Fly Fishing	2015-12-16 08:23:17.401362	2015-12-24 12:01:12.004554	\N
-39	Thorpe-le-vale Trout Fishery	2015-12-19 11:39:54.775957	2015-12-24 12:05:49.395329	\N
-42	Syon Park - Albury Estate Fisheries	2015-12-24 12:13:52.923541	2015-12-24 12:24:54.215936	\N
-43	Albury Estate Fisheries	2015-12-24 12:35:36.270518	2015-12-24 12:37:41.189166	\N
-45	Blackdyke Trout Fishery	2015-12-24 14:33:11.292554	2015-12-24 14:33:11.292554	\N
-48	Narborough Trout & Coarse Lakes	2015-12-24 14:57:52.235337	2015-12-24 15:00:52.5477	\N
-49	Rocklands Mere Fishery	2015-12-24 22:43:12.855745	2015-12-24 22:45:20.186378	\N
-50	Elinor Trout Fishery	2015-12-24 23:53:42.11059	2015-12-25 00:01:12.936027	\N
-51	Pitsford Water Fishing Lodge	2015-12-25 00:10:20.113531	2015-12-25 00:10:20.113531	\N
-52	Ravensthorpe Fishing Lodge	2015-12-25 00:27:16.068215	2015-12-25 00:27:16.068215	\N
-53	Ringstead Grange Trout Fishery	2015-12-25 00:31:38.642122	2015-12-25 00:31:38.642122	\N
-54	Caistron Trout Fishery	2015-12-25 00:55:28.959039	2015-12-25 00:55:28.959039	\N
-59	Higham Lakes	2015-12-30 12:29:30.106919	2015-12-30 12:29:30.106919	\N
-60	Langley Dam	2015-12-30 12:38:03.942696	2015-12-30 12:38:03.942696	\N
-61	Sweethope Fly Fishing	2015-12-30 13:23:23.684905	2015-12-30 13:23:23.684905	\N
-62	Westwater Angling Ltd	2015-12-30 13:29:15.844149	2015-12-30 13:29:15.844149	\N
-63	Roxholme Fly Fishery	2015-12-31 11:58:48.802046	2015-12-31 11:58:48.802046	\N
-64	Barnes Lake Fishery	2015-12-31 12:45:08.183929	2015-12-31 12:45:08.183929	\N
-65	Farmoor Trout Fishery	2015-12-31 12:55:53.912369	2015-12-31 12:55:53.912369	\N
-66	Salford Trout Lakes	2015-12-31 13:06:29.352989	2015-12-31 13:06:29.352989	\N
-67	Rutland Water Fishing Lodge	2015-12-31 13:10:33.096958	2015-12-31 13:10:33.096958	\N
-69	Delbury Hall Trout Fishery	2015-12-31 13:27:38.304673	2015-12-31 13:27:38.304673	\N
-70	Ellerdine Lakes Trout Fisheries	2015-12-31 19:16:06.226565	2015-12-31 19:16:06.226565	\N
-72	Little Heath Trout Fishery	2016-01-11 22:12:42.299147	2016-01-11 22:12:42.299147	ChIJZ5ix0izOd0gRnJylP9O4nq4
-73	Slaidburn Estate	2016-01-12 22:35:24.236673	2016-01-12 22:35:24.236673	
-74	Barn Elms Fly Fishery	2016-01-12 23:07:52.67589	2016-01-12 23:07:52.67589	ChIJ8bREDI-YdkgRNlWIj6Q--Vo
-75	Felix Farm Fishery	2016-01-12 23:17:40.321312	2016-01-12 23:17:40.321312	ChIJrwBVkGyHdkgRt9QHTQS1tcw
-77	Church Hill Fishery	2016-01-12 23:40:20.857345	2016-01-12 23:40:20.857345	ChIJufWpnSj_dkgRea0P9GcuK1M
-27	Stocks Fly Fishery	2015-12-09 06:45:43.783131	2016-01-13 07:06:51.809156	ChIJXxOaekeBe0gRMJYBk_tTT1I
-78	Earith Lakes Fisheries - Trout and Carp Lakes	2016-01-13 07:36:54.647006	2016-01-13 07:36:54.647006	ChIJw14X1tEK2EcRLwuNtgjjR8U
-79	Grafham Water Fishing Lodge	2016-01-13 07:46:50.188681	2016-01-13 07:46:50.188681	ChIJq96-LDrBd0gRk5U-DGfzLf0
-80	Cover Bridge Inn	2016-01-14 13:43:34.0787	2016-01-14 13:43:34.0787	ChIJ0SfFqpocfEgReBcTrLJ0Nw8
-81	Malham Tarn Field Studies Centre	2016-01-15 07:56:08.233576	2016-01-15 07:56:08.233576	ChIJo-xW5651fEgRid1aH7yHqd8
-83	Clay Lane Farm Trout Fishery	2016-01-15 17:27:25.466126	2016-01-15 17:27:25.466126	ChIJAXig4UVSekgR3LV0XQQzgWM
-84	Marton Heath Trout Pools	2016-01-15 18:38:29.934621	2016-01-15 18:38:29.934621	ChIJTXoWVelPekgRBEkbD1g5dqs
-86	West House Trout Lakes	2016-01-15 19:14:29.202812	2016-01-15 19:14:29.202812	ChIJCe8m4NmRfkgRPEJ9mm7-GAg
-57	Northumbrian Water 	2015-12-25 08:49:45.481874	2016-01-24 19:08:25.651534	
-88	Rhayader and Elan Valley Angling Association	2016-02-22 22:02:37.767704	2016-02-22 22:02:37.767704	
-89	Cambrian Angling Association	2016-03-06 23:51:43.842262	2016-03-06 23:52:26.653281	
-90	Haweswater estate	2016-03-13 21:46:45.208608	2016-03-13 21:47:28.040562	
+COPY fisheries (id, name, created_at, updated_at, place_id, slug) FROM stdin;
+30	Cleveley Mere Fishing	2015-12-09 08:09:09.159421	2015-12-09 08:09:09.159421	\N	\N
+32	Curley's Trout Fishery	2015-12-09 14:16:27.176386	2015-12-09 14:16:27.176386	\N	\N
+33	Fylde Trout Fishery	2015-12-09 14:26:12.528569	2015-12-09 14:26:12.528569	\N	\N
+34	Horwich Fly Fishing Club	2015-12-10 08:40:07.798435	2015-12-10 08:40:07.798435	\N	\N
+36	Eyebrook Trout Fishery	2015-12-16 08:44:28.682295	2015-12-16 08:44:28.682295	\N	\N
+37	Thornton Trout Fishery	2015-12-16 08:54:19.406117	2015-12-16 08:54:19.406117	\N	\N
+38	Cleatham Trout Fishery	2015-12-16 16:42:02.446028	2015-12-16 16:42:02.446028	\N	\N
+40	Toft Newton Trout Fishery	2015-12-19 11:55:09.376696	2015-12-19 11:55:09.376696	\N	\N
+41	Withern Mill Trout Farm	2015-12-19 12:04:43.148578	2015-12-24 10:57:42.942046	\N	\N
+29	Barnsfold Waters Trout Fishery	2015-12-09 07:58:40.541761	2015-12-24 11:01:32.479206	\N	\N
+31	Cowpe fly anglers	2015-12-09 14:00:56.437189	2015-12-24 11:04:12.246273	\N	\N
+35	Mere Beck Fly Fishing	2015-12-16 08:23:17.401362	2015-12-24 12:01:12.004554	\N	\N
+39	Thorpe-le-vale Trout Fishery	2015-12-19 11:39:54.775957	2015-12-24 12:05:49.395329	\N	\N
+42	Syon Park - Albury Estate Fisheries	2015-12-24 12:13:52.923541	2015-12-24 12:24:54.215936	\N	\N
+43	Albury Estate Fisheries	2015-12-24 12:35:36.270518	2015-12-24 12:37:41.189166	\N	\N
+45	Blackdyke Trout Fishery	2015-12-24 14:33:11.292554	2015-12-24 14:33:11.292554	\N	\N
+48	Narborough Trout & Coarse Lakes	2015-12-24 14:57:52.235337	2015-12-24 15:00:52.5477	\N	\N
+49	Rocklands Mere Fishery	2015-12-24 22:43:12.855745	2015-12-24 22:45:20.186378	\N	\N
+50	Elinor Trout Fishery	2015-12-24 23:53:42.11059	2015-12-25 00:01:12.936027	\N	\N
+51	Pitsford Water Fishing Lodge	2015-12-25 00:10:20.113531	2015-12-25 00:10:20.113531	\N	\N
+52	Ravensthorpe Fishing Lodge	2015-12-25 00:27:16.068215	2015-12-25 00:27:16.068215	\N	\N
+53	Ringstead Grange Trout Fishery	2015-12-25 00:31:38.642122	2015-12-25 00:31:38.642122	\N	\N
+54	Caistron Trout Fishery	2015-12-25 00:55:28.959039	2015-12-25 00:55:28.959039	\N	\N
+59	Higham Lakes	2015-12-30 12:29:30.106919	2015-12-30 12:29:30.106919	\N	\N
+60	Langley Dam	2015-12-30 12:38:03.942696	2015-12-30 12:38:03.942696	\N	\N
+61	Sweethope Fly Fishing	2015-12-30 13:23:23.684905	2015-12-30 13:23:23.684905	\N	\N
+62	Westwater Angling Ltd	2015-12-30 13:29:15.844149	2015-12-30 13:29:15.844149	\N	\N
+63	Roxholme Fly Fishery	2015-12-31 11:58:48.802046	2015-12-31 11:58:48.802046	\N	\N
+64	Barnes Lake Fishery	2015-12-31 12:45:08.183929	2015-12-31 12:45:08.183929	\N	\N
+65	Farmoor Trout Fishery	2015-12-31 12:55:53.912369	2015-12-31 12:55:53.912369	\N	\N
+66	Salford Trout Lakes	2015-12-31 13:06:29.352989	2015-12-31 13:06:29.352989	\N	\N
+67	Rutland Water Fishing Lodge	2015-12-31 13:10:33.096958	2015-12-31 13:10:33.096958	\N	\N
+69	Delbury Hall Trout Fishery	2015-12-31 13:27:38.304673	2015-12-31 13:27:38.304673	\N	\N
+70	Ellerdine Lakes Trout Fisheries	2015-12-31 19:16:06.226565	2015-12-31 19:16:06.226565	\N	\N
+72	Little Heath Trout Fishery	2016-01-11 22:12:42.299147	2016-01-11 22:12:42.299147	ChIJZ5ix0izOd0gRnJylP9O4nq4	\N
+73	Slaidburn Estate	2016-01-12 22:35:24.236673	2016-01-12 22:35:24.236673		\N
+74	Barn Elms Fly Fishery	2016-01-12 23:07:52.67589	2016-01-12 23:07:52.67589	ChIJ8bREDI-YdkgRNlWIj6Q--Vo	\N
+75	Felix Farm Fishery	2016-01-12 23:17:40.321312	2016-01-12 23:17:40.321312	ChIJrwBVkGyHdkgRt9QHTQS1tcw	\N
+77	Church Hill Fishery	2016-01-12 23:40:20.857345	2016-01-12 23:40:20.857345	ChIJufWpnSj_dkgRea0P9GcuK1M	\N
+27	Stocks Fly Fishery	2015-12-09 06:45:43.783131	2016-01-13 07:06:51.809156	ChIJXxOaekeBe0gRMJYBk_tTT1I	\N
+78	Earith Lakes Fisheries - Trout and Carp Lakes	2016-01-13 07:36:54.647006	2016-01-13 07:36:54.647006	ChIJw14X1tEK2EcRLwuNtgjjR8U	\N
+79	Grafham Water Fishing Lodge	2016-01-13 07:46:50.188681	2016-01-13 07:46:50.188681	ChIJq96-LDrBd0gRk5U-DGfzLf0	\N
+80	Cover Bridge Inn	2016-01-14 13:43:34.0787	2016-01-14 13:43:34.0787	ChIJ0SfFqpocfEgReBcTrLJ0Nw8	\N
+81	Malham Tarn Field Studies Centre	2016-01-15 07:56:08.233576	2016-01-15 07:56:08.233576	ChIJo-xW5651fEgRid1aH7yHqd8	\N
+83	Clay Lane Farm Trout Fishery	2016-01-15 17:27:25.466126	2016-01-15 17:27:25.466126	ChIJAXig4UVSekgR3LV0XQQzgWM	\N
+84	Marton Heath Trout Pools	2016-01-15 18:38:29.934621	2016-01-15 18:38:29.934621	ChIJTXoWVelPekgRBEkbD1g5dqs	\N
+86	West House Trout Lakes	2016-01-15 19:14:29.202812	2016-01-15 19:14:29.202812	ChIJCe8m4NmRfkgRPEJ9mm7-GAg	\N
+57	Northumbrian Water 	2015-12-25 08:49:45.481874	2016-01-24 19:08:25.651534		\N
+88	Rhayader and Elan Valley Angling Association	2016-02-22 22:02:37.767704	2016-02-22 22:02:37.767704		\N
+89	Cambrian Angling Association	2016-03-06 23:51:43.842262	2016-03-06 23:52:26.653281		\N
+90	Haweswater estate	2016-03-13 21:46:45.208608	2016-03-13 21:47:28.040562		\N
 \.
 
 
 --
--- TOC entry 2482 (class 0 OID 0)
--- Dependencies: 182
+-- TOC entry 2483 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: fisheries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -781,8 +784,8 @@ SELECT pg_catalog.setval('fisheries_id_seq', 90, true);
 
 
 --
--- TOC entry 2464 (class 0 OID 16465)
--- Dependencies: 198
+-- TOC entry 2455 (class 0 OID 16423)
+-- Dependencies: 188
 -- Data for Name: images; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -844,8 +847,8 @@ COPY images (id, water_id, image_file_name, image_content_type, image_file_size,
 
 
 --
--- TOC entry 2483 (class 0 OID 0)
--- Dependencies: 197
+-- TOC entry 2484 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -853,12 +856,13 @@ SELECT pg_catalog.setval('images_id_seq', 68, true);
 
 
 --
--- TOC entry 2447 (class 0 OID 16385)
--- Dependencies: 181
+-- TOC entry 2465 (class 0 OID 16476)
+-- Dependencies: 198
 -- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY schema_migrations (version) FROM stdin;
+20160420180231
 20141102092127
 20141102093154
 20141102100130
@@ -875,12 +879,13 @@ COPY schema_migrations (version) FROM stdin;
 20160226112027
 20160229124853
 20160229125727
+20160419191926
 \.
 
 
 --
--- TOC entry 2453 (class 0 OID 16411)
--- Dependencies: 187
+-- TOC entry 2457 (class 0 OID 16435)
+-- Dependencies: 190
 -- Data for Name: species; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -895,8 +900,8 @@ COPY species (id, name, created_at, updated_at) FROM stdin;
 
 
 --
--- TOC entry 2484 (class 0 OID 0)
--- Dependencies: 186
+-- TOC entry 2485 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: species_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -904,8 +909,8 @@ SELECT pg_catalog.setval('species_id_seq', 9, true);
 
 
 --
--- TOC entry 2454 (class 0 OID 16417)
--- Dependencies: 188
+-- TOC entry 2458 (class 0 OID 16441)
+-- Dependencies: 191
 -- Data for Name: species_waters; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2534,8 +2539,8 @@ COPY species_waters (species_id, water_id) FROM stdin;
 
 
 --
--- TOC entry 2462 (class 0 OID 16454)
--- Dependencies: 196
+-- TOC entry 2460 (class 0 OID 16446)
+-- Dependencies: 193
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2545,8 +2550,8 @@ COPY users (id, name, email, password_digest, created_at, updated_at) FROM stdin
 
 
 --
--- TOC entry 2485 (class 0 OID 0)
--- Dependencies: 195
+-- TOC entry 2486 (class 0 OID 0)
+-- Dependencies: 192
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2554,8 +2559,8 @@ SELECT pg_catalog.setval('users_id_seq', 1, true);
 
 
 --
--- TOC entry 2460 (class 0 OID 16446)
--- Dependencies: 194
+-- TOC entry 2462 (class 0 OID 16457)
+-- Dependencies: 195
 -- Data for Name: water_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2566,8 +2571,8 @@ COPY water_types (id, category, created_at, updated_at) FROM stdin;
 
 
 --
--- TOC entry 2486 (class 0 OID 0)
--- Dependencies: 193
+-- TOC entry 2487 (class 0 OID 0)
+-- Dependencies: 194
 -- Name: water_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2575,8 +2580,8 @@ SELECT pg_catalog.setval('water_types_id_seq', 2, true);
 
 
 --
--- TOC entry 2451 (class 0 OID 16399)
--- Dependencies: 185
+-- TOC entry 2464 (class 0 OID 16465)
+-- Dependencies: 197
 -- Data for Name: waters; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2667,8 +2672,8 @@ COPY waters (id, name, description, season_start, season_end, longitude, latitud
 
 
 --
--- TOC entry 2487 (class 0 OID 0)
--- Dependencies: 184
+-- TOC entry 2488 (class 0 OID 0)
+-- Dependencies: 196
 -- Name: waters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2676,7 +2681,7 @@ SELECT pg_catalog.setval('waters_id_seq', 123, true);
 
 
 --
--- TOC entry 2324 (class 2606 OID 16442)
+-- TOC entry 2312 (class 2606 OID 16395)
 -- Name: addresses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2685,7 +2690,7 @@ ALTER TABLE ONLY addresses
 
 
 --
--- TOC entry 2321 (class 2606 OID 16430)
+-- TOC entry 2315 (class 2606 OID 16407)
 -- Name: contact_details_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2694,7 +2699,7 @@ ALTER TABLE ONLY contact_details
 
 
 --
--- TOC entry 2313 (class 2606 OID 16396)
+-- TOC entry 2318 (class 2606 OID 16419)
 -- Name: fisheries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2703,7 +2708,7 @@ ALTER TABLE ONLY fisheries
 
 
 --
--- TOC entry 2331 (class 2606 OID 16470)
+-- TOC entry 2321 (class 2606 OID 16431)
 -- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2712,7 +2717,7 @@ ALTER TABLE ONLY images
 
 
 --
--- TOC entry 2319 (class 2606 OID 16416)
+-- TOC entry 2324 (class 2606 OID 16440)
 -- Name: species_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2721,7 +2726,7 @@ ALTER TABLE ONLY species
 
 
 --
--- TOC entry 2329 (class 2606 OID 16462)
+-- TOC entry 2326 (class 2606 OID 16454)
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2730,7 +2735,7 @@ ALTER TABLE ONLY users
 
 
 --
--- TOC entry 2327 (class 2606 OID 16451)
+-- TOC entry 2328 (class 2606 OID 16462)
 -- Name: water_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2739,7 +2744,7 @@ ALTER TABLE ONLY water_types
 
 
 --
--- TOC entry 2317 (class 2606 OID 16407)
+-- TOC entry 2332 (class 2606 OID 16473)
 -- Name: waters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2748,7 +2753,7 @@ ALTER TABLE ONLY waters
 
 
 --
--- TOC entry 2325 (class 1259 OID 16443)
+-- TOC entry 2313 (class 1259 OID 16396)
 -- Name: index_addresses_on_fishery_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2756,7 +2761,7 @@ CREATE INDEX index_addresses_on_fishery_id ON addresses USING btree (fishery_id)
 
 
 --
--- TOC entry 2322 (class 1259 OID 16431)
+-- TOC entry 2316 (class 1259 OID 16408)
 -- Name: index_contact_details_on_fishery_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2764,7 +2769,15 @@ CREATE INDEX index_contact_details_on_fishery_id ON contact_details USING btree 
 
 
 --
--- TOC entry 2332 (class 1259 OID 16471)
+-- TOC entry 2319 (class 1259 OID 16420)
+-- Name: index_fisheries_on_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_fisheries_on_slug ON fisheries USING btree (slug);
+
+
+--
+-- TOC entry 2322 (class 1259 OID 16432)
 -- Name: index_images_on_water_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2772,7 +2785,7 @@ CREATE INDEX index_images_on_water_id ON images USING btree (water_id);
 
 
 --
--- TOC entry 2314 (class 1259 OID 16408)
+-- TOC entry 2329 (class 1259 OID 16474)
 -- Name: index_waters_on_fishery_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2780,7 +2793,7 @@ CREATE INDEX index_waters_on_fishery_id ON waters USING btree (fishery_id);
 
 
 --
--- TOC entry 2315 (class 1259 OID 16478)
+-- TOC entry 2330 (class 1259 OID 16475)
 -- Name: index_waters_on_slug; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2788,14 +2801,14 @@ CREATE UNIQUE INDEX index_waters_on_slug ON waters USING btree (slug);
 
 
 --
--- TOC entry 2311 (class 1259 OID 16388)
+-- TOC entry 2333 (class 1259 OID 16479)
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
 
 
--- Completed on 2016-04-13 12:30:37 BST
+-- Completed on 2016-05-11 13:33:52 BST
 
 --
 -- PostgreSQL database dump complete
