@@ -3,7 +3,7 @@
 Let's Fish
 ================
 
-An app to find, list and write guides to fisheries and waters.
+A website for finding places to go fly fishing.
 
 ##Getting your development machine setup
 
@@ -42,6 +42,8 @@ bundle exec rake pg_db:restore #Restore development db (data only) from /db/pg_b
 ``` 
 
 #####Setup Heroku
+
+[Download the toolbelt](https://toolbelt.heroku.com/)
 
 ```
 heroku git:remote -a lets-fish #add Heroku remote to git repo
