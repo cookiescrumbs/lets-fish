@@ -55,9 +55,8 @@ class WatersController < ApplicationController
 
   def set_meta
     water = Water.friendly.find(params[:id])
-    title = "Fly fishing at #{water.name.strip}, #{water.short_address}"
-    set_meta_tags title: title
-    set_meta_tags description: (water.description.blank?) ? title : "#{title}. #{water.description}"
+    set_meta_tags title: water.meta_title
+    set_meta_tags description: water.meta_description
   end
 
 end
