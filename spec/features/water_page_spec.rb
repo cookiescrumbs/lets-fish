@@ -25,8 +25,8 @@ describe 'Water page', type: :feature, focus: true do
 
       it 'has the correct description' do
         page_meta_description = page.find('meta[name="description"]', visible: false)["content"]
-        meta_description_assertion = "Fly fishing at #{water.name}, #{water.short_address}. #{water.description}"[0...160]
-        expect(page_meta_description).to eql meta_description_assertion
+        meta_description_assertion = "Fly fishing at #{water.name}, #{water.short_address}. #{water.description}"[0...100]
+        expect(page_meta_description).to include(meta_description_assertion)
       end
 
     end
