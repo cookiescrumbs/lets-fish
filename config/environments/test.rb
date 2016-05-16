@@ -42,4 +42,6 @@ LetsFish::Application.configure do
   #See here https://github.com/railsware/rack_session_access
   config.middleware.use RackSessionAccess::Middleware
 
+  config.geograph_api_key = 'a5ecd893c8'
+
 end

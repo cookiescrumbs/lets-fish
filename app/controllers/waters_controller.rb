@@ -5,7 +5,7 @@ class WatersController < ApplicationController
   before_action :set_fishery, only: [:show]
   before_action :set_species, only: [:show]
   before_action :set_image_attribution, only: [:show]
-  before_action :set_meta_tags, only: [:show]
+  before_action :set_meta, only: [:show]
 
   def show
   end
@@ -53,13 +53,11 @@ class WatersController < ApplicationController
     !Water.friendly.find(params[:id]).images.first.geograph_photo_id.nil?
   end
 
-  def set_meta_tags
+  def set_meta
     water = Water.friendly.find(params[:id])
-    PageConfiguration::SetMetaTag::title title: "Fly fishing at #{water.name.strip}, #{water.short_address}"
-    PageConfiguration::SetMetaTag::description(
-      short: "Fly fishing at #{water.name.strip}, #{water.short_address}.",
-      full: water.description
-    )
+    title = "Fly fishing at #{water.name.strip}, #{water.short_address}"
+    set_meta_tags title: title
+    set_meta_tags description: (water.description.blank?) ? title : "#{title}. #{water.description}"
   end
 
 end

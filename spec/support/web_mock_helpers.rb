@@ -22,17 +22,15 @@ module WebMockHelpers
          to_return(:status => 200, :body => body, :headers => {})
     end
 
-
   end
 
   module Geograph
     def stub_geograph_photo_details
       body = File.read("spec/fixtures/geograph/photo-details.json")
-      stub_request(:get, "http://api.geograph.org.uk/api/photo/158570?key=1234apikey&output=json").
+      stub_request(:get, /http:\/\/api.geograph.org.uk\/api\/photo\/([\d]+)\?key=a5ecd893c8&output=json/).
       with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
          to_return(:status => 200, :body => body , :headers => {'Content-Type' => 'application/json', })
-
     end
   end
-
+  
 end
