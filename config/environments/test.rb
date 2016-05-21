@@ -41,4 +41,5 @@ LetsFish::Application.configure do
   # Added this so we can inject user sessions in our Feature tests
   # See here https://github.com/railsware/rack_session_access
   config.middleware.use RackSessionAccess::Middleware
+  config.geograph_api_key = 'a5ecd893c8'
 end

@@ -1,5 +1,9 @@
+require_relative 'meta_tags'
+
 class Water < ActiveRecord::Base
   extend FriendlyId
+
+  include MetaTags
 
   friendly_id :name, use: :slugged
 

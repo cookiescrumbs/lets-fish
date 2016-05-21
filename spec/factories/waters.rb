@@ -9,7 +9,6 @@ FactoryGirl.define do
     season_end '2014-10-20'
     water_type_id 2
     species_ids [4]
-    slug { name }
     images { create_list(:image, 2) }
     fishery
   end
