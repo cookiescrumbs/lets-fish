@@ -55,26 +55,8 @@ class WatersController < ApplicationController
 
   def set_meta
     water = Water.friendly.find(params[:id])
-    page_title "Fly fishing at #{water.name.strip}, #{water.short_address}"
-    built_description = build_meta_description(
-      name: water.name,
-      address: water.short_address,
-      description: water.description
-    )
-    meta_description built_description
+    set_meta_tags title: water.meta_title
+    set_meta_tags description: water.meta_description
   end
 
-  def page_title(title)
-    set_meta_tags title: title
-  end
-
-  def meta_description(description)
-    set_meta_tags description: description
-  end
-
-  def build_meta_description(name:, address:, description:)
-    built_description = "Fly fishing at #{name}, #{address}."
-    return built_description if description.blank?
-    "#{built_description} #{description}"
-  end
 end

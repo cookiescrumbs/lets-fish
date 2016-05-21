@@ -85,4 +85,29 @@ describe Water, :type => :model do
       end
 
     end
+
+    describe "meta tags", focus: true do
+
+      describe "title" do
+
+        it "returns a title tag string" do
+          expect(@water.meta_title).to eql "Fly fishing at #{@water.name.strip}, #{@water.short_address}"
+        end
+    
+      end
+
+      describe "description" do
+
+        context "water with description" do
+        
+          it "returns a description tag string including the water discription" do
+            expect(@water.meta_description).to eql "#{@water.meta_title}. #{@water.description}"
+          end
+
+        end
+
+      end
+
+    end
+
 end
