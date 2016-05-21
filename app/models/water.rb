@@ -1,5 +1,9 @@
+require_relative 'meta_tags'
+
 class Water < ActiveRecord::Base
   extend FriendlyId
+
+  include MetaTags
 
   friendly_id :name, use: :slugged
 
@@ -21,14 +25,6 @@ class Water < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   after_validation :update_address
-
-  def meta_title
-    "Fly fishing at #{self.name.strip}, #{self.short_address}"
-  end
-
-  def meta_description
-    (self.description.blank?) ? meta_title : "#{meta_title}. #{self.description}"
-  end
 
   def season_start=(value)
     super(Date.parse(value).change({year: 2012}))
