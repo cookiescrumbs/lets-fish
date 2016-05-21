@@ -13,8 +13,8 @@
 #     - 'spec/features/admin/waters_page_spec.rb'
 
 # Offense count: 1
-Metrics/AbcSize:
-  Max: 16
+# Metrics/AbcSize:
+#   Max: 16
 
 # Offense count: 144
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes.

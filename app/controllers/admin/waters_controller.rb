@@ -14,10 +14,7 @@ class Admin::WatersController < AdminController
   end
 
   def create
-    @water = @fishery.waters.build(water_params)
-    image = build_image @water
-    add_geograph_photo_id_to(image) unless image.nil?
-
+    build_water_with_image
     respond_to do |format|
       if @fishery.save
         format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully added to #{@fishery.name}" }
@@ -50,6 +47,12 @@ class Admin::WatersController < AdminController
   end
 
   private
+
+  def build_water_with_image
+    @water = @fishery.waters.build(water_params)
+    image = build_image @water
+    add_geograph_photo_id_to(image) unless image.nil?
+  end
 
   def build_image(water)
     water.images.build image: image_params[:image] unless image_params.nil?
