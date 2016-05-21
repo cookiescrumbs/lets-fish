@@ -1,5 +1,4 @@
 class FisheriesController < ApplicationController
-
   before_action :set_fishery, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_water, only: [:show]
@@ -25,16 +24,15 @@ class FisheriesController < ApplicationController
     @water = Fishery.friendly.find(params[:id]).waters.first
   end
 
-  #need to get all species form across all waters
+  # need to get all species form across all waters
   def set_species
     @species = Fishery.friendly.find(params[:id]).waters.first.species.select(:name).distinct
   end
 
-  #Add this stuff to the image model
+  # Add this stuff to the image model
   def set_image_attribution
-    if first_image? && geograph_photo_id?
-      @image_attribution = GeographService::user_attribution_from geograph_photo_id, geograph_api_key
-    end
+    return unless first_image? && geograph_photo_id?
+    @image_attribution = GeographService.user_attribution_from geograph_photo_id, geograph_api_key
   end
 
   def first_image?
@@ -46,11 +44,10 @@ class FisheriesController < ApplicationController
   end
 
   def geograph_api_key
-    return Rails.application.config.geograph_api_key
+    Rails.application.config.geograph_api_key
   end
 
   def geograph_photo_id?
     !@water.images.first.geograph_photo_id.blank?
   end
-
 end

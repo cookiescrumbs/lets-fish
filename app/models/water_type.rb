@@ -4,7 +4,6 @@ class WaterType < ActiveRecord::Base
   validates_presence_of :category
 
   def category
-    (super).titleize unless (super).nil?
+    super.titleize unless super.nil?
   end
-
 end

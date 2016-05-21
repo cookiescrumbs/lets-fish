@@ -1,5 +1,5 @@
 namespace :deploy do
-  desc "Builds and deploys to Heroku like Codeship"
+  desc 'Builds and deploys to Heroku like Codeship'
   task heroku: :environment do
     sh 'bundle install'
     sh 'RAILS_ENV=test bundle exec rake db:schema:load'

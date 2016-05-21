@@ -5,15 +5,14 @@ class Address < ActiveRecord::Base
   after_validation :geocode
 
   def formatted
-    ['street','line2','region','postcode','country'].select do |address_comp|
+    %w(street line2 region postcode country).select do |address_comp|
       !send(address_comp).blank?
-    end.map {|address_comp| send(address_comp) }.join(', ')
+    end.map { |address_comp| send(address_comp) }.join(', ')
   end
 
   def short
-    ['region','country'].select do |address_comp|
+    %w(region country).select do |address_comp|
       !send(address_comp).blank?
-    end.map {|address_comp| send(address_comp) }.join(', ')
+    end.map { |address_comp| send(address_comp) }.join(', ')
   end
-
 end

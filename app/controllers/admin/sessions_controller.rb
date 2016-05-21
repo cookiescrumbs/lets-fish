@@ -1,5 +1,4 @@
 class Admin::SessionsController < AdminController
-
   def new
   end
 
@@ -9,7 +8,7 @@ class Admin::SessionsController < AdminController
       session[:user_id] = user.id
       redirect_to admin_fisheries_path
     else
-      flash.now[:notice] = 'Email or Password is invalid';
+      flash.now[:notice] = 'Email or Password is invalid'
       render 'new'
     end
   end
@@ -18,5 +17,4 @@ class Admin::SessionsController < AdminController
     session[:user_id] = nil
     redirect_to admin_login_path
   end
-
 end

@@ -28,14 +28,14 @@ LetsFish::Application.configure do
   config.assets.debug = true
 
   config.assets.raise_runtime_errors = true
-  #Shows asset errors that you will get in production in the development environment
+  # Shows asset errors that you will get in production in the development environment
   config.assets.raise_asset_errors = true
 
   config.paperclip_defaults = {
-    :storage => :s3,
-    :bucket => 'lets-fish',
-    :url => ':s3_domain_url',
-    :path => '/:class/:attachment/:id_partition/:style/:filename'
+    storage: :s3,
+    bucket: 'lets-fish',
+    url: ':s3_domain_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename'
   }
 
   config.geograph_api_key = 'a5ecd893c8'

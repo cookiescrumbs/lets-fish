@@ -13,9 +13,9 @@ class Water < ActiveRecord::Base
   validates_presence_of :fishery_id
 
   validates_presence_of :name, message: "Water name can't be blank"
-  validates_presence_of :species, message: "You need to select at least one fish species"
-  validates_presence_of :water_type_id, message: "You need to select a water type"
-  validates :latitude , numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
+  validates_presence_of :species, message: 'You need to select at least one fish species'
+  validates_presence_of :water_type_id, message: 'You need to select a water type'
+  validates :latitude, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
   validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
 
   reverse_geocoded_by :latitude, :longitude
@@ -23,21 +23,21 @@ class Water < ActiveRecord::Base
   after_validation :update_address
 
   def season_start=(value)
-    super(Date.parse(value).change({year: 2012}))
+    super(Date.parse(value).change(year: 2012))
   end
 
   def season_end=(value)
-    super(Date.parse(value).change({year: 2012}))
+    super(Date.parse(value).change(year: 2012))
   end
 
   def short_address
     return nil if address.blank?
-    address.split(', ')[0..1].join(", ")
+    address.split(', ')[0..1].join(', ')
   end
 
   private
 
   def update_address
-    reverse_geocode if self.address.blank?
+    reverse_geocode if address.blank?
   end
 end

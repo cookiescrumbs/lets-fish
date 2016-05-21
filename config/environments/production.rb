@@ -21,8 +21,8 @@ LetsFish::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
-  #cache static assets for 30 days - 2592000 seconds
-  config.static_cache_control = "public, max-age=2592000"
+  # cache static assets for 30 days - 2592000 seconds
+  config.static_cache_control = 'public, max-age=2592000'
 
   config.assets.prefix = '/assets'
 
@@ -85,13 +85,13 @@ LetsFish::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.paperclip_defaults = {
-    :storage => :s3,
-    :bucket => ENV['S3_BUCKET_NAME'],
-    :url => ':s3_domain_url',
-    :path => '/:class/:attachment/:id_partition/:style/:filename',
-    :s3_credentials => {
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    storage: :s3,
+    bucket: ENV['S3_BUCKET_NAME'],
+    url: ':s3_domain_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename',
+    s3_credentials: {
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
 

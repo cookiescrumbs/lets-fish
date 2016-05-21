@@ -1,22 +1,18 @@
-describe Fishery, :type => :model do
-
-  describe "validate fields" do
-
+describe Fishery, type: :model do
+  describe 'validate fields' do
     before do
       stub_google_geocode_address
       @fishery = FactoryGirl.create(:fishery)
     end
 
-    it "is not valid without a name" do
+    it 'is not valid without a name' do
       @fishery.name = nil
       expect(@fishery).not_to be_valid
     end
   end
 
   describe 'latitude and longitude' do
-
     context 'has a Google place id' do
-
       before do
         stub_google_geocode_address
         stub_google_places_details
@@ -30,11 +26,9 @@ describe Fishery, :type => :model do
       it 'uses longitude form Google places' do
         expect(@fishery.longitude).to eql(-2.431154)
       end
-
     end
 
     context 'has no Google place id' do
-
       before do
         stub_google_geocode_address
         @fishery = FactoryGirl.create(:fishery, place_id: nil)
@@ -47,11 +41,6 @@ describe Fishery, :type => :model do
       it 'Uses address model longitude' do
         expect(@fishery.longitude).to eql(-2.2426305)
       end
-
     end
-
-
   end
-
-
 end

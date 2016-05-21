@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-
   respond_to :html, :json
 
   def index
@@ -27,11 +26,10 @@ class SearchController < ApplicationController
   end
 
   def center_point_from_lat_lng
-    [params[:lat],params[:lng]] unless params[:lat].nil? || params[:lng].nil?
+    [params[:lat], params[:lng]] unless params[:lat].nil? || params[:lng].nil?
   end
 
   def center_point_from_location
     Geocoder.coordinates(params[:location]) unless params[:location].nil?
   end
-
 end

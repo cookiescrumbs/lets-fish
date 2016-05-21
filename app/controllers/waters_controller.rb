@@ -72,7 +72,7 @@ class WatersController < ApplicationController
     set_meta_tags description: description
   end
 
-  def build_meta_description(name:, address:, description:)
+  def build_meta_description(name: nil, address: nil, description: nil)
     built_description = "Fly fishing at #{name}, #{address}."
     return built_description if description.blank?
     "#{built_description} #{description}"

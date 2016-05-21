@@ -16,7 +16,7 @@ LetsFish::Application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance.
   config.serve_static_assets  = true
-  config.static_cache_control = "public, max-age=3600"
+  config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -38,8 +38,7 @@ LetsFish::Application.configure do
 
   config.assets.raise_runtime_errors = true
   config.assets.raise_asset_errors = true
-  #Added this so we can inject user sessions in our Feature tests
-  #See here https://github.com/railsware/rack_session_access
+  # Added this so we can inject user sessions in our Feature tests
+  # See here https://github.com/railsware/rack_session_access
   config.middleware.use RackSessionAccess::Middleware
-
 end
