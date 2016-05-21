@@ -7,10 +7,10 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 6
-Lint/AmbiguousOperator:
-  Exclude:
-    - 'spec/features/admin/new_water_page_spec.rb'
-    - 'spec/features/admin/waters_page_spec.rb'
+# Lint/AmbiguousOperator:
+#   Exclude:
+#     - 'spec/features/admin/new_water_page_spec.rb'
+#     - 'spec/features/admin/waters_page_spec.rb'
 
 # Offense count: 1
 Metrics/AbcSize:

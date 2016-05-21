@@ -68,8 +68,8 @@ describe 'Manage waters page', type: :feature do
         edit_button.click
         fill_in 'water_name', with: 'loch dooooooon'
         # had to use find as the fields are hidden
-        find('#latitude').set -90
-        find('#longitude').set -180
+        find('#latitude').set(-90)
+        find('#longitude').set(-180)
         find('#water_address').set 'Somewhere, Wales'
         check first_species_name
         attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))

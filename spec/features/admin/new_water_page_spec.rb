@@ -27,8 +27,8 @@ describe 'New water page', type: :feature do
     it "adds a water to a fishery, shows the water's details and says a nice thing" do
       fill_in 'water_name', with: 'Total Loch Doon'
       # had to use find as the fields are hidden
-      find('#latitude').set -90
-      find('#longitude').set -180
+      find('#latitude').set(-90)
+      find('#longitude').set(-180)
       check @species.first.name
       check @species.last.name
       choose @water_type.first.category
@@ -49,8 +49,8 @@ describe 'New water page', type: :feature do
     it 'shows a helpful validation messages for required fields' do
       fill_in 'water_name', with: ''
       # had to use find as the fields are hidden
-      find('#latitude').set -90
-      find('#longitude').set -180
+      find('#latitude').set(-90)
+      find('#longitude').set(-180)
       click_on 'Submit'
 
       expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Water name can't be blank You need to select at least one fish species You need to select a water type"
