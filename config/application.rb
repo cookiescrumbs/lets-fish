@@ -8,9 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module LetsFish
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join("app", "assets", "fonts" )
-    # config.autoload_paths += %W(#{config.root}/lib)
-    # config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -24,6 +22,5 @@ module LetsFish
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
     config.serve_static_assets = true
-
   end
 end

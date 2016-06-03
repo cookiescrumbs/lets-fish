@@ -1,17 +1,14 @@
 require_relative '../features_helper'
 
-describe "New fishery page", type: :feature do
-
+describe 'New fishery page', type: :feature do
   before(:each) do
     stub_google_geocode_address
 
-    login FactoryGirl::create :user
+    login FactoryGirl.create :user
   end
 
-  context "form is filled out correctly" do
-
+  context 'form is filled out correctly' do
     before do
-
       @fishery_details         = FactoryGirl.build(:fishery)
 
       @new_fishery             = PageObjects::NewFishery.new
@@ -34,12 +31,9 @@ describe "New fishery page", type: :feature do
       @new_fishery.address.country.set             @fishery_details.address.country
 
       @new_fishery.submit.click
-
-
     end
 
-    it "creates a fishery with contact details and address" do
-
+    it 'creates a fishery with contact details and address' do
       fishery         = Fishery.first
 
       contact_details = fishery.contact_details
@@ -61,10 +55,9 @@ describe "New fishery page", type: :feature do
       expect(address.country).to            eql   @fishery_details.address.country
     end
 
-    it "creates a fishery and says a nice thing" do
+    it 'creates a fishery and says a nice thing' do
       expect(page).to have_content "#{@fishery_details.name} was successfully create. Would you like to add a water?"
     end
-
   end
 
   # context "form is filled out incorrectly" do
@@ -80,11 +73,3 @@ describe "New fishery page", type: :feature do
 
   # end
 end
-
-
-
-
-
-
-
-

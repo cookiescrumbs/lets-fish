@@ -13,6 +13,3 @@ class CreateWaters < ActiveRecord::Migration
     end
   end
 end
-
-
-

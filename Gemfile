@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rubocop', require: false
 end
 
 group :test do

@@ -1,6 +1,5 @@
 class Admin::WaterTypesController < AdminController
-
-  before_filter :authorize
+  before_action :authorize
   before_action :set_water_type, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/water_types
@@ -65,13 +64,14 @@ class Admin::WaterTypesController < AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_water_type
-      @water_type = WaterType.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def water_type_params
-       params.require(:water_type).permit(:category)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_water_type
+    @water_type = WaterType.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def water_type_params
+    params.require(:water_type).permit(:category)
+  end
 end

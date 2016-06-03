@@ -8,11 +8,11 @@ require 'site_prism'
 include ActionDispatch::TestProcess
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
-#require page objects
-Dir[Rails.root.join("spec/page_objects/**/*.rb")].each { |f| require f }
+# require page objects
+Dir[Rails.root.join('spec/page_objects/**/*.rb')].each { |f| require f }
 
 # Capybara.default_wait_time = 60
 Capybara.javascript_driver = :selenium

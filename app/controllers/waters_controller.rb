@@ -1,5 +1,4 @@
 class WatersController < ApplicationController
-
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
@@ -30,11 +29,10 @@ class WatersController < ApplicationController
     @species = Water.friendly.find(params[:id]).species.select(:name).distinct
   end
 
-  #add this stuff to the image model
+  # add this stuff to the image model
   def set_image_attribution
-    if first_image? && geograph_photo_id?
-      @image_attribution = GeographService::user_attribution_from geograph_photo_id, geograph_api_key
-    end
+    return unless first_image? && geograph_photo_id?
+    @image_attribution = GeographService.user_attribution_from geograph_photo_id, geograph_api_key
   end
 
   def first_image?
@@ -46,7 +44,7 @@ class WatersController < ApplicationController
   end
 
   def geograph_api_key
-    return Rails.application.config.geograph_api_key
+    Rails.application.config.geograph_api_key
   end
 
   def geograph_photo_id?
@@ -58,5 +56,4 @@ class WatersController < ApplicationController
     set_meta_tags title: water.meta_title
     set_meta_tags description: water.meta_description
   end
-
 end

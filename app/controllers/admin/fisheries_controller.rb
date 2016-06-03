@@ -1,10 +1,9 @@
 class Admin::FisheriesController < AdminController
-
-  before_filter :authorize
+  before_action :authorize
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fisheries         = Fishery.order name: :asc
+    @fisheries = Fishery.order name: :asc
     flash.now[:notice] = 'There are no fisheries. Please add a fishery.' if @fisheries.empty?
   end
 
@@ -44,11 +43,11 @@ class Admin::FisheriesController < AdminController
 
   private
 
-    def set_fishery
-      @fishery = Fishery.friendly.find(params[:id])
-    end
+  def set_fishery
+    @fishery = Fishery.friendly.find(params[:id])
+  end
 
-    def fishery_params
-       params.require(:fishery).permit(:name, :place_id, contact_details_attributes: [ :name, :telephone, :mobile, :email, :website], address_attributes: [ :postcode, :street, :line2, :region, :country ])
-    end
+  def fishery_params
+    params.require(:fishery).permit(:name, :place_id, contact_details_attributes: [:name, :telephone, :mobile, :email, :website], address_attributes: [:postcode, :street, :line2, :region, :country])
+  end
 end

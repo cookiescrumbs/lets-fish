@@ -1,5 +1,4 @@
 LetsFish::Application.routes.draw do
-
   namespace :admin do
     resources :water_types
     resources :species
@@ -17,7 +16,7 @@ LetsFish::Application.routes.draw do
   get 'search',           to: 'search#index'
   get '/waters/:id',      to: 'waters#show'
   get '/fisheries/:id',   to: 'fisheries#show'
-  get '/trips/:username/:id',  to: 'trips#show'
+  get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
   get '/admin/login',     to: 'admin/sessions#new'
   post '/admin/login',    to: 'admin/sessions#create'

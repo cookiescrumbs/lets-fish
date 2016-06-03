@@ -18,5 +18,4 @@ class SitemapsController < ApplicationController
     expires_in 1.day
     fresh_when @fisheries, public: true
   end
-
 end

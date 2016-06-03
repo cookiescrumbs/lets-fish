@@ -1,10 +1,10 @@
 class Species < ActiveRecord::Base
+  has_many :species_waters
+  has_many :waters, through: :species_waters
 
-  has_and_belongs_to_many :waters
-  validates_presence_of :name
+  validates :name, presence: true
 
   def name
-    (super).capitalize unless (super).nil?
+    super.capitalize unless super.nil?
   end
-
 end
