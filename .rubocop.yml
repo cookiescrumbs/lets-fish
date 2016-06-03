@@ -7,4 +7,13 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'spec/features/homepage_spec.rb'
     - !ruby/regexp /old_and_unused\.rb$/
+Rails:
+    Enabled: true
+Metrics/LineLength:
+    Max: 200
+Metrics/MethodLength:
+    Max: 30
+Metrics/ClassLength:
+    Max: 200

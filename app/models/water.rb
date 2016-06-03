@@ -10,15 +10,16 @@ class Water < ActiveRecord::Base
   belongs_to              :fishery, touch: true
   belongs_to              :water_type
 
-  has_and_belongs_to_many :species
+  has_many :species_water
+  has_many :species, through: :species_water
 
   has_many :images, dependent: :destroy
 
-  validates_presence_of :fishery_id
+  validates :fishery_id, presence: true
 
-  validates_presence_of :name, message: "Water name can't be blank"
-  validates_presence_of :species, message: 'You need to select at least one fish species'
-  validates_presence_of :water_type_id, message: 'You need to select a water type'
+  validates :name, presence: { message: "Water name can't be blank" }
+  validates :species, presence: { message: 'You need to select at least one fish species' }
+  validates :water_type_id, presence: { message: 'You need to select a water type' }
   validates :latitude, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
   validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
 

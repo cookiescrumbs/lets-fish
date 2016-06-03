@@ -53,7 +53,11 @@ describe 'New water page', type: :feature do
       find('#longitude').set(-180)
       click_on 'Submit'
 
-      expect(page.find('.alert')).to have_content "3 errors prohibited this water from being saved: Water name can't be blank You need to select at least one fish species You need to select a water type"
+      message = '3 errors prohibited this water from being saved:'\
+      " Water name can't be blank You need to select"\
+      ' at least one fish species You need to select a water type'
+
+      expect(page.find('.alert')).to have_content message
     end
   end
 end
