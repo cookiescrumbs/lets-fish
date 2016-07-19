@@ -1,5 +1,5 @@
 class Admin::FisheriesController < AdminController
-  before_action :authorize
+  before_action :authenticate_user!
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index

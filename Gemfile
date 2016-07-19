@@ -43,6 +43,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
 gem 'meta-tags'
 gem 'rack-cache'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -1,5 +1,4 @@
 class Admin::WaterTypesController < AdminController
-  before_action :authorize
   before_action :set_water_type, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/water_types

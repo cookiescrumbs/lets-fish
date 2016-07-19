@@ -39,4 +39,6 @@ LetsFish::Application.configure do
   }
 
   config.geograph_api_key = 'a5ecd893c8'
+  
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

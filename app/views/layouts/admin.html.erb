@@ -24,23 +24,16 @@
           </button>
           <a class="navbar-brand" href="/">Gone Fishing Admin</a>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin/fisheries">Fisheries</a>
-            <% if current_user %>
-              <li> Signed in as <%= current_user.email %>
-              <li><%= link_to "Logout", '/admin/logout'%></li>
-            <% else %>
-              <li><%= link_to 'Login', '/admin/login' %></li>
-            <% end %>
-          </ul>
+        <div class="navbar-collapse collapse">          
         </div>
       </div>
     </div>
   <div class="container">
-    <% if flash[:notice] %>
-      <div class="alert alert-info notice"><%= flash[:notice] %></div>
-    <% end %>
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
       <%= yield %>
   </div>
 </body>
