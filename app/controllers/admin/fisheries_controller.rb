@@ -3,7 +3,7 @@ class Admin::FisheriesController < AdminController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fisheries = current_user.fisheries.order name: :asc 
+    @fisheries = current_user.fisheries.order name: :asc
     flash.now[:notice] = 'There are no fisheries. Please add a fishery.' if @fisheries.empty?
   end
 
@@ -44,7 +44,7 @@ class Admin::FisheriesController < AdminController
   private
 
   def set_fishery
-    @fishery = Fishery.friendly.find(params[:id])
+    @fishery = current_user.fisheries.friendly.find(params[:id])
   end
 
   def fishery_params
