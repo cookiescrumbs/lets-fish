@@ -5,6 +5,10 @@ class Fishery < ActiveRecord::Base
 
   validates :name, presence: { message: "Fishery name can't be blank" }
 
+  has_many :user_fisheries
+  has_many :users, through: :user_fisheries
+
+
   has_many :waters, dependent: :destroy
 
   has_one  :contact_details

@@ -3,9 +3,9 @@ LetsFish::Application.routes.draw do
   namespace :admin do
     resources :water_types
     resources :species
-    resources :fisheries do
-      resources :waters
-    end
+      resources :fisheries do
+        resources :waters
+      end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
