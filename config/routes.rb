@@ -23,7 +23,7 @@ LetsFish::Application.routes.draw do
   post '/admin/login',    to: 'admin/sessions#create'
   get '/admin/logout',    to: 'admin/sessions#destroy'
 
-  get '/your/fisheries', to: 'admin/fisheries#index'
+  get '/your/fishery', to: 'admin/fisheries#index'
 
 
   # Example of regular route:

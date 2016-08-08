@@ -3,7 +3,12 @@ class Admin::FisheriesController < AdminController
   before_action :set_fishery, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fisheries = current_user.fisheries.order name: :asc
+    if current_user.auth === Rails.application.config.admin
+      @fisheries = Fishery.order name: :asc
+    else
+      @fisheries = current_user.fisheries.order name: :asc
+    end
+
     flash.now[:notice] = 'There are no fisheries. Please add a fishery.' if @fisheries.empty?
   end
 
@@ -20,7 +25,12 @@ class Admin::FisheriesController < AdminController
   end
 
   def create
-    @fishery = Fishery.new(fishery_params)
+    if current_user.auth === Rails.application.config.admin
+      @fishery = Fishery.new(fishery_params)
+    else
+      @fishery = current_user.fisheries.new(fishery_params)
+    end
+   
     if @fishery.save
       redirect_to admin_fisheries_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"
     else
@@ -44,7 +54,11 @@ class Admin::FisheriesController < AdminController
   private
 
   def set_fishery
-    @fishery = current_user.fisheries.friendly.find(params[:id])
+    if current_user.auth === Rails.application.config.admin
+      @fishery = Fishery.friendly.find(params[:id])
+    else
+      @fishery = current_user.fisheries.friendly.find(params[:id])
+    end
   end
 
   def fishery_params

@@ -22,5 +22,8 @@ module LetsFish
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
     config.serve_static_assets = true
+
+    config.admin = 'admin'
+    config.fishery_manager = 'fishery manager'
   end
 end
