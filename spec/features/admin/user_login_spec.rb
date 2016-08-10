@@ -3,12 +3,13 @@ require_relative '../features_helper'
 describe 'User login', type: :feature do
   describe 'user has an account' do
     before(:each) do
-      @user = FactoryGirl.create :user, password: '5lbBr0wnTr0ut'
-      visit admin_login_path
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
+      # visit admin_login_path
     end
 
     context 'tries to login with incorrect details' do
-      it 'shows a helpful validation messages for required fields' do
+      it 'shows a helpful validation messages for required fields', focus: true do
+        pry
         fill_in 'email', with: 'wrongemail@wrong.com'
         fill_in 'password', with: 'wrongpassword'
         click_on 'Submit'
