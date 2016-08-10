@@ -1,19 +1,18 @@
 require_relative '../features_helper'
 
-describe 'User login', type: :feature do
+describe 'User log in', type: :feature do
   describe 'user has an account' do
     before(:each) do
       @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
-      # visit admin_login_path
+      visit your_fishery_path
     end
 
-    context 'tries to login with incorrect details' do
+    context 'tries to log in with incorrect details' do
       it 'shows a helpful validation messages for required fields', focus: true do
-        pry
-        fill_in 'email', with: 'wrongemail@wrong.com'
-        fill_in 'password', with: 'wrongpassword'
-        click_on 'Submit'
-        expect(page.find('.alert')).to have_content 'Email or Password is invalid'
+        fill_in 'Email', with: 'wrongemail@wrong.com'
+        fill_in 'Password', with: 'wrongpassword'
+        click_on 'Log In'
+        expect(page.find('.alert')).to have_content 'Invalid email or password.'
       end
     end
 

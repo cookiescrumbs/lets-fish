@@ -19,9 +19,6 @@ LetsFish::Application.routes.draw do
   get '/fisheries/:id',   to: 'fisheries#show'
   get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
-  get '/admin/login',     to: 'admin/sessions#new'
-  post '/admin/login',    to: 'admin/sessions#create'
-  get '/admin/logout',    to: 'admin/sessions#destroy'
 
   get '/your/fishery', to: 'admin/fisheries#index'
 
