@@ -9,4 +9,10 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
+//= require jquery_ujs
+//= require jquery.easing.min
+//= require bootstrap.min
+//= require classie
+//= require cbpAnimatedHeader
+//= require navigation
 //= require location_map

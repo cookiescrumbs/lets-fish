@@ -15,5 +15,6 @@
 //= require bootstrap.min
 //= require classie
 //= require cbpAnimatedHeader
-//= require homepage-ini
+//= require navigation
+//= require search_auto_complete
 

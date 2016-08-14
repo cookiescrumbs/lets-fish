@@ -234,12 +234,12 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #waters .navbar-brand, #fisheries .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand{
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand{
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #waters .navbar .container, #fisheries .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
         margin-left: 0;
     }
 
@@ -287,30 +287,6 @@ header {
     -o-background-size: cover;
 }
 
-#waters header {
-    text-align: center;
-    color: #fff;
-    background-attachment: scroll;
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-section#discover {
-    text-align: center;
-    color: #fff;
-    background-attachment: scroll;
-    background-image: url('/images/header-bg.jpg');
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
 
 header .intro-text, section .intro-text{
     padding-top: 100px;
@@ -338,17 +314,9 @@ header div.image-trans, section div.image-trans{
     background: rgba(0, 0, 0, 0.3);
 }
 
-#waters header div.image-trans, section div.image-trans, #fisheries header div.image-trans{
-    background: rgba(0, 0, 0, 0.1);
-}
-
 
 
 @media(min-width:768px) {
-
-    #waters section, #fisheries section {
-        padding: 50px 0 0 0 !important;
-    }
 
     header .intro-text, section .intro-text{
         padding-top: 200px;
@@ -694,14 +662,6 @@ body#search footer, body#trips footer{
   margin-bottom: 10px;
 }
 
-section#waters-managed-by-this-fishery {
-    padding-bottom: 60px;
-}
-
-section#waters-managed-by-this-fishery h2.section-heading {
-    padding-bottom: 20px;
-}
-
 
 ul.species {
     padding-bottom: 10px;
@@ -730,9 +690,6 @@ ul.species {
     line-height: 25px;
 }
 
-#waters section {
-    padding: 10px 0 0 0;
-}
 
 #search .missing-image, #results-container .missing-image{
     padding: 12px 0;
@@ -972,6 +929,11 @@ ul.species {
 .top30 { padding-top:30px; }
 .top40 { padding-top:40px; }
 .top70 { padding-top:70px; }
+
+.space4 { margin-bottom: 24px; }
+
+.remove-padding-left { padding-left: 0px; }
+
 
 #trips header .intro-text {
     padding-top: 100px;

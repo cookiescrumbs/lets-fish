@@ -8,7 +8,6 @@ class Fishery < ActiveRecord::Base
   has_many :user_fisheries
   has_many :users, through: :user_fisheries
 
-
   has_many :waters, dependent: :destroy
 
   has_one  :contact_details
@@ -16,6 +15,16 @@ class Fishery < ActiveRecord::Base
 
   has_one :address
   accepts_nested_attributes_for :address
+
+  # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
+  def species
+    self.waters.map{|water| water.species.map{|s| s.name } }.flatten.uniq.sort
+  end
+  
+  # need to get all the water types from across all waters ["lake", "river"]
+  def water_types
+    self.waters.map{|water| water.water_type.category}.uniq.sort
+  end
 
   def latitude
     return google_places_details['geometry']['location']['lat'] if google_places_details?

@@ -18,16 +18,4 @@ $(document).ready(function() {
           $('.navbar-toggle:visible').click();
       });
      ////////////////////////////////////////////////////////////
-
-    //Search box //////////////////////////////////
-    // disableSearchFormSubmit();
-    var input = document.getElementById("location");
-    new google.maps.places.Autocomplete(
-      input,
-      {
-        componentRestrictions: {
-            country: 'uk'
-        }
-      }
-    );
 });
