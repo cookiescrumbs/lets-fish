@@ -238,13 +238,14 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #admin-fisheries .navbar-brand {
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand {
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #admin-fisheries .navbar .container{
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
         margin-left: 0;
+    }
     }
 
     .navbar-default {
@@ -934,7 +935,13 @@ ul.species {
 .top40 { padding-top:40px; }
 .top70 { padding-top:70px; }
 
-.space4 { margin-bottom: 24px; }
+.bottom24 { margin-bottom: 24px; }
+.bottom34 { margin-bottom: 34px; }
+.bottom44 { margin-bottom: 44px; }
+.bottom54 { margin-bottom: 54px; }
+
+
+
 
 .remove-padding-left { padding-left: 0px; }
 
@@ -948,5 +955,4 @@ footer { background-color: #222; }
 
 section#your-fisheries .fishery {
     padding: 25px;
-    border-bottom: 2px solid #f7f7f7;
 }

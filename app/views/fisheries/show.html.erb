@@ -20,7 +20,7 @@
 <section id="about-the-fishery">
     <div class="container">
         <div class="row">
-         <h4 class="space4">About the fishery</h4>
+         <h4 class="bottom24">About the fishery</h4>
             <div class="col-md-3 remove-padding-left">
                 <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>

@@ -1,25 +1,47 @@
 <%= render 'navigation' %>
-<section id="your-fisheries">
+<section id="your-fisheries" class="container top17">
   <div class="container">
       <div class="row">
         <div class="col-lg-12">
+        <h2 class="bottom44">Manage your fishery</h2>
+          <% @fisheries.each do |fishery| %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 class="text-muted">Your fisheries</h4>
+                <h4><%= fishery.name %></h4>
               </div>
               <div class="panel-body">
-                <% @fisheries.each do |fishery| %>
                 <div class="row">
                   <div class="col-lg-12 fishery">
-                    <h4><%= fishery.name %></h4>
+                    <% if !fishery.description.blank? %>
+                      <p><%= simple_format fishery.description %></p>
+                    <% end %>
                     <p class="text-muted"><%= fishery.address.formatted %></p>
                     <%= link_to 'Edit details', edit_admin_fishery_path(fishery), class: 'btn btn-default' %></td>
                     <%= link_to 'Preview', admin_fishery_path(fishery), class: 'btn btn-default' %>
                   </div>
+                  <div class="row ">
+                    <% if !fishery.waters.nil? && fishery.waters.exists? %>
+                    <% fishery.waters.each do | water | %>
+                        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
+                        <% image_styles = (water.images.first)? '' : 'missing-image' %>
+                        <div class="col-md-4 col-sm-12 explore-item">
+                            <a href="/waters/<%= water.slug %>" class="explore-link" >
+                                <div class="image-background">
+                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>" itemprop="contentUrl">
+                                </div>
+                            </a>
+                            <div class="explore-caption">
+                                <h4><%= water.name %></h4>
+                                <p class="text-muted"><%= water.short_address %></p>
+                            </div>
+                        </div>
+                    <% end %>
+                    <% end %>
+                  </div>
                 </div>
-                <% end %>
               </div>
             </div>
+          <% end %>
         </div>
       </div>
   </div>

@@ -20,7 +20,7 @@
 </header>
 <section id="about-this-water">
     <div class="container">
-        <h4 class="space4">About this water</h4>
+        <h4 class="botom24">About this water</h4>
         <div class="row">
             <div class="col-md-3 remove-padding-left">
                 <%= render '/shared/water_type', locals: { category: @water.water_type.category.capitalize }%>
@@ -38,7 +38,7 @@
 
 <section id="location">
     <div class="container">
-        <h4 class="space4" >Location</h4>
+        <h4 class="bottom24" >Location</h4>
         <div id="location-map" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
     </div>
 </section>
