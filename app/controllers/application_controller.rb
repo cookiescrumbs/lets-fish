@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   before_action :set_page_id
 
   def set_page_id
-    @page_id = 'id=' + params[:controller] + '' unless params[:controller].empty?
+    @page_id = 'id=' + params[:controller].gsub('/', '-') + '' unless params[:controller].empty?
   end
 end
