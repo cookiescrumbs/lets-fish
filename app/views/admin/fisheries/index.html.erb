@@ -3,47 +3,36 @@
   <div class="container">
       <div class="row">
         <div class="col-lg-12">
-        <h2 class="bottom44">Manage your fishery</h2>
+          <h2 class="bottom44">Manage your fishery</h2>
           <% @fisheries.each do |fishery| %>
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4><%= fishery.name %></h4>
+              <div class="panel-heading clearfix">
+                <h4 class="pull-left"><%= fishery.name %></h4>
+                <%= link_to 'Edit details', edit_admin_fishery_path(fishery), class: 'btn btn-default pull-right' %>
               </div>
               <div class="panel-body">
                 <div class="row">
-                  <div class="col-lg-12 fishery">
-                  <h4>About the fishery</h4>
+                  <div class="col-lg-12 top17">
+                    <h4>Waters</h4>
                   </div>
-                  <div class="col-lg-12 fishery">
-                    <% if !fishery.description.blank? %>
-                      <p><%= simple_format fishery.description %></p>
-                    <% end %>
-                    <p class="text-muted"><%= fishery.address.formatted %></p>
-                    <%= link_to 'Edit details', edit_admin_fishery_path(fishery), class: 'btn btn-default' %></td>
-                    <%= link_to 'Preview', admin_fishery_path(fishery), class: 'btn btn-default' %>
-                  </div>
-                  <div class="row ">
-                  <div class="col-lg-12 fishery">
-                  <h4>Waters</h4>
-                  </div>
-                    <% if !fishery.waters.nil? && fishery.waters.exists? %>
-                    <% fishery.waters.each do | water | %>
-                        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-                        <% image_styles = (water.images.first)? '' : 'missing-image' %>
-                        <div class="col-md-4 col-sm-12 explore-item">
-                            <a href="/waters/<%= water.slug %>" class="explore-link" >
-                                <div class="image-background">
-                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>" itemprop="contentUrl">
-                                </div>
-                            </a>
-                            <div class="explore-caption">
-                                <h4><%= water.name %></h4>
-                                <p class="text-muted"><%= water.short_address %></p>
-                            </div>
+                </div>
+                <% if !fishery.waters.nil? && fishery.waters.exists? %>
+                <% fishery.waters.each do | water | %>
+                    <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
+                    <% image_styles = (water.images.first)? '' : 'missing-image' %>
+                    <div class="col-md-4 col-sm-12 explore-item">
+                          <div class="image-background">
+                          <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>" itemprop="contentUrl">
+                          </div>
+                        <div class="explore-caption">
+                            <h4><%= water.name %></h4>
+                            <p class="text-muted"><%= water.short_address %></p>
+                            <%= link_to 'Edit details', edit_admin_fishery_water_path(fishery, water), class: 'btn btn-default btn-sm' %>
+                            <%= link_to 'Delete', admin_fishery_water_path(fishery, water), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" }, class: 'btn btn-default btn-sm btn-danger destroy' %>
                         </div>
+                    </div>
                     <% end %>
                     <% end %>
-                  </div>
                 </div>
               </div>
             </div>
@@ -53,6 +42,6 @@
   </div>
 </section>
 
-<% if current_user.auth === Rails.application.config.admin%>
+<% if current_user.auth === Rails.application.config.admin %>
   <%= link_to 'New Fishery', new_admin_fishery_path, class: 'btn btn-primary' %>
 <% end %>

@@ -1,4 +1,4 @@
-describe Fishery, type: :model do
+describe Fishery, type: :model, focus: true do
   
   before do
     stub_google_geocode_lat_lng
@@ -13,6 +13,11 @@ describe Fishery, type: :model do
   describe 'validate fields' do
     it 'is not valid without a name' do
       @fishery.name = nil
+      expect(@fishery).not_to be_valid
+    end
+
+    it 'is not valid without a description' do
+      @fishery.description = nil
       expect(@fishery).not_to be_valid
     end
   end

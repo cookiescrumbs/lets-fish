@@ -1,6 +1,7 @@
+<h4>Location</h4>
+<p class="text-muted">Drag pin to change location.</p>
 <input id="map-search-box" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
-<div class="pull-left">
 <%= form_for([:admin,  @fishery, @water], :html => {:role => "form",  multipart: true }) do |f| %>
   <% if @water.errors.any? %>
     <div class="alert alert-danger">
@@ -42,13 +43,13 @@
     <%= text_field :image, :geograph_photo_id, class: "form-control" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group hidden">
     <label for="water_latitude">Latitude</label>
     <div id="display-latitude"></div>
     <%= f.hidden_field :latitude, class: "form-control", id:"latitude", placeholder: "latitude" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group hidden">
     <label for="water_longitude">Longitude</label>
     <div id="display-longitude"></div>
     <%= f.hidden_field :longitude, class: "form-control", id:"longitude", placeholder: "longitude" %>
@@ -75,7 +76,7 @@
   </div>
 
   <div class="form-group">
-    <%= button_tag "Submit", class: "btn btn-primary" %>
+    <%= button_tag "Submit", class: "btn btn-primary  m-top17 pull-right" %>
   </div>
 <% end %>
 </div>

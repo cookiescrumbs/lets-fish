@@ -78,7 +78,7 @@ h6 {
 
 .btn-primary {
     border-color: #fed136;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
@@ -361,7 +361,7 @@ section h3.section-subheading {
 
 
 section {
-    padding: 70px 0;
+    padding: 50px 0;
 }
 
 .how-it-works-heading {
@@ -940,6 +940,10 @@ ul.species {
 .bottom54 { margin-bottom: 54px; }
 
 
+.m-top17 { margin-top:17px; }
+.m-top30 { margin-top:30px; }
+.m-top40 { margin-top:40px; }
+.m-top70 { margin-top:70px; }
 
 
 .remove-padding-left { padding-left: 0px; }
@@ -951,7 +955,9 @@ ul.species {
 
 footer { background-color: #222; }
 
-
-section#your-fisheries .fishery {
-    padding: 25px;
+label {
+    display: block;
+    padding-top: 9px; 
+    padding-bottom: 8px; 
 }
+

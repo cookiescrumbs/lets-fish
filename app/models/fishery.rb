@@ -4,6 +4,7 @@ class Fishery < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   validates :name, presence: { message: "Fishery name can't be blank" }
+  validates :description, presence: { message: "Fishery description can't be blank" }
 
   has_many :user_fisheries
   has_many :users, through: :user_fisheries

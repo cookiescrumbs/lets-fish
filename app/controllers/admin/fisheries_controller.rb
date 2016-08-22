@@ -62,6 +62,6 @@ class Admin::FisheriesController < AdminController
   end
 
   def fishery_params
-    params.require(:fishery).permit(:name, :place_id, contact_details_attributes: [:name, :telephone, :mobile, :email, :website], address_attributes: [:postcode, :street, :line2, :region, :country])
+    params.require(:fishery).permit(:name, :description, :place_id, contact_details_attributes: [:name, :telephone, :mobile, :email, :website], address_attributes: [:postcode, :street, :line2, :region, :country])
   end
 end

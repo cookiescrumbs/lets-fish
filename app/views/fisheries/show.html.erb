@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-9">
                 <% if !@fishery.description.blank? %>
-                    <p><%= simple_format @fishery.description %></p>
+                    <%= simple_format @fishery.description %>
                 <% end %>
             </div>
         </div>
