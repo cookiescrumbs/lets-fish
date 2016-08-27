@@ -40,11 +40,11 @@ $(document).ready(function() {
         draggable: true
       });
 
-      addAndOpenInfoWindow(
-        map,
-        marker,
-        content = "Drag and drop this marker onto the water you'd like to add."
-      );
+      // addAndOpenInfoWindow(
+      //   map,
+      //   marker,
+      //   content = "Drag this pin to the location"
+      // );
 
       //add markers to map within bounding box
       boundingBox = getBoundingBoxFromMap(map);

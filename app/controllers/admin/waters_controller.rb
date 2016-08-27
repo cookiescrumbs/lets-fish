@@ -26,7 +26,7 @@ class Admin::WatersController < AdminController
   def update
     respond_to do |format|
       if update_water(@water) && update_image(@water) && update_image_geograph_photo_id(@water)
-        format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully updated." }
+        format.html { redirect_to your_fishery_path, notice: "#{@water.name} was successfully updated." }
       else
         format.html { render action: 'edit' }
       end

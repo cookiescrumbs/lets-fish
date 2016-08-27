@@ -238,12 +238,12 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand {
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #admin-fisheries .navbar-brand, #admin-waters .navbar-brand, #devise-registrations .navbar-brand {
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #admin-fisheries .navbar .container, #admin-waters .navbar .container, #devise-registrations .navbar .container {
         margin-left: 0;
     }
 
@@ -934,6 +934,9 @@ ul.species {
 .top40 { padding-top:40px; }
 .top70 { padding-top:70px; }
 
+.p-bottom10 { padding-bottom:10px; }
+
+
 .bottom24 { margin-bottom: 24px; }
 .bottom34 { margin-bottom: 34px; }
 .bottom44 { margin-bottom: 44px; }
@@ -959,5 +962,10 @@ label {
     display: block;
     padding-top: 9px; 
     padding-bottom: 8px; 
+}
+
+ul.signed-in-dropdown li a{
+    color: #000 !important;
+    text-transform: none !important;
 }
 

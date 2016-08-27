@@ -28,3 +28,9 @@
   width: 50%;
   height: 50%;
 }
+
+
+#admin-waters form img.missing {
+  width: 25%;
+  height: 25%;
+}

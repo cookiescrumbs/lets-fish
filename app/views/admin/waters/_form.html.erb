@@ -1,5 +1,8 @@
-<h4>Location</h4>
-<p class="text-muted">Drag pin to change location.</p>
+<h4>Adding a waters location</h4>
+  <p class="text-muted">1. Search for the waters location in the search box, at the top left corner of the map.</p>
+  <p class="text-muted">2. Double click the map to zoom in or use the pluse and minuse in the bottom right corner.</p>
+  <p class="text-muted">3. Drag the large yellow pin to the water you'd like to add.</p>
+  <p class="text-muted"><em>The large Yellow pin is the pin for the water you'd like to add. Red pins are waters already added to Let's fish.</em></p>
 <input id="map-search-box" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
 <%= form_for([:admin,  @fishery, @water], :html => {:role => "form",  multipart: true }) do |f| %>
@@ -34,8 +37,9 @@
       <%= file_field_tag(:file, multiple: false, name: "file[image]") %>
   </div>
   <div class="form-group">
-    <% image_src = (@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png' %>
-    <img src="<%= image_src %>" class="water preview" alt="<%= @water.name %>" itemprop="contentUrl">
+    <% image_src = (@water.images.first.image_file_name.blank?)? '/images/missing.png' : @water.images.first.image.url(:medium) %>
+    <% image_styles = (@water.images.first.image_file_name.blank?)? 'missing' : 'preview' %>
+    <img src="<%= image_src %>" class="water <%= image_styles %>" alt="<%= @water.name %>" itemprop="contentUrl">
   </div>
 
   <div class="form-group">
@@ -76,7 +80,8 @@
   </div>
 
   <div class="form-group">
-    <%= button_tag "Submit", class: "btn btn-primary  m-top17 pull-right" %>
+    <%= button_tag "Submit water details", class: "btn btn-warning  m-top17 pull-left" %>
+    <%= button_tag "Preview water page", class: "btn btn-default  m-top17 pull-right" %>
   </div>
 <% end %>
 </div>

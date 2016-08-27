@@ -21,7 +21,7 @@ LetsFish::Application.routes.draw do
   get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
 
-  get '/your/fisheries', to: 'admin/fisheries#index'
+  get '/your/fishery', to: 'admin/fisheries#index'
 
 
   # Example of regular route:

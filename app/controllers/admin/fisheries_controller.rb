@@ -40,7 +40,7 @@ class Admin::FisheriesController < AdminController
 
   def update
     if @fishery.update(fishery_params)
-      redirect_to admin_fisheries_path, notice: 'Fishery was successfully updated.'
+      redirect_to your_fishery_path, notice: 'Fishery was successfully updated.'
     else
       render action: 'edit'
     end
