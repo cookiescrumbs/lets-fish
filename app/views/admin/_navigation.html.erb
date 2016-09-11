@@ -9,8 +9,8 @@
             </button>
             <a class="navbar-brand" href="/">Let's fish</a>
         </div>
+        <% if user_signed_in? %>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">     
-
             <div class="btn-group pull-right" role="group" aria-label="...">
                 <a  href="/your/fishery" class="btn btn-default">Manage your fishery</a>
               <div class="btn-group" role="group">
@@ -25,6 +25,7 @@
               </div>
             </div>
         </div>
+        <% end %>
     </div>
 </nav>
 
