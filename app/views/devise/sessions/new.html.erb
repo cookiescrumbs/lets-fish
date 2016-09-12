@@ -15,14 +15,16 @@
               <%= f.password_field :password, autocomplete: "off", ld:"password"%>
             </div>
 
-            <% if devise_mapping.rememberable? -%>
-            <div class="form-group">
-                <%= f.check_box :remember_me, id: "remember-me"%>
-                <label for="remember-me">Remember me</label>
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group">
+                <div class="checkbox">
+                  <%= f.check_box :remember_me, id: "remember-me"%>
+                  <label for="remember-me">Remember me</label>
+                </div>
               </div>
-            <% end -%>
+            <% end %>
 
-          <div class="form-group">
+          <div class="form-group clearfix">
             <%= button_tag "Log in", class: "btn btn-warning  m-top17 pull-left" %>
           </div>
           <% end %>

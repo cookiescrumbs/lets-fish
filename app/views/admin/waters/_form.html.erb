@@ -73,7 +73,7 @@
     <label for="water_types">Water Type</label>
       <%= collection_radio_buttons(:water, :water_type_id, WaterType.all, :id, :category) do |b| %>
       <div class="radio">
-        <%= b.radio_button%>
+        <%= b.radio_button %>
         <%= b.label { b.text.capitalize } %>
       </div>
       <% end %>
