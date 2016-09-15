@@ -9,8 +9,8 @@
         <div class="row">
         <% if !@fisheries.nil? && @fisheries.exists? %>
             <% @fisheries.each do | fishery | %>
-                <% image_src = (fishery.waters.last.images.first)? fishery.waters.last.images.first.image.url(:medium) : '/images/missing.png' %>
-                <% image_styles = (fishery.waters.last.images.first)? '' : 'missing-image' %>
+                <% image_src = (fishery.waters.last && fishery.waters.last.images.first)? fishery.waters.last.images.first.image.url(:medium) : '/images/missing.png' %>
+                <% image_styles = (fishery.waters.last && fishery.waters.last.images.first)? '' : 'missing-image' %>
                 <div class="col-md-4 col-sm-12 explore-item">
                     <a href="/fisheries/<%= fishery.slug %>" class="explore-link" >
                         <div class="image-background">

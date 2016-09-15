@@ -3,8 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">  
-        <h2 class="bottom44">Log in</h2>
+        <h3 class="bottom44">Log in</h3>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <p><%= notice %></p>
+          <p><%= alert %></p>
            <div class="form-group">
               <label for="email">Email</label>
               <%= f.email_field :email, autofocus: true, id:"email"%>
@@ -12,7 +14,7 @@
 
            <div class="form-group">
               <label for="password">Password</label>
-              <%= f.password_field :password, autocomplete: "off", ld:"password"%>
+              <%= f.password_field :password, autocomplete: "off", id:"password"%>
             </div>
 
             <% if devise_mapping.rememberable? %>
@@ -33,6 +35,8 @@
     </div>
   </div>
 </section>
+
+<%= devise_error_messages! %>
 
 
 

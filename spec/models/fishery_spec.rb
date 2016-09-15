@@ -1,4 +1,4 @@
-describe Fishery, type: :model, focus: true do
+describe Fishery, type: :model do
   
   before do
     stub_google_geocode_lat_lng

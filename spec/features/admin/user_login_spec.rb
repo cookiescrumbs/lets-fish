@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'User log in', type: :feature do
+describe 'User log in', type: :feature, focus: true do
   describe 'user has an account' do
     before(:each) do
       stub_google_geocode_address
@@ -12,8 +12,8 @@ describe 'User log in', type: :feature do
       it 'shows a helpful validation messages for required fields' do
         fill_in 'Email', with: 'wrongemail@wrong.com'
         fill_in 'Password', with: 'wrongpassword'
-        click_on 'Log In'
-        expect(page.find('.alert')).to have_content 'Invalid email or password.'
+        click_on 'Log in'
+        expect(page).to have_content 'Invalid email or password.'
       end
     end
 
@@ -21,7 +21,7 @@ describe 'User log in', type: :feature do
       before(:each) do
         fill_in 'Email', with: @fishery_manager.email
         fill_in 'Password', with: @fishery_manager.password
-        click_on 'Log In'
+        click_on 'Log in'
       end
 
       it 'redirected to the users fishery page' do
@@ -29,13 +29,12 @@ describe 'User log in', type: :feature do
       end
 
       it 'can see that they are logged in' do
-        expect(page.find('.navbar')).to have_content "Signed in as #{@user.email}"
+        expect(page).to have_content "Signed in as #{@fishery_manager.email}"
       end
 
       it 'can logout in the header' do
         page.click_link('Logout')
-        expect(page.current_url).to end_with '/admin/login'
-        expect(page.find('.navbar')).to have_content 'Login'
+        expect(page.current_url).to end_with '/'
       end
     end
   end
