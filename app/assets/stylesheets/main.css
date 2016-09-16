@@ -969,3 +969,13 @@ ul.signed-in-dropdown li a{
     text-transform: none !important;
 }
 
+#new-fishery {
+    margin: 20px 0px;
+}
+
+.max-width-50 {
+    max-width: 50%;
+}
+
+
+

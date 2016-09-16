@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'User log in', type: :feature, focus: true do
+describe 'User log in', type: :feature do
   describe 'user has an account' do
     before(:each) do
       stub_google_geocode_address

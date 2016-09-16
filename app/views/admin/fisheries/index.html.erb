@@ -3,7 +3,12 @@
   <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3 class="bottom44">Manage your fishery</h3>
+          <div class="clearfix">
+            <h3 class="bottom44 pull-left">Manage your fishery</h3>
+            <% if current_user.auth === Rails.application.config.admin %>
+              <%= link_to 'Add a new fishery', new_admin_fishery_path, class: 'btn btn-warning pull-right', id: 'new-fishery' %>
+            <% end %>
+          </div>
           <% @fisheries.each do |fishery| %>
             <div class="panel panel-default">
               <div class="panel-heading clearfix">
@@ -20,7 +25,7 @@
                   <% if !fishery.waters.nil? && fishery.waters.exists? %>
                     <% fishery.waters.each do | water | %>
                       <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-                      <% image_styles = (water.images.first)? '' : 'missing-image' %>
+                      <% image_styles = (water.images.first)? '' : 'missing-image max-width-50' %>
                       <div class="col-md-4 col-sm-12 explore-item">
                             <div class="image-background">
                             <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>" itemprop="contentUrl">
@@ -43,6 +48,4 @@
   </div>
 </section>
 
-<% if current_user.auth === Rails.application.config.admin %>
-  <%= link_to 'New Fishery', new_admin_fishery_path, class: 'btn btn-primary' %>
-<% end %>
+
