@@ -5,6 +5,7 @@ describe 'Edit your user account', type: :feature, focus: true do
     before(:each) do
       stub_google_geocode_address
       @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
+      login @fishery_manager
       visit your_fishery_path
     end
 
