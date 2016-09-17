@@ -1,11 +1,13 @@
 require_relative '../features_helper'
 
-describe 'New water page', type: :feature do
+describe 'New water page', type: :feature, focus: true do
   before :each do
-    login FactoryGirl.create :user
-
     stub_google_geocode_lat_lng
     stub_google_geocode_address
+
+    fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
+    login fishery_manager
+
 
     @species = ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
       FactoryGirl.create :species, name: name
@@ -20,7 +22,7 @@ describe 'New water page', type: :feature do
   end
 
   it 'has the name of the fishery' do
-    expect(page).to have_content "New water for Bob's big fishery"
+    expect(page).to have_content "Adding a new water to #{@fishery.name}"
   end
 
   context 'form is filled out correctly' do
