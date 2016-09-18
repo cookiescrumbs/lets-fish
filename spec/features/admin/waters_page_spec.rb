@@ -3,7 +3,10 @@ require_relative '../features_helper'
 describe 'Manage waters page', type: :feature do
   before(:each) do
     stub_google_geocode_address
-    login FactoryGirl.create :user
+    @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
+
+    binding.pry
+    login @fishery_manager
   end
 
   context 'there is a fishery with waters' do
@@ -20,7 +23,7 @@ describe 'Manage waters page', type: :feature do
       end
 
       @fishery = FactoryGirl.create :fishery_with_waters
-      visit admin_fishery_waters_path @fishery.slug
+      visit your_fishery_path
     end
 
     let(:water) { @fishery.waters.last }
@@ -29,8 +32,8 @@ describe 'Manage waters page', type: :feature do
     let(:edit_button) { page.all('.edit').first }
     let(:number_of_waters) { @fishery.waters.count }
 
-    it 'lists a fisheries waters' do
-      expect(page.all('table tr.water').count).to eql number_of_waters
+    it 'lists a fisheries waters', focus: true do
+      expect(page.all('div.water').count).to eql number_of_waters
     end
 
     it 'has a link to create a new water' do

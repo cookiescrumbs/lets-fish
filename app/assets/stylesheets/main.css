@@ -421,7 +421,7 @@ section {
     padding: 25px;
     max-width: 650px;
     background-color: #fff;
-    border-top: 2px solid #f7f7f7;
+    border-top: 1px solid #f7f7f7;
 }
 
 #explore .explore-item .explore-caption h4, .result-caption h4 {
@@ -960,8 +960,8 @@ footer { background-color: #222; }
 
 label {
     display: block;
-    padding-top: 9px; 
-    padding-bottom: 8px; 
+    padding-top: 9px;
+    padding-bottom: 8px;
 }
 
 ul.signed-in-dropdown li a{
@@ -975,6 +975,10 @@ ul.signed-in-dropdown li a{
 
 .max-width-50 {
     max-width: 50%;
+}
+
+.border-none {
+    border: none;
 }
 
 
