@@ -32,7 +32,7 @@ describe 'Manage waters page', type: :feature do
     let(:edit_button) { page.all('.edit').first }
     let(:number_of_waters) { @fishery.waters.count }
 
-    it 'lists a fisheries waters', focus: true do
+    it 'lists a fisheries waters' do
       expect(page.all('div.water').count).to eql number_of_waters
     end
 

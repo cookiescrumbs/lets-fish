@@ -10,6 +10,6 @@ describe WaterType, type: :model do
 
   it 'titilizes the category' do
     @water_type.category = 'reservoir'
-    expect(@water_type.category).to eql 'Reservoir'
+    expect(@water_type.category).to eql 'reservoir'
   end
 end
