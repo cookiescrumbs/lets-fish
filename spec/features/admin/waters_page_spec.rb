@@ -1,63 +1,52 @@
 require_relative '../features_helper'
 
 describe 'Manage waters page', type: :feature do
-  before(:each) do
-    stub_google_geocode_address
-    @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
-
-    binding.pry
-    login @fishery_manager
-  end
 
   context 'there is a fishery with waters' do
     before(:each) do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
 
-      @species = ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
-        FactoryGirl.create :species, name: name
-      end
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
 
-      @water_type = %w(lake river).map do |category|
-        FactoryGirl.create :water_type, category: category
-      end
+      sign_in @fishery_manager
 
-      @fishery = FactoryGirl.create :fishery_with_waters
       visit your_fishery_path
     end
 
-    let(:water) { @fishery.waters.last }
-    let(:checked_species_name) { @species.last.name }
-    let(:first_species_name) { @species.first.name }
-    let(:edit_button) { page.all('.edit').first }
-    let(:number_of_waters) { @fishery.waters.count }
+    let(:fishery) { @fishery_manager.fisheries.last}
+    let(:water) { @fishery_manager.fisheries.first.waters.last }
+    let(:checked_species_name) { @fishery_manager.fisheries.first.waters.last.species.last.name.capitalize}
+    let(:first_species_name) { Species.first.name }
+    let(:edit_button) { page.all('.edit-water').first }
+    let(:number_of_waters) { @fishery_manager.fisheries.last.waters.count }
 
     it 'lists a fisheries waters' do
-      expect(page.all('div.water').count).to eql number_of_waters
+      expect(page.all('div.waters div.water').count).to eql number_of_waters
     end
 
     it 'has a link to create a new water' do
-      expect(page).to have_link 'New Water', href: new_admin_fishery_water_path(@fishery)
+      expect(page).to have_link 'Add a water', href: new_admin_fishery_water_path(fishery)
     end
 
     it 'has the name of the fishery on the page' do
-      expect(page).to have_content "#{@fishery.name.possessive} waters"
+      expect(page).to have_content "#{fishery.name}"
     end
 
     it 'can delete a water with a nice message' do
       name = water.name
       first_water = page.all('.destroy').first
-      expect { first_water.click }.to change(@fishery.waters, :count).from(5).to(4)
+      expect { first_water.click }.to change(fishery.waters, :count).from(5).to(4)
       expect(page.find('.alert')).to have_content "#{name} was successfully deleted"
     end
 
     describe 'a water can be edited' do
       it 'has the waters name as a title' do
         edit_button.click
-        expect(page.find('h3').text).to eql "#{@fishery.name.possessive} - #{water.name}"
+        expect(page.find('h3').text).to eql "Editing #{water.name}"
       end
 
-      it 'has the correct fields in the edit form' do
+      it 'has the correct fields in the edit form', focus: true do
         edit_button.click
         expect(page.find_field('water_name').value).to eql water.name
         expect(page.find('#latitude').value.to_f).to eql water.latitude

@@ -1,7 +1,6 @@
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
-require 'rack_session_access/capybara'
 require 'selenium-webdriver'
 require 'site_prism'
 
@@ -19,6 +18,7 @@ Capybara.javascript_driver = :selenium
 Capybara.ignore_hidden_elements = false
 RSpec.configure do |config|
   config.include Capybara::DSL
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)

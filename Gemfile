@@ -55,7 +55,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'shotgun'
   gem 'faker'
-  gem 'rack_session_access'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rubocop', require: false

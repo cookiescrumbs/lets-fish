@@ -157,9 +157,6 @@ GEM
       rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rack_session_access (0.1.1)
-      builder (>= 2.0.0)
-      rack (>= 1.0.0)
     rails (4.1.0)
       actionmailer (= 4.1.0)
       actionpack (= 4.1.0)
@@ -300,7 +297,6 @@ DEPENDENCIES
   possessive
   pry-byebug
   rack-cache
-  rack_session_access
   rails (= 4.1.0)
   rails_12factor
   rspec-rails
@@ -319,4 +315,4 @@ RUBY VERSION
    ruby 2.1.2p95
 
 BUNDLED WITH
-   1.12.3
+   1.12.5

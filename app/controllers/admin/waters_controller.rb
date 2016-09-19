@@ -41,7 +41,7 @@ class Admin::WatersController < AdminController
     @water = Water.friendly.find(params[:id])
     @water.destroy
     respond_to do |format|
-      format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully deleted" }
+      format.html { redirect_to your_fishery_path, notice: "#{@water.name} was successfully deleted" }
     end
   end
 

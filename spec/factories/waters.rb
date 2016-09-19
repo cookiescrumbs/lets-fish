@@ -9,7 +9,5 @@ FactoryGirl.define do
     season_end '2014-10-20'
     images { create_list(:image, 2) }
     fishery
-    species { create_list(:species, 1) }
-    water_type_id { 1 }
   end
 end
