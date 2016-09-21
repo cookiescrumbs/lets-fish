@@ -21,7 +21,7 @@
     <label for="place-id">Google Place ID</label>
     <%= f.text_field :place_id, class: "form-control", id:"place-id" %>
   </div>
-  
+
   <div class="form-group">
     <label for="description">Description</label>
       <%= f.text_area :description, class: "form-control", id:"fishery-description", rows: 10, cols: 25%>
@@ -32,7 +32,6 @@
   <%= render 'address',         form: f %>
 
   <div class="form-group">
-    <%= button_tag "Submit fishery details", class: "btn btn-warning  m-top17 pull-left" %>
-    <%= button_tag "Preview fishery page", class: "btn btn-default  m-top17 pull-right" %>
+    <%= button_tag "Submit fishery details", class: "btn btn-warning  m-top17 pull-right" %>
   </div>
 <% end %>
