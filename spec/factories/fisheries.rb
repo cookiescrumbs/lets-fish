@@ -25,7 +25,7 @@ FactoryGirl.define do
           latitude: 53.4807593,
           longitude: -2.2426305000000184,
           images: create_list(:image, 1),
-          species: [ Species.order("RANDOM()").first ],
+          species: [ Species.last ],
           water_type_id: WaterType.first.id
         )
       end

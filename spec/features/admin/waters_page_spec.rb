@@ -17,7 +17,7 @@ describe 'Manage waters page', type: :feature do
     let(:fishery) { @fishery_manager.fisheries.last}
     let(:water) { @fishery_manager.fisheries.first.waters.last }
     let(:checked_species_name) { @fishery_manager.fisheries.first.waters.last.species.last.name.capitalize}
-    let(:first_species_name) { Species.first.name }
+    let(:first_species_name) { Species.first.name.capitalize }
     let(:edit_button) { page.all('.edit-water').first }
     let(:number_of_waters) { @fishery_manager.fisheries.last.waters.count }
 
@@ -46,7 +46,7 @@ describe 'Manage waters page', type: :feature do
         expect(page.find('h3').text).to eql "Editing #{water.name}"
       end
 
-      it 'has the correct fields in the edit form', focus: true do
+      it 'has the correct fields in the edit form' do
         edit_button.click
         expect(page.find_field('water_name').value).to eql water.name
         expect(page.find('#latitude').value.to_f).to eql water.latitude
@@ -69,7 +69,9 @@ describe 'Manage waters page', type: :feature do
         click_on 'Submit'
 
         expect(page).to have_content 'loch dooooooon'
-        expect(page).to have_content [first_species_name, checked_species_name].to_sentence
+        expect(page).to have_content 'Somewhere, Wales'
+        expect(water.species.length).to eql 2
+        expect("#{water.species.first.name} #{water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
         expect(page.find('.alert')).to have_content 'loch dooooooon was successfully updated.'
         expect(water.images.last.image_file_name).to eql 'another-loch.jpg'
         expect(water.images.last.geograph_photo_id).to eql 987_654
@@ -88,16 +90,19 @@ describe 'Manage waters page', type: :feature do
 
   context 'there is a fishery without waters' do
     before(:each) do
-      @fishery_without_waters = FactoryGirl.create :fishery
-      visit admin_fishery_waters_path @fishery_without_waters.slug
+      stub_google_geocode_lat_lng
+      stub_google_geocode_address
+
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
+      @fishery_manager.fisheries.first.waters = []
+
+      sign_in @fishery_manager
+
+      visit your_fishery_path
     end
 
     it 'has a lovely message telling you to create a water' do
-      expect(page).to have_content 'There are no waters associated with this fishery. Please add a water.'
-    end
-
-    it "doesn't have a table of waters" do
-      expect(page).to have_no_css 'table.waters'
+      expect(page).to have_content 'There are no waters associated with this fishery. Add a water'
     end
   end
 end

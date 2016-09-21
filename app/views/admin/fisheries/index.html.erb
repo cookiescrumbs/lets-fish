@@ -42,6 +42,9 @@
                             </div>
                         </div>
                     <% end %>
+                  <% else %>
+                    <div class="alert alert-warning">There are no waters associated with this fishery. <%= link_to 'Add a water', new_admin_fishery_water_path(fishery), class: 'btn btn-warning', id: 'new-fishery' %>
+                    </div>
                   <% end %>
                 </div>
               </div>
