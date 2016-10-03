@@ -1,5 +1,10 @@
 LetsFish::Application.routes.draw do
-  devise_for :users
+
+devise_for :users
+
+as :user do
+  get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
+end
 
   namespace :admin do
     resources :water_types
