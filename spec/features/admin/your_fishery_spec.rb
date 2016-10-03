@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'Your fishery page', type: :feature, focus: true do
+describe 'Your fishery page', type: :feature do
 
   context 'Fishery Manager has a fishery to manage' do
     before(:each) do
@@ -62,7 +62,7 @@ describe 'Your fishery page', type: :feature, focus: true do
     let(:last_water) { fishery.waters.last }
     let(:edit_button) { page.all('.edit-fishery').first }
 
-    describe 'administrator privilages' do
+    describe 'administrator privileges' do
 
       it 'has a button to add a new fishery' do
         expect(page).to have_link 'Add a new fishery', href: new_admin_fishery_path

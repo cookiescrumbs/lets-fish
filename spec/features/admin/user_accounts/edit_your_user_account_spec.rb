@@ -3,19 +3,25 @@ require_relative '../../features_helper'
 describe 'Edit your user account', type: :feature do
   describe 'user has an account' do
     before(:each) do
+      stub_google_geocode_lat_lng
       stub_google_geocode_address
-      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
-      login @fishery_manager
-      visit your_fishery_path
+
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
+      sign_in @fishery_manager
+      visit edit_user_registration_path
     end
 
-    describe 'User changes their password' do
+    describe 'User changes their password', focus: true do
 
       context 'successfully fills in the change password form' do
         it 'shows a helpful validation messages for required fields' do
-          fill_in 'Email', with: 'wrongemail@wrong.com'
-          fill_in 'Password', with: 'wrongpassword'
-          click_on 'Log in'
+          fill_in 'Email', with: 'changed@gmail.com'
+          fill_in 'New Password', with: 'newpassword'
+          fill_in 'Confirm New Password', with: 'newpassword'
+          fill_in 'Current Password', with: '5lbBr0wnTr0ut'
+
+          click_on 'Update details'
+
           expect(page).to have_content 'Invalid email or password.'
         end
       end
