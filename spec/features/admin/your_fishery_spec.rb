@@ -30,16 +30,6 @@ describe 'Your fishery page', type: :feature, focus: true do
       expect(page).to have_content "Dave's Big Trout Fishery"
     end
 
-    # it 'deletes a fishery'do
-    #   visit admin_fisheries_path
-    #   expect { click_on 'destroy' }.to change(Fishery, :count).from(1).to(0)
-    # end
-
-    # it 'deletes associated waters' do
-    #   visit admin_fisheries_path
-    #   expect { click_on 'destroy' }.to change(Water, :count).from(5).to(0)
-    # end
-
     it 'has the fishery name' do
       expect(page).to have_content fishery.name
     end
@@ -57,14 +47,38 @@ describe 'Your fishery page', type: :feature, focus: true do
     end
   end
 
-  # context 'there are no fisheries to manage' do
-  #   it 'has a lovely message telling you to create a fishery' do
-  #     visit admin_fisheries_path
-  #     expect(page).to have_content 'There are no fisheries. Please add a fishery.'
-  #   end
+  context 'Administrator has fisheries to manage' do
+    before(:each) do
+      stub_google_geocode_lat_lng
+      stub_google_geocode_address
+      @admin = FactoryGirl.create :user, email: 'admin@lets.fish', password: '25lbBr0wnTr0ut',  auth: Rails.application.config.admin
 
-  #   it 'doesn\'t have a table of fisheries' do
-  #     expect(page).to have_no_css 'table.waters'
-  #   end
-  # end
+      sign_in @admin
+
+      visit your_fishery_path
+    end
+
+    let(:fishery) { @fishery_manager.fisheries.last}
+    let(:last_water) { fishery.waters.last }
+    let(:edit_button) { page.all('.edit-fishery').first }
+
+    describe 'administrator privilages' do
+
+      it 'has a button to add a new fishery' do
+        expect(page).to have_link 'Add a new fishery', href: new_admin_fishery_path
+      end
+
+      # it 'deletes a fishery'do
+      #   expect { click_on 'destroy' }.to change(Fishery, :count).from(1).to(0)
+      # end
+
+      # it 'deletes associated waters' do
+      #   expect { click_on 'destroy' }.to change(Water, :count).from(5).to(0)
+      # end
+
+    end
+
+  end
+
+
 end
