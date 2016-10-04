@@ -1,28 +1,23 @@
 require_relative '../features_helper'
 
-describe 'New water page', type: :feature do
+describe 'New water page', type: :feature, focus: true do
   before :each do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
 
-    fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
-    login fishery_manager
+    @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
+    sign_in @fishery_manager
 
 
-    @species = ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
-      FactoryGirl.create :species, name: name
-    end
-
-    @water_type = %w(lake river).map do |category|
-      FactoryGirl.create :water_type, category: category
-    end
-
-    @fishery = FactoryGirl.create :fishery, name: "Bob's big fishery"
-    visit new_admin_fishery_water_path @fishery.slug
+    
+    visit your_fishery_path
+    page.all('.add-water').first.click
   end
 
+  let(:fishery) { @fishery_manager.fisheries.last}
+
   it 'has the name of the fishery' do
-    expect(page).to have_content "Adding a new water to #{@fishery.name}"
+    expect(page).to have_content "Adding a new water to #{fishery.name}"
   end
 
   context 'form is filled out correctly' do
@@ -31,18 +26,17 @@ describe 'New water page', type: :feature do
       # had to use find as the fields are hidden
       find('#latitude').set(-90)
       find('#longitude').set(-180)
-      check @species.first.name
-      check @species.last.name
-      choose @water_type.first.category
+      check Species.first.name.capitalize
+      choose WaterType.first.category.capitalize
       attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
       find('#image_geograph_photo_id').set 987_654
 
-      click_on 'Submit'
+      click_on 'Submit water details'
 
       expect(page).to have_content 'Total Loch Doon'
-      expect(page).to have_content [@species.first.name, @species.last.name].to_sentence
+      expect(page).to have_content [@species.first.name].to_sentence
       expect(page).to have_content @water_type.first.category
-      expect(page.find('.alert')).to have_content "#{@fishery.waters.last.name} was successfully added to #{@fishery.name}"
+      expect(page.find('.alert')).to have_content "#{fishery.waters.last.name} was successfully added to #{fishery.name}"
       expect(@fishery.waters.last.images.first.geograph_photo_id).to eql 987_654
     end
   end

@@ -977,6 +977,10 @@ ul.signed-in-dropdown li a{
     max-width: 50%;
 }
 
+.max-width-25 {
+    max-width: 25%;
+}
+
 .border-none {
     border: none;
 }
