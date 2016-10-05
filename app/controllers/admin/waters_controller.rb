@@ -16,7 +16,7 @@ class Admin::WatersController < AdminController
     build_water_with_image
     respond_to do |format|
       if @fishery.save
-        format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully added to #{@fishery.name}" }
+        format.html { redirect_to your_fishery_path, notice: "#{@water.name} was successfully added to #{@fishery.name}" }
       else
         format.html { render action: 'new' }
       end

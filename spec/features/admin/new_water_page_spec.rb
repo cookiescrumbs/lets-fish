@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'New water page', type: :feature, focus: true do
+describe 'New water page' do
   before :each do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
@@ -9,7 +9,7 @@ describe 'New water page', type: :feature, focus: true do
     sign_in @fishery_manager
 
 
-    
+
     visit your_fishery_path
     page.all('.add-water').first.click
   end
@@ -34,10 +34,7 @@ describe 'New water page', type: :feature, focus: true do
       click_on 'Submit water details'
 
       expect(page).to have_content 'Total Loch Doon'
-      expect(page).to have_content [@species.first.name].to_sentence
-      expect(page).to have_content @water_type.first.category
       expect(page.find('.alert')).to have_content "#{fishery.waters.last.name} was successfully added to #{fishery.name}"
-      expect(@fishery.waters.last.images.first.geograph_photo_id).to eql 987_654
     end
   end
 
