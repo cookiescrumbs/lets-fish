@@ -1,11 +1,25 @@
-describe Water, type: :model do
+describe Water, type: :model, focus: true do
   before do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
-    @water = FactoryGirl.create(:water, address: nil, latitude: -41.21924848834151, longitude: -70.70650221597815)
-    @water_with_address = FactoryGirl.create(:water, address: 'Somewhere, Wales', latitude: -41.21924848834151, longitude: -70.70650221597815)
+    @water = FactoryGirl.create(
+      :water,
+      address: nil,
+      latitude: -41.21924848834151,
+      longitude: -70.70650221597815,
+      species: [ Species.last ],
+      water_type_id: WaterType.first.id
+    )
+    @water_with_address = FactoryGirl.create(
+      :water,
+      address: 'Somewhere, Wales',
+      latitude: -41.21924848834151,
+      longitude: -70.70650221597815,
+      species: [ Species.last ],
+      water_type_id: WaterType.first.id
+    )
   end
 
   it 'is not valid without a name' do
