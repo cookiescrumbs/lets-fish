@@ -1,4 +1,4 @@
-describe Water, type: :model, focus: true do
+describe Water, type: :model do
   before do
     stub_google_geocode_lat_lng
     stub_google_geocode_address

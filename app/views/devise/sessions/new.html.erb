@@ -1,9 +1,11 @@
 <%= render '/admin/navigation' %>
-<section class="container top17">
+<section class="container p-top17
+">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">  
-        <h3 class="bottom44">Log in</h3>
+      <div class="col-lg-12">
+        <h3 class="m-bottom44
+">Log in</h3>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <p><%= notice %></p>
           <p><%= alert %></p>
@@ -27,7 +29,8 @@
             <% end %>
 
           <div class="form-group clearfix">
-            <%= button_tag "Log in", class: "btn btn-warning  m-top17 pull-left" %>
+            <%= button_tag "Log in", class: "btn btn-warning  m-p-top17
+ pull-left" %>
           </div>
           <% end %>
           <%= render "devise/shared/links" %>

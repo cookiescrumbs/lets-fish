@@ -1,14 +1,13 @@
 require_relative '../features_helper'
 
-describe 'New water page' do
+describe 'New water page', type: :feature do
   before :each do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
 
     @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
+
     sign_in @fishery_manager
-
-
 
     visit your_fishery_path
     page.all('.add-water').first.click

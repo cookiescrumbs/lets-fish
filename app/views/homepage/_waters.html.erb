@@ -10,7 +10,7 @@
             <% if !@waters.nil? && @waters.exists? %>
                 <% @waters.each do | water | %>
                     <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-                    <% image_styles = (water.images.first)? '' : 'missing-image max-width-54' %>
+                    <% image_styles = (water.images.first)? '' : 'missing-image max-width-54 p-top5 p-bottom5' %>
                     <div class="col-md-4 col-sm-12 explore-item">
                         <a href="/waters/<%= water.slug %>" class="explore-link" >
                             <div class="image-background">

@@ -1,10 +1,12 @@
 <%= render 'navigation' %>
-<section id="your-fisheries" class="container top17">
+<section id="your-fisheries" class="container p-top17
+">
   <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="clearfix">
-            <h3 class="bottom44 pull-left">Manage your fishery</h3>
+            <h3 class="m-bottom44
+ pull-left">Manage your fishery</h3>
             <% if current_user.auth === Rails.application.config.admin %>
               <%= link_to 'Add a new fishery', new_admin_fishery_path, class: 'btn btn-warning pull-right', id: 'new-fishery' %>
             <% end %>
