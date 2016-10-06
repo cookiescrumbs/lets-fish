@@ -8,6 +8,7 @@
                 count +=1
             %>
                 <div class="col-md-6 col-sm-12 result-item">
+                    <a href="/waters/<%= water.slug %>" class="result-link" itemprop="url" >
                     <div class="title-header-outer">
                         <div class="title-header">
                             <h4 class="water-name" itemprop="name" ><%= water.name %></h4>
@@ -20,12 +21,11 @@
                     <div>
                         <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
                         <% image_styles = (water.images.first)? '' : 'missing-image' %>
-                        <a href="/waters/<%= water.slug %>" class="result-link" itemprop="url" >
                             <div class="image-background">
                                 <h2 itemprop="name" class="hidden"><%= water.name %></h2>
                                 <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
                             </div>
-                        </a>
+                    </a>
                         <div class="result-caption">
                             <p itemprop="name" class="hidden"><%= water.name %></p>
                             <p itemprop="description" class="hidden"><%= water.description %></p>
