@@ -4,6 +4,7 @@ class FisheriesController < ApplicationController
   before_action :set_water, only: [:show]
   before_action :set_image_attribution, only: [:show]
   before_action :set_species, only: [:show]
+  before_action :set_water_types, only: [:show]
 
   def show
   end
@@ -24,9 +25,14 @@ class FisheriesController < ApplicationController
     @water = Fishery.friendly.find(params[:id]).waters.first
   end
 
-  # need to get all species form across all waters
+  # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
   def set_species
-    @species = Fishery.friendly.find(params[:id]).waters.first.species.select(:name).distinct
+    @species = Fishery.friendly.find(params[:id]).species
+  end
+
+  # need to get all the water types from across all waters ["lake", "river"]
+  def set_water_types
+    @water_types = Fishery.friendly.find(params[:id]).water_types
   end
 
   # Add this stuff to the image model

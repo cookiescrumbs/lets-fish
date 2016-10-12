@@ -4,7 +4,7 @@ class Species < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def name
-    super.capitalize unless super.nil?
-  end
+  # def name
+  #   super.capitalize unless super.nil?
+  # end
 end

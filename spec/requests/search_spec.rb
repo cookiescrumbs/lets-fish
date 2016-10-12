@@ -3,9 +3,23 @@ describe 'Search API', type: :request do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
 
-    FactoryGirl.create_list :species, 5
-    FactoryGirl.create_list :water_type, 5
-    FactoryGirl.create_list :water, 23, latitude: 53.501942, longitude: -2.245983
+    ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
+      FactoryGirl.create :species, name: name
+    end
+
+    %w(lake river).map do |category|
+      FactoryGirl.create :water_type, category: category
+    end
+
+    FactoryGirl.create_list(
+      :water,
+      23,
+      latitude: 53.501942,
+      longitude: -2.245983,
+      species: [ Species.last ],
+      water_type_id: WaterType.first.id
+    )
+
   end
 
   it 'GET /search with bounds' do

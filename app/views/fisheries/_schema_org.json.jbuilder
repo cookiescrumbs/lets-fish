@@ -16,7 +16,7 @@ json.set! :hasOfferCatalog do
       json.set! :@type, 'Offer'
       json.set! :itemOffered do
         json.set! :@type, 'Product'
-        json.name species.name
+        json.name species
       end
     end
   end

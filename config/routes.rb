@@ -1,10 +1,17 @@
 LetsFish::Application.routes.draw do
+
+devise_for :users
+
+as :user do
+  get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
+end
+
   namespace :admin do
     resources :water_types
     resources :species
-    resources :fisheries do
-      resources :waters
-    end
+      resources :fisheries do
+        resources :waters
+      end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -18,9 +25,9 @@ LetsFish::Application.routes.draw do
   get '/fisheries/:id',   to: 'fisheries#show'
   get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
-  get '/admin/login',     to: 'admin/sessions#new'
-  post '/admin/login',    to: 'admin/sessions#create'
-  get '/admin/logout',    to: 'admin/sessions#destroy'
+
+  get '/your/fishery', to: 'admin/fisheries#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

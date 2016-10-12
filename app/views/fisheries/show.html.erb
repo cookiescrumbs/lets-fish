@@ -3,8 +3,7 @@
     <div class="image-trans">
         <div class="container">
             <div class="intro-text">
-                <div class="intro-heading"></div>
-                <h1><div class="intro-lead-in"><%= @fishery.name %></div></h1>
+                <div class="intro-heading"><%= @fishery.name %></div>
             </div>
         </div>
         <% if !@image_attribution.blank? %>
@@ -18,15 +17,41 @@
         <% end %>
     </div>
 </header>
+<section id="about-the-fishery">
+    <div class="container">
+        <div class="row">
+         <h4 class="m-bottom24
+">About the fishery</h4>
+            <div class="col-md-3 remove-padding-left">
+                <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
+                <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>
+                <%= render '/shared/location', locals: { location: @fishery.address.formatted } %>
+            </div>
+            <div class="col-md-9">
+                <% if !@fishery.description.blank? %>
+                    <%= simple_format @fishery.description %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="waters" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+          <h4>Waters</h4>
+            <%= render '/search/results', { hide_water_count: true } %>
+        </div>
+    </div>
+</section>
 <section id="location">
     <div class="container">
+        <h4>Location</h4>
         <div id="location-map" data-lat="<%=@fishery.latitude %>" data-lng="<%=@fishery.longitude%>"></div>
     </div>
 </section>
-
-<section id="the-fishery">
+<section id="contact">
     <div class="container">
-        <h4>Fishery Contact Details</h4>
+        <h4>Contact Details</h4>
         <p><%= @fishery.name %></p>
         <p><%= @fishery.contact_details.name %></p>
         <p><%= @fishery.address.formatted %></p>
@@ -35,20 +60,7 @@
         <p><a href="mailto:<%= @fishery.contact_details.email %>?Subject=Enquiry regarding fishing at <%= @water.name %>"><%= @fishery.contact_details.email %></a></p>
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
-<section>
-<section id="waters-managed-by-this-fishery" class="bg-light-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Waters managed by <%= @fishery.name %> </h2>
-            </div>
-        </div>
-        <div class="row">
-             <%= render '/search/results', { hide_water_count: true } %>
-        </div>
-    </div>
 </section>
-
 <script type="application/ld+json">
     <%= raw render 'schema_org.json.jbuilder' %>
 </script>

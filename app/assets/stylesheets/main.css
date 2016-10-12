@@ -6,7 +6,7 @@
 
 body {
     overflow-x: hidden;
-    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Roboto Slab","Helvetica Neue", Helvetica,Arial,sans-serif;
 }
 
 .text-muted {
@@ -72,9 +72,13 @@ h6 {
     background-color: #222;
 }
 
+.btn {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
 .btn-primary {
     border-color: #fed136;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
@@ -234,12 +238,12 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #waters .navbar-brand, #fisheries .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand{
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #admin-fisheries .navbar-brand, #admin-waters .navbar-brand, #devise-registrations .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand{
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #waters .navbar .container, #fisheries .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #admin-fisheries .navbar .container, #admin-waters .navbar .container, #devise-registrations .navbar .container {
         margin-left: 0;
     }
 
@@ -287,30 +291,6 @@ header {
     -o-background-size: cover;
 }
 
-#waters header {
-    text-align: center;
-    color: #fff;
-    background-attachment: scroll;
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-section#discover {
-    text-align: center;
-    color: #fff;
-    background-attachment: scroll;
-    background-image: url('/images/header-bg.jpg');
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
 
 header .intro-text, section .intro-text{
     padding-top: 100px;
@@ -338,17 +318,9 @@ header div.image-trans, section div.image-trans{
     background: rgba(0, 0, 0, 0.3);
 }
 
-#waters header div.image-trans, section div.image-trans, #fisheries header div.image-trans{
-    background: rgba(0, 0, 0, 0.1);
-}
-
 
 
 @media(min-width:768px) {
-
-    #waters section, #fisheries section {
-        padding: 50px 0 0 0 !important;
-    }
 
     header .intro-text, section .intro-text{
         padding-top: 200px;
@@ -449,7 +421,7 @@ section {
     padding: 25px;
     max-width: 650px;
     background-color: #fff;
-    border-top: 2px solid #f7f7f7;
+    border-top: 1px solid #f7f7f7;
 }
 
 #explore .explore-item .explore-caption h4, .result-caption h4 {
@@ -694,14 +666,6 @@ body#search footer, body#trips footer{
   margin-bottom: 10px;
 }
 
-section#waters-managed-by-this-fishery {
-    padding-bottom: 60px;
-}
-
-section#waters-managed-by-this-fishery h2.section-heading {
-    padding-bottom: 20px;
-}
-
 
 ul.species {
     padding-bottom: 10px;
@@ -730,9 +694,6 @@ ul.species {
     line-height: 25px;
 }
 
-#waters section {
-    padding: 10px 0 0 0;
-}
 
 #search .missing-image, #results-container .missing-image{
     padding: 12px 0;
@@ -968,13 +929,72 @@ ul.species {
     line-height: 1.8;
 }
 
-.top17 { padding-top:17px; }
-.top30 { padding-top:30px; }
-.top40 { padding-top:40px; }
-.top70 { padding-top:70px; }
+.p-top5 { padding-top: 5px; }
+.p-top17 { padding-top:17px; }
+.p-top30 { padding-top:30px; }
+.p-top70 { padding-top:70px; }
+.p-top40 { padding-top:40px; }
+
+.p-bottom10 { padding-bottom:10px; }
+.p-bottom5 { padding-bottom:5px; }
+
+
+.m-bottom24 { margin-bottom: 24px; }
+.m-bottom34 { margin-bottom: 34px; }
+.m-bottom44 { margin-bottom: 44px; }
+.m-bottom54 { margin-bottom: 54px; }
+
+
+.m-top17 { margin-top:17px; }
+.m-top30 { margin-top:30px; }
+.m-top40 { margin-top:40px; }
+.m-top70 { margin-top:70px; }
+
+
+.remove-padding-left { padding-left: 0px; }
+
 
 #trips header .intro-text {
     padding-top: 100px;
 }
 
 footer { background-color: #222; }
+
+label {
+    display: block;
+    padding-top: 9px;
+    padding-bottom: 8px;
+}
+
+ul.signed-in-dropdown li a{
+    color: #000 !important;
+    text-transform: none !important;
+}
+
+#new-fishery {
+    margin: 20px 0px;
+}
+
+
+.max-width-75 {
+    max-width: 75%;
+}
+
+.max-width-50 {
+    max-width: 50%;
+}
+
+.max-width-54 {
+    max-width: 54%;
+}
+
+.max-width-25 {
+    max-width: 25%;
+}
+
+.border-none {
+    border: none;
+}
+
+
+

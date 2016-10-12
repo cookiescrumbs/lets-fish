@@ -1,44 +1,59 @@
-<% if @fisheries.exists? %>
-  <h1>Fisheries</h1>
-  <table class="table table-striped fisheries">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Show</th>
-        <th>Edit</th>
-        <th>Destroy</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @fisheries.each do |fishery| %>
-        <tr>
-          <td><%= fishery.id %></td>
-          <td><%= fishery.name %></td>
-          <td><%= link_to 'show', admin_fishery_path(fishery), class: 'btn btn-default btn-sm' %></td>
-          <td><%= link_to 'edit', edit_admin_fishery_path(fishery), class: 'btn btn-default btn-sm' %></td>
-          <td><%= link_to 'destroy', admin_fishery_path(fishery), method: :delete, data: { confirm: "Are you sure you want to delete #{fishery.name}" }, class: 'btn btn-default btn-sm btn-danger'%>
-          </td>
-          <td>
-            <div class="btn-group">
-              <button type="button" class="btn btn-primary">waters</button>
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'add', new_admin_fishery_water_path(fishery) %></li>
-                <li><%= link_to 'show', admin_fishery_waters_path(fishery) %></li>
-              </ul>
+<%= render 'navigation' %>
+<section id="your-fisheries" class="container p-top17
+">
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="clearfix">
+            <h3 class="m-bottom44
+ pull-left">Manage your fishery</h3>
+            <% if current_user.auth === Rails.application.config.admin %>
+              <%= link_to 'Add a new fishery', new_admin_fishery_path, class: 'btn btn-warning pull-right', id: 'new-fishery' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row waters">
+        <div class="col-lg-12">
+          <% if flash[:notice] %>
+            <div class="alert alert-warning"><%= flash[:notice] %></div>
+          <% end %>
+          <% @fisheries.each do |fishery| %>
+              <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                  <h4 class="pull-left"><%= fishery.name %></h4>
+                  <div class="pull-right">
+                  <%= link_to 'Add a water', new_admin_fishery_water_path(fishery), class: 'btn btn-warning add-water' %>
+                  <%= link_to 'Edit details', edit_admin_fishery_path(fishery), class: 'btn btn-default edit-fishery' %>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <% if !fishery.waters.nil? && fishery.waters.exists? %>
+                    <% fishery.waters.each do | water | %>
+                        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
+                        <% image_styles = (water.images.first)? '' : 'missing-image max-width-50' %>
+                        <div class="water col-md-4 col-sm-12 explore-item">
+                              <div class="image-background">
+                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+                              </div>
+                            <div class="explore-caption border-none">
+                                <h4><%= water.name %></h4>
+                                <p class="text-muted"><%= water.short_address %></p>
+                                <%= link_to 'Edit details', edit_admin_fishery_water_path(fishery, water), class: 'btn btn-default btn-sm edit-water' %>
+                                <%= link_to 'Delete', admin_fishery_water_path(fishery, water), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" }, class: 'btn btn-default btn-sm btn-danger destroy' %>
+                            </div>
+                        </div>
+                    <% end %>
+                  <% else %>
+                    <div class="alert alert-warning">There are no waters associated with this fishery. <%= link_to 'Add a water', new_admin_fishery_water_path(fishery), class: 'btn btn-warning', id: 'new-fishery' %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>
 
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-<br />
 
-<%= link_to 'New Fishery', new_admin_fishery_path, class: 'btn btn-primary' %>

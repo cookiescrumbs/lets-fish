@@ -1,2 +1,13 @@
-<h3><%= @fishery.name.possessive unless @fishery.name.empty? %> - <%= @water.name unless @water.name.empty? %></h3>
-<%= render 'form' %>
+<%= render 'navigation' %>
+<section class="container p-top17
+">
+	<div class="container">
+	 	<div class="row">
+		    <div class="col-lg-8">
+		    	<h3 class="m-bottom44
+">Editing <%= @water.name %></h3>
+		     	<%= render 'form' %>
+		    </div>
+	    </div>
+	</div>
+</section>

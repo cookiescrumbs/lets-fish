@@ -43,6 +43,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
 gem 'meta-tags'
 gem 'rack-cache'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -54,7 +55,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'shotgun'
   gem 'faker'
-  gem 'rack_session_access'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rubocop', require: false

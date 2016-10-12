@@ -4,6 +4,10 @@ class Fishery < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   validates :name, presence: { message: "Fishery name can't be blank" }
+  validates :description, presence: { message: "Fishery description can't be blank" }
+
+  has_many :user_fisheries
+  has_many :users, through: :user_fisheries
 
   has_many :waters, dependent: :destroy
 
@@ -12,6 +16,16 @@ class Fishery < ActiveRecord::Base
 
   has_one :address
   accepts_nested_attributes_for :address
+
+  # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
+  def species
+    self.waters.map{|water| water.species.map{|s| s.name } }.flatten.uniq.sort
+  end
+  
+  # need to get all the water types from across all waters ["lake", "river"]
+  def water_types
+    self.waters.map{|water| water.water_type.category}.uniq.sort
+  end
 
   def latitude
     return google_places_details['geometry']['location']['lat'] if google_places_details?

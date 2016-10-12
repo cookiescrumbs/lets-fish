@@ -35,15 +35,16 @@ $(document).ready(function() {
 
       marker = new google.maps.Marker({
         position: getMarkerPosition(map),
+        icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|",
         map: map,
         draggable: true
       });
 
-      addAndOpenInfoWindow(
-        map,
-        marker,
-        content = "Drag and drop this marker onto the water you'd like to add."
-      );
+      // addAndOpenInfoWindow(
+      //   map,
+      //   marker,
+      //   content = "Drag this pin to the location"
+      // );
 
       //add markers to map within bounding box
       boundingBox = getBoundingBoxFromMap(map);

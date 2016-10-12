@@ -10,8 +10,8 @@ class Water < ActiveRecord::Base
   belongs_to              :fishery, touch: true
   belongs_to              :water_type
 
-  has_many :species_water
-  has_many :species, through: :species_water
+  has_many :species_waters
+  has_many :species, through: :species_waters
 
   has_many :images, dependent: :destroy
 

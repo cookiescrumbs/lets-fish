@@ -2,7 +2,11 @@ require_relative '../features_helper'
 
 describe 'Water Type', type: :feature do
   before(:each) do
-    login FactoryGirl.create :user
+    stub_google_geocode_lat_lng
+    stub_google_geocode_address
+    @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
+
+    sign_in @fishery_manager
   end
   describe 'Manage water types' do
     it 'lists all water types' do
@@ -21,8 +25,8 @@ describe 'Water Type', type: :feature do
     it 'delete a water type' do
       FactoryGirl.create(:water_type, category: 'river')
       visit admin_water_types_path
-      click_on 'Destroy'
-      expect(page).not_to have_content 'River'
+      delete_water_type = page.all('a', text: 'Destroy')[0]
+      expect { delete_water_type.click }.to change(WaterType, :count).from(3).to(2)
     end
 
     it 'show a water type detail' do

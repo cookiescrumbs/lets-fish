@@ -1,4 +1,7 @@
 LetsFish::Application.configure do
+  config.action_controller.perform_caching = false
+  config.perform_caching = false
+  config.cache_store = :null_store
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -39,4 +42,6 @@ LetsFish::Application.configure do
   }
 
   config.geograph_api_key = 'a5ecd893c8'
+  
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

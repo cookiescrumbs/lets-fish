@@ -1,5 +1,4 @@
 class Admin::WatersController < AdminController
-  before_action :authorize
   before_action :set_fishery, only: [:index, :new, :update, :create, :edit]
   before_action :set_water, only: [:edit, :update]
   before_action :set_image, only: [:edit, :update]
@@ -17,7 +16,7 @@ class Admin::WatersController < AdminController
     build_water_with_image
     respond_to do |format|
       if @fishery.save
-        format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully added to #{@fishery.name}" }
+        format.html { redirect_to your_fishery_path, notice: "#{@water.name} was successfully added to #{@fishery.name}" }
       else
         format.html { render action: 'new' }
       end
@@ -27,7 +26,7 @@ class Admin::WatersController < AdminController
   def update
     respond_to do |format|
       if update_water(@water) && update_image(@water) && update_image_geograph_photo_id(@water)
-        format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully updated." }
+        format.html { redirect_to your_fishery_path, notice: "#{@water.name} was successfully updated." }
       else
         format.html { render action: 'edit' }
       end
@@ -42,7 +41,7 @@ class Admin::WatersController < AdminController
     @water = Water.friendly.find(params[:id])
     @water.destroy
     respond_to do |format|
-      format.html { redirect_to admin_fishery_waters_path(@fishery), notice: "#{@water.name} was successfully deleted" }
+      format.html { redirect_to your_fishery_path, notice: "#{@water.name} was successfully deleted" }
     end
   end
 

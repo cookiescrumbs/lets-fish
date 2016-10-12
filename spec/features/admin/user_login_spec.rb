@@ -1,40 +1,41 @@
 require_relative '../features_helper'
 
-describe 'User login', type: :feature do
+describe 'User log in', type: :feature do
   describe 'user has an account' do
     before(:each) do
-      @user = FactoryGirl.create :user, password: '5lbBr0wnTr0ut'
-      visit admin_login_path
+      stub_google_geocode_lat_lng
+      stub_google_geocode_address
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut'
+      visit your_fishery_path
     end
 
-    context 'tries to login with incorrect details' do
+    context 'tries to log in with incorrect details' do
       it 'shows a helpful validation messages for required fields' do
-        fill_in 'email', with: 'wrongemail@wrong.com'
-        fill_in 'password', with: 'wrongpassword'
-        click_on 'Submit'
-        expect(page.find('.alert')).to have_content 'Email or Password is invalid'
+        fill_in 'Email', with: 'wrongemail@wrong.com'
+        fill_in 'Password', with: 'wrongpassword'
+        click_on 'Log in'
+        expect(page).to have_content 'Invalid email or password.'
       end
     end
 
     context 'logs in using the correct details' do
       before(:each) do
-        fill_in 'email', with: @user.email
-        fill_in 'password', with: @user.password
-        click_on 'Submit'
+        fill_in 'Email', with: @fishery_manager.email
+        fill_in 'Password', with: @fishery_manager.password
+        click_on 'Log in'
       end
 
-      it 'redirected to the fisheries page' do
-        expect(page.current_url).to end_with '/admin/fisheries'
+      it 'redirected to the users fishery page' do
+        expect(page.current_url).to end_with your_fishery_path
       end
 
       it 'can see that they are logged in' do
-        expect(page.find('.navbar')).to have_content "Signed in as #{@user.email}"
+        expect(page).to have_content "Signed in as #{@fishery_manager.email}"
       end
 
       it 'can logout in the header' do
         page.click_link('Logout')
-        expect(page.current_url).to end_with '/admin/login'
-        expect(page.find('.navbar')).to have_content 'Login'
+        expect(page.current_url).to end_with '/'
       end
     end
   end
