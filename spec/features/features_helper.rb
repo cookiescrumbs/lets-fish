@@ -13,7 +13,7 @@ end
 # require page objects
 Dir[Rails.root.join('spec/page_objects/**/*.rb')].each { |f| require f }
 
-# Capybara.default_wait_time = 60
+#Capybara.default_wait_time = 60
 Capybara.javascript_driver = :selenium
 Capybara.ignore_hidden_elements = false
 RSpec.configure do |config|

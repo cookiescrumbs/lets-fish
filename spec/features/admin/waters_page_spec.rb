@@ -52,7 +52,7 @@ describe 'Manage waters page', type: :feature do
         expect(page.find('#latitude').value.to_f).to eql water.latitude
         expect(page.find('#longitude').value.to_f).to eql water.longitude
         expect(page.has_checked_field?(checked_species_name)).to be true
-        expect(page.find('img.water')[:src]).to include 'loch.jpg'
+        expect(page.find('.img-responsive')[:src]).to include 'loch.jpg'
         expect(page.find('#image_geograph_photo_id').value.to_i).to eql water.images.last.geograph_photo_id
       end
 
