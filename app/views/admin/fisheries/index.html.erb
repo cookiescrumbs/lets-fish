@@ -23,9 +23,14 @@
                 <div class="panel-heading clearfix">
                   <h4 class="pull-left"><%= fishery.name %></h4>
                   <div class="pull-right">
-                  <%= link_to 'Add a water', new_admin_fishery_water_path(fishery), class: 'btn btn-warning add-water' %>
-                  <%= link_to 'Edit details', edit_admin_fishery_path(fishery), class: 'btn btn-default edit-fishery' %>
-                  </div>
+                  <%= link_to 'Add a water', new_admin_fishery_water_path(fishery), class: 'btn btn-warning add-water m-right10' %>
+                  <%= link_to 'Edit details', edit_admin_fishery_path(fishery), class: 'btn btn-default edit-fishery m-right10' %>
+                  <% if current_user.auth === Rails.application.config.admin %>
+                    <%= link_to 'Delete this fishery', admin_fishery_path(fishery),
+                     method: :delete,
+                     data: { confirm: "Are you sure you want to delete #{fishery.name}" }, class: 'btn btn-default btn-danger destroy' %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="panel-body">
                   <% if !fishery.waters.nil? && fishery.waters.exists? %>

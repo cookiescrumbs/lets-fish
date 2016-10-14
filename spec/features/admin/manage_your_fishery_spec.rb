@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'Your fishery page', type: :feature do
+describe 'Manage your fishery', type: :feature do
 
   context 'Fishery Manager has a fishery to manage' do
     before(:each) do
@@ -45,6 +45,15 @@ describe 'Your fishery page', type: :feature do
     it 'has a button to edit a water' do
        expect(page.all('div.water').first).to have_link 'Edit details', href: edit_admin_fishery_water_path(fishery, last_water)
     end
+
+    it 'has not got a button to add a new fishery' do
+        expect(page).not_to have_link 'Add a new fishery', href: new_admin_fishery_path
+    end
+
+    it 'has not got a button to delete a fishery' do
+      expect(page).not_to have_link 'Delete this fishery', href: admin_fishery_path(fishery)
+    end
+
   end
 
   context 'Administrator has fisheries to manage' do
@@ -58,9 +67,7 @@ describe 'Your fishery page', type: :feature do
       visit your_fishery_path
     end
 
-    let(:fishery) { @fishery_manager.fisheries.last}
-    let(:last_water) { fishery.waters.last }
-    let(:edit_button) { page.all('.edit-fishery').first }
+    let(:fishery) { @admin.fisheries.last}
 
     describe 'administrator privileges' do
 
@@ -68,13 +75,17 @@ describe 'Your fishery page', type: :feature do
         expect(page).to have_link 'Add a new fishery', href: new_admin_fishery_path
       end
 
-      # it 'deletes a fishery'do
-      #   expect { click_on 'destroy' }.to change(Fishery, :count).from(1).to(0)
-      # end
+      it 'has a button to delete a fishery' do
+        expect(page).to have_link 'Delete this fishery', href: admin_fishery_path(fishery)
+      end
 
-      # it 'deletes associated waters' do
-      #   expect { click_on 'destroy' }.to change(Water, :count).from(5).to(0)
-      # end
+      it 'deletes a fishery'do
+        expect { click_on 'Delete this fishery' }.to change(Fishery, :count).from(1).to(0)
+      end
+
+      it 'deletes associated waters' do
+        expect { click_on 'Delete this fishery' }.to change(Water, :count).from(5).to(0)
+      end
 
     end
 
