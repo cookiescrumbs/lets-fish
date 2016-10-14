@@ -29,8 +29,8 @@
                         <div class="result-caption">
                             <p class="hidden"><%= water.name %></p>
                             <p class="hidden"><%= water.description %></p>
-                            <%= render '/shared/water_type', locals: { category: water.water_type.category }%>
-                            <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name }.to_sentence } %>
+                            <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>
+                            <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name.capitalize }.to_sentence } %>
                             <%= render '/shared/location', locals: { location: water.address } %>
                         </div>
                     </div>
