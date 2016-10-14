@@ -687,10 +687,6 @@ ul.species {
 
 .water-type h6, .fish h6, .location h6 {
     font-weight: normal;
-    line-height: 15px;
-}
-
-.water-type h6, .fish h6 {
     line-height: 25px;
 }
 

@@ -28,7 +28,7 @@
             <div class="col-md-3 remove-padding-left">
                 <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>
-                <%= render '/shared/location', locals: { location: @fishery.address.formatted } %>
+                <%= render '/shared/location', locals: { location: @fishery.address.short } %>
             </div>
             <div class="col-md-9">
                 <% if !@fishery.description.blank? %>
