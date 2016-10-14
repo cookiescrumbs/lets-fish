@@ -8,10 +8,10 @@
                 count +=1
             %>
                 <div class="col-md-6 col-sm-12 result-item">
-                    <a href="/waters/<%= water.slug %>" class="result-link" itemprop="url" >
+                    <a href="/waters/<%= water.slug %>" class="result-link" target="_blank"  >
                     <div class="title-header-outer">
                         <div class="title-header">
-                            <h4 class="water-name" itemprop="name" ><%= water.name %></h4>
+                            <h4 class="water-name" ><%= water.name %></h4>
                             <span class="fa-stack fa-2x water-count <%=(local_assigns.has_key? :hide_water_count)? 'hide' : '' %>">
                                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                                 <i class="fa fa-stack-1x fa-inverse"><%= count %></i>
@@ -22,13 +22,13 @@
                         <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
                         <% image_styles = (water.images.first)? '' : 'missing-image' %>
                             <div class="image-background">
-                                <h2 itemprop="name" class="hidden"><%= water.name %></h2>
+                                <h2 class="hidden"><%= water.name %></h2>
                                 <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
                             </div>
                     </a>
                         <div class="result-caption">
-                            <p itemprop="name" class="hidden"><%= water.name %></p>
-                            <p itemprop="description" class="hidden"><%= water.description %></p>
+                            <p class="hidden"><%= water.name %></p>
+                            <p class="hidden"><%= water.description %></p>
                             <%= render '/shared/water_type', locals: { category: water.water_type.category }%>
                             <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name }.to_sentence } %>
                             <%= render '/shared/location', locals: { location: water.address } %>
