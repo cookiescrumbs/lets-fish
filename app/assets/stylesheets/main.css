@@ -997,4 +997,21 @@ ul.signed-in-dropdown li a{
 }
 
 
+.dropdown-menu {
+    color: #555 !important;
+    background-color: #e7e7e7;
+}
+
+.dropdown-menu
+    a {
+        color: #555 !important;
+        background-color: #e7e7e7;
+    }
+
+.dropdown-menu
+    a:hover {
+        color: #777 !important;
+        background-color: #e7e7e7 !important;
+    }
+
 
