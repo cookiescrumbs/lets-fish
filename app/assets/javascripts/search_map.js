@@ -59,7 +59,7 @@ $(document).ready(function() {
           results[0].geometry.viewport.getNorthEast()
         );
         map.fitBounds(resultBounds);
-        map.setZoom(10);
+        map.setZoom(9);
         boundingBox = getBoundingBoxFromMap(map);
         getMarkersAndResultsFromBounds(boundingBox, false);
         $('#map-search-box').show("slow");
