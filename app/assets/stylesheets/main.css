@@ -1014,4 +1014,8 @@ ul.signed-in-dropdown li a{
         background-color: #e7e7e7 !important;
     }
 
+ul.nav li.dropdown-toggle a {
+    padding-right: 0 !important;
+}
+
 
