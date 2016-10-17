@@ -238,12 +238,12 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #admin-fisheries .navbar-brand, #admin-waters .navbar-brand, #devise-registrations .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand{
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #admin-waters .navbar-brand, #devise-registrations .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand{
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #admin-fisheries .navbar .container, #admin-waters .navbar .container, #devise-registrations .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #admin-waters .navbar .container, #devise-registrations .navbar .container {
         margin-left: 0;
     }
 
