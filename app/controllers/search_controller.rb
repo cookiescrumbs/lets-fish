@@ -18,7 +18,7 @@ class SearchController < ApplicationController
   end
 
   def calculate_bounds
-    Geocoder::Calculations.bounding_box(center_point, 20) unless center_point.nil?
+    Geocoder::Calculations.bounding_box(center_point, 30) unless center_point.nil?
   end
 
   def center_point
