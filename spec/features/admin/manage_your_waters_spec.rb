@@ -105,4 +105,24 @@ describe 'Manage your waters page', type: :feature do
       expect(page).to have_content 'There are no waters associated with this fishery. Add a water'
     end
   end
+
+  context 'user is not logged in', focus: true do
+
+      before(:each) do
+        stub_google_geocode_lat_lng
+        stub_google_geocode_address
+
+        @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
+      end
+
+      let(:fishery) { @fishery_manager.fisheries.last}
+      let(:water) { @fishery_manager.fisheries.last.waters.last }
+
+
+      it 'redirects them to the login page' do
+        visit edit_admin_fishery_water_path(fishery, water)
+        expect(page.current_url).to end_with new_user_session_path
+      end
+
+  end
 end

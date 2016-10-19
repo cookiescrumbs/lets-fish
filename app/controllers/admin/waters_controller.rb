@@ -1,4 +1,7 @@
 class Admin::WatersController < AdminController
+
+  before_action :authenticate_user!
+
   before_action :set_fishery, only: [:index, :new, :update, :create, :edit]
   before_action :set_water, only: [:edit, :update]
   before_action :set_image, only: [:edit, :update]
