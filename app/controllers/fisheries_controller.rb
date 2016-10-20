@@ -13,8 +13,7 @@ class FisheriesController < ApplicationController
 
   def set_fishery
     @fishery = Fishery.friendly.find(params[:id])
-    expires_in 1.day
-    fresh_when(last_modified: @fishery.updated_at.utc, public: true)
+    fresh_when @fishery, public: true
   end
 
   def set_waters
