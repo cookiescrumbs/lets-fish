@@ -14,7 +14,7 @@ class WatersController < ApplicationController
   def set_water
     @water = Water.friendly.find(params[:id])
     expires_in 1.day
-    fresh_when(etag: @water, last_modified: @water.updated_at.utc, public: true)
+    fresh_when(last_modified: @water.updated_at.utc, public: true)
   end
 
   def set_waters

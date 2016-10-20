@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   def index
     @waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
     expires_in 1.day
-    fresh_when @waters, public: true
+    fresh_when last_modified: @waters.maximum(:updated_at), public: true
   end
 
   private
