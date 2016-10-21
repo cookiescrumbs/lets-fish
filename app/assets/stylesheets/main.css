@@ -657,7 +657,7 @@ body#search footer, body#trips footer{
     color: #fff;
 }
 
-#location-map {
+#location-map, #fisheries #map{
   margin: 0;
   padding: 0;
   width: 100%;
@@ -933,6 +933,8 @@ ul.species {
 
 .p-bottom10 { padding-bottom:10px; }
 .p-bottom5 { padding-bottom:5px; }
+
+.p-left5 { padding-left: 5px; }
 
 
 .m-bottom24 { margin-bottom: 24px; }
