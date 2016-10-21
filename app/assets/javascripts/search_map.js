@@ -1,8 +1,9 @@
 $(document).ready(function() {
-  //If small screen don't load the map JS
-  if($( window ).width() < 768) {
-    return;
-  }
+  // If small screen don't load the map JS
+  // if($( window ).width() < 768) {
+  //   return;
+  // }
+
   var map,
   geocoder = new google.maps.Geocoder(),
   mapOptions = {
@@ -50,7 +51,8 @@ $(document).ready(function() {
 
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
-    var location = decodeURIComponent($.urlParam('location'));
+    var location = urlParam('location') ||  document.getElementById('map').dataset.location;
+
     geocoder.geocode({'address': location}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         window.results = results;
@@ -62,7 +64,7 @@ $(document).ready(function() {
         map.setZoom(9);
         boundingBox = getBoundingBoxFromMap(map);
         getMarkersAndResultsFromBounds(boundingBox, false);
-        $('#map-search-box').show("slow");
+        // $('#map-search-box').show("slow");
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
@@ -123,7 +125,13 @@ $(document).ready(function() {
   }
 
   function addResultsToPage(results){
+    var hidden = $('#results-container').is(':hidden');
+
     $('#results-container').replaceWith(results);
+
+    if(hidden) {
+      $('#results-container').hide();
+    }
   }
 
   function removeAndResetMarkers() {
@@ -152,7 +160,7 @@ $(document).ready(function() {
     });
   }
 
-  $.urlParam = function(name){
+  function urlParam(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null){
        return null;

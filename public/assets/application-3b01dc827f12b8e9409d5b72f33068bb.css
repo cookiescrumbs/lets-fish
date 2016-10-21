@@ -6736,12 +6736,12 @@ fieldset[disabled] .btn-primary.active {
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #admin-fisheries .navbar-brand, #admin-waters .navbar-brand, #devise-registrations .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand{
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #devise-registrations .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand{
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #admin-fisheries .navbar .container, #admin-waters .navbar .container, #devise-registrations .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #devise-registrations .navbar .container {
         margin-left: 0;
     }
 
@@ -7155,7 +7155,7 @@ body#search footer, body#trips footer{
     color: #fff;
 }
 
-#location-map {
+#location-map, #fisheries #map{
   margin: 0;
   padding: 0;
   width: 100%;
@@ -7185,10 +7185,6 @@ ul.species {
 
 .water-type h6, .fish h6, .location h6 {
     font-weight: normal;
-    line-height: 15px;
-}
-
-.water-type h6, .fish h6 {
     line-height: 25px;
 }
 
@@ -7436,6 +7432,8 @@ ul.species {
 .p-bottom10 { padding-bottom:10px; }
 .p-bottom5 { padding-bottom:5px; }
 
+.p-left5 { padding-left: 5px; }
+
 
 .m-bottom24 { margin-bottom: 24px; }
 .m-bottom34 { margin-bottom: 34px; }
@@ -7498,6 +7496,23 @@ ul.signed-in-dropdown li a{
     border: none;
 }
 
+
+.dropdown-menu {
+    color: #555 !important;
+    background-color: #e7e7e7;
+}
+
+.dropdown-menu
+    a {
+        color: #555 !important;
+        background-color: #e7e7e7;
+    }
+
+.dropdown-menu
+    a:hover {
+        color: #777 !important;
+        background-color: #e7e7e7 !important;
+    }
 
 
 /*!

@@ -41,8 +41,19 @@
 <section id="waters" class="bg-light-gray">
     <div class="container">
         <div class="row">
-          <h4>Waters</h4>
-            <%= render '/search/results', { hide_water_count: true } %>
+          <h4 class="pull-left">Waters</h4>
+          <div class="btn-group pull-right" role="group">
+                <button type="button" class="btn btn-default map" autofocus="true">
+                    MAP <i class="fa fa-map-o p-left5" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default list">
+                    LIST <i class="fa fa-list-ol p-left5" aria-hidden="true"></i>
+                </button>
+          </div>
+        </div>
+        <div class="row">
+            <div id="map" data-location="<%=u"#{@fishery.address.short}"%>"></div>
+            <%= render '/search/results' %>
         </div>
     </div>
 </section>
