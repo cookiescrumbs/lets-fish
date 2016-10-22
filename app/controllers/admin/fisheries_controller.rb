@@ -30,7 +30,7 @@ class Admin::FisheriesController < AdminController
     else
       @fishery = current_user.fisheries.new(fishery_params)
     end
-   
+
     if @fishery.save
       redirect_to admin_fisheries_path, notice: "#{@fishery.name} was successfully create. Would you like to add a water?"
     else
@@ -62,6 +62,6 @@ class Admin::FisheriesController < AdminController
   end
 
   def fishery_params
-    params.require(:fishery).permit(:name, :description, :place_id, contact_details_attributes: [:name, :telephone, :mobile, :email, :website], address_attributes: [:postcode, :street, :line2, :region, :country])
+    params.require(:fishery).permit(:name, :description, :place_id, :map_zoom_level, contact_details_attributes: [:name, :telephone, :mobile, :email, :website], address_attributes: [:postcode, :street, :line2, :region, :country])
   end
 end
