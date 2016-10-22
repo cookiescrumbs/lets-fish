@@ -21,7 +21,7 @@ class Fishery < ActiveRecord::Base
   def species
     self.waters.map{|water| water.species.map{|s| s.name } }.flatten.uniq.sort
   end
-  
+
   # need to get all the water types from across all waters ["lake", "river"]
   def water_types
     self.waters.map{|water| water.water_type.category}.uniq.sort
@@ -35,6 +35,10 @@ class Fishery < ActiveRecord::Base
   def longitude
     return google_places_details['geometry']['location']['lng'] if google_places_details?
     address.longitude
+  end
+
+  def geographic_center_of_waters
+    Geocoder::Calculations.geographic_center(self.waters)
   end
 
   private

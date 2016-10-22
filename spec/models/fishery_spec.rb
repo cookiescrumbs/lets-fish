@@ -1,5 +1,5 @@
 describe Fishery, type: :model do
-  
+
   before do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
@@ -34,7 +34,7 @@ describe Fishery, type: :model do
       it 'returns the water types' do
         expect(@fishery.water_types).to eql ['lake', 'river']
       end
-      
+
   end
 
   describe 'latitude and longitude' do
@@ -68,5 +68,14 @@ describe Fishery, type: :model do
         expect(@fishery.longitude).to eql(-2.2426305)
       end
     end
+  end
+
+
+  describe 'geographical center of all the waters in a fishery' do
+
+    it 'returns a lat,lng' do
+      expect(@fishery.geographic_center_of_waters).to eql Geocoder::Calculations.geographic_center(@fishery.waters)
+    end
+
   end
 end
