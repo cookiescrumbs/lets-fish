@@ -1,6 +1,11 @@
 $(document).ready(function() {
 
-    $('#result-container').hide();
+    $('#map-list-toggle-bar').hide();
+
+    if($( window ).width() < 768) {
+        $('#map-list-toggle-bar').show();
+        $('#results-container').hide();
+    }
 
     $('button.map').click(function(){
         $('#results-container').hide();

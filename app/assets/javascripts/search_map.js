@@ -1,9 +1,4 @@
 $(document).ready(function() {
-  // If small screen don't load the map JS
-  // if($( window ).width() < 768) {
-  //   return;
-  // }
-
   var map,
   geocoder = new google.maps.Geocoder(),
   mapOptions = {
@@ -53,6 +48,8 @@ $(document).ready(function() {
   google.maps.event.addListenerOnce(map,'idle', function(){
     var location = urlParam('location') ||  document.getElementById('map').dataset.location;
 
+    location = decodeURIComponent(location);
+
     geocoder.geocode({'address': location}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         window.results = results;
@@ -61,7 +58,7 @@ $(document).ready(function() {
           results[0].geometry.viewport.getNorthEast()
         );
         map.fitBounds(resultBounds);
-        map.setZoom(8);
+        map.setZoom(9);
         boundingBox = getBoundingBoxFromMap(map);
         getMarkersAndResultsFromBounds(boundingBox, false);
         // $('#map-search-box').show("slow");
