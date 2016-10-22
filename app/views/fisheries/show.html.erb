@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="row">
-            <div id="map" data-location="<%=u"#{@water.address}"%>"></div>
+            <div id="map" data-zoom="13" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>"></div>
             <%= render '/search/results' %>
         </div>
     </div>
