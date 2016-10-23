@@ -275,6 +275,11 @@ fieldset[disabled] .btn-primary.active {
     .navbar-default.navbar-shrink .navbar-brand {
         font-size: 1.5em;
     }
+
+
+    div.result-item span.water-count {
+        display: block;
+    }
 }
 
 
@@ -1015,5 +1020,10 @@ ul.signed-in-dropdown li a{
         color: #777 !important;
         background-color: #e7e7e7 !important;
     }
+
+
+span.water-count {
+    display: none;
+}
 
 
