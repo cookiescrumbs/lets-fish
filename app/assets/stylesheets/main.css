@@ -1027,3 +1027,7 @@ span.water-count {
 }
 
 
+#fisheries div.location {
+    display: none;
+}
+
