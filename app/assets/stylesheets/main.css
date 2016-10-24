@@ -1027,7 +1027,7 @@ span.water-count {
 }
 
 
-#fisheries div.location {
+#fisheries #results-container div.location {
     display: none;
 }
 
