@@ -28,6 +28,7 @@ end
 
   get '/your/fishery', to: 'admin/fisheries#index'
 
+  get 'weather', to: 'weather#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
