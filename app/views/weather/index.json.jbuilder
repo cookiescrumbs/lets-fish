@@ -1,0 +1,1 @@
+json.forecast @weather.forecast

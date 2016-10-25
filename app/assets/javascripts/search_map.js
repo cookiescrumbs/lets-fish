@@ -125,6 +125,7 @@ $(document).ready(function() {
         map.setCenter(new google.maps.LatLng(lat,lng));
         map.setZoom(zoom);
         boundingBox = getBoundingBoxFromMap(map);
+        console.log(lat,lng);
         getMarkersAndResultsFromBounds(boundingBox, true);
   }
 
