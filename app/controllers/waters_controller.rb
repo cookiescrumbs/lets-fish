@@ -1,4 +1,5 @@
 class WatersController < ApplicationController
+  before_action :set_weather, only: [:show]
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
@@ -10,6 +11,11 @@ class WatersController < ApplicationController
   end
 
   private
+
+  def set_weather
+    water = Water.friendly.find(params[:id])
+    @weather = WeatherBuilder::build(data: DarkSkyService::forecast(lat: water.latitude, lng: water.longitude))
+  end
 
   def set_water
     @water = Water.friendly.find(params[:id])

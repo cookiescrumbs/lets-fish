@@ -40,9 +40,14 @@
 
 <section id="location">
     <div class="container">
-        <h4 class="m-bottom24
-" >Location</h4>
-        <div id="location-map" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
+        <h4 class="m-bottom24">Location</h4>
+        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
+        <div id="weather">
+            <p><%=@weather.time_at.strftime("%A %e %B - %H:%M") %></p>
+            <p><%=@weather.summary%></p>
+            <p><%=@weather.wind_speed%> mph</p>
+            <p><%=@weather.wind_direction%></p>
+        <i class="fa fa-location-arrow fa-2x" style="transform: rotate(<%=@weather.wind_bearing%>deg);" aria-hidden="true"></i></div>
     </div>
 </section>
 

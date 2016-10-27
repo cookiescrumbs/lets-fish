@@ -1,8 +1,9 @@
 $(document).ready(function() {
   var map,
-  mapElement,
-  lat,
-  lng,
+  mapElement = document.getElementById('location-map'),
+  lat = getLat(),
+  lng = getLng(),
+  zoom = getZoom(),
   marker,
   mapOptions = {
     draggable: true,
@@ -28,12 +29,9 @@ $(document).ready(function() {
   }
   ////////Map
   //make a new instance of google maps
-  mapElement = document.getElementById('location-map');
-  lat = parseFloat(mapElement.dataset.lat);
-  lng = parseFloat(mapElement.dataset.lng);
   map = new google.maps.Map(mapElement, mapOptions);
   map.setCenter({lat: lat , lng: lng});
-  map.setZoom(10);
+  map.setZoom(zoom);
   //////////////////////////////////////////////////////
 
   //wait till map has loaded and add a  marker
@@ -43,5 +41,18 @@ $(document).ready(function() {
         map: map
       });
   });
+
+
+  function getLat() {
+    return parseFloat(mapElement.dataset.lat) || null;
+  }
+
+  function getLng() {
+    return parseFloat(mapElement.dataset.lng) || null;
+  }
+
+  function getZoom() {
+    return  parseInt(mapElement.dataset.zoom) || 9;
+  }
 
 });
