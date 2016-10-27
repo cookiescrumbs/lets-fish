@@ -106,7 +106,7 @@ describe 'Manage your waters page', type: :feature do
     end
   end
 
-  context 'user is not logged in', focus: true do
+  context 'user is not logged in' do
 
       before(:each) do
         stub_google_geocode_lat_lng
