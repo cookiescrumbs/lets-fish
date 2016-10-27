@@ -16,6 +16,6 @@ class Weather
   end
 
   def time_at
-    Time.at(self.time)
+    Time.at(self.time) unless !self.time
   end
 end

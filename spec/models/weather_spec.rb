@@ -10,7 +10,7 @@ describe Weather, type: :model do
   end
 
   it 'returns a forecast hash' do
-    forecast = { lat: 56.002120300185574, lng: -5.958730311373353, wind_speed: 13.79, wind_bearing: 221, wind_direction: "SW" }
+    forecast = { time: nil, lat: 56.002120300185574, lng: -5.958730311373353, wind_speed: 13.79, wind_bearing: 22, wind_direction: "NNE", summary: nil, icon: nil}
     expect(@weather.forecast).to eql forecast
   end
 
