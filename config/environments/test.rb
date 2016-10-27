@@ -40,4 +40,5 @@ LetsFish::Application.configure do
   config.assets.raise_asset_errors = true
 
   config.geograph_api_key = 'a5ecd893c8'
+  config.dark_sky_api_key = '0a41a01031a5b6fa9241b180875eb218'
 end

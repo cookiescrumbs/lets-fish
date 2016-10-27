@@ -2,14 +2,16 @@
 module DarkSkyService
   include HTTParty
   base_uri 'https://api.darksky.net'
+  API_KEY = Rails.application.config.dark_sky_api_key
 
-  def self.forecast(api_key:, lat:, lng:)
+  def self.forecast(lat:, lng:)
     begin
-      response = get("/forecast/#{api_key}/#{lat},#{lng}", timeout: 1)
+      response = get("/forecast/#{DarkSkyService::API_KEY}/#{lat},#{lng}", timeout: 1)
       return {} unless response.code === 200
       response
     rescue
       {}
     end
   end
+
 end
