@@ -4,7 +4,7 @@ describe 'Weather API', type: :request, focus: true do
       stub_dark_sky
     end
 
-  it 'GET /weather with lat,lng' do
+  it 'GET /weather using lat,lng' do
     params = {
       lat: 37.8267,
       lng: -122.4233
