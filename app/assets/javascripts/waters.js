@@ -15,4 +15,5 @@
 //= require cbpAnimatedHeader
 //= require navigation
 //= require location_map
+//= require weather
 

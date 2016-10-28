@@ -17,6 +17,10 @@ describe 'Weather API', type: :request, focus: true do
     expect(json['forecast']['lng']).to eql -122.4233
     expect(json['forecast']['wind_speed']).to eql 2.71
     expect(json['forecast']['wind_bearing']).to eql 162
-    expect(json['forecast']['wind_direction']).to eql 'SSE'
+    expect(json['forecast']['wind_direction']).to eql 18
+    expect(json['forecast']['wind_direction_string']).to eql 'SSE'
+    expect(json['forecast']['icon']).to eql 'rain'
+    expect(json['forecast']['time']).to eql '2016-10-27T16:43:10.000+01:00'
+    expect(json['forecast']['summary']).to eql 'Drizzle'
   end
 end

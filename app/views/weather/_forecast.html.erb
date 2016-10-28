@@ -1,0 +1,7 @@
+<div id="weather-forecast" data-lat="<%=@weather.lat%>" data-lng="<%=@weather.lng%>">
+    <p><%=@weather.time_at.strftime("%A %e %B - %H:%M") %></p>
+    <p><%=@weather.summary%></p>
+    <p><%=@weather.wind_speed%> mph</p>
+    <p><%=@weather.wind_direction_string%></p>
+    <i class="fa fa-location-arrow fa-2x" style="transform: rotate(<%=@weather.wind_direction%>deg);" aria-hidden="true"></i>
+</div>
