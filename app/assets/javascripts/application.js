@@ -14,3 +14,4 @@
 //= require jquery.turbolinks
 //= require bootstrap.min
 //= require turbolinks
+//= require cookies_eu

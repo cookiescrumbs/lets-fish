@@ -44,6 +44,7 @@ gem 'httparty'
 gem 'meta-tags'
 gem 'rack-cache'
 gem 'devise'
+gem 'cookies_eu'
 
 group :development, :test do
   gem 'rspec-rails'
