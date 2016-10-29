@@ -129,7 +129,7 @@ fieldset[disabled] .btn-primary.active {
     display: none;
 }
 
-#search button {
+#search button, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
     border-color: #fed136;
@@ -138,7 +138,7 @@ fieldset[disabled] .btn-primary.active {
     color: #fff;
 }
 
-#search button:hover, #search button:focus {
+#search button:hover, #search button:focus, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:hover, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:focus{
     border-color: #fed136;
     border-bottom-color: #fed136;
     background-color: #fed136;
