@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var weatherElement = $('#weather-forecast')[0],
+    var weatherElement = $('#weather-forecast'),
     lat = getLat(),
     lng = getLng();
 
@@ -27,7 +27,6 @@ $(document).ready(function() {
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data) {
-            console.log(data.html_forecast);
             addWeatherToPage(data.html_forecast)
           },
           failure: function(errMsg) {
