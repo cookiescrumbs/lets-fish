@@ -1,4 +1,4 @@
-describe 'Weather API', type: :request, focus: true do
+describe 'Weather API', type: :request do
 
     before(:each) do
       stub_dark_sky
@@ -19,7 +19,7 @@ describe 'Weather API', type: :request, focus: true do
     expect(json['forecast']['wind_bearing']).to eql 162
     expect(json['forecast']['wind_direction']).to eql 18
     expect(json['forecast']['wind_direction_string']).to eql 'SSE'
-    expect(json['forecast']['icon']).to eql 'rain'
+    expect(json['forecast']['icon']).to eql 'wi-showers'
     expect(json['forecast']['time']).to eql '2016-10-27T16:43:10.000+01:00'
     expect(json['forecast']['summary']).to eql 'Drizzle'
   end

@@ -22,7 +22,10 @@
 </header>
 <section id="about-this-water">
     <div class="container">
-        <h4 class="m-bottom24">About this water</h4>
+        <div class="row">
+            <h4 class="m-bottom24 pull-left">About this water</h4>
+            <%= render '/weather/forecast', locals: { weather: @weather } %>
+        </div>
         <div class="row">
             <div class="col-md-3 remove-padding-left">
                 <%= render '/shared/water_type', locals: { category: @water.water_type.category.capitalize }%>
@@ -42,13 +45,6 @@
     <div class="container">
         <h4 class="m-bottom24">Location</h4>
         <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
-    </div>
-</section>
-
-<section id="weather">
-    <div class="container">
-        <h4 class="m-bottom24">Weather</h4>
-            <%= render '/weather/forecast', locals: { weather: @weather } %>
     </div>
 </section>
 
