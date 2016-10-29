@@ -5,11 +5,11 @@ $(document).ready(function() {
     lng = getLng();
 
     function getLat() {
-        return parseFloat(weatherElement.dataset.lat) || null;
+        return parseFloat(weatherElement[0].dataset.lat) || null;
     }
 
     function getLng() {
-        return parseFloat(weatherElement.dataset.lng) || null;
+        return parseFloat(weatherElement[0].dataset.lng) || null;
     }
 
     function addWeatherToPage(html){
