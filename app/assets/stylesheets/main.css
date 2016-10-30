@@ -1025,6 +1025,19 @@ span.water-count {
     display: none;
 }
 
+#weather-forecast {
+    float: left;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+
+    #weather-forecast {
+        float: right;
+    }
+}
+
+
 ul.forecast {
     margin-left:0;
     padding:0;
@@ -1034,7 +1047,7 @@ ul.forecast {
 ul.forecast li {
     display: inline;
     position: static;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 
