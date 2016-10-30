@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
   def index
     @waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
-    fresh_when @waters, public: true
+    # fresh_when @waters, public: true
   end
 
   private
