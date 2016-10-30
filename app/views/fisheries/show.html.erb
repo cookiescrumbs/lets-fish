@@ -42,14 +42,6 @@
     <div class="container">
         <div class="row">
           <h4 class="pull-left">Waters</h4>
-          <div id="map-list-toggle-bar" class="btn-group pull-right" role="group">
-                <button type="button" class="btn btn-default map" autofocus="true">
-                    MAP <i class="fa fa-map-o p-left5" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-default list">
-                    LIST <i class="fa fa-list-ol p-left5" aria-hidden="true"></i>
-                </button>
-          </div>
         </div>
         <div class="row">
             <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>"></div>
