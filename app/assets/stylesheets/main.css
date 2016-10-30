@@ -542,6 +542,9 @@ body {
 
 @media (min-width: 768px) {
 
+    #fisheries #map {
+     display: block;
+    }
     .map-container {
         display: block;
         width: 40%;
@@ -955,11 +958,7 @@ ul.species {
 
 .m-right10 { margin-right:10px; }
 
-
-
-
 .remove-padding-left { padding-left: 0px; }
-
 
 #trips header .intro-text {
     padding-top: 100px;
@@ -1026,11 +1025,6 @@ span.water-count {
     display: none;
 }
 
-
-#fisheries #results-container div.location {
-    display: none;
-}
-
 ul.forecast {
     margin-left:0;
     padding:0;
@@ -1042,4 +1036,5 @@ ul.forecast li {
     position: static;
     padding-left: 20px;
 }
+
 

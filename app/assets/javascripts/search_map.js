@@ -1,6 +1,8 @@
 $(document).ready(function() {
   // If small screen don't load the map JS
+  //hide map form mobile before returning
   if($( window ).width() < 768) {
+    $('#map').hide();
     return;
   }
 
