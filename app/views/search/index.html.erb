@@ -1,8 +1,9 @@
 <%= render 'navigation' %>
 <!-- <input id="map-search-box" class="controls collapse" type="text" placeholder="Where would you like to go?"> -->
 <div class="map-container">
-    <div id="map"></div>
+    <div id="map" data-zoom='9'></div>
 </div>
 <div class="sidebar">
-    <%= render 'results' %>
+    <div id="results-container">
+    </div>
 </div>

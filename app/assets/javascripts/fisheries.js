@@ -16,4 +16,3 @@
 //= require navigation
 //= require location_map
 //= require search_map
-//= require toggle_between_map_and_list
