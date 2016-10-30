@@ -13,7 +13,7 @@ class FisheriesController < ApplicationController
 
   def set_fishery
     @fishery = Fishery.friendly.find(params[:id])
-    fresh_when @fishery, public: true
+    # fresh_when @fishery, public: true
   end
 
   def set_waters

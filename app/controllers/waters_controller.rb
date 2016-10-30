@@ -19,7 +19,7 @@ class WatersController < ApplicationController
 
   def set_water
     @water = Water.friendly.find(params[:id])
-    fresh_when @water, public: true
+    # fresh_when @water, public: true
   end
 
   def set_waters
