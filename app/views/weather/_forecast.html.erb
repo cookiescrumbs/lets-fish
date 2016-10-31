@@ -6,7 +6,8 @@
         <%=@weather.wind_speed%> mph <i class="wi wi-strong-wind"></i>
     </li>
     <li>
-        <i class="wi wi-wind from-<%=@weather.wind_bearing%>-deg fa-2x" title="<%=@weather.wind_direction_string%>"></i>
+        <i class="wi wi-wind from-<%=@weather.wind_bearing%>-deg fa-2x"></i>
+        <%=@weather.wind_direction_string%>
     </li>
     <li>
         <%=@weather.temperature %>
