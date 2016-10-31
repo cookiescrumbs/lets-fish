@@ -7,7 +7,7 @@ class Weather
   end
 
   def forecast
-    { time: time_at, lat: lat, lng: lng, wind_speed: wind_speed, wind_bearing: wind_bearing, wind_direction_string: wind_direction_string, summary: summary, icon: icon, celsius: celsius, fahrenheit: fahrenheit }
+    { time: time_at, lat: lat, lng: lng, wind_speed: wind_speed, wind_bearing: wind_bearing, wind_direction_string: wind_direction_string, summary: summary, icon: icon }
   end
 
   def wind_direction_string
@@ -16,7 +16,7 @@ class Weather
   end
 
   def time_at
-    Time.at(self.time) unless !self.time
+    Time.at(self.time) if self.time
   end
 
   def icon
@@ -33,14 +33,6 @@ class Weather
       'partly-cloudy-night' => 'wi-night-alt-cloudy'
     }
     condition_to_icon[self.condition]
-  end
-
-  def celsius
-    self.temperature
-  end
-
-  def fahrenheit
-    self.temperature
   end
 
 end
