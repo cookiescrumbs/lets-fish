@@ -27,7 +27,7 @@
             <div id="weather-forecast" data-lat="<%=@weather.lat%>" data-lng="<%=@weather.lng%>"></div>
         </div>
         <div class="row">
-            <div class="col-md-3 remove-padding-left">
+            <div class="col-md-3 remove-padding-left p-bottom10">
                 <%= render '/shared/water_type', locals: { category: @water.water_type.category.capitalize }%>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.name.capitalize }.to_sentence } %>
                 <%= render '/shared/location', locals: { location: @water.address } %>
