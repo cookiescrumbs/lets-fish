@@ -23,9 +23,8 @@
 <section id="about-the-fishery">
     <div class="container">
         <div class="row">
-         <h4 class="m-bottom24
-">About the fishery</h4>
-            <div class="col-md-3 remove-padding-left">
+         <h4 class="m-bottom24">About the fishery</h4>
+            <div class="col-md-3 remove-padding-left p-bottom10">
                 <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>
                 <%= render '/shared/location', locals: { location: @fishery.address.short } %>
@@ -41,7 +40,9 @@
 <section id="waters" class="bg-light-gray">
     <div class="container">
         <div class="row">
-          <h4 class="pull-left">Waters</h4>
+          <h4>Waters</h4>
+          <div id="weather-forecast" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>">
+          </div>
         </div>
         <div class="row">
             <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>"></div>

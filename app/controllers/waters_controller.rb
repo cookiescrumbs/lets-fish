@@ -12,11 +12,6 @@ class WatersController < ApplicationController
 
   private
 
-  def set_weather
-    water = Water.friendly.find(params[:id])
-    @weather = WeatherBuilder::build(data: DarkSkyService::forecast(lat: water.latitude, lng: water.longitude))
-  end
-
   def set_water
     @water = Water.friendly.find(params[:id])
     # fresh_when @water, public: true
