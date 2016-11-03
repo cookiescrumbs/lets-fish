@@ -1,5 +1,4 @@
 class WatersController < ApplicationController
-  before_action :set_weather, only: [:show]
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
