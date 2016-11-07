@@ -40,6 +40,14 @@ class Water < ActiveRecord::Base
     address.split(', ')[0..1].join(', ')
   end
 
+  def lat
+    self.latitude
+  end
+
+  def lng
+    self.longitude
+  end
+
   private
 
   def update_address

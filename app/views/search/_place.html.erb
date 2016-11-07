@@ -1,0 +1,25 @@
+<%
+place = locals[:place]
+count = locals[:count]
+%>
+ <div class="col-md-6 col-sm-12 result-item">
+    <div class="title-header-outer">
+        <div class="title-header">
+            <h4 class="water-name" ><%= place.name %></h4>
+            <span class="fa-stack fa-2x water-count <%=(local_assigns.has_key? :hide_water_count)? 'hide' : '' %>">
+                <i class="fa fa-circle fa-stack-2x places-color"></i>
+                <i class="fa fa-stack-1x fa-inverse"><%= count %></i>
+            </span>
+        </div>
+    </div>
+
+    <div>
+        <div class="image-background">
+            <img src="/images/missing.png" class="img-responsive img-centered missing-image" alt="<%= place.name %>">
+        </div>
+    </div>
+        <div class="result-caption">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor dapibus blandit. Nullam nec ultrices tellus. Maecenas consectetur lacus ut mollis scelerisque. In nunc libero, elementum molestie ex et, feugiat egestas nulla. Nunc ornare nulla nibh, vitae porta orci imperdiet eu. Integer congue felis nec accumsan placerat. Phasellus fermentum ac metus a efficitur. Pellentesque habitant </p>
+        </div>
+    </div>
+</div>

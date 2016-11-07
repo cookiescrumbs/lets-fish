@@ -30,6 +30,8 @@ end
 
   get 'weather', to: 'weather#index'
 
+  get 'places', to: 'places#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

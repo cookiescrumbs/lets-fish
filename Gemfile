@@ -45,6 +45,7 @@ gem 'meta-tags'
 gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
+gem 'google_places'
 
 group :development, :test do
   gem 'rspec-rails'

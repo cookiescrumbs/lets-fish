@@ -17,6 +17,10 @@ body {
     color: #fed136;
 }
 
+.places-color {
+    color: #00a699;
+}
+
 p {
     font-size: 14px;
     line-height: 1.75;

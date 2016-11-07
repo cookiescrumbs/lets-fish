@@ -1,36 +1,13 @@
-<% if !@waters.nil? && @waters.exists? %>
+<% if !@results.nil? %>
 <%
     count = 0
-    @waters.each_slice(2).with_index do | waters | %>
+    @results.each_slice(2).with_index do | results | %>
         <div class="row">
-            <% waters.each do | water |
+            <% results.each do | result |
                 count +=1
             %>
-                <div class="col-md-6 col-sm-12 result-item">
-                    <a href="/waters/<%= water.slug %>" class="result-link" target="_blank"  >
-                    <div class="title-header-outer">
-                        <div class="title-header">
-                            <h4 class="water-name" ><%= water.name %></h4>
-                            <span class="fa-stack fa-2x water-count <%=(local_assigns.has_key? :hide_water_count)? 'hide' : '' %>">
-                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                                <i class="fa fa-stack-1x fa-inverse"><%= count %></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div>
-                        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-                        <% image_styles = (water.images.first)? '' : 'missing-image' %>
-                            <div class="image-background">
-                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
-                            </div>
-                    </a>
-                        <div class="result-caption">
-                            <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>
-                            <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name.capitalize }.to_sentence } %>
-                            <%= render '/shared/location', locals: { location: water.address } %>
-                        </div>
-                    </div>
-                </div>
+            <%= render 'water', locals: { water: result, count: count } if result.class.name === "Water" %>
+            <%= render 'place', locals: { place: result, count: count} if result.class.name === "Place" %>
             <% end %>
         </div>
     <% end %>
