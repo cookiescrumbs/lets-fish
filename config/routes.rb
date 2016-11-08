@@ -21,6 +21,7 @@ end
   root 'homepage#index'
   get '/add/water/:id',   to: 'homepage#new_water'
   get 'search',           to: 'search#index'
+  get 'search/within-bounding-box', to: 'search#within_bounding_box'
   get '/waters/:id',      to: 'waters#show'
   get '/fisheries/:id',   to: 'fisheries#show'
   get '/trips/:username/:id', to: 'trips#show'

@@ -187,7 +187,7 @@ $(document).ready(function() {
     console.log(center);
     $.ajax({
       type: 'GET',
-      url: '/search',
+      url: '/search/within-bounding-box',
       data:{
         'bounds': bounds,
         'center': center

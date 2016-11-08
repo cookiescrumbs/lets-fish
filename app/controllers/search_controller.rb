@@ -1,33 +1,34 @@
 class SearchController < ApplicationController
-  respond_to :html, :json
 
   def index
-    #load just the html view
-    if params[:location]
-      return []
-    end
+  end
 
+  def within_bounding_box
     waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
     water_markers = markers(waters, WaterMarker)
     place_markers = markers(places, PlaceMarker)
 
     @markers = array_merge(water_markers, place_markers)
     @results = array_merge(waters, build_places)
+    render 'search'
   end
 
   private
+
 
   def build_places
     places.map do | place |
       Place.new do
         self.id = place.id
         self.name = place.name
+        self.types = place.types
       end
     end
   end
 
   def array_merge(one, two)
-    one.map.with_index{|val,index| [val,two[index]].compact }.flatten
+    a = one.length > two.length ? [one,two] : [two,one]
+    a[0].map.with_index{|val,index| [val, a[1][index]].compact }.flatten
   end
 
   def markers(objs, ext)
