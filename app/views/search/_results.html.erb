@@ -6,8 +6,7 @@
             <% results.each do | result |
                 count +=1
             %>
-            <%= render 'water', locals: { water: result, count: count } if result.class.name === "Water" %>
-            <%= render 'place', locals: { place: result, count: count} if result.class.name === "Place" %>
+            <%= render 'water', locals: { water: result, count: count } %>
             <% end %>
         </div>
     <% end %>

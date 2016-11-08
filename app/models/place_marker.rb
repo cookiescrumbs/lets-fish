@@ -1,5 +1,20 @@
 module PlaceMarker
+
   def icon
-    "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|00a699|13|_|"
+    self.types.each do | type |
+      if type_to_icon_mapping[type]
+        return type_to_icon_mapping[type]
+        break
+      end
+    end
   end
+
+  private
+
+  def type_to_icon_mapping
+    {
+      'lodging' => 'fa-bed',
+      'campground' => 'fa-free-code-camp'
+    }
+  end 
 end

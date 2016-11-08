@@ -183,8 +183,6 @@ $(document).ready(function() {
   }
 
   function getMarkersAndResultsFromBounds(bounds, center){
-
-    console.log(center);
     $.ajax({
       type: 'GET',
       url: '/search/within-bounding-box',
