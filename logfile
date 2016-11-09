@@ -18,3 +18,7 @@ LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 LOG:  unexpected EOF on client connection with an open transaction
+LOG:  database system was shut down at 2016-11-09 14:36:59 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

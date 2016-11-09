@@ -1,10 +1,12 @@
 class PlaceMarker < Marker
-  
-  attr_accessor :types
 
-  def initialize(id:, lat:, lng:, name:, types:)
+  attr_accessor :types, :address, :telephone
+
+  def initialize(id:, lat:, lng:, name:, types:, address:, telephone:)
     super(id: id, lat: lat, lng: lng, name: name)
     @types = types
+    @address = address
+    @telephone = telephone
   end
 
   def icon
@@ -23,5 +25,5 @@ class PlaceMarker < Marker
       'lodging' => 'fa-bed',
       'campground' => 'fa-free-code-camp'
     }
-  end 
+  end
 end

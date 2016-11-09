@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   respond_to :json
 
   def index
-    @markers = MapMarkers::build(objects: places, ext: PlaceMarker)
+    @markers = MapMarkers::Places::build(places)
   end
 
   private

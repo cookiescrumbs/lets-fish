@@ -1,4 +1,5 @@
-describe PlaceMarker, type: :model, focus: true do
+describe PlaceMarker, type: :model do
+
   before do
     @placeMarker = PlaceMarker.new(
         id: 12345,

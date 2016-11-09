@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   include MapMarkers
-  
+
   def index
   end
 
