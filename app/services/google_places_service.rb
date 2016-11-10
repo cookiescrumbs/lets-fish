@@ -13,27 +13,41 @@ module GooglePlacesService
 
   def self.spot(spots)
     google_places = GooglePlaces::Client.new(GooglePlacesService::API_KEY)
+
     threads = []
     places = []
+    places_q = Queue.new
+    spots_q = Queue.new
+    number_of_threads = 4
+
     spots.each do | spot |
+      spots_q << spot
+    end
+
+    number_of_threads.times do
       threads << thr = Thread.new do
-        begin
-          places << PlaceBuilder::build(google_places.spot(spot.place_id))
-        rescue
-          Thread.kill(thr)
+        until spots_q.empty?
+          begin
+            spot = spots_q.pop
+            places_q << PlaceBuilder::build(google_places.spot(spot.place_id))
+          rescue
+            Thread.kill(thr)
+          end
         end
       end
     end
+
     threads.each do | t |
       t.join
+    end
+
+    until places_q.empty?
+      places << places_q.pop
     end
     places
   end
 
 end
-
-
-
 
 
 
