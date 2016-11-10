@@ -3,7 +3,7 @@ module MapMarkers
     def self.build(places)
       places.map do | place |
         PlaceMarker.new(
-          id: place.id,
+          id: place.place_id,
           lat: place.lat,
           lng: place.lng,
           name: place.name,

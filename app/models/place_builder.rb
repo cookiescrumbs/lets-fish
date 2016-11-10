@@ -1,7 +1,6 @@
 module PlaceBuilder
   def self.build(place)
     Place.new do
-      self.id = place.id
       self.place_id = place.place_id
       self.name = place.name
       self.lat = place.lat
