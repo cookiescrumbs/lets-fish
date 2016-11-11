@@ -25,12 +25,13 @@ end
   get '/fisheries/:id',   to: 'fisheries#show'
   get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
-  
+
   get '/your/fishery', to: 'admin/fisheries#index'
 
   get 'weather', to: 'weather#index'
   get 'search',  to: 'search#index'
   get 'places', to: 'places#index'
+  get 'places/info-window', to: 'places#info_window'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

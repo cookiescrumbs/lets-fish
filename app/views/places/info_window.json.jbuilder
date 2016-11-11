@@ -1,0 +1,1 @@
+json.infoWindow @info_window

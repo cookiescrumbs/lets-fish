@@ -7,10 +7,18 @@ class PlacesController < ApplicationController
     @markers = MapMarkers::Places::build(places)
   end
 
+  def info_window
+    @info_window = MapInfoWindow::Places::build(place)
+  end
+
   private
 
   def places
     GooglePlacesService::places(lat: lat, lng: lng)
+  end
+
+  def place
+    GooglePlacesService::place(id)
   end
 
   def lat
@@ -19,6 +27,10 @@ class PlacesController < ApplicationController
 
   def lng
     params[:lng].to_f
+  end
+
+  def id
+    params[:id]
   end
 
 end

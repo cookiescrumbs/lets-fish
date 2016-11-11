@@ -3,13 +3,11 @@ module MapMarkers
     def self.build(places)
       places.map do | place |
         PlaceMarker.new(
-          id: place.place_id,
+          id: place.id,
           lat: place.lat,
           lng: place.lng,
           name: place.name,
-          types: place.types,
-          address: place.formatted_address,
-          telephone: place.formatted_phone_number
+          types: place.types
         )
       end
     end
