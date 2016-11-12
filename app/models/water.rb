@@ -1,9 +1,11 @@
 require_relative 'meta_tags'
+require_relative 'map_marker'
 
 class Water < ActiveRecord::Base
   extend FriendlyId
 
   include MetaTags
+  include MapMarker::Water
 
   friendly_id :name, use: :slugged
 

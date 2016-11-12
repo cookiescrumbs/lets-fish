@@ -20,8 +20,7 @@ class PlaceMarker < Marker
 
   def type_to_icon_mapping
     {
-      'lodging' => 'fa-bed',
-      'campground' => 'fa-free-code-camp'
+      'campground' => 'campsite'
     }
   end
 end

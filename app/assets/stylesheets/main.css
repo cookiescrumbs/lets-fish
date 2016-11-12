@@ -68,6 +68,10 @@ h6 {
     background-color: #fff;
 }
 
+.bg-white {
+    background-color: #fff;
+}
+
 .bg-light-gray {
     background-color: #f7f7f7;
 }
@@ -129,11 +133,11 @@ fieldset[disabled] .btn-primary.active {
     background-color: #fff;
 }
 
-#search button span {
+button.search span {
     display: none;
 }
 
-#search button, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok {
+button.search, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
     border-color: #fed136;
@@ -142,7 +146,7 @@ fieldset[disabled] .btn-primary.active {
     color: #fff;
 }
 
-#search button:hover, #search button:focus, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:hover, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:focus{
+button.search:hover, button.search:focus, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:hover, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:focus{
     border-color: #fed136;
     border-bottom-color: #fed136;
     background-color: #fed136;
@@ -1053,4 +1057,12 @@ ul.forecast li {
     padding-left: 10px;
 }
 
+
+section.local-stuff {
+    padding:20px;
+}
+
+.local-stuff h5 {
+    font-size: none;
+}
 

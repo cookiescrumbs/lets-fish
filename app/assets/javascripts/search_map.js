@@ -10,8 +10,7 @@ $(document).ready(function() {
   //but the server side list is used on mobile becuase this js doesn't load under 768px
   $('#results-container').empty();
 
-  var map,
-  geocoder = new google.maps.Geocoder(),
+  var geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
     mapTypeControlOptions: {
@@ -32,6 +31,7 @@ $(document).ready(function() {
 
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
+  
   ///////Search Box
   // Create the search box and link it to the UI element.
   // var input = (document.getElementById('map-search-box'));
@@ -140,7 +140,7 @@ $(document).ready(function() {
   function addMarkers(data){
     removeAndResetMarkers();
     for (i = 0; i < data.length; i++) {
-      markerCount = i;
+      var markerCount = i;
       markerCount++;
       var latLng = new google.maps.LatLng(data[i]['lat'],data[i]['lng']);
       var marker = new google.maps.Marker({

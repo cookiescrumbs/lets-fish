@@ -1,12 +1,11 @@
 class SearchController < ApplicationController
-  include MapMarkers
 
   def index
   end
 
   def within_bounding_box
     waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
-    @markers = MapMarkers::build(objects: waters, ext: WaterMarker)
+    @markers = waters
     @results = waters
     render 'search'
   end
@@ -14,27 +13,7 @@ class SearchController < ApplicationController
   private
 
   def bounds
-    if params[:bounds]
-      params[:bounds].split ','
-    else
-      calculate_bounds
-    end
-  end
-
-  def calculate_bounds
-    Geocoder::Calculations.bounding_box(center_point, 40) unless center_point.nil?
-  end
-
-  def center_point
-    center_point_from_lat_lng || center_point_from_location
-  end
-
-  def center_point_from_lat_lng
-    [params[:lat], params[:lng]] unless params[:lat].nil? || params[:lng].nil?
-  end
-
-  def center_point_from_location
-    Geocoder.coordinates(params[:location]) unless params[:location].nil?
+    params[:bounds].split ',' unless params[:bounds].nil?
   end
 
 end

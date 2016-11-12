@@ -2,10 +2,11 @@
 class GeographService
   include HTTParty
   base_uri 'api.geograph.org.uk'
+  API_KEY = Rails.application.config.geograph_api_key
 
-  def self.user_attribution_from(photo_id, api_key)
+  def self.user_attribution_from(photo_id)
     begin
-      response = get("/api/photo/#{photo_id}?key=#{api_key}&output=json", timeout: 1)
+      response = get("/api/photo/#{photo_id}?key=#{GeographService::API_KEY}&output=json", timeout: 1)
       return {} unless response.code === 200
       {
         name: response['realname'],
