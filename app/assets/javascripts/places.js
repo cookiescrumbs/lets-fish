@@ -1,12 +1,26 @@
 $(document).ready(function() {
 
   var markers =[],
-  campsites = document.getElementById('campsites');
+  campsites = document.getElementById('campsites'),
+  food = document.getElementById('food');
   
   campsites.onclick = function(){
     var lat = map.center.lat();
     var lng = map.center.lng();
-    getPlaces(lat,lng);
+    getPlaces(lat,lng, 'campground');
+  }
+
+  food.onclick = function(){
+    var lat = map.center.lat();
+    var lng = map.center.lng();
+    getPlaces(lat,lng, 'restaurant');
+  }
+
+
+  drink.onclick = function(){
+    var lat = map.center.lat();
+    var lng = map.center.lng();
+    getPlaces(lat,lng, 'bar');
   }
 
   function removeAndResetMarkers() {
@@ -30,13 +44,14 @@ $(document).ready(function() {
     }
   }
 
-  function getPlaces(lat,lng){
+  function getPlaces(lat, lng, type){
     $.ajax({
       type: 'GET',
       url: '/places',
       data:{
         'lat': lat,
-        'lng': lng
+        'lng': lng,
+        'type': type
       },
       contentType: "application/json; charset=utf-8",
       dataType: "json",

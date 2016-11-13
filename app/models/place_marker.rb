@@ -1,26 +1,23 @@
 class PlaceMarker < Marker
 
-  attr_accessor :types
+  attr_accessor :types, :type
 
-  def initialize(id:, lat:, lng:, name:, types:)
+  def initialize(id:, lat:, lng:, name:, type:)
     super(id: id, lat: lat, lng: lng, name: name)
-    @types = types
+    @type = type
   end
 
   def icon
-    self.types.each do | type |
-      if type_to_icon_mapping[type]
-        return type_to_icon_mapping[type]
-        break
-      end
-    end
+    type_to_icon_mapping[self.type] 
   end
 
   private
 
   def type_to_icon_mapping
     {
-      'campground' => 'campsite'
+      'campground' => 'campsite',
+      'restaurant' => 'food',
+      'bar' => 'drink'
     }
   end
 end

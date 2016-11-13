@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   respond_to :json
 
   def index
-    @markers = MapMarkers::Places::build(places)
+    @markers = MapMarkers::Places::build(places, type)
   end
 
   def info_window
@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
   private
 
   def places
-    GooglePlacesService::places(lat: lat, lng: lng)
+    GooglePlacesService::places(lat: lat, lng: lng, type: type)
   end
 
   def place
@@ -27,6 +27,10 @@ class PlacesController < ApplicationController
 
   def lng
     params[:lng].to_f
+  end
+
+  def type
+    params[:type]
   end
 
   def id
