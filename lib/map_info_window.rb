@@ -3,6 +3,7 @@ module MapInfoWindow
     def self.build(place)
       InfoWindow.new do
         self.body = { 
+          name: place.name,
           address: place.address, 
           telephone: place.telephone, 
           website: place.website, 

@@ -1058,11 +1058,20 @@ ul.forecast li {
 }
 
 
-section.local-stuff {
-    padding:20px;
+section.local-amenities {
+    display: none;
 }
 
-.local-stuff h5 {
-    font-size: none;
+@media(min-width:768px) {
+   section.local-amenities {
+        display: block;
+        padding: 20px;
+    }
+
+}
+
+button#food {
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 

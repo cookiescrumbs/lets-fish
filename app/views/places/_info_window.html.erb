@@ -1,0 +1,12 @@
+<strong><%= @info_window.body[:name] %></strong>
+<br>
+<%= @info_window.body[:address] %>
+<br>
+<%= @info_window.body[:telephone] %>
+<br>
+<a href="<%= @info_window.body[:website] %>" target="_blank"><%=@info_window.body[:website]%></a>
+<br>
+<% @info_window.body[:stars].to_i.times do %> 
+    <i class="fa fa-star"></i>
+<% end %>
+

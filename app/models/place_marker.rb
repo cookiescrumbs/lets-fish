@@ -17,7 +17,9 @@ class PlaceMarker < Marker
     {
       'campground' => 'campsite',
       'restaurant' => 'food',
-      'bar' => 'drink'
+      'bar' => 'drink',
+      'lodging' => 'accommodation'
     }
   end
+  
 end
