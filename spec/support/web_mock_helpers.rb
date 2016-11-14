@@ -15,7 +15,7 @@ module WebMockHelpers
 
     def stub_google_places_details
       body = File.read('spec/fixtures/googleapis/place/stocks_fly_fishery.json')
-      stub_request(:get, /https:\/\/maps.googleapis.com\/maps\/api\/place\/details\/json\?key=([\w\W]+)&language=en&placeid=([a-zA-Z{0-9}])/)
+      stub_request(:get, /https:\/\/maps.googleapis.com\/maps\/api\/place\/details\/json\?([\w\W]+)&key=([\w\W]+)&([\w\W]+)&placeid=([\w\W]+)/)
         .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
         .to_return(status: 200, body: body, headers: {})
     end
@@ -26,8 +26,9 @@ module WebMockHelpers
         .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
         .to_return(status: 200, body: body, headers: {})
     end
-  end
 
+
+  end
 
 
   module Geograph
