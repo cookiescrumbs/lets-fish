@@ -19,7 +19,16 @@ module WebMockHelpers
         .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
         .to_return(status: 200, body: body, headers: {})
     end
+
+    def stub_google_places_near_by_search
+      body = File.read('spec/fixtures/googleapis/place/near_by_search.json')
+      stub_request(:get, /https:\/\/maps.googleapis.com\/maps\/api\/place\/nearbysearch\/json\?key=([\w\W]+)keyword=&language=&location=(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)&name=&radius=([\w\W]+)&rankby=&types=([\w\W]+)/)
+        .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
+        .to_return(status: 200, body: body, headers: {})
+    end
   end
+
+
 
   module Geograph
     def stub_geograph_photo_details

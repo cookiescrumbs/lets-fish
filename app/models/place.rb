@@ -1,6 +1,6 @@
 class Place
 
-  attr_accessor :lat, :lng, :name, :types, :id, :address, :telephone, :website, :reviews, :photos, :rating
+  attr_accessor :id, :lat, :lng, :name, :types, :address, :telephone, :website, :reviews, :photos, :rating
 
   def initialize(&block)
     instance_eval &block if block_given?
@@ -9,6 +9,5 @@ class Place
   def stars
     self.rating.round unless rating.nil?
   end
-
 
 end
