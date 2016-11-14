@@ -13,7 +13,11 @@ describe 'PlacesAPI', type: :request do
     get '/places', params, 'Accept' => 'application/json'
 
     expect(response).to be_success
-    expect(json.length).to eq 1
-    # expect(json['markers'].first['name']).to eql waters.first.name
+    expect(json['markers'].length).to eq 20
+    expect(json['markers'][0]['id']).to eql 'ChIJ7d1Td5YwfEgRpNYMczj3lLs'
+    expect(json['markers'][0]['name']).to eql 'The Rose & Crown at Romaldkirk'
+    expect(json['markers'][0]['lat']).to eql 54.59390500000001
+    expect(json['markers'][0]['lng']).to eql -2.009792
+    expect(json['markers'][0]['icon']).to eql 'accommodation'
   end
 end
