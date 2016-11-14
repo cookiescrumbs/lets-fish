@@ -1,17 +1,28 @@
 module GooglePlacesService
+  include HTTParty
   include PlacesBuilder
   include PlaceBuilder
+  base_uri 'https://maps.googleapis.com'
   API_KEY = Rails.application.config.google_api_key
 
   def self.places(lat:, lng:, type:)
-    google_places = GooglePlaces::Client.new(GooglePlacesService::API_KEY)
-    places = google_places.spots(lat,lng, types: [type], radius: 17000)
-    PlacesBuilder::build(places)
+    begin
+      response = get("/maps/api/place/nearbysearch/json?key=#{GooglePlacesService::API_KEY}&location=#{lat},#{lng}&radius=17000&types=#{type}", timeout: 1)
+      return {} unless response.code === 200
+      PlacesBuilder::build(response['results'])
+    rescue
+      {}
+    end
   end
 
   def self.place(id)
-    google_places = GooglePlaces::Client.new(GooglePlacesService::API_KEY)
-    PlaceBuilder::build(google_places.spot(id))
+    begin
+      response = get("/maps/api/place/details/json?key=#{GooglePlacesService::API_KEY}&language=en&placeid=#{id}", timeout: 1)
+      return {} unless response.code === 200
+      PlaceBuilder::build(response['results'])
+    rescue
+      {}
+    end
   end
 
 end

@@ -1,4 +1,4 @@
-describe Weather, type: :model, focus: true do
+describe Weather, type: :model do
 
   before do
     @weather = Weather.new do

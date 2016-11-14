@@ -6,9 +6,9 @@ describe 'PlacesAPI', type: :request, focus: true  do
       stub_google_places_near_by_search
       
       params = {
-      lat: 54.673440,
-      lng: -2.228462,
-      type: 'lodging'
+        lat: 54.673440,
+        lng: -2.228462,
+        type: 'lodging'
       }
 
       get '/places', params, 'Accept' => 'application/json'
