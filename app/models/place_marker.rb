@@ -1,6 +1,6 @@
 class PlaceMarker < Marker
 
-  attr_accessor :types, :type
+  attr_accessor :type
 
   def initialize(id:, lat:, lng:, name:, type:)
     super(id: id, lat: lat, lng: lng, name: name)
@@ -8,7 +8,7 @@ class PlaceMarker < Marker
   end
 
   def icon
-    type_to_icon_mapping[self.type] 
+    type_to_icon_mapping[self.type]
   end
 
   private
@@ -21,5 +21,5 @@ class PlaceMarker < Marker
       'lodging' => 'accommodation'
     }
   end
-  
+
 end

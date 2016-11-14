@@ -6,15 +6,15 @@ describe PlaceMarker, type: :model do
         lat: 56.002120300185574,
         lng: -5.958730311373353,
         name: 'Cookie Place',
-        types: ['lodging', 'establishment', 'site_of_interest']
+        type: 'lodging'
     )
   end
 
-  it 'return the name' do
+  it 'returns the name' do
     expect(@placeMarker.name).to eql 'Cookie Place'
   end
 
   it 'icon' do
-    expect(@placeMarker.icon).to eql 'fa-bed'
+    expect(@placeMarker.icon).to eql 'accommodation'
   end
 end
