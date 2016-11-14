@@ -1,6 +1,6 @@
 require 'map_markers'
 
-describe MapMarkers::Places, '.build', focus: true do
+describe MapMarkers::Places, '.build' do
   Place = Struct.new(:id, :name, :lat, :lng, :types)
 
   before(:each) do
