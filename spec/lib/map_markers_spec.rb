@@ -1,11 +1,16 @@
 require 'map_markers'
 
 describe MapMarkers::Places, '.build' do
-  Place = Struct.new(:id, :name, :lat, :lng, :types)
 
   before(:each) do
     places = [*1..5].map do
-      Place.new(id: 12345, name: 'a name', lat: 54.665559, lng: -2.299508, types: ['lodging', 'establishment', 'site_of_interest'])
+      Place.new do
+        self.id = 1233456
+        self.lat = 56.002120300185574
+        self.lng = -5.958730311373353
+        self.name = 'My Place',
+        self.types = ['lodging', 'establishment', 'site_of_interest']
+      end
     end
     type = 'lodging'
     @markers = MapMarkers::Places::build(places, type)
@@ -19,7 +24,12 @@ describe MapMarkers::Places, '.build' do
   context 'missing data' do
     before(:each) do
       places = [*1..5].map do
-        Place.new(id: 12345, lat: 54.665559, lng: -2.299508)
+        Place.new do
+          self.id = 1233456
+          self.lat = 56.002120300185574
+          self.lng = -5.958730311373353
+          self.types = ['lodging', 'establishment', 'site_of_interest']
+        end
       end
       type = 'lodging'
       @markers = MapMarkers::Places::build(places, type)
