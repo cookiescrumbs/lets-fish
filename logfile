@@ -44,3 +44,10 @@ LOG:  database system was shut down at 2016-11-13 13:28:18 GMT
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+LOG:  database system was interrupted; last known up at 2016-11-13 22:58:17 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/B377B48
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
