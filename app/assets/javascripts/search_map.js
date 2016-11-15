@@ -1,10 +1,10 @@
 $(document).ready(function() {
   // If small screen don't load the map JS
   //hide map form mobile before returning
-  if($( window ).width() < 768) {
-    $('#map').hide();
-    return;
-  }
+  // if($( window ).width() < 768) {
+  //   $('#map').hide();
+  //   return;
+  // }
 
   //Remove the server side result list it doesn't always tally with the pins on the map
   //but the server side list is used on mobile becuase this js doesn't load under 768px
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
-  
+
   ///////Search Box
   // Create the search box and link it to the UI element.
   // var input = (document.getElementById('map-search-box'));

@@ -445,6 +445,13 @@ section {
 
 .result-item{
     padding: 5px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+   #results-container div.result-item{
+        background-color: transparent;
+    }
 }
 
 .explore-item .explore-caption p, .result-caption p, {
@@ -548,47 +555,47 @@ body {
     margin-right: 0px;
 }
 
-@media (min-width: 768px) {
 
-    #fisheries #map {
-     display: block;
-    }
-    .map-container {
-        display: block;
-        width: 40%;
-    }
-
-    .map-container:before {
-        content: '';
-        position: absolute;
-        height: 100%;
-        right: 0;
-        -webkit-box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
-        box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
-        width: 2px;
-        z-index: 2;
-    }
-
-    .map-container {
-        position: fixed;
-        right: 0;
-        left: auto;
-        bottom: 0;
-        width: 100%;
-        top: 50px;
-    }
-
-    #map {
-        position: fixed;
-        right: 0;
-        left: auto;
-        width: 40%;
-        height: 100%;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        float: right;
-    }
+#fisheries #map {
+ display: block;
 }
+
+.map-container {
+    display: block;
+    width: 40%;
+}
+
+.map-container:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    right: 0;
+    -webkit-box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
+    box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
+    width: 2px;
+    z-index: 2;
+}
+
+.map-container {
+    position: fixed;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    width: 100%;
+    top: 50px;
+}
+
+#map {
+    position: fixed;
+    right: 0;
+    left: auto;
+    width: 40%;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    float: right;
+}
+
 
 #water-form label, #display-latitude, #display-longitude{
     color: #fff;
@@ -840,6 +847,7 @@ ul.species {
 .timeline .timeline-body > ul {
   margin-bottom: 0;
 }
+
 @media (min-width: 768px) {
   .timeline:before {
     left: 30%;
