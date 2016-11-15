@@ -1,6 +1,6 @@
 require 'geograph_service'
 
-describe GeographService, '.user_attribution_from photo_id:' do
+describe GeographService, '.user_attribution_from photo_id:', focus: true do
   before(:each) do
     stub_geograph_photo_details
   end
