@@ -1,9 +1,11 @@
 require_relative 'meta_tags'
+require_relative 'map_marker'
 
 class Water < ActiveRecord::Base
   extend FriendlyId
 
   include MetaTags
+  include MapMarker::Water
 
   friendly_id :name, use: :slugged
 
@@ -38,6 +40,14 @@ class Water < ActiveRecord::Base
   def short_address
     return nil if address.blank?
     address.split(', ')[0..1].join(', ')
+  end
+
+  def lat
+    self.latitude
+  end
+
+  def lng
+    self.longitude
   end
 
   private

@@ -1,17 +1,16 @@
 $(document).ready(function() {
   // If small screen don't load the map JS
   //hide map form mobile before returning
-  if($( window ).width() < 768) {
-    $('#map').hide();
-    return;
-  }
+  // if($( window ).width() < 768) {
+  //   $('#map').hide();
+  //   return;
+  // }
 
   //Remove the server side result list it doesn't always tally with the pins on the map
   //but the server side list is used on mobile becuase this js doesn't load under 768px
   $('#results-container').empty();
 
-  var map,
-  geocoder = new google.maps.Geocoder(),
+  var geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
     mapTypeControlOptions: {
@@ -24,7 +23,6 @@ $(document).ready(function() {
     }
   },
   markers =[],
-  boundingBox,
   mapElement = document.getElementById('map'),
   zoom = getZoom(),
   location = getLocation(),
@@ -33,6 +31,7 @@ $(document).ready(function() {
 
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
+
   ///////Search Box
   // Create the search box and link it to the UI element.
   // var input = (document.getElementById('map-search-box'));
@@ -62,7 +61,6 @@ $(document).ready(function() {
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
     buildMapRoundLocation(location);
-    buildMapRoundGeographicalCenter(lat,lng);
     ////////////////////////////
   });
 
@@ -97,8 +95,9 @@ $(document).ready(function() {
 
   ///////Adding markers when the user drags the map
   google.maps.event.addListener(map, 'dragend', function() {
-    boundingBox = getBoundingBoxFromMap(map);
-    getMarkersAndResultsFromBounds(boundingBox);
+    var boundingBox = getBoundingBoxFromMap(map);
+    var center = getCenterFromMap(map);
+    getMarkersAndResultsFromBounds(boundingBox, center);
   });
   /////////////////////////
 
@@ -115,22 +114,13 @@ $(document).ready(function() {
         );
         map.fitBounds(resultBounds);
         map.setZoom(zoom);
-        boundingBox = getBoundingBoxFromMap(map);
-        getMarkersAndResultsFromBounds(boundingBox);
+        var boundingBox = getBoundingBoxFromMap(map);
+        var center = getCenterFromMap(map);
+        getMarkersAndResultsFromBounds(boundingBox, center);
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
     });
-  }
-
-  function buildMapRoundGeographicalCenter(lat,lng) {
-        if(!lat && !lng) {
-          return;
-        }
-        map.setCenter(new google.maps.LatLng(lat,lng));
-        map.setZoom(zoom);
-        boundingBox = getBoundingBoxFromMap(map);
-        getMarkersAndResultsFromBounds(boundingBox);
   }
 
   function getBoundingBoxFromMap(map) {
@@ -140,15 +130,22 @@ $(document).ready(function() {
     return [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()];
   }
 
-  function addMarkers(waters){
+  function getCenterFromMap(map){
+    if(!map) {
+      return;
+    }
+    return [map.center.lat(), map.center.lng()];
+  }
+
+  function addMarkers(data){
     removeAndResetMarkers();
-    for (i = 0; i < waters.length; i++) {
-      markerCount = i;
+    for (i = 0; i < data.length; i++) {
+      var markerCount = i;
       markerCount++;
-      var latLng = new google.maps.LatLng(waters[i]['latitude'],waters[i]['longitude']);
+      var latLng = new google.maps.LatLng(data[i]['lat'],data[i]['lng']);
       var marker = new google.maps.Marker({
         position: latLng,
-        icon: "https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|fed136|13|_|" + markerCount,
+        icon: data[i].icon + markerCount,
         map: map
       });
       marker.setMap(map);
@@ -157,15 +154,15 @@ $(document).ready(function() {
   }
 
   function searchResults(searchResults){
-      var waters = searchResults.markers;
+      var  markers = searchResults.markers;
       var results = searchResults.results;
-      addMarkers(waters);
+      addMarkers(markers);
       addResultsToPage(results);
   }
 
   function initialMarkers(searchResults){
-    var waters = searchResults.markers;
-    addMarkers(waters);
+    var markers = searchResults.markers;
+    addMarkers(markers);
   }
 
   function addResultsToPage(results){
@@ -185,12 +182,13 @@ $(document).ready(function() {
     markers = [];
   }
 
-  function getMarkersAndResultsFromBounds(bounds){
+  function getMarkersAndResultsFromBounds(bounds, center){
     $.ajax({
       type: 'GET',
-      url: '/search',
+      url: '/search/within-bounding-box',
       data:{
-        'bounds': bounds
+        'bounds': bounds,
+        'center': center
       },
       contentType: "application/json; charset=utf-8",
       dataType: "json",

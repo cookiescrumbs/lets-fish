@@ -1,0 +1,1 @@
+json.infoWindow render template: 'places/_info_window.html.erb'

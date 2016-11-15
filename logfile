@@ -1,0 +1,59 @@
+LOG:  database system was shut down at 2016-11-03 11:22:49 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-11-07 14:07:50 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2016-11-03 23:16:36 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/ADB93E8
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  unexpected EOF on client connection with an open transaction
+LOG:  database system was shut down at 2016-11-09 14:36:59 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  terminating connection due to administrator command
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-11-10 13:13:37 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+FATAL:  terminating connection due to administrator command
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-11-10 15:03:01 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2016-11-13 13:28:18 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  database system was interrupted; last known up at 2016-11-13 22:58:17 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/B377B48
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  database system was shut down at 2016-11-14 17:14:57 GMT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  unexpected EOF on client connection with an open transaction
+LOG:  unexpected EOF on client connection with an open transaction

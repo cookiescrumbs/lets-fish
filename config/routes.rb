@@ -20,7 +20,7 @@ end
   # You can have the root of your site routed with "root"
   root 'homepage#index'
   get '/add/water/:id',   to: 'homepage#new_water'
-  get 'search',           to: 'search#index'
+  get 'search/within-bounding-box', to: 'search#within_bounding_box'
   get '/waters/:id',      to: 'waters#show'
   get '/fisheries/:id',   to: 'fisheries#show'
   get '/trips/:username/:id', to: 'trips#show'
@@ -29,6 +29,9 @@ end
   get '/your/fishery', to: 'admin/fisheries#index'
 
   get 'weather', to: 'weather#index'
+  get 'search',  to: 'search#index'
+  get 'places', to: 'places#index'
+  get 'places/info-window', to: 'places#info_window'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

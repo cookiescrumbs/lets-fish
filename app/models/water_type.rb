@@ -3,8 +3,4 @@ class WaterType < ActiveRecord::Base
 
   validates :category, presence: true
 
-  # def category
-  #   super.titleize unless super.nil?
-  # end
-  
 end

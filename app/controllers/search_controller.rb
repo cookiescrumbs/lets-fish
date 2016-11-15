@@ -1,34 +1,20 @@
 class SearchController < ApplicationController
-  respond_to :html, :json
+  respond_to :json
 
   def index
-    @waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
-    # fresh_when @waters, public: true
+  end
+
+  def within_bounding_box
+    waters = Water.within_bounding_box(bounds).limit 20 unless bounds.nil?
+    @markers = waters
+    @results = waters
+    render 'search'
   end
 
   private
 
   def bounds
-    if params[:bounds]
-      params[:bounds].split ','
-    else
-      calculate_bounds
-    end
+    params[:bounds].split ',' unless params[:bounds].nil?
   end
 
-  def calculate_bounds
-    Geocoder::Calculations.bounding_box(center_point, 40) unless center_point.nil?
-  end
-
-  def center_point
-    center_point_from_lat_lng || center_point_from_location
-  end
-
-  def center_point_from_lat_lng
-    [params[:lat], params[:lng]] unless params[:lat].nil? || params[:lng].nil?
-  end
-
-  def center_point_from_location
-    Geocoder.coordinates(params[:location]) unless params[:location].nil?
-  end
 end

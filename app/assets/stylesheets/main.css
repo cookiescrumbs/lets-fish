@@ -17,6 +17,10 @@ body {
     color: #fed136;
 }
 
+.places-color {
+    color: #00a699;
+}
+
 p {
     font-size: 14px;
     line-height: 1.75;
@@ -61,6 +65,10 @@ h6 {
 }
 
 .image-background {
+    background-color: #fff;
+}
+
+.bg-white {
     background-color: #fff;
 }
 
@@ -125,11 +133,11 @@ fieldset[disabled] .btn-primary.active {
     background-color: #fff;
 }
 
-#search button span {
+button.search span {
     display: none;
 }
 
-#search button, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok {
+button.search, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
     border-color: #fed136;
@@ -138,7 +146,7 @@ fieldset[disabled] .btn-primary.active {
     color: #fff;
 }
 
-#search button:hover, #search button:focus, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:hover, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:focus{
+button.search:hover, button.search:focus, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:hover, .cookies-eu .cookies-eu-button-holder button.cookies-eu-ok:focus{
     border-color: #fed136;
     border-bottom-color: #fed136;
     background-color: #fed136;
@@ -437,6 +445,13 @@ section {
 
 .result-item{
     padding: 5px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+   #results-container div.result-item{
+        background-color: transparent;
+    }
 }
 
 .explore-item .explore-caption p, .result-caption p, {
@@ -540,47 +555,47 @@ body {
     margin-right: 0px;
 }
 
-@media (min-width: 768px) {
 
-    #fisheries #map {
-     display: block;
-    }
-    .map-container {
-        display: block;
-        width: 40%;
-    }
-
-    .map-container:before {
-        content: '';
-        position: absolute;
-        height: 100%;
-        right: 0;
-        -webkit-box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
-        box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
-        width: 2px;
-        z-index: 2;
-    }
-
-    .map-container {
-        position: fixed;
-        right: 0;
-        left: auto;
-        bottom: 0;
-        width: 100%;
-        top: 50px;
-    }
-
-    #map {
-        position: fixed;
-        right: 0;
-        left: auto;
-        width: 40%;
-        height: 100%;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        float: right;
-    }
+#fisheries #map {
+ display: block;
 }
+
+.map-container {
+    display: block;
+    width: 40%;
+}
+
+.map-container:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    right: 0;
+    -webkit-box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
+    box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
+    width: 2px;
+    z-index: 2;
+}
+
+.map-container {
+    position: fixed;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    width: 100%;
+    top: 50px;
+}
+
+#map {
+    position: fixed;
+    right: 0;
+    left: auto;
+    width: 40%;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    float: right;
+}
+
 
 #water-form label, #display-latitude, #display-longitude{
     color: #fff;
@@ -832,6 +847,7 @@ ul.species {
 .timeline .timeline-body > ul {
   margin-bottom: 0;
 }
+
 @media (min-width: 768px) {
   .timeline:before {
     left: 30%;
@@ -1049,4 +1065,21 @@ ul.forecast li {
     padding-left: 10px;
 }
 
+
+section.local-amenities {
+    display: none;
+}
+
+@media(min-width:768px) {
+   section.local-amenities {
+        display: block;
+        padding: 20px;
+    }
+
+}
+
+button#food {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
 

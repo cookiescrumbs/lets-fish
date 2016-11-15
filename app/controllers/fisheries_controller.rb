@@ -37,7 +37,7 @@ class FisheriesController < ApplicationController
   # Add this stuff to the image model
   def set_image_attribution
     return unless first_image? && geograph_photo_id?
-    @image_attribution = GeographService.user_attribution_from geograph_photo_id, geograph_api_key
+    @image_attribution = GeographService.user_attribution_from geograph_photo_id
   end
 
   def first_image?

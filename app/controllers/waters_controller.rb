@@ -31,7 +31,7 @@ class WatersController < ApplicationController
   # add this stuff to the image model
   def set_image_attribution
     return unless first_image? && geograph_photo_id?
-    @image_attribution = GeographService.user_attribution_from geograph_photo_id, geograph_api_key
+    @image_attribution = GeographService.user_attribution_from geograph_photo_id
   end
 
   def first_image?
@@ -40,10 +40,6 @@ class WatersController < ApplicationController
 
   def geograph_photo_id
     Water.friendly.find(params[:id]).images.first.geograph_photo_id
-  end
-
-  def geograph_api_key
-    Rails.application.config.geograph_api_key
   end
 
   def geograph_photo_id?
