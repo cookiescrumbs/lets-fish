@@ -19,7 +19,7 @@ module GooglePlacesService
     begin
       response = get("/maps/api/place/details/json?key=#{GooglePlacesService::API_KEY}&language=en&placeid=#{id}", timeout: 1)
       return {} unless response.code === 200
-      PlaceBuilder::build(response['results'])
+      PlaceBuilder::build(response['result'])
     rescue
       {}
     end

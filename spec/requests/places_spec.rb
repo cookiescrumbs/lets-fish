@@ -1,6 +1,6 @@
-describe 'PlacesAPI', type: :request  do
+describe 'PlacesAPI', type: :request do
 
-  describe 'GET /places with lat, lng and place type', focus: true do
+  describe 'GET /places with lat, lng and place type' do
 
     before(:each) do
       stub_google_places_near_by_search
