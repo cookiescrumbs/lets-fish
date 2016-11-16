@@ -61,6 +61,7 @@ $(document).ready(function() {
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
     buildMapRoundLocation(location);
+    buildMapRoundGeographicalCenter(lat,lng);
     ////////////////////////////
   });
 
@@ -101,9 +102,20 @@ $(document).ready(function() {
   });
   /////////////////////////
 
+  function buildMapRoundGeographicalCenter(lat,lng) {
+      if(!lat && !lng) {
+        return;
+      }
+      map.setCenter(new google.maps.LatLng(lat,lng));
+      map.setZoom(zoom);
+      var boundingBox = getBoundingBoxFromMap(map);
+      var center = getCenterFromMap(map);
+      getMarkersAndResultsFromBounds(boundingBox, center );
+  }
+
   function buildMapRoundLocation(location) {
     if(!location) {
-      return null;
+      return;
     }
     geocoder.geocode({'address': location}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
