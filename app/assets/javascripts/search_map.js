@@ -32,6 +32,7 @@ $(document).ready(function() {
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
 
+
   ///////Search Box
   // Create the search box and link it to the UI element.
   // var input = (document.getElementById('map-search-box'));
@@ -61,7 +62,11 @@ $(document).ready(function() {
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
     buildMapRoundLocation(location);
-    buildMapRoundGeographicalCenter(lat,lng);
+    buildMapRoundGeographicalCenter(lat,lng, function(){
+        if($( window ).width() < 768) {
+          $('#map').hide();
+        }
+    });
     ////////////////////////////
   });
 
@@ -102,7 +107,7 @@ $(document).ready(function() {
   });
   /////////////////////////
 
-  function buildMapRoundGeographicalCenter(lat,lng) {
+  function buildMapRoundGeographicalCenter(lat,lng,callback) {
       if(!lat && !lng) {
         return;
       }
@@ -111,6 +116,8 @@ $(document).ready(function() {
       var boundingBox = getBoundingBoxFromMap(map);
       var center = getCenterFromMap(map);
       getMarkersAndResultsFromBounds(boundingBox, center );
+
+      callback();
   }
 
   function buildMapRoundLocation(location) {
@@ -222,4 +229,5 @@ $(document).ready(function() {
        return results[1] || 0;
     }
   }
+
 });
