@@ -47,6 +47,8 @@ gem 'devise'
 gem 'cookies_eu'
 gem 'google_places'
 
+gem "react_on_rails", "~> 6"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
