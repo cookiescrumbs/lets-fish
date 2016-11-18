@@ -7,7 +7,7 @@ module GooglePlacesService
 
   def self.places(lat:, lng:, type:, zoom:)
     begin
-      radius = self.zoom_to_radius
+      radius = self.radius_from zoom
       response = get("/maps/api/place/nearbysearch/json?key=#{GooglePlacesService::API_KEY}&location=#{lat},#{lng}&radius=#{radius}&types=#{type}", timeout: 1)
       return {} unless response.code === 200
       PlacesBuilder::build(response['results'])
@@ -27,28 +27,19 @@ module GooglePlacesService
   end
 
 
-  def self.zoom_to_radius(zoom)
-
-    if zoom.between?(1, 5)
-      34000  #20 miles
+  def self.radius_from(zoom)
+    zoom = zoom.to_i
+    if zoom.between?(1, 10)
+      return 34000  #20 miles
+    end
+    
+    if zoom.between?(11, 15)
+      return 8500   #5 miles
     end
 
-    if zoom.between?(6, 10)
-      17000  #10 miles
+    if zoom.between?(16, 20)
+      return 4250 #2 miles
     end
-
-
-    1  World
-    5 Landmass/continent
-    10 City
-    15 Streets
-    20 Buildings
-
-    34000  20 miles
-    17000  10 miles
-    8500   5 miles
-
-
   end
 
 end

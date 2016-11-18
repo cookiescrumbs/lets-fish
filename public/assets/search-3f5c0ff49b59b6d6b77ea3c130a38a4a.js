@@ -241,3 +241,126 @@ $(document).ready(function() {
   }
 
 });
+$(document).ready(function(){
+
+  var markers =[],
+  infoWindow = new google.maps.InfoWindow(),
+  campsites = document.getElementById('campsites'),
+  food = document.getElementById('food'),
+  accommodation = document.getElementById('accommodation');
+  
+  campsites.onclick = function(){
+    var lat = map.center.lat();
+    var lng = map.center.lng();
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'campground', zoom);
+  }
+
+  food.onclick = function(){
+    var lat = map.center.lat();
+    var lng = map.center.lng();
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'restaurant', zoom);
+  }
+
+  drink.onclick = function(){
+    var lat = map.center.lat();
+    var lng = map.center.lng();
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'bar', zoom);
+  }
+
+
+  accommodation.onclick = function(){
+    var lat = map.center.lat();
+    var lng = map.center.lng();
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'lodging', zoom);
+  }
+
+  function removeAndResetMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+  
+  function addMarkers(data){
+    removeAndResetMarkers();
+    for (i = 0; i < data.length; i++) {
+      
+      var latLng = new google.maps.LatLng(data[i]['lat'],data[i]['lng']);
+      
+      var marker = new google.maps.Marker({
+        position: latLng,
+        icon: '/icons/'+ data[i]['icon'] +'.svg',
+        id: data[i]['id'],
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent('...');
+        getInfoWindow(this.id);
+        infoWindow.open(map, this);
+      });
+
+      markers.push(marker);
+    }
+  }
+
+  function getPlaces(lat, lng, type, zoom){
+    console.log(zoom);
+    $.ajax({
+      type: 'GET',
+      url: '/places',
+      data:{
+        'lat': lat,
+        'lng': lng,
+        'type': type,
+        'zoom': zoom
+      },
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        addMarkers(data.markers);
+      },
+      failure: function(errMsg){
+        alert(errMsg);
+      }
+    });
+  }
+
+  function getInfoWindow(id){
+    $.ajax({
+      type: 'GET',
+      url: '/places/info-window',
+      data:{
+        'id': id
+      },
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        infoWindow.setContent(data.infoWindow);
+      },
+      failure: function(errMsg){
+          alert(errMsg);
+      }
+    });
+  }
+
+
+});
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+
+
+;

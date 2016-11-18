@@ -9,25 +9,30 @@ $(document).ready(function(){
   campsites.onclick = function(){
     var lat = map.center.lat();
     var lng = map.center.lng();
-    getPlaces(lat,lng, 'campground');
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'campground', zoom);
   }
 
   food.onclick = function(){
     var lat = map.center.lat();
     var lng = map.center.lng();
-    getPlaces(lat,lng, 'restaurant');
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'restaurant', zoom);
   }
 
   drink.onclick = function(){
     var lat = map.center.lat();
     var lng = map.center.lng();
-    getPlaces(lat,lng, 'bar');
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'bar', zoom);
   }
+
 
   accommodation.onclick = function(){
     var lat = map.center.lat();
     var lng = map.center.lng();
-    getPlaces(lat,lng, 'lodging');
+    var zoom = map.getZoom();
+    getPlaces(lat,lng, 'lodging', zoom);
   }
 
   function removeAndResetMarkers() {
@@ -60,14 +65,16 @@ $(document).ready(function(){
     }
   }
 
-  function getPlaces(lat, lng, type){
+  function getPlaces(lat, lng, type, zoom){
+    console.log(zoom);
     $.ajax({
       type: 'GET',
       url: '/places',
       data:{
         'lat': lat,
         'lng': lng,
-        'type': type
+        'type': type,
+        'zoom': zoom
       },
       contentType: "application/json; charset=utf-8",
       dataType: "json",
