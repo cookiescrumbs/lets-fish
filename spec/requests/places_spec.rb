@@ -8,7 +8,8 @@ describe 'PlacesAPI', type: :request do
       params = {
         lat: 54.673440,
         lng: -2.228462,
-        type: 'lodging'
+        type: 'lodging',
+        zoom: '8'
       }
 
       get '/places', params, 'Accept' => 'application/json'

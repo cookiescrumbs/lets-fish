@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
   private
 
   def places
-    GooglePlacesService::places(lat: lat, lng: lng, type: type)
+    GooglePlacesService::places(lat: lat, lng: lng, type: type, zoom: zoom)
   end
 
   def place
@@ -35,6 +35,10 @@ class PlacesController < ApplicationController
 
   def id
     params[:id]
+  end
+
+  def zoom
+    params[:zoom]
   end
 
 end
