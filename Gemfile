@@ -45,6 +45,7 @@ gem 'meta-tags'
 gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
+gem 'react_on_rails' 
 
 group :development, :test do
   gem 'rspec-rails'
