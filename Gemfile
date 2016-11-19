@@ -71,3 +71,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
+
+gem 'mini_racer', platforms: :ruby
