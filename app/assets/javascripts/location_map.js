@@ -14,7 +14,8 @@ $(document).ready(function() {
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
       ]
-    }
+    },
+    mapTypeId: google.maps.MapTypeId.SATELLITE
   };
 
     // $('#location').click(function () {
