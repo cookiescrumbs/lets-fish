@@ -4,35 +4,23 @@ $(document).ready(function(){
   infoWindow = new google.maps.InfoWindow(),
   campsites = document.getElementById('campsites'),
   food = document.getElementById('food'),
-  accommodation = document.getElementById('accommodation');
+  accommodation = document.getElementById('accommodation'),
+  drink = document.getElementById('drink');
   
   campsites.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    var zoom = map.getZoom();
-    getPlaces(lat,lng, 'campground', zoom);
+    placesByType('campground');
   }
 
   food.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    var zoom = map.getZoom();
-    getPlaces(lat,lng, 'restaurant', zoom);
+    placesByType('restaurant');
   }
 
   drink.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    var zoom = map.getZoom();
-    getPlaces(lat,lng, 'bar', zoom);
+    placesByType('bar');
   }
 
-
   accommodation.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    var zoom = map.getZoom();
-    getPlaces(lat,lng, 'lodging', zoom);
+    placesByType('lodging');
   }
 
   function removeAndResetMarkers() {
@@ -41,7 +29,16 @@ $(document).ready(function(){
     }
     markers = [];
   }
-  
+
+  function placesByType(type) {
+    getPlaces(
+      map.center.lat(),
+      map.center.lng(), 
+      type, 
+      map.getZoom()
+    );
+  }
+    
   function addMarkers(data){
     removeAndResetMarkers();
     for (i = 0; i < data.length; i++) {
@@ -66,7 +63,6 @@ $(document).ready(function(){
   }
 
   function getPlaces(lat, lng, type, zoom){
-    console.log(zoom);
     $.ajax({
       type: 'GET',
       url: '/places',
