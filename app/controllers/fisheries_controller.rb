@@ -5,6 +5,7 @@ class FisheriesController < ApplicationController
   before_action :set_image_attribution, only: [:show]
   before_action :set_species, only: [:show]
   before_action :set_water_types, only: [:show]
+  before_action :set_meta, only: [:show]
 
   def show
   end
@@ -48,11 +49,14 @@ class FisheriesController < ApplicationController
     @water.images.first.geograph_photo_id
   end
 
-  def geograph_api_key
-    Rails.application.config.geograph_api_key
-  end
-
   def geograph_photo_id?
     !@water.images.first.geograph_photo_id.blank?
+  end
+
+  def set_meta
+    fishery = Fishery.friendly.find(params[:id])
+    set_meta_tags title: fishery.meta_title
+    set_meta_tags description: fishery.meta_description
+    set_meta_tags fishery.open_graph request.original_url
   end
 end

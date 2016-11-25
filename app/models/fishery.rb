@@ -1,5 +1,9 @@
+require_relative 'meta_tags'
+
 class Fishery < ActiveRecord::Base
   extend FriendlyId
+
+  include MetaTags::Fishery
 
   friendly_id :name, use: :slugged
 
