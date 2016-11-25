@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var map,
+  infoWindow = new google.maps.InfoWindow(),
   markers =[],
   searchBox,
   searchInput,
@@ -169,9 +170,16 @@ $(document).ready(function() {
       var markerCount = i;
       markerCount++;
       var latLng = new google.maps.LatLng(data[i]['lat'],data[i]['lng']);
+      var name = data[i]['name'];
       var marker = new google.maps.Marker({
         position: latLng,
+        name: name,
         map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(this.name);
+        infoWindow.open(map, this);
       });
       marker.setMap(map);
       markers.push(marker);
