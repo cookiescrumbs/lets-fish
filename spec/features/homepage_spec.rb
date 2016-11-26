@@ -1,4 +1,34 @@
-# require_relative 'features_helper'
+require_relative 'features_helper'
+
+describe 'Homepage', type: :feature do
+
+  describe 'Fisheries section' do
+
+    describe 'there are fisheries with and without waters' do
+
+      before do
+        stub_google_geocode_lat_lng
+        stub_google_geocode_address
+        @fishery = FactoryGirl.create :fishery_with_waters
+        @fishery_without_waters = FactoryGirl.create :fishery, name: 'fishery with no waters'
+        @homepage = PageObjects::Homepage.new
+        @homepage.load
+      end
+
+      it 'shows only fisheries with waters' do
+        expect(page).to have_no_content 'fishery with no waters'
+        expect(page).to have_content @fishery.name
+      end
+
+    end
+
+  end
+
+end
+
+
+
+# end
 
 # describe "Homepage", type: :feature do
 
