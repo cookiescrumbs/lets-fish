@@ -22,6 +22,7 @@ class FisheriesController < ApplicationController
   end
 
   def set_water
+    redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.first
     @water = Fishery.friendly.find(params[:id]).waters.first
   end
 
@@ -42,6 +43,9 @@ class FisheriesController < ApplicationController
   end
 
   def first_image?
+    if @water.nil?
+      return false
+    end
     !@water.images.first.blank?
   end
 
@@ -57,6 +61,5 @@ class FisheriesController < ApplicationController
     fishery = Fishery.friendly.find(params[:id])
     set_meta_tags title: fishery.meta_title
     set_meta_tags description: fishery.meta_description
-    set_meta_tags fishery.open_graph request.original_url
   end
 end
