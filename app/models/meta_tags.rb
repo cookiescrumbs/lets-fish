@@ -17,7 +17,7 @@ module MetaTags
           type: 'place',
           place: {
             location: {
-              latitude: latitude ,
+              latitude: latitude,
               longitude:longitude
             }
           },
@@ -49,7 +49,7 @@ module MetaTags
           type: 'place',
           place: {
             location: {
-              latitude: latitude ,
+              latitude: latitude,
               longitude:longitude
             }
           },
