@@ -1,8 +1,39 @@
-<amp-img src="<%=(@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png'%>" width="596" height="321" layout="responsive"></amp-img>
-<h1><%= @water.name %></h1>
-<% if !@water.description.blank? %>
-    <p><%= simple_format @water.description %></p>
-<% end %>
+<h4>
+    <amp-fit-text width="300" height="45" layout="responsive" max-font-size="45">
+           <%= @water.meta_title%>
+    </amp-fit-text>
+</h4>
+<amp-img src="<%=(@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png'%>" alt="<%= @water.meta_title %>" attribution="" width="596" height="321" layout="responsive"></amp-img>
+
+<div>
+    <section>
+      <h4>About this water</h4>
+        <% if !@water.description.blank? %>
+            <p class="description"><%= simple_format @water.description %></p>
+        <% end %>
+    </section>
+</div>
+
+
+<amp-analytics type="googleanalytics">
+  <script type="application/json">
+    {
+        "vars": {
+            "account": "UA-74752273-1"
+        },
+        "triggers": {
+            "default pageview": {
+                "on": "visible",
+                "request": "pageview",
+                "vars": {
+                    "title": "<%= @water.meta_title%>"
+                }
+            }
+        }
+    }
+  </script>
+</amp-analytics>
+
 <script type="application/ld+json">
     <%= raw render 'schema_org.json.jbuilder' %>
 </script>
