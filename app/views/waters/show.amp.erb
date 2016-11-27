@@ -1,0 +1,8 @@
+<amp-img src="<%=(@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png'%>" width="596" height="321" layout="responsive"></amp-img>
+<h1><%= @water.name %></h1>
+<% if !@water.description.blank? %>
+    <p><%= simple_format @water.description %></p>
+<% end %>
+<script type="application/ld+json">
+    <%= raw render 'schema_org.json.jbuilder' %>
+</script>
