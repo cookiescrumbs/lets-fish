@@ -1,18 +1,84 @@
-<h4>
-    <amp-fit-text width="300" height="45" layout="responsive" max-font-size="45">
-           <%= @water.meta_title%>
-    </amp-fit-text>
-</h4>
-<amp-img src="<%=(@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png'%>" alt="<%= @water.meta_title %>" attribution="" width="596" height="321" layout="responsive"></amp-img>
-
-<div>
-    <section>
-      <h4>About this water</h4>
-        <% if !@water.description.blank? %>
-            <p class="description"><%= simple_format @water.description %></p>
-        <% end %>
+ <header>
+    <a class="logo" href="/">Let's fish</a>
+ </header>
+<section class="content">
+    <amp-img src="<%=(@water.images.first)? @water.images.first.image.url(:medium) : '/images/missing.png'%>" alt="<%= @water.meta_title %>" width="596" height="70" layout="responsive" class="hero-image text-align-center color-white image-brightness-70">
+    <h4 class="water-title">
+        <amp-fit-text width="300"
+                height="25"
+                layout="responsive"
+                max-font-size="60">
+            <%= @water.name %>
+        </amp-fit-text>
+    </h4>
+    <h4 class="managed-by">
+        <amp-fit-text width="300"
+                height="15"
+                layout="responsive"
+                max-font-size="30">
+            managed by <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %></a>
+        </amp-fit-text>
+    </h4>
+    <% if !@image_attribution.blank? %>
+        <section class="p-bottom5">
+            <amp-fit-text width="300"
+                    height="17"
+                    layout="responsive"
+                    max-font-size="20">
+                Image &copy; Copyright
+                <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+                and licensed for reuse under this
+                <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
+                <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
+            </amp-fit-text>
+        </section>
+    <% end %>
+    </amp-img>
+    <section class="padding-16 clear">
+        <div class="water-type">
+            <amp-img src="/images/water.png" width="40" height="40" alt="<%=@water.water_type.category%>" class="pull-left">
+            </amp-img>
+            <h6><%= @water.water_type.category.capitalize %></h6>
+        </div>
+        <div class="fish">
+             <amp-img src="/images/fish.png" width="40" height="40"  alt="<%= @species.map{|s| s.name.capitalize }.to_sentence %>"  class="pull-left">
+             </amp-img>
+            <h6><%= @species.map{|s| s.name.capitalize }.to_sentence %></h6>
+        </div>
+        <div class="location">
+            <amp-img src="/images/location.png" width="40" height="40" alt="address"  class="pull-left">
+            </amp-img>
+            <h6><%= @water.address %></h6>
+        </div>
     </section>
-</div>
+    <amp-accordion>
+        <section>
+            <h4>Water description</h4>
+            <div>
+                <% if !@water.description.blank? %>
+                    <p><%= simple_format @water.description %></p>
+                <% end %>
+            </div>
+        </section>
+        <!-- <section>
+            <h4>Weather</h4>
+            <div>
+                <% if !@water.description.blank? %>
+                    <p class="description"><%= simple_format @water.description %></p>
+                <% end %>
+            </div>
+        </section>
+        <section>
+            <h4>Location</h4>
+            <div>
+                <% if !@water.description.blank? %>
+                    <p class="description"><%= simple_format @water.description %></p>
+                <% end %>
+            </div>
+        </section> -->
+    </amp-accordion>
+</section>
+<footer></footer>
 
 
 <amp-analytics type="googleanalytics">

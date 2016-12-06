@@ -5,14 +5,78 @@
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <%= display_meta_tags(default_meta_tags) %>
     <link rel="canonical" href="<%= request.original_url %>" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <style amp-custom>
-      amp-fit-text {
-        margin-bottom: 24px;
-        margin-top: 24px;
-        padding: 0 16px;
+      body { background-color: #000; }
+      header, footer{
+        padding: 15px;
+        text-align: left;
+        background-color: #000;
+      }
+      .content { background-color: #fff; }
+      .image-brightness-70 img {
+        filter: brightness(70%);
+      }
+      a.logo {
+        font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 20px;
+        color: #fec503;
+      }
+      a.logo:hover,
+      a.logo:active,
+      a.logo:active {
+        color: #fec503;
+      }
+      .hero-image a {
+        text-decoration: none;
+        color: #f6b300;
+      }
+      .hero-image a:hover,
+      .hero-image a:active,
+      .hero-image a:active {
+        text-decoration: underline;
+        color: #f6b300;
+      }
+      div.image-trans {
+          background: rgba(0, 0, 0, 0.3);
+      }
+      .text-align-center { text-align: center; }
+      .color-white { color: white; }
+      .p-bottom5 { padding-bottom:5px; }
+      .water-title {
+        text-transform: uppercase;
+        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      }
+      .managed-by{
+        font-style: italic;
+        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+      }
+      h4, h6{
+        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      }
+
+      amp-accordion { padding-bottom: 0px; }
+      amp-accordion h4 { padding: 16px; }
+      amp-accordion section div { padding: 16px; }
+      .padding-16 { padding: 16px; }
+      .pull-left { float: left; }
+      section {
+        overflow: auto;
+        width: 100%
+      }
+      .water-type h6, .fish h6, .location h6 {
+        line-height: 38px;
+        margin-left: 50px;
       }
     </style>
+    <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   </head>
   <body>
