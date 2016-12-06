@@ -29,6 +29,10 @@ module MetaTags
       }
     end
 
+    def amp_html(url)
+      url + '.amp'
+    end
+
   end
 
 

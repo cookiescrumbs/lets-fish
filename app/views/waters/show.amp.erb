@@ -34,21 +34,23 @@
         </section>
     <% end %>
     </amp-img>
-    <section class="padding-16 clear">
-        <div class="water-type">
-            <amp-img src="/images/water.png" width="40" height="40" alt="<%=@water.water_type.category%>" class="pull-left">
-            </amp-img>
-            <h6><%= @water.water_type.category.capitalize %></h6>
-        </div>
-        <div class="fish">
-             <amp-img src="/images/fish.png" width="40" height="40"  alt="<%= @species.map{|s| s.name.capitalize }.to_sentence %>"  class="pull-left">
-             </amp-img>
-            <h6><%= @species.map{|s| s.name.capitalize }.to_sentence %></h6>
-        </div>
-        <div class="location">
-            <amp-img src="/images/location.png" width="40" height="40" alt="address"  class="pull-left">
-            </amp-img>
-            <h6><%= @water.address %></h6>
+    <section>
+        <div class="padding-16 clear">
+            <div class="water-type">
+                <amp-img src="/images/water.png" width="40" height="40" alt="<%=@water.water_type.category%>" class="pull-left">
+                </amp-img>
+                <h6><%= @water.water_type.category.capitalize %></h6>
+            </div>
+            <div class="fish">
+                 <amp-img src="/images/fish.png" width="40" height="40"  alt="<%= @species.map{|s| s.name.capitalize }.to_sentence %>"  class="pull-left">
+                 </amp-img>
+                <h6><%= @species.map{|s| s.name.capitalize }.to_sentence %></h6>
+            </div>
+            <div class="location">
+                <amp-img src="/images/location.png" width="40" height="40" alt="address"  class="pull-left">
+                </amp-img>
+                <h6><%= @water.address %></h6>
+            </div>
         </div>
     </section>
     <amp-accordion>
