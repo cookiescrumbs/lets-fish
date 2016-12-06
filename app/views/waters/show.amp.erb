@@ -60,27 +60,22 @@
                 <% end %>
             </div>
         </section>
-        <!-- <section>
-            <h4>Weather</h4>
-            <div>
-                <% if !@water.description.blank? %>
-                    <p class="description"><%= simple_format @water.description %></p>
-                <% end %>
-            </div>
-        </section>
         <section>
             <h4>Location</h4>
-            <div>
-                <% if !@water.description.blank? %>
-                    <p class="description"><%= simple_format @water.description %></p>
-                <% end %>
-            </div>
-        </section> -->
+            <amp-iframe width="600"
+                height="400"
+                layout="responsive"
+                sandbox="allow-scripts allow-same-origin allow-popups"
+                frameborder="0"
+                src="https://www.google.com/maps/embed/v1/view?key=<%=Rails.application.config.google_api_key_browser%>
+                &center=<%=@water.latitude%>,<%=@water.longitude%>
+                &zoom=14
+                &maptype=satellite">
+            </amp-iframe>
+        </section>
     </amp-accordion>
 </section>
 <footer></footer>
-
-
 <amp-analytics type="googleanalytics">
   <script type="application/json">
     {
@@ -99,7 +94,3 @@
     }
   </script>
 </amp-analytics>
-
-<script type="application/ld+json">
-    <%= raw render 'schema_org.json.jbuilder' %>
-</script>
