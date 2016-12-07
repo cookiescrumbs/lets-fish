@@ -28,7 +28,7 @@ end
 
   get '/your/fishery', to: 'admin/fisheries#index'
 
-  get 'weather', to: 'weather#index'
+  get 'weather', to: 'weather#forecast'
   get 'search',  to: 'search#index'
   get 'places', to: 'places#index'
   get 'places/info-window', to: 'places#info_window'
