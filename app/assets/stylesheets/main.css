@@ -486,6 +486,7 @@ footer span.copyright {
     text-transform: none;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 25px;
+    color: #777;
 }
 
 footer ul.quicklinks {
