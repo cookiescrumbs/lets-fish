@@ -2,7 +2,7 @@
 <header style="background-image: url(<%=(@water.images.first)? @water.images.first.image.url(:large) : '/images/missing.png'%>)" class="img-responsive img-centered" alt="<%= @water.name %>">
     <div class="image-trans">
         <div class="container">
-            <div class="intro-text">
+            <div class="intro-text" style="<%=(@image_attribution.blank?)? 'padding=240px;' : ''%>">
                 <div class="intro-heading"><%= @fishery.name %></div>
                 <div class="intro-lead-in">
                     Explore the rest of <a href="/search?location=<%=u"#{@fishery.address.short}"%>"><%= @fishery.address.short %></a>
