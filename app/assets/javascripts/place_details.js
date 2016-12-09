@@ -3,15 +3,17 @@ $(document).ready(function() {
   if(typeof $('#search-details')[0] == 'undefined') {
     return;
   }
+
   disableFisheryFormSubmit();
+
   var input = $('#search-details')[0];
   var autoComplete = new google.maps.places.Autocomplete(
-    input,
-    {
-      componentRestrictions: {
-          country: 'uk'
+      input,
+      {
+        componentRestrictions: {
+            country: 'uk'
+        }
       }
-    }
   );
 
   autoComplete.addListener('place_changed', function(){
@@ -108,9 +110,11 @@ $(document).ready(function() {
   function disableFisheryFormSubmit() {
     $('.new_fishery, .edit_fishery').on('keyup keypress', function(e) {
       var code = e.keyCode || e.which;
-      if (code == 13) {
-        e.preventDefault();
-        return false;
+      if(event.target.tagName != 'TEXTAREA') {
+        if (code == 13) {
+          e.preventDefault();
+          return false;
+        }
       }
     });
   }
