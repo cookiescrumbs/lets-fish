@@ -51,6 +51,7 @@ class WatersController < ApplicationController
     set_meta_tags title: water.meta_title
     set_meta_tags description: water.meta_description
     set_meta_tags water.open_graph request.original_url
+    set_meta_tags water.twitter
     set_meta_tags amphtml: water.amp_html(request.original_url) unless request.format == :amp
   end
 end

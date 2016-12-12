@@ -29,6 +29,19 @@ module MetaTags
       }
     end
 
+    def twitter
+      {
+         twitter: {
+          card: 'summary_large_image',
+          site: '@letsgoflyfish',
+          creator: '@letsgoflyfish',
+          title: meta_title,
+          description: description.slice(0..140),
+          image: (images.first)? images.first.image.url(:medium) : ''
+        }
+      }
+    end
+
     def amp_html(url)
       url + '.amp'
     end
