@@ -62,5 +62,6 @@ class FisheriesController < ApplicationController
     set_meta_tags title: fishery.meta_title
     set_meta_tags description: fishery.meta_description
     set_meta_tags fishery.open_graph request.original_url
+    set_meta_tags fishery.twitter
   end
 end
