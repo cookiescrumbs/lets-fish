@@ -35,11 +35,10 @@ module MetaTags
 
   end
 
-
   module Fishery
 
     def meta_title
-      "Fly fishing at #{name.strip}, #{address.short}"
+      "#{name.strip}, #{address.short}"
     end
 
     def meta_description
