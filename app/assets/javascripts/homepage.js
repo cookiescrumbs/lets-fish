@@ -14,5 +14,4 @@
 //= require classie
 //= require cbpAnimatedHeader
 //= require navigation
-//= require search_auto_complete
 
