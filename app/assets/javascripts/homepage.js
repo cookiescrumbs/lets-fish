@@ -14,4 +14,3 @@
 //= require classie
 //= require cbpAnimatedHeader
 //= require navigation
-
