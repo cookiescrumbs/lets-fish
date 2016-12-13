@@ -975,6 +975,7 @@ ul.species {
 .m-right10 { margin-right:10px; }
 
 .remove-padding-left { padding-left: 0px; }
+.remove-padding-right { padding-right: 0px; }
 
 #trips header .intro-text {
     padding-top: 100px;

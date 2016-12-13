@@ -32,7 +32,7 @@
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.name.capitalize }.to_sentence } %>
                 <%= render '/shared/location', locals: { location: @water.address } %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 remove-padding-left remove-padding-right">
                 <% if !@water.description.blank? %>
                     <p><%= simple_format @water.description %></p>
                 <% end %>
