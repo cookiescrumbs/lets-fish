@@ -24,12 +24,12 @@
     <div class="container">
         <div class="row">
          <h4 class="m-bottom24">About the fishery</h4>
-            <div class="col-md-3 remove-padding-left remove-padding-right p-bottom10">
+            <div class="col-md-3 remove-padding-left p-bottom10">
                 <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>
                 <%= render '/shared/location', locals: { location: @fishery.address.short } %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 remove-padding-left remove-padding-right">
                 <% if !@fishery.description.blank? %>
                     <%= simple_format @fishery.description %>
                 <% end %>
