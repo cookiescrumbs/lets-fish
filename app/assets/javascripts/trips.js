@@ -13,4 +13,3 @@
 //= require moment
 //= require mustache
 //= require trip_map
-
