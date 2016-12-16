@@ -554,12 +554,11 @@ body {
     margin-right: 0px;
 }
 
-
 #fisheries #map {
     display: block;
 }
 
-#location-map {
+#location-map, #fisheries #map {
   margin: 0;
   padding: 0;
   width: 100%;
