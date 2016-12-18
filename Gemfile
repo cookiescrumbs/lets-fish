@@ -39,7 +39,6 @@ gem 'meta-tags', git: 'https://github.com/kpumuk/meta-tags.git'
 gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
-gem 'instagram'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -4,10 +4,11 @@ class InstagramService
   base_uri 'https://api.instagram.com/v1'
   API_KEY = Rails.application.config.instagram_api_key
 
-  def self.photos_from_tag(tag)
+  def self.photos_by(tag:)
     begin
-      response = get("/tags/#{media}/recent#{photo_id}?access_token=#{InstagramService::API_KEY}", timeout: 1)
+      response = get("/tags/#{tag}/media/recent?access_token=#{InstagramService::API_KEY}", timeout: 1)
       return {} unless response.code === 200
+      PhotosBuilder::build(response['data'])
     rescue
       {}
     end

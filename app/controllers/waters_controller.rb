@@ -2,6 +2,7 @@ class WatersController < ApplicationController
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
+  before_action :set_photos, only: [:show]
   before_action :set_species, only: [:show]
   before_action :set_image_attribution, only: [:show]
   before_action :set_meta, only: [:show]
@@ -10,6 +11,14 @@ class WatersController < ApplicationController
   end
 
   private
+
+  def set_photos
+    @photos = InstagramService::photos_by tag: tag
+  end
+
+  def tag
+    Water.friendly.find(params[:id]).name.delete(' ')
+  end
 
   def set_water
     @water = Water.friendly.find(params[:id])
