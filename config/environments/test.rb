@@ -42,4 +42,6 @@ LetsFish::Application.configure do
   config.geograph_api_key = 'a5ecd893c8'
   config.dark_sky_api_key = '0a41a01031a5b6fa9241b180875eb218'
   config.google_api_key = 'abcd12345'
+  config.instagram_api_key = 'abcd12345'
+
 end

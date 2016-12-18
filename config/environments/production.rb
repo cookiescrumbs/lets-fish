@@ -100,5 +100,6 @@ LetsFish::Application.configure do
   config.google_api_key = 'AIzaSyAbQz9wmM_wnPdi4Q8-dlbDOyDeS10zb58'
   config.google_api_key_browser = 'AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws'
   config.google_api_key = 'AIzaSyAbQz9wmM_wnPdi4Q8-dlbDOyDeS10zb58'
+  config.instagram_api_key = '245561560.e029fea.953a89e625e5438494f446f5990ccf5e'
 
 end

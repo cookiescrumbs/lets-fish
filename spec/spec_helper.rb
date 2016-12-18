@@ -24,6 +24,7 @@ RSpec.configure do |config|
   config.include WebMockHelpers::GoogleApis
   config.include WebMockHelpers::Geograph
   config.include WebMockHelpers::DarkSky
+  config.include WebMockHelpers::Instagram
   config.include FactoryGirlHelpers
   config.include Requests::JsonHelpers, type: :request
   config.include FactoryGirl::Syntax::Methods

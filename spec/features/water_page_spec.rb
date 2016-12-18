@@ -7,6 +7,7 @@ describe 'Water page', type: :feature do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
       stub_dark_sky
+      stub_instagram_media_by_tags
       @species    = FactoryGirl.create_list :species, 5
       @water_type = FactoryGirl.create_list :water_type, 5
       @fishery    = FactoryGirl.create :fishery_with_waters
