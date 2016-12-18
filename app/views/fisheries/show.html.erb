@@ -54,6 +54,14 @@
         </div>
     </div>
 </section>
+<% if !@photos.empty? %>
+    <section id="photos">
+        <div class="container">
+            <h4 class="m-bottom24">Photos</h4>
+            <%= render '/shared/photo_carousel', locals: { photos: @photos } %>
+        </div>
+    </section>
+<% end %>
 <section id="location">
     <div class="container">
         <h4>Location</h4>
