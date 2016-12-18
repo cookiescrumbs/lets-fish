@@ -8,7 +8,7 @@ $(document).ready(function() {
   mapOptions = {
     draggable: true,
     scrollwheel: false,
-    streetViewControl: true,
+    streetViewControl: false,
     mapTypeControlOptions: {
       mapTypeIds: [
         google.maps.MapTypeId.SATELLITE,

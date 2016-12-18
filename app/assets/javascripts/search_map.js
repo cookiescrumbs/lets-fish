@@ -13,6 +13,7 @@ $(document).ready(function() {
   var geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
+    streetViewControl: false,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
@@ -61,16 +62,8 @@ $(document).ready(function() {
 
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
-    buildMapRoundLocation(location, function(){
-        if($( window ).width() < 768) {
-          $('#map').hide();
-        }
-    });
-    buildMapRoundGeographicalCenter(lat,lng, function(){
-        if($( window ).width() < 768) {
-          $('#map').hide();
-        }
-    });
+    buildMapRoundLocation(location);
+    buildMapRoundGeographicalCenter(lat,lng);
     ////////////////////////////
   });
 
@@ -111,7 +104,7 @@ $(document).ready(function() {
   });
   /////////////////////////
 
-  function buildMapRoundGeographicalCenter(lat, lng, callback) {
+  function buildMapRoundGeographicalCenter(lat, lng) {
 
       if(!lat && !lng) {
         return;
@@ -122,11 +115,9 @@ $(document).ready(function() {
       var boundingBox = getBoundingBoxFromMap(map);
       var center = getCenterFromMap(map);
       getMarkersAndResultsFromBounds(boundingBox);
-
-      callback();
   }
 
-  function buildMapRoundLocation(location, callback) {
+  function buildMapRoundLocation(location) {
 
     if(!location) {
       return;
@@ -147,8 +138,6 @@ $(document).ready(function() {
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
-
-      callback();
     });
   }
 

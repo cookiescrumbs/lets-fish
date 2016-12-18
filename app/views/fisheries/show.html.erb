@@ -46,6 +46,8 @@
         </div>
         <div class="row">
             <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>"></div>
+        </div>
+        <div class="row">
             <div id="results-container">
                 <%= render '/search/results' %>
             </div>

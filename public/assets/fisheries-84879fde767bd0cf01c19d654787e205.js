@@ -211,13 +211,14 @@ $(document).ready(function() {
   mapOptions = {
     draggable: true,
     scrollwheel: false,
-    streetViewControl: true,
+    streetViewControl: false,
     mapTypeControlOptions: {
       mapTypeIds: [
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
       ]
-    }
+    },
+    mapTypeId: google.maps.MapTypeId.SATELLITE
   };
 
     // $('#location').click(function () {
@@ -274,6 +275,7 @@ $(document).ready(function() {
   var geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
+    streetViewControl: false,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
@@ -292,6 +294,7 @@ $(document).ready(function() {
 
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
+
 
   ///////Search Box
   // Create the search box and link it to the UI element.
@@ -359,25 +362,29 @@ $(document).ready(function() {
   google.maps.event.addListener(map, 'dragend', function() {
     var boundingBox = getBoundingBoxFromMap(map);
     var center = getCenterFromMap(map);
-    getMarkersAndResultsFromBounds(boundingBox, center);
+    getMarkersAndResultsFromBounds(boundingBox);
   });
   /////////////////////////
 
-  function buildMapRoundGeographicalCenter(lat,lng) {
+  function buildMapRoundGeographicalCenter(lat, lng) {
+
       if(!lat && !lng) {
         return;
       }
+
       map.setCenter(new google.maps.LatLng(lat,lng));
       map.setZoom(zoom);
       var boundingBox = getBoundingBoxFromMap(map);
       var center = getCenterFromMap(map);
-      getMarkersAndResultsFromBounds(boundingBox, center );
+      getMarkersAndResultsFromBounds(boundingBox);
   }
 
   function buildMapRoundLocation(location) {
+
     if(!location) {
       return;
     }
+
     geocoder.geocode({'address': location}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         window.results = results;
@@ -389,7 +396,7 @@ $(document).ready(function() {
         map.setZoom(zoom);
         var boundingBox = getBoundingBoxFromMap(map);
         var center = getCenterFromMap(map);
-        getMarkersAndResultsFromBounds(boundingBox, center);
+        getMarkersAndResultsFromBounds(boundingBox);
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
@@ -455,13 +462,12 @@ $(document).ready(function() {
     markers = [];
   }
 
-  function getMarkersAndResultsFromBounds(bounds, center){
+  function getMarkersAndResultsFromBounds(bounds){
     $.ajax({
       type: 'GET',
       url: '/search/within-bounding-box',
       data:{
-        'bounds': bounds,
-        'center': center
+        'bounds': bounds
       },
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -483,6 +489,7 @@ $(document).ready(function() {
        return results[1] || 0;
     }
   }
+
 });
 $(document).ready(function() {
 

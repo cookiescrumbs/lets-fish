@@ -554,47 +554,68 @@ body {
     margin-right: 0px;
 }
 
-
 #fisheries #map {
- display: block;
-}
-
-.map-container {
     display: block;
-    width: 40%;
 }
 
-.map-container:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    right: 0;
-    -webkit-box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
-    box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
-    width: 2px;
-    z-index: 2;
+#location-map, #fisheries #map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 450px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
-.map-container {
-    position: fixed;
-    right: 0;
-    left: auto;
-    bottom: 0;
+#search #map {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    top: 50px;
-}
-
-#map {
-    position: fixed;
-    right: 0;
-    left: auto;
-    width: 40%;
-    height: 100%;
+    height: 350px;
     margin-top: 0px;
     margin-bottom: 10px;
-    float: right;
-    z-index: 0;
 }
+
+@media(min-width:768px) {
+
+    .map-container {
+        display: block;
+        width: 40%;
+    }
+
+    .map-container:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        right: 0;
+        -webkit-box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
+        box-shadow: inset -1px 0 1px rgba(0,0,0,0.3);
+        width: 2px;
+        z-index: 2;
+    }
+
+    .map-container {
+        position: fixed;
+        right: 0;
+        left: auto;
+        bottom: 0;
+        width: 100%;
+        top: 50px;
+    }
+
+    #search #map {
+        position: fixed;
+        right: 0;
+        left: auto;
+        width: 40%;
+        height: 100%;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        float: right;
+        z-index: 0;
+    }
+}
+
 
 
 #water-form label, #display-latitude, #display-longitude{
@@ -678,15 +699,6 @@ body#search footer, body#trips footer{
     width: 85%;
     margin-left: 10px;
     color: #fff;
-}
-
-#location-map, #fisheries #map{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height:450px !important;
-  margin-top: 0px;
-  margin-bottom: 10px;
 }
 
 
@@ -1037,10 +1049,6 @@ ul.signed-in-dropdown li a{
         background-color: #e7e7e7 !important;
     }
 
-
-span.water-count {
-    display: none;
-}
 
 #weather-forecast {
     margin-bottom: 30px;

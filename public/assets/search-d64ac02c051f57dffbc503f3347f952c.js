@@ -13,6 +13,7 @@ $(document).ready(function() {
   var geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
+    streetViewControl: false,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
@@ -61,16 +62,8 @@ $(document).ready(function() {
 
   ////////Adding markers when map first loads
   google.maps.event.addListenerOnce(map,'idle', function(){
-    buildMapRoundLocation(location, function(){
-        if($( window ).width() < 768) {
-          $('#map').hide();
-        }
-    });
-    buildMapRoundGeographicalCenter(lat,lng, function(){
-        if($( window ).width() < 768) {
-          $('#map').hide();
-        }
-    });
+    buildMapRoundLocation(location);
+    buildMapRoundGeographicalCenter(lat,lng);
     ////////////////////////////
   });
 
@@ -107,27 +100,29 @@ $(document).ready(function() {
   google.maps.event.addListener(map, 'dragend', function() {
     var boundingBox = getBoundingBoxFromMap(map);
     var center = getCenterFromMap(map);
-    getMarkersAndResultsFromBounds(boundingBox, center);
+    getMarkersAndResultsFromBounds(boundingBox);
   });
   /////////////////////////
 
-  function buildMapRoundGeographicalCenter(lat, lng, callback) {
+  function buildMapRoundGeographicalCenter(lat, lng) {
+
       if(!lat && !lng) {
         return;
       }
+
       map.setCenter(new google.maps.LatLng(lat,lng));
       map.setZoom(zoom);
       var boundingBox = getBoundingBoxFromMap(map);
       var center = getCenterFromMap(map);
-      getMarkersAndResultsFromBounds(boundingBox, center );
-
-      callback();
+      getMarkersAndResultsFromBounds(boundingBox);
   }
 
-  function buildMapRoundLocation(location, callback) {
+  function buildMapRoundLocation(location) {
+
     if(!location) {
       return;
     }
+
     geocoder.geocode({'address': location}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         window.results = results;
@@ -139,12 +134,10 @@ $(document).ready(function() {
         map.setZoom(zoom);
         var boundingBox = getBoundingBoxFromMap(map);
         var center = getCenterFromMap(map);
-        getMarkersAndResultsFromBounds(boundingBox, center);
+        getMarkersAndResultsFromBounds(boundingBox);
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
-
-      callback();
     });
   }
 
@@ -207,13 +200,12 @@ $(document).ready(function() {
     markers = [];
   }
 
-  function getMarkersAndResultsFromBounds(bounds, center){
+  function getMarkersAndResultsFromBounds(bounds){
     $.ajax({
       type: 'GET',
       url: '/search/within-bounding-box',
       data:{
-        'bounds': bounds,
-        'center': center
+        'bounds': bounds
       },
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -243,30 +235,23 @@ $(document).ready(function(){
   infoWindow = new google.maps.InfoWindow(),
   campsites = document.getElementById('campsites'),
   food = document.getElementById('food'),
-  accommodation = document.getElementById('accommodation');
+  accommodation = document.getElementById('accommodation'),
+  drink = document.getElementById('drink');
   
   campsites.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    getPlaces(lat,lng, 'campground');
+    placesByType('campground');
   }
 
   food.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    getPlaces(lat,lng, 'restaurant');
+    placesByType('restaurant');
   }
 
   drink.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    getPlaces(lat,lng, 'bar');
+    placesByType('bar');
   }
 
   accommodation.onclick = function(){
-    var lat = map.center.lat();
-    var lng = map.center.lng();
-    getPlaces(lat,lng, 'lodging');
+    placesByType('lodging');
   }
 
   function removeAndResetMarkers() {
@@ -275,7 +260,16 @@ $(document).ready(function(){
     }
     markers = [];
   }
-  
+
+  function placesByType(type) {
+    getPlaces(
+      map.center.lat(),
+      map.center.lng(), 
+      type, 
+      map.getZoom()
+    );
+  }
+    
   function addMarkers(data){
     removeAndResetMarkers();
     for (i = 0; i < data.length; i++) {
@@ -299,14 +293,15 @@ $(document).ready(function(){
     }
   }
 
-  function getPlaces(lat, lng, type){
+  function getPlaces(lat, lng, type, zoom){
     $.ajax({
       type: 'GET',
       url: '/places',
       data:{
         'lat': lat,
         'lng': lng,
-        'type': type
+        'type': type,
+        'zoom': zoom
       },
       contentType: "application/json; charset=utf-8",
       dataType: "json",
