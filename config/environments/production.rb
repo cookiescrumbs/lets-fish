@@ -99,5 +99,6 @@ LetsFish::Application.configure do
   config.dark_sky_api_key = '0a41a01031a5b6fa9241b180875eb218'
   config.google_api_key = 'AIzaSyAbQz9wmM_wnPdi4Q8-dlbDOyDeS10zb58'
   config.google_api_key_browser = 'AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws'
+  config.google_api_key = 'AIzaSyAbQz9wmM_wnPdi4Q8-dlbDOyDeS10zb58'
 
 end
