@@ -563,7 +563,6 @@ body {
   padding: 0;
   width: 100%;
   height: 450px;
-  margin-top: 0px;
   margin-bottom: 10px;
 }
 
@@ -963,9 +962,9 @@ ul.species {
 
 .p-top5 { padding-top: 5px; }
 .p-top17 { padding-top:17px; }
-.p-top30 { padding-top:30px; }
+.p-top30 { padding-top:30px !important; }
+.p-top40 { padding-top:40px !important; }
 .p-top70 { padding-top:70px; }
-.p-top40 { padding-top:40px; }
 
 .p-bottom10 { padding-bottom:10px; }
 .p-bottom5 { padding-bottom:5px; }

@@ -62,12 +62,6 @@
         </div>
     </section>
 <% end %>
-<section id="location">
-    <div class="container">
-        <h4>Location</h4>
-        <div id="location-map" data-lat="<%=@fishery.latitude %>" data-lng="<%=@fishery.longitude%>"></div>
-    </div>
-</section>
 <section id="contact">
     <div class="container">
         <h4>Contact Details</h4>
@@ -78,6 +72,7 @@
         <p><%= @fishery.contact_details.mobile %></p>
         <p><a href="mailto:<%= @fishery.contact_details.email %>?Subject=Enquiry regarding fishing at <%= @water.name %>"><%= @fishery.contact_details.email %></a></p>
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
+        <div id="location-map" data-lat="<%=@fishery.latitude %>" data-lng="<%=@fishery.longitude%>" class="p-top30"></div>
     </div>
 </section>
 <script type="application/ld+json">
