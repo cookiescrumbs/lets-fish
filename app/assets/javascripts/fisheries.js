@@ -14,6 +14,5 @@
 //= require classie
 //= require cbpAnimatedHeader
 //= require navigation
-//= require location_map
 //= require search_map
 //= require weather
