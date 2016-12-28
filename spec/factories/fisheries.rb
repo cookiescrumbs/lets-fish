@@ -6,6 +6,7 @@ FactoryGirl.define do
     place_id Faker::Bitcoin.address
     address { create(:address) }
     contact_details { create(:contact_details) }
+
     factory :fishery_with_waters do
 
       after(:create) do |fishery, _evaluator|

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20161226180725) do
     t.string   "slug"
     t.text     "description"
     t.integer  "map_zoom_level"
-    t.boolean  "published"
+    t.boolean  "published",      default: false
   end
 
   add_index "fisheries", ["slug"], name: "index_fisheries_on_slug", unique: true, using: :btree
