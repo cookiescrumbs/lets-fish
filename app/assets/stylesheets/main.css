@@ -427,10 +427,19 @@ section {
     margin: 0;
 }
 
-.explore-caption, .result-caption {
+ .result-caption {
     margin: 0 auto;
     padding: 25px;
     max-width: 650px;
+    background-color: #fff;
+    border-top: 1px solid #f7f7f7;
+}
+
+.explore-caption {
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 650px;
+    text-align: center;
     background-color: #fff;
     border-top: 1px solid #f7f7f7;
 }
