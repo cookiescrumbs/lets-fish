@@ -3,22 +3,20 @@
  ">
     <div class="row">
         <div class="col-md-12">
-            <h2>Fly fishing destinations</h2>
+            <h2>Fly fishing in</h2>
             <h4>England, Scotland and Wales</h4>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <h4>by location</h4>
+            <h4>Destinations</h4>
             <ol class="list-unstyled">
                 <li><a href="/search?location=Isle+of+Jura">Isle of Jura, Scotland</a></li>
-                <li><a href="/search?location=Elan+Valley">Elan Valley, Wales</a></li>
-                <li><a href="/search?location=Snowdonia+National+Park">Snowdonia, Wales</a></li>
-                <li><a href="/search?location=Forest+in+Teesdale">Forest in Teesdale, County Durham</a></li>
+                <li><a href="/search?location=Galloway+Forest+Park+Scotland">Galloway Forest Park, Scotland</a></li>
             </ol>
         </div>
         <div class="col-md-4">
-            <h4>by fishery</h4>
+            <h4>Fisheries</h4>
             <ol class="list-unstyled">
                 <%  @fisheries.each do | fishery | %>
                     <li><a href="/fisheries/<%= fishery.slug %>"><%= fishery.name %></span></a></li>
@@ -26,7 +24,7 @@
             </ol>
         </div>
         <div class="col-md-3">
-            <h4>by water</h4>
+            <h4>Waters</h4>
             <ol class="list-unstyled">
                 <%  @waters.each do | water| %>
                     <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>

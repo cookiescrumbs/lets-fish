@@ -9,7 +9,7 @@ describe 'Homepage', type: :feature do
       before do
         stub_google_geocode_lat_lng
         stub_google_geocode_address
-        @fishery = FactoryGirl.create :fishery_with_waters
+        @fishery = FactoryGirl.create :fishery_with_waters, published: true
         @fishery_without_waters = FactoryGirl.create :fishery, name: 'fishery with no waters'
         @homepage = PageObjects::Homepage.new
         @homepage.load
