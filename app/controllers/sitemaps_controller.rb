@@ -8,12 +8,12 @@ class SitemapsController < ApplicationController
   private
 
   def set_waters
-    @waters = Water.order(name: :asc)
+    @waters =  Water.includes(:fishery).where('fisheries.published' => true).order(name: :asc)
     # fresh_when @waters, public: true
   end
 
   def set_fisheries
-    @fisheries = Fishery.order(name: :asc)
+    @fisheries = Fishery.where(published: true).includes(:waters).where.not('waters.id' => nil).order(name: :asc)
     # fresh_when @fisheries, public: true
   end
 end
