@@ -2,7 +2,7 @@ module Homepage
 
   module Fisheries
     def self.recently_added(number=3)
-      Fishery.where(published: true).includes(:waters).where.not('waters.id' => nil).limit(number)
+      Fishery.where(published: true).includes(:waters).where.not('waters.id' => nil).order('fisheries.id desc').limit(number)
     end
   end
 
