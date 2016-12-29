@@ -473,7 +473,7 @@ section {
 }
 */
 @media(min-width:767px) {
-    #explore .explore-item, #recently-added .explore-item {
+    .explore-item {
         margin: 0 0 30px;
     }
 }
