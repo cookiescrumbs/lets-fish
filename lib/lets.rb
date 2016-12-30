@@ -1,4 +1,4 @@
-module Homepage
+module Lets
 
   module Fisheries
     def self.recently_added(number=3)
@@ -9,6 +9,10 @@ module Homepage
   module Waters
     def self.recently_added(number=3)
       Water.includes(:fishery).where('fisheries.published' => true).order('waters.id desc').limit(number)
+    end
+
+    def self.all
+      Water.includes(:fishery).where('fisheries.published' => true).order('waters.id desc')
     end
   end
 
