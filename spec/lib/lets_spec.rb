@@ -1,6 +1,6 @@
 require 'lets'
 
-describe Lets, focus: true do
+describe Lets do
     before(:each) do
       stub_google_geocode_lat_lng
       stub_google_geocode_address

@@ -1,4 +1,4 @@
-describe 'Search API', type: :request do
+describe 'Search API', type: :request, focus: true do
   before(:each) do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
@@ -19,8 +19,7 @@ describe 'Search API', type: :request do
       species: [ Species.last ],
       water_type_id: WaterType.first.id
     )
-
-  end
+    end
 
   it 'GET /search/within-bounding-box with bounds' do
     params = {
