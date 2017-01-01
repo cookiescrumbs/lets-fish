@@ -10,6 +10,7 @@ describe Lets, focus: true do
     end
 
   let(:total_published_waters) { 25 }
+  let(:total_published_fisheries) { 5 }
 
   describe Lets::Fisheries, '.recently_added' do
 
@@ -37,8 +38,16 @@ describe Lets, focus: true do
 
   describe Lets::Waters, '.all' do
 
-    it 'returns all the waters from published fisheries' do
+    it 'returns all the waters from published fisheries in alphabetical order' do
       expect(Lets::Waters::all.count).to eql total_published_waters
+    end
+
+  end
+
+   describe Lets::Fishery, '.all' do
+
+    it 'returns all the published fisheries in alphabetical order' do
+      expect(Lets::Fisheries::all.count).to eql total_published_fisheries
     end
 
   end

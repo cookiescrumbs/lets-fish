@@ -246,12 +246,12 @@ button.search:hover, button.search:focus, .cookies-eu .cookies-eu-button-holder 
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand{
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand, #browse_waters .navbar-brand {
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #browse_waters .navbar .container {
         margin-left: 0;
     }
 
@@ -467,16 +467,11 @@ section {
     font-size: 14px;
     font-style: italic;
 }
-/*
-#explore * {
-    z-index: 2;
+
+.explore-item {
+    margin: 0 0 30px;
 }
-*/
-@media(min-width:767px) {
-    .explore-item {
-        margin: 0 0 30px;
-    }
-}
+
 
 aside.sponsors img {
     margin: 50px auto;

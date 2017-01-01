@@ -1,4 +1,5 @@
 class WatersController < ApplicationController
+  include Lets
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
@@ -8,6 +9,10 @@ class WatersController < ApplicationController
   before_action :set_meta, only: [:show]
 
   def show
+  end
+
+  def all
+    @waters = Lets::Waters::all
   end
 
   private
