@@ -246,12 +246,12 @@ button.search:hover, button.search:focus, .cookies-eu .cookies-eu-button-holder 
         -webkit-overflow-scrolling: touch;
     }
 
-    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand, #browse_waters .navbar-brand {
+    #search .navbar-brand, #trips .navbar-brand, #sitemaps .navbar-brand, #devise-sessions .navbar-brand, #devise-passwords .navbar-brand {
         padding: 5px 0 0 0;
         margin: 0 0 0 5px;
     }
 
-    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container, #browse_waters .navbar .container {
+    #search .navbar .container, #trips .navbar .container, #sitemaps .navbar .container {
         margin-left: 0;
     }
 
@@ -283,7 +283,6 @@ button.search:hover, button.search:focus, .cookies-eu .cookies-eu-button-holder 
     .navbar-default.navbar-shrink .navbar-brand {
         font-size: 1.5em;
     }
-
 
     div.result-item span.water-count {
         display: block;
