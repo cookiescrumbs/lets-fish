@@ -18,7 +18,7 @@ class FisheriesController < ApplicationController
   end
 
   def tag
-    Fishery.friendly.find(params[:id]).name.delete(' ')
+    'letsfish' + Fishery.friendly.find(params[:id]).name.delete(' ')
   end
 
   def set_fishery
