@@ -451,7 +451,7 @@ section {
 
 .result-item{
     padding: 5px;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 @media(min-width:768px) {
