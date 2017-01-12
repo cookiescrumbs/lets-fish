@@ -4,6 +4,7 @@ $(document).ready(function() {
   lat = getLat(),
   lng = getLng(),
   zoom = getZoom(),
+  annotation = getAnnotation(),
   marker,
   mapOptions = {
     draggable: true,
@@ -35,6 +36,21 @@ $(document).ready(function() {
   map.setZoom(zoom);
   //////////////////////////////////////////////////////
 
+  ////////Annotation stuff ///////////////////////////////////////////////////////////////////////
+  map.data.setStyle({
+    strokeColor: '#FF4500'
+  });
+
+  function loadDataLayer(map) {
+    if (Object.keys(annotation).length === 0) {
+      return;
+    }
+    map.data.addGeoJson(annotation);
+  }
+
+  loadDataLayer(map);
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+
   //wait till map has loaded and add a  marker
   google.maps.event.addListenerOnce(map,'idle', function(){
       new google.maps.Marker({
@@ -54,6 +70,10 @@ $(document).ready(function() {
 
   function getZoom() {
     return  parseInt(mapElement.dataset.zoom) || 9;
+  }
+
+  function getAnnotation() {
+    return JSON.parse(mapElement.dataset.annotation);
   }
 
 });
