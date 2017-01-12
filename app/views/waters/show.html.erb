@@ -53,7 +53,7 @@
 <section id="location">
     <div class="container">
         <h4 class="m-bottom24">Location</h4>
-        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"></div>
+        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>" data-annotation="<%= @water.annotation.to_json %>"></div>
     </div>
 </section>
 
