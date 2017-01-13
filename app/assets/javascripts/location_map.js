@@ -7,7 +7,7 @@ $(document).ready(function() {
   annotation = getAnnotation(),
   marker,
   mapOptions = {
-    scrollwheel: true,
+    scrollwheel: false,
     streetViewControl: false,
     mapTypeControlOptions: {
       mapTypeIds: [
