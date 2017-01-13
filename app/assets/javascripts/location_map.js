@@ -7,8 +7,7 @@ $(document).ready(function() {
   annotation = getAnnotation(),
   marker,
   mapOptions = {
-    draggable: true,
-    scrollwheel: false,
+    scrollwheel: true,
     streetViewControl: false,
     mapTypeControlOptions: {
       mapTypeIds: [
@@ -18,17 +17,6 @@ $(document).ready(function() {
     },
     mapTypeId: google.maps.MapTypeId.SATELLITE
   };
-
-    // $('#location').click(function () {
-    //   $('#location-map').css("pointer-events", "auto");
-    // });
-
-  if ("ontouchend" in document) {
-    mapOptions.streetViewControl = false;
-    mapOptions.mapTypeControl = false;
-    mapOptions.zoomControl = false;
-    mapOptions.draggable = false;
-  }
   ////////Map
   //make a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
