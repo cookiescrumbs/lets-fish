@@ -19,11 +19,11 @@ count = locals[:count]
             <div class="image-background">
                 <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
             </div>
-    </a>
         <div class="result-caption">
             <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>
             <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name.capitalize }.to_sentence } %>
             <%= render '/shared/location', locals: { location: water.address } %>
         </div>
     </div>
+    </a>
 </div>

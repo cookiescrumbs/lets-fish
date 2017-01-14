@@ -396,11 +396,11 @@ section {
     border-top: 1px solid #f7f7f7;
 }
 
-a.explore-link:hover{
+a.explore-link, a.result-link{
     text-decoration: none;
 }
 
-.explore-caption h4, .result-caption h4 {
+.explore-caption h4, .result-caption h6 {
     text-transform: none;
     color: #333;
 }
