@@ -400,6 +400,14 @@ a.explore-link, a.result-link{
     text-decoration: none;
 }
 
+a.explore-link:hover img {
+    filter: grayscale(100);
+}
+
+a.explore-link:hover .explore-caption{
+    background-color: #e7e7e7;
+}
+
 .explore-caption h4, .result-caption h6 {
     text-transform: none;
     color: #333;
