@@ -400,7 +400,8 @@ a.explore-link, a.result-link{
     text-decoration: none;
 }
 
-a.explore-link:hover img {
+a.explore-link:hover img, a.result-link:hover .image-background img {
+    -webkit-filter: grayscale(100);
     filter: grayscale(100);
 }
 
