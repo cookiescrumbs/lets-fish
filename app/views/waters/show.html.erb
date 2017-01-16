@@ -41,6 +41,13 @@
     </div>
 </section>
 
+<section id="location">
+    <div class="container">
+        <h4 class="m-bottom24">Water map</h4>
+        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>" data-annotation="<%= @water.annotation.to_json %>"></div>
+    </div>
+</section>
+
 <% if !@photos.empty? %>
     <section id="photos">
         <div class="container">
@@ -49,13 +56,6 @@
         </div>
     </section>
 <% end %>
-
-<section id="location">
-    <div class="container">
-        <h4 class="m-bottom24">Location</h4>
-        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>" data-annotation="<%= @water.annotation.to_json %>"></div>
-    </div>
-</section>
 
 <section id="permission">
     <div class="container">
