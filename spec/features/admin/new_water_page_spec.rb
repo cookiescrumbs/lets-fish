@@ -20,7 +20,7 @@ describe 'New water page', type: :feature do
   end
 
   context 'form is filled out correctly' do
-    it "adds a water to a fishery, shows the water's details and says a nice thing" do
+    it "adds a water to a fishery, shows the water's details and says a nice thing", focus: true do
       fill_in 'water_name', with: 'Total Loch Doon'
       # had to use find as the fields are hidden
       find('#latitude').set(-90)
@@ -34,6 +34,7 @@ describe 'New water page', type: :feature do
 
       expect(page).to have_content 'Total Loch Doon'
       expect(page.find('.alert')).to have_content "#{fishery.waters.last.name} was successfully added to #{fishery.name}"
+      expect(Water.last.images.first.image_file_name).to eql 'another-loch.jpg'
     end
   end
 
