@@ -15,7 +15,6 @@ LetsFish::Application.configure do
   config.log_level = :warn
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
   config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
@@ -27,6 +26,9 @@ LetsFish::Application.configure do
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
+
+  # http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#error-handling-in-transaction-callbacks
+  config.active_record.raise_in_transactional_callbacks = true
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
