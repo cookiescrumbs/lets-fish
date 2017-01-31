@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'New water page', type: :feature do
+describe 'New water page', type: :feature, focus: true do
   before :each do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
@@ -20,7 +20,7 @@ describe 'New water page', type: :feature do
   end
 
   context 'form is filled out correctly' do
-    it "adds a water to a fishery, shows the water's details and says a nice thing", focus: true do
+    it "adds a water to a fishery, shows the water's details and says a nice thing" do
       fill_in 'water_name', with: 'Total Loch Doon'
       # had to use find as the fields are hidden
       find('#latitude').set(-90)

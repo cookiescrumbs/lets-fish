@@ -41,7 +41,8 @@ LetsFish::Application.configure do
     storage: :s3,
     bucket: 'lets-fish',
     url: ':s3_domain_url',
-    path: '/:class/:attachment/:id_partition/:style/:filename'
+    path: '/:class/:attachment/:id_partition/:style/:filename',
+    s3_region: 'eu-west-1'
   }
 
   config.geograph_api_key = 'a5ecd893c8'
