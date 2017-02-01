@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe 'Homepage', type: :feature do
+describe 'Homepage', type: :feature, focus: true do
 
   describe 'Fisheries section' do
 
