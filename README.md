@@ -74,40 +74,13 @@ RAILS_ENV=production bundle exec rake assets:precompile
 RAILS_ENV=production bundle exec rails s
 ```
 
-####Example /config/database.yml
-```
-test: &test
-  adapter: postgresql
-  encoding: unicode
-  database: lets_fish_test
-  username: stevencook
-  password:
-  pool: 5
-  timeout: 5000
+######Docker Compose
 
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: lets_fish_development
-  username: stevencook
-  password:
-  pool: 5
-  timeout: 5000
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: lets_fish_development
-  username: stevencook
-  password:
-  pool: 5
-  timeout: 5000
-```
-
-###Docker Compose
+### Database setup
 
 ```
-docker-compose run web bundle exec rake db:create RAILS_ENV=development
-docker-compose run web bundle exec rake db:schema:load RAILS_ENV=development
-docker-compose run web bin/rake db:create db:schema:load RAILS_ENV=test
+docker-compose run web bundle exec rake db:create db:schema:load RAILS_ENV=development
+docker-compose run web bundle exec rake db:create db:schema:load RAILS_ENV=test
+docker exec -i $(docker-compose ps -q db) pg_restore --verbose --no-acl --no-owner -U postgres -h db --data-only -d lets_fish_development < ./db/pg_backups/lets_fish_development.dump
 ```
+
