@@ -6,7 +6,6 @@ class Image < ActiveRecord::Base
                       medium: '650x350#',
                       large: '1440x960#'
                     }
-
   process_in_background :image
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/

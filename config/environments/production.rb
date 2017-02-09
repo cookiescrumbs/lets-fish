@@ -19,8 +19,6 @@ LetsFish::Application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
   # cache static assets for 30 days - 2592000 seconds
   config.static_cache_control = 'public, max-age=2592000'
 
@@ -29,6 +27,9 @@ LetsFish::Application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
+
+  #http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#error-handling-in-transaction-callbacks
+  config.active_record.raise_in_transactional_callbacks = true
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # config.assets.compile = false
@@ -86,10 +87,11 @@ LetsFish::Application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    bucket: ENV['S3_BUCKET_NAME'],
     url: ':s3_domain_url',
     path: '/:class/:attachment/:id_partition/:style/:filename',
+    s3_region: ENV['S3_REGION'],
     s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }

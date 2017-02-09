@@ -3,7 +3,7 @@ ruby '2.1.2'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -30,10 +30,10 @@ gem 'pg'
 gem 'unicorn'
 gem 'possessive'
 gem 'geocoder'
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '~>2.0'
 gem 'sidekiq'
-gem 'delayed_paperclip'
-gem 'friendly_id', '~> 5.1.0'
+gem 'delayed_paperclip', '~>3.0'
+gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
 gem 'meta-tags', git: 'https://github.com/kpumuk/meta-tags.git'
 gem 'rack-cache'
@@ -57,6 +57,10 @@ end
 
 group :test do
   gem 'webmock'
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
 end
 
 # Use ActiveModel has_secure_password
