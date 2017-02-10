@@ -12,7 +12,7 @@ describe 'PlacesAPI', type: :request do
         zoom: '8'
       }
 
-      get '/places', params, 'Accept' => 'application/json'
+      get '/places', params: params, headers: { 'Accept' => 'application/json' }
     end
 
     it 'returns an array of places' do
@@ -36,7 +36,7 @@ describe 'PlacesAPI', type: :request do
         id: 'ChIJXxOaekeBe0gRMJYBk_tTT1I'
       }
 
-      get '/places/info-window', params, 'Accept' => 'application/json'
+      get '/places/info-window', params: params, headers: { 'Accept' => 'application/json' }
     end
 
     it 'returns a single places details as html' do

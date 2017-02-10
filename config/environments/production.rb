@@ -20,16 +20,14 @@ LetsFish::Application.configure do
   config.action_dispatch.rack_cache = true
 
   # cache static assets for 30 days - 2592000 seconds
-  config.static_cache_control = 'public, max-age=2592000'
+  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=2592000' }
+
 
   config.assets.prefix = '/assets'
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
-
-  #http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#error-handling-in-transaction-callbacks
-  config.active_record.raise_in_transactional_callbacks = true
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # config.assets.compile = false
