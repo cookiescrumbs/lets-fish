@@ -1,4 +1,4 @@
-ruby '2.2.2'
+ruby '2.3.1'
 
 source 'https://rubygems.org'
 
@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.1'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+# gem 'puma', '~> 3.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -35,29 +35,28 @@ gem 'sidekiq'
 gem 'delayed_paperclip', '~>3.0'
 gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
-gem 'meta-tags', git: 'https://github.com/kpumuk/meta-tags.git'
+gem 'meta-tags'
 gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
 
 group :development, :test do
+  #Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+  gem 'rubocop', require: false
+end
+
+group :test do
+  gem 'faker'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'webmock'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'site_prism'
-  #Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem 'shotgun'
-  gem 'faker'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
-  gem 'rubocop', require: false
-end
-
-group :test do
-  gem 'webmock'
 end
 
 group :development do
