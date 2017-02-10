@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -27,9 +26,8 @@ ActiveRecord::Schema.define(version: 20170124220006) do
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.index ["fishery_id"], name: "index_addresses_on_fishery_id", using: :btree
   end
-
-  add_index "addresses", ["fishery_id"], name: "index_addresses_on_fishery_id", using: :btree
 
   create_table "contact_details", force: :cascade do |t|
     t.integer  "fishery_id"
@@ -40,9 +38,8 @@ ActiveRecord::Schema.define(version: 20170124220006) do
     t.string   "website",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["fishery_id"], name: "index_contact_details_on_fishery_id", using: :btree
   end
-
-  add_index "contact_details", ["fishery_id"], name: "index_contact_details_on_fishery_id", using: :btree
 
   create_table "fisheries", force: :cascade do |t|
     t.string   "name",           limit: 255
@@ -54,9 +51,8 @@ ActiveRecord::Schema.define(version: 20170124220006) do
     t.integer  "map_zoom_level"
     t.boolean  "published",                  default: false
     t.integer  "membership_id"
+    t.index ["slug"], name: "index_fisheries_on_slug", unique: true, using: :btree
   end
-
-  add_index "fisheries", ["slug"], name: "index_fisheries_on_slug", unique: true, using: :btree
 
   create_table "images", force: :cascade do |t|
     t.integer  "water_id"
@@ -65,9 +61,8 @@ ActiveRecord::Schema.define(version: 20170124220006) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "geograph_photo_id"
+    t.index ["water_id"], name: "index_images_on_water_id", using: :btree
   end
-
-  add_index "images", ["water_id"], name: "index_images_on_water_id", using: :btree
 
   create_table "memberships", force: :cascade do |t|
     t.datetime "created_at"
@@ -105,10 +100,9 @@ ActiveRecord::Schema.define(version: 20170124220006) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "auth",                   limit: 255
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "water_types", force: :cascade do |t|
     t.string   "category",   limit: 255
@@ -130,9 +124,8 @@ ActiveRecord::Schema.define(version: 20170124220006) do
     t.text     "address"
     t.string   "slug",          limit: 255
     t.json     "annotation",                default: {}, null: false
+    t.index ["fishery_id"], name: "index_waters_on_fishery_id", using: :btree
+    t.index ["slug"], name: "index_waters_on_slug", unique: true, using: :btree
   end
-
-  add_index "waters", ["fishery_id"], name: "index_waters_on_fishery_id", using: :btree
-  add_index "waters", ["slug"], name: "index_waters_on_slug", unique: true, using: :btree
 
 end
