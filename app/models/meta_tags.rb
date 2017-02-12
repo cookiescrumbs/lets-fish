@@ -85,7 +85,8 @@ module MetaTags
           creator: '@letsgoflyfish',
           title: meta_title,
           description: description.slice(0..140),
-          image: waters.first.images.first.image.url(:medium)
+          image: (images.first)? "https:#{images.first.image.url(:medium)}" : ''
+
         }
       }
     end
