@@ -1,4 +1,4 @@
-describe 'Search API', type: :request, focus: true do
+describe 'Search API', type: :request do
   before(:each) do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
@@ -26,7 +26,7 @@ describe 'Search API', type: :request, focus: true do
       bounds: [53.39990299999999, -2.3000969, 53.5445879, -2.1470875]
     }
 
-    get '/search/within-bounding-box', params, 'Accept' => 'application/json'
+    get '/search/within-bounding-box', params: params, headers: {'Accept' => 'application/json'}
 
     expect(response).to be_success
     expect(json.length).to eq 2
@@ -38,7 +38,7 @@ describe 'Search API', type: :request, focus: true do
       bounds: [53.39990299999999, -2.3000969, 53.5445879, -2.1470875]
     }
 
-    get '/search/within-bounding-box', params, 'Accept' => 'application/json'
+    get '/search/within-bounding-box', params: params, headers: {'Accept' => 'application/json'}
 
     expect(response).to be_success
     expect(json['markers'].length).to eq 20

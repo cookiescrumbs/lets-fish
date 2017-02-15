@@ -27,6 +27,14 @@ describe 'Water page', type: :feature do
         meta_description_assertion = "Fly fishing at #{water.name}, #{water.short_address}. #{water.description}"[0...130]
         expect(page_meta_description).to include(meta_description_assertion)
       end
+
+      it 'has the correct twitter card tags' do
+        expect(page).to have_css 'meta[name="twitter:card"]', visible:  false
+        expect(page).to have_css 'meta[name="twitter:site"]', visible:  false
+        expect(page).to have_css 'meta[name="twitter:creator"]', visible: false
+        expect(page).to have_css 'meta[name="twitter:title"]', visible:  false
+        expect(page).to have_css 'meta[name="twitter:description"]', visible: false
+      end
     end
   end
 end

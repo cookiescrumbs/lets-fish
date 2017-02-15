@@ -10,7 +10,7 @@ describe 'Weather API', type: :request do
       lng: -122.4233
     }
 
-    get '/weather', params, 'Accept' => 'application/json'
+    get '/weather', params: params, headers: {'Accept' => 'application/json'}
 
     expect(response).to be_success
     expect(json['forecast']['lat']).to eql 37.8267

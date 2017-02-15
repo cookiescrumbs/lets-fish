@@ -34,6 +34,7 @@ describe 'New water page', type: :feature do
 
       expect(page).to have_content 'Total Loch Doon'
       expect(page.find('.alert')).to have_content "#{fishery.waters.last.name} was successfully added to #{fishery.name}"
+      expect(Water.last.images.first.image_file_name).to eql 'another-loch.jpg'
     end
   end
 

@@ -25,6 +25,7 @@ LetsFish::Application.configure do
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -38,7 +39,8 @@ LetsFish::Application.configure do
     storage: :s3,
     bucket: 'lets-fish',
     url: ':s3_domain_url',
-    path: '/:class/:attachment/:id_partition/:style/:filename'
+    path: '/:class/:attachment/:id_partition/:style/:filename',
+    s3_region: 'eu-west-1'
   }
 
   config.geograph_api_key = 'a5ecd893c8'

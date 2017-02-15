@@ -19,10 +19,9 @@ LetsFish::Application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
   # cache static assets for 30 days - 2592000 seconds
-  config.static_cache_control = 'public, max-age=2592000'
+  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=2592000' }
+
 
   config.assets.prefix = '/assets'
 
@@ -86,10 +85,11 @@ LetsFish::Application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    bucket: ENV['S3_BUCKET_NAME'],
     url: ':s3_domain_url',
     path: '/:class/:attachment/:id_partition/:style/:filename',
+    s3_region: ENV['S3_REGION'],
     s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }

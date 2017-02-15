@@ -8,6 +8,10 @@ module Lets
     def self.all
       Fishery.where(published: true).includes(:waters).where.not('waters.id' => nil).order(name: :asc)
     end
+
+    def self.hello_world
+      Hello.new()
+    end
   end
 
   module Waters
