@@ -76,6 +76,13 @@ RAILS_ENV=production bundle exec rails s
 
 ######Docker Compose
 
+### Build 
+
+```
+docker-compose build 
+
+```
+
 ### Database setup
 
 ```
@@ -84,3 +91,9 @@ docker-compose run web bundle exec rake db:create db:schema:load RAILS_ENV=test
 docker exec -i $(docker-compose ps -q db) pg_restore --verbose --no-acl --no-owner -U postgres -h db --data-only -d lets_fish_development < ./db/pg_backups/lets_fish_development.dump
 ```
 
+
+### Run container 
+
+```
+docker-compose up 
+```
