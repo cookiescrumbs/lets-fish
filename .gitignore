@@ -28,5 +28,6 @@ config/secrets.yml
 ##aws details
 /config/aws.yml
 
+logfile
 
 .byebug_history
