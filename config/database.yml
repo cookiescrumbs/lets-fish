@@ -10,3 +10,7 @@ development: &default
 test:
   <<: *default
   database: lets_fish_test
+
+
+production:
+  <<: *default
