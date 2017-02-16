@@ -28,7 +28,5 @@ config/secrets.yml
 ##aws details
 /config/aws.yml
 
-##DB config
-/config/database.yml
 
- .byebug_history
+.byebug_history
