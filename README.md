@@ -10,7 +10,19 @@ A website for finding places to go fly fishing.
 ```
 git clone .....
 ```
+### Install ruby using RVM
 
+http://stackoverflow.com/questions/15212104/ruby-openssl-issues-on-mac
+
+This is a fix for the openssl problem with RVM compiled rubies
+
+```
+rvm get stable
+brew install libyaml
+rvm pkg install openssl
+rvm osx-ssl-certs update all
+rvm install ruby-2.3.1--with-openssl-dir=$HOME/.rvm/usr --disable-binary
+```
 ###Setting up your Postgres DB
 
 #####Install Postgres via brew
@@ -51,7 +63,8 @@ heroku git:remote -a lets-fish #add Heroku remote to git repo
 
 ####Restore DB from dump
 
-```pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
+```
+pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
 
 ```
 rake pg_db:restore  # Restore development db (data only) from /db/pg_backups
@@ -76,10 +89,10 @@ RAILS_ENV=production bundle exec rails s
 
 ######Docker Compose
 
-### Build 
+### Build
 
 ```
-docker-compose build 
+docker-compose build
 
 ```
 
@@ -92,8 +105,8 @@ docker exec -i $(docker-compose ps -q db) pg_restore --verbose --no-acl --no-own
 ```
 
 
-### Run container 
+### Run container
 
 ```
-docker-compose up 
+docker-compose up
 ```
