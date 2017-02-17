@@ -27,7 +27,6 @@
           ga('create', 'UA-74752273-1', 'auto');
           ga('send', 'pageview');
         </script>
-
         <meta name="mobile-web-app-capable" content="yes">
     </head>
 
@@ -61,8 +60,8 @@
             </div>
         </div>
     </footer>
- <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws&libraries=places,drawing" %>
-<%= javascript_include_tag "application", params[:controller], "data-turbolinks-track" => false %>
+<script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws&libraries=places,drawing"></script>
+<%= javascript_include_tag "application", params[:controller], "data-turbolinks-track" => false, :async => true %>
 </body>
 </html>
 
