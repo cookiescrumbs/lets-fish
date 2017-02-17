@@ -128,4 +128,5 @@ ActiveRecord::Schema.define(version: 20170214171147) do
     t.index ["slug"], name: "index_waters_on_slug", unique: true, using: :btree
   end
 
+  add_foreign_key "waters", "fisheries", on_delete: :cascade
 end
