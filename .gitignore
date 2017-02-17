@@ -31,3 +31,5 @@ config/secrets.yml
 logfile
 
 .byebug_history
+
+/public/assets
