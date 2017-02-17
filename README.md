@@ -8,9 +8,22 @@ A website for finding places to go fly fishing.
 ##Getting your development machine setup
 
 ```
-git clone ..... 
+git clone 
 ```
 
+### Install ruby using RVM
+
+http://stackoverflow.com/questions/15212104/ruby-openssl-issues-on-mac
+
+This is a fix for the openssl problem with RVM compiled rubies
+
+```
+rvm get stable
+brew install libyaml
+rvm pkg install openssl
+rvm osx-ssl-certs update all
+rvm install ruby-2.3.1--with-openssl-dir=$HOME/.rvm/usr --disable-binary
+```
 ###Setting up your Postgres DB
 
 #####Install Postgres via brew

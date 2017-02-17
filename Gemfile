@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.1'
 
 # Use Puma as the app server
-# gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -27,7 +27,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rails_12factor', group: :production
 gem 'pg'
-gem 'unicorn'
 gem 'possessive'
 gem 'geocoder'
 gem 'aws-sdk', '~>2.0'
