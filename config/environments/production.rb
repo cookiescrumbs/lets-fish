@@ -20,8 +20,11 @@ LetsFish::Application.configure do
   config.action_dispatch.rack_cache = true
 
   # cache static assets for 30 days - 2592000 seconds
-  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=2592000' }
-
+  # config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=2592000' }
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, s-maxage=31536000, maxage=15552000',
+    'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
+  }
 
   config.assets.prefix = '/assets'
 
