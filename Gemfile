@@ -25,7 +25,6 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'possessive'
 gem 'geocoder'
@@ -35,7 +34,6 @@ gem 'delayed_paperclip', '~>3.0'
 gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
 gem 'meta-tags'
-gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
