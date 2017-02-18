@@ -8,7 +8,7 @@ A website for finding places to go fly fishing.
 ##Getting your development machine setup
 
 ```
-git clone 
+git clone
 ```
 
 ### Install ruby using RVM
@@ -38,7 +38,7 @@ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
 
 #####Start Postgres
 ```
-bundle exec rake pg_db:start 
+bundle exec rake pg_db:start
 ```
 
 #####Create development and test db
@@ -52,7 +52,7 @@ bundle exec rake pg_db:create_test #create and load the test db
 ```
 bundle exec rake pg_db:restore #Restore development db (data only) from /db/pg_backups (using "live" data)
 
-``` 
+```
 
 #####Setup Heroku
 
@@ -70,7 +70,7 @@ heroku git:remote -a lets-fish #add Heroku remote to git repo
 rake pg_db:restore  # Restore development db (data only) from /db/pg_backups
 ```
 
-Use ```rake pg_db:restore ``` locally to add test data to your dev app. It grabs the data from from /db/pg_backups. 
+Use ```rake pg_db:restore ``` locally to add test data to your dev app. It grabs the data from from /db/pg_backups.
 I'll periodically backup the directory with live data. So you should have somthing similiar to "live".
 
 ###Removes DB config
@@ -115,4 +115,20 @@ production:
   password:
   pool: 5
   timeout: 5000
+```
+
+#### ./env.sh file for running in production mode locally
+
+```
+#!/bin/bash
+export RAILS_ENV=production
+export RACK_ENV=production
+export S3_BUCKET_NAME=lets-fish
+export S3_REGION=eu-west-1
+export SECRET_KEY_BASE=xxxxxxxxx
+```
+
+```
+. ./env.sh && rails s
+
 ```
