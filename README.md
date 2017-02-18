@@ -132,14 +132,14 @@ export SECRET_KEY_BASE=xxxxxxxxx
 
 ```
 
-![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Memeber?")
+![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Member?")
 
 
-Memeber when the assest pipeline couldn't find assets like Fonts?
-Memeber?
+Member when the assest pipeline couldn't find assets like Fonts?
+Member?
 
 ###Asset pipeline
-Memeber to use ``` asset_path () ``` and change the css file from ```.css to .css.erb```
+Member to use ``` asset_path () ``` and change the css file from ```.css to .css.erb```
 
 ```
 @font-face {
