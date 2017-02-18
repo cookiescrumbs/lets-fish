@@ -38,6 +38,7 @@ gem 'meta-tags'
 gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
+gem 'heroku-deflater', :group => :production
 
 group :development, :test do
   #Call 'byebug' anywhere in the code to stop execution and get a debugger console
