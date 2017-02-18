@@ -134,7 +134,8 @@ export SECRET_KEY_BASE=xxxxxxxxx
 
 ##Memeber when ....
 
-https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png
+![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Memeber?")
+
 
 the assest pipeline couldn't find assets like Fonts?
 Memeber?
