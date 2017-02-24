@@ -2,7 +2,8 @@
   "name": "lets-fish",
   "description": "Serving images from Cloud Front",
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate"
+    "postdeploy": "bundle exec rake db:migrate",
+    "postdeploy": "bundle exec rake pg_db:restore"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
