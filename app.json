@@ -2,7 +2,7 @@
   "name": "lets-fish",
   "description": "Serving images from Cloud Front",
   "scripts": {
-    "postdeploy": "heroku pg:backups:restore lets-fish::b240 DATABASE_URL --app lets-fish-pr-274 --confirm lets-fish-pr-274 && bundle exec db:migrate"
+    "postdeploy": "heroku info -s"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
