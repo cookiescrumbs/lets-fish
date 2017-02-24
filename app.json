@@ -2,7 +2,7 @@
   "name": "lets-fish",
   "description": "Serving images from Cloud Front",
   "scripts": {
-    "postdeploy": "heroku info -s"
+    "postdeploy": "bundle exec rake db:load"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
