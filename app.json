@@ -2,7 +2,7 @@
   "name": "lets-fish",
   "description": "Serving images from Cloud Front",
   "scripts": {
-    "postdeploy": "bundle exec rails db:schema:load && pg_restore --verbose --no-acl --no-owner -h $DATABASE_URL --data-only  < ./db/pg_backups/lets_fish_development.dump"
+    "postdeploy": "cat ./db/pg_backups/lets_fish_review.dump | psql $DATABASE_URL"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
