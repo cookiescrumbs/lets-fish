@@ -2,7 +2,7 @@
   "name": "lets-fish",
   "description": "Serving images from Cloud Front",
   "scripts": {
-    "postdeploy": "bundle exec rake postdeploy:run"
+    "postdeploy": "heroku config:set HEROKU_APP_NAME=$(heroku info -s | grep web_url | cut -d. -f1 | cut -d: -f2 | sed 's/\/\///') && heroku pg:backups:restore lets-fish::b240 DATABASE_URL --app ENV['HEROKU_APP_NAME'] --confirm ENV['HEROKU_APP_NAME'] && bundle exec db:migrate"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
