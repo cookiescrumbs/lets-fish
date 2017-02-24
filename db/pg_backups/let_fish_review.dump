@@ -1,0 +1,1910 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.14
+-- Dumped by pg_dump version 9.5.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: addresses; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE addresses (
+    id integer NOT NULL,
+    fishery_id integer,
+    street character varying(255),
+    line2 character varying(255),
+    region character varying(255),
+    country character varying(255),
+    postcode character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    latitude double precision,
+    longitude double precision
+);
+
+
+ALTER TABLE addresses OWNER TO khwuaxovagphgg;
+
+--
+-- Name: addresses_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE addresses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE addresses_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: addresses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE addresses_id_seq OWNED BY addresses.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO khwuaxovagphgg;
+
+--
+-- Name: contact_details; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE contact_details (
+    id integer NOT NULL,
+    fishery_id integer,
+    name character varying(255),
+    telephone character varying(255),
+    mobile character varying(255),
+    email character varying(255),
+    website character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE contact_details OWNER TO khwuaxovagphgg;
+
+--
+-- Name: contact_details_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE contact_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE contact_details_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: contact_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE contact_details_id_seq OWNED BY contact_details.id;
+
+
+--
+-- Name: fisheries; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE fisheries (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    place_id character varying(255),
+    slug character varying(255),
+    description text,
+    map_zoom_level integer,
+    published boolean DEFAULT false
+);
+
+
+ALTER TABLE fisheries OWNER TO khwuaxovagphgg;
+
+--
+-- Name: fisheries_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE fisheries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fisheries_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: fisheries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE fisheries_id_seq OWNED BY fisheries.id;
+
+
+--
+-- Name: images; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE images (
+    id integer NOT NULL,
+    water_id integer,
+    image_file_name character varying(255),
+    image_content_type character varying(255),
+    image_file_size integer,
+    image_updated_at timestamp without time zone,
+    geograph_photo_id integer
+);
+
+
+ALTER TABLE images OWNER TO khwuaxovagphgg;
+
+--
+-- Name: images_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE images_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE images_id_seq OWNED BY images.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO khwuaxovagphgg;
+
+--
+-- Name: species; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE species (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE species OWNER TO khwuaxovagphgg;
+
+--
+-- Name: species_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE species_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE species_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: species_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE species_id_seq OWNED BY species.id;
+
+
+--
+-- Name: species_waters; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE species_waters (
+    species_id integer,
+    water_id integer
+);
+
+
+ALTER TABLE species_waters OWNER TO khwuaxovagphgg;
+
+--
+-- Name: user_fisheries; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE user_fisheries (
+    user_id integer,
+    fishery_id integer
+);
+
+
+ALTER TABLE user_fisheries OWNER TO khwuaxovagphgg;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    auth character varying(255)
+);
+
+
+ALTER TABLE users OWNER TO khwuaxovagphgg;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: water_types; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE water_types (
+    id integer NOT NULL,
+    category character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE water_types OWNER TO khwuaxovagphgg;
+
+--
+-- Name: water_types_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE water_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE water_types_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: water_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE water_types_id_seq OWNED BY water_types.id;
+
+
+--
+-- Name: waters; Type: TABLE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE TABLE waters (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    season_start date,
+    season_end date,
+    longitude double precision,
+    latitude double precision,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    water_type_id integer,
+    fishery_id integer,
+    address text,
+    slug character varying(255),
+    annotation json DEFAULT '{}'::json NOT NULL
+);
+
+
+ALTER TABLE waters OWNER TO khwuaxovagphgg;
+
+--
+-- Name: waters_id_seq; Type: SEQUENCE; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE SEQUENCE waters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE waters_id_seq OWNER TO khwuaxovagphgg;
+
+--
+-- Name: waters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER SEQUENCE waters_id_seq OWNED BY waters.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY addresses ALTER COLUMN id SET DEFAULT nextval('addresses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY contact_details ALTER COLUMN id SET DEFAULT nextval('contact_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY fisheries ALTER COLUMN id SET DEFAULT nextval('fisheries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY species ALTER COLUMN id SET DEFAULT nextval('species_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY water_types ALTER COLUMN id SET DEFAULT nextval('water_types_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY waters ALTER COLUMN id SET DEFAULT nextval('waters_id_seq'::regclass);
+
+
+--
+-- Data for Name: addresses; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY addresses (id, fishery_id, street, line2, region, country, postcode, created_at, updated_at, latitude, longitude) FROM stdin;
+1	\N						2015-04-29 12:05:21.86757	2015-04-29 12:38:03.486223	\N	\N
+2	\N						2015-04-29 12:38:03.50218	2015-04-29 15:42:52.581165	\N	\N
+4	\N						2015-04-29 15:42:52.595171	2015-04-29 15:43:09.487684	\N	\N
+5	1						2015-04-29 15:43:09.499972	2015-04-29 15:43:09.499972	\N	\N
+6	3						2015-04-29 16:55:45.351168	2015-04-29 16:55:45.351168	\N	\N
+7	4						2015-05-05 14:58:44.785298	2015-05-05 14:58:44.785298	\N	\N
+8	5						2015-05-07 10:28:52.46543	2015-05-07 10:28:52.46543	\N	\N
+9	26						2015-09-17 22:32:25.257521	2015-09-17 22:32:25.257521	\N	\N
+57	46						2015-12-24 14:33:35.712368	2015-12-24 14:33:35.712368	\N	\N
+59	47						2015-12-24 14:38:32.151802	2015-12-24 14:38:32.151802	\N	\N
+61	\N						2015-12-24 14:57:52.251917	2015-12-24 15:00:52.544166	\N	\N
+63	\N						2015-12-24 22:43:12.890877	2015-12-24 22:45:20.180615	\N	\N
+65	\N						2015-12-24 23:53:42.120819	2015-12-25 00:01:12.9304	\N	\N
+71	\N						2015-12-25 01:26:03.958977	2015-12-25 01:31:28.35101	\N	\N
+73	56						2015-12-25 08:48:23.750278	2015-12-25 08:48:23.750278	\N	\N
+75	58						2015-12-25 08:49:50.72218	2015-12-25 08:49:50.72218	\N	\N
+74	\N						2015-12-25 08:49:45.498	2015-12-30 09:58:46.507926	\N	\N
+10	\N	Catlow Rd	Slaidburn	Lancashire	United Kingdom	BB7 3AQ	2015-12-09 06:45:43.882643	2016-04-21 10:30:22.814019	53.9942465000000027	-2.43245120000000004
+12	\N	Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-09 07:58:40.553359	2016-04-21 10:30:23.651445	53.8682086000000027	-2.63911899999999999
+13	\N	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-09 08:09:09.166424	2016-04-21 10:30:24.077199	53.9470176000000023	-2.7626008999999998
+14	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:00:56.44856	2016-04-21 10:30:24.498889	53.6997142000000025	-2.24332239999999983
+15	\N	235 Edgeside Ln	Waterfoot, Rossendale	Lancashire	United Kingdom	BB4 9TY	2015-12-09 14:02:40.638359	2016-04-21 10:30:24.877848	53.6997142000000025	-2.24332239999999983
+16	\N	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-09 14:16:27.194939	2016-04-21 10:30:25.342604	53.6001437999999979	-2.52013830000000016
+17	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:12.537046	2016-04-21 10:30:25.763772	53.8124334000000033	-2.91343899999999989
+19	34	60 Carleton Road	Chorley	Lancashire	United Kingdom	PR6 8UB	2015-12-10 08:40:07.806168	2016-04-21 10:30:26.529403	53.6706934999999987	-2.61268259999999986
+20	\N	Mere Lane	 Mere Brow, Tarleton	Lancashire	United Kingdom	PR4 6JU	2015-12-16 08:23:17.447292	2016-04-21 10:30:26.990916	53.6495821000000035	-2.87776860000000001
+21	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:28.69828	2016-04-21 10:30:27.363298	52.5298759999999874	-0.727621399999999974
+22	\N	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-16 08:44:49.927973	2016-04-21 10:30:27.685665	52.5298759999999874	-0.727621399999999974
+23	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:19.451041	2016-04-21 10:30:28.088146	52.6622178999999875	-1.30535690000000004
+25	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-16 16:42:02.466611	2016-04-21 10:30:28.882688	53.4905655999999965	-0.598433800000000016
+26	37	Reservoir Road	Thornton	Lincolnshire	United Kingdom	LE67 1AR	2015-12-16 16:42:22.025448	2016-04-21 10:30:29.312416	52.6604914999999991	-1.30044519999999997
+27	\N	Ludford Market	Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-19 11:39:54.79475	2016-04-21 10:30:29.719425	53.4020210999999989	-0.186565199999999987
+28	\N	Scotter Rd 	Cleatham, Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-19 11:44:39.056902	2016-04-21 10:30:30.061413	53.4905655999999965	-0.598433800000000016
+29	\N	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-19 11:55:09.384112	2016-04-21 10:30:30.482626	53.3799054999999996	-0.434913700000000014
+30	\N	Church Ln	Withern, Alford	Lincolnshire 	United Kingdom	LN13 0NG	2015-12-19 12:04:43.153037	2016-04-21 10:30:30.909541	53.3167696999999876	0.140114500000000003
+32	\N	Low Mill Caton		Lancashire	United Kingdom	LA2 9HX	2015-12-24 10:59:41.133543	2016-04-21 10:30:31.791363	54.0758285000000001	-2.72389429999999999
+33	\N	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 11:01:32.491813	2016-04-21 10:30:32.264157	53.8701547999999875	-2.63901850000000016
+34	30	Cleveley Bank Lane	Fronton	Lancashire	United Kingdom	PR3 1BY	2015-12-24 11:02:30.351774	2016-04-21 10:30:32.604031	53.9470176000000023	-2.7626008999999998
+35	\N	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 11:04:12.252656	2016-04-21 10:30:33.008796	53.6995707000000024	-2.24334919999999993
+36	32	Wallsuches	Horwich, Bolton	Lancashire	United Kingdom	BL6 6PP	2015-12-24 11:26:41.651624	2016-04-21 10:30:33.347091	53.6001437999999979	-2.52013830000000016
+37	\N	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:28:09.9494	2016-04-21 10:30:33.738843	53.8124334000000033	-2.91343899999999989
+39	\N	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:01:12.017757	2016-04-21 10:30:34.453941	53.6502443999999983	-2.87831310000000018
+40	36	Great Easton Road	Caldecott	Leicestershire	United Kingdom	LE16 8RP	2015-12-24 12:01:42.920076	2016-04-21 10:30:34.79553	52.5298759999999874	-0.727621399999999974
+41	38	Low Farm	Gainsborough	Lincolnshire	United Kingdom	DN21 3HZ	2015-12-24 12:05:27.421254	2016-04-21 10:30:35.173489	53.4031698999999875	-0.627834899999999974
+42	\N	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:05:49.405691	2016-04-21 10:30:35.557169	53.3956011000000004	-0.273986899999999978
+43	40	 Market Rasen		Lincolnshire 	United Kingdom	LN8 3NE	2015-12-24 12:06:24.671782	2016-04-21 10:30:35.877691	53.3799054999999996	-0.434913700000000014
+44	41	Church Lane	Alford	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 12:06:37.421657	2016-04-21 10:30:36.264332	53.317101000000001	0.137787899999999991
+46	31	Edgeside Lane	Waterfoot	Lancashire	United Kingdom	BB4 9TY	2015-12-24 12:07:15.455164	2016-04-21 10:30:36.927192	53.6995707000000024	-2.24334919999999993
+48	39	Thorpe Lane	Market Rasen	Lincolnshire	United Kingdom	LN8 6AR	2015-12-24 12:07:27.397133	2016-04-21 10:30:37.579881	53.3956011000000004	-0.273986899999999978
+49	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:13:53.665236	2016-04-21 10:30:37.963715	51.4747111999999873	-0.343405300000000024
+50	\N	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:24:54.226232	2016-04-21 10:30:38.294244	51.4747111999999873	-0.343405300000000024
+51	42	London Road	Brentford	Middlesex	United Kingdom	TW8 8JF	2015-12-24 12:27:29.174792	2016-04-21 10:30:38.624861	51.4747111999999873	-0.343405300000000024
+52	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:35:36.277013	2016-04-21 10:30:38.980152	51.2200281000000004	-0.492794600000000027
+53	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:36:08.639182	2016-04-21 10:30:39.307588	51.2200281000000004	-0.492794600000000027
+55	44		Northampton	Northamptonshire	United Kingdom	NN6 9BB	2015-12-24 14:32:59.93119	2016-04-21 10:30:40.034173	52.2924760999999876	-0.884450000000000069
+56	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:33:11.299852	2016-04-21 10:30:40.429498	52.4650456999999975	0.496384399999999892
+60	45	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:50:59.100872	2016-04-21 10:30:41.617996	52.4650456999999975	0.496384399999999892
+62	48	Main Rd	King's Lynn	Norfolk	United Kingdom	PE32 1TE	2015-12-24 15:00:52.556316	2016-04-21 10:30:42.252944	52.6888839000000004	0.582878900000000089
+64	49	Chapel Street	Attleborough	Norfolk	United Kingdom	NR17 1UJ	2015-12-24 22:45:20.203693	2016-04-21 10:30:42.872566	52.5387468999999996	0.933695800000000076
+66	50	Lowick Road	Kettering	Northamptonshire	United Kingdom	NN14 3EE	2015-12-25 00:01:12.963802	2016-04-21 10:30:43.537465	52.419972599999987	-0.531777900000000026
+67	51	Brixworth Road	Northampton	Northamptonshire	United Kingdom	NN6 9SJ	2015-12-25 00:10:20.132825	2016-04-21 10:30:43.926046	52.3203628999999992	-0.840335100000000113
+68	52	Teeton Rd	Northampton	Northamptonshire	United Kingdom	NN6 8EJ	2015-12-25 00:27:16.081342	2016-04-21 10:30:44.359661	52.325766299999998	-1.01446290000000006
+70	54		Rothbury	Northumberland	United Kingdom	NE65 7LG	2015-12-25 00:55:28.984531	2016-04-21 10:30:45.140488	55.3104640000000032	-1.90954700000000011
+72	55		Alnwick	Northumberland	United Kingdom	NE66 5RF	2015-12-25 01:31:28.360167	2016-04-21 10:30:45.780727	55.5402249999999995	-1.90283789999999997
+76	\N				United Kingdom		2015-12-30 09:58:46.624659	2016-04-21 10:30:46.877356	55.3780509999999992	-3.43597300000000017
+77	59	Higham Dykes	Ponteland	Northumberland	United Kingdom	NE20 0DH	2015-12-30 12:29:30.141461	2016-04-21 10:30:47.252623	55.0732509999999991	-1.79033299999999995
+78	60	Beech House	Langley-on-Tyne	Northumberland	United Kingdom	NE47 5LD	2015-12-30 12:38:03.95705	2016-04-21 10:30:47.660221	54.9444889999999972	-2.26907000000000014
+54	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2015-12-24 12:37:41.196107	2016-04-21 13:47:52.834773	51.2200281000000004	-0.492794600000000027
+216	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60	2016-12-20 22:03:23.210525	2016-12-20 22:15:34.466886	\N	\N
+111	\N	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 12:37:29.450167	2016-01-17 13:29:55.800999	\N	\N
+113	87	Ruantallain Estate	Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:32:11.503636	2016-01-17 13:32:11.503636	\N	\N
+3	2	Stoer	North Assynt Estate	Sutherland	Scotland	IV27 4JE	2015-04-29 15:35:01.181642	2016-04-21 10:30:20.852274	56.4906711999999871	-4.20264579999999999
+11	\N	Low Mill Caton	Lancaster	Lancashire	United Kingdom	LA2 9HX	2015-12-09 06:57:31.185886	2016-04-21 10:30:23.247673	54.0758285000000001	-2.72389429999999999
+18	\N	Back Lane	Greenhalgh	Lancashire	United Kingdom	PR4 3HN	2015-12-09 14:26:23.016264	2016-04-21 10:30:26.11862	53.8124334000000033	-2.91343899999999989
+24	\N	Reservoir Road	Thornton	Leicestershire	United Kingdom	LE67 1AR	2015-12-16 08:54:33.424165	2016-04-21 10:30:28.448568	52.6622178999999875	-1.30535690000000004
+31	\N	Church Lane	Withern	Lincolnshire	United Kingdom	LN13 0NG	2015-12-24 10:57:42.951738	2016-04-21 10:30:31.348688	53.3167696999999876	0.140114500000000003
+38	33	Back Lane	Preston	Lancashire	United Kingdom	PR4 3HN	2015-12-24 11:59:42.298863	2016-04-21 10:30:34.069029	53.8124334000000033	-2.91343899999999989
+45	29	Roewood/Barns Lane	Preston	Lancashire	United Kingdom	PR3 2NJ	2015-12-24 12:07:05.074978	2016-04-21 10:30:36.579453	53.8701547999999875	-2.63901850000000016
+47	35	Mere Lane	Preston	Lancashire	United Kingdom	PR4 6JU	2015-12-24 12:07:21.044391	2016-04-21 10:30:37.259894	53.6502443999999983	-2.87831310000000018
+58	\N	Burdock Lane	Thetford	Norfolk	United Kingdom	IP26 4JW	2015-12-24 14:35:20.993075	2016-04-21 10:30:41.029203	52.4650456999999975	0.496384399999999892
+69	53	Grange Rd	Kettering	Northamptonshire	United Kingdom	NN14 4DT	2015-12-25 00:31:38.648645	2016-04-21 10:30:44.760311	52.4369948000000008	-0.712888199999999972
+79	\N	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:23:23.714802	2016-04-21 10:30:48.082774	55.1351865999999973	-2.08586150000000004
+80	61	Lough House Sweethope	Harle	Tyne and Wear	United Kingdom	NE19 2PN	2015-12-30 13:25:25.630725	2016-04-21 10:30:48.464473	55.1351865999999973	-2.08586150000000004
+81	62	Hallington Reservoir	Colwell, Hexham	Northumberland	United Kingdom	NE46 4TP	2015-12-30 13:29:15.853208	2016-04-21 10:30:48.974736	55.0775079000000005	-2.05619370000000012
+82	63	Woodhouse Lane	Carlton in Lindrick	North Notts	United Kingdom	S81 9AQ	2015-12-31 11:58:48.812538	2016-04-21 10:30:49.525159	53.3581831999999991	-1.10883770000000004
+83	64	Standlake	Witney	Oxfordshire	United Kingdom	OX29 7QB	2015-12-31 12:45:08.188795	2016-04-21 10:30:50.094712	51.7153709000000035	-1.42752799999999991
+84	65	Cumnor Rd		Oxford	United Kingdom	OX2 9NS	2015-12-31 12:55:53.922169	2016-04-21 10:30:50.535913	51.7580041000000008	-1.34752099999999997
+85	66	Rectory Farm	Chipping Norton	Oxfordshire	United Kingdom	OX7 5YZ	2015-12-31 13:06:29.363146	2016-04-21 10:30:51.06161	51.9549418000000003	-1.58012759999999997
+86	67	Normanton Road	Oakham	Leicestershire	United Kingdom	LE15 8HD	2015-12-31 13:10:33.111637	2016-04-21 10:30:51.578505	52.6737249000000034	-0.716993299999999945
+87	68	Astbury Terrace	Bridgnorth	Shropshire	United Kingdom	WV16 6AT	2015-12-31 13:19:22.958268	2016-04-21 10:30:52.140654	52.5035359999999969	-2.40652979999999994
+88	\N	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 13:27:38.308778	2016-04-21 10:30:52.588772	52.463749	-2.7252679999999998
+89	69	Home Farm Cottage	Craven Arms	Shropshire	United Kingdom	SY7 9DH	2015-12-31 19:01:26.601817	2016-04-21 10:30:52.964333	52.463749	-2.7252679999999998
+90	70	Ellerdine Hall Farm	Telford	Shropshire 	United Kingdom	TF6 6QR	2015-12-31 19:16:06.238205	2016-04-21 10:30:53.414023	52.7831793000000005	-2.58163749999999981
+91	71	Lower Heathwaen	nr Oswestry	Shropshire	United Kingdom	SY10 8DA	2016-01-02 11:32:39.923814	2016-04-21 10:30:53.964625	52.7887998000000067	-2.99413790000000013
+92	72	Little Heath	Gamlingay	Bedfordshire	United Kingdom	SG19 3LL	2016-01-11 22:12:42.313814	2016-04-21 10:30:54.364678	52.1485731000000001	-0.200716299999999986
+93	73		Slaidburn	Lancashire	United Kingdom		2016-01-12 22:35:24.24231	2016-04-21 10:30:54.758394	53.9669779999999975	-2.44596400000000003
+94	\N	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:07:52.678593	2016-04-21 10:30:55.218899	51.4601579999999998	-1.12340470000000003
+95	74	Dark Lane	Reading	West Berkshire	United Kingdom	RG7 6DF	2016-01-12 23:11:15.530898	2016-04-21 10:30:55.583709	51.4601579999999998	-1.12340470000000003
+96	75	Howe Lane	Bracknell	Berkshire	United Kingdom	RG42 5QL	2016-01-12 23:17:40.324134	2016-04-21 10:30:55.982832	51.4554548000000125	-0.77674349999999992
+97	76	Station Road	Theale	Berkshire	United Kingdom	RG7 4AS	2016-01-12 23:32:03.253899	2016-04-21 10:30:56.656686	51.4311434999999975	-1.0742775
+98	77	Swanbourne Road	Mursley	Buckinghamshire	United Kingdom	MK17 0JA	2016-01-12 23:40:20.869171	2016-04-21 10:30:57.151012	51.943330600000003	-0.814342599999999917
+100	28		Caton	Lancashire	United Kingdom	LA2 9HX	2016-01-13 07:07:26.329829	2016-04-21 10:30:58.057255	54.0758285000000001	-2.72389429999999999
+101	78	Holme Fen Drove	Huntingdon	Cambridgeshire	United Kingdom	PE28 3RE	2016-01-13 07:36:54.649752	2016-04-21 10:30:58.529265	52.367557699999999	0.028146899999999999
+102	79	West Perry	Huntingdon	Cambridgeshire	United Kingdom	PE28 0BX	2016-01-13 07:46:50.20189	2016-04-21 10:30:59.02442	52.289316399999997	-0.321316099999999993
+103	80		East Witton	North Yorkshire	United Kingdom	DL8 4SQ	2016-01-14 13:43:35.828777	2016-04-21 10:30:59.537722	54.2789181000000127	-1.77993090000000009
+105	\N		Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-15 08:33:51.839494	2016-04-21 10:31:00.468965	56.0267065000000031	-5.77315809999999985
+106	83		Mobberley	Cheshire East	United Kingdom	WA16 7BH	2016-01-15 17:27:25.479379	2016-04-21 10:31:00.944768	53.3095252999999971	-2.28847330000000015
+107	84	Pike Low Farm	Macclesfield	Cheshire	United Kingdom	SK11 9HD	2016-01-15 18:38:29.952721	2016-04-21 10:31:01.401422	53.213593000000003	-2.22337799999999985
+108	85	Warrington Road	Mickle Trafford	Cheshire	United Kingdom		2016-01-15 18:50:13.385824	2016-04-21 10:31:01.838029	53.2208225999999982	-2.83350139999999984
+109	86	Mill Lane	Bishopton	Cleveland	United Kingdom	TS21 1LL	2016-01-15 19:14:29.221682	2016-04-21 10:31:02.254531	54.5921732999999989	-1.42022699999999991
+110	82	Ardlussa House	Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-01-16 12:18:39.688032	2016-04-21 10:31:02.689378	56.0267065000000031	-5.77315809999999985
+112	\N		Isle of Jura	Argyll and Bute	United Kingdom	PX60 0X	2016-01-17 13:29:55.807252	2016-04-21 10:31:03.488335	55.9041797999999872	-5.94142089999999978
+99	\N	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-01-13 07:06:51.812518	2016-10-22 20:38:37.055958	53.9942465000000027	-2.43245120000000004
+116	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:51:43.851865	2016-04-21 10:31:05.235784	52.9999955999999983	-3.94296710000000017
+117	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-06 23:52:26.658698	2016-04-21 10:31:05.567191	52.9999955999999983	-3.94296710000000017
+114	\N	Abbey Rd		County Durham	United Kingdom	 DH1 5FJ	2016-01-24 19:08:25.660795	2016-10-22 20:24:49.551141	54.8052934999999977	-1.58364229999999995
+119	\N				United Kingdom		2016-03-13 21:46:45.217044	2016-04-21 10:31:06.242097	55.3780509999999992	-3.43597300000000017
+120	\N				United Kingdom		2016-03-13 21:47:28.06825	2016-04-21 10:31:06.626959	55.3780509999999992	-3.43597300000000017
+121	\N				United Kingdom		2016-03-13 21:54:51.056262	2016-04-21 10:31:06.951713	55.3780509999999992	-3.43597300000000017
+123	\N	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2016-04-21 13:47:53.160851	2016-08-12 08:24:54.492187	51.2200281000000004	-0.492794600000000027
+126	\N	 Isle of Jura, Hebrides,	 Isle of Jura	 Hebrides	United Kingdom	PX60 0XQ	2016-10-13 20:30:16.079566	2016-10-13 20:42:07.398896	\N	\N
+122	\N				United Kingdom		2016-03-14 14:36:29.123878	2016-04-21 20:44:55.647078	55.3780509999999992	-3.43597300000000017
+124	90	The Old Sawmill	Thirlmere	Cumbria	United Kingdom	CA12 4TQ	2016-04-21 20:44:55.784329	2016-04-21 20:44:55.784329	54.5656314999999879	-3.05525080000000004
+125	43	Albury	Guildford	Surrey	United Kingdom	GU5 9AF	2016-08-12 08:24:54.54254	2016-08-12 08:24:54.54254	51.2200281000000004	-0.492794600000000027
+127	\N		 Isle of Jura	 Hebrides	United Kingdom	PX60 0XQ	2016-10-13 20:42:07.505543	2016-10-13 20:49:54.954215	\N	\N
+128	\N		 Isle of Jura	 Hebrides	United Kingdom		2016-10-13 20:49:55.074874	2016-10-13 20:53:14.524078	55.1421820999999994	-3.76708859999999879
+129	\N		 Isle of Jura	 Hebrides	United Kingdom		2016-10-13 20:53:14.58767	2016-10-13 20:55:16.662172	55.1421820999999994	-3.76708859999999879
+130	\N					PX60 0XQ	2016-10-13 20:55:16.771199	2016-10-13 20:59:14.959876	53.4285130000000024	-6.5015073999999986
+118	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	United Kingdom	LL41 3LF 	2016-03-07 08:41:28.310275	2016-10-17 22:05:41.989218	52.9999955999999983	-3.94296710000000017
+104	\N		Settle	North Yorkshire	United Kingdom	BD24 9PU	2016-01-15 07:56:08.242181	2016-11-24 08:46:14.63612	54.1011643000000007	-2.16405089999999989
+163	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60	2016-10-24 14:43:37.401475	2016-12-20 22:03:23.137025	55.9041797999999872	-5.94142089999999978
+131	\N	 Ruantallain Estate	Isle of Jura		United Kingdom	PA60 7XH	2016-10-13 20:59:15.070215	2016-10-14 08:45:46.436731	55.9702065999999974	-5.83148199999999939
+166	\N	Hafod Hardware 	East Street	Rhayader	Wales	LD6 5DS.	2016-10-24 15:18:42.105616	2016-12-21 14:53:15.752067	52.3021967000000032	-3.5061612000000002
+132	\N		Isle of Jura	Argyll and Bute	United Kingdom	PA60	2016-10-14 08:19:20.097691	2016-10-14 08:48:30.366264	55.9041797999999872	-5.94142089999999978
+167	\N	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-11-03 18:23:15.888854	2016-12-29 09:09:42.311255	52.9999955999999983	-3.94296710000000017
+134	\N			Isle of Jura	United Kingdom	PA60	2016-10-14 08:48:30.476432	2016-10-14 08:49:07.039439	55.9041797999999872	-5.94142089999999978
+198	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-11 12:23:04.84622	2016-12-29 10:16:46.098098	54.1011643000000007	-2.16405089999999989
+173	\N		Sutherland	Highland	Scotland	IV27 4JE	2016-11-15 11:24:37.81874	2016-12-29 13:13:46.518813	58.2399646000000004	-5.40270969999999995
+136	\N		Newton Stewert	Dumfries and Galloway	United Kingdom	DG8 6AJ	2016-10-16 11:53:22.911079	2016-10-17 16:22:40.926013	54.9599176999999983	-4.47511250000000071
+135	\N			Isle of Jura	United Kingdom	PA60	2016-10-14 08:49:07.084	2016-10-17 17:51:35.950046	55.9041797999999872	-5.94142089999999978
+133	\N	 Ruantallain Estate		Isle of Jura	United Kingdom	PA60 7XH	2016-10-14 08:45:46.486171	2016-10-17 17:52:43.276057	55.9702065999999974	-5.83148199999999939
+140	\N	 2 Blaen Ca    Gwynedd 	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-10-17 22:05:42.053605	2016-10-17 22:10:31.52435	52.9999955999999983	-3.94296710000000017
+141	\N	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-10-17 22:10:31.724798	2016-10-17 22:13:09.783691	52.9999955999999983	-3.94296710000000017
+138	\N			Isle of Jura	Scotland	PA60	2016-10-17 17:51:36.093761	2016-10-20 06:38:47.533353	55.9041797999999872	-5.94142089999999978
+139	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-10-17 17:52:43.450509	2016-10-20 06:40:39.855532	56.4906711999999871	-4.20264579999999999
+145	\N	Abbey Rd		County Durham	United Kingdom	 DH1 5FJ	2016-10-22 20:24:49.625075	2016-10-22 20:25:56.494575	54.8052934999999977	-1.58364229999999995
+137	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-10-17 16:22:41.06774	2016-10-22 20:27:09.570656	54.9602990000000133	-4.48316399999999859
+147	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-10-22 20:27:09.635083	2016-10-22 20:27:40.13104	54.9602990000000133	-4.48316399999999859
+142	\N	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-10-17 22:13:09.892364	2016-10-22 20:28:37.550646	52.9999955999999983	-3.94296710000000017
+115	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-02-22 22:02:37.779104	2016-10-22 20:32:05.705832	52.3021967000000032	-3.5061612000000002
+150	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:32:05.783034	2016-10-22 20:32:25.567699	52.3021967000000032	-3.5061612000000002
+151	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:32:25.642111	2016-10-22 20:32:44.755447	52.3021967000000032	-3.5061612000000002
+152	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:32:44.813704	2016-10-22 20:33:05.115435	52.3021967000000032	-3.5061612000000002
+153	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:33:05.178751	2016-10-22 20:33:54.270965	52.3021967000000032	-3.5061612000000002
+154	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:33:54.315459	2016-10-22 20:34:58.468179	52.3021967000000032	-3.5061612000000002
+155	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:34:58.514776	2016-10-22 20:35:14.946172	52.3021967000000032	-3.5061612000000002
+156	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:35:15.053437	2016-10-22 20:35:44.648403	52.3021967000000032	-3.5061612000000002
+157	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:35:44.696649	2016-10-22 20:36:05.890107	52.3021967000000032	-3.5061612000000002
+159	\N	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-10-22 20:38:37.578936	2016-10-22 20:39:07.434728	53.9942465000000027	-2.43245120000000004
+160	\N	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-10-22 20:39:07.500774	2016-10-22 20:40:05.299186	53.9942465000000027	-2.43245120000000004
+143	\N			Isle of Jura	Scotland	PA60	2016-10-20 06:38:47.587551	2016-10-24 14:42:46.015415	55.9041797999999872	-5.94142089999999978
+144	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60	2016-10-20 06:40:39.942239	2016-10-24 14:43:37.33668	55.9041797999999872	-5.94142089999999978
+158	\N	Hafod Hardware 	East Street	Rhayader	United Kingdom	LD6 5DS.	2016-10-22 20:36:05.949167	2016-10-24 15:14:51.635372	52.3021967000000032	-3.5061612000000002
+164	\N	Hafod Hardware 	East Street	Rhayader	Wales	LD6 5DS.	2016-10-24 15:14:51.793436	2016-10-24 15:18:21.278759	52.3021967000000032	-3.5061612000000002
+165	\N	Hafod Hardware 	East Street	Rhayader	Wales	LD6 5DS.	2016-10-24 15:18:21.335925	2016-10-24 15:18:42.048305	52.3021967000000032	-3.5061612000000002
+149	\N	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-10-22 20:28:37.611503	2016-11-03 18:23:15.817287	52.9999955999999983	-3.94296710000000017
+168	\N		Sutherland	Highland	United Kingdom	IV27 4JE	2016-11-14 22:45:33.353224	2016-11-15 11:21:25.518836	58.0764941000000121	-4.44340020000000013
+169	\N		Sutherland	Highland	United Kingdom	IV27 4JE	2016-11-15 11:21:25.559793	2016-11-15 11:22:34.915591	58.0764941000000121	-4.44340020000000013
+170	\N		Sutherland	Highland	Scotland	IV27 4JE	2016-11-15 11:22:35.023762	2016-11-15 11:23:14.232264	58.0764941000000121	-4.44340020000000013
+171	\N		Sutherland	Highland	Scotland	IV27 4JE	2016-11-15 11:23:14.275383	2016-11-15 11:23:53.545301	58.0764941000000121	-4.44340020000000013
+172	\N		Sutherland	Highland	Scotland	IV27 4JE	2016-11-15 11:23:53.595254	2016-11-15 11:24:37.770786	58.0764941000000121	-4.44340020000000013
+174	\N		Settle	North Yorkshire	United Kingdom	BD24 9PU	2016-11-24 08:46:14.693184	2016-11-24 08:47:32.238786	54.1011643000000007	-2.16405089999999989
+161	\N	Catlow Rd	Clitheroe	Lancashire	United Kingdom	BB7 3AQ	2016-10-22 20:40:05.349035	2016-11-25 21:36:14.115526	53.9942465000000027	-2.43245120000000004
+176	27	Catlow Rd	Clitheroe	Lancashire	England	BB7 3AQ	2016-11-25 21:36:14.23478	2016-11-25 21:36:14.23478	53.9942465000000027	-2.43245120000000004
+175	\N		Settle	North Yorkshire	United Kingdom	BD24 9PU	2016-11-24 08:47:32.27361	2016-11-26 21:16:41.671731	54.1011643000000007	-2.16405089999999989
+146	\N	Abbey Rd		County Durham	United Kingdom	 DH1 5FJ	2016-10-22 20:25:56.538584	2016-11-26 21:18:31.782687	54.8052934999999977	-1.58364229999999995
+148	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-10-22 20:27:40.202503	2016-12-08 19:29:16.696259	54.9599176999999983	-4.47511250000000071
+177	\N		Settle	North Yorkshire	England	BD24 9PU	2016-11-26 21:16:41.817062	2016-12-08 22:50:27.202403	54.1011643000000007	-2.16405089999999989
+180	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-08 22:50:27.282907	2016-12-08 22:52:16.142314	54.1011643000000007	-2.16405089999999989
+181	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-08 22:52:16.21697	2016-12-08 22:56:13.365612	54.1011643000000007	-2.16405089999999989
+162	\N			Isle of Jura	Scotland	PA60	2016-10-24 14:42:46.09972	2016-12-09 08:18:46.605489	55.9041797999999872	-5.94142089999999978
+182	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-08 22:56:13.435195	2016-12-10 15:06:42.87066	54.1011643000000007	-2.16405089999999989
+184	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-10 15:06:42.942368	2016-12-10 15:06:48.260189	54.1011643000000007	-2.16405089999999989
+185	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-10 15:06:48.32838	2016-12-10 18:12:55.724522	54.1011643000000007	-2.16405089999999989
+186	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-10 18:12:55.82986	2016-12-10 18:21:04.720445	54.1011643000000007	-2.16405089999999989
+187	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-10 18:21:05.622441	2016-12-10 18:24:05.103037	54.1011643000000007	-2.16405089999999989
+183	\N			Isle of Jura	Scotland	PA60	2016-12-09 08:18:46.692785	2016-12-10 20:16:54.332071	55.9041797999999872	-5.94142089999999978
+189	\N			Isle of Jura	Scotland	PA60	2016-12-10 20:16:54.415724	2016-12-10 20:20:11.683856	55.9041797999999872	-5.94142089999999978
+190	\N			Isle of Jura	Scotland	PA60	2016-12-10 20:20:11.770709	2016-12-11 09:45:08.898956	55.9041797999999872	-5.94142089999999978
+191	\N			Isle of Jura	Scotland	PA60	2016-12-11 09:45:08.949272	2016-12-11 09:48:28.475846	55.9041797999999872	-5.94142089999999978
+192	\N			Isle of Jura	Scotland	PA60	2016-12-11 09:48:28.529793	2016-12-11 09:50:23.881887	55.9041797999999872	-5.94142089999999978
+188	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-10 18:24:05.251944	2016-12-11 12:07:00.740198	54.1011643000000007	-2.16405089999999989
+178	\N	Abbey Rd		County Durham	England	 DH1 5FJ	2016-11-26 21:18:31.925978	2016-12-12 18:07:03.570053	54.8052934999999977	-1.58364229999999995
+196	\N			Isle of Jura	Scotland	PA60	2016-12-11 12:09:05.081231	2016-12-11 12:10:26.010944	55.9041797999999872	-5.94142089999999978
+217	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60	2016-12-20 22:15:34.526207	2016-12-20 22:17:27.46982	\N	\N
+194	\N		Settle	North Yorkshire	England	BD24 9PU	2016-12-11 12:07:00.796052	2016-12-11 12:23:04.794101	54.1011643000000007	-2.16405089999999989
+197	\N			Isle of Jura	Scotland	PA60	2016-12-11 12:10:26.03513	2016-12-11 12:26:24.907466	55.9041797999999872	-5.94142089999999978
+218	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XW	2016-12-20 22:17:28.488737	2016-12-20 22:34:52.195244	\N	\N
+219	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-20 22:34:52.835192	2016-12-20 22:36:51.925942	\N	\N
+226	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-22 23:59:35.470796	2016-12-23 00:01:43.068355	\N	\N
+229	\N	Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-23 11:09:17.570458	2016-12-23 11:54:04.435143	\N	\N
+233	93		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-28 21:07:51.015342	2016-12-28 21:07:51.015342	54.9599176999999983	-4.47511250000000071
+237	89	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-12-29 09:23:01.627302	2016-12-29 09:23:01.627302	52.9999955999999983	-3.94296710000000017
+239	\N		Sutherland	Highland	Scotland	IV27 4JE	2016-12-29 13:13:46.591134	2016-12-29 13:16:27.490133	58.2399646000000004	-5.40270969999999995
+240	94		Sutherland	Highland	Scotland	IV27 4JE	2016-12-29 13:16:27.573383	2016-12-29 13:16:27.573383	58.2399646000000004	-5.40270969999999995
+234	\N	Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-28 21:09:45.036449	2016-12-29 17:31:52.15575	\N	\N
+244	\N						2017-01-12 23:40:00.034682	2017-01-12 23:40:44.737046	\N	\N
+245	\N						2017-01-12 23:40:44.745279	2017-01-12 23:41:28.979859	\N	\N
+248	\N		The Pier	Orkney	United Kingdom	KW15 1HU	2017-02-13 20:56:00.306175	2017-02-13 21:01:55.524341	58.9869109999999921	-2.96087299999999987
+250	\N		The Pier	Orkney	United Kingdom	KW15 1HU	2017-02-13 21:02:48.388117	2017-02-14 07:42:34.398458	58.9869109999999921	-2.96087299999999987
+252	\N		The Pier	Orkney	Scotland	KW15 1HU	2017-02-14 10:14:17.094015	2017-02-14 12:41:10.14297	58.9869109999999921	-2.96087299999999987
+255	96		The Pier	Orkney	Scotland	KW15 1HU	2017-02-14 12:41:10.22002	2017-02-14 12:41:10.22002	58.9869109999999921	-2.96087299999999987
+193	\N			Isle of Jura	Scotland	PA60	2016-12-11 09:50:23.940599	2016-12-11 12:08:11.690229	55.9041797999999872	-5.94142089999999978
+195	\N			Isle of Jura	Scotland	PA60	2016-12-11 12:08:11.715524	2016-12-11 12:09:05.028043	55.9041797999999872	-5.94142089999999978
+220	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-20 22:36:51.984269	2016-12-21 08:57:45.54788	\N	\N
+199	\N			Isle of Jura	Scotland	PA60	2016-12-11 12:26:24.993602	2016-12-11 13:08:50.235572	55.9041797999999872	-5.94142089999999978
+200	\N			Isle of Jura	Scotland	PA60 7XW	2016-12-11 13:08:50.763324	2016-12-11 13:10:12.511041	56.0267065000000031	-5.77315809999999985
+201	\N		Inverlussa	Argyll and Bute	United Kingdom	PA60 7XW	2016-12-11 13:10:13.10835	2016-12-11 13:11:00.102906	56.0180699000000004	-5.78222010000000086
+222	\N	Hafod Hardware 	East Street	Rhayader	Wales	LD6 5DS	2016-12-21 14:53:16.27691	2016-12-21 14:56:45.667349	\N	\N
+202	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-11 13:11:00.744969	2016-12-11 14:16:15.886981	56.0267065000000031	-5.77315809999999985
+223	88	Hafod Hardware	East Street	Rhayader	Wales	LD6 5DS	2016-12-21 14:56:45.722727	2016-12-21 14:56:45.722727	\N	\N
+203	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-11 14:16:15.931593	2016-12-11 14:16:51.546043	56.0267065000000031	-5.77315809999999985
+221	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-21 08:57:45.661232	2016-12-22 23:10:52.152797	\N	\N
+204	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-11 14:16:51.570324	2016-12-11 18:00:39.384161	56.0267065000000031	-5.77315809999999985
+205	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-11 18:00:39.484478	2016-12-11 18:01:05.232845	56.0267065000000031	-5.77315809999999985
+224	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-22 23:10:52.198233	2016-12-22 23:50:21.524268	\N	\N
+206	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-11 18:01:05.337586	2016-12-11 18:01:30.489846	56.0267065000000031	-5.77315809999999985
+179	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-08 19:29:16.801219	2016-12-12 11:38:44.843869	54.9599176999999983	-4.47511250000000071
+208	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 11:38:44.925278	2016-12-12 11:40:30.377804	54.9599176999999983	-4.47511250000000071
+225	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-22 23:50:21.569793	2016-12-22 23:59:35.399908	\N	\N
+209	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 11:40:30.473078	2016-12-12 11:47:43.592838	54.9599176999999983	-4.47511250000000071
+210	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 11:47:43.69466	2016-12-12 11:48:59.297389	54.9599176999999983	-4.47511250000000071
+227	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-23 00:01:43.089256	2016-12-23 00:07:20.609416	\N	\N
+211	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 11:48:59.382687	2016-12-12 11:49:37.564977	54.9599176999999983	-4.47511250000000071
+212	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 11:49:37.593179	2016-12-12 11:49:56.225147	54.9599176999999983	-4.47511250000000071
+228	\N	 Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-23 00:07:20.631657	2016-12-23 11:09:17.517671	\N	\N
+213	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 11:49:56.268893	2016-12-12 13:51:44.215705	54.9599176999999983	-4.47511250000000071
+215	57	Abbey Rd		County Durham	England	 DH1 5FJ	2016-12-12 18:07:03.643416	2016-12-12 18:07:03.643416	54.8052934999999977	-1.58364229999999995
+230	\N	Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-23 11:54:04.453708	2016-12-25 09:27:11.301405	\N	\N
+207	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-11 18:01:30.581256	2016-12-28 20:54:58.545557	56.0267065000000031	-5.77315809999999985
+214	\N		Newton Stewert	Dumfries and Galloway	Scotland	DG8 6AJ	2016-12-12 13:51:44.308298	2016-12-28 21:07:50.904903	54.9599176999999983	-4.47511250000000071
+231	\N	Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-25 09:27:11.353014	2016-12-28 21:09:44.903151	\N	\N
+235	\N	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-12-29 09:09:42.362931	2016-12-29 09:21:43.396752	52.9999955999999983	-3.94296710000000017
+236	\N	2 Blaen Cae	Rhiwbryfdir	Gwynedd 	Wales	LL41 3LF 	2016-12-29 09:21:43.447032	2016-12-29 09:23:01.577618	52.9999955999999983	-3.94296710000000017
+238	81		Settle	North Yorkshire	England	BD24 9PU	2016-12-29 10:16:46.153716	2016-12-29 10:16:46.153716	54.1011643000000007	-2.16405089999999989
+241	91	Ruantallain Estate		Isle of Jura	Scotland	PA60 7XH	2016-12-29 17:31:52.739569	2016-12-29 17:31:52.739569	\N	\N
+242	\N						2017-01-12 23:23:28.018452	2017-01-12 23:37:20.927637	\N	\N
+243	\N						2017-01-12 23:37:20.942064	2017-01-12 23:40:00.016583	\N	\N
+246	\N			Lancashire	England		2017-01-12 23:41:29.753662	2017-01-12 23:41:56.692965	53.7632254000000032	-2.70440520000000006
+247	95		Slaidburn	Lancashire	England		2017-01-12 23:41:57.274838	2017-01-12 23:41:57.274838	53.9669779999999975	-2.44596400000000003
+249	\N		The Pier	Orkney	United Kingdom	KW15 1HU	2017-02-13 21:01:55.612687	2017-02-13 21:02:48.306704	58.9869109999999921	-2.96087299999999987
+251	\N		The Pier	Orkney	Scotland	KW15 1HU	2017-02-14 07:42:34.877366	2017-02-14 10:14:17.00069	58.9869109999999921	-2.96087299999999987
+232	\N		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2016-12-28 20:54:58.594351	2017-02-14 12:34:41.60085	56.0267065000000031	-5.77315809999999985
+253	\N		Inverlussa	Isle of Jura	test	PA60 7XW	2017-02-14 12:34:42.099576	2017-02-14 12:34:52.283971	\N	\N
+254	92		Inverlussa	Isle of Jura	Scotland	PA60 7XW	2017-02-14 12:34:52.394843	2017-02-14 12:34:52.394843	56.0267065000000031	-5.77315809999999985
+\.
+
+
+--
+-- Name: addresses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('addresses_id_seq', 255, true);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	production	2017-02-10 08:08:21.502226	2017-02-10 08:08:21.502226
+\.
+
+
+--
+-- Data for Name: contact_details; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY contact_details (id, fishery_id, name, telephone, mobile, email, website, created_at, updated_at) FROM stdin;
+1	\N						2015-04-29 12:05:21.859652	2015-04-29 12:38:03.473494
+3	2		01571855298		 admin@assyntcrofters.co.uk	www.sportingassynt.co.uk	2015-04-29 15:35:01.148559	2015-04-29 15:35:01.148559
+2	\N						2015-04-29 12:38:03.496279	2015-04-29 15:42:52.57073
+4	\N					www.assyntangling.co.uk	2015-04-29 15:42:52.586615	2015-04-29 15:43:09.475012
+5	1					www.assyntangling.co.uk	2015-04-29 15:43:09.493581	2015-04-29 15:43:09.493581
+6	3						2015-04-29 16:55:45.336926	2015-04-29 16:55:45.336926
+7	4						2015-05-05 14:58:44.772765	2015-05-05 14:58:44.772765
+8	5						2015-05-07 10:28:52.453144	2015-05-07 10:28:52.453144
+9	26						2015-09-17 22:32:25.247906	2015-09-17 22:32:25.247906
+14	\N						2015-12-09 14:00:56.443216	2015-12-09 14:02:40.610159
+17	\N	Alex Young		07818 880327	fyldetroutfishery@yahoo.co.uk	www.fyldetroutfishery.co.uk	2015-12-09 14:26:12.53322	2015-12-09 14:26:22.998217
+19	34	Paul Bateson	01257 274258	07887 722909 	enquiries@hdffc.co.uk 	http://www.hdffc.co.uk/	2015-12-10 08:40:07.802264	2015-12-10 08:40:07.802264
+21	\N	Ann Mills	01536 772930		fishing.lodge@tatasteel.com		2015-12-16 08:44:28.691812	2015-12-16 08:44:49.894993
+23	\N		01530 230807	07846463086	lodge@flyfishthornton.co.uk	www.flyfishthornton.co.uk	2015-12-16 08:54:19.437891	2015-12-16 08:54:33.406198
+24	\N		01530 230807		lodge@flyfishthornton.co.uk	www.flyfishthornton.co.uk	2015-12-16 08:54:33.41909	2015-12-16 16:42:21.979073
+26	37		01530 230807		lodge@flyfishthornton.co.uk	www.flyfishthornton.co.uk	2015-12-16 16:42:22.014013	2015-12-16 16:42:22.014013
+25	\N		01724 764161			www.cleathamtroutfishery.com	2015-12-16 16:42:02.455572	2015-12-19 11:44:39.03018
+30	\N	Sara Grundy	01507 450356	07760 625557	info@withernmilltroutfarm.co.uk	www.withernmilltroutfarm.co.uk	2015-12-19 12:04:43.151216	2015-12-24 10:57:42.929509
+11	\N	Ben Dobson	01524 770412		info@stocksreservoir.com	www.bankhouseflyfishery.co.uk	2015-12-09 06:57:31.179479	2015-12-24 10:59:41.11972
+12	\N	Frank Casson	0199561583	07834416209	casv6@aol.com	www.barnsfoldwaters.co.uk	2015-12-09 07:58:40.547542	2015-12-24 11:01:32.464465
+13	\N	Roger Burnside	01525 793644	07711 055544	sales@cleveleymere.com	www.cleveleymere.com	2015-12-09 08:09:09.162799	2015-12-24 11:02:30.327639
+34	30	Roger Burnside	01525 793644	07711 055544	sales@cleveleymere.com	http://www.cleveleymere.com/	2015-12-24 11:02:30.346341	2015-12-24 11:02:30.346341
+15	\N		01706 260363		keithbenson1@talktalk.net	www.cowpeflyanglers.co.uk	2015-12-09 14:02:40.63285	2015-12-24 11:04:12.235441
+16	\N	Stephen Kershaw	01204 691199		curleystroutfisherys@gmail.com	www.curleysfishery.co.uk	2015-12-09 14:16:27.187424	2015-12-24 11:26:41.637031
+36	32	Stephen Kershaw	01204 691199		curleystroutfisherys@gmail.com	http://www.curleysfishery.co.uk/	2015-12-24 11:26:41.648141	2015-12-24 11:26:41.648141
+18	\N	Alex Young		07818 880327	fyldetroutfishery@yahoo.co.uk	www.fyldetroutfishery.co.uk	2015-12-09 14:26:23.012856	2015-12-24 11:28:09.929901
+37	\N	Alex Young	07818 880327	07818 880327	fyldetroutfishery@yahoo.co.uk	http://www.fyldetroutfishery.co.uk/	2015-12-24 11:28:09.944591	2015-12-24 11:59:42.274229
+38	33	Alex Young	07818 880327	07818 880327	fyldetroutfishery@yahoo.co.uk	http://www.fyldetroutfishery.co.uk/	2015-12-24 11:59:42.2941	2015-12-24 11:59:42.2941
+20	\N	Gordon Imrie	01704 821006	0776 1120843	 flyfishing@merebeck.co.uk	www.merebeck.co.uk	2015-12-16 08:23:17.425857	2015-12-24 12:01:11.98432
+22	\N	Ann Mills	01536 772930		fishing.lodge@tatasteel.com	www.eyebrook.com	2015-12-16 08:44:49.92167	2015-12-24 12:01:42.87926
+40	36	Ann Mills	01536 772930		fishing.lodge@tatasteel.com	http://www.eyebrook.com/	2015-12-24 12:01:42.908465	2015-12-24 12:01:42.908465
+28	\N		01724 764161			www.cleathamtroutfishery.com	2015-12-19 11:44:39.047648	2015-12-24 12:05:27.36164
+41	38		01724 764161			http://www.cleathamtroutfishery.com/	2015-12-24 12:05:27.413891	2015-12-24 12:05:27.413891
+27	\N	George Wildsmith	01472 398978			http://www.thorpe-le-vale.co.uk	2015-12-19 11:39:54.790995	2015-12-24 12:05:49.380051
+29	\N	Jason Foster	07806 400878	07806 400878	jason@toftnewton.com	www.toftnewton.com	2015-12-19 11:55:09.379752	2015-12-24 12:06:24.655106
+43	40	Jason Foster	07806 400878	07806 400878	jason@toftnewton.com	http://www.toftnewton.com/	2015-12-24 12:06:24.668605	2015-12-24 12:06:24.668605
+31	\N	Sara Grundy	01507 450356	07760 625557	info@withernmilltroutfarm.co.uk	http://www.withernmilltroutfarm.co.uk/	2015-12-24 10:57:42.94612	2015-12-24 12:06:37.39876
+44	41	Sara Grundy	01507 450356	07760 625557	info@withernmilltroutfarm.co.uk	http://www.withernmilltroutfarm.co.uk/	2015-12-24 12:06:37.418133	2015-12-24 12:06:37.418133
+33	\N	Frank Casson	01995 61583	07834416209	casv6@aol.com	http://www.barnsfoldwaters.co.uk/	2015-12-24 11:01:32.485407	2015-12-24 12:07:05.053117
+45	29	Frank Casson	01995 61583	07834416209	casv6@aol.com	http://www.barnsfoldwaters.co.uk/	2015-12-24 12:07:05.070854	2015-12-24 12:07:05.070854
+35	\N		01706 260363		keithbenson1@talktalk.net	http://www.cowpeflyanglers.co.uk/	2015-12-24 11:04:12.25008	2015-12-24 12:07:15.418835
+46	31		01706 260363		keithbenson1@talktalk.net	http://www.cowpeflyanglers.co.uk/	2015-12-24 12:07:15.446628	2015-12-24 12:07:15.446628
+39	\N	Gordon Imrie	01704 821006	0776 1120843	 flyfishing@merebeck.co.uk	http://www.merebeck.co.uk/	2015-12-24 12:01:12.01109	2015-12-24 12:07:21.01107
+47	35	Gordon Imrie	01704 821006	0776 1120843	 flyfishing@merebeck.co.uk	http://www.merebeck.co.uk/	2015-12-24 12:07:21.027059	2015-12-24 12:07:21.027059
+42	\N	George Wildsmith	01472 398978			http://www.thorpe-le-vale.co.uk/	2015-12-24 12:05:49.400041	2015-12-24 12:07:27.353089
+48	39	George Wildsmith	01472 398978			http://www.thorpe-le-vale.co.uk/	2015-12-24 12:07:27.388898	2015-12-24 12:07:27.388898
+49	\N		07956 378138			http://alburyestatefisheries.co.uk/	2015-12-24 12:13:53.661519	2015-12-24 12:24:54.202155
+50	\N		07956 378138			http://alburyestatefisheries.co.uk/	2015-12-24 12:24:54.222769	2015-12-24 12:27:29.149818
+51	42			07956 378138	andy.allen@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:27:29.170643	2015-12-24 12:27:29.170643
+52	\N	Tony Hern	01483 202323	07976 810737\tS	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:35:36.273497	2015-12-24 12:36:08.620365
+53	\N	Tony Hern	01483 202323	07976 810737\tS	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:36:08.636023	2015-12-24 12:37:41.177764
+55	44		07743 966286			http://www.pitsfordfishery.com/	2015-12-24 14:32:59.927883	2015-12-24 14:32:59.927883
+57	46						2015-12-24 14:33:35.709702	2015-12-24 14:33:35.709702
+56	\N		07525 730447			http://www.blackdykefishing.co.uk/	2015-12-24 14:33:11.296955	2015-12-24 14:35:20.977765
+59	47						2015-12-24 14:38:32.147985	2015-12-24 14:38:32.147985
+58	\N		07525 730447			http://www.blackdykefishing.co.uk/	2015-12-24 14:35:20.990158	2015-12-24 14:50:59.058937
+60	45	Paul Speed	07525 730447		contact@blackdykefishing.co.uk	http://www.blackdykefishing.co.uk/	2015-12-24 14:50:59.092826	2015-12-24 14:50:59.092826
+61	\N						2015-12-24 14:57:52.247579	2015-12-24 15:00:52.537481
+62	48	Ray Pritchard	01760 338005		narfish@supanet.com	http://narfish.co.uk/	2015-12-24 15:00:52.551146	2015-12-24 15:00:52.551146
+63	\N						2015-12-24 22:43:12.883288	2015-12-24 22:45:20.153244
+64	49	James Harold	01953 483971	07900 004953	rocklandsmerefishery@gmail.com	http://www.rocklandsmere.co.uk/	2015-12-24 22:45:20.197741	2015-12-24 22:45:20.197741
+65	\N						2015-12-24 23:53:42.115464	2015-12-25 00:01:12.891564
+32	\N	Ben Dobson	01524 770412		info@stocksreservoir.com	http://www.stocksreservoir.com/	2015-12-24 10:59:41.130921	2016-01-13 07:07:26.320637
+66	50	Ed Foster	01832 720786		elinortf@alo.com	http://www.elinortf.co.uk/	2015-12-25 00:01:12.955391	2015-12-25 00:01:12.955391
+68	52		01604 770875	07885 135453	fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure/	2015-12-25 00:27:16.072019	2015-12-25 00:27:16.072019
+242	\N						2017-01-12 23:23:28.013	2017-01-12 23:37:20.916914
+243	\N						2017-01-12 23:37:20.938625	2017-01-12 23:40:00.003442
+72	55		01668 215226		chatton.fishery@googlemail.com	http://www.chattontroutfishery.com/	2015-12-25 01:31:28.35778	2015-12-25 01:31:28.35778
+75	58						2015-12-25 08:49:50.719624	2015-12-25 08:49:50.719624
+67	51	Nathan Clayton	01604 781350	07885 135453	fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure	2015-12-25 00:10:20.12326	2015-12-25 00:10:20.12326
+69	53	Harold Foster	01933 622960		fly-wizard@hotmail.co.uk	http://www.ringsteadtroutfishery.co.uk/index.php	2015-12-25 00:31:38.645323	2015-12-25 00:31:38.645323
+71	\N						2015-12-25 01:26:03.956956	2015-12-25 01:31:28.344702
+73	56						2015-12-25 08:48:23.748143	2015-12-25 08:48:23.748143
+74	\N						2015-12-25 08:49:45.487636	2015-12-30 09:58:46.488557
+70	54	Ricky Chatteron	07972 759401		ricky@caistrontroutfishery.co.uk	http://www.caistrontroutfisheryandriver.com	2015-12-25 00:55:28.968493	2015-12-25 00:55:28.968493
+77	59	Andrew Cannon		07950 428159	highamlakes@hotmail.co.uk	http://www.highamlakes.com/	2015-12-30 12:29:30.126926	2015-12-30 12:29:30.126926
+78	60		01434 688846	07929184902	anthonykelly75@yahoo.com	http://www.langleydam.co.uk/	2015-12-30 12:38:03.948092	2015-12-30 12:38:03.948092
+79	\N		01830 540349		info@sweethopeadventure.co.uk	http://sweethopeadventure.co.uk/fishing/	2015-12-30 13:23:23.700342	2015-12-30 13:25:25.466614
+80	61		01830 540349		info@sweethopeadventure.co.uk	http://sweethopeadventure.co.uk/fishing/	2015-12-30 13:25:25.623278	2015-12-30 13:25:25.623278
+81	62		01434 681405		info@westwaterangling.co.uk	http://www.westwaterangling.co.uk/	2015-12-30 13:29:15.847652	2015-12-30 13:29:15.847652
+82	63			07980 799166	Sales@roxholmetrout.com	http://www.roxholmetrout.com/	2015-12-31 11:58:48.807374	2015-12-31 11:58:48.807374
+83	64	Janet Barnes	01865 300343				2015-12-31 12:45:08.186146	2015-12-31 12:45:08.186146
+84	65		01865 863033		farmoor.info@thameswater.co.uk	http://www.thameswater.co.uk/about-us/16820.htm	2015-12-31 12:55:53.916561	2015-12-31 12:55:53.916561
+85	66		01608 643209	07531 073813	info@salfordtroutlakes.co.uk	http://www.salfordtroutlakes.co.uk/	2015-12-31 13:06:29.357283	2015-12-31 13:06:29.357283
+86	67		01780 686441		fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure/water-parks/rutland/fishing/	2015-12-31 13:10:33.099957	2015-12-31 13:10:33.099957
+87	68		01746 766797	07976 256436			2015-12-31 13:19:22.956052	2015-12-31 13:19:22.956052
+88	\N	Andy Farnell 	01584 841267	07970 844094	wrigley@delbury.co.uk	http://www.delbury.co.uk/information/55a66bfd8dc41/Trout-Fishery/	2015-12-31 13:27:38.306729	2015-12-31 19:01:26.562716
+89	69	Andy Farnell 	01584 841267	07970 844094	wrigley@delbury.co.uk	http://www.delbury.co.uk/information/55a66bfd8dc41/Trout-Fishery/	2015-12-31 19:01:26.595994	2015-12-31 19:01:26.595994
+90	70	Edward 		07860 299342 	enquiries@ellerdinelakes.co.uk	http://www.ellerdine-lakes.co.uk/	2015-12-31 19:16:06.232716	2015-12-31 19:16:06.232716
+91	71		01691 682788			http://www.springheath.co.uk/	2016-01-02 11:32:39.917566	2016-01-02 11:32:39.917566
+92	72		01767 650301				2016-01-11 22:12:42.307412	2016-01-11 22:12:42.307412
+93	73		01200 446268				2016-01-12 22:35:24.23968	2016-01-12 22:35:24.23968
+94	\N	Rosemary	0118 974 4744	07768 581785	roe@barnelmsfishery.co.uk	http://www.barnelmsfishery.co.uk/	2016-01-12 23:07:52.677299	2016-01-12 23:11:15.490852
+95	74	Rosemary Balsdon	0118 974 4744	07768 581785	roe@barnelmsfishery.co.uk	http://www.barnelmsfishery.co.uk/	2016-01-12 23:11:15.523092	2016-01-12 23:11:15.523092
+96	75		0118 934 5527	07768 853449	felix.farm@yahoo.co.uk	http://www.felixfarmtroutfishery.co.uk/	2016-01-12 23:17:40.322667	2016-01-12 23:17:40.322667
+97	76	Michael Stratton	0118 932 3422		info@haywardsfarmfishery.co.uk	http://www.haywardsfarmfishery.co.uk/	2016-01-12 23:32:03.251671	2016-01-12 23:32:03.251671
+98	77	Jonathan Whaley	01296 720524		trout@church-hill-fishery.co.uk	http://www.thetrouthunter.co.uk/test-post-by-dan/	2016-01-12 23:40:20.866124	2016-01-12 23:40:20.866124
+10	\N	Ben Dobson	01200 446602		info@stocksreservoir.com	http://www.stocksreservoir.com	2015-12-09 06:45:43.820174	2016-01-13 07:06:51.804077
+100	28	Ben Dobson	01524 770412		info@stocksreservoir.com	http://www.stocksreservoir.com/	2016-01-13 07:07:26.328102	2016-01-13 07:07:26.328102
+101	78		01487 740301			http://www.earithlakes.com/	2016-01-13 07:36:54.648334	2016-01-13 07:36:54.648334
+102	79	Angela Terry	01480 810531	07801 674683	fishing@anglianwater.co.uk	http://www.anglianwater.co.uk/leisure/	2016-01-13 07:46:50.194475	2016-01-13 07:46:50.194475
+103	80		01969 623250		enquiries@thecoverbridgeinn.co.uk	http://thecoverbridgeinn.co.uk/	2016-01-14 13:43:34.945233	2016-01-14 13:43:34.945233
+106	83	Brain Cooper	01565 873337			http://www.claylanetroutfishery.co.uk/	2016-01-15 17:27:25.473253	2016-01-15 17:27:25.473253
+107	84	David and Ann Taylor	01260 224231			http://www.martonheath.co.uk/	2016-01-15 18:38:29.942965	2016-01-15 18:38:29.942965
+108	85		01244 300236			http://www.meadowfishery.com/	2016-01-15 18:50:13.381739	2016-01-15 18:50:13.381739
+109	86	David Leak	07836 330157		sales@hadrianequine.co.uk	http://www.westhouse-troutlakes.co.uk/	2016-01-15 19:14:29.210886	2016-01-15 19:14:29.210886
+105	\N	Andrew or Claire Fletcher	01496 820323 		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-01-15 08:33:51.837055	2016-01-16 12:18:39.664459
+110	82	Andrew or Claire Fletcher	01496 820323 		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-01-16 12:18:39.682699	2016-01-16 12:18:39.682699
+111	\N				enquires@ruantallian.co.uk	http://www.ruantallain.co.uk/	2016-01-17 12:37:29.447803	2016-01-17 13:29:55.796039
+112	\N				enquires@ruantallian.co.uk	http://www.ruantallain.co.uk/	2016-01-17 13:29:55.803701	2016-01-17 13:32:11.491469
+113	87				enquires@ruantallian.co.uk	http://www.ruantallain.co.uk/	2016-01-17 13:32:11.500571	2016-01-17 13:32:11.500571
+76	\N	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	www.nwl.co.uk	2015-12-30 09:58:46.586028	2016-01-24 19:08:25.638571
+116	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com		2016-03-06 23:51:43.847148	2016-03-06 23:52:26.642608
+117	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com		2016-03-06 23:52:26.656621	2016-03-07 08:41:28.292538
+119	\N		01768 772 334			http://www.unitedutilities.com/haweswater-recreation.aspx	2016-03-13 21:46:45.214449	2016-03-13 21:47:27.710514
+120	\N		01768 772 334			http://www.unitedutilities.com/haweswater-recreation.aspx	2016-03-13 21:47:28.05465	2016-03-13 21:54:51.036941
+121	\N		01768 772 334			http://lakedistrictfishing.net/component/option,com_chsearch/Itemid,8/lang,en/index.php?option=com_mtree&task=viewlink&link_id=54&Itemid=8	2016-03-13 21:54:51.054204	2016-03-14 14:36:29.105275
+126	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-13 20:30:16.075239	2016-10-13 20:42:07.336473
+54	\N	Tony Hern	01483 202323	07976 810737\tS	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2015-12-24 12:37:41.193312	2016-04-21 13:47:52.706051
+114	\N	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	https://www.nwl.co.uk/your-home/leisure/go-fishing.aspx	2016-01-24 19:08:25.655964	2016-10-22 20:24:49.358491
+122	\N		01768 772 334			http://bit.ly/1QXUvd1	2016-03-14 14:36:29.118472	2016-04-21 20:44:55.492629
+124	90		01768 772 334			http://bit.ly/1QXUvd1	2016-04-21 20:44:55.780608	2016-04-21 20:44:55.780608
+123	\N	Tony Hern	01483 202323	07976 810737	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2016-04-21 13:47:53.140593	2016-08-12 08:24:54.395679
+125	43	Tony Hern	01483 202323	07976 810737	tony.hern@alburyestatefisheries.co.uk	http://alburyestatefisheries.co.uk/	2016-08-12 08:24:54.539626	2016-08-12 08:24:54.539626
+115	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-02-22 22:02:37.773484	2016-10-22 20:32:05.645145
+99	\N	Ben Dobson	01200 446602		info@stocksreservoir.com	http://stocksreservoir.com/	2016-01-13 07:06:51.810633	2016-10-22 20:38:36.995429
+104	\N		01729 830331			http://www.field-studies-council.org/	2016-01-15 07:56:08.238974	2016-11-24 08:46:14.56292
+163	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-24 14:43:37.399368	2016-12-20 22:03:22.598237
+166	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-24 15:18:42.103754	2016-12-21 14:53:15.112911
+127	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-13 20:42:07.50315	2016-10-13 20:49:54.888914
+167	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-11-03 18:23:15.884467	2016-12-29 09:09:41.829722
+128	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-13 20:49:55.070126	2016-10-13 20:53:14.453038
+173	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-11-15 11:24:37.816617	2016-12-29 13:13:45.857356
+129	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-13 20:53:14.584361	2016-10-13 20:55:16.600976
+130	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-13 20:55:16.768901	2016-10-13 20:59:14.889372
+131	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-13 20:59:15.067747	2016-10-14 08:45:46.324925
+132	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-10-14 08:19:20.095372	2016-10-14 08:48:30.320585
+134	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-10-14 08:48:30.473694	2016-10-14 08:49:06.996521
+136	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-10-16 11:53:22.908896	2016-10-17 16:22:40.758576
+135	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-10-14 08:49:07.080906	2016-10-17 17:51:35.814329
+133	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-14 08:45:46.483578	2016-10-17 17:52:43.111783
+118	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-03-07 08:41:28.30557	2016-10-17 22:05:41.928905
+140	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-10-17 22:05:42.050533	2016-10-17 22:10:31.339408
+141	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-10-17 22:10:31.716646	2016-10-17 22:13:09.701497
+138	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-10-17 17:51:36.09118	2016-10-20 06:38:47.456353
+139	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-17 17:52:43.448058	2016-10-20 06:40:39.759997
+145	\N	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	https://www.nwl.co.uk/your-home/leisure/go-fishing.aspx	2016-10-22 20:24:49.621199	2016-10-22 20:25:56.445197
+137	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-10-17 16:22:41.058429	2016-10-22 20:27:09.417664
+147	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-10-22 20:27:09.633385	2016-10-22 20:27:40.026322
+142	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-10-17 22:13:09.890901	2016-10-22 20:28:37.378894
+150	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:32:05.779024	2016-10-22 20:32:25.495453
+151	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:32:25.638294	2016-10-22 20:32:44.690405
+152	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:32:44.811736	2016-10-22 20:33:05.068455
+153	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:33:05.176608	2016-10-22 20:33:54.227328
+154	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:33:54.313998	2016-10-22 20:34:58.41772
+155	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:34:58.512394	2016-10-22 20:35:14.884197
+156	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:35:15.05149	2016-10-22 20:35:44.599051
+157	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:35:44.694849	2016-10-22 20:36:05.846447
+159	\N	Ben Dobson	01200 446602		info@stocksreservoir.com	http://stocksreservoir.com/	2016-10-22 20:38:37.576991	2016-10-22 20:39:07.380518
+160	\N	Ben Dobson	01200 446602		info@stocksreservoir.com	http://stocksreservoir.com/	2016-10-22 20:39:07.497499	2016-10-22 20:40:05.237254
+143	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-10-20 06:38:47.583112	2016-10-24 14:42:45.834438
+144	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-10-20 06:40:39.9377	2016-10-24 14:43:37.208824
+158	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-22 20:36:05.947635	2016-10-24 15:14:51.452406
+164	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-24 15:14:51.789906	2016-10-24 15:18:21.221807
+165	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-10-24 15:18:21.33361	2016-10-24 15:18:42.00401
+149	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-10-22 20:28:37.609455	2016-11-03 18:23:15.57417
+168	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-11-14 22:45:33.348238	2016-11-15 11:21:25.435059
+169	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-11-15 11:21:25.556896	2016-11-15 11:22:34.87478
+170	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-11-15 11:22:35.021817	2016-11-15 11:23:14.189379
+171	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-11-15 11:23:14.273719	2016-11-15 11:23:53.523535
+172	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-11-15 11:23:53.593001	2016-11-15 11:24:37.729072
+174	\N		01729 830331			http://www.field-studies-council.org/	2016-11-24 08:46:14.686226	2016-11-24 08:47:32.192754
+161	\N	Ben Dobson	01200 446602		info@stocksreservoir.com	http://stocksreservoir.com/	2016-10-22 20:40:05.347535	2016-11-25 21:36:13.978798
+176	27	Ben Dobson	01200 446602		info@stocksreservoir.com	http://stocksreservoir.com/	2016-11-25 21:36:14.229881	2016-11-25 21:36:14.229881
+175	\N		01729 830331			http://www.field-studies-council.org/	2016-11-24 08:47:32.271217	2016-11-26 21:16:41.457055
+146	\N	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	https://www.nwl.co.uk/your-home/leisure/go-fishing.aspx	2016-10-22 20:25:56.537098	2016-11-26 21:18:31.552047
+148	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-10-22 20:27:40.199197	2016-12-08 19:29:15.874528
+177	\N		01729 830331			http://www.field-studies-council.org/	2016-11-26 21:16:41.813291	2016-12-08 22:50:26.599433
+162	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-10-24 14:42:46.096091	2016-12-09 08:18:46.14595
+179	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-08 19:29:16.783501	2016-12-12 11:38:44.086346
+178	\N	Christopher Hodgson	01207 255 250		go.fishing@nwl.co.uk	https://www.nwl.co.uk/your-home/leisure/go-fishing.aspx	2016-11-26 21:18:31.919824	2016-12-12 18:07:02.606266
+180	\N		01729 830331			http://www.field-studies-council.org/	2016-12-08 22:50:27.275468	2016-12-08 22:52:16.078852
+216	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-20 22:03:23.202343	2016-12-20 22:15:34.005605
+181	\N		01729 830331			http://www.field-studies-council.org/	2016-12-08 22:52:16.214549	2016-12-08 22:56:13.284002
+217	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-20 22:15:34.521296	2016-12-20 22:17:27.403657
+182	\N		01729 830331			http://www.field-studies-council.org/	2016-12-08 22:56:13.431733	2016-12-10 15:06:42.306177
+184	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-10 15:06:42.937326	2016-12-10 15:06:48.195237
+218	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-20 22:17:28.484415	2016-12-20 22:34:51.704507
+185	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-10 15:06:48.322996	2016-12-10 18:12:55.624955
+186	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-10 18:12:55.819722	2016-12-10 18:21:04.656585
+219	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-20 22:34:52.823724	2016-12-20 22:36:51.252493
+187	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-10 18:21:05.613155	2016-12-10 18:24:05.036903
+183	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-09 08:18:46.668159	2016-12-10 20:16:53.516295
+220	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-20 22:36:51.978032	2016-12-21 08:57:44.994308
+189	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-10 20:16:54.411581	2016-12-10 20:20:11.607655
+190	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-10 20:20:11.767701	2016-12-11 09:45:08.202111
+191	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 09:45:08.945546	2016-12-11 09:48:28.429994
+222	\N	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-12-21 14:53:16.274319	2016-12-21 14:56:45.620361
+192	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 09:48:28.526593	2016-12-11 09:50:23.863112
+223	88	Alan Lewis	01597 810 383 		hafodhardware@btconnect.com	http://www.rhayaderangling.co.uk/	2016-12-21 14:56:45.720698	2016-12-21 14:56:45.720698
+188	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-10 18:24:05.245658	2016-12-11 12:07:00.250856
+221	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-21 08:57:45.631802	2016-12-22 23:10:51.610805
+193	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 09:50:23.937942	2016-12-11 12:08:11.096155
+195	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 12:08:11.712568	2016-12-11 12:09:05.005655
+224	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-22 23:10:52.195635	2016-12-22 23:50:20.798645
+196	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 12:09:05.077406	2016-12-11 12:10:25.98908
+194	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-11 12:07:00.792568	2016-12-11 12:23:04.749677
+197	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 12:10:26.032287	2016-12-11 12:26:24.84818
+225	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-22 23:50:21.567881	2016-12-22 23:59:35.325992
+199	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 12:26:24.977775	2016-12-11 13:08:50.208922
+200	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com/	2016-12-11 13:08:50.757678	2016-12-11 13:10:12.466675
+226	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-22 23:59:35.468025	2016-12-23 00:01:43.045676
+201	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com		2016-12-11 13:10:13.103905	2016-12-11 13:11:00.068243
+202	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com		2016-12-11 13:11:00.739832	2016-12-11 14:16:15.166849
+227	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-23 00:01:43.08645	2016-12-23 00:07:20.591614
+203	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	www.ardlussaestate.com	2016-12-11 14:16:15.928567	2016-12-11 14:16:51.525115
+204	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2016-12-11 14:16:51.567408	2016-12-11 18:00:38.694183
+228	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-23 00:07:20.630125	2016-12-23 11:09:17.064528
+205	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2016-12-11 18:00:39.480956	2016-12-11 18:01:05.144451
+206	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2016-12-11 18:01:05.327284	2016-12-11 18:01:30.400906
+229	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-23 11:09:17.568282	2016-12-23 11:54:04.414287
+208	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 11:38:44.914102	2016-12-12 11:40:30.270729
+209	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 11:40:30.468957	2016-12-12 11:47:43.554372
+230	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-23 11:54:04.452104	2016-12-25 09:27:10.760978
+210	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 11:47:43.690361	2016-12-12 11:48:59.18063
+211	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 11:48:59.379164	2016-12-12 11:49:37.516947
+207	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2016-12-11 18:01:30.573033	2016-12-28 20:54:57.927999
+212	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 11:49:37.590247	2016-12-12 11:49:56.147309
+213	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 11:49:56.265029	2016-12-12 13:51:43.558943
+215	57		0845 155 0236			http://www.nwwatersideparks.com	2016-12-12 18:07:03.639183	2016-12-12 18:07:03.639183
+231	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-25 09:27:11.348854	2016-12-28 21:09:44.327329
+198	\N		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-11 12:23:04.84089	2016-12-29 10:16:45.474432
+239	\N		01571 855298			http://www.assyntcrofters.co.uk/	2016-12-29 13:13:46.586824	2016-12-29 13:16:27.411461
+240	94		01571 855298			http://www.assyntcrofters.co.uk/	2016-12-29 13:16:27.570626	2016-12-29 13:16:27.570626
+214	\N		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-12 13:51:44.301839	2016-12-28 21:07:50.201018
+233	93		0300 067 6156		galloway@forestry.gsi.gov.uk	http://scotland.forestry.gov.uk/forest-parks/galloway-forest-park	2016-12-28 21:07:50.995371	2016-12-28 21:07:50.995371
+235	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-12-29 09:09:42.359415	2016-12-29 09:21:43.347034
+236	\N	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-12-29 09:21:43.445055	2016-12-29 09:23:01.54251
+237	89	Celcil Daniels	01766 830816 		markevansff@outlook.com	http://www.cambrianangling.com/	2016-12-29 09:23:01.624032	2016-12-29 09:23:01.624032
+238	81		01729 830331			https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing	2016-12-29 10:16:46.147614	2016-12-29 10:16:46.147614
+234	\N	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-28 21:09:45.030341	2016-12-29 17:31:52.118958
+241	91	Craig Rozga	01496 820287		fishing@ruantallain.co.uk	http://www.ruantallain.co.uk	2016-12-29 17:31:52.735901	2016-12-29 17:31:52.735901
+244	\N						2017-01-12 23:40:00.029227	2017-01-12 23:40:44.728651
+245	\N						2017-01-12 23:40:44.742242	2017-01-12 23:41:28.972223
+246	\N						2017-01-12 23:41:29.748544	2017-01-12 23:41:56.637225
+247	95						2017-01-12 23:41:57.271532	2017-01-12 23:41:57.271532
+248	\N		01856 871818			http://www.orkneycommunities.co.uk	2017-02-13 20:56:00.30297	2017-02-13 21:01:55.41236
+249	\N		01856 871818			http://www.orkneycommunities.co.uk	2017-02-13 21:01:55.609226	2017-02-13 21:02:48.200028
+250	\N		01856 871818			http://www.orkneycommunities.co.uk	2017-02-13 21:02:48.384688	2017-02-14 07:42:33.865955
+251	\N		01856 871818			http://www.orkneycommunities.co.uk	2017-02-14 07:42:34.874293	2017-02-14 10:14:16.467678
+232	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2016-12-28 20:54:58.590873	2017-02-14 12:34:40.986972
+253	\N	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2017-02-14 12:34:42.096763	2017-02-14 12:34:52.22986
+254	92	Andrew or Claire Fletcher	01496 820323		enquiries@ardlussaestate.com	http://www.ardlussaestate.com	2017-02-14 12:34:52.340506	2017-02-14 12:34:52.340506
+252	\N		01856 871818			http://www.orkneycommunities.co.uk	2017-02-14 10:14:17.091857	2017-02-14 12:41:09.579331
+255	96		01856 871818			http://www.orkneycommunities.co.uk	2017-02-14 12:41:10.217417	2017-02-14 12:41:10.217417
+\.
+
+
+--
+-- Name: contact_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('contact_details_id_seq', 255, true);
+
+
+--
+-- Data for Name: fisheries; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY fisheries (id, name, created_at, updated_at, place_id, slug, description, map_zoom_level, published) FROM stdin;
+88	Rhayader and Elan Valley Angling Association	2016-02-22 22:02:37.767704	2016-12-07 12:27:11.563657		rhayader-and-elan-valley-angling-association	Rhayader and Elan Valley Angling Association	12	f
+27	Stocks Fly Fishery	2015-12-09 06:45:43.783131	2016-12-07 12:29:34.928819	ChIJXxOaekeBe0gRMJYBk_tTT1I	stocks-fly-fishery	Stocks Fly Fishery	13	f
+57	Northumbrian Water 	2015-12-25 08:49:45.481874	2016-12-08 11:29:07.232567		northumbrian-water	Northumbrian water 	9	f
+93	Galloway Forest Park	2016-10-16 11:53:22.906164	2016-12-28 21:07:50.985396		galloway-forest-park	Galloway Forest Park is a woodland park, operated by Forestry Commission Scotland, principally covering woodland in Dumfries and Galloway.\r\n\r\nThe park, established in 1947, covers around 300 square miles (780 km2) and receives over 800,000 visitors per year. \r\n\r\nMuch of the Galloway Hills lie within the boundaries of the park, which make this a stunning place to visit.\r\n\r\n <a href="http://www.gallowayfisheriestrust.org/PDF/GallowayTrout.pdf">It's well documented</a> that the lochs that reside in the park have suffered from acidification but in the last decade the fish have made a remarkable  recovery. \r\n\r\nThe <a href="http://www.gallowayfisheriestrust.org/">Galloway Fisheries Trust</a> would like anglers to take a leaf out of the bird watchers book and become  ‘citizen scientists’  to help them to keep track of fish populations in the Lochs of Galloway. \r\n\r\nIf anglers fishing any of the lochs within the Galloway & Carrick region could keep a detailed record of date, location, time spent fishing (excluding breaks), fishing methods, weather conditions, number and where possible, length of all the fish caught (tip of snout to fork in the tail) and details of any abnormalities or unusual characteristics  and email this data to the Galloway Fisheries Trust  at mail@gallowayfisheriestrust.org, the trust would very appreciative and you'd be doing your bit to help these remarkable fish. \r\n	12	t
+81	Malham Tarn Field Studies Centre	2016-01-15 07:56:08.233576	2016-12-29 10:16:46.14233	ChIJo-xW5651fEgRid1aH7yHqd8	malham-tarn-field-studies-centre	Malham Tarn Field Studies Centre occupies a large Georgian country house, leased from the National Trust. The centre is run by the Field Studies Council. \r\n\r\nFishing is only allowed from the boats and there are four boats to choose from housed in two beautiful stone boathouses; Boathouse West and East.\r\nTo book a boat, please call the Field Studies Council on 01729 830331.\r\n\r\nOn arrival you will need to go to the Field Studies Council office and they will issue you with a permit and buoyancy aid.\r\nWe strongly recommend that you wear a buoyancy aid. The tarn is exposed and becomes choppy quickly.\r\n\r\nYou will be invited to look at the catch returns, which can be very useful for formulating a plan of attack. \r\nPlease remember to make a note of the length, weight, species (perch also swim the tarn) and the successful fly, so you can complete your 'return slip' and post it back into the Field Studies office before you leave. \r\n\r\nThe boats don't have outboard motors but you are welcome to use your own electric one.\r\n\r\nMore information can be found on the <a href="https://www.nationaltrust.org.uk/malham-tarn-estate/features/malham-tarn-fly-fishing">National Trust website</a>.\r\n\r\n	13	t
+94	Assynt Crofters' Trust	2016-11-14 22:45:33.342578	2016-12-29 13:16:27.566397	ChIJ-9eUgP8mjkgRmNaMuzbq-uM	assynt-crofters-trust	The Assynt Crofters' Trust is the owner of the North Assynt Estate which consists of some 21,000 acres and includes the Townships of Torbreck, Achmelvich (part), Clachtoll, Stoer, Balchladich, Clashmore/Raffin, Culkein Stoer, Achnacharnin, Clashnessie, Culkein Drumbeg, Drumbeg and Nedd.	11	f
+89	Cambrian Angling Association	2016-03-06 23:51:43.842262	2016-12-29 09:23:01.620757		cambrian-angling-association	Blaenau Ffestiniog, in the centre of the spectacular scenery of the Snowdonia National Park, is undoubtedly a good centre for any angler who enjoys catching wild brown trout in beautiful surroundings. \r\nThe Cambrian Angling Association has its headquarters here, and offers excellent lake fishing in wild surroundings. \r\n\r\nThe association was formed on the 2nd of June, 1885, when a public meeting was held in the old Dolgarreg Ddu school in Blaenau Ffestiniog,  due to a few local gentlemen feeling the need to protect the fishing on the lakes and rivers. At the time, trout and salmon were taken from the waters by any means possible, from the popular otterboard to dynamite!\r\n\r\nWe owe these early anglers a huge debt of gratitude, for acquiring the fishing rights on the many lakes and rivers in the area, and for keeping them wild and natural, giving us the opportunity to enjoy them today.  	12	t
+91	Ruantallain Estate	2016-10-13 20:30:16.069549	2016-12-29 17:31:52.73186		ruantallain-estate	Ruantallain Estate is situated on the stunning remote West coast of Jura. \r\n\r\nIts vast 20,000 acres of wild ruggedness stretches from coast to coast across the middle of the Isle. Getting to the fishing is difficult but seclusion is guaranteed and adds to the adventure. A forty-minute boat trip through the narrow sea loch and out into the open water transports you into a world of wild goats, sea caves, raised glacial beaches and pristine wild trout fishing.\r\n\r\nWith Craig Rozga leading the way, you are in safe hands. Craig is the Headkeeper of Ruantallain and has roamed these parts since being a boy. He'll whisk you off in the Argocat to fish a handful of the fifteen active loch.\r\n\r\nThe fish average between  8-9 ounces but they are hard fighters and with broad-backed, chunky 3lb fish being caught every year, wild brown trout fishing does not get much better than this, especially when the fishing is set to a backdrop Tolkien would be proud of. \r\n\r\nFishing parties of up to ten people can be catered for. Ring or email Craig on 01496 820287 or fishing@ruantallain.co.uk, for more details.\r\n\r\n	13	t
+96	Orkney Fisheries Association	2017-02-13 20:56:00.299101	2017-02-14 10:14:17.089303	ChIJR7o4LGQBm0gRBOJvQf__Sec	orkney-fisheries-association	The OTFA is a non-profit making voluntary body dedicated to the preservation and enhancement of game fishing throughout the Orkney Islands. At a time when natural habitats are under continual threat and pressure, the continuation of\r\nthe OTFA's work is of paramount importance to both local and visiting angler to ensure that the rich heritage of Orkney trout fishing has a future as bright as it's past.	12	f
+92	Ardlussa Estate	2016-10-14 08:19:20.089914	2016-12-28 23:00:17.278447	ChIJxR4eWAgtikgREwrQifd6j9g	ardlussa-estate	Ardlussa Estate is a 16,000 acre estate lying to the North East of the Island of Jura.  The estate is owned and run by the Fletcher family,  who live at Ardlussa House.\r\n\r\nThe family offer catered and self catering accommodation. Self catering accommodation in the main wing of the house sleeps up to ten people.\r\n\r\nGuided trips including salmon and sea trout fishing on the Lussa River and Fishing Loch; red deer stalking during the shooting season or Argocat safari trips for camera stalking to the wild west coast of the island can be arranged.\r\n\r\nPermission to fish the lochs at the North of the estate and to book fishing on the Lussa River or Fishing Loch can be made by calling Andrew or Clare on 01496 820323.\r\n\r\nGuests at the House do have priority over the fishing on both the Lussa River and Fishing Loch.\r\n\r\nMore information about this stunning estate and booking a stay at Ardlussa House can be found on the  <a href="http://www.ardlussaestate.com/">Ardlussa Estate website</a>.\r\n	12	t
+95	Slaidburn Estate	2017-01-12 23:23:28.002714	2017-01-16 12:40:38.847828		slaidburn-estate	Around 2 miles of fishing above and below Slaidburn. The River Hodder above Croasdale Brook which joins at Slaidburn really is small stream stuff but below Slaidburn the river gets bigger and more open. There are wild Brown Trout, good Grayling and some Sea trout and salmon on this length. Rods of 8 – 9 feet are suitable.	13	t
+\.
+
+
+--
+-- Name: fisheries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('fisheries_id_seq', 96, true);
+
+
+--
+-- Data for Name: images; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY images (id, water_id, image_file_name, image_content_type, image_file_size, image_updated_at, geograph_photo_id) FROM stdin;
+51	71	geograph-855008-by-Mick-Garratt.jpg	image/jpeg	244669	2016-03-06 12:58:42.540816	855008
+61	116	geograph-162441-by-Nigel-Davies.jpg	image/jpeg	159195	2016-03-07 08:14:17.52949	162441
+52	70	geograph-4587621-by-JThomas.jpg	image/jpeg	45732	2016-03-06 13:00:25.66697	4587621
+32	111	geograph-902833-by-Anthony--Gostling.jpg	image/jpeg	113306	2016-03-02 23:21:45.727631	902833
+33	112	geograph-2526885-by-Andrew-Hill.jpg	image/jpeg	310365	2016-03-03 08:04:20.813185	2526885
+62	117	geograph-162447-by-Nigel-Davies.jpg	image/jpeg	164010	2016-03-07 08:20:29.628919	162447
+53	69	geograph-692167-by-Peter-McDermott.jpg	image/jpeg	23968	2016-03-06 13:01:24.573066	692167
+54	68	geograph-1226100-by-Peter-McDermott.jpg	image/jpeg	87641	2016-03-06 13:02:46.262517	1226100
+63	118	geograph-1942933-by-Chris-Andrews.jpg	image/jpeg	807471	2016-03-07 20:34:34.402998	1942933
+7	29	geograph-2908631-by-John-Topping_(1).jpg	image/jpeg	75862	2016-03-06 12:31:48.796012	2908631
+55	67	geograph-1342186-by-Andrew-Smith.jpg	image/jpeg	138993	2016-03-06 13:04:42.464556	1342186
+56	66	geograph-2139074-by-Oliver-Dixon.jpg	image/jpeg	88680	2016-03-06 13:06:33.883683	2139074
+57	65	geograph-4094791-by-Pauline-E.jpg	image/jpeg	433405	2016-03-06 13:09:14.688777	4094791
+50	72	geograph-2396306-by-David-Brown.jpg	image/jpeg	43209	2016-03-06 12:57:12.337106	2396306
+65	120	geograph-3084104-by-Kev-Williams.jpg	image/jpeg	66237	2016-03-08 07:58:40.79789	3084104
+66	121	geograph-4067839-by-Ian-Medcalf.jpg	image/jpeg	3753710	2016-03-08 08:09:02.030825	4067839
+67	122	geograph-389385-by-Gerallt-Pennant.jpg	image/jpeg	113732	2016-03-08 08:30:21.924127	389385
+58	113	geograph-502575-by-Trix71.jpg	image/jpeg	98706	2016-03-06 14:51:32.101411	502575
+59	114	geograph-2480315-by-Phillip-Perry.jpg	image/jpeg	2093161	2016-03-06 22:53:15.944736	2480315
+60	115	geograph-3646538-by-Nigel-Brown.jpg	image/jpeg	457031	2016-03-06 23:03:49.890186	3646538
+69	124	geograph-211176-by-Vivien-and-Geoff-Crowder.jpg	image/jpeg	317875	2016-04-13 19:23:21.290816	211176
+70	125	IMG_5963.jpg	image/jpeg	1717485	2016-10-13 20:37:51.519173	\N
+71	126	geograph-2973454-by-Brian-Turner.jpg	image/jpeg	3742417	2016-10-13 21:13:24.649718	2973454
+72	127	Jura_17.jpg	image/jpeg	1522895	2016-10-14 08:26:06.874072	\N
+73	128	geograph-4031856-by-M-J-Richardson.jpg	image/jpeg	5029276	2016-10-14 08:32:15.948076	4031856
+76	131	IMG_6965-Pano.jpg	image/jpeg	2143242	2016-10-19 18:47:34.446752	\N
+77	132	neldricken.jpg	image/jpeg	1073571	2016-10-20 08:19:59.597694	\N
+78	134	IMG_20160908_180936.jpg	image/jpeg	1095510	2016-11-15 11:18:26.103557	\N
+24	98	cow-green.jpg	image/jpeg	1816179	2016-12-08 11:29:13.669178	\N
+23	97	malham-tarn.jpg	image/jpeg	2784700	2016-12-08 13:41:34.161989	\N
+79	135	IMG_0578.jpg	image/jpeg	1706164	2016-12-11 17:32:22.832907	\N
+80	136	IMG_0584.jpg	image/jpeg	1604781	2016-12-11 17:58:33.7343	\N
+81	137	llyn-cwmorthin-lake.jpg	image/jpeg	1471302	2016-12-18 21:16:19.667702	\N
+74	129	IMG_7005-Pano.jpg	image/jpeg	2063951	2016-12-19 01:18:35.528325	\N
+82	138	IMG_0825.jpg	image/jpeg	4292388	2017-01-12 23:35:23.214055	\N
+83	139	IMG_1769.jpg	image/jpeg	1763312	2017-02-13 21:00:34.246246	\N
+\.
+
+
+--
+-- Name: images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('images_id_seq', 83, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY schema_migrations (version) FROM stdin;
+20141102092127
+20141102093154
+20141102100130
+20141102101148
+20141220172136
+20141220172611
+20150210084453
+20150810182206
+20151013074929
+20151018090327
+20151018091745
+20160111080155
+20160126054855
+20160226112027
+20160229124853
+20160229125727
+20160419191926
+20160420180231
+20160623081702
+20160623082934
+20160807205846
+20160807230036
+20160814094415
+20161022194324
+20161226180725
+20170112171847
+20170214171147
+\.
+
+
+--
+-- Data for Name: species; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY species (id, name, created_at, updated_at) FROM stdin;
+1	brown trout	2015-04-29 12:07:44.509585	2015-04-29 12:07:44.509585
+2	sea trout	2015-04-29 12:07:48.02629	2015-04-29 12:07:48.02629
+3	rainbow trout	2015-04-29 12:07:51.483125	2015-04-29 12:07:51.483125
+8	Grayling	2016-01-12 22:49:30.29396	2016-01-12 22:49:30.29396
+4	atlantic salmon	2015-04-29 12:07:54.757344	2016-10-14 09:53:47.595096
+7	brook trout	2015-12-09 18:17:30.678634	2016-10-14 09:53:59.747969
+\.
+
+
+--
+-- Name: species_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('species_id_seq', 9, true);
+
+
+--
+-- Data for Name: species_waters; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY species_waters (species_id, water_id) FROM stdin;
+1	29
+1	31
+3	31
+1	125
+1	34
+3	34
+2	127
+4	127
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	129
+1	131
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	133
+1	134
+1	135
+1	137
+1	138
+2	138
+8	138
+4	138
+1	29
+1	31
+3	31
+1	139
+1	34
+3	34
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+1	126
+2	128
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+4	128
+1	130
+1	132
+1	136
+1	29
+1	31
+3	31
+1	34
+3	34
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+1	29
+1	31
+3	31
+1	34
+3	34
+3	41
+1	42
+3	42
+1	43
+3	43
+1	44
+3	44
+1	45
+3	45
+1	46
+3	46
+1	47
+3	47
+3	48
+3	49
+3	50
+3	51
+3	52
+1	53
+3	53
+3	54
+1	55
+3	55
+1	56
+3	56
+1	57
+3	57
+1	58
+3	58
+1	59
+3	59
+1	60
+3	60
+1	61
+3	61
+1	62
+3	62
+1	63
+2	63
+4	63
+1	65
+3	65
+1	66
+3	66
+1	67
+3	67
+1	68
+3	68
+1	69
+3	69
+1	70
+3	70
+1	71
+1	72
+1	73
+3	73
+1	74
+3	74
+3	75
+1	76
+3	76
+1	77
+3	77
+1	78
+3	78
+1	79
+3	79
+1	80
+3	80
+3	81
+1	82
+3	82
+1	83
+3	83
+1	84
+3	84
+1	85
+3	85
+1	86
+3	86
+1	87
+3	87
+1	88
+3	88
+1	89
+2	89
+4	89
+8	89
+1	90
+3	90
+1	91
+3	91
+1	92
+3	92
+1	93
+3	93
+1	94
+3	94
+1	96
+8	96
+1	97
+1	98
+1	101
+3	101
+1	102
+3	102
+3	103
+3	104
+3	105
+3	106
+3	29
+1	111
+1	112
+1	113
+1	114
+1	115
+3	32
+1	35
+3	35
+1	36
+3	36
+1	107
+3	107
+1	124
+1	116
+1	117
+1	122
+1	121
+1	118
+1	119
+1	120
+1	123
+\.
+
+
+--
+-- Data for Name: user_fisheries; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY user_fisheries (user_id, fishery_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, auth) FROM stdin;
+1	stevenjamescook@gmail.com	$2a$11$QcwCazZtGUJ/Ood/6xgPPOCVRnmdPgrI8QfsFjsLdM4akX81wQ5Ne	4ce145b6cdccb5d9834c4896598b7366193134c111b2f082ace3c3b5e5685398	2016-11-24 08:41:09.415724	\N	37	2017-02-14 10:14:00.210965	2017-02-13 20:44:01.319344	132.185.158.35	147.147.233.37	2016-10-13 14:50:48.699373	2017-02-14 10:14:00.216422	admin
+2	tfgrahame@gmail.com	$2a$11$CepM/2oMVtSeYcSBt4JM3uWjyD6w6/akUppcr1eBJcYpwPTayjs9S	\N	\N	2016-11-14 22:40:39.562139	4	2016-11-14 22:40:39.576453	2016-10-16 13:21:11.179817	83.244.174.229	91.135.10.1	2016-10-16 11:56:50.067907	2016-11-14 22:40:39.580406	admin
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('users_id_seq', 2, true);
+
+
+--
+-- Data for Name: water_types; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY water_types (id, category, created_at, updated_at) FROM stdin;
+1	lake	2015-04-29 12:05:31.722117	2015-10-14 07:49:33.528036
+2	river	2015-04-29 12:06:02.717915	2015-10-14 07:49:51.384281
+\.
+
+
+--
+-- Name: water_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('water_types_id_seq', 2, true);
+
+
+--
+-- Data for Name: waters; Type: TABLE DATA; Schema: public; Owner: khwuaxovagphgg
+--
+
+COPY waters (id, name, description, season_start, season_end, longitude, latitude, created_at, updated_at, water_type_id, fishery_id, address, slug, annotation) FROM stdin;
+118	Llyn Conglog	Situated a short distance from the  summit of Allt Fawr makes this remote lake worth a visit for the views alone. It was stocked in the 90's and has become an excellent fishery.  Wild browns over 1lb are regularly caught with fish of 4lbs are landed every season.\r\n\r\n	\N	\N	-3.97754294410708553	53.007076167458699	2016-03-07 20:34:31.613178	2016-12-07 12:25:18.243324	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llyn-conglog	{}
+127	Fishing Loch	The Ardlussa Fishing Loch is an impounding reservoir, created as a water supply for cattle on the estate, it is located 2 kilometres north of Lussagiven on a remote part of the Ardlussa Estate.  The damming of the Lussa river in the 1900 created a loch that is long and narrow, stretching North to South. \r\n\r\nSea trout enter the system from June and have only a short journey into the loch from Lussa Bay, up the Lussa River. \r\n\r\nThe occasional salmon is caught from August onwards.\r\n\r\nIt's boat fishing only and there is only one boat. So you will need to book in advance. Unlike other lochs, Fishing Loch performs best in a  Northerly or Southerly wind due to the loch's long, narrow contour. \r\n\r\nTry drifting down the Easterly shore with a Dunkeld Muddler on the point and a Goats Toe on the dropper. \r\nDon't de afraid to fish a bigger fly, size 6 and even an 8 will out perform smaller sizes in the right conditions.\r\n\r\n\r\n\r\n\r\n\r\n	\N	\N	-5.7876981369385021	56.032853422807527	2016-10-14 08:26:04.053991	2016-12-09 08:53:21.244591	1	92	Isle of Jura	fishing-loch	{}
+111	Craig Goch Reservoir		\N	\N	-3.61999200000002475	52.3146396000000138	2016-02-22 22:12:54.620173	2016-12-07 12:26:03.52521	1	88	Rhayader, Powys, Wales	craig-goch-reservoir	{}
+113	Claerwen Reservoir		\N	\N	-3.68144314177243359	52.2725786027593315	2016-03-06 14:51:30.023355	2016-12-07 12:26:21.814999	1	88	Rhayader, Powys, Wales	claerwen-reservoir	{}
+122	Llyn Du bach 	Thirty minute walk from the Blaenau Ffestiniog. \r\nThe lake is shelter from a northeasterly wind. Plenty of wild brown trout. 	\N	\N	-3.90878846299278848	52.9961901095916161	2016-03-08 08:30:20.424513	2016-10-17 22:15:20.617262	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llyn-du-bach	{}
+29	Stocks Reservoir	Stocks Reservoir is the largest fly fishery in the North West of England. The reservoir has four and a half miles of fishable shoreline and 350 acres of open water. Situated at the head of the Hodder Valley in an Area of Outstanding Natural Beauty, Stocks has a wild and unspoiled quality the perfect place for a days fly fishing.	\N	\N	-2.41676650373528901	53.9942789128906568	2015-12-09 06:51:57.41728	2016-12-07 12:29:34.921362	1	27	Slaidburn, Lancashire, England	stocks-reservoir	{}
+132	Loch Neldricken	Loch Neldricken lies to the South-East of Merrick.\r\n\r\nThis loch, like others in the area, suffered from acidification and its resident browns disappeared altogether in the 70's. \r\nNetting surveys in the 80's were unsuccessful, but further emission laws later that decade saw the loch starting to show signs of a recovery. Trout have taken advantage of further improvements in water quality and are now well established.\r\n\r\nIt'll take a good hour to walk up to Neldricken from the car park at Glen Trool, the first part of the journey being the most arduous. The second half eases as you follow Garland Burn, which tumbles from the Western shore of Loch Valley. Passing Valley, cross the Mild Burn and you'll find yourself at the sinister-sounding Murder Hole. From here, start to fish and eventually you will stumble upon the Southern shore of Neldricken.\r\n\r\nPulling a size 12 claret muddler, on a broody overcast day, accompanied by a solid South-Westerly wind, has been a winning formula. \r\nBe prepared to lose more fish than you hook. These fish are survivors and will perform acrobatics in order to avoid capture.	\N	\N	-4.43643715776363479	55.1168369916614722	2016-10-20 08:19:57.541685	2016-10-20 08:21:35.699205	1	93	Galloway Forest Park, Scotland	loch-neldricken	{}
+125	Loch Righ Mor	Righ Mor is the biggest in a  stunning string of lochs dotted across the belly of the Ruantallain Estate. \r\n\r\nThere is a boat but bank fishing can be the most effective method, fish tight into the margins and  stand well back from the waters edge. 	\N	\N	-5.94614158786623648	55.9973143318422757	2016-10-13 20:37:48.573861	2016-12-25 09:22:38.654374	1	91	Isle of Jura	loch-righ-mor	{}
+120	Llyn Ffridd y bwlch	Close to the road, this water easy to access, with parking next to the lake and a good footpath. \r\nHome to a head of Wild Brown trout  and is occasionally stock with Rainbow trout. 	\N	\N	-3.9465188000000353	53.013970300000004	2016-03-08 07:58:39.516255	2016-12-07 12:22:27.825788	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llyn-ffridd-y-bwlch	{}
+121	 Llynnau Barlwyd	Two lakes, one ten acres the other five.\r\nBoth lakes are thirty minute walk from the lay-by at the top of the Crimea Pass. 	\N	\N	-3.92446742527158676	53.0170914033299425	2016-03-08 08:08:58.518644	2016-12-07 12:24:17.15869	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llynnau-barlwyd	{}
+97	Malham Tarn	Malham Tarn is a glacial lake near the village of Malham in the Yorkshire Dales, England. It is 377 metres above sea level, making it the highest lake in England. The lake is one of only eight upland alkaline lakes in Europe. \r\n\r\nIts 150 acres of limestone bedrock are a perfect habitat for invertebrates which are prayed upon by a population of fast-growing large wild brown trout. \r\n\r\nTraditional "loch style" fishing is successful,  with long drifts being accomplished due to the relative overall shallowness of the tarn. Remember to bring a drogue, the boats are fairly light weight and the tarn is exposed. An electric motor can be very useful too, otherwise get ready for lots of rowing. \r\n\r\nThe Tarn has the reputation of being England's best wild trout fishery. Not an easy place to catch but perseverance and patience can be rewarded with a fish of a lifetime. \r\n	\N	\N	-2.16367909999996755	54.0967150000000032	2016-01-15 07:58:23.899767	2016-12-10 18:33:11.617098	1	81	North Yorkshire, England	malham-tarn	{}
+65	Derwent Reservoir		\N	\N	-1.9799239999999827	54.8652717000000081	2015-12-30 10:04:55.433347	2016-10-14 17:50:20.968988	1	57	Consett, County Durham, UK	derwent-reservoir	{}
+70	Scaling Reservoir		\N	\N	-0.849895693115286122	54.5026449206994812	2015-12-30 10:19:35.330985	2016-10-14 17:51:54.498178	1	57	Saltburn-by-the-Sea, North Yorkshire, UK	scaling-reservoir	{}
+66	Fontburn Reservoir		\N	\N	-1.92828120000001491	55.2362719999999925	2015-12-30 10:08:44.499196	2016-10-14 17:53:59.084426	1	57	Ewesley, Morpeth, Northumberland NE61 4PL, UK	fontburn-reservoir	{}
+116	Llyn Llagi	An 8 acre lake that's a good hike but well worth the effort. A good average size of hard fighting wild brown trout.\r\nTry your flies below the steep cliffs. \r\n\r\n	\N	\N	-4.01510413969799629	53.0143542402072683	2016-03-07 08:14:15.06549	2016-10-17 22:16:02.893368	1	89	Caernarfon, Gwynedd, Wales	llyn-llagi-lake	{}
+128	Lussa River 	The Lussa River flows from the south-east slopes of Bienn Bhreac through the Fishing Loch and finally into the sea at Lussa Bay, a journey of three and half miles.\r\nFish begin to run the river in June but your best chance is after a spate, stalking salmon with a single handed rod and small doubles.\r\nIf the River is low, head for the <a href="/waters/fishing-loch">Fishing Loch</a>,  which can fish very well even in high summer. \r\n	\N	\N	-5.77954422153322867	56.025431657257144	2016-10-14 08:32:11.551731	2016-12-28 23:00:17.263307	2	92	Isle of Jura	lussa-river	{}
+117	Llyn Adar	Llyn Adar is not very accessible, involving a good two hour walk from Tan y Grisiau.\r\nIt's well worth the slog, situated in beautiful surroundings with trout of 2lbs regularly caught.\r\n	\N	\N	-4.00567867199708871	53.0122703519324006	2016-03-07 08:20:27.870612	2016-12-07 12:23:17.789565	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llyn-adar-lake	{}
+112	Garreg-ddu Reservoir		\N	\N	-3.59352339999998094	52.2728543999999857	2016-02-22 22:20:46.413236	2016-12-07 12:26:36.485092	1	88	Rhayader, Powys, Wales	garreg-ddu-reservoir	{}
+114	Caban-coch Reservoir		\N	\N	-3.58913370000004761	52.2576876000000325	2016-03-06 22:43:55.670784	2016-12-07 12:26:56.071269	1	88	Rhayader, Powys, Wales	caban-coch-reservoir	{}
+115	Penygarreg Reservoir		\N	\N	-3.6109475000000657	52.2949476000000359	2016-03-06 23:03:47.855063	2016-12-07 12:27:11.554805	1	88	Rhayader, Powys, Wales	penygarreg-reservoir	{}
+126	Duck Loch	Far away on the West Coast of Jura, sheltered from the sea behind ancient rises of the land, resides Loch Cladach Nigh' Mhaol-choinnich - known locally as Duck Loch. Recalling the machair lochs of the western Scottish isles, the abundance of wildlife, plentiful plant life and ethereal terrain all begin to tell the story of the fish that may be found here.\r\n\r\nA shallow loch, Duck Loch's remarkable feature is a spreading reed bed occupying the centre of the water that restricts casting and provides food and shelter for the resident brown trout. The north end of the loch has a tendency to recede and expose the mixture of peat and boulders that make up the bottom. Wading is possible all around yet the gradual slope of the bank and the lack of snags behind makes casting easy for the shore fisherman as well. The northern edge is generally grassy and rocky underfoot whilst the southern side can be unstable and marshy. Take care when navigating the south west edge as the feeding burn creates a large and deep channel that is best worked around.\r\n\r\nDuck Loch is best fished from dusk into nightfall, from the north side with your back to the sea, though good sport may be found all around the edge. Despite the small size of the loch large fish may be found here; it is not unknown for several fish upwards of 2lb to be caught in a single session. One corner is known for big fish, a secret that should be kept, but the small size of the loch means the determined angler will surely cover it. As night comes on, try a dark fly pattern retrieved slowly from the reed bed as near to the surface as possible.\r\n\r\nDuck Loch is situated in a relatively low lying part of the landscape and may be approached from all sides, however the lack of vantage point on approach means the loch can easily be missed. \r\n\r\nWhen walking the edge of the loch, take care not to disturb the waterfowl that arrived there long before you. Tired legs may stumble on the piles of deposited stones marking ancient ice age era beaches, now mysteriously appearing inland as this part of Scotland has risen slowly from the sea.	\N	\N	-5.971322166098048	56.0069249859867071	2016-10-13 21:13:20.317906	2016-12-23 16:14:16.297952	1	91	Isle of Jura	duck-loch	{}
+72	Selset Reservoir		\N	\N	-2.13488770000003569	54.5865968999999964	2015-12-30 10:22:40.774301	2016-10-14 17:57:04.883594	1	57	Barnard Castle, County Durham, UK	selset-reservoir	{}
+69	Kielder Water		\N	\N	-2.48480110000002696	55.181328700000023	2015-12-30 10:18:08.118429	2016-10-14 17:57:28.346294	1	57	Hexham, Northumberland, UK	kielder-water	{}
+124	Llynoedd Gamallt	The two Gamallt Lakes are situated in the Western part of the Migneint Mountain, being the expanse of mountain that stretches between the parishes of Ffestiniog and Bala, in Merionethshire. \r\nBoth Lakes, the Big Lake and the Small Lake, are considered to be the amongst the best of the Cambrian Angling Association waters for wild brown trout. 	\N	\N	-3.86573843593146194	52.9798982718577705	2016-04-13 19:23:18.538784	2016-10-17 22:16:29.474303	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llynoedd-gamallt	{}
+71	Balderhead Reservoir		\N	\N	-2.12614159999998265	54.5620744000000144	2015-12-30 10:21:18.146329	2016-10-14 17:58:21.972181	1	57	Barnard Castle, County Durham, UK	balderhead-reservoir	{}
+67	Grassholme Reservoir		\N	\N	-2.09729049999998551	54.5961655999999991	2015-12-30 10:14:37.64345	2016-03-06 13:04:40.300568	1	57	Kelton Ln, Barnard Castle, County Durham DL12 0PW, UK	grassholme-reservoir	{}
+68	Hury Reservoir		\N	\N	-2.06287710000003699	54.5693356999999892	2015-12-30 10:16:11.933683	2016-10-14 17:58:37.341987	1	57	Barnard Castle, County Durham, UK	hury-reservoir	{}
+98	Cow Green Reservoir	Cow Green is a  large reservoir at 312 hectares (770 acres), located high in upper Teesdale, which makes it the largest largest reserve of wild brown trout in the North East.\r\n\r\nSurrounded by the fantastic scenery of the North Pennine grouse moors, there are few more tranquil and relaxing ways to spend a day's fishing than roaming the banks of these waters, and even fewer places where you can catch truly wild browns.\r\n\r\nKeep on the move, use a team of traditional wets and you'll have an enjoyable days fishing in beautifully secluded surroundings.  \r\n\r\n\r\n\r\n	\N	\N	-2.31439567412712677	54.6686850702675073	2016-01-15 08:21:59.77437	2016-12-08 11:29:07.221603	1	57	Alston, County Durham, UK	cow-green-reservoir	{}
+131	Loch Valley	Resting at the bottom of the steep sides of two ridges in the Dungeon Hills, Loch Valley is simply named and seems determined to put off the opportunistic loch fisherman. Yet enough forward planning and respect for the terrain can turn Valley into a worthy challenge and a satisfying day out.\r\n\r\nValley runs on an east-west axis and is notable for two large basins at either end and two inlets that are almost narrow enough to cast across. Use the wind direction to tell you which side to start fishing Loch Valley. The north side of the loch offers a range of features including shallower bays, rocky promontories from which to cast and large boulders that may hold trout. The south side is backed by the steep side of the Rig of the Jarkness and care should be taken on the back cast. Wading is recommended if possible as the bank needs care to navigate and some areas are difficult to reach. Plan travel of the perimeter carefully, since a large inlet remains hidden from view and adds much to the time taken to traverse the north side.\r\n\r\nDon't be put off by Valley's brooding nature; choose the imitation pattern that you are most confident with and move as quickly as you are able, pausing only when you find your way to the fish. Trout will rise if the conditions are correct but think twice before changing tackle, as the fish are likely quicker than you and will have moved on!\r\n\r\nIdeally Loch Valley should be fished as part of a larger trip that includes the other lochs in the area. From Glen Trool car park cross the bridge at the Buchan Burn and follow the path on the east side of Buchan Hill and the route of Gairland Burn to the west end of the loch.\r\n\r\nThe adventurous can crest the small rise to the east of Valley to reach the shadowy basin of Loch Narroch or scramble from the southern edge to the top of the Rig of the Jarkness and from there, see if they can guess how the rig got its name.	\N	\N	-4.44162991441646682	55.1053489853835288	2016-10-19 18:47:31.172861	2016-10-24 18:30:14.846477	1	93	Galloway Forest Park, Scotland	loch-valley	{}
+135	Lochan Carn Thearlaich	A typical small lochan with a large patch of lilies in the middle. As well as the traditional patterns \r\ntry a sinking line and a mini lure round the lily pads, you might get a pleasant surprise.\r\n\r\n	\N	\N	-5.76147686160891226	56.1019726755501509	2016-12-11 17:32:17.637071	2016-12-11 17:32:43.469061	1	92	Isle of Jura	lochan-carn-thearlaich	{}
+137	Llyn Cwmorthin	Fairly easily accessible on foot, ideal for those looking to wet a line for a couple of hours. Holds a good stock of wild fish.	\N	\N	-3.97303274110720395	52.9977959646717736	2016-12-18 21:16:16.056165	2016-12-18 21:16:49.093382	1	89	Blaenau Ffestiniog, Gwynedd, Wales	llyn-cwmorthin	{}
+136	Loch nan Eilean	This is a typical highland trout loch and a favourite of author George Orwell, who lived at Barnhill in 1948 whilst he wrote the dystopian novel 1984.\r\n\r\nIn a letter advising a friend, Michael Kennard, about fishing on Jura, Orwell describes the loch as "having plenty of fish" and "I haven't caught anything over 1/2lb" ..... "But I feel pretty sure there are bigger fish there"... \r\n\r\nHe never caught one of the "bigger fish" but they have been caught since. The current record for this water is 4lbs; a monster by anyone's standards.\r\n\r\n \r\n\r\n	\N	\N	-5.76156269229738882	56.1043002447369972	2016-12-11 17:58:30.483396	2016-12-11 18:12:33.146696	1	92	Isle of Jura	loch-nan-eilean	{}
+134	Loch Cul Fraoich	Reaching out into the Minch at the northern end of Scotland is a sandstone peninsula that lays claim to some of the oldest rocks in Europe. Loch Cul Fraoich is the main body of water on the peninsula and is said to be a magical loch, though it could be the geology and the close proximity to the sea that are accountable for some of the unusual tactics known to work here.\r\n\r\nThe perimeter of the water is generally quite regular making planning fairly straight forward. The position of the loch in the middle of the Stoer peninsula makes it vulnerable to weather from the sea and a strong westerly can make casting from the east bank impossible for most anglers. Don't let a strong blow put you off the loch entirely though. The western edge of the water is surprisingly well sheltered and a good session can start from the north end even in unfavourable conditions. The gradient of the bank is typically shallow making casting from the shore quite easy, though as usual in this type of terrain take care walking and choosing footholds. Wading is not generally recommended due to steep drop offs not far from the bank. Several weed beds at the north end should make for good and exciting sport if fished close enough.\r\n\r\nLoch Cul Fraoich has a reputation for being dour and it is true that many anglers are frustrated even on repeat visits here. In fact stomach examination of the resident fish has shown that at certain times of the year trout are feeding almost exclusively on daphnia. Adapting tactics accordingly can yield satisfying results in this sometimes abundant loch. To catch cruising fish that are following the rising daphnia during the hours of dusk, try an imitative pattern retrieved very slowly at a slightly greater depth than you might be used to.\r\n\r\nReaching Loch Cul Fraoich is relatively easy and the best route to the loch is the most obvious one, via a track leading from the road through Culkein. Take care driving a car too far down the track as it is rough in places and parking is difficult.\r\n\r\nLoch Cul Fraoich can feel like a forbidding place when the fish are not showing. But remember that in foul weather, as long as you are on the loch and not the sea, you should be safe from the Blue men of the Minch.	\N	\N	-5.36532260815431528	58.2387781993458091	2016-11-14 22:49:53.55161	2016-11-16 09:41:10.410361	1	94	Assynt, Scotland	loch-cul-fraoich	{}
+129	Loch Enoch	Concealed high up in the Galloway hills and occupying a granite basin overlooked by the highest mountain in the southern uplands, lies Loch Enoch - the Icy Loch. At some 1600 feet above sea level Enoch once suffered the effects of industrialisation and was thought to have completely lost its fish population by the 1950's, but an increase in pH and a period of recovery led to a restocking of brown trout in 1994. The quality of Enoch's fishing is now found in its remote location, diverse and recovering environment, and rich history.\r\n\r\nNumerous basins offer the shore angler a range of promontories and vantages to fish from. The varied edge of the loch, with its three islands and jutting headlands makes traversing the perimeter in a single day a challenge for even the most persistent and agile fisherman, but a range of options is guaranteed no matter which way the wind is blowing. At 50ha the surface of the loch is small relative to the long perimeter and in parts the loch shelves off quickly to an estimated maximum depth of 120 feet. Although surrounded on all sides by high ground, the slope to the shore is mostly very shallow, making for easy and carefree back casts. Wading is very manageable and the shallow fisherman will find a range of grass, rocks and coarse sand underfoot.\r\n\r\nHard-fighting brown trout upwards of a pound may be caught here. Fish cruising the drop off will take a Half Hog Hopper from the surface, fished at the end of a light leader. On overcast days take advantage of the variety of Enoch's features with your favourite imitation pulled through the water at different depths.\r\n\r\nLoch Enoch is not easy to reach and camping near the loch itself or further down in the hills is recommended. From Glen Trool car park cross the bridge at the Buchan Burn and follow the path on the east side of Buchan Hill and the route of Gairland Burn to Loch Valley. Skirt the west edge of Loch Valley and head for the north side of Loch Neldricken. From Neldricken follow the easier route between the ridges to the south east basin of Enoch.\r\n\r\nFishing Enoch is a challenge made richer by its turbulent past. As you travel the south west shore of the loch, look out for the recovered wreckage of a WWII bomber, brought from the water by divers in the 1970's. When breaking for lunch, keep in mind that during the 14th Century, Robert the Bruce himself may have taken refuge on these shores.	\N	\N	-4.43965979999995852	55.1348476000000218	2016-10-16 13:28:26.005456	2016-12-19 09:26:18.228458	1	93	Galloway Forest Park, Scotland	loch-enoch	{}
+138	River Hodder at Slaidburn	Around two miles of fishing above and below Slaidburn. The River Hodder above Croasdale Brook which joins at Slaidburn really is small stream stuff but below Slaidburn the river gets bigger and more open. There are wild Brown Trout, good Grayling and some Sea trout and Salmon on this length. 	\N	\N	-2.43696250654602409	53.9662017086455421	2017-01-12 23:35:18.812483	2017-01-16 12:40:38.828866	2	95	Lancashire, England	river-hodder-at-slaidburn	{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString","coordinates":[[-2.4434280395507812,53.95895149018129],[-2.4422264099121094,53.960024596012225],[-2.4406814575195312,53.96153952192597],[-2.4405527114868164,53.962397955506916],[-2.440810203552246,53.96300389797964],[-2.4405956268310547,53.963811807575055],[-2.4402523040771484,53.96497315018513],[-2.4397802352905273,53.96565479273431],[-2.438235282897949,53.9660334782226],[-2.4367761611938477,53.9666267452368],[-2.4355316162109375,53.96732098314745],[-2.434201240539551,53.96829289679504],[-2.4332141876220703,53.96931527500156],[-2.432677745819092,53.96965606216357],[-2.432870864868164,53.97027452063608],[-2.4338579177856445,53.971195880521826],[-2.4347591400146484,53.97229391295831],[-2.435317039489746,53.97397245834524],[-2.434844970703125,53.9746034729576],[-2.433943748474121,53.97539853776312],[-2.4333858489990234,53.97639550234907],[-2.4323344230651855,53.978073882510884],[-2.4316585063934326,53.978654359161155],[-2.431519031524658,53.97937363422486],[-2.4329137802124023,53.98050930640961],[-2.433772087097168,53.98119700395992],[-2.4348878860473633,53.981884690157386],[-2.434115409851074,53.98274270472304],[-2.4341046810150146,53.982736395856925],[-2.4341046810150146,53.98275532245245]]},"properties":{},"id":0},{"type":"Feature","geometry":{"type":"LineString","coordinates":[[-2.444806694984436,53.95756272398504],[-2.4455684423446655,53.95702614283787],[-2.4461370706558228,53.95654005748439],[-2.4467486143112183,53.956123408385174],[-2.4483847618103027,53.955201715282605],[-2.449028491973877,53.95459565939998]]},"properties":{},"id":1}]}
+139	North Loch	North Loch	\N	\N	-2.43365964762267595	59.2982488119137514	2017-02-13 21:00:30.560197	2017-02-13 21:01:39.002637	1	96	Sanday, Orkney	north-loch	"{}"
+\.
+
+
+--
+-- Name: waters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: khwuaxovagphgg
+--
+
+SELECT pg_catalog.setval('waters_id_seq', 139, true);
+
+
+--
+-- Name: addresses_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY addresses
+    ADD CONSTRAINT addresses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: contact_details_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY contact_details
+    ADD CONSTRAINT contact_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fisheries_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY fisheries
+    ADD CONSTRAINT fisheries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY images
+    ADD CONSTRAINT images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: species_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY species
+    ADD CONSTRAINT species_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: water_types_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY water_types
+    ADD CONSTRAINT water_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: waters_pkey; Type: CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY waters
+    ADD CONSTRAINT waters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_addresses_on_fishery_id; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE INDEX index_addresses_on_fishery_id ON addresses USING btree (fishery_id);
+
+
+--
+-- Name: index_contact_details_on_fishery_id; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE INDEX index_contact_details_on_fishery_id ON contact_details USING btree (fishery_id);
+
+
+--
+-- Name: index_fisheries_on_slug; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE UNIQUE INDEX index_fisheries_on_slug ON fisheries USING btree (slug);
+
+
+--
+-- Name: index_images_on_water_id; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE INDEX index_images_on_water_id ON images USING btree (water_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: index_waters_on_fishery_id; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE INDEX index_waters_on_fishery_id ON waters USING btree (fishery_id);
+
+
+--
+-- Name: index_waters_on_slug; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE UNIQUE INDEX index_waters_on_slug ON waters USING btree (slug);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: khwuaxovagphgg
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_c1b5167fae; Type: FK CONSTRAINT; Schema: public; Owner: khwuaxovagphgg
+--
+
+ALTER TABLE ONLY waters
+    ADD CONSTRAINT fk_rails_c1b5167fae FOREIGN KEY (fishery_id) REFERENCES fisheries(id) ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
