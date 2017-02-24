@@ -2,7 +2,7 @@
   "name": "lets-fish",
   "description": "Serving images from Cloud Front",
   "scripts": {
-    "postdeploy": "bundle exec rake postdeploy:run",
+    "postdeploy": "bundle exec rake postdeploy:run"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
