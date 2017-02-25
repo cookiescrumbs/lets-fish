@@ -16,6 +16,9 @@ LetsFish::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  #cloud front
+  config.action_controller.asset_host = ENV['ASSET_HOST']
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -38,7 +41,8 @@ LetsFish::Application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     bucket: 'lets-fish',
-    url: ':s3_domain_url',
+    s3_host_alias: ENV['ASSET_HOST'],
+    url: ':s3_alias_url',
     path: '/:class/:attachment/:id_partition/:style/:filename',
     s3_region: 'eu-west-1'
   }

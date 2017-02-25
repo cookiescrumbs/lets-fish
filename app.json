@@ -5,6 +5,9 @@
     "postdeploy": "bundle exec rake postdeploy:run"
   },
   "env": {
+    "ASSET_HOST": {
+      "required": true
+    },
     "AWS_ACCESS_KEY_ID": {
       "required": true
     },

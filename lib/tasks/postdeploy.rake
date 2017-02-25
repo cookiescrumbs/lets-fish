@@ -4,5 +4,5 @@ namespace :postdeploy do
     sh 'bundle exec rake db:schema:load'
     sh 'cat ./db/pg_backups/lets_fish_review.dump | psql $DATABASE_URL'
     sh 'bundle exec rake db:migrate'
-end
+  end
 end
