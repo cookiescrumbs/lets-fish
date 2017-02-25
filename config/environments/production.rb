@@ -14,6 +14,8 @@ LetsFish::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  #cloud front
+  config.action_controller.asset_host = ENV['ASSET_HOST']
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -93,7 +95,8 @@ LetsFish::Application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    url: ':s3_domain_url',
+    s3_host_alias: ENV['ASSET_HOST'],
+    url: ':s3_alias_url',
     path: '/:class/:attachment/:id_partition/:style/:filename',
     s3_region: ENV['S3_REGION'],
     s3_credentials: {
