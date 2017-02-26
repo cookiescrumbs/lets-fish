@@ -47,7 +47,6 @@ $(document).ready(function() {
       });
   });
 
-
   function getLat() {
     return parseFloat(mapElement.dataset.lat) || null;
   }
@@ -61,8 +60,7 @@ $(document).ready(function() {
   }
 
   function getAnnotation() {
-    var obj = JSON.parse(mapElement.dataset.annotation);
-    return obj;
+    return JSON.parse(mapElement.dataset.annotation || "{}");
   }
 
 });
