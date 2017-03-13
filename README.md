@@ -8,7 +8,11 @@ A website for finding places to go fly fishing.
 ##Getting your development machine setup
 
 ```
+<<<<<<< HEAD
 git clone .....
+=======
+git clone
+>>>>>>> master
 ```
 ### Install ruby using RVM
 
@@ -77,7 +81,6 @@ I'll periodically backup the directory with live data. So you should have somthi
 
 Removed so I can run the app in production on my dev machine without having to alert this file or worry about it.
 I can precompile my production assets and debug locally.
-Heroku was swtiching the asset folder from ```/assets ``` to ```/shared/assets```
 
 ```
 RAILS_ENV=production bundle exec rake assets:clobber
@@ -109,3 +112,37 @@ docker exec -i $(docker-compose ps -q db) pg_restore --verbose --no-acl --no-own
 ```
 docker-compose up
 ```
+
+#### ./env.sh file for running in production mode locally
+
+```
+#!/bin/bash
+export RAILS_ENV=production
+export RACK_ENV=production
+export S3_BUCKET_NAME=lets-fish
+export S3_REGION=eu-west-1
+export SECRET_KEY_BASE=xxxxxxxxx
+```
+
+```
+. ./env.sh && rails s
+
+```
+
+![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Member?")
+
+
+Member when the assest pipeline couldn't find assets like Fonts?
+Member?
+
+###Asset pipeline
+Member to use ``` asset_path () ``` and change the css file from ```.css to .css.erb```
+
+```
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url(<%= asset_path 'glyphicons-halflings-regular.eot' %>);
+```
+
+
+

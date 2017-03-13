@@ -14,7 +14,8 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-gem 'font-awesome-rails'
+
+gem 'rack-cors'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -25,7 +26,6 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'possessive'
 gem 'geocoder'
@@ -35,9 +35,9 @@ gem 'delayed_paperclip', '~>3.0'
 gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
 gem 'meta-tags'
-gem 'rack-cache'
 gem 'devise'
 gem 'cookies_eu'
+gem 'heroku-deflater', :group => :production
 
 group :development, :test do
   #Call 'byebug' anywhere in the code to stop execution and get a debugger console

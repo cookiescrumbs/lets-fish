@@ -31,3 +31,10 @@ config/secrets.yml
 logfile
 
 .byebug_history
+<<<<<<< HEAD
+=======
+
+/public/assets
+
+env.sh
+>>>>>>> master

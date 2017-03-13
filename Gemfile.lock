@@ -100,14 +100,14 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.17)
-    font-awesome-rails (4.7.0.1)
-      railties (>= 3.2, < 5.1)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashdiff (0.3.2)
+    heroku-deflater (0.6.3)
+      rack (>= 1.4.5)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.8.0)
@@ -159,8 +159,7 @@ GEM
     public_suffix (2.0.5)
     puma (3.7.0)
     rack (2.0.1)
-    rack-cache (1.7.0)
-      rack (>= 0.4)
+    rack-cors (0.4.1)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -182,11 +181,6 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.0.1)
       actionpack (= 5.0.1)
       activesupport (= 5.0.1)
@@ -291,9 +285,9 @@ DEPENDENCIES
   devise
   factory_girl_rails (~> 4.0)
   faker
-  font-awesome-rails
   friendly_id (~> 5.1.0)
   geocoder
+  heroku-deflater
   httparty
   jbuilder (~> 2.5)
   jquery-rails
@@ -302,9 +296,8 @@ DEPENDENCIES
   poltergeist
   possessive
   puma (~> 3.0)
-  rack-cache
+  rack-cors
   rails (~> 5.0.1)
-  rails_12factor
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
