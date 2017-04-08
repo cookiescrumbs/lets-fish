@@ -293,9 +293,8 @@ button.search:hover, button.search:focus, .cookies-eu .cookies-eu-button-holder 
 header {
     text-align: center;
     color: #fff;
-    background-attachment: scroll;
     background-image: url(<%= asset_path "header01-bg.jpg" %>);
-    background-position: center center;
+    background-attachment:  fixed, scroll;
     background-repeat: none;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -358,7 +357,7 @@ header div.image-trans, section div.image-trans{
 
 div.search {
     padding: 30px 0;
-    background: rgba(0, 0, 0, 0.7);
+   /* background: rgba(0, 0, 0, 0.7);*/
 }
 
 section h3.section-subheading {
@@ -1065,7 +1064,6 @@ button#food {
 }
 
 #suggested-search {
-    z-index: 2;
     color:#333;
     text-align: left;
 }
