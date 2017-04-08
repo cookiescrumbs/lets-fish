@@ -14,3 +14,4 @@
 //= require classie
 //= require cbpAnimatedHeader
 //= require navigation
+//= require suggested-search.min
