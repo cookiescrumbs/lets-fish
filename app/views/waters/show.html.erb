@@ -2,7 +2,7 @@
 <header style="background-image: url(<%=(@water.images.first)? @water.images.first.image.url(:large) : '/images/missing.png'%>)" class="img-responsive img-centered" alt="<%= @water.name %>">
     <div class="image-trans">
         <div class="container">
-            <div class="intro-text" style="<%=(@image_attribution.blank?)? 'padding-top: 240px;' : ''%>" >
+            <div class="intro-text" style="<%=(@image_attribution.blank?)? 'padding-top: 200px; padding-bottom: 170px;' : 'padding-bottom: 170px;'%>" >
                 <div class="intro-heading"><%= @water.name %></div>
                 <div class="intro-lead-in">
                     managed by <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %></a>
@@ -44,9 +44,9 @@
 <section id="location">
     <div class="container">
         <h4 class="m-bottom24">Water map</h4>
-        <div 
-        id="location-map" 
-        data-zoom="14" 
+        <div
+        id="location-map"
+        data-zoom="14"
         data-lat="<%=@water.latitude %>"
         data-lng="<%=@water.longitude%>"
         data-annotation=<%=  @water.annotation %>>
