@@ -38,7 +38,6 @@ h4,
 h5,
 h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
   font-weight: 700;
 }
 .img-centered {
@@ -66,7 +65,7 @@ h6 {
   padding: 10px;
 }
 .navbar-custom .navbar-brand {
-  font-size: 2.2em;
+  font-size: 1.7em;
   color: #fed136;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
@@ -198,12 +197,14 @@ section h3.section-subheading {
 footer {
   padding: 25px 0;
   text-align: center;
+  background-color: #222222;
 }
 footer span.copyright {
   line-height: 40px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-transform: none;
+  color:  #777777;
 }
 
 footer ul.quicklinks {
@@ -218,13 +219,13 @@ ul.social-buttons {
 }
 ul.social-buttons li a {
   display: block;
-  background-color: #222222;
+  background-color: white;
   height: 40px;
   width: 40px;
   border-radius: 100%;
   font-size: 20px;
   line-height: 40px;
-  color: white;
+  color: #222222;
   outline: none;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -243,6 +244,9 @@ ul.social-buttons li a:active {
 }
 
 @media (min-width: 768px) {
+  .navbar-custom .navbar-brand {
+    font-size: 2.2em;
+  }
 }
 
 @media (min-width: 992px) {
