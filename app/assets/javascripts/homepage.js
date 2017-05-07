@@ -9,5 +9,5 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require jquery.easing.min
 //= require bootstrap.min
+//= require suggested-search.min

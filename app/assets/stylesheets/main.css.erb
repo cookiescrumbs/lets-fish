@@ -116,34 +116,31 @@ h6 {
   background-color: #fec503;
 }
 
-@media (min-width: 768px) {
-
-}
-
 header {
-  background-image: url('../img/header-bg.jpg');
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
   text-align: center;
   color: white;
 }
 
 header div.image-trans{
-    background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 header .intro-text {
-  padding-top: 100px;
+  padding-top: 30px;
   padding-bottom: 50px;
 }
 header .intro-text .intro-lead-in {
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
-  font-size: 22px;
+  font-size: 19px;
   line-height: 22px;
   margin-bottom: 25px;
 }
@@ -158,8 +155,13 @@ header .intro-text .intro-heading {
 
 @media (min-width: 768px) {
   header .intro-text {
-    padding-top: 200px;
+    padding-top: 120px;
   }
+  
+  #suggested-search {
+    padding-top: 30px;
+  }
+
   header .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: italic;
@@ -311,4 +313,8 @@ ul.social-buttons li a:active {
 .simple-card p {
    font-style: italic;
    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.img-responsive {
+  width: 100%;
 }
