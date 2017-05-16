@@ -22,7 +22,7 @@ end
   get '/add/water/:id',   to: 'homepage#new_water'
   get 'search/within-bounding-box', to: 'search#within_bounding_box'
   get '/waters/all',  to: 'browse_waters#all'
-  get '/destinations/all',  to: 'browse_destinations#all'
+  get '/destinations',  to: 'destinations#index'
   get '/fisheries/all',  to: 'browse_fisheries#all'
   get '/waters/:id',      to: 'waters#show'
   get '/fisheries/:id',   to: 'fisheries#show'
