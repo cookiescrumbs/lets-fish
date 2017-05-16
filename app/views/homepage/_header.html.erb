@@ -1,30 +1,25 @@
+
 <header>
-    <%= responsive_image source: 'jura_pwomnh/jura_pwomnh_c_scale,w_1330.jpg',
-        srcset: {
-            'jura_pwomnh/jura_pwomnh_c_scale,w_300.jpg' => '300w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_525.jpg' => '525w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_694.jpg' => '694w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_838.jpg' => '838w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_960.jpg' => '960w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_1071.jpg' => '1071w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_1174.jpg' => '1174w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_1268.jpg' => '1268w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_1312.jpg' => '1312w',
-            'jura_pwomnh/jura_pwomnh_c_scale,w_1330.jpg' => '1330w'
-        },
-        options: {
-            sizes: '(max-width: 1330px) 100vw, 1330px',
-            class: 'img-responsive img-centered',
-            alt: 'Looking at a map of Jura'
-        }
-    %>
+    <picture>
+        <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="<%= asset_path 'lg_home_hero.jpg' %>" media="(min-width: 1200px)">
+        <source srcset="<%= asset_path 'md_home_hero.jpg' %>" media="(min-width: 992px)">
+        <source srcset="<%= asset_path 'sm_home_hero.jpg' %>" media="(min-width: 480px) and (max-width: 991px)">
+        <source srcset="<%= asset_path 'xs_home_hero.jpg' %>" media="(max-width: 479px)">
+        <!--[if lte IE 9]></video><![endif]-->
+        <img srcset="<%= asset_path 'lg_home_hero.jpg' %>" alt="A beautiful sunny day on an island in the middle of Loch Sionasgaig" style="height: auto;">
+    </picture>
     <div class="image-trans">
-    
         <div class="container col-md-offset-2 col-md-8">
             <div class="intro-text">
                 <div class="intro-lead-in">Discover places to go fly fishing</div>
-                <div id="suggested-search"></div>
             </div>
         </div>
     </div>
 </header>
+<div id="suggested-search"></div>
+
+<!--lg 1908x480-->
+<!--md 1440x362-->
+<!--sm 991x300-->
+<!--xs 479x300-->

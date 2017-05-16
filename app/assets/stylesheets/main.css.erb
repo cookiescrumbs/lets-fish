@@ -63,6 +63,11 @@ h6 {
   border-radius: 0;
   margin-bottom: 0;
   padding: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 30;
+  width: 100%;
 }
 .navbar-custom .navbar-brand {
   font-size: 1.7em;
@@ -123,6 +128,7 @@ header {
   z-index: 2;
   text-align: center;
   color: white;
+  overflow: hidden;
 }
 
 header div.image-trans{
@@ -131,18 +137,16 @@ header div.image-trans{
   left: 0px;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
 }
 header .intro-text {
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding-top: 150px;
 }
 header .intro-text .intro-lead-in {
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 19px;
   line-height: 22px;
-  margin-bottom: 25px;
 }
 header .intro-text .intro-heading {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -154,14 +158,6 @@ header .intro-text .intro-heading {
 }
 
 @media (min-width: 768px) {
-  header .intro-text {
-    padding-top: 120px;
-  }
-  
-  #suggested-search {
-    padding-top: 30px;
-  }
-
   header .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: italic;
@@ -315,6 +311,46 @@ ul.social-buttons li a:active {
    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.img-responsive {
-  width: 100%;
+#suggested-search {
+    position: absolute;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 200px;
+    z-index: 20;
+    color:#333;
+    text-align: left;
+}
+
+#suggested-search a.list-group-item.active {
+    background-color: #fec503;
+    border-color: #fec503;
+    color: #555;
+}
+
+#suggested-search a:hover{
+    color: #555;
+}
+
+@media (min-width: 768px) {
+  body #suggested-search {
+    padding-top: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  body #suggested-search {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+}
+
+
+.input-lg {
+  font-size: inherit;
+  border-radius: 0px;
 }
