@@ -1,0 +1,2 @@
+class BrowseDestinationsController < ApplicationController
+end
