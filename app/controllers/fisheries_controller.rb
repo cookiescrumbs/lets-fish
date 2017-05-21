@@ -8,8 +8,7 @@ class FisheriesController < ApplicationController
   before_action :set_water_types, only: [:show]
   before_action :set_meta, only: [:show]
 
-  def show
-  end
+  def show; end
 
   private
 
