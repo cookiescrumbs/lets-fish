@@ -1,29 +1,42 @@
-<%= render 'navigation' %>
-<header style="background-image: url(<%=(@water.images.first)? @water.images.first.image.url(:large) : '/images/missing.png'%>)" class="img-responsive img-centered" alt="<%= @water.name %>">
+<%= render 'shared/navigation' %>
+<header>
+    <picture>
+<!--lg 1908x480-->
+<!--md 1440x362-->
+<!--sm 991x300-->
+<!--xs 479x300-->
+        <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="<%= asset_path 'lg_home_hero.jpg' %>" media="(min-width: 1200px)">
+        <source srcset="<%= asset_path 'md_home_hero.jpg' %>" media="(min-width: 992px)">
+        <source srcset="<%= asset_path 'sm_home_hero.jpg' %>" media="(min-width: 480px) and (max-width: 991px)">
+        <source srcset="<%= asset_path 'xs_home_hero.jpg' %>" media="(max-width: 479px)">
+        <!--[if lte IE 9]></video><![endif]-->
+        <img srcset="<%= asset_path 'lg_home_hero.jpg' %>" alt="A beautiful sunny day at the comaping island in the middle of Loch Sionasgaig" style="height: auto;">
+    </picture>
     <div class="image-trans">
-        <div class="container">
-            <div class="intro-text" style="<%=(@image_attribution.blank?)? 'padding-top: 200px; padding-bottom: 170px;' : 'padding-bottom: 170px;'%>" >
+        <div class="container col-md-offset-2 col-md-8">
+            <div class="intro-text">
                 <div class="intro-heading"><%= @water.name %></div>
                 <div class="intro-lead-in">
                     managed by <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %></a>
                 </div>
             </div>
+            <% if !@image_attribution.blank? %>
+                <div class="attribution">
+                    Image &copy; Copyright
+                    <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+                    and licensed for reuse under this
+                    <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
+                    <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
+                </div>
+            <% end %>
         </div>
-        <% if !@image_attribution.blank? %>
-            <div class="attribution">
-               Image &copy; Copyright
-                <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
-                and licensed for reuse under this
-                <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
-                <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
-            </div>
-        <% end %>
     </div>
 </header>
 <section id="about-this-water">
     <div class="container">
+        <h4 class="m-bottom24">About this water</h4>
         <div class="row">
-            <h4 class="m-bottom24">About this water</h4>
             <div id="weather-forecast" data-lat="<%=@water.latitude%>" data-lng="<%=@water.longitude%>"></div>
         </div>
         <div class="row">

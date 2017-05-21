@@ -55,6 +55,10 @@ h6 {
 .m-top40 { margin-top:40px; }
 .m-top70 { margin-top:70px; }
 
+.m-bottom24 { margin-bottom: 24px; }
+.m-bottom34 { margin-bottom: 34px; }
+.m-bottom44 { margin-bottom: 44px; }
+.m-bottom54 { margin-bottom: 54px; }
 
 /* navigation */
 .navbar-custom {
@@ -361,4 +365,59 @@ ul.social-buttons li a:active {
 
 .input-lg {
   font-size: inherit;
+}
+
+@media (min-width: 768px) {
+
+    #weather-forecast {
+        float: right;
+    }
+}
+
+ #weather-forecast ul.forecast {
+    margin-left:0;
+    padding:0;
+    list-style-type:none;
+} 
+
+ #weather-forecast ul.forecast li {
+    display: inline;
+    position: static;
+    padding-left: 10px;
+}
+
+
+.water-type, .fish, .location {
+    padding-bottom: 10px;
+}
+
+
+.water-type img, .fish img, .location img {
+    padding-right: 5px;
+}
+
+.water-type img, .fish img, .location img {
+    padding-right: 5px;
+    width:55px;
+}
+
+.water-type h6, .fish h6, .location h6 {
+    font-weight: normal;
+    line-height: 25px;
+}
+
+.attribution {
+    font-size: 9px;
+}
+
+#location-map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 450px;
+  margin-bottom: 10px;
+}
+
+#carousel {
+    max-width: 640px;
 }
