@@ -1,4 +1,4 @@
-<%= render 'shared/navigation' %>
+<%= render 'shared/navigation', locals: { } %>
 <header>
     <picture>
 <!--lg 1908x480-->
@@ -82,6 +82,8 @@
         Seek permission from the fishery. Contact details can be found on the <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %> fishery page</a>.
     </div>
 </section>
+<hr /> 
+<%= render 'shared/how_it_works' %>
 
 <script type="application/ld+json">
     <%= raw render 'schema_org.json.jbuilder' %>
