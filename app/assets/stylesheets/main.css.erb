@@ -172,13 +172,16 @@ header div.image-trans {
 }
 
 header .intro-text {
+  padding-top: 90px;
+}
+
+#homepage header .intro-text {
   padding-top: 150px;
 }
 
 header .intro-text .intro-lead-in {
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
-  font-size: 19px;
   line-height: 22px;
 }
 
@@ -186,13 +189,18 @@ header .intro-text .intro-heading {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 25px;
   line-height: 50px;
-  margin-bottom: 25px;
+}
+
+@media (min-width: 992px) {
+ #waters header {
+    height: 650px;
+  }
 }
 
 @media (min-width: 768px) {
-  header .intro-text .intro-lead-in {
+  /*header .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: italic;
     font-size: 40px;
@@ -206,7 +214,7 @@ header .intro-text .intro-heading {
     font-size: 75px;
     line-height: 75px;
     margin-bottom: 50px;
-  }
+  }*/
 }
 
 section {
@@ -282,14 +290,8 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
   outline: none;
 }
 
-@media (min-width: 768px) {
-  .navbar-custom .navbar-brand {
-    font-size: 2.2em;
-  }
-}
-
+@media (min-width: 480px) {}
 @media (min-width: 992px) {}
-
 @media (min-width: 1200px) {}
 
 .photo-with-text-overlay {
@@ -373,11 +375,7 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
   color: #555;
 }
 
-@media (min-width: 768px) {
-  body #suggested-search {
-    padding-top: 30px;
-  }
-}
+@media (min-width: 480px) {}
 
 @media (min-width: 992px) {
   body #suggested-search {
@@ -386,9 +384,6 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 }
 
 @media (min-width: 1200px) {
-  header .intro-text {
-    padding-top: 170px;
-  }
   body #suggested-search {
     top: 250px;
   }
@@ -398,9 +393,33 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
   font-size: inherit;
 }
 
-@media (min-width: 768px) {
+/** WATER PAGE **/
+
+/** Header **/
+
+@media (min-width: 480px) {
+  header .intro-text .intro-heading {
+    font-size: 40px;
+    padding-top: 100px;
+  }
+  header .intro-text .intro-lead-in {
+    font-size: 20px;
+    line-height: 65px;
+  }
+}
+
+@media (min-width: 992px) {
+  header .intro-text .intro-heading {
+    font-size: 50px;
+  }
+  header .intro-text .intro-lead-in {
+    font-size: 25px;
+  }
+}
+@media (min-width: 480px) {
   #weather-forecast {
     float: right;
+    margin-right: 20px;
   }
 }
 

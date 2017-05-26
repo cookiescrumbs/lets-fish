@@ -35,3 +35,4 @@ logfile
 /public/assets
 
 env.sh
+.env
