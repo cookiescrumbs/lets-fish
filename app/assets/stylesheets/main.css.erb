@@ -152,6 +152,15 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #fec503;
 }
 
+nav#secondary-nav {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 0 5px;
+  background-color: #fff;
+}
+
 header {
   position: relative;
   height: 100%;
@@ -186,7 +195,7 @@ header .intro-text .intro-heading {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 25px;
-  line-height: 50px;
+  line-height: 40px;
 }
 
 #homepage header .intro-text .intro-lead-in {
@@ -408,7 +417,7 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
   }
   header .intro-text .intro-lead-in {
     font-size: 20px;
-    line-height: 65px;
+    line-height: 40px;
   }
 }
 
@@ -420,12 +429,24 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
     font-size: 25px;
   }
 }
+
+@media (min-width: 1200px) {
+  header .intro-text .intro-heading {
+    font-size: 70px;
+  }
+  header .intro-text .intro-lead-in {
+    font-size: 30px;
+    line-height: 100px;
+  }
+}
+
 @media (min-width: 480px) {
   #weather-forecast {
     float: right;
     margin-right: 20px;
   }
 }
+
 
 #weather-forecast {
   margin-bottom: 30px;
