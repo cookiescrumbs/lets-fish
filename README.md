@@ -128,7 +128,7 @@ export SECRET_KEY_BASE=xxxxxxxxx
 ```
 
 ```
-. ./env.sh && heroku local
+ rake pg_db:start  && . ./env.sh && heroku local
 
 ```
 
