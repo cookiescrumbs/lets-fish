@@ -14,10 +14,8 @@ count = locals[:count]
         </div>
     </div>
     <div>
-        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-        <% image_styles = (water.images.first)? '' : 'missing-image' %>
             <div class="image-background">
-                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+                <img src="<%= water.images.first.image.url(:thumb) %>" class="img-responsive img-centered" alt="<%= water.name %>">
             </div>
         <div class="result-caption">
             <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>

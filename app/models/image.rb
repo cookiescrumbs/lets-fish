@@ -6,7 +6,8 @@ class Image < ActiveRecord::Base
                       lg: '1908',
                       md: '1440',
                       sm: '991',
-                      xs: '479'
+                      xs: '479',
+                      thumb: '650x350#'
                     }
   process_in_background :image
   # Validate the attached image is image/jpg, image/png, etc
