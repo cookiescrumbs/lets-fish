@@ -1,13 +1,13 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      title:       "Fly fishing lakes, lochs, rivers and streams - let's fish",
-      description: "Discover new flying fishing destinations from around the British Isles with Let's fish.",
+      title: "Fly fishing lakes, lochs, rivers and streams - let's fish",
+      description: "Find beautiful places to go fly fishing from around the British Isles with Let's fish.",
       og: {
         title: "Fly fishing lakes, lochs, rivers and streams - let's fish",
-        description: "Discover new flying fishing destinations from around the British Isles with Let's fish.",
+        description: "Find beautiful places to go fly fishing from around the British Isles with Let's fish.",
         url: 'http://lets.fish',
-        image: '/images/header-bg.jpg',
+        image: '/images/lg_home_hero.jpg',
         site_name: 'Let\'s Fish'
       }
     }

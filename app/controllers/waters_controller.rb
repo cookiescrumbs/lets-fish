@@ -1,6 +1,7 @@
 class WatersController < ApplicationController
   include Lets
   before_action :set_water, only: [:show]
+  before_action :set_navigation, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
   before_action :set_photos, only: [:show]
@@ -16,6 +17,10 @@ class WatersController < ApplicationController
   end
 
   private
+
+  def set_navigation
+    @how_it_works = 'hide';
+  end
 
   def set_photos
     @photos = InstagramService::photos_by tag: tag

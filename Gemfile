@@ -26,12 +26,12 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'delayed_paperclip', '~>3.0'
 gem 'pg'
 gem 'possessive'
 gem 'geocoder'
 gem 'aws-sdk', '~>2.0'
 gem 'sidekiq'
-gem 'delayed_paperclip', '~>3.0'
 gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
 gem 'meta-tags'
@@ -40,7 +40,7 @@ gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
 
 group :development, :test do
-  #Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rubocop', require: false
 end

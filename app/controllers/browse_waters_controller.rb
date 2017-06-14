@@ -1,7 +1,7 @@
 class BrowseWatersController < ApplicationController
   include Lets
 
-  def all
+  def index
     @waters = Lets::Waters::all
   end
 end

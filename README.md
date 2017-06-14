@@ -128,9 +128,12 @@ export SECRET_KEY_BASE=xxxxxxxxx
 ```
 
 ```
-. ./env.sh && rails s
+ rake pg_db:start  && . ./env.sh && heroku local
 
 ```
+
+[more on heroku local](https://devcenter.heroku.com/articles/heroku-local)
+
 
 ![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Member?")
 
@@ -146,6 +149,5 @@ Member to use ``` asset_path () ``` and change the css file from ```.css to .css
     font-family: 'Glyphicons Halflings';
     src: url(<%= asset_path 'glyphicons-halflings-regular.eot' %>);
 ```
-
 
 

@@ -1,0 +1,13 @@
+<% if !@waters.nil? && @waters.exists? %>
+    <% @waters.each do | water | %>
+        <div class="simple-card col-md-4 col-sm-12">
+            <a href="/waters/<%= water.slug %>" class="explore-link" >
+                <img src="<%= water.images.first.image.url(:thumb) %>" class="img-responsive img-centered" alt="<%= water.name %>">
+            <div class="caption">
+                <h4><%= water.name %></h4>
+                <p class="text-muted"><%= water.short_address %></p>
+            </div>
+            </a>
+        </div>
+    <% end %>
+<% end %>

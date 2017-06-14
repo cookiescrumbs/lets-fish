@@ -40,11 +40,15 @@ LetsFish::Application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    bucket: 'lets-fish',
     s3_host_alias: ENV['ASSET_HOST'],
     url: ':s3_alias_url',
     path: '/:class/:attachment/:id_partition/:style/:filename',
-    s3_region: 'eu-west-1'
+    s3_region: ENV['S3_REGION'],
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
 
   config.geograph_api_key = 'a5ecd893c8'
