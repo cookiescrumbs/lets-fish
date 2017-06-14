@@ -18,7 +18,7 @@ module MetaTags
           place: {
             location: {
               latitude: latitude,
-              longitude:longitude
+              longitude: longitude
             }
           },
           description: meta_description,
