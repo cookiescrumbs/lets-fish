@@ -23,7 +23,7 @@ module MetaTags
           },
           description: meta_description,
           url: url,
-          image: (images.first)? images.first.image.url(:medium) : '',
+          image: (images.first)? images.first.image.url(:thumb) : '',
           site_name: 'Let\'s Fish'
         }
       }
@@ -37,7 +37,7 @@ module MetaTags
           creator: '@letsgoflyfish',
           title: meta_title,
           description: description.slice(0..140),
-          image: (images.first)? "https:#{images.first.image.url(:medium)}" : ''
+          image: (images.first)? "https:#{images.first.image.url(:thumb)}" : ''
         }
       }
     end
@@ -71,7 +71,7 @@ module MetaTags
           },
           description: meta_description,
           url: url,
-          image: waters.first.images.first.image.url(:medium),
+          image: waters.first.images.first.image.url(:thumb),
           site_name: 'Let\'s Fish'
         }
       }
@@ -85,7 +85,7 @@ module MetaTags
           creator: '@letsgoflyfish',
           title: meta_title,
           description: description.slice(0..140),
-          image: "https:#{waters.first.images.first.image.url(:medium)}"
+          image: "https:#{waters.first.images.first.image.url(:thumb)}"
         }
       }
     end

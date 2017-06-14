@@ -7,7 +7,7 @@ module ApplicationHelper
         title: "Fly fishing lakes, lochs, rivers and streams - let's fish",
         description: "Find beautiful places to go fly fishing from around the British Isles with Let's fish.",
         url: 'http://lets.fish',
-        image: '/images/lg_home_hero.jpg',
+        image: '/images/sm_home_hero.jpg',
         site_name: 'Let\'s Fish'
       }
     }
