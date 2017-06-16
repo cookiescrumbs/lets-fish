@@ -9,7 +9,7 @@
         <source srcset="<%= @water.images.first.image.url(:lg) %>" media="(min-width: 1400px)">
         <source srcset="<%= @water.images.first.image.url(:md) %>" media="(min-width: 992px)">
         <source srcset="<%= @water.images.first.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
-        <source srcset="<%= @water.images.first.image.url(:xs) %>" media="(max-width: 479px)">
+        <source srcset="<%= @water.images.first.image.url(:thumb) %>" media="(max-width: 479px)">
         <!--[if lte IE 9]></video><![endif]-->
         <img srcset="<%= @water.images.first.image.url(:lg) %>" alt="" style="height: auto;">
     </picture>
