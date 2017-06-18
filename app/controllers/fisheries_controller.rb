@@ -30,8 +30,8 @@ class FisheriesController < ApplicationController
   end
 
   def set_water
-    redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.first
-    @water = Fishery.friendly.find(params[:id]).waters.first
+    redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.last
+    @water = Fishery.friendly.find(params[:id]).waters.last
   end
 
   # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
