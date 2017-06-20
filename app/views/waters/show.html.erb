@@ -21,16 +21,16 @@
                     managed by <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %></a>
                 </div>
             </div>
-            <% if !@image_attribution.blank? %>
-                <div class="attribution">
-                    Image &copy; Copyright
-                    <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
-                    and licensed for reuse under this
-                    <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
-                    <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
-                </div>
-            <% end %>
         </div>
+    <% if !@image_attribution.blank? %>
+        <div class="attribution">
+            Image &copy; Copyright
+            <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+            and licensed for reuse under this
+            <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
+            <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
+        </div>
+    <% end %>
     </div>
 </header>
 <%= render 'navigation' %>
