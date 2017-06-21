@@ -33,6 +33,8 @@ logfile
 .byebug_history
 
 /public/assets
+/public/system
 
 env.sh
 .env
+
