@@ -1,13 +1,13 @@
-describe Fishery, type: :model do
+describe Fishery, type: :model, focus: true  do
 
   before do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
     create_species
     create_water_types
-    water_one = FactoryGirl.create(:water, species_ids: [1,2], water_type_id: 1)
-    water_two = FactoryGirl.create(:water, species_ids: [1,2,3], water_type_id: 2)
-    @fishery = FactoryGirl.create(:fishery, waters: [water_one, water_two])
+    water_one = FactoryGirl.create(:water, name: 'z', species_ids: [1,2], water_type_id: 1)
+    water_two = FactoryGirl.create(:water, name: 'a', species_ids: [1,2,3], water_type_id: 2)
+    @fishery = FactoryGirl.create(:fishery, name: 'my fishery', waters: [water_one, water_two])
   end
 
   describe 'validate fields' do
@@ -35,6 +35,12 @@ describe Fishery, type: :model do
         expect(@fishery.water_types).to eql ['lake', 'river']
       end
 
+  end
+
+  describe 'water ordering' do
+    it 'waters are ordered alphabetically A to Z' do
+      expect("#{Fishery.last.waters.first.name} & #{Fishery.last.waters.last.name}").to eql 'a & z'
+    end
   end
 
   describe 'latitude and longitude' do

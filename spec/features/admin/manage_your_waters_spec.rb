@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'Manage your waters page', type: :feature,  focus: true do
+describe 'Manage your waters page', type: :feature do
 
   context 'there is a fishery with waters' do
     before(:each) do
