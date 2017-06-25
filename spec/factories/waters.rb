@@ -7,7 +7,7 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     season_start '2014-10-20'
     season_end '2014-10-20'
-    images { create_list(:image, 2) }
+    images { create_list(:image, 1) }
     fishery
   end
 end
