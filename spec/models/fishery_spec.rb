@@ -1,12 +1,11 @@
 describe Fishery, type: :model do
-
   before do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
     create_species
     create_water_types
-    water_one = FactoryGirl.create(:water, name: 'z', species_ids: [1,2], water_type_id: 1)
-    water_two = FactoryGirl.create(:water, name: 'a', species_ids: [1,2,3], water_type_id: 2)
+    water_one = FactoryGirl.create(:water, name: 'z', species_ids: [1, 2], water_type_id: 1)
+    water_two = FactoryGirl.create(:water, name: 'a', species_ids: [1, 2, 3], water_type_id: 2)
     FactoryGirl.create(:fishery, name: 'my fishery', waters: [water_one, water_two])
   end
 
@@ -21,18 +20,15 @@ describe Fishery, type: :model do
   end
 
   describe 'all species from across all waters of a fishery' do
-
-      it 'returns the species' do
-        expect(Fishery.last.species).to eql ["brown trout", "salmon", "sea trout"]
-      end
-
+    it 'returns the species' do
+      expect(Fishery.last.species).to eql ['brown trout', 'salmon', 'sea trout']
+    end
   end
 
   describe 'all water types across all waters of a fishery' do
-      it 'returns the water types' do
-        expect(Fishery.last.water_types).to eql ['lake', 'river']
-      end
-
+    it 'returns the water types' do
+      expect(Fishery.last.water_types).to eql %w(lake river)
+    end
   end
 
   describe 'water ordering' do
@@ -74,12 +70,9 @@ describe Fishery, type: :model do
     end
   end
 
-
   describe 'geographical center of all the waters in a fishery' do
-
     it 'returns a lat,lng' do
       expect(Fishery.last.geographic_center_of_waters).to eql Geocoder::Calculations.geographic_center(Fishery.last.waters)
     end
-
   end
 end
