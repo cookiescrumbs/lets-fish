@@ -27,7 +27,7 @@ class WatersController < ApplicationController
   end
 
   def tag
-    Water.friendly.find(params[:id]).name.delete(' ')
+    'letsfish' + Water.friendly.find(params[:id]).name.delete(' ')
   end
 
   def set_water
