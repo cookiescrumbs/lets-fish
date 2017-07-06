@@ -20,7 +20,7 @@
             <h4>Fisheries</h4>
             <ol class="list-unstyled">
                 <%  @fisheries.each do | fishery | %>
-                    <li><a href="/fisheries/<%= fishery.slug %>"><%= fishery.name %></span></a></li>
+                    <li><a href="<%= fishery_path fishery %>"><%= fishery.name %></span></a></li>
                 <% end %>
             </ol>
         </div>
@@ -28,7 +28,7 @@
             <h4>Waters</h4>
             <ol class="list-unstyled">
                 <%  @waters.each do | water| %>
-                    <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>
+                    <li><a href="<%= fishery_water_path water.fishery, water %>"><%= water.name %></a></li>
                 <% end %>
             </ol>
         </div>
