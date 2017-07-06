@@ -69,9 +69,10 @@ class WatersController < ApplicationController
     water = Water.friendly.find(params[:id])
     set_meta_tags title: water.meta_title
     set_meta_tags description: water.meta_description
-    set_meta_tags water.open_graph request.original_url
+    set_meta_tags water.open_graph fishery_water_url water.fishery, water
     set_meta_tags water.twitter
+    set_meta_tags canonical: fishery_water_url(water.fishery, water)
 
-    set_meta_tags amphtml: water.amp_html(request.original_url) unless request.format == :amp
+    set_meta_tags amphtml: water.amp_html(fishery_water_url(water.fishery, water)) unless request.format == :amp
   end
 end
