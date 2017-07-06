@@ -43,6 +43,7 @@
                             <div class="explore-caption border-none">
                                 <h4><%= water.name %></h4>
                                 <p class="text-muted"><%= water.short_address %></p>
+                                <%= link_to 'Preview water page', fishery_water_path(fishery, water), class: 'btn btn-default btn-sm' %>
                                 <%= link_to 'Edit details', edit_admin_fishery_water_path(fishery, water), class: 'btn btn-default btn-sm edit-water' %>
                                 <%= link_to 'Delete', admin_fishery_water_path(fishery, water), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" }, class: 'btn btn-default btn-sm btn-danger destroy' %>
                             </div>
