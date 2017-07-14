@@ -14,6 +14,8 @@ end
       end
   end
 
+  get '/fisheries',  to: 'browse_fisheries#index'
+
   resources :fisheries do
     resources :waters
   end
@@ -27,9 +29,6 @@ end
   get 'search/within-bounding-box', to: 'search#within_bounding_box'
   get '/waters',  to: 'browse_waters#index'
   get '/destinations',  to: 'browse_destinations#index'
-  get '/fisheries',  to: 'browse_fisheries#index'
-  get '/waters/:id',      to: 'waters#show'
-  get '/fisheries/:id',   to: 'fisheries#show'
   get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
 
