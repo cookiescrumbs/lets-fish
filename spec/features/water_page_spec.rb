@@ -12,7 +12,7 @@ describe 'Water page', type: :feature do
       @water_type = FactoryGirl.create_list :water_type, 5
       @fishery    = FactoryGirl.create :fishery_with_waters
 
-      visit "/waters/#{@fishery.waters.last.slug}"
+      visit fishery_water_path @fishery, @fishery.waters.last
     end
 
     let(:water) { @fishery.waters.last }
