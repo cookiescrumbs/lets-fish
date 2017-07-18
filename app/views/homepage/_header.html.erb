@@ -1,16 +1,16 @@
 <header>
     <picture>
-<!--lg 1908x480-->
-<!--md 1440x362-->
-<!--sm 991x300-->
-<!--xs 479x300-->
+    <!--lg 1908x480-->
+    <!--md 1440x362-->
+    <!--sm 991x300-->
+    <!--xs 479x300-->
         <!--[if lte IE 9]><video style="display: none;"><![endif]-->
-        <source srcset="<%= asset_path 'lg_home_hero.jpg' %>" media="(min-width: 1400px)">
-        <source srcset="<%= asset_path 'md_home_hero.jpg' %>" media="(min-width: 992px)">
-        <source srcset="<%= asset_path 'sm_home_hero.jpg' %>" media="(min-width: 480px) and (max-width: 991px)">
-        <source srcset="<%= asset_path 'xs_home_hero.jpg' %>" media="(max-width: 479px)">
+        <source srcset="<%= @water.images.first.image.url(:lg) %>" media="(min-width: 1400px)">
+        <source srcset="<%= @water.images.first.image.url(:md) %>" media="(min-width: 992px)">
+        <source srcset="<%= @water.images.first.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
+        <source srcset="<%= @water.images.first.image.url(:thumb) %>" media="(max-width: 479px)">
         <!--[if lte IE 9]></video><![endif]-->
-        <img srcset="<%= asset_path 'lg_home_hero.jpg' %>" alt="A beautiful sunny day at the comaping island in the middle of Loch Sionasgaig" style="height: auto;">
+        <img srcset="<%= @water.images.first.image.url(:lg) %>" alt="" style="height: auto;">
     </picture>
     <div class="image-trans">
         <div class="container col-md-offset-2 col-md-8">
