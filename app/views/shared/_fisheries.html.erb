@@ -1,7 +1,7 @@
 <% if !@fisheries.nil? && @fisheries.exists? %>
     <% @fisheries.each do | fishery | %>
         <div class="simple-card col-md-4 col-sm-12">
-            <a href="/fisheries/<%= fishery.slug %>">
+            <a href="<%=fishery_path fishery %>">
                 <% image_styles = (fishery.waters.last && fishery.waters.last.images.first)? '' : 'missing-image' %>
                 <% image_src = (fishery.waters.last && fishery.waters.last.images.first)? fishery.waters.last.images.first.image.url(:thumb) : '/images/medium/missing.png' %>
                 <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= fishery.name %>">
