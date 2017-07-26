@@ -14,15 +14,24 @@ LetsFish::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Enable Rack::Cache to put a simple HTTP cache in front of your application
-  # Add `rack-cache` to your Gemfile before enabling this.
-  # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
-  config.action_dispatch.rack_cache = true
+  #cloud front
+  config.action_controller.asset_host = ENV['ASSET_HOST']
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  # Disable serving static files from the `/public` folder by default since
+  # Apache or NGINX already handles this.
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
+
+
   # cache static assets for 30 days - 2592000 seconds
-  config.static_cache_control = 'public, max-age=2592000'
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, max-age=2592000',
+    'Expires' => "#{1.year.from_now.to_formatted_s (:rfc822)}"
+  }
 
   config.assets.prefix = '/assets'
 
@@ -31,8 +40,8 @@ LetsFish::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  # config.assets.compile = false
-  # config.assets.compile = true
+  config.assets.compile = false
+  #config.assets.compile = true
   # config.assets.precompile = ['*.js', '*.css', '*.css.erb']
 
   # Generate digests for assets URLs.
@@ -86,10 +95,12 @@ LetsFish::Application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    bucket: ENV['S3_BUCKET_NAME'],
-    url: ':s3_domain_url',
+    s3_host_alias: ENV['ASSET_HOST'],
+    url: ':s3_alias_url',
     path: '/:class/:attachment/:id_partition/:style/:filename',
+    s3_region: ENV['S3_REGION'],
     s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }

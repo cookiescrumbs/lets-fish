@@ -18,6 +18,10 @@ module Lets
     def self.all
       Water.includes(:fishery).where('fisheries.published' => true).order(name: :asc)
     end
+
+    def self.random
+      Water.includes(:fishery).where('fisheries.published' => true).order("RANDOM()").first
+    end
   end
 
 end

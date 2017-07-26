@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   respond_to :json
+  include Lets
 
   def index
   end
@@ -11,6 +12,11 @@ class SearchController < ApplicationController
     render 'search'
   end
 
+  def suggested
+    @waters = Lets::Waters::all
+    @fisheries = Lets::Fisheries::all
+    render 'suggested'
+  end
 
   private
 

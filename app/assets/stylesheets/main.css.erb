@@ -1,0 +1,618 @@
+body {
+  overflow-x: hidden;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.text-muted {
+  color: #777777;
+}
+
+.text-primary {
+  color: #fed136;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+p.large {
+  font-size: 16px;
+}
+
+a, a:hover, a:focus, a:active, a.active {
+  outline: none;
+}
+
+a {
+  color: #fed136;
+}
+
+a:hover, a:focus, a:active, a.active {
+  color: #fec503;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+.img-centered {
+  margin: 0 auto;
+}
+
+.bg-light-gray {
+  background-color: #eeeeee;
+}
+
+.bg-darkest-gray {
+  background-color: #222222;
+}
+
+.m-top17 {
+  margin-top: 17px;
+}
+
+.m-top30 {
+  margin-top: 30px;
+}
+
+.m-top40 {
+  margin-top: 40px;
+}
+
+.m-top70 {
+  margin-top: 70px;
+}
+
+.m-bottom24 {
+  margin-bottom: 24px;
+}
+
+.m-bottom34 {
+  margin-bottom: 34px;
+}
+
+.m-bottom44 {
+  margin-bottom: 44px;
+}
+
+.m-bottom54 {
+  margin-bottom: 54px;
+}
+
+
+/* navigation */
+
+.navbar-custom {
+  background-color: #222222;
+  border-color: transparent;
+  border-radius: 0;
+  margin-bottom: 0;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 30;
+  width: 100%;
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 1.7em;
+  color: #fed136;
+  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+.navbar-custom .navbar-brand:hover, .navbar-custom .navbar-brand:focus, .navbar-custom .navbar-brand:active, .navbar-custom .navbar-brand.active {
+  color: #fec503;
+}
+
+.navbar-custom .navbar-collapse {
+  border-color: rgba(255, 255, 255, 0.02);
+}
+
+.navbar-custom .navbar-toggle {
+  background-color: #fed136;
+  border-color: #fed136;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+}
+
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+.navbar-custom .navbar-toggle:hover, .navbar-custom .navbar-toggle:focus {
+  background-color: #fed136;
+}
+
+.navbar-custom .nav li a {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus {
+  color: #fed136;
+  outline: none;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+  border-radius: 0;
+  color: white;
+  background-color: #fed136;
+}
+
+.navbar-custom .navbar-nav > .active > a:hover, .navbar-custom .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #fec503;
+}
+
+nav#secondary-nav {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 1px;
+  background-color: #fff;
+}
+
+header {
+  position: relative;
+  margin-top: 72px;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+header div.image-trans {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+header .intro-text {
+  padding-top: 40px;
+}
+
+header .intro-text .intro-lead-in {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  line-height: 22px;
+}
+
+header .intro-text .intro-heading {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+#homepage header .intro-text .intro-lead-in {
+  font-size: 17px;
+}
+
+#homepage header .intro-text {
+  padding-top: 90px;
+}
+
+@media (min-width: 480px) {
+  #homepage header .intro-text {
+    padding-top: 80px;
+  }
+  #homepage header .intro-text .intro-lead-in {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1400px) {
+  #homepage header .intro-text .intro-lead-in {
+    font-size: 30px;
+  }
+  #waters header, #fisheries header {
+    height: 650px;
+  }
+}
+
+section {
+  padding: 30px 0;
+}
+
+section h2.section-heading {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+section h3.section-subheading {
+  font-size: 16px;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: none;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  background-color: #222222;
+  font-size: 12px;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+  color: #777777;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+
+ul.social-buttons li a {
+  display: block;
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: #222222;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active {
+  background-color: #fed136;
+}
+
+.btn {
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.btn:focus, .btn:active, .btn.active, .btn:active:focus {
+  outline: none;
+}
+
+@media (min-width: 480px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+.photo-with-text-overlay {
+  margin: 0 0 15px 0;
+}
+
+.photo-with-text-overlay a {
+  text-decoration: none;
+}
+
+.photo-with-text-overlay img {
+  filter: brightness(90%);
+  -webkit-filter: brightness(90%);
+}
+
+.photo-with-text-overlay a:hover img {
+  text-decoration: none;
+}
+
+.photo-with-text-overlay .title-header-outer {
+  position: relative;
+}
+
+.photo-with-text-overlay .title-header {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 40px;
+}
+
+.photo-with-text-overlay h2 {
+  text-transform: none;
+  text-align: center;
+  color: #fff;
+  font-weight: normal;
+}
+
+.simple-card {
+  margin: 0 0 15px 0;
+}
+
+.simple-card a {
+  text-decoration: none;
+}
+
+.simple-card .caption {
+  margin: 0 auto;
+  padding: 15px;
+  max-width: 650px;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #f7f7f7;
+  color: #333;
+}
+
+.simple-card p {
+  font-style: italic;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#suggested-search {
+  position: absolute;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 200px;
+  z-index: 20;
+  color: #333;
+  text-align: left;
+}
+
+#suggested-search a.list-group-item.active {
+  background-color: #fec503;
+  border-color: #fec503;
+  color: #555;
+}
+
+#suggested-search a:hover {
+  color: #555;
+}
+
+@media (min-width: 480px) {}
+
+@media (min-width: 992px) {
+  body #suggested-search {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  body #suggested-search {
+    top: 250px;
+  }
+}
+
+.input-lg {
+  font-size: inherit;
+}
+
+
+/** WATER PAGE **/
+
+
+/** Header **/
+
+@media (min-width: 480px) {
+  header .intro-text .intro-heading {
+    font-size: 40px;
+    padding-top: 100px;
+  }
+  header .intro-text .intro-lead-in {
+    font-size: 20px;
+    line-height: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  header .intro-text .intro-heading {
+    font-size: 50px;
+  }
+  header .intro-text .intro-lead-in {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1200px) {
+  header .intro-text .intro-heading {
+    font-size: 60px;
+  }
+  header .intro-text .intro-lead-in {
+    font-size: 30px;
+    line-height: 100px;
+  }
+}
+
+@media (min-width: 480px) {
+  #weather-forecast {
+    float: right;
+    margin-right: 20px;
+  }
+}
+
+#weather-forecast {
+  margin-bottom: 30px;
+  padding-left: 15px;
+}
+
+#weather-forecast ul.forecast {
+  margin-left: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#weather-forecast ul.forecast li {
+  display: inline;
+  position: static;
+  padding-left: 10px;
+}
+
+.water-type, .fish, .location {
+  padding-bottom: 10px;
+}
+
+.water-type img, .fish img, .location img {
+  padding-right: 5px;
+}
+
+.water-type img, .fish img, .location img {
+  padding-right: 5px;
+  width: 55px;
+}
+
+.water-type h6, .fish h6, .location h6 {
+  font-weight: normal;
+  line-height: 25px;
+}
+
+.attribution {
+  font-size: 9px;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+}
+
+#location-map, #fisheries #map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 450px;
+  margin-bottom: 10px;
+}
+
+#carousel {
+  max-width: 640px;
+}
+
+.result-item {
+  padding: 5px;
+}
+
+.result-caption {
+  margin: 0 auto;
+  padding: 25px;
+  max-width: 650px;
+  background-color: #fff;
+  border-top: 1px solid #f7f7f7;
+}
+
+a.result-link {
+  text-decoration: none;
+}
+
+.result-caption h6 {
+  text-transform: none;
+  color: #333;
+}
+
+#results-container .title-header {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.water-count {
+  position: absolute !important;
+  right: 20px;
+  top: 10px;
+}
+
+.water-name {
+  width: 85%;
+  margin-left: 10px;
+  color: #fff;
+}
+
+.title-header-outer {
+  position: relative;
+}
+
+
+/* search */
+
+body#search {
+  background-color: #f7f7f7;
+}
+
+#search #map {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 350px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#results-container div.result-item {
+  background-color: transparent;
+}
+
+@media(min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .map-container {
+    display: block;
+    width: 40%;
+  }
+  .map-container:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    right: 0;
+    -webkit-box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.3);
+    width: 2px;
+    z-index: 2;
+  }
+  .map-container {
+    position: fixed;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    width: 100%;
+    top: 75px;
+  }
+  #search #map {
+    position: fixed;
+    right: 0;
+    left: auto;
+    width: 40%;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    float: right;
+    z-index: 0;
+  }
+  #search footer {
+    display: none;
+  }
+}

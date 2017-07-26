@@ -1,7 +1,7 @@
 class BrowseFisheriesController < ApplicationController
   include Lets
 
-  def all
+  def index
     @fisheries = Lets::Fisheries::all
   end
 

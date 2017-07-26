@@ -13,7 +13,7 @@ describe 'New water page', type: :feature do
     page.all('.add-water').first.click
   end
 
-  let(:fishery) { @fishery_manager.fisheries.last}
+  let(:fishery) { @fishery_manager.fisheries.last }
 
   it 'has the name of the fishery' do
     expect(page).to have_content "Adding a new water to #{fishery.name}"
@@ -33,7 +33,8 @@ describe 'New water page', type: :feature do
       click_on 'Submit water details'
 
       expect(page).to have_content 'Total Loch Doon'
-      expect(page.find('.alert')).to have_content "#{fishery.waters.last.name} was successfully added to #{fishery.name}"
+      expect(page.find('.alert')).to have_content "Total Loch Doon was successfully added to #{fishery.name}"
+      expect(Water.last.images.first.image_file_name).to eql 'another-loch.jpg'
     end
   end
 

@@ -14,9 +14,9 @@ describe 'Manage your waters page', type: :feature do
       visit your_fishery_path
     end
 
-    let(:fishery) { @fishery_manager.fisheries.last}
-    let(:water) { @fishery_manager.fisheries.first.waters.last }
-    let(:checked_species_name) { @fishery_manager.fisheries.first.waters.last.species.last.name.capitalize}
+    let(:fishery) { @fishery_manager.fisheries.find 1 }
+    let(:water) { @fishery_manager.fisheries.first.waters.first }
+    let(:checked_species_name) { @fishery_manager.fisheries.first.waters.last.species.last.name.capitalize }
     let(:first_species_name) { Species.first.name.capitalize }
     let(:edit_button) { page.all('.edit-water').first }
     let(:number_of_waters) { @fishery_manager.fisheries.last.waters.count }
@@ -34,10 +34,9 @@ describe 'Manage your waters page', type: :feature do
     end
 
     it 'can delete a water with a nice message' do
-      name = water.name
       first_water = page.all('.destroy').first
       expect { first_water.click }.to change(fishery.waters, :count).from(5).to(4)
-      expect(page.find('.alert')).to have_content "#{name} was successfully deleted"
+      expect(page.find('.alert')).to have_content "was successfully deleted"
     end
 
     describe 'a water can be edited' do
@@ -48,6 +47,7 @@ describe 'Manage your waters page', type: :feature do
 
       it 'has the correct fields in the edit form' do
         edit_button.click
+
         expect(page.find_field('water_name').value).to eql water.name
         expect(page.find('#latitude').value.to_f).to eql water.latitude
         expect(page.find('#longitude').value.to_f).to eql water.longitude
@@ -58,6 +58,7 @@ describe 'Manage your waters page', type: :feature do
 
       it 'updates a waters details and returns a nice message' do
         edit_button.click
+
         fill_in 'water_name', with: 'loch dooooooon'
         # had to use find as the fields are hidden
         find('#latitude').set(-90)
@@ -70,12 +71,15 @@ describe 'Manage your waters page', type: :feature do
 
         expect(page).to have_content 'loch dooooooon'
         expect(page).to have_content 'Somewhere, Wales'
-        expect(water.species.length).to eql 2
-        expect("#{water.species.first.name} #{water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
+
+        edited_water = fishery.waters.find_by name: 'loch dooooooon'
+
+        expect(edited_water.species.length).to eql 2
+        expect("#{edited_water.species.first.name} #{edited_water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
         expect(page.find('.alert')).to have_content 'loch dooooooon was successfully updated.'
-        expect(water.images.last.image_file_name).to eql 'another-loch.jpg'
-        expect(water.images.last.geograph_photo_id).to eql 987_654
-        expect(water.address).to eql 'Somewhere, Wales'
+        expect(edited_water.images.last.image_file_name).to eql 'another-loch.jpg'
+        expect(edited_water.images.last.geograph_photo_id).to eql 987_654
+        expect(edited_water.address).to eql 'Somewhere, Wales'
       end
 
       it 'shows a helpful validation messages for required fields' do

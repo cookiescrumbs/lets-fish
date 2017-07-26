@@ -8,8 +8,7 @@ class FisheriesController < ApplicationController
   before_action :set_water_types, only: [:show]
   before_action :set_meta, only: [:show]
 
-  def show
-  end
+  def show; end
 
   private
 
@@ -31,8 +30,8 @@ class FisheriesController < ApplicationController
   end
 
   def set_water
-    redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.first
-    @water = Fishery.friendly.find(params[:id]).waters.first
+    redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.last
+    @water = Fishery.friendly.find(params[:id]).waters.last
   end
 
   # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
@@ -70,7 +69,7 @@ class FisheriesController < ApplicationController
     fishery = Fishery.friendly.find(params[:id])
     set_meta_tags title: fishery.meta_title
     set_meta_tags description: fishery.meta_description
-    set_meta_tags fishery.open_graph request.original_url
+    set_meta_tags fishery.open_graph fishery_url fishery
     set_meta_tags fishery.twitter
   end
 end

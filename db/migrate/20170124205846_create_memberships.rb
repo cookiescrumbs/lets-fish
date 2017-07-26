@@ -2,7 +2,9 @@ class CreateMemberships < ActiveRecord::Migration
   def change
     create_table :memberships do |t|
       t.timestamps
-      t.json :details, null: false, default: '{}'
+      t.jsonb :details, null: false, default: '{}'
     end
+
+    add_index  :memberships, :details, using: :gin
   end
 end

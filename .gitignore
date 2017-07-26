@@ -28,5 +28,13 @@ config/secrets.yml
 ##aws details
 /config/aws.yml
 
-##DB config
-/config/database.yml
+logfile
+
+.byebug_history
+
+/public/assets
+/public/system
+
+env.sh
+.env
+

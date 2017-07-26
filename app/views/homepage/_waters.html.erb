@@ -7,22 +7,8 @@
             </div>
         </div>
         <div class="row">
-        <% if !@waters.nil? && @waters.exists? %>
-            <% @waters.each do | water | %>
-                <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-                <% image_styles = (water.images.first)? '' : 'missing-image max-width-54 p-top5 p-bottom5' %>
-                <div class="col-md-4 col-sm-12 explore-item">
-                    <a href="/waters/<%= water.slug %>" class="explore-link" >
-                        <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
-                    <div class="explore-caption">
-                        <h4><%= water.name %></h4>
-                        <p class="text-muted"><%= water.short_address %></p>
-                    </div>
-                    </a>
-                </div>
-            <% end %>
-        <% end %>
+        <%= render 'shared/waters' %>
         </div>
-        <a href="/waters/all" class="btn btn-default btn-lg m-top17">View all waters</a>
+        <a href="/waters" class="btn btn-default btn-lg m-top17">View all waters</a>
     </div>
 </section>

@@ -1,0 +1,26 @@
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: lets_fish_test
+  username:
+  password:
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: lets_fish_development
+  username:
+  password:
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: lets_fish_development
+  username:
+  password:
+  pool: 5
+  timeout: 5000

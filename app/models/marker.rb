@@ -5,7 +5,7 @@ class Marker
   def initialize(id:, lat:, lng:, name:)
     @id = id
     @lat = lat
-    @lng = lng 
+    @lng = lng
     @name = name
   end
 

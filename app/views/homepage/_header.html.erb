@@ -1,0 +1,23 @@
+<header>
+    <picture>
+    <!--lg 1908x480-->
+    <!--md 1440x362-->
+    <!--sm 991x300-->
+    <!--xs 479x300-->
+        <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="<%= @water.images.first.image.url(:lg) %>" media="(min-width: 1400px)">
+        <source srcset="<%= @water.images.first.image.url(:md) %>" media="(min-width: 992px)">
+        <source srcset="<%= @water.images.first.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
+        <source srcset="<%= @water.images.first.image.url(:thumb) %>" media="(max-width: 479px)">
+        <!--[if lte IE 9]></video><![endif]-->
+        <img srcset="<%= @water.images.first.image.url(:lg) %>" alt="" style="height: auto;">
+    </picture>
+    <div class="image-trans">
+        <div class="container col-md-offset-2 col-md-8">
+            <div class="intro-text">
+                <div class="intro-lead-in">Find beautiful places to go fly fishing</div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="suggested-search"></div>

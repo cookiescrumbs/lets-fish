@@ -35,15 +35,15 @@
                 <div class="panel-body">
                   <% if !fishery.waters.nil? && fishery.waters.exists? %>
                     <% fishery.waters.each do | water | %>
-                        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-                        <% image_styles = (water.images.first)? '' : 'missing-image max-width-50' %>
                         <div class="water col-md-4 col-sm-12 explore-item">
                               <div class="image-background">
-                                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+                               <% image_src = (water.images.first)? water.images.first.image.url(:thumb) : '/images/mountains.png' %>
+                                <img src="<%= image_src %>" class="img-responsive img-centered" alt="<%= water.name %>">
                               </div>
                             <div class="explore-caption border-none">
                                 <h4><%= water.name %></h4>
                                 <p class="text-muted"><%= water.short_address %></p>
+                                <%= link_to 'Preview water page', fishery_water_path(fishery, water), class: 'btn btn-default btn-sm' %>
                                 <%= link_to 'Edit details', edit_admin_fishery_water_path(fishery, water), class: 'btn btn-default btn-sm edit-water' %>
                                 <%= link_to 'Delete', admin_fishery_water_path(fishery, water), method: :delete, data: { confirm: "Are you sure you want to delete #{water.name}" }, class: 'btn btn-default btn-sm btn-danger destroy' %>
                             </div>

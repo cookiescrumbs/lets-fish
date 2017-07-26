@@ -29,14 +29,14 @@ $(document).ready(function() {
     strokeColor: '#FF4500'
   });
 
-  function loadDataLayer(map) {
-    if (Object.keys(annotation).length === 0) {
+  function loadDataLayer(data, map) {
+    if (Object.keys(data).length === 0 &&  data.constructor === Object) {
       return;
     }
-    map.data.addGeoJson(annotation);
+    map.data.addGeoJson(data);
   }
 
-  loadDataLayer(map);
+  loadDataLayer(annotation, map);
   ////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //wait till map has loaded and add a  marker
@@ -46,7 +46,6 @@ $(document).ready(function() {
         map: map
       });
   });
-
 
   function getLat() {
     return parseFloat(mapElement.dataset.lat) || null;
@@ -61,7 +60,7 @@ $(document).ready(function() {
   }
 
   function getAnnotation() {
-    return JSON.parse(mapElement.dataset.annotation);
+    return JSON.parse(mapElement.dataset.annotation || "{}");
   }
 
 });

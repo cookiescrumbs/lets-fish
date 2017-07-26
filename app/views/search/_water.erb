@@ -3,7 +3,7 @@ water = locals[:water]
 count = locals[:count]
 %>
 <div class="col-md-6 col-sm-12 result-item">
-    <a href="/waters/<%= water.slug %>" class="result-link">
+    <a href="<%= fishery_water_path water.fishery, water %> " class="result-link">
     <div class="title-header-outer">
         <div class="title-header">
             <h4 class="water-name" ><%= water.name %></h4>
@@ -14,10 +14,8 @@ count = locals[:count]
         </div>
     </div>
     <div>
-        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-        <% image_styles = (water.images.first)? '' : 'missing-image' %>
             <div class="image-background">
-                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+                <img src="<%= water.images.first.image.url(:thumb) %>" class="img-responsive img-centered" alt="<%= water.name %>">
             </div>
         <div class="result-caption">
             <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>

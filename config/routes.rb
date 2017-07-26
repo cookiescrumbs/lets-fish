@@ -14,6 +14,12 @@ end
       end
   end
 
+  get '/fisheries',  to: 'browse_fisheries#index'
+
+  resources :fisheries do
+    resources :waters
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -21,11 +27,9 @@ end
   root 'homepage#index'
   get '/add/water/:id',   to: 'homepage#new_water'
   get 'search/within-bounding-box', to: 'search#within_bounding_box'
-  get '/waters/all',  to: 'browse_waters#all'
-  get '/destinations/all',  to: 'browse_destinations#all'
-  get '/fisheries/all',  to: 'browse_fisheries#all'
-  get '/waters/:id',      to: 'waters#show'
-  get '/fisheries/:id',   to: 'fisheries#show'
+  get 'search/suggested', to: 'search#suggested'
+  get '/waters',  to: 'browse_waters#index'
+  get '/destinations',  to: 'browse_destinations#index'
   get '/trips/:username/:id', to: 'trips#show'
   get '/sitemaps',        to: 'sitemaps#index'
 

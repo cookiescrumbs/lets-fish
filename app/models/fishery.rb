@@ -13,7 +13,7 @@ class Fishery < ActiveRecord::Base
   has_many :user_fisheries
   has_many :users, through: :user_fisheries
 
-  has_many :waters, dependent: :destroy
+  has_many :waters, -> { order name: :asc }, dependent: :destroy
 
   has_one  :contact_details
   accepts_nested_attributes_for :contact_details
