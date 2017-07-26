@@ -21,6 +21,8 @@ class Fishery < ActiveRecord::Base
   has_one :address
   accepts_nested_attributes_for :address
 
+  belongs_to :membership
+
   # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
   def species
     self.waters.map{|water| water.species.map{|s| s.name } }.flatten.uniq.sort
