@@ -12,15 +12,15 @@ module Lets
 
   module Waters
     def self.recently_added(number=3)
-      Water.includes(:fishery).where('fisheries.published' => true).order('waters.id desc').limit(number)
+      Water.where(published: true).includes(:fishery).where('fisheries.published' => true).order('waters.id desc').limit(number)
     end
 
     def self.all
-      Water.includes(:fishery).where('fisheries.published' => true).order(name: :asc)
+      Water.where(published: true).includes(:fishery).where('fisheries.published' => true).order(name: :asc)
     end
 
     def self.random
-      Water.includes(:fishery).where('fisheries.published' => true).order("RANDOM()").first
+      Water.where(published: true).includes(:fishery).where('fisheries.published' => true).order("RANDOM()").first
     end
   end
 

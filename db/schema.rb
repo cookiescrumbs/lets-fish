@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214171147) do
+ActiveRecord::Schema.define(version: 20170727152457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,7 +124,8 @@ ActiveRecord::Schema.define(version: 20170214171147) do
     t.integer  "fishery_id"
     t.text     "address"
     t.string   "slug"
-    t.json     "annotation",    default: "{}", null: false
+    t.json     "annotation",    default: "{}",  null: false
+    t.boolean  "published",     default: false
     t.index ["fishery_id"], name: "index_waters_on_fishery_id", using: :btree
     t.index ["slug"], name: "index_waters_on_slug", unique: true, using: :btree
   end
