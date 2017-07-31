@@ -71,7 +71,6 @@ class WatersController < ApplicationController
     set_meta_tags description: water.meta_description
     set_meta_tags water.open_graph fishery_water_url water.fishery, water
     set_meta_tags water.twitter
-    set_meta_tags canonical: fishery_water_url(water.fishery, water)
 
     set_meta_tags amphtml: water.amp_html(fishery_water_url(water.fishery, water)) unless request.format == :amp
   end
