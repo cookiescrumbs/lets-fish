@@ -5,13 +5,13 @@ Let's Fish
 
 A website for finding places to go fly fishing.
 
-##Getting your development machine setup
+## Getting your development machine setup
 
-```
-git clone
-```
+### Install RVM
 
-### Install ruby using RVM
+https://rvm.io/
+
+### Create a Ruby environment using RVM
 
 http://stackoverflow.com/questions/15212104/ruby-openssl-issues-on-mac
 
@@ -22,8 +22,24 @@ rvm get stable
 brew install libyaml
 rvm pkg install openssl
 rvm osx-ssl-certs update all
-rvm install ruby-2.3.1--with-openssl-dir=$HOME/.rvm/usr --disable-binary
+rvm install ruby-2.3.1 --with-openssl-dir=$HOME/.rvm/usr --disable-binary
 ```
+
+### Install bundler to manage dependencies
+```
+gem install bundler
+```
+
+### Create the repository locally
+```
+git clone https://github.com/cookiescrumbs/lets-fish.git
+```
+
+### Install rails and other dependencies
+```
+bundle install
+```
+
 ### Setting up your Postgres DB
 
 ##### Install Postgres via brew
@@ -42,29 +58,26 @@ bundle exec rake pg_db:start
 ```
 
 ##### Create development and test db
-
 ```
 bundle exec rake pg_db:create_development #create and load the dev db
 bundle exec rake pg_db:create_test #create and load the test db
-
 ```
+
 ##### Add some development data to your database
 ```
 bundle exec rake pg_db:restore #Restore development db (data only) from /db/pg_backups (using "live" data)
-
 ```
 
 ##### Setup Heroku
-
 [Download the toolbelt](https://toolbelt.heroku.com/)
-
 ```
 heroku git:remote -a lets-fish #add Heroku remote to git repo
 ```
 
 #### Restore DB from dump
-
-```pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump```
+```
+pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development ~/Desktop/lets-fish-22-37.dump
+```
 
 ```
 rake pg_db:restore  # Restore development db (data only) from /db/pg_backups
@@ -129,7 +142,6 @@ export SECRET_KEY_BASE=xxxxxxxxx
 
 ```
  rake pg_db:start  && . ./env.sh && heroku local
-
 ```
 
 [more on heroku local](https://devcenter.heroku.com/articles/heroku-local)
