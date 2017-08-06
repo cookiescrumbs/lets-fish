@@ -17,8 +17,11 @@ describe 'Search API', type: :request do
       latitude: 53.501942,
       longitude: -2.245983,
       species: [ Species.last ],
-      water_type_id: WaterType.first.id
+      water_type_id: WaterType.first.id,
     )
+
+	FactoryGirl.create(:fishery)
+
     end
 
   it 'GET /search/within-bounding-box with bounds' do
@@ -43,5 +46,15 @@ describe 'Search API', type: :request do
     expect(response).to be_success
     expect(json['markers'].length).to eq 20
     expect(json['markers'].first['name']).to eql waters.first.name
+  end
+
+  it 'GET /search/waters with slug' do
+    params = {
+	  slug: FactoryGirl.attributes_for(:fishery)[:slug]
+    }
+	get '/search/waters', params: params, headers: {'Accept' => 'application/json'}
+
+	expect(response).to be_success
+	expect(json['markers'].length).to eq 1
   end
 end
