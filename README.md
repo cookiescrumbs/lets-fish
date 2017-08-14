@@ -164,4 +164,8 @@ Member to use ``` asset_path () ``` and change the css file from ```.css to .css
     src: url(<%= asset_path 'glyphicons-halflings-regular.eot' %>);
 ```
 
+### Domain Model
+
+[DOmain model](https://github.com/cookiescrumbs/lets-fish/blob/master/erd.pdf)
+
 
