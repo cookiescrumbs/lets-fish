@@ -1,4 +1,4 @@
-![](https://codeship.com/projects/43375cc0-abc3-0133-9b76-02e6183d343a/status?branch=master)
+[ ![Codeship Status for cookiescrumbs/lets-fish](https://app.codeship.com/projects/4a75f140-62f5-0135-8d22-3601c9b40c24/status?branch=master)](https://app.codeship.com/projects/239994)
 
 Let's Fish
 ================
