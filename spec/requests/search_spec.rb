@@ -17,8 +17,9 @@ describe 'Search API', type: :request do
       latitude: 53.501942,
       longitude: -2.245983,
       species: [ Species.last ],
-      water_type_id: WaterType.first.id
+      water_type_id: WaterType.first.id,
     )
+
     end
 
   it 'GET /search/within-bounding-box with bounds' do

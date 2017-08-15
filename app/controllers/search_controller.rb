@@ -12,6 +12,13 @@ class SearchController < ApplicationController
     render 'search'
   end
 
+  def waters
+    waters = Fishery.friendly.find(params[:slug]).waters
+    @markers = waters
+    @results = waters
+    render 'search'
+  end
+
   def suggested
     @waters = Lets::Waters::all
     @fisheries = Lets::Fisheries::all
