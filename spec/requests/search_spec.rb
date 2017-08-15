@@ -1,4 +1,4 @@
-describe 'Search API', type: :request do
+describe 'Search API', type: :request, focus: true do
   before(:each) do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
