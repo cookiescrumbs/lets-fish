@@ -14,5 +14,5 @@
 //= require classie
 //= require cbpAnimatedHeader
 //= require navigation
-//= require fishery-waters-map
+//= require fishery_waters_map
 //= require weather
