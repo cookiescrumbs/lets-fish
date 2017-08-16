@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="row">
-            <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>"></div>
+            <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>" data-slug="<%=@fishery.slug%>"></div>
         </div>
         <div class="row">
             <div id="results-container">
@@ -88,14 +88,8 @@
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 </section>
-<hr /> 
+<hr />
 <%= render 'shared/how_it_works' %>
 <script type="application/ld+json">
     <%= raw render 'schema_org.json.jbuilder' %>
 </script>
-
-
-
-
-
-
