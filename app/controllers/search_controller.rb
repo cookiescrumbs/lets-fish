@@ -13,7 +13,8 @@ class SearchController < ApplicationController
   end
 
   def waters
-    waters = Fishery.friendly.find(params[:slug]).waters
+    fishery_id = Fishery.friendly.find(params[:slug]).id
+    waters = Water.where(published: true).includes(:fishery).where('fisheries.published' => true, 'fisheries.id' => fishery_id)
     @markers = waters
     @results = waters
     render 'search'
