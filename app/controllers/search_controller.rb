@@ -6,7 +6,7 @@ class SearchController < ApplicationController
   end
 
   def within_bounding_box
-    waters = Water.includes(:fishery).where('fisheries.published' => true).within_bounding_box(bounds).limit 20 unless bounds.nil?
+    waters = Water.where(published: true).includes(:fishery).where('fisheries.published' => true).within_bounding_box(bounds).limit 20 unless bounds.nil?
     @markers = waters
     @results = waters
     render 'search'
