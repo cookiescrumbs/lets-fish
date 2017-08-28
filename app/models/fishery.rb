@@ -34,12 +34,10 @@ class Fishery < ActiveRecord::Base
   end
 
   def latitude
-    return google_places_details['geometry']['location']['lat'] if google_places_details?
     address.latitude
   end
 
   def longitude
-    return google_places_details['geometry']['location']['lng'] if google_places_details?
     address.longitude
   end
 
@@ -47,14 +45,4 @@ class Fishery < ActiveRecord::Base
     Geocoder::Calculations.geographic_center(self.waters)
   end
 
-  private
-
-  def google_places_details
-    return nil if place_id.blank?
-    Geocoder.search(place_id, lookup: :google_places_details).first.data
-  end
-
-  def google_places_details?
-    !place_id.blank?
-  end
 end
