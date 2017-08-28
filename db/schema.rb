@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727152457) do
+ActiveRecord::Schema.define(version: 20170828195147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20170727152457) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "place_id"
     t.string   "slug"
     t.text     "description"
     t.integer  "map_zoom_level"
