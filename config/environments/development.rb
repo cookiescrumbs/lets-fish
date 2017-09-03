@@ -51,11 +51,10 @@ LetsFish::Application.configure do
     }
   }
 
-  config.geograph_api_key = 'a5ecd893c8'
-  config.dark_sky_api_key = '0a41a01031a5b6fa9241b180875eb218'
-  config.google_api_key = 'AIzaSyAbQz9wmM_wnPdi4Q8-dlbDOyDeS10zb58'
-  config.google_api_key_browser = 'AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws'
-  config.instagram_api_key = '245561560.e029fea.953a89e625e5438494f446f5990ccf5e'
+  config.geograph_api_key = ENV['GEOGRAPH_API_KEY']
+  config.dark_sky_api_key = ENV['DARK_SKY_API']
+  config.google_api_key_browser = ENV['GOOGLE_API_KEY_BROWSER']
+  config.instagram_api_key = ENV['INSTAGRAM_API_KEY']
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
