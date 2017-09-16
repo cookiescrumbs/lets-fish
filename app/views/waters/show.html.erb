@@ -76,6 +76,35 @@
         </div>
     </section>
 <% end %>
+<section id="photos-test">
+    <div class="container">
+        <h4 class="m-bottom24">Photos</h4>
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                          <div class="item active">
+                                <picture>
+                                        <!--lg 1908x480-->
+                                        <!--md 1440x362-->
+                                        <!--sm 991x300-->
+                                        <!--xs 479x300-->
+                                        <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+                                        <source srcset="//dur8xuaowfaya.cloudfront.net/images/images/000/000/100/md/me_with-fish.jpg?1505330464" media="(min-width: 992px)">
+                                        <source srcset="//dur8xuaowfaya.cloudfront.net/images/images/000/000/100/sm/me_with-fish.jpg?1505330464" media="(min-width: 480px) and (max-width: 991px)">
+                                        <source srcset="//dur8xuaowfaya.cloudfront.net/images/images/000/000/100/thumb/me_with-fish.jpg?1505330464" media="(max-width: 479px)">
+                                        <!--[if lte IE 9]></video><![endif]-->
+                                        <img srcset="//dur8xuaowfaya.cloudfront.net/images/images/000/000/100/md/me_with-fish.jpg?1505330464" alt="" class="img-responsive center-block">
+                                </picture>
+                          </div>
+                    </div>
+
+        </div>
+    </div>
+</section>
+
+
+
 
 <section id="permission">
     <div class="container">
@@ -83,7 +112,7 @@
         Seek permission from the fishery. Contact details can be found on the <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %> fishery page</a>.
     </div>
 </section>
-<hr /> 
+<hr />
 <%= render 'shared/how_it_works' %>
 
 <script type="application/ld+json">
