@@ -97,9 +97,6 @@ I can precompile my production assets and debug locally.
 RAILS_ENV=production bundle exec rake assets:clobber
 RAILS_ENV=production bundle exec rake assets:precompile
 ```
-```
-RAILS_ENV=production bundle exec rails s
-```
 
 #### Example /config/database.yml
 ```
@@ -131,24 +128,41 @@ production:
   timeout: 5000
 ```
 
-#### ./env.sh file for running in production mode locally
+### Running Let's Fish locally
+
+Install the Foreman gem
+
+```gem install foreman```
+
+create a .env file
+
+.env file for running locally
 
 ```
-#!/bin/bash
-export RAILS_ENV=production
-export RACK_ENV=production
-export S3_BUCKET_NAME=lets-fish
-export S3_REGION=eu-west-1
-export SECRET_KEY_BASE=xxxxxxxxx
+RAILS_SERVE_STATIC_FILES=false
+RAILS_ENV=development
+RACK_ENV=development
+AWS_ACCESS_KEY_ID=xxxxxxxx
+AWS_REGION=eu-west-1
+AWS_SECRET_ACCESS_KEY=xxxxxx
+S3_BUCKET_NAME=lets-fish-test
+S3_REGION=eu-west-1
+ASSET_HOST=dur8xuaowfaya.cloudfront.net
+SECRET_KEY_BASE=xxxxxx
+GEOGRAPH_API_KEY=xxxxx
+DARK_SKY_API=xxxxx
+GOOGLE_API_KEY_BROWSER=xxxxxx
+INSTAGRAM_API_KEY=xxxx
 ```
 
-```
+Start Redis 
+```redis-server /usr/local/etc/redis.conf```
 
+Start let's fish up run foreman from the root
 
-rake pg_db:start && . ./env.sh && rails s
-```
+```foreman start```
 
-[more on heroku local](https://devcenter.heroku.com/articles/heroku-local)
+Foreman will pick up the .env file :) 
 
 
 ![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Member?")
