@@ -154,7 +154,12 @@ INSTAGRAM_API_KEY=xxxx
 ```
 
 Start Redis 
+
 ```redis-server /usr/local/etc/redis.conf```
+
+Start DB
+
+```rake pg_db:start```
 
 Start let's fish, run foreman from the root folder
 
