@@ -134,9 +134,7 @@ Install the Foreman gem
 
 ```gem install foreman```
 
-create a .env file
-
-.env file for running locally
+create a .env file for running locally
 
 ```
 RAILS_SERVE_STATIC_FILES=false
@@ -158,7 +156,7 @@ INSTAGRAM_API_KEY=xxxx
 Start Redis 
 ```redis-server /usr/local/etc/redis.conf```
 
-Start let's fish up run foreman from the root
+Start let's fish, run foreman from the root folder
 
 ```foreman start```
 
