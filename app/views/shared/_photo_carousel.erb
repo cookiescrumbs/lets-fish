@@ -1,16 +1,27 @@
  <div id="carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+
   <ol class="carousel-indicators">
-    <% locals[:photos].length.times do |i|%>
+    <% locals[:photos].length.times do |i| %>
         <li data-target="#carousel" data-slide-to="<%=i%>" <%=(i == 0)? 'class=active' : '' %>></li>
     <% end %>
   </ol>
 
-  <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <% locals[:photos].each_with_index do |photo, i| %>
         <div class="item  <%=(i == 0)? 'active' : '' %>">
-            <img src="<%=photo.url%>" class="img-responsive center-block" alt="">
+            <picture>
+              <!--lg 1908x480-->
+              <!--md 1440x362-->
+              <!--sm 991x300-->
+              <!--xs 479x300-->
+              <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= photo.image.url(:lg) %>" media="(min-width: 1400px)">
+              <source srcset="<%= photo.image.url(:md) %>" media="(min-width: 992px)">
+              <source srcset="<%= photo.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
+              <source srcset="<%= photo.image .url(:thumb) %>" media="(max-width: 479px)">
+              <!--[if lte IE 9]></video><![endif]-->
+              <img srcset="<%= photo.image.url(:lg) %>" alt="" class="img-responsive center-block" >
+            </picture>
         </div>
     <% end %>
   </div>

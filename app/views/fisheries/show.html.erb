@@ -68,11 +68,11 @@
         </div>
     </div>
 </section>
-<% if !@photos.empty? %>
+<% if !@water.images.empty? %>
     <section id="photos">
         <div class="container">
             <h4 class="m-bottom24">Photos</h4>
-            <%= render '/shared/photo_carousel', locals: { photos: @photos } %>
+            <%= render '/shared/photo_carousel', locals: { photos: @water.images } %>
         </div>
     </section>
 <% end %>
