@@ -33,17 +33,16 @@
   </div>
 
   <div class="form-group">
-    <label for="water_types">Photo</label>
-      <%= file_field_tag(:file, multiple: false, name: "file[image]") %>
-  </div>
-  <div class="form-group">
-    <% image_src = (@water.images.first)? @water.images.first.image.url(:thumb) : '/images/medium/missing.png' %>
-     <img src="<%= image_src %>" class="img-responsive missing-image max-width-25" alt="<%= @water.name %>">
-  </div>
-
-  <div class="form-group">
-    <label for="attribution">Geograph Photo Id</label>
-    <%= text_field :image, :geograph_photo_id, class: "form-control" %>
+    <label for="photos">Photos</label>
+    <%= f.fields_for :images do |builder| %>
+      <%= builder.file_field :image, type: :file %>
+        <% unless builder.object.id.nil? %>
+          <%= image_tag builder.object.image.url(:thumb) %>
+          <br />
+          <%= builder.check_box :_destroy %>
+          <%= builder.label :_destroy, "Remove" %>
+        <% end %>
+    <% end %>
   </div>
 
   <div class="form-group hidden">
