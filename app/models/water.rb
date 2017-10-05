@@ -9,13 +9,14 @@ class Water < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
-  belongs_to              :fishery, touch: true
-  belongs_to              :water_type
+  belongs_to :fishery, touch: true
+  belongs_to :water_type
 
   has_many :species_waters
   has_many :species, through: :species_waters
 
-  has_many :images, dependent: :destroy
+  has_many :images
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   validates :fishery_id, presence: true
 

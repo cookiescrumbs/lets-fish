@@ -18,7 +18,7 @@
               <source srcset="<%= photo.image.url(:lg) %>" media="(min-width: 1400px)">
               <source srcset="<%= photo.image.url(:md) %>" media="(min-width: 992px)">
               <source srcset="<%= photo.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
-              <source srcset="<%= photo.image .url(:thumb) %>" media="(max-width: 479px)">
+              <source srcset="<%= photo.image.url(:thumb) %>" media="(max-width: 479px)">
               <!--[if lte IE 9]></video><![endif]-->
               <img srcset="<%= photo.image.url(:lg) %>" alt="" class="img-responsive center-block" >
             </picture>
