@@ -15,6 +15,7 @@ class Admin::WatersController < AdminController
   end
 
   def edit
+    3.times { @water.images.build }
   end
 
   def create
