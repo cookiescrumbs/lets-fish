@@ -27,8 +27,7 @@ describe 'New water page', type: :feature do
       find('#longitude').set(-180)
       check Species.first.name.capitalize
       choose WaterType.first.category.capitalize
-      attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
-      find('#image_geograph_photo_id').set 987_654
+      attach_file('water[images_attributes][0][image]', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
 
       click_on 'Submit water details'
 

@@ -18,9 +18,9 @@ class Admin::WatersController < AdminController
   end
 
   def create
-    water = @fishery.waters.build(water_params)
+    @water = @fishery.waters.build(water_params)
     if @fishery.save
-      redirect_to your_fishery_path, notice: "#{water.name} was successfully added to #{@fishery.name}"
+      redirect_to your_fishery_path, notice: "#{@water.name} was successfully added to #{@fishery.name}"
     else
       render action: 'new'
     end

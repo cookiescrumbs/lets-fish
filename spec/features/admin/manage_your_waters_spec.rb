@@ -52,8 +52,7 @@ describe 'Manage your waters page', type: :feature do
         expect(page.find('#latitude').value.to_f).to eql water.latitude
         expect(page.find('#longitude').value.to_f).to eql water.longitude
         expect(page.has_checked_field?(checked_species_name)).to be true
-        expect(page.find('.img-responsive')[:src]).to include 'loch.jpg'
-        expect(page.find('#image_geograph_photo_id').value.to_i).to eql water.images.last.geograph_photo_id
+        expect(page.find('img')[:src]).to include 'loch.jpg'
       end
 
       it 'updates a waters details and returns a nice message' do
@@ -65,8 +64,7 @@ describe 'Manage your waters page', type: :feature do
         find('#longitude').set(-180)
         find('#water_address').set 'Somewhere, Wales'
         check first_species_name
-        attach_file('file', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
-        find('#image_geograph_photo_id').set 987_654
+        attach_file('water[images_attributes][0][image]', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
         click_on 'Submit'
 
         expect(page).to have_content 'loch dooooooon'
@@ -78,7 +76,6 @@ describe 'Manage your waters page', type: :feature do
         expect("#{edited_water.species.first.name} #{edited_water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
         expect(page.find('.alert')).to have_content 'loch dooooooon was successfully updated.'
         expect(edited_water.images.last.image_file_name).to eql 'another-loch.jpg'
-        expect(edited_water.images.last.geograph_photo_id).to eql 987_654
         expect(edited_water.address).to eql 'Somewhere, Wales'
       end
 
