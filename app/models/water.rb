@@ -16,7 +16,7 @@ class Water < ActiveRecord::Base
   has_many :species, through: :species_waters
 
   has_many :images
-  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :images, reject_if: -> (i) { i[:image_file_name].blank? }, allow_destroy: true
 
   validates :fishery_id, presence: true
 
@@ -49,6 +49,12 @@ class Water < ActiveRecord::Base
 
   def lng
     self.longitude
+  end
+
+  def images_without_hero
+    self.images.reject do | image |
+      image.hero
+    end
   end
 
   private

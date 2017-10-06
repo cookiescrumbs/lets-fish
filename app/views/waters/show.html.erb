@@ -72,7 +72,7 @@
     <section id="photos">
         <div class="container">
             <h4 class="m-bottom24">Photos</h4>
-            <%= render '/shared/photo_carousel', locals: { photos: @water.images } %>
+            <%= render '/shared/photo_carousel', locals: { photos: @water.images_without_hero } %>
         </div>
     </section>
 <% end %>
