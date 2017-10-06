@@ -61,7 +61,7 @@ class Admin::WatersController < AdminController
       :annotation,
       :water_type_id,
       species_ids: [],
-      images_attributes: [:id, :image, :_destroy]
+      images_attributes: [:id, :image, :hero,  :_destroy]
     )
   end
 
