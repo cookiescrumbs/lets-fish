@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  belongs_to :water
+  belongs_to :water, dependent: :destroy
 
   #hero
   #geograph_id
