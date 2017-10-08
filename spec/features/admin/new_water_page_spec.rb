@@ -19,7 +19,7 @@ describe 'New water page', type: :feature do
     expect(page).to have_content "Adding a new water to #{fishery.name}"
   end
 
-  context 'form is filled out correctly', focus: true do
+  context 'form is filled out correctly' do
     it "adds a water to a fishery, shows the water's details and says a nice thing" do
       fill_in 'water_name', with: 'Total Loch Doon'
       # had to use find as the fields are hidden
@@ -27,8 +27,8 @@ describe 'New water page', type: :feature do
       find('#longitude').set(-180)
       check Species.first.name.capitalize
       choose WaterType.first.category.capitalize
-      attach_file('water[images_attributes][0][image]', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
-      attach_file('water[images_attributes][1][image]', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+      attach_file('water_images_attributes_0_image', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+      attach_file('water_images_attributes_1_image', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
       check 'water[images_attributes][0][hero]'
 
       click_on 'Submit water details'

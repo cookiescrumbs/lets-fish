@@ -1,6 +1,14 @@
 class Image < ActiveRecord::Base
   belongs_to :water
 
+  #hero
+  #geograph_id
+  #image_file_name
+  #image_content_type
+  #image_file_size
+  #image_updated_at
+  #geograph_photo_id
+
   has_attached_file :image,
                     styles: {
                       lg: '1908',

@@ -4,6 +4,7 @@ describe Water, type: :model do
     stub_google_geocode_address
     @species    = FactoryGirl.create_list :species, 5
     @water_type = FactoryGirl.create_list :water_type, 5
+
     @water = FactoryGirl.create(
       :water,
       address: nil,
