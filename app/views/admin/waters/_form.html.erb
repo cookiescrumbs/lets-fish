@@ -34,15 +34,22 @@
 
   <div class="form-group">
     <label for="photos">Photos</label>
+    <br />
     <%= f.fields_for :images do |builder| %>
-      <%= builder.file_field :image, type: :file %>
-        <% unless builder.object.id.nil? %>
-          <%= image_tag builder.object.image.url(:thumb) %>
-          <br />
-          <%= builder.check_box :_destroy %>
-          <%= builder.label :_destroy, "Remove" %>
-        <% end %>
+    <% unless builder.object.id.nil? %>
+      <%= image_tag builder.object.image.url(:thumb) %>
+      <br />
+      <%= builder.check_box :_destroy %>
+      <%= builder.label :_destroy, 'Remove' %>
     <% end %>
+    <br />
+    <%= builder.check_box :hero %>
+    <%= builder.label :hero, 'Hero Image' %>
+    <%= builder.file_field :image, type: :file %>
+    <br />
+    <hr />
+    <% end %>
+
   </div>
 
   <div class="form-group hidden">

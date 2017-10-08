@@ -27,13 +27,17 @@ describe 'New water page', type: :feature do
       find('#longitude').set(-180)
       check Species.first.name.capitalize
       choose WaterType.first.category.capitalize
-      attach_file('water[images_attributes][0][image]', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+      attach_file('water_images_attributes_0_image', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+      attach_file('water_images_attributes_1_image', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+      check 'water[images_attributes][0][hero]'
 
       click_on 'Submit water details'
 
       expect(page).to have_content 'Total Loch Doon'
       expect(page.find('.alert')).to have_content "Total Loch Doon was successfully added to #{fishery.name}"
       expect(Water.last.images.first.image_file_name).to eql 'another-loch.jpg'
+      expect(Water.last.images.first.hero).to eql true
+      expect(Water.last.images.last.hero).to eql false
     end
   end
 
