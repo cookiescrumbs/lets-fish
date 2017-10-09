@@ -64,7 +64,10 @@ describe 'Manage your waters page', type: :feature do
         find('#longitude').set(-180)
         find('#water_address').set 'Somewhere, Wales'
         check first_species_name
-        attach_file('water[images_attributes][0][image]', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+        attach_file('water_images_attributes_0_image', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+        attach_file('water_images_attributes_1_image', File.join(Rails.root, 'spec/fixtures/files/another-loch.jpg'))
+        check 'water_images_attributes_0_hero'
+
         click_on 'Submit'
 
         expect(page).to have_content 'loch dooooooon'
@@ -76,6 +79,8 @@ describe 'Manage your waters page', type: :feature do
         expect("#{edited_water.species.first.name} #{edited_water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
         expect(page.find('.alert')).to have_content 'loch dooooooon was successfully updated.'
         expect(edited_water.images.last.image_file_name).to eql 'another-loch.jpg'
+        expect(edited_water.images.first.hero).to eql true
+        expect(edited_water.images.last.hero).to eql false
         expect(edited_water.address).to eql 'Somewhere, Wales'
       end
 

@@ -11,11 +11,11 @@ class Admin::WatersController < AdminController
 
   def new
     @water = @fishery.waters.build
-    3.times { @water.images.build }
+    5.times { @water.images.build }
   end
 
   def edit
-    3.times { @water.images.build }
+    5.times { @water.images.build }
   end
 
   def create
