@@ -91,4 +91,21 @@ describe Water, type: :model do
       expect(@water.short_address).to eql 'Somewhere, Northumberland'
     end
   end
+
+  describe 'images without the hero image', focus: true do
+
+    it 'return all the images minus the hero image' do
+      @water.images = [
+        FactoryGirl.create(:image, hero: true),
+        FactoryGirl.create(:image, hero: false),
+        FactoryGirl.create(:image, hero: false)
+     ]
+        expect(@water.images_without_hero.length).to eql 2
+        expect(@water.images_without_hero.first.hero).to eql false
+        expect(@water.images_without_hero.last.hero).to eql false
+    end
+
+
+
+  end
 end
