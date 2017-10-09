@@ -57,6 +57,12 @@ class Water < ActiveRecord::Base
     end
   end
 
+  def hero_image
+    self.images.reject do | image |
+      !image.hero
+    end.first
+  end
+
   private
 
   def update_address

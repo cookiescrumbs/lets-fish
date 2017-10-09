@@ -104,8 +104,17 @@ describe Water, type: :model do
         expect(@water.images_without_hero.first.hero).to eql false
         expect(@water.images_without_hero.last.hero).to eql false
     end
+  end
 
+  describe 'hero image', focus: true do
 
-
+    it 'returns the hero image' do
+      @water.images = [
+        FactoryGirl.create(:image, hero: true, image_file_name: 'i-could-be-your-hero-baby.jpg'),
+        FactoryGirl.create(:image, hero: false),
+        FactoryGirl.create(:image, hero: false)
+     ]
+      expect(@water.hero_image.image_file_name).to eql 'i-could-be-your-hero-baby.jpg'
+    end
   end
 end
