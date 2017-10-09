@@ -92,7 +92,7 @@ describe Water, type: :model do
     end
   end
 
-  describe 'images without the hero image', focus: true do
+  describe 'images without the hero image' do
 
     it 'return all the images minus the hero image' do
       @water.images = [
