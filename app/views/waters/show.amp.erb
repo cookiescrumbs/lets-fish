@@ -2,7 +2,7 @@
     <a class="logo" href="/">Let's fish</a>
  </header>
 <section class="content">
-    <amp-img src="<%=(@water.images.first)? @water.images.first.image.url(:thumb) : '/images/missing.png'%>" alt="<%= @water.meta_title %>" width="596" height="70" layout="responsive" class="hero-image text-align-center color-white image-brightness-70">
+    <amp-img src="<%= @water.hero_image.image.url(:thumb)%>" alt="<%= @water.meta_title %>" width="596" height="70" layout="responsive" class="hero-image text-align-center color-white image-brightness-70">
     <h4 class="water-title">
         <amp-fit-text width="300"
                 height="25"
