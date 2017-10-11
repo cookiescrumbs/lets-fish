@@ -19,7 +19,7 @@ describe 'New water page', type: :feature do
     expect(page).to have_content "Adding a new water to #{fishery.name}"
   end
 
-  context 'form is filled out correctly',  focus: true do
+  context 'form is filled out correctly' do
     it "adds a water to a fishery, shows the water's details and says a nice thing" do
       fill_in 'water_name', with: 'Total Loch Doon'
       fill_in 'water_permission_tickets', with: 'Get tickets from Pete. You\'ll be able to find him. Follow the pistachio shells.'

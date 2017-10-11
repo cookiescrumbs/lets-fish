@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'Manage your waters page', type: :feature do
+describe 'Manage your waters page', type: :feature, focus: true do
 
   context 'there is a fishery with waters' do
     before(:each) do
@@ -59,6 +59,7 @@ describe 'Manage your waters page', type: :feature do
         edit_button.click
 
         fill_in 'water_name', with: 'loch dooooooon'
+        fill_in 'water_permission_tickets', with: 'You can now get your ticket from a car park.'
         # had to use find as the fields are hidden
         find('#latitude').set(-90)
         find('#longitude').set(-180)
@@ -78,6 +79,7 @@ describe 'Manage your waters page', type: :feature do
         expect(edited_water.species.length).to eql 2
         expect("#{edited_water.species.first.name} #{edited_water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
         expect(page.find('.alert')).to have_content 'loch dooooooon was successfully updated.'
+        expect(edited_water.permission_tickets).to eql 'You can now get your ticket from a car park.'
         expect(edited_water.images.last.image_file_name).to eql 'another-loch.jpg'
         expect(edited_water.images.first.hero).to eql true
         expect(edited_water.images.last.hero).to eql false
