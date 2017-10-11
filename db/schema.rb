@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006084351) do
+ActiveRecord::Schema.define(version: 20171011165914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 20171006084351) do
     t.string   "slug"
     t.text     "description"
     t.integer  "map_zoom_level"
-    t.boolean  "published",      default: false
+    t.boolean  "published",          default: false
     t.integer  "membership_id"
+    t.text     "permission_tickets"
     t.index ["slug"], name: "index_fisheries_on_slug", unique: true, using: :btree
   end
 
@@ -124,8 +125,9 @@ ActiveRecord::Schema.define(version: 20171006084351) do
     t.integer  "fishery_id"
     t.text     "address"
     t.string   "slug"
-    t.json     "annotation",    default: "{}",  null: false
-    t.boolean  "published",     default: false
+    t.json     "annotation",         default: "{}",  null: false
+    t.boolean  "published",          default: false
+    t.text     "permission_tickets"
     t.index ["fishery_id"], name: "index_waters_on_fishery_id", using: :btree
     t.index ["slug"], name: "index_waters_on_slug", unique: true, using: :btree
   end
