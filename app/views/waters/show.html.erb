@@ -78,13 +78,14 @@
         </div>
     </section>
 <% end %>
-
-<section id="permission">
-    <div class="container">
-        <h4 class="m-bottom24">Permission &amp; Tickets</h4>
-        <%= @water.permission_tickets unless @water.permission_tickets.nil? %>
-    </div>
-</section>
+<% unless @water.permission_tickets.nil? %>
+    <section id="permission">
+        <div class="container">
+            <h4 class="m-bottom24">Permission &amp; Tickets</h4>
+            <%= @water.permission_tickets %>
+        </div>
+    </section>
+<% end %>
 <hr />
 <%= render 'shared/how_it_works' %>
 

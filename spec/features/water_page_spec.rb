@@ -1,6 +1,7 @@
 require_relative 'features_helper'
 
-describe 'Water page', type: :feature do
+describe 'Water page', type: :feature, focus: true do
+
   describe 'Some random fishery with waters' do
     before(:each) do
       stub_geograph_photo_details
@@ -42,15 +43,33 @@ describe 'Water page', type: :feature do
     end
 
     describe 'permission & tickets' do
-
       context 'water has permission & ticket information' do
-
         it 'has details of where to get permission or a ticket' do
           water.permission_tickets = 'You can get a ticket at the Old Cock and Balls pub.'
           water.save
           visit fishery_water_path @fishery, @fishery.waters.last
 
           expect(page).to have_content 'You can get a ticket at the Old Cock and Balls pub.'
+        end
+      end
+
+      context 'water has no permission & ticket details but fishery does' do
+        it 'has details of where to get permission & ticket from the fishery' do
+          water.permission_tickets = nil
+          water.save
+          @fishery.permission_tickets = 'You can get a ticket from the estate office to fish all lochs.'
+          @fishery.save
+          visit fishery_water_path @fishery, @fishery.waters.last
+
+          expect(page).to have_content 'You can get a ticket from the estate office to fish all lochs.'
+        end
+      end
+
+      context 'no permission or tickets on ether water or fishery' do
+        it 'has no permission & tickets' do
+          visit fishery_water_path @fishery, @fishery.waters.last
+
+          expect(page).to_not have_content 'Permission & Tickets'
         end
       end
 

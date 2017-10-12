@@ -44,23 +44,25 @@ class Water < ActiveRecord::Base
   end
 
   def lat
-    self.latitude
+    latitude
   end
 
   def lng
-    self.longitude
+    longitude
   end
 
   def images_without_hero
-    self.images.reject do | image |
-      image.hero
-    end
+    images.reject(&:hero)
   end
 
   def hero_image
-    self.images.reject do | image |
+    images.reject do |image|
       !image.hero
     end.first
+  end
+
+  def permission_tickets
+    self[:permission_tickets] || fishery.permission_tickets
   end
 
   private

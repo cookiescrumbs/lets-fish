@@ -7,7 +7,7 @@ describe 'Manage your waters page', type: :feature do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
 
-      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
 
       sign_in @fishery_manager
 
@@ -36,7 +36,7 @@ describe 'Manage your waters page', type: :feature do
     it 'can delete a water with a nice message' do
       first_water = page.all('.destroy').first
       expect { first_water.click }.to change(fishery.waters, :count).from(5).to(4)
-      expect(page.find('.alert')).to have_content "was successfully deleted"
+      expect(page.find('.alert')).to have_content 'was successfully deleted'
     end
 
     describe 'a water can be edited' do
@@ -116,21 +116,21 @@ describe 'Manage your waters page', type: :feature do
 
   context 'user is not logged in' do
 
-      before(:each) do
-        stub_google_geocode_lat_lng
-        stub_google_geocode_address
+    before(:each) do
+      stub_google_geocode_lat_lng
+      stub_google_geocode_address
 
-        @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
-      end
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
+    end
 
-      let(:fishery) { @fishery_manager.fisheries.last}
-      let(:water) { @fishery_manager.fisheries.last.waters.last }
+    let(:fishery) { @fishery_manager.fisheries.last}
+    let(:water) { @fishery_manager.fisheries.last.waters.last }
 
 
-      it 'redirects them to the login page' do
-        visit edit_admin_fishery_water_path(fishery, water)
-        expect(page.current_url).to end_with new_user_session_path
-      end
+    it 'redirects them to the login page' do
+      visit edit_admin_fishery_water_path(fishery, water)
+      expect(page.current_url).to end_with new_user_session_path
+    end
 
   end
 end

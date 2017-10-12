@@ -12,9 +12,11 @@
                     <a class="page-scroll" href="#photos">Photos</a>
                 </li>
             <% end %>
-            <li>
-                <a class="page-scroll" href="#permission">Permission &amp; Tickets</a>
-            </li>
+            <% unless @water.permission_tickets.nil? %>
+                <li>
+                    <a class="page-scroll" href="#permission">Permission &amp; Tickets</a>
+                </li>
+            <% end %>
         </ul>
     </div>
 </nav>
