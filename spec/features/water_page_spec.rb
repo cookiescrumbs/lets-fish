@@ -1,6 +1,6 @@
 require_relative 'features_helper'
 
-describe 'Water page', type: :feature, focus: true do
+describe 'Water page', type: :feature do
 
   describe 'Some random fishery with waters' do
     before(:each) do
