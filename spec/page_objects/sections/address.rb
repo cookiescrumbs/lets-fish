@@ -4,6 +4,6 @@ module PageObjects
     element :street,   'input#street'
     element :line2,    'input#line2'
     element :region,   'input#region'
-    element :country,  'input#country'
+    element :country,  'select#country'
   end
 end
