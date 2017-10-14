@@ -67,6 +67,11 @@ describe 'Water page', type: :feature do
 
       context 'no permission or tickets on ether water or fishery' do
         it 'has no permission & tickets' do
+          water.permission_tickets = nil
+          water.save
+          @fishery.permission_tickets = nil
+          @fishery.save
+
           visit fishery_water_path @fishery, @fishery.waters.last
 
           expect(page).to_not have_content 'Permission & Tickets'

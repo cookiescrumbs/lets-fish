@@ -129,9 +129,10 @@ describe Water, type: :model do
 
     context 'fishery has permission and ticket details but water has none' do
       it 'return the permission info from the fishery' do
-       @water.fishery.permission_tickets = 'You can get a ticket to fish all the lochs'
-       @water.save
-       expect(@water.permission_tickets).to eql 'You can get a ticket to fish all the lochs'
+        @water.permission_tickets = nil
+        @water.fishery.permission_tickets = 'You can get a ticket to fish all the lochs'
+        @water.save
+        expect(@water.permission_tickets).to eql 'You can get a ticket to fish all the lochs'
       end
     end
 

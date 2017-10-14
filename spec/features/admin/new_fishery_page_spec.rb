@@ -1,6 +1,6 @@
 require_relative '../features_helper'
 
-describe 'New fishery page', type: :feature, focus: true do
+describe 'New fishery page', type: :feature do
   before(:each) do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
