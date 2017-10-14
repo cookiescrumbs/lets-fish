@@ -14,35 +14,30 @@ describe 'New fishery page', type: :feature, focus: true do
   let(:fishery_details){ @fishery_details }
 
   context 'form is filled out correctly' do
+
     before do
-      click_on 'Add a new fishery'
+      visit new_admin_fishery_path
 
       @fishery_details = FactoryGirl.build(:fishery)
 
-      fill_in 'Fishery Name', with: @fishery_details.name
+      fill_in 'fishery-name', with: @fishery_details.name
       fill_in 'fishery-description', with: @fishery_details.description
+      fill_in 'fishery-permission-tickets', with: @fishery_details.permission_tickets
+
+      fill_in 'contact-name', with: @fishery_details.contact_details.name
+      fill_in 'telephone', with: @fishery_details.contact_details.telephone
+      fill_in 'mobile', with: @fishery_details.contact_details.mobile
+      fill_in 'email', with: @fishery_details.contact_details.email
+      fill_in 'website', with: @fishery_details.contact_details.website
+
+      fill_in 'postcode', with: @fishery_details.address.postcode
+      fill_in 'street', with: @fishery_details.address.street
+      fill_in 'line2', with: @fishery_details.address.line2
+      fill_in 'region', with: @fishery_details.address.region
+
+      select 'Wales', from: 'fishery_address_attributes_country'
 
       click_on 'Submit fishery details'
-    #   @new_fishery = PageObjects::NewFishery.new
-
-    #   @new_fishery.load
-
-    #   @new_fishery.name.set                        @fishery_details.name
-
-    #   @new_fishery.contact_details.name.set        @fishery_details.contact_details.name
-    #   @new_fishery.contact_details.telephone.set   @fishery_details.contact_details.telephone
-    #   @new_fishery.contact_details.mobile.set      @fishery_details.contact_details.mobile
-    #   @new_fishery.contact_details.email.set       @fishery_details.contact_details.email
-    #   @new_fishery.contact_details.website.set     @fishery_details.contact_details.website
-
-    #   @new_fishery.address.postcode.set            @fishery_details.address.postcode
-    #   @new_fishery.address.street.set              @fishery_details.address.street
-    #   @new_fishery.address.line2.set               @fishery_details.address.line2
-    #   @new_fishery.address.region.set              @fishery_details.address.region
-    #   @new_fishery.address.country.set             @fishery_details.address.country
-
-    #   @new_fishery.submit.click
-
     end
 
     let(:fishery_details){ @fishery_details }
@@ -52,18 +47,20 @@ describe 'New fishery page', type: :feature, focus: true do
 
       expect(fishery.name).to eql fishery_details.name
       expect(fishery.description).to eql fishery_details.description
+      expect(fishery.permission_tickets).to eql fishery_details.permission_tickets
 
-    #   expect(contact_details.name).to       eql   @fishery_details.contact_details.name
-    #   expect(contact_details.telephone).to  eql   @fishery_details.contact_details.telephone
-    #   expect(contact_details.mobile).to     eql   @fishery_details.contact_details.mobile
-    #   expect(contact_details.email).to      eql   @fishery_details.contact_details.email
-    #   expect(contact_details.website).to    eql   @fishery_details.contact_details.website
+      expect(fishery.contact_details.name).to eql fishery_details.contact_details.name
+      expect(fishery.contact_details.telephone).to eql fishery_details.contact_details.telephone
+      expect(fishery.contact_details.mobile).to eql fishery_details.contact_details.mobile
+      expect(fishery.contact_details.email).to eql fishery_details.contact_details.email
+      expect(fishery.contact_details.website).to eql fishery_details.contact_details.website
 
-    #   expect(address.postcode).to           eql   @fishery_details.address.postcode
-    #   expect(address.street).to             eql   @fishery_details.address.street
-    #   expect(address.line2).to              eql   @fishery_details.address.line2
-    #   expect(address.region).to             eql   @fishery_details.address.region
-    #   expect(address.country).to            eql   @fishery_details.address.country
+      expect(fishery.address.postcode).to eql fishery_details.address.postcode
+      expect(fishery.address.street).to eql @fishery_details.address.street
+      expect(fishery.address.line2).to eql @fishery_details.address.line2
+      expect(fishery.address.region).to eql @fishery_details.address.region
+      expect(fishery.address.country).to eql 'Wales'
+
     end
 
     it 'creates a fishery and says a nice thing' do
@@ -71,16 +68,16 @@ describe 'New fishery page', type: :feature, focus: true do
     end
   end
 
-  # context "form is filled out incorrectly" do
+  context 'form is filled out incorrectly' do
 
-  #   before do
-  #       visit new_admin_fishery_path
-  #       click_on 'Submit'
-  #   end
+    before do
+        visit new_admin_fishery_path
+        click_on 'Submit fishery details'
+    end
 
-  #   it "shows a helpful validation messages for required fields" do
-  #     expect(page.find('.alert')).to have_content "1 error prohibited this fishery from being saved: Fishery name can't be blank"
-  #   end
+    it 'shows a helpful validation messages for required fields' do
+      expect(page.find('.alert')).to have_content "2 errors prohibited this fishery from being saved: Fishery name can't be blank Fishery description can't be blank"
+    end
 
-  # end
+  end
 end
