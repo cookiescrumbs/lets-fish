@@ -43,11 +43,11 @@ describe 'Manage your fishery', type: :feature do
     end
 
     it 'has a button to edit a water' do
-       expect(page.all('div.water').first).to have_link 'Edit details', href: edit_admin_fishery_water_path(fishery, first_water)
+      expect(page.all('div.water').first).to have_link 'Edit details', href: edit_admin_fishery_water_path(fishery, first_water)
     end
 
     it 'has not got a button to add a new fishery' do
-        expect(page).not_to have_link 'Add a new fishery', href: new_admin_fishery_path
+      expect(page).not_to have_link 'Add a new fishery', href: new_admin_fishery_path
     end
 
     it 'has not got a button to delete a fishery' do

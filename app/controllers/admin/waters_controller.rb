@@ -55,6 +55,7 @@ class Admin::WatersController < AdminController
       :name,
       :address,
       :description,
+      :permission_tickets,
       :published,
       :latitude,
       :longitude,

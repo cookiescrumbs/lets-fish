@@ -23,13 +23,17 @@
 
   <% if !@water.address.nil? %>
     <div class="form-group">
-      <label for="water_name">Water Address (added by Google reverse geolocation)</label>
+      <label for="water_address">Water Address (added by Google reverse geolocation)</label>
       <%= f.text_field :address, class: "form-control", placeholder: "Enter water address" %>
     </div>
   <% end %>
   <div class="form-group">
     <label for="description">Description</label>
-      <%= f.text_area :description, class: "form-control", rows: 10, cols: 25%>
+      <%= f.text_area :description, class: "form-control", rows: 10, cols: 25 %>
+  </div>
+  <div class="form-group">
+    <label for="permission_tickets">Permission &amp; Tickets</label>
+      <%= f.text_area :permission_tickets, class: "form-control", rows: 10, cols: 25 %>
   </div>
 
   <div class="form-group">

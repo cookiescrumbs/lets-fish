@@ -106,7 +106,7 @@ describe Water, type: :model do
     end
   end
 
-  describe 'hero image', focus: true do
+  describe 'hero image' do
 
     it 'returns the hero image' do
       @water.images = [
@@ -115,6 +115,34 @@ describe Water, type: :model do
         FactoryGirl.create(:image, hero: false)
      ]
       expect(@water.hero_image.image_file_name).to eql 'i-could-be-your-hero-baby.jpg'
+    end
+  end
+
+  describe 'permission & tickets' do
+    context 'water has permission and tickets details' do
+      it 'return the permission info for the water' do
+        @water.permission_tickets = 'You can get a ticket form the boat house'
+        @water.save
+        expect(@water.permission_tickets).to eql 'You can get a ticket form the boat house'
+      end
+    end
+
+    context 'fishery has permission and ticket details but water has none' do
+      it 'return the permission info from the fishery' do
+        @water.permission_tickets = nil
+        @water.fishery.permission_tickets = 'You can get a ticket to fish all the lochs'
+        @water.save
+        expect(@water.permission_tickets).to eql 'You can get a ticket to fish all the lochs'
+      end
+    end
+
+    context 'both fishery and water has no permission and ticket details' do
+      it 'return nil' do
+       @water.fishery.permission_tickets = nil
+       @water.permission_tickets = nil
+       @water.save
+       expect(@water.permission_tickets).to eql nil
+      end
     end
   end
 end

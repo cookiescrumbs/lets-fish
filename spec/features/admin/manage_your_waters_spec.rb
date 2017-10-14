@@ -7,7 +7,7 @@ describe 'Manage your waters page', type: :feature do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
 
-      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
 
       sign_in @fishery_manager
 
@@ -36,7 +36,7 @@ describe 'Manage your waters page', type: :feature do
     it 'can delete a water with a nice message' do
       first_water = page.all('.destroy').first
       expect { first_water.click }.to change(fishery.waters, :count).from(5).to(4)
-      expect(page.find('.alert')).to have_content "was successfully deleted"
+      expect(page.find('.alert')).to have_content 'was successfully deleted'
     end
 
     describe 'a water can be edited' do
@@ -59,6 +59,7 @@ describe 'Manage your waters page', type: :feature do
         edit_button.click
 
         fill_in 'water_name', with: 'loch dooooooon'
+        fill_in 'water_permission_tickets', with: 'You can now get your ticket from a car park.'
         # had to use find as the fields are hidden
         find('#latitude').set(-90)
         find('#longitude').set(-180)
@@ -78,6 +79,7 @@ describe 'Manage your waters page', type: :feature do
         expect(edited_water.species.length).to eql 2
         expect("#{edited_water.species.first.name} #{edited_water.species.last.name}").to eql "#{first_species_name.downcase} #{checked_species_name.downcase}"
         expect(page.find('.alert')).to have_content 'loch dooooooon was successfully updated.'
+        expect(edited_water.permission_tickets).to eql 'You can now get your ticket from a car park.'
         expect(edited_water.images.last.image_file_name).to eql 'another-loch.jpg'
         expect(edited_water.images.first.hero).to eql true
         expect(edited_water.images.last.hero).to eql false
@@ -114,21 +116,21 @@ describe 'Manage your waters page', type: :feature do
 
   context 'user is not logged in' do
 
-      before(:each) do
-        stub_google_geocode_lat_lng
-        stub_google_geocode_address
+    before(:each) do
+      stub_google_geocode_lat_lng
+      stub_google_geocode_address
 
-        @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
-      end
+      @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut',  auth: Rails.application.config.fishery_manager
+    end
 
-      let(:fishery) { @fishery_manager.fisheries.last}
-      let(:water) { @fishery_manager.fisheries.last.waters.last }
+    let(:fishery) { @fishery_manager.fisheries.last}
+    let(:water) { @fishery_manager.fisheries.last.waters.last }
 
 
-      it 'redirects them to the login page' do
-        visit edit_admin_fishery_water_path(fishery, water)
-        expect(page.current_url).to end_with new_user_session_path
-      end
+    it 'redirects them to the login page' do
+      visit edit_admin_fishery_water_path(fishery, water)
+      expect(page.current_url).to end_with new_user_session_path
+    end
 
   end
 end
