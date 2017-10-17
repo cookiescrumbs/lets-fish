@@ -7,6 +7,11 @@
             <li>
                 <a class="page-scroll" href="#waters">Waters</a>
             </li>
+             <% if @fishery.permission_tickets.present? %>
+                <li>
+                    <a class="page-scroll" href="#permission">Permission &amp; Tickets</a>
+                </li>
+            <% end %>
             <li>
                 <a class="page-scroll" href="#contact">Contact Details</a>
             </li>

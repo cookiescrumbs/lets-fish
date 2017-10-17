@@ -78,7 +78,7 @@
         </div>
     </section>
 <% end %>
-<% unless @water.negotiated_permission_tickets.blank? %>
+<% if @water.negotiated_permission_tickets.present? %>
     <section id="permission">
         <div class="container">
             <h4 class="m-bottom24">Permission &amp; Tickets</h4>

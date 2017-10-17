@@ -12,7 +12,7 @@
                     <a class="page-scroll" href="#photos">Photos</a>
                 </li>
             <% end %>
-            <% unless @water.permission_tickets.nil? %>
+            <% if @water.permission_tickets.present? %>
                 <li>
                     <a class="page-scroll" href="#permission">Permission &amp; Tickets</a>
                 </li>

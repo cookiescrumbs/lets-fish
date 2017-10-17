@@ -70,6 +70,14 @@
         </div>
     </div>
 </section>
+<% if @fishery.permission_tickets.present? %>
+<section id="permission">
+    <div class="container">
+        <h4 class="m-bottom24">Permission &amp; Tickets</h4>
+        <%= simple_format @fishery.permission_tickets %>
+    </div>
+</section>
+<% end %>
 <section id="contact">
     <div class="container">
         <h4>Contact Details</h4>
