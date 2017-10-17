@@ -62,7 +62,7 @@ class Water < ActiveRecord::Base
   end
 
   def negotiated_permission_tickets
-    self[:permission_tickets] || fishery.permission_tickets
+    self[:permission_tickets].present? ? self[:permission_tickets] : fishery.permission_tickets
   end
 
   private
