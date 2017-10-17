@@ -61,7 +61,7 @@ class Water < ActiveRecord::Base
     end.first
   end
 
-  def permission_tickets
+  def negotiated_permission_tickets
     self[:permission_tickets] || fishery.permission_tickets
   end
 

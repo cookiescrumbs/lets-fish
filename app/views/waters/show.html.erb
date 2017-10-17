@@ -78,11 +78,11 @@
         </div>
     </section>
 <% end %>
-<% unless @water.permission_tickets.nil? %>
+<% unless @water.negotiated_permission_tickets.blank? %>
     <section id="permission">
         <div class="container">
             <h4 class="m-bottom24">Permission &amp; Tickets</h4>
-            <%= simple_format @water.permission_tickets %>
+            <%= simple_format @water.negotiated_permission_tickets %>
         </div>
     </section>
 <% end %>

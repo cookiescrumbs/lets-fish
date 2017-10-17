@@ -123,7 +123,7 @@ describe Water, type: :model do
       it 'return the permission info for the water' do
         @water.permission_tickets = 'You can get a ticket form the boat house'
         @water.save
-        expect(@water.permission_tickets).to eql 'You can get a ticket form the boat house'
+        expect(@water.negotiated_permission_tickets).to eql 'You can get a ticket form the boat house'
       end
     end
 
@@ -132,7 +132,7 @@ describe Water, type: :model do
         @water.permission_tickets = nil
         @water.fishery.permission_tickets = 'You can get a ticket to fish all the lochs'
         @water.save
-        expect(@water.permission_tickets).to eql 'You can get a ticket to fish all the lochs'
+        expect(@water.negotiated_permission_tickets).to eql 'You can get a ticket to fish all the lochs'
       end
     end
 
@@ -141,7 +141,7 @@ describe Water, type: :model do
        @water.fishery.permission_tickets = nil
        @water.permission_tickets = nil
        @water.save
-       expect(@water.permission_tickets).to eql nil
+       expect(@water.negotiated_permission_tickets).to eql nil
       end
     end
   end

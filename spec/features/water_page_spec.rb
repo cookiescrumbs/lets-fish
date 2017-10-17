@@ -77,7 +77,6 @@ describe 'Water page', type: :feature do
           expect(page).to_not have_content 'Permission & Tickets'
         end
       end
-
     end
   end
 end
