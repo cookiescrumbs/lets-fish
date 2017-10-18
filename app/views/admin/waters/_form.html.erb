@@ -17,7 +17,7 @@
     </div>
   <% end %>
   <div class="form-group">
-    <label for="water_name">Water Name</label>
+
     <%= f.text_field :name, class: "form-control", placeholder: "Enter water name" %>
   </div>
 
@@ -50,6 +50,9 @@
     <%= builder.check_box :hero %>
     <%= builder.label :hero, 'Hero Image'%>
     <%= builder.file_field :image, type: :file %>
+    <%= builder.label :geograph_photo_id, 'Geograph ID' %>
+    <br />
+    <%= builder.text_field :geograph_photo_id, class: "form-control", placeholder: "" %>
     <br />
     <hr />
     <% end %>

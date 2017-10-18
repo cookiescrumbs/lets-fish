@@ -2,8 +2,8 @@ class Admin::WatersController < AdminController
 
   before_action :authenticate_user!
 
-  before_action :set_fishery, only: [:index, :new, :update, :create, :edit, :destroy]
-  before_action :set_water, only: [:edit, :update, :destroy]
+  before_action :set_fishery, only: %i[index new update create edit destroy]
+  before_action :set_water, only: %i[edit update destroy]
 
   def index
     flash.now[:notice] = 'There are no waters associated with this fishery. Please add a water.' if @fishery.waters.empty?
@@ -62,7 +62,7 @@ class Admin::WatersController < AdminController
       :annotation,
       :water_type_id,
       species_ids: [],
-      images_attributes: [:id, :image, :hero, :_destroy]
+      images_attributes: %i[id image hero geograph_photo_id _destroy]
     )
   end
 
