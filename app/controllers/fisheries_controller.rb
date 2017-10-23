@@ -1,4 +1,6 @@
 class FisheriesController < ApplicationController
+  include Lets
+
   before_action :set_fishery, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_water, only: [:show]
@@ -22,7 +24,8 @@ class FisheriesController < ApplicationController
 
   def set_water
     redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.last
-    @water = Fishery.friendly.find(params[:id]).waters.sample
+    fishery_slug = params[:id]
+    @water = Lets::Waters.random_from fishery_slug
   end
 
   # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
