@@ -22,7 +22,7 @@ class FisheriesController < ApplicationController
 
   def set_water
     redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.last
-    @water = Fishery.friendly.find(params[:id]).waters.last
+    @water = Fishery.friendly.find(params[:id]).waters.sample
   end
 
   # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
