@@ -2,7 +2,6 @@ class FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_water, only: [:show]
-  before_action :set_photos, only: [:show]
   before_action :set_image_attribution, only: [:show]
   before_action :set_species, only: [:show]
   before_action :set_water_types, only: [:show]
@@ -11,14 +10,6 @@ class FisheriesController < ApplicationController
   def show; end
 
   private
-
-  def set_photos
-    @photos = InstagramService::photos_by tag: tag
-  end
-
-  def tag
-    'letsfish' + Fishery.friendly.find(params[:id]).name.delete(' ')
-  end
 
   def set_fishery
     @fishery = Fishery.friendly.find(params[:id])
