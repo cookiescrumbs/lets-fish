@@ -7,10 +7,12 @@ $(document).ready(function () {
         style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         position: google.maps.ControlPosition.LEFT_BOTTOM,
         mapTypeIds: [
+          google.maps.MapTypeId.HYBRID,
           google.maps.MapTypeId.SATELLITE,
           google.maps.MapTypeId.ROADMAP
         ]
-      }
+      },
+      mapTypeId: google.maps.MapTypeId.HYBRID
     },
     markers = [],
     mapElement = document.getElementById('map'),
