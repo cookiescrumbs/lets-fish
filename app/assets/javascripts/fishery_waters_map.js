@@ -121,7 +121,6 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         searchResults(data);
-        $('#loading').remove();
       },
       failure: function (errMsg) {
         alert(errMsg);
