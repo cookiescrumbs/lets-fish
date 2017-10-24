@@ -19,7 +19,7 @@ $(document).ready(function () {
     zoom = getZoom(),
     lat = getLat(),
     lng = getLng();
-  slug = getSlug();
+    slug = getSlug();
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
 
@@ -85,6 +85,7 @@ $(document).ready(function () {
     var results = searchResults.results;
     addMarkers(markers);
     addResultsToPage(results);
+
   }
 
   function initialMarkers(searchResults) {
@@ -120,6 +121,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         searchResults(data);
+        $('#loading').remove();
       },
       failure: function (errMsg) {
         alert(errMsg);
