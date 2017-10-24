@@ -11,8 +11,6 @@
 // about supported directives.
 //= require jquery.easing.min
 //= require bootstrap.min
-//= require classie
-//= require cbpAnimatedHeader
 //= require navigation
 //= require fishery_waters_map
 //= require weather
