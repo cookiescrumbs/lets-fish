@@ -1,12 +1,9 @@
 class WatersController < ApplicationController
   include Lets
   before_action :set_water, only: [:show]
-  before_action :set_navigation, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
-  before_action :set_photos, only: [:show]
   before_action :set_species, only: [:show]
-  before_action :set_image_attribution, only: [:show]
   before_action :set_meta, only: [:show]
 
   def show
@@ -17,18 +14,6 @@ class WatersController < ApplicationController
   end
 
   private
-
-  def set_navigation
-    @how_it_works = 'hide';
-  end
-
-  def set_photos
-    @photos = InstagramService::photos_by tag: tag
-  end
-
-  def tag
-    'letsfish' + Water.friendly.find(params[:id]).name.delete(' ')
-  end
 
   def set_water
     @water = Water.friendly.find(params[:id])
@@ -45,24 +30,6 @@ class WatersController < ApplicationController
 
   def set_species
     @species = Water.friendly.find(params[:id]).species.select(:name).distinct
-  end
-
-  # add this stuff to the image model
-  def set_image_attribution
-    return unless first_image? && geograph_photo_id?
-    @image_attribution = GeographService.user_attribution_from geograph_photo_id
-  end
-
-  def first_image?
-    !Water.friendly.find(params[:id]).images.first.nil?
-  end
-
-  def geograph_photo_id
-    Water.friendly.find(params[:id]).images.first.geograph_photo_id
-  end
-
-  def geograph_photo_id?
-    !Water.friendly.find(params[:id]).images.first.geograph_photo_id.nil?
   end
 
   def set_meta

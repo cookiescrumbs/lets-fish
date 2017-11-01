@@ -6,5 +6,6 @@ FactoryGirl.define do
     image_content_type { 'image/jpeg' }
     image_file_size { 1_973_208 }
     geograph_photo_id { 123_456 }
+    attribution { '{}' }
   end
 end

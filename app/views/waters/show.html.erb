@@ -1,6 +1,6 @@
 <%= render 'shared/navigation' %>
 <header>
-    <% unless @water.hero_image.nil? %>
+    <% if @water.hero_image.present? %>
         <picture>
     <!--lg 1908x480-->
     <!--md 1440x362-->
@@ -24,13 +24,13 @@
                 </div>
             </div>
         </div>
-    <% if !@image_attribution.blank? %>
+    <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
         <div class="attribution">
             Image &copy; Copyright
-            <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+            <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
             and licensed for reuse under this
-            <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
-            <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
+            <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
+            <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
         </div>
     <% end %>
     </div>

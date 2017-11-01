@@ -38,6 +38,7 @@ end
 
   get '/your/fishery', to: 'admin/fisheries#index'
 
+  get '/image/attribution', to: 'image#attribution'
   get 'weather', to: 'weather#forecast'
   get 'search',  to: 'search#index'
 

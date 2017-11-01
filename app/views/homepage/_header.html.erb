@@ -1,5 +1,5 @@
 <header>
-    <% unless @water.hero_image.nil? %>
+    <% if @water.hero_image.present? %>
         <picture>
     <!--lg 1908x480-->
     <!--md 1440x362-->
@@ -20,6 +20,15 @@
                 <div class="intro-lead-in">Find wild places to catch wild fish</div>
             </div>
         </div>
+        <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
+            <div class="attribution">
+                Image &copy; Copyright
+                <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
+                and licensed for reuse under this
+                <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
+                <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
+            </div>
+        <% end %>
     </div>
 </header>
 <div id="suggested-search"></div>
