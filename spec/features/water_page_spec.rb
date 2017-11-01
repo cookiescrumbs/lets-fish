@@ -47,6 +47,7 @@ describe 'Water page', type: :feature do
         it 'has details of where to get permission or a ticket' do
           water.permission_tickets = 'You can get a ticket at the Old Cock and Balls pub.'
           water.save
+
           visit fishery_water_path @fishery, @fishery.waters.last
 
           expect(page).to have_content 'You can get a ticket at the Old Cock and Balls pub.'

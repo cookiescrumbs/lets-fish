@@ -52,8 +52,10 @@
     <%= builder.file_field :image, type: :file %>
     <%= builder.label :geograph_photo_id, 'Geograph ID' %>
     <br />
-    <%= builder.text_field :geograph_photo_id, class: "form-control", placeholder: "" %>
+    <%= builder.text_field :geograph_photo_id, class: 'form-control photo-id' %>
     <br />
+    <%= builder.hidden_field :attribution, class: 'form-control att' %>
+    <div class="attribution-example"></div>
     <hr />
     <% end %>
 

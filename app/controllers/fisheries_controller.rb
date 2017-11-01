@@ -4,7 +4,6 @@ class FisheriesController < ApplicationController
   before_action :set_fishery, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_water, only: [:show]
-  before_action :set_image_attribution, only: [:show]
   before_action :set_species, only: [:show]
   before_action :set_water_types, only: [:show]
   before_action :set_meta, only: [:show]
@@ -23,7 +22,6 @@ class FisheriesController < ApplicationController
   end
 
   def set_water
-    redirect_to '/' unless Fishery.friendly.find(params[:id]).waters.last
     fishery_slug = params[:id]
     @water = Lets::Waters.random_from fishery_slug
   end
@@ -38,26 +36,6 @@ class FisheriesController < ApplicationController
     @water_types = Fishery.friendly.find(params[:id]).water_types
   end
 
-  # Add this stuff to the image model
-  def set_image_attribution
-    return unless first_image? && geograph_photo_id?
-    @image_attribution = GeographService.user_attribution_from geograph_photo_id
-  end
-
-  def first_image?
-    if @water.nil?
-      return false
-    end
-    !@water.images.first.blank?
-  end
-
-  def geograph_photo_id
-    @water.images.first.geograph_photo_id
-  end
-
-  def geograph_photo_id?
-    !@water.images.first.geograph_photo_id.blank?
-  end
 
   def set_meta
     fishery = Fishery.friendly.find(params[:id])

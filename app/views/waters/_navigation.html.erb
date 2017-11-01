@@ -7,7 +7,7 @@
             <li>
                 <a class="page-scroll" href="#location">Water map</a>
             </li>
-            <% if !@photos.empty? %>
+            <% unless @water.images_without_hero.empty? %>
                 <li>
                     <a class="page-scroll" href="#photos">Photos</a>
                 </li>
