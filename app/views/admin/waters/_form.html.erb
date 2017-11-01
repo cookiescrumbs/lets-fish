@@ -55,7 +55,14 @@
     <%= builder.text_field :geograph_photo_id, class: 'form-control photo-id' %>
     <br />
     <%= builder.hidden_field :attribution, class: 'form-control att' %>
-    <div class="attribution-example"></div>
+    <div class="attribution-example">
+        <% if builder.object.attribution.present? %>
+            <strong>Attribution from Geograph:</strong>
+            Image &copy; Copyright <a href="<%= builder.object.attribution['profile_url'] %>"><%= builder.object.attribution['name'] %></a>
+            and licensed for reuse under this <a href="<%= builder.object.attribution['licence'] %>">Creative Commons Licence</a>
+            <a href="<%= builder.object.attribution['photo_url'] %>">More information about this image at Geograph</a>.
+        <% end %>
+    </div>
     <hr />
     <% end %>
 
