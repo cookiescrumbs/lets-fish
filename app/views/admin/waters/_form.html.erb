@@ -54,7 +54,7 @@
     <br />
     <%= builder.text_field :geograph_photo_id, class: 'form-control photo-id' %>
     <br />
-    <%= builder.hidden_field :attribution, class: 'form-control att' %>
+    <%= builder.hidden_field :attribution, class: 'form-control att', value: builder.object.attribution.to_json %>
     <div class="attribution-example">
         <% if builder.object.attribution.present? %>
             <strong>Attribution from Geograph:</strong>
