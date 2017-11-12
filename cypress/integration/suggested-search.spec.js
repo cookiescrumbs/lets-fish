@@ -1,8 +1,21 @@
+import suggestions from '../fixtures/suggestions';
+
 describe('Suggested Search', () => {
-  it('loads suggestions when users starts to type', () => {
-    cy.visit('http://localhost:5000')
+
+  beforeEach(() => {
+    cy.server()
+    cy.route('GET', '/search/suggested', suggestions)
+    cy.visit('/')
     cy.get('#suggested-search input')
       .type('en')
-    cy.get('#search-results-list a').should('have.length.greaterThan', 1)
+  });
+
+  it('Loads suggestions when users starts to type', () => {
+    cy.get('#search-results-list a').should('have.length', 2)
+  });
+
+  it('Allows user to navigate to a suggested water', () => {
+    cy.contains(suggestions[0].name).click()
+    cy.url().should('contain', suggestions[0].url)
   });
 });
