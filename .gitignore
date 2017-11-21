@@ -38,3 +38,4 @@ logfile
 env.sh
 .env
 
+/node_modules
