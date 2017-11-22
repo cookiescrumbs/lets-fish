@@ -42,7 +42,7 @@ gem 'heroku-deflater', :group => :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rubocop', require: false
+  gem 'rubocop','~>0.51.0', require: false
 end
 
 group :test do
