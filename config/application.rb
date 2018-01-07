@@ -12,10 +12,13 @@ module LetsFish
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    config.middleware.insert_before 0, Rack::Cors do
+     # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+    config.action_controller.asset_host = "http://dur8xuaowfaya.cloudfront.net"
+
+    config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        origins "http://dur8xuaowfaya.cloudfront.net"
+        resource '*', :headers => :any, :methods => [:get, :options]
       end
     end
 
