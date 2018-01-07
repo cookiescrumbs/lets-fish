@@ -19,7 +19,7 @@ LetsFish::Application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = true
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -29,6 +29,8 @@ LetsFish::Application.configure do
 
   # cache static assets for 30 days - 2592000 seconds
   config.public_file_server.headers = {
+    'Access-Control-Allow-Origin' => ENV['ASSET_HOST'],
+    'Access-Control-Request-Method' => %w{GET OPTIONS}.join(","),
     'Cache-Control' => 'public, max-age=2592000',
     'Expires' => "#{1.year.from_now.to_formatted_s (:rfc822)}"
   }
