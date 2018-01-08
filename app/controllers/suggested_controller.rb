@@ -7,4 +7,14 @@ class SuggestedController < ApplicationController
     @fisheries = Lets::Fisheries::all
     render 'all'
   end
+
+  def waters
+    @waters = Lets::Waters::all
+    render 'waters'
+  end
+
+  def fisheries
+    @fisheries = Lets::Fisheries::all
+    render 'fisheries'
+  end
 end
