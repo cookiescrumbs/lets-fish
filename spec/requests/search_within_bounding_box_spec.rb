@@ -16,7 +16,7 @@ describe 'Search within bounding box', type: :request do
       23,
       latitude: 53.501942,
       longitude: -2.245983,
-      species: [ Species.last ],
+      species: [Species.last],
       water_type_id: WaterType.first.id,
     )
   end
