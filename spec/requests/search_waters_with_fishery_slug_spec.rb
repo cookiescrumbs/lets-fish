@@ -1,4 +1,4 @@
-describe 'Search waters', type: :request do
+describe 'Search waters with fishery slug', type: :request do
   context 'fishery with published waters' do
     before(:each) do
       stub_google_geocode_lat_lng
