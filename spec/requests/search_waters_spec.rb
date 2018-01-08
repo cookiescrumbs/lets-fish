@@ -1,4 +1,4 @@
-describe 'Search', type: :request do
+describe 'Search waters', type: :request do
   context 'fishery with published waters' do
     before(:each) do
       stub_google_geocode_lat_lng
@@ -6,7 +6,7 @@ describe 'Search', type: :request do
       @fishery = FactoryGirl.create_list(:fishery_with_waters, 5, published: true)
     end
 
-    it 'GET /search/waters with slug' do
+    it 'GET /search/waters with fishery slug' do
       params = {
         slug: @fishery.first.slug
       }
@@ -25,7 +25,7 @@ describe 'Search', type: :request do
       @fishery = FactoryGirl.create_list(:fishery_with_waters, 5, published: false)
     end
 
-    it 'GET /search/waters with slug' do
+    it 'GET /search/waters with fishery slug' do
       params = {
         slug: @fishery.first.slug
       }
