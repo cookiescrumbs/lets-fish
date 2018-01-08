@@ -3,6 +3,7 @@ class SearchController < ApplicationController
   include Lets
 
   def index
+  end
 
   def within_bounding_box
     waters = Water.where(published: true).includes(:fishery).where('fisheries.published' => true).within_bounding_box(bounds).limit 20 unless bounds.nil?
