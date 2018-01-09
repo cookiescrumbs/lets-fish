@@ -36,6 +36,10 @@ end
   get '/destinations',  to: 'browse_destinations#index'
   get '/sitemaps',        to: 'sitemaps#index'
 
+  get 'suggested/all', to: 'suggested#all'
+  get 'suggested/waters', to: 'suggested#waters'
+  get 'suggested/fisheries', to: 'suggested#fisheries'
+
   get '/your/fishery', to: 'admin/fisheries#index'
 
   get '/image/attribution', to: 'image#attribution'

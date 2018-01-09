@@ -2,9 +2,6 @@ class SearchController < ApplicationController
   respond_to :json
   include Lets
 
-  def index
-  end
-
   def within_bounding_box
     waters = Water.where(published: true).includes(:fishery).where('fisheries.published' => true).within_bounding_box(bounds).limit 20 unless bounds.nil?
     @markers = waters
@@ -18,12 +15,6 @@ class SearchController < ApplicationController
     @markers = waters
     @results = waters
     render 'search'
-  end
-
-  def suggested
-    @waters = Lets::Waters::all
-    @fisheries = Lets::Fisheries::all
-    render 'suggested'
   end
 
   private
