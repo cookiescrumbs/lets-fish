@@ -1,13 +1,20 @@
 LetsFish::Application.routes.draw do
 
-require 'sidekiq/web'
-mount Sidekiq::Web => '/sidekiq'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
-devise_for :users
+  devise_for :users
 
-as :user do
-  get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
-end
+  as :user do
+    get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
+  end
+
+  #api
+  namespace :api do
+    scope module: :v1 do
+      post '/water/fishery/:slug', to: 'waters#create'
+    end
+  end
 
   namespace :admin do
     resources :water_types
@@ -46,13 +53,6 @@ end
   get 'weather', to: 'weather#forecast'
   get 'search',  to: 'search#index'
 
-
-  #api
-  namespace :api do
-    namespace :v1 do
-      resources :waters, only: [:create]
-    end
-  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
