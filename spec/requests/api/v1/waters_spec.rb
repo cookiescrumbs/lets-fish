@@ -3,7 +3,11 @@ describe Api::V1, type: :request do
   describe 'Waters' do
 
     before(:each) do
+      # stub for when the fishery is created
       stub_google_geocode_address
+      # stub for when the water is created
+      stub_google_geocode_lat_lng
+
       species = FactoryGirl.create :species
       water_type = FactoryGirl.create :water_type
       @fishery = FactoryGirl.create :fishery
