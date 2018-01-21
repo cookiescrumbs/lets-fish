@@ -3,7 +3,7 @@ FactoryGirl.define do
     name { Array(1..3).map { Faker::Lorem.word }.join(' ') }
     description { Faker::Lorem.paragraph(4) }
     permission_tickets { Faker::Lorem.paragraph }
-    slug { name }
+    slug { nil&.(name.parameterize) }
     address { create(:address) }
     contact_details { create(:contact_details) }
     published { true }
