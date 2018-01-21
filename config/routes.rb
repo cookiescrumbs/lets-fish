@@ -46,6 +46,14 @@ end
   get 'weather', to: 'weather#forecast'
   get 'search',  to: 'search#index'
 
+
+  #api
+  namespace :api do
+    namespace :v1 do
+      resources :waters, only: [:create]
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
