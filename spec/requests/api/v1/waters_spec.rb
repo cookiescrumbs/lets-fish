@@ -1,7 +1,5 @@
 describe Api::V1, type: :request do
-
   describe 'Waters' do
-
     before(:each) do
       # stub for when the fishery is created
       stub_google_geocode_address
@@ -31,18 +29,30 @@ describe Api::V1, type: :request do
     let(:fishery_slug) { @fishery.slug }
     let(:fishery_name) { @fishery.name }
 
-    it 'POST /water/fishery/#slug' do
-      post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
+    context 'request has required water parameter' do
+      it 'POST /water/fishery/#slug' do
+        post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
 
-      expect(response).to be_success
-      expect(response.status).to eql 200
-      expect(response.body).to include "Successfully added #{water_name} to #{fishery_name}"
-      expect(response.body).to include(
-        water_name,
-        water_description,
-        latitude,
-        longitude
-      )
+        expect(response).to be_success
+        expect(response.status).to eql 200
+        expect(response.body).to include "Successfully added #{water_name} to #{fishery_name}"
+        expect(response.body).to include(
+          water_name,
+          water_description,
+          latitude,
+          longitude
+        )
+      end
+    end
+
+    context 'request is missing some required water parameter' do
+      it 'POST /water/fishery/#slug' do
+        @params[:water][:name] = nil
+        post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
+
+        expect(response.status).to eql 500
+        expect(response.body).to include 'error','waters','is invalid'
+      end
     end
   end
 end
