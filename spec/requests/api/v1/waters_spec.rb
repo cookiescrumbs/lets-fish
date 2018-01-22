@@ -30,8 +30,7 @@ describe Api::V1, type: :request do
     let(:fishery_name) { @fishery.name }
 
     context 'request has required water parameter' do
-      it 'POST /water/fishery/#slug' do
-        pp JSON.parse(@params)
+      it 'POST /water/fishery/:slug' do
 
         post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
 
