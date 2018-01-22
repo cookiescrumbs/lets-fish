@@ -3,7 +3,7 @@
 module Api
   module V1
     class ApiApplicationController < ActionController::Base
-      protect_from_forgery with: :null_session
+      # protect_from_forgery with: :null_session
 
       before_action :destroy_session
 

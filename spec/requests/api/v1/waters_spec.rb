@@ -1,5 +1,5 @@
 describe Api::V1, type: :request do
-  describe 'Waters' do
+  describe 'Waters', focus: true do
     before(:each) do
       # stub for when the fishery is created
       stub_google_geocode_address
@@ -31,6 +31,8 @@ describe Api::V1, type: :request do
 
     context 'request has required water parameter' do
       it 'POST /water/fishery/#slug' do
+        pp JSON.parse(@params)
+
         post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
 
         expect(response).to be_success

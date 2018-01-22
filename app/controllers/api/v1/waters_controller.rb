@@ -3,6 +3,8 @@
 module Api
   module V1
     class WatersController < Api::V1::ApiApplicationController
+      # protect_from_forgery with: :null_session
+
       before_action :set_fishery, only: %i[create]
 
       def create
