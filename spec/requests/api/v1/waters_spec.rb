@@ -1,5 +1,5 @@
 describe Api::V1, type: :request do
-  describe 'Waters', focus: true do
+  describe 'Waters' do
     before(:each) do
       # stub for when the fishery is created
       stub_google_geocode_address
