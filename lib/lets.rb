@@ -5,7 +5,7 @@ module Lets
     end
 
     def self.all
-      Fishery.where(published: true).includes(:waters).where.not('waters.id' => nil).order(name: :asc)
+      Fishery.where(published: true).includes(:waters).where.not('waters.id' => nil).where('waters.published' => true).order(name: :asc)
     end
   end
 
