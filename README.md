@@ -153,7 +153,7 @@ GOOGLE_API_KEY_BROWSER=xxxxxx
 INSTAGRAM_API_KEY=xxxx
 ```
 
-Start Redis 
+Start Redis
 
 ```redis-server /usr/local/etc/redis.conf```
 
@@ -165,7 +165,7 @@ Start let's fish, run foreman from the root folder
 
 ```foreman start```
 
-Foreman will pick up the .env file :) 
+Foreman will pick up the .env file :)
 
 
 ![Alt text](https://ih0.redbubble.net/image.258461906.4511/sticker,375x360.u3.png "Member?")
@@ -187,5 +187,12 @@ Member to use ``` asset_path () ``` and change the css file from ```.css to .css
 
 [Domain model](https://github.com/cookiescrumbs/lets-fish/blob/master/erd.pdf)
 
-### 
+###
+
+### App requirements
+
+proj is used to calculate and convert the lat,lng from a OS grid ref. It is a requirement of the global_convert gem, which is a requirement of the Northern Pike gem.
+
+```brew install proj```
+
 
