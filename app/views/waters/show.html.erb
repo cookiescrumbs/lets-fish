@@ -14,6 +14,20 @@
             <!--[if lte IE 9]></video><![endif]-->
             <img srcset="<%= @water.hero_image.image.url(:lg) %>" alt="" style="height: auto;">
         </picture>
+    <% else %>
+        <picture>
+    <!--lg 1908x480-->
+    <!--md 1440x362-->
+    <!--sm 991x300-->
+    <!--xs 479x300-->
+            <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+            <source srcset="<%= image_url('missing.png') %>" media="(min-width: 1400px)">
+            <source srcset="<%= image_url('missing.png') %>" media="(min-width: 992px)">
+            <source srcset="<%= image_url('missing.png') %>" media="(min-width: 480px) and (max-width: 991px)">
+            <source srcset="<%= image_url('missing.png') %>" media="(max-width: 479px)">
+            <!--[if lte IE 9]></video><![endif]-->
+            <img srcset="<%= image_url('missing.png') %>" alt="" style="height: auto;">
+        </picture>
     <% end %>
     <div class="image-trans">
         <div class="container col-md-offset-2 col-md-8">

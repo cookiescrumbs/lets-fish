@@ -37,7 +37,7 @@
                     <% fishery.waters.each do | water | %>
                         <div class="water col-md-4 col-sm-12 explore-item">
                               <div class="image-background">
-                               <% image_src = (water.images.first)? water.images.first.image.url(:thumb) : '/images/mountains.png' %>
+                               <% image_src = (water.images.first)? water.images.first.image.url(:thumb) : image_url('missing.png') %>
                                 <img src="<%= image_src %>" class="img-responsive img-centered" alt="<%= water.name %>">
                               </div>
                             <div class="explore-caption border-none">
