@@ -36,7 +36,7 @@ class GeographService
     info['id'] = item['guid']
     info['title'] = item['title']
     info['file_name'] = "geograph-#{info['id']}-by-#{info['author'].tr(' ','-')}"
-    info['sizes'] = ['original','1024', '800', '640']
+    info['sizes'] = %w[original 1024 800 640]
     info
   end
 end
