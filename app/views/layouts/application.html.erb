@@ -31,7 +31,7 @@
     <%= yield %>
     <%= render 'cookies_eu/consent_banner' %>
     <%= render 'shared/footer' %>
-<%= javascript_include_tag "application", params[:controller], "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws&libraries=places,drawing", "data-turbolinks-track" => false%>
+    <%= javascript_include_tag "application", params[:controller], "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws&libraries=places,drawing", "data-turbolinks-track" => false %>
 </body>
 </html>
 
