@@ -14,8 +14,11 @@ namespace :geograph do
       [*0..3].each do |n|
         photo_info = GeographService.photo_by_location location: loch_location, position: n
         break if photo_info.nil?
-        file_name = "#{photo_info['title'].split(':')[1].strip.tr(' ', '-').downcase}-#{photo_info['file_name']}"
-        IO.copy_stream((open(photo_info['download']) unless photo_info.empty?), Dir.pwd + "/lib/tasks/water_images/#{folder_name}/#{file_name}.jpg")
+        %w[small original].each do |photo_size|
+          file_name = "#{photo_info['title'].split(':')[1].strip.tr(' ', '-').downcase}-#{photo_info['file_name']}-#{photo_size}"
+          open_file_from_url = photo_size == 'small' ? photo_info['download'] : "#{photo_info['download']}&size=original"
+          IO.copy_stream((open(open_file_from_url) unless photo_info.empty?), Dir.pwd + "/lib/tasks/water_images/#{folder_name}/#{file_name}.jpg")
+        end
       end
     end
   end
