@@ -1,0 +1,15 @@
+<% if @water.hero_image.present? %>
+    <picture>
+<!--lg 1908x480-->
+<!--md 1440x362-->
+<!--sm 991x300-->
+<!--xs 479x300-->
+        <!--[if lte IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="<%= @water.hero_image.image.url(:lg) %>" media="(min-width: 1400px)">
+        <source srcset="<%= @water.hero_image.image.url(:md) %>" media="(min-width: 992px)">
+        <source srcset="<%= @water.hero_image.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
+        <source srcset="<%= @water.hero_image.image.url(:thumb) %>" media="(max-width: 479px)">
+        <!--[if lte IE 9]></video><![endif]-->
+        <img srcset="<%= @water.hero_image.image.url(:lg) %>" alt="<%= @water.name %>" >
+    </picture>
+<% end %>
