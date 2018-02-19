@@ -14,7 +14,7 @@ class Image < ActiveRecord::Base
 
   has_attached_file :image,
                     styles: {
-                      lg: '1908',
+                      lg: '1908x650',
                       md: '1440',
                       sm: '991',
                       xs: '479',
