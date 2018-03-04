@@ -35,13 +35,15 @@ LetsFish::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
-  get '/add/water/:id',   to: 'homepage#new_water'
   get 'search/within-bounding-box', to: 'search#within_bounding_box'
   get 'search/waters', to: 'search#waters'
   get 'search/suggested', to: 'search#suggested'
   get '/waters',  to: 'browse_waters#index'
   get '/destinations',  to: 'browse_destinations#index'
   get '/sitemaps',        to: 'sitemaps#index'
+
+  get '/search',  to: 'search#index'
+  get '/weather', to: 'weather#forecast'
 
   get 'suggested/all', to: 'suggested#all'
   get 'suggested/waters', to: 'suggested#waters'
@@ -50,9 +52,8 @@ LetsFish::Application.routes.draw do
   get '/your/fishery', to: 'admin/fisheries#index'
 
   get '/image/attribution', to: 'image#attribution'
-  get 'weather', to: 'weather#forecast'
-  get 'search',  to: 'search#index'
 
+  get '/:destination', to: 'search#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
