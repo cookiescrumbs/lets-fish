@@ -26,6 +26,5 @@ module LetsFish
     config.i18n.enforce_available_locales = true
     config.admin = 'admin'
     config.fishery_manager = 'fishery manager'
-    config.active_job.queue_adapter = :sidekiq
-  end
+   end
 end
