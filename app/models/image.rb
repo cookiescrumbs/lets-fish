@@ -12,16 +12,14 @@ class Image < ActiveRecord::Base
   #geograph_photo_id
   #attribution
 
-  # Removed in favour of using the image service
-  has_attached_file :image
-
-  #  styles: {
-  #               lg: '1908x650',
-  #               md: '1440',
-  #               sm: '991',
-  #               xs: '479',
-  #               thumb: '650x350#'
-  #             }
+  has_attached_file :image,
+                    styles: {
+                      lg: '1908x650',
+                      md: '1440',
+                      sm: '991',
+                      xs: '479',
+                      thumb: '650x350#'
+                    }
   # process_in_background :image
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
