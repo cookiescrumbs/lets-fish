@@ -1,8 +1,5 @@
 LetsFish::Application.routes.draw do
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
-
   devise_for :users
 
   as :user do
