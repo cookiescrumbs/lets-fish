@@ -3,11 +3,13 @@
     @water.hero_image.image.url(:original),
     {
       widths: [465, 645, 725, 965, 1065, 1225, 1920],
-      w: 1920 ,
-      fit: 'max',
-      auto: 'format',
-      usm: 12,
-      q: 55, alt: 'blah blah'
+      w: 1920,
+      h: 550
+      fit: 'crop',
+      crop: 'edges',
+      auto: 'enhance',
+      alt: @water.name
     })
    %>
+<%# https://letsfish.imgix.net/images/images/000/000/297/original/IMG_0367.jpg?1526935221?ixlib=rails-2.1.4&auto=enhance&w=1920&h=550&fit=crop&crop=edges %>
 <% end %>
