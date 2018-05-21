@@ -1,4 +1,13 @@
 <% if @water.hero_image.present? %>
-<%= ix_image_tag(@water.hero_image.image.url(:original), { w: 300, h: 500, fit: 'crop', crop: 'right', alt: 'A hot air balloon on a sunny day' }) %>
-
+  <%= ix_image_tag(
+    @water.hero_image.image.url(:original),
+    {
+      widths: [465, 645, 725, 965, 1065, 1225, 1920],
+      w: 1920 ,
+      fit: 'max',
+      auto: 'format',
+      usm: 12,
+      q: 55, alt: 'blah blah'
+    })
+   %>
 <% end %>
