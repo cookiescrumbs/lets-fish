@@ -3,8 +3,6 @@
 Let's Fish
 ================
 
-Hi
-
 A website for finding places to go fly fishing.
 
 
