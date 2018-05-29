@@ -2,14 +2,14 @@
 <%
   image_src = "https://#{Rails.application.config.imgix[:source]}#{@water.hero_image.image.path(:original)}"
 %>
-  <img alt="<%= @water.name %>" srcset="<%=image_src%>?auto=enhance&amp;fit=clip&amp;w=465 465w,
-  <%=image_src%>?auto=enhance&amp;fit=clip&amp;w=645 645w,
-  <%=image_src%>?auto=enhance&amp;fit=clip&amp;w=725 725w,
-  <%=image_src%>?auto=enhance&amp;fit=clip&amp;w=965 965w,
-  <%=image_src%>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
-  <%=image_src%>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
-  <%=image_src%>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
+  <img alt="<%= @water.name %>" srcset="
+  <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
+  <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=725&amp;h=725  725w,
+  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=965 965w,
+  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
+  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
+  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
   sizes="100vw"
-  src="<%=image_src%>?auto=enhance&amp;fit=clip %>"
+  src="<%= image_src %>?auto=enhance&amp;fit=clip %>"
 >
 <% end %>
