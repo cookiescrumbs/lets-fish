@@ -1,6 +1,6 @@
-<% if @water.hero_image.present? %>
 <%
-  image_src = "https://#{Rails.application.config.imgix[:source]}#{@water.hero_image.image.path(:original)}"
+  image_src = (@water.hero_image.present?)? @water.hero_image.image.path(:original): '/images/missing.png'
+  image_src = "https://#{Rails.application.config.imgix[:source]}#{image_src}"
 %>
   <img alt="<%= @water.name %>" srcset="
   <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
@@ -12,4 +12,3 @@
   sizes="100vw"
   src="<%= image_src %>?auto=enhance&amp;fit=clip %>"
 >
-<% end %>
