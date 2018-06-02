@@ -14,9 +14,11 @@ count = locals[:count]
         </div>
     </div>
     <div>
-            <div class="image-background">
-                <img src="<%= water.images.first.image.url(:thumb) %>" class="img-responsive img-centered" alt="<%= water.name %>">
-            </div>
+        <div class="image-background">
+            <% image_styles = (water.images.first)? '' : 'missing-image max-width-54 p-top5 p-bottom5' %>
+            <% image_src = (water.images.first)? water.images.first.image.path(:original) : '/images/missing.png' %>
+            <img src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=650&h=350" %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+        </div>
         <div class="result-caption">
             <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>
             <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name.capitalize }.to_sentence } %>
