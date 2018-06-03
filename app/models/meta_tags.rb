@@ -10,6 +10,14 @@ module MetaTags
       description.blank? ? meta_title : "#{meta_title}. #{description.slice(0..160)}"
     end
 
+    def image_src
+      images.first ? images.first.image.path(:original) : '/images/missing.png'
+    end
+
+    def image_path
+      "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=650&h=350"
+    end
+
     def open_graph(url)
       {
         og: {
@@ -23,7 +31,7 @@ module MetaTags
           },
           description: meta_description,
           url: url,
-          image: (images.first)? images.first.image.url(:thumb) : '',
+          image: image_path,
           site_name: 'Let\'s Fish'
         }
       }
@@ -37,7 +45,7 @@ module MetaTags
           creator: '@letsgoflyfish',
           title: meta_title,
           description: description.slice(0..140),
-          image: (images.first)? "https:#{images.first.image.url(:thumb)}" : ''
+          image: image_path
         }
       }
     end
@@ -58,6 +66,15 @@ module MetaTags
       description.blank? ? meta_title : "#{meta_title}. #{description.slice(0..160)}"
     end
 
+    def image_src
+      waters.first.images.first ? waters.first.images.first.image.path(:original) : '/images/missing.png'
+    end
+
+    def image_path
+      "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=650&h=350"
+    end
+
+
     def open_graph(url)
       {
         og: {
@@ -66,12 +83,12 @@ module MetaTags
           place: {
             location: {
               latitude: latitude,
-              longitude:longitude
+              longitude: longitude
             }
           },
           description: meta_description,
           url: url,
-          image: waters.first.images.first.image.url(:thumb),
+          image: image_path,
           site_name: 'Let\'s Fish'
         }
       }
@@ -85,7 +102,7 @@ module MetaTags
           creator: '@letsgoflyfish',
           title: meta_title,
           description: description.slice(0..140),
-          image: "https:#{waters.first.images.first.image.url(:thumb)}"
+          image: image_path
         }
       }
     end
