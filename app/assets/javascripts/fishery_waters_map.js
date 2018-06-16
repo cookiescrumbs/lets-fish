@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  // If small screen don't load the map JS
+  //hide map form mobile before returning
+  // if($( window ).width() < 768) {
+  //   $('#map').hide();
+  //   return;
+  // }
+
   var geocoder = new google.maps.Geocoder(),
     mapOptions = {
       scrollwheel: false,
@@ -18,16 +25,12 @@ $(document).ready(function () {
     mapElement = document.getElementById('map'),
     zoom = getZoom(),
     lat = getLat(),
-    lng = getLng();
+    lng = getLng(),
     slug = getSlug();
-  //make the a new instance of google maps
-  map = new google.maps.Map(mapElement, mapOptions);
 
-  ////////Adding markers when map first loads
-  google.maps.event.addListenerOnce(map, 'idle', function () {
-    buildMapRoundGeographicalCenter(lat, lng);
-    ////////////////////////////
-  });
+  function getZoom() {
+    return parseInt(mapElement.dataset.zoom) || 9;
+  }
 
   function getLat() {
     return parseFloat(mapElement.dataset.lat) || null;
@@ -41,20 +44,48 @@ $(document).ready(function () {
     return mapElement.dataset.slug || null;
   }
 
-  function getZoom() {
-    return parseInt(mapElement.dataset.zoom) || 9;
-  }
-
   function buildMapRoundGeographicalCenter(lat, lng) {
-
     if (!lat && !lng) {
       return;
     }
 
     map.setCenter(new google.maps.LatLng(lat, lng));
     map.setZoom(zoom);
+    var boundingBox = getBoundingBoxFromMap(map);
     var center = getCenterFromMap(map);
-    getWatersAndResultsFromSlug(slug);
+    getMarkersAndResultsFromBounds(boundingBox, slug);
+  }
+
+  //make the a new instance of google maps
+  map = new google.maps.Map(mapElement, mapOptions);
+
+  ////////Adding markers when map first loads
+  google.maps.event.addListenerOnce(map, 'idle', function () {
+    buildMapRoundGeographicalCenter(lat, lng);
+    ////////////////////////////
+  });
+
+  /////Adding markers when the user zooms the map
+  google.maps.event.addListener(map, 'zoom_changed', function () {
+    // add markers to map within bounding box
+    boundingBox = getBoundingBoxFromMap(map);
+    getMarkersAndResultsFromBounds(boundingBox, slug);
+  });
+  ////////////////////////
+
+  ///////Adding markers when the user drags the map
+  google.maps.event.addListener(map, 'dragend', function () {
+    var boundingBox = getBoundingBoxFromMap(map);
+    var center = getCenterFromMap(map);
+    getMarkersAndResultsFromBounds(boundingBox, slug);
+  });
+  /////////////////////////
+
+  function getBoundingBoxFromMap(map) {
+    var bounds = map.getBounds();
+    var northEast = bounds.getNorthEast();
+    var southWest = bounds.getSouthWest();
+    return [southWest.lat(), southWest.lng(), northEast.lat(), northEast.lng()];
   }
 
   function getCenterFromMap(map) {
@@ -85,7 +116,6 @@ $(document).ready(function () {
     var results = searchResults.results;
     addMarkers(markers);
     addResultsToPage(results);
-
   }
 
   function initialMarkers(searchResults) {
@@ -110,11 +140,12 @@ $(document).ready(function () {
     markers = [];
   }
 
-  function getWatersAndResultsFromSlug(slug) {
+  function getMarkersAndResultsFromBounds(bounds, slug) {
     $.ajax({
       type: 'GET',
-      url: '/search/waters',
+      url: '/search/within-bounding-box',
       data: {
+        'bounds': bounds,
         'slug': slug
       },
       contentType: "application/json; charset=utf-8",

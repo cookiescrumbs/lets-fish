@@ -10,7 +10,10 @@ class SearchController < ApplicationController
   end
 
   def within_bounding_box
-    waters = Water.where(published: true).includes(:fishery).where('fisheries.published' => true).within_bounding_box(bounds).limit 20 unless bounds.nil?
+    where = { 'fisheries.published' => true }
+    where['fisheries.id'] = fishery_id_from_slug if fishery_id_from_slug
+
+    waters = Water.where(published: true).includes(:fishery).where(where).within_bounding_box(bounds).limit 20 unless bounds.nil?
     @markers = waters
     @results = waters
     render 'search'
@@ -25,6 +28,10 @@ class SearchController < ApplicationController
   end
 
   private
+
+  def fishery_id_from_slug
+    Fishery.friendly.find(params[:slug]).id unless params[:slug].nil?
+  end
 
   def set_water
     @water = Water.where(published: true).includes(:fishery).where('fisheries.published' => true).near(locations[destination]).first unless destination.nil?
