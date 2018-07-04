@@ -7,22 +7,18 @@
   </ol>
 
   <div class="carousel-inner" role="listbox">
-    <% locals[:photos].each_with_index do |photo, i| %>
-        <div class="item  <%=(i == 0)? 'active' : '' %>">
-            <picture>
-              <!--lg 1908x480-->
-              <!--md 1440x362-->
-              <!--sm 991x300-->
-              <!--xs 479x300-->
-              <!--[if lte IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= photo.image.url(:lg) %>" media="(min-width: 1400px)">
-              <source srcset="<%= photo.image.url(:md) %>" media="(min-width: 992px)">
-              <source srcset="<%= photo.image.url(:sm) %>" media="(min-width: 480px) and (max-width: 991px)">
-              <source srcset="<%= photo.image.url(:thumb) %>" media="(max-width: 479px)">
-              <!--[if lte IE 9]></video><![endif]-->
-              <img srcset="<%= photo.image.url(:lg) %>" alt="" class="img-responsive center-block" >
-            </picture>
-          </div>
+    <% locals[:photos].each_with_index do |photo, i|
+      image_src = "https://#{Rails.application.config.imgix[:source]}#{ photo.image.path(:original)}"
+    %>
+      <img alt="<%= @water.name %>" srcset="
+      <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
+      <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=725&amp;h=725  725w,
+      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=965 965w,
+      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
+      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
+      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
+      sizes="100vw"
+      src="<%= image_src %>?auto=enhance&amp;fit=clip %>" class="img-responsive center-block" >
     <% end %>
   </div>
 

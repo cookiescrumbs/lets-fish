@@ -2,7 +2,7 @@
 class GeographService
   include HTTParty
   base_uri 'api.geograph.org.uk'
-  API_KEY = Rails.application.config.geograph_api_key
+  API_KEY = ENV['GEOGRAPH_API_KEY'] || Rails.application.config.geograph_api_key
 
   def self.user_attribution_from(photo_id)
     begin
