@@ -10,15 +10,17 @@
     <% locals[:photos].each_with_index do |photo, i|
       image_src = "https://#{Rails.application.config.imgix[:source]}#{ photo.image.path(:original)}"
     %>
-      <img alt="<%= @water.name %>" srcset="
-      <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
-      <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=725&amp;h=725  725w,
-      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=965 965w,
-      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
-      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
-      <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
-      sizes="100vw"
-      src="<%= image_src %>?auto=enhance&amp;fit=clip %>" class="img-responsive center-block" >
+     <div class="item  <%=(i == 0)? 'active' : '' %>">
+        <img alt="<%= @water.name %>" srcset="
+        <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
+        <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=725&amp;h=725  725w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=965 965w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
+        sizes="100vw"
+        src="<%= image_src %>?auto=enhance&amp;fit=clip %>" class="img-responsive center-block" >
+    </div>
     <% end %>
   </div>
 
