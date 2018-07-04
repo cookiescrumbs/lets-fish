@@ -32,7 +32,8 @@ module Api
           :latitude,
           :longitude,
           :water_type_id,
-          species_ids: []
+          species_ids: [],
+          :address
         )
       end
     end
