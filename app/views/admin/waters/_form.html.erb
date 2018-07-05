@@ -41,7 +41,8 @@
     <br />
     <%= f.fields_for :images do |builder| %>
     <% unless builder.object.id.nil? %>
-      <%= image_tag builder.object.image.url(:thumb) %>
+      <% image_src = builder.object.image.path(:original) %>
+      <%= image_tag "https://#{Rails.application.config.imgix[:source]}#{image_src}?auto=enhance&fit=crop&w=645&h=645" %>
       <br />
       <%= builder.check_box :_destroy %>
       <%= builder.label :_destroy, 'Remove' %>
