@@ -1,402 +1,207 @@
 [
   {
     "name": "Loch Sainn",
-    "season": "Fishing Season 1st April to 31st August.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A897 at Grid reference <strong>903485</strong> (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 925492. The loch lies a distant 3.1km in a NNE direction. It is fair to say that Sainn and its nearby neighbour Saird are for the more adventurous angler who enjoys a good walk in the heart of the stunning scenery of the flow country combined with some fishing. Don\u2019t expect anything for the glass case but Sainn has a good head of spirited free rising fish. Relevant OS map and a compass are a must for the visiting angler.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <b>930 525</b></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 925492. The loch lies a distant 3.1km in a NNE direction. It is fair to say that Sainn and its nearby neighbour Saird are for the more adventurous angler who enjoys a good walk in the heart of the stunning scenery of the flow country combined with some fishing. Don’t expect anything for the glass case but Sainn has a good head of spirited free rising fish. Relevant OS map and a compass are a must for the visiting angler.",
+    "lat_lng": "58.447634038737185,-3.834933738670171"
   },
   {
     "name": "Loch Talaheel",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p>Leave the A897 at Grid reference <strong>903485</strong> (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 948484. Walk in an ENE direction for a distance of 600m to reach the loch. Tallaheel is a shallow loch which has a large head of fish averaging 8-10oz. Wading is safe though a little soft in places. Fish can be caught anywhere on the loch though the east bank can be productive.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>955 489</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 948484. Walk in an ENE direction for a distance of 600m to reach the loch. Tallaheel is a shallow loch which has a large head of fish averaging 8-10oz. Wading is safe though a little soft in places. Fish can be caught anywhere on the loch though the east bank can be productive.",
+    "lat_lng": "58.415923220010534,-3.790483602394315"
   },
   {
     "name": "Loch Saird",
-    "season": "Fishing season 1st April to 31st August.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A897 at Grid reference <strong>903485</strong> (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 925492. The loch lies a distant 3.2km in a NE direction. It is fair to say that Saird and its nearby neighbour Sainn are for the more adventurous angler who enjoys a good walk in the heart of the stunning scenery of the flow country combined with some fishing. Don\u2019t expect anything for the glass case but Saird has a good head of spirited free rising fish. Relevant OS map and a compass are a must for the visiting angler.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>945 519</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 925492. The loch lies a distant 3.2km in a NE direction. It is fair to say that Saird and its nearby neighbour Sainn are for the more adventurous angler who enjoys a good walk in the heart of the stunning scenery of the flow country combined with some fishing. Don’t expect anything for the glass case but Saird has a good head of spirited free rising fish. Relevant OS map and a compass are a must for the visiting angler.",
+    "lat_lng": "58.44261310854574,-3.8089725819836313"
   },
   {
     "name": "Loch Leir",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three ‘clear rest days’ between angling days.",
-    "description": [
-      "<p>Approach from Forsinain via forestry track leading towards Altnabreac. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. The parking in an area overlooking the loch leaves a simple 100m walk down to the water\u2019s edge, making this one of the easiest lochs for anglers to visit. In recent years Leir has developed into a productive early and late season loch, unfortunately, the months in between have seen the water plagued with algae during which time fishing efforts have been better concentrated elsewhere. Best bank fishing is found along the south side into SE corner where wading is easy. Although large numbers of smaller fish can be caught in the NW corner where the loch narrows, the wading here, over big boulders, is as difficult as an angler will find anywhere \u2013 boat users should take extra care to avoid the number of large rocks found in this area. Average fish size has improved to 12oz with fish of 1lb not uncommon now. Leir fish are still, without question, some of the hardest fighting trout that can be encountered!</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>955 457<br>\n</strong>Elevation: <strong>174m<br>\n</strong>Bag Limit:\u00a0<strong>6 Fish limit (9\u2033 inch minimum)<br>\n</strong></p>"
-    ]
+    "description": "Approach from Forsinain via forestry track leading towards Altnabreac. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. The parking in an area overlooking the loch leaves a simple 100m walk down to the water’s edge, making this one of the easiest lochs for anglers to visit. In recent years Leir has developed into a productive early and late season loch, unfortunately, the months in between have seen the water plagued with algae during which time fishing efforts have been better concentrated elsewhere. Best bank fishing is found along the south side into SE corner where wading is easy. Although large numbers of smaller fish can be caught in the NW corner where the loch narrows, the wading here, over big boulders, is as difficult as an angler will find anywhere – boat users should take extra care to avoid the number of large rocks found in this area. Average fish size has improved to 12oz with fish of 1lb not uncommon now. Leir fish are still, without question, some of the hardest fighting trout that can be encountered!",
+    "lat_lng": "89.99577193000329,-15.951720262600972"
   },
   {
     "name": "Loch Clach Geala",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A897 at Grid reference <strong>903485</strong> (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 925492. The loch is a short 900m walk in an easterly direction. There is not a large head of fish in Clach Geala and anglers can expect more blank than productive days though fish caught are of outstanding quality up to 2lb in weight with the occasional larger specimen. Fish can be caught all over the loch but start fishing well back as fish can lie close in. Wading is safe and possible in the northern part of the loch otherwise stay on the bank. The south east bank is very wet and soft; waders would be recommended to fish here!</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>935 494</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 925492. The loch is a short 900m walk in an easterly direction. There is not a large head of fish in Clach Geala and anglers can expect more blank than productive days though fish caught are of outstanding quality up to 2lb in weight with the occasional larger specimen. Fish can be caught all over the loch but start fishing well back as fish can lie close in. Wading is safe and possible in the northern part of the loch otherwise stay on the bank. The south east bank is very wet and soft; waders would be recommended to fish here!",
+    "lat_lng": "58.41992880653802,-3.824931040581482"
   },
   {
     "name": "Loch Ealach Mor",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p>Leave the A897 at Grid reference <strong>903485</strong> (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 951468. Following the lightly trodden path NE on an easy 5-10 minute walk over flat ground will bring anglers to the stile at Loch Slethill. Cross the stile and keeping the deer fence to your left walk a further 1km, where the fence turns in a NW direction leave the fence line and walk the further 600m to the loch. Ealach Mor has a large head of bright fish the average being 8-10oz with large baskets the norm.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>965 481</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 951468. Following the lightly trodden path NE on an easy 5-10 minute walk over flat ground will bring anglers to the stile at Loch Slethill. Cross the stile and keeping the deer fence to your left walk a further 1km, where the fence turns in a NW direction leave the fence line and walk the further 600m to the loch. Ealach Mor has a large head of bright fish the average being 8-10oz with large baskets the norm.",
+    "lat_lng": "58.40897964239052,-3.773014621400691"
   },
   {
     "name": "Loch Skyline",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p>Leave the A897 at Grid reference <strong>903485</strong> (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 011475. The loch is a short 150m walk in a NE direction. There is not a large head of fish in Skyline and anglers can expect more blank than productive days though fish caught are of outstanding quality up to 2lb in weight with the occasional larger specimen. Fish can be caught all over the loch but start fishing well back as fish can lie tight to the bank. Please note that the bank can be rather \u2018soggy\u2019 which some anglers could find difficult and may prefer to use the boat available.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>011 479</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 011475. The loch is a short 150m walk in a NE direction. There is not a large head of fish in Skyline and anglers can expect more blank than productive days though fish caught are of outstanding quality up to 2lb in weight with the occasional larger specimen. Fish can be caught all over the loch but start fishing well back as fish can lie tight to the bank. Please note that the bank can be rather ‘soggy’ which some anglers could find difficult and may prefer to use the boat available.",
+    "lat_lng": "58.37423008253409,-5.40300890768293"
   },
   {
     "name": "Loch Slethill",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p><strong>Exclusion zone applies in SE half until mid August.<br>\n</strong>Approach from Forsinain via forestry track leading towards Altnabreac.\u00a0A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Using a map for reference, park in the ample space found 50m after crossing the burn which flows solely from Slethill. Following the lightly trodden path NE on an easy 5-10 minute walk over flat ground will bring anglers to the loch\u2019s outflow in the SW corner where the boat may be launched from. A highly regarded loch yielding beautiful, hard fighting fish averaging 3/4lb \u2013 1lb. Wading essential when bank fishing as shallow water extends well beyond casting distance in much of the very productive south and west banks. Large weed beds in the loch\u2019s centre provide a rich habitat for the trout from June \u2013 September, concentrating all around the weed\u2019s perimeter can be fantastic sport while trying to keep hooked fish from finding the sanctuary of cover.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>957 471<br>\n</strong>Elevation: <strong>175m<br>\n</strong>Bag Limit:\u00a0<strong>6 Fish limit (9\u2033 inch minimum)</strong></p>"
-    ]
+    "description": "Exclusion zone applies in SE half until mid August.\nApproach from Forsinain via forestry track leading towards Altnabreac. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Using a map for reference, park in the ample space found 50m after crossing the burn which flows solely from Slethill. Following the lightly trodden path NE on an easy 5-10 minute walk over flat ground will bring anglers to the loch’s outflow in the SW corner where the boat may be launched from. A highly regarded loch yielding beautiful, hard fighting fish averaging 3/4lb – 1lb. Wading essential when bank fishing as shallow water extends well beyond casting distance in much of the very productive south and west banks. Large weed beds in the loch’s centre provide a rich habitat for the trout from June – September, concentrating all around the weed’s perimeter can be fantastic sport while trying to keep hooked fish from finding the sanctuary of cover.",
+    "lat_lng": "89.99577193000329,-15.951720262600972"
   },
   {
     "name": "Loch Caise",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p>Grid Reference &amp; Parking <strong>12/023467</strong>. Approach from Forsinain via forestry track leading to and beyond Altnabreac. 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Both bank and boat fishing is available on this little gem of a loch, and with loch side parking in the SW corner, this is one of the most delightful pieces of water an angler could visit. Fat, brightly marked, little fish rise readily and give a good account of themselves in the process. With the exception of the less productive west bank, fish are caught all around the loch in good numbers, larger concentrations are often encountered in both the north and south ends.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>025 466</strong></p>"
-    ]
+    "description": "Grid Reference \u0026amp; Parking 12/023467. Approach from Forsinain via forestry track leading to and beyond Altnabreac. 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Both bank and boat fishing is available on this little gem of a loch, and with loch side parking in the SW corner, this is one of the most delightful pieces of water an angler could visit. Fat, brightly marked, little fish rise readily and give a good account of themselves in the process. With the exception of the less productive west bank, fish are caught all around the loch in good numbers, larger concentrations are often encountered in both the north and south ends.",
+    "lat_lng": "58.36320809014185,-5.378001012939415"
   },
   {
     "name": "Lochan Croc nan Lair",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p>\u00a0</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>039 452</strong></p>"
-    ]
+    "description": " ",
+    "lat_lng": "58.35128445004761,-5.352923595402587"
   },
   {
     "name": "Loch Baligill",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p><span style=\"font-weight: 400;\">Loch Baligill is one of the most challenging of club waters with some steep banks</span> <span style=\"font-weight: 400;\">\u00a0\u00a0After it was dammed for the local water supply in the late 1970s, there were a few good years of large trout taken from 2lbs to 3.5lbs with one exceptional fish landed in the 1980s of over 8lbs (believed to be the record trout for club waters). However, it is rare to find any other entries of trout over 3lbs in the old game books and in recent years (since the 1990s) very little if any fish have been caught here, although some have been seen on warm, calm evenings. Nothing is known about the best approach to fish this loch but it is certainly one for the hardy specimen hunter and worth a cast when tied in with a trip to the very productive loch Ackridigill. Expect more blanks than productive days \u2013 catch-and-release only.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<b>856 620</b></p>"
-    ]
+    "description": "Loch Baligill is one of the most challenging of club waters with some steep banks   After it was dammed for the local water supply in the late 1970s, there were a few good years of large trout taken from 2lbs to 3.5lbs with one exceptional fish landed in the 1980s of over 8lbs (believed to be the record trout for club waters). However, it is rare to find any other entries of trout over 3lbs in the old game books and in recent years (since the 1990s) very little if any fish have been caught here, although some have been seen on warm, calm evenings. Nothing is known about the best approach to fish this loch but it is certainly one for the hardy specimen hunter and worth a cast when tied in with a trip to the very productive loch Ackridigill. Expect more blanks than productive days – catch-and-release only.",
+    "lat_lng": "58.531028003678976,-3.9663963758729923"
   },
   {
     "name": "Loch Garbh",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p>Grid Reference &amp; Parking <strong>12/036468</strong>. Approach from Forsinain via forestry track leading to and beyond Altnabreac. 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Park in small trackside area opposite sleeper built footbridge. A short 3-4 minute walk north over tussocks and uneven ground will bring anglers to the loch\u2019s southerly shore, boat users should follow the loch a couple of hundred yards around the east shore to find the boat mooring. Loch Garbh, with its large head of spirited, free rising fish in the 9\u2033-12\u2033 region is the perfect place to introduce anyone to fly fishing. Boat and bank both yield good catches, though care is needed when wading over rocky patches on west side.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <b>036 468</b></p>"
-    ]
+    "description": "Grid Reference \u0026amp; Parking 12/036468. Approach from Forsinain via forestry track leading to and beyond Altnabreac. 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Park in small trackside area opposite sleeper built footbridge. A short 3-4 minute walk north over tussocks and uneven ground will bring anglers to the loch’s southerly shore, boat users should follow the loch a couple of hundred yards around the east shore to find the boat mooring. Loch Garbh, with its large head of spirited, free rising fish in the 9″-12″ region is the perfect place to introduce anyone to fly fishing. Boat and bank both yield good catches, though care is needed when wading over rocky patches on west side.",
+    "lat_lng": "58.365495537056084,-5.35940412843703"
   },
   {
     "name": "Caol North",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p class=\"p1\"><span style=\"font-weight: 400;\">Expect more blank than productive days but Caol has a reputation of producing fish of outstanding quality up to and over 3lbs in weight. One for the determined, experienced angler.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>843 581</strong></p>"
-    ]
+    "description": "Expect more blank than productive days but Caol has a reputation of producing fish of outstanding quality up to and over 3lbs in weight. One for the determined, experienced angler.",
+    "lat_lng": "58.49567927172854,-3.9867267841463807"
   },
   {
     "name": "Loch Achridigill",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span style=\"font-weight: 400;\">Loch Achridigill is a very productive loch for all fishing levels. A boat which will be found on the NW shore is available if booked in advance, otherwise a rocky shoreline requires careful wading but the rocks hold many trout very close in from 6oz to 10oz with the odd larger fish further out. The loch level used to be several feet higher and the east end is shallow and studded with rocks so be very careful when boat fishing. Bags of 50+ may be caught and fish may be kept for the pot.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>857</strong><b>\u00a0612</b></p>"
-    ]
+    "description": "Loch Achridigill is a very productive loch for all fishing levels. A boat which will be found on the NW shore is available if booked in advance, otherwise a rocky shoreline requires careful wading but the rocks hold many trout very close in from 6oz to 10oz with the odd larger fish further out. The loch level used to be several feet higher and the east end is shallow and studded with rocks so be very careful when boat fishing. Bags of 50+ may be caught and fish may be kept for the pot.",
+    "lat_lng": "58.5238736725581,-3.9642784894881764"
   },
   {
     "name": "Loch Sgitheanach",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A836 Thurso/Bettyhill road at Grid reference <strong>868651</strong> and follow the road south. This is a rough track so a 4\u00d74 will be necessary to drive to the end and park at 859626. Walk ESE for a distance of approximately 1km to reach the loch. This loch has been seldom visited in recent times so little is known about the quality of fishing. Historical records have shown fish of over 2lbs being caught in the past, well worth a visit for the determined, adventurous angler.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>870 623</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 868651 and follow the road south. This is a rough track so a 4×4 will be necessary to drive to the end and park at 859626. Walk ESE for a distance of approximately 1km to reach the loch. This loch has been seldom visited in recent times so little is known about the quality of fishing. Historical records have shown fish of over 2lbs being caught in the past, well worth a visit for the determined, adventurous angler.",
+    "lat_lng": "58.534086550334564,-3.942517991750613"
   },
   {
     "name": "Loch Caol Altnabreac",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p>Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track, to park at 018473. Follow what was a forest ride for a distance of 800m to reach the stile over the deer fence. The loch lies a further 400m to the north.\u00a0 The narrow, southern part of the loch is shallow and the least productive, otherwise the angler can cast with confidence in any part of the loch. Caol is one of the few lochs where fishing from a boat is a significant advantage. There is a good head of bright, hard fighting fish with the average size in the region of 10oz with fish up to 2lb not being uncommon.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>025 485</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 903485 (Forsinain) follow the forestry track, a 4×4 or vehicle with high clearance is required to negotiate the bumpy track, to park at 018473. Follow what was a forest ride for a distance of 800m to reach the stile over the deer fence. The loch lies a further 400m to the north.  The narrow, southern part of the loch is shallow and the least productive, otherwise the angler can cast with confidence in any part of the loch. Caol is one of the few lochs where fishing from a boat is a significant advantage. There is a good head of bright, hard fighting fish with the average size in the region of 10oz with fish up to 2lb not being uncommon.",
+    "lat_lng": "58.380242803798666,-5.379631105950268"
   },
   {
     "name": "Loch Nam Breac",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Grid Reference &amp; Parking 10/826479. From the A897 Melvich to Helmsdale road 1/4 mile south of the Cemetery, drive west approx 6 miles along forestry tracks leading to Nam Breac. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Parking at the end of the track leaves a short 5-8 minute walk eastwards through a forest ride over wet boggy ground, crossing the deer fence style here anglers will arrive on the west bank.\u00a0 In low water, Nam Breac acts as a small compensation flow to the Halladale river.\u00a0 As such, the water level of the loch can vary throughout the season by as much as 7-8 feet. With a large head of fish averaging 8oz anglers can expect catches to be plentiful all around this loch.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>826 479</strong></p>"
-    ]
+    "description": "Grid Reference \u0026amp; Parking 10/826479. From the A897 Melvich to Helmsdale road 1/4 mile south of the Cemetery, drive west approx 6 miles along forestry tracks leading to Nam Breac. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Parking at the end of the track leaves a short 5-8 minute walk eastwards through a forest ride over wet boggy ground, crossing the deer fence style here anglers will arrive on the west bank.  In low water, Nam Breac acts as a small compensation flow to the Halladale river.  As such, the water level of the loch can vary throughout the season by as much as 7-8 feet. With a large head of fish averaging 8oz anglers can expect catches to be plentiful all around this loch.",
+    "lat_lng": "58.403673457773074,-4.0106400186207924"
   },
   {
     "name": "Loch Crocach",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A897 at Grid reference <strong>897510</strong> follow the forestry track to park at Grid reference 834448. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in a WSW direction eventually travelling over the open moor for a total distance of 2.9km. Crocach has to be one of the clubs most attractive lochs, a remote moorland location with magnificent scenery. The loch has interesting bays and points to keep the angler occupied with a good head of fish in the region of 8/10oz, though bigger fish are occasionally caught. The loch deepens quickly so bank fishing is suitable and fish may be caught close in. Nothing for the glass case and a strenuous walk in but well worth the effort.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>804 438</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 897510 follow the forestry track to park at Grid reference 834448. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in a WSW direction eventually travelling over the open moor for a total distance of 2.9km. Crocach has to be one of the clubs most attractive lochs, a remote moorland location with magnificent scenery. The loch has interesting bays and points to keep the angler occupied with a good head of fish in the region of 8/10oz, though bigger fish are occasionally caught. The loch deepens quickly so bank fishing is suitable and fish may be caught close in. Nothing for the glass case and a strenuous walk in but well worth the effort.",
+    "lat_lng": "58.36627781326806,-4.046125548563722"
   },
   {
     "name": "Loch Badaireach na Gaoithe",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave the A897 at Grid reference 897510 follow the forestry track to park at Grid reference 841504. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track.\u00a0The loch is a short ten minute walk. Follow the forest ride in a NNW direction, cross the deer fence using the stile or gate, the loch lies 200m to the East. Little is known about the fishing though due to the nature of this loch it is unlikely to hold a large head of fish. Start fishing well back from the bank as fish may lie close in.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>843 510</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 897510 follow the forestry track to park at Grid reference 841504. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. The loch is a short ten minute walk. Follow the forest ride in a NNW direction, cross the deer fence using the stile or gate, the loch lies 200m to the East. Little is known about the fishing though due to the nature of this loch it is unlikely to hold a large head of fish. Start fishing well back from the bank as fish may lie close in.",
+    "lat_lng": "58.43195152725567,-3.9831338578193"
   },
   {
     "name": "Lochan na Ceardaich",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave the A836 Thurso/Bettyhill road at Grid reference <strong>841650</strong> and drive south for a distance of 9km to park at 827565. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence line head SSE for a distance of 1.7km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. Little is known about the fishing in this loch which is unlikely to hold a large head of fish but fish up to and over 2lbs have been caught in the past. Combine with other lochs in the area for an adventurous day out.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>838\u00a0550</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 841650 and drive south for a distance of 9km to park at 827565. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence line head SSE for a distance of 1.7km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. Little is known about the fishing in this loch which is unlikely to hold a large head of fish but fish up to and over 2lbs have been caught in the past. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.46772168639418,-3.9937216990907047"
   },
   {
     "name": "Lochan nan Clach Geala",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave the A897 at Grid reference <strong>897510</strong> follow the forestry track to park at Grid reference 841504. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the forest ride in a NNW direction, cross the deer fence using the stile or gate, the loch lies a further 1.5km to the North. Little is known about the fishing though due to the nature of this loch it is unlikely to hold a large head of fish. Start fishing well back from the bank as fish may lie close in. Combine with other lochs in the area for an adventurous day out.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>840 524</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 897510 follow the forestry track to park at Grid reference 841504. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the forest ride in a NNW direction, cross the deer fence using the stile or gate, the loch lies a further 1.5km to the North. Little is known about the fishing though due to the nature of this loch it is unlikely to hold a large head of fish. Start fishing well back from the bank as fish may lie close in. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.44443802919389,-3.988977045377409"
   },
   {
     "name": "Loch an Fheoir",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave the A836\u00a0 Thurso/Bettyhill road at Grid reference <strong>841650</strong> and drive south for a distance of 9km to park at 827565. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence head ESE for approximately 1km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. Fheoir is a small, relatively shallow loch which can be fished from the bank. However parts of the bank can be very soggy so waders might be advisable. Fheoir does not have a large head of fish though the average size will be in the region of 1lb though don\u2019t be surprised by something larger. Start fishing well back as fish may lie close in. Combine with other lochs in the area for an adventurous day out.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>844 562</strong></p>"
-    ]
+    "description": "Leave the A836  Thurso/Bettyhill road at Grid reference 841650 and drive south for a distance of 9km to park at 827565. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence head ESE for approximately 1km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. Fheoir is a small, relatively shallow loch which can be fished from the bank. However parts of the bank can be very soggy so waders might be advisable. Fheoir does not have a large head of fish though the average size will be in the region of 1lb though don’t be surprised by something larger. Start fishing well back as fish may lie close in. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.47865196500964,-3.9840501374783988"
   },
   {
     "name": "Loch Crasgach",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave the A836 Thurso/Bettyhill road at Grid reference <strong>841650</strong> and drive south for a distance of 9km to park at 827565. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence line head due south for a distance of 2.2km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. Little is known about the fishing in this loch which is unlikely to hold a large head of fish but fish up to 2lbs have been caught in the past. Combine with other lochs in the area for an adventurous day out.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>834 543</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 841650 and drive south for a distance of 9km to park at 827565. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence line head due south for a distance of 2.2km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. Little is known about the fishing in this loch which is unlikely to hold a large head of fish but fish up to 2lbs have been caught in the past. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.46133200470162,-4.00021709045962"
   },
   {
     "name": "Loch Preas an Lochan",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave the A897 at Grid reference <strong>897510</strong> follow the forestry track to park at Grid reference 841504. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the forest ride in a NNW direction, cross the deer fence using the stile or gate, head due North for a distance of 1.5km to reach Lochan nan Clach Geala, Preas an Lochan lies a further 1.5km in a NNE direction.\u00a0 Visiting anglers should carry the relevant OS map and a compass. Little is known about the fishing though historically this loch has produced fish up to 3lbs in weight though due to its nature this loch is unlikely to hold a large head of fish. Start fishing well back from the bank as fish may lie close in. Combine with other lochs in the area for an adventurous day out.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>845 537</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 897510 follow the forestry track to park at Grid reference 841504. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the forest ride in a NNW direction, cross the deer fence using the stile or gate, head due North for a distance of 1.5km to reach Lochan nan Clach Geala, Preas an Lochan lies a further 1.5km in a NNE direction.  Visiting anglers should carry the relevant OS map and a compass. Little is known about the fishing though historically this loch has produced fish up to 3lbs in weight though due to its nature this loch is unlikely to hold a large head of fish. Start fishing well back from the bank as fish may lie close in. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.45623908526762,-3.9810732500417063"
   },
   {
     "name": "Caol Loch (South)",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A836 Thurso/Bettyhill road at Grid reference <strong>841650</strong> and drive south for a distance of 9km to park at 827565. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence line head SE for a distance of 2km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. One of the most remote club lochs and is surrounded by delightful moorland. Caol has a good head of bright fish averaging 8oz with the occasional larger fish. Cast with confidence anywhere on the loch from the bank. Combine with other lochs in the area for an adventurous day out.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>850 550</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 841650 and drive south for a distance of 9km to park at 827565. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Follow the fence line uphill in an ENE direction for a strenuous 700m, at the corner of the fence line head SE for a distance of 2km to reach the loch. Visiting anglers should carry the relevant OS map and a compass. One of the most remote club lochs and is surrounded by delightful moorland. Caol has a good head of bright fish averaging 8oz with the occasional larger fish. Cast with confidence anywhere on the loch from the bank. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.468039664159186,-3.973164230629132"
   },
   {
     "name": "Loch nam Bo Uidhre",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p class=\"p1\"><span style=\"font-weight: 400;\">Little is known about the fishing in Bo Uidhre. It is one for the adventurous angler as it does not hold a large head of fish. The banks have a shallow gradient consisting of large rocks so wading is extremely treacherous and what fish are there are likely to be further out. No boat is available. Combine with other lochs in the area for an adventurous day out.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>845 571</strong></p>"
-    ]
+    "description": "Little is known about the fishing in Bo Uidhre. It is one for the adventurous angler as it does not hold a large head of fish. The banks have a shallow gradient consisting of large rocks so wading is extremely treacherous and what fish are there are likely to be further out. No boat is available. Combine with other lochs in the area for an adventurous day out.",
+    "lat_lng": "58.48675661523027,-3.9827917251516527"
   },
   {
     "name": "Loch na h-Eaglaise Beag",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A836 Thurso/Bettyhill road at Grid reference <strong>868651</strong> and follow the road south. This is a rough track so a 4\u00d74 will be necessary to drive to the end and park at 859626. Eaglaise Beag involves an energetic 4.5km walk over some wet ground, visiting anglers should carry the relevant OS map and a compass. Walk south keeping to the high ground east of Cnoc Eipteil. Continue walking south passing along the east bank of Achridigill, the northern bank of Eaglaise Mor is a further 15 minute walk. Follow the west bank of the loch until about half way down then head SW across the moor, Eaglaise Mor is a further ten minute walk. The loch is shallow with some outstanding quality fish up to 2lbs in weight; the west bank deepens quickly and is very soft and difficult to wade in places though can be productive. Despite the challenging walk in Eaglaise Beag is a delightful place to fish, remote, peaceful and amongst the spectacular scenery of the flow country.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>854 590</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 868651 and follow the road south. This is a rough track so a 4×4 will be necessary to drive to the end and park at 859626. Eaglaise Beag involves an energetic 4.5km walk over some wet ground, visiting anglers should carry the relevant OS map and a compass. Walk south keeping to the high ground east of Cnoc Eipteil. Continue walking south passing along the east bank of Achridigill, the northern bank of Eaglaise Mor is a further 15 minute walk. Follow the west bank of the loch until about half way down then head SW across the moor, Eaglaise Mor is a further ten minute walk. The loch is shallow with some outstanding quality fish up to 2lbs in weight; the west bank deepens quickly and is very soft and difficult to wade in places though can be productive. Despite the challenging walk in Eaglaise Beag is a delightful place to fish, remote, peaceful and amongst the spectacular scenery of the flow country.",
+    "lat_lng": "58.504048135197316,-3.968319622374481"
   },
   {
     "name": "Loch na h-Eaglasie Mor (South end)",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A836 Thurso/Bettyhill road at Grid reference <strong>868651</strong> and follow the road south. This is a rough track so a 4\u00d74 will be necessary to drive to the end and park at 859626. Eaglaise Mor involves an energetic 3km walk over some wet ground, visiting anglers should carry the relevant OS map and a compass. Walk south keeping to the high ground east of Cnoc Eipteil. Continue walking south passing along the east bank of Achridigill, the northern bank of Eaglaise Mor is a further 15 minute walk. The loch holds a good head of well-conditioned trout which average 10oz in weight. Fish can be caught all over the loch. Despite the challenging walk in Eaglaise Mor is a delightful place to fish, remote, peaceful and amongst the spectacular scenery of the flow country.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>861 599</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 868651 and follow the road south. This is a rough track so a 4×4 will be necessary to drive to the end and park at 859626. Eaglaise Mor involves an energetic 3km walk over some wet ground, visiting anglers should carry the relevant OS map and a compass. Walk south keeping to the high ground east of Cnoc Eipteil. Continue walking south passing along the east bank of Achridigill, the northern bank of Eaglaise Mor is a further 15 minute walk. The loch holds a good head of well-conditioned trout which average 10oz in weight. Fish can be caught all over the loch. Despite the challenging walk in Eaglaise Mor is a delightful place to fish, remote, peaceful and amongst the spectacular scenery of the flow country.",
+    "lat_lng": "58.512309964110266,-3.9567649641825113"
   },
   {
     "name": "Cross Lochs",
-    "season": "RSPB Lochs. Fishing season 1st April to 5th October. Three \u2018clear rest days\u2019 between angling days.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A897 at Grid reference <strong>897510</strong> follow the forestry track to park at Grid reference 861470. A 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. The first of the lochs is a short ten minute walk in an ENE direction. The Cross Lochs are a group of 5 small lochs so-called as their layout allegedly forms the shape of a Cross. Of the 5 lochs 3 are named and four are known to contain fish. Expect more blank than productive days though there is always the possibility of one for the \u2018glass case\u2019. The first loch is shallow and reedy and can be difficult to fish, though records indicate fish to 1.5lbs being caught. Travelling SE, Mac is the next loch, not a particularly inspiring loch, shallow and peaty in places, but a reputation of producing magnificent trout up to 6.5lbs! Continuing in a SE direction is Willy\u2019s, probably the most productive loch with fish regularly caught up to 2lbs in weight with the occasional bigger fish. Willy\u2019s is easy to wade and fish are caught all over the loch. The final loch is jubilee, quite a large loch, deep in parts and very fertile.\u00a0 Surprisingly fish in the 12/14oz range can be caught in Jubilee but it is home to some seriously big trout. The majority of the loch is difficult to wade due to a soft bottom though the east bank is safe. The boat, located where the loch narrows on the northerly shore of Willy\u2019s, is available to use on Jubilee also. It will require 2 fit anglers to pull the boat the 20m distance between the lochs and anglers must return the boat to Willy\u2019s after use. For at least one angler aboard, waders are recommended when using a boat on any of the lochs, this is especially true on Willy\u2019s where the boat will have to be pulled through shallow water at times. Please note that Jubilee is out of bounds due to nesting birds for a large part of the season (May-July).</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>869 469</strong></p>"
-    ]
+    "description": "Leave the A897 at Grid reference 897510 follow the forestry track to park at Grid reference 861470. A 4×4 or vehicle with high clearance is required to negotiate the bumpy track. The first of the lochs is a short ten minute walk in an ENE direction. The Cross Lochs are a group of 5 small lochs so-called as their layout allegedly forms the shape of a Cross. Of the 5 lochs 3 are named and four are known to contain fish. Expect more blank than productive days though there is always the possibility of one for the ‘glass case’. The first loch is shallow and reedy and can be difficult to fish, though records indicate fish to 1.5lbs being caught. Travelling SE, Mac is the next loch, not a particularly inspiring loch, shallow and peaty in places, but a reputation of producing magnificent trout up to 6.5lbs! Continuing in a SE direction is Willy’s, probably the most productive loch with fish regularly caught up to 2lbs in weight with the occasional bigger fish. Willy’s is easy to wade and fish are caught all over the loch. The final loch is jubilee, quite a large loch, deep in parts and very fertile.  Surprisingly fish in the 12/14oz range can be caught in Jubilee but it is home to some seriously big trout. The majority of the loch is difficult to wade due to a soft bottom though the east bank is safe. The boat, located where the loch narrows on the northerly shore of Willy’s, is available to use on Jubilee also. It will require 2 fit anglers to pull the boat the 20m distance between the lochs and anglers must return the boat to Willy’s after use. For at least one angler aboard, waders are recommended when using a boat on any of the lochs, this is especially true on Willy’s where the boat will have to be pulled through shallow water at times. Please note that Jubilee is out of bounds due to nesting birds for a large part of the season (May-July).",
+    "lat_lng": "58.39583053583986,-3.9366155785998656"
   },
   {
     "name": "Loch nan Clach",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A836 Thurso/Bettyhill road at Grid reference <strong>868651</strong> and follow the road south. This is a rough track so a 4\u00d74 will be necessary to drive to the end and park at 859626. Nan Clach involves an energetic 4.2km walk over some wet ground, visiting anglers should carry the relevant OS map and a compass. Walk south keeping to the high ground east of Cnoc Eipteil. Continue walking south passing along the east bank of Achridigill, the northern bank of Eaglaise Mor is a further 15 minute walk. Continue heading south following the east shore of Eaglaise Mor then over the open moor to reach Nan Clach. Little is known about the fishing in this loch but it is well worth a visit combined with other lochs in the area. One for the adventurous angler.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>861 590</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 868651 and follow the road south. This is a rough track so a 4×4 will be necessary to drive to the end and park at 859626. Nan Clach involves an energetic 4.2km walk over some wet ground, visiting anglers should carry the relevant OS map and a compass. Walk south keeping to the high ground east of Cnoc Eipteil. Continue walking south passing along the east bank of Achridigill, the northern bank of Eaglaise Mor is a further 15 minute walk. Continue heading south following the east shore of Eaglaise Mor then over the open moor to reach Nan Clach. Little is known about the fishing in this loch but it is well worth a visit combined with other lochs in the area. One for the adventurous angler.",
+    "lat_lng": "58.504231717827416,-3.9563152522728204"
   },
   {
     "name": "Loch nan Gall",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave A897 Helmsdale/Melvich road at Grid reference <strong>892555</strong>, follow the minor road north to park at Upper Bighouse 888575. Follow the track north for a further 400m then head west up the hill to the loch a walk of approximately 25 minutes. Nan Gall has a good head of fish which average 8oz in weight with the occasional larger specimen. Peace and quiet guaranteed in a delightful moorland setting.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>867 579</strong></p>"
-    ]
+    "description": "Leave A897 Helmsdale/Melvich road at Grid reference 892555, follow the minor road north to park at Upper Bighouse 888575. Follow the track north for a further 400m then head west up the hill to the loch a walk of approximately 25 minutes. Nan Gall has a good head of fish which average 8oz in weight with the occasional larger specimen. Peace and quiet guaranteed in a delightful moorland setting.",
+    "lat_lng": "58.49451469209703,-3.9454792437050967"
   },
   {
     "name": "Loch Earacha",
-    "season": "Availability",
-    "description": [
-      "<p class=\"xp1\"><span class=\"xs2\">Parking is found roadside on the A897 at the north end of the loch next to the field gate \u2013 care should be taken not to obstruct access through gate.</span> <span class=\"xapple-converted-space\">The</span><span class=\"xs2\"> 50 meter walk from the car down to the water makes this loch a useful place to visit for anglers unable to explore the further reached lochs within the Club.</span><span class=\"xapple-converted-space\">\u00a0</span><span class=\"xs2\">Over a firm bottom, wading is possible and advantageous in the southerly half of the loch, changing to soft difficult wading in the north half where great care should be taken. As with all lochs, anglers should fish the shallows around the edges of Earacha before wading out. This is particularly true in the late evening when low light conditions give larger fish the cover required to search for food in the shallows. </span><span class=\"xs2\">Average fish in the region of 10oz with some over 1lb.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>898 607<br>\n</strong>Elevation: <strong>16m<br>\n</strong>Bag Limit: <strong>6 Fish limit (9\u2033 inch minimum)</strong></p>"
-    ]
+    "description": "Parking is found roadside on the A897 at the north end of the loch next to the field gate – care should be taken not to obstruct access through gate. The 50 meter walk from the car down to the water makes this loch a useful place to visit for anglers unable to explore the further reached lochs within the Club. Over a firm bottom, wading is possible and advantageous in the southerly half of the loch, changing to soft difficult wading in the north half where great care should be taken. As with all lochs, anglers should fish the shallows around the edges of Earacha before wading out. This is particularly true in the late evening when low light conditions give larger fish the cover required to search for food in the shallows. Average fish in the region of 10oz with some over 1lb.",
+    "lat_lng": "58.61891655429475,-3.8979761641549824"
   },
   {
     "name": "Loch a Mhuilinn",
-    "season": "Fishing Season 1st April to 30th June.",
-    "description": [
-      "<p>Leave A897 Helmsdale/Melvich road at Grid reference <strong>892555</strong>, follow the minor road north to park at 889561 and walk west up the hill for a strenuous 20 minutes, a distance of 1.4km. Very little is known about the fishing on Mhuilinn, it is deep enough and fertile enough to hold fish but there is no information to date. Perhaps worth a cast for the adventurous angler.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>873 562</strong></p>"
-    ]
+    "description": "Leave A897 Helmsdale/Melvich road at Grid reference 892555, follow the minor road north to park at 889561 and walk west up the hill for a strenuous 20 minutes, a distance of 1.4km. Very little is known about the fishing on Mhuilinn, it is deep enough and fertile enough to hold fish but there is no information to date. Perhaps worth a cast for the adventurous angler.",
+    "lat_lng": "58.47941111369704,-3.934353128715368"
   },
   {
     "name": "Bighouse Loch",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p>Grid reference &amp; Parking <strong>10/903647</strong>.\u00a0 Park opposite the right turn junction on the single track road leading down to Bighouse Lodge. Anglers should follow the electricity pylons eastwards on a short 10-15 minute gentle walk uphill which will bring them to the loch\u2019s southerly shore. With plenty of small bays and points to use as cover, fish are often found tight under the bank intercepting wind-blown terrestrials all around this interestingly shaped loch. With banks shelving straight into 3-4 feet of water wading is not recommended! Although not a loch which yields large baskets, fish average over 1lb with the real chance of landing one over 2lb. Rising fish can be difficult to spot when even the slightest of breezes is on the water, faced with a flat-calm, anglers will witness fish cruising their territory while sipping insects caught in the surface film.</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>903 647</strong></p>"
-    ]
+    "description": "Grid reference \u0026amp; Parking 10/903647.  Park opposite the right turn junction on the single track road leading down to Bighouse Lodge. Anglers should follow the electricity pylons eastwards on a short 10-15 minute gentle walk uphill which will bring them to the loch’s southerly shore. With plenty of small bays and points to use as cover, fish are often found tight under the bank intercepting wind-blown terrestrials all around this interestingly shaped loch. With banks shelving straight into 3-4 feet of water wading is not recommended! Although not a loch which yields large baskets, fish average over 1lb with the real chance of landing one over 2lb. Rising fish can be difficult to spot when even the slightest of breezes is on the water, faced with a flat-calm, anglers will witness fish cruising their territory while sipping insects caught in the surface film.",
+    "lat_lng": "58.55647381738339,-3.887033422678536"
   },
   {
     "name": "Loch na Caorach",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p><span style=\"font-weight: 400;\">Follow A897, Melvich to Helmsdale road, parking in area on the north side of the cattle-grid just before electrical substation. Through the double gate, head SE uphill and along the argo track ensuring forestry is to the left of the track until Lochan nan Clach Geala is reached, this Lochan is of no fishing interest.\u00a0 Continuing along the flatter, gentler track will lead to the last gate on the hill from which both Na Caorach and Na Seilge can be overlooked. The last, short leg of the walk is downhill in a southerly direction towards the north shore \u2013 overall walk time 35 \u2013 40 mins. Boat users will find the boat in the NE corner. A great loch to visit on its own, or for larger fishing parties combine with nearby Seilge where each loch can accommodate anglers with use of a boat. Excellent sport can be had just about anywhere in the loch and with the addition of a boat this year anglers can expect great fishing over water and fish which have remained untouched for some time. Excellent, hard fighting trout averaging 10-12oz will delight all and anglers fishing in this beautifully bleak landscape will be left with  a true hill-loch-experience from their day.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>912 586</strong></p>"
-    ]
+    "description": "Follow A897, Melvich to Helmsdale road, parking in area on the north side of the cattle-grid just before electrical substation. Through the double gate, head SE uphill and along the argo track ensuring forestry is to the left of the track until Lochan nan Clach Geala is reached, this Lochan is of no fishing interest.  Continuing along the flatter, gentler track will lead to the last gate on the hill from which both Na Caorach and Na Seilge can be overlooked. The last, short leg of the walk is downhill in a southerly direction towards the north shore – overall walk time 35 – 40 mins. Boat users will find the boat in the NE corner. A great loch to visit on its own, or for larger fishing parties combine with nearby Seilge where each loch can accommodate anglers with use of a boat. Excellent sport can be had just about anywhere in the loch and with the addition of a boat this year anglers can expect great fishing over water and fish which have remained untouched for some time. Excellent, hard fighting trout averaging 10-12oz will delight all and anglers fishing in this beautifully bleak landscape will be left with  a true hill-loch-experience from their day.",
+    "lat_lng": "58.501944858590896,-3.8686595437457254"
   },
   {
     "name": "Loch Caol (Champagne)",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Follow A897, Melvich to Helmsdale road, parking in area on the north side of cattle-grid just before electrical substation Grid reference 904599. Caol is an energetic 2.2km walk. Pass through the double gate, head uphill and along argo track ensuring forestry is to the left of the track. Pass through the gate and follow the route of the pylons to pass Loch Akran on your right, walk a further 400m then head north a further 250m to reach the loch. Caol is historically known as \u2018Champagne\u2019 nobody is sure of the reason why, perhaps successful anglers celebrated in style! Little is known about the fishing in this loch though historical records show fish of 2lb plus being caught in the past. This loch has been rarely fished, one for the determined angler who enjoys a challenge. Let us know!\u00a0\u00a0\u00a0</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>921 617</strong></p>"
-    ]
+    "description": "Follow A897, Melvich to Helmsdale road, parking in area on the north side of cattle-grid just before electrical substation Grid reference 904599. Caol is an energetic 2.2km walk. Pass through the double gate, head uphill and along argo track ensuring forestry is to the left of the track. Pass through the gate and follow the route of the pylons to pass Loch Akran on your right, walk a further 400m then head north a further 250m to reach the loch. Caol is historically known as ‘Champagne’ nobody is sure of the reason why, perhaps successful anglers celebrated in style! Little is known about the fishing in this loch though historical records show fish of 2lb plus being caught in the past. This loch has been rarely fished, one for the determined angler who enjoys a challenge. Let us know!   ",
+    "lat_lng": "58.52999539550737,-3.8546936381233987"
   },
   {
     "name": "Loch na Seilge",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p>Grid Reference &amp; Parking <strong>11/923586</strong>. Follow A897, Melvich to Helmsdale road, parking in area on the north side of cattle-grid just before electrical substation. Through double gate, head SE uphill and along argo track ensuring forestry is to the left of the track until Lochan nan Clach Geala is reached, this Lochan is of no fishing interest. The track now leads a gentler, more direct southerly route to the NW corner of Seilge, where the boat can be launched from \u2013 overall walk time approx 35-40 minutes. Not a deep loch, reaching only depths of 10-12\u2032 even in the middle, however, the best of the fishing is normally found closer to shore in waters of 6-8\u2032. North bank always proves productive, especially around the point, as does the SE corner of the loch beyond the island. Producing superbly pink fleshed fish between 1/2lb \u2013 1.5lbs from both boat and bank, Seilge can definitely be labelled as a premier Halladale loch where the balance of quality and quantity can be achieved!</p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>921 586</strong></p>"
-    ]
+    "description": "Grid Reference \u0026amp; Parking 11/923586. Follow A897, Melvich to Helmsdale road, parking in area on the north side of cattle-grid just before electrical substation. Through double gate, head SE uphill and along argo track ensuring forestry is to the left of the track until Lochan nan Clach Geala is reached, this Lochan is of no fishing interest. The track now leads a gentler, more direct southerly route to the NW corner of Seilge, where the boat can be launched from – overall walk time approx 35-40 minutes. Not a deep loch, reaching only depths of 10-12′ even in the middle, however, the best of the fishing is normally found closer to shore in waters of 6-8′. North bank always proves productive, especially around the point, as does the SE corner of the loch beyond the island. Producing superbly pink fleshed fish between 1/2lb – 1.5lbs from both boat and bank, Seilge can definitely be labelled as a premier Halladale loch where the balance of quality and quantity can be achieved!",
+    "lat_lng": "58.50216870073064,-3.853225355703866"
   },
   {
     "name": "Loch Akran",
-    "season": "Fishing Season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Follow A897, Melvich to Helmsdale road, parking in area on the north side of cattle-grid just before electrical substation Grid reference 904599. Akran is an energetic <span class=\"s2\">2km</span> walk. Pass through the double gate, head uphill and along argo track ensuring forestry is to the left of the track. Pass through the gate and follow the route of the pylons to reach the NW bank of the loch. Akran is a good beginners loch, wading is safe with a large head of free rising fish, average size 8oz with the occasional bigger fish.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<strong>922 604</strong></p>"
-    ]
+    "description": "Follow A897, Melvich to Helmsdale road, parking in area on the north side of cattle-grid just before electrical substation Grid reference 904599. Akran is an energetic 2km walk. Pass through the double gate, head uphill and along argo track ensuring forestry is to the left of the track. Pass through the gate and follow the route of the pylons to reach the NW bank of the loch. Akran is a good beginners loch, wading is safe with a large head of free rising fish, average size 8oz with the occasional bigger fish.",
+    "lat_lng": "58.518350926431694,-3.8523618590097173"
   },
   {
     "name": "Loch Coulbackie",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p class=\"p1\"><span class=\"s1\">Leave the A836 Thurso/Bettyhill road at Grid reference <strong>868651</strong> and follow the road south. This is a rough track so a 4\u00d74 will be necessary to drive to the end and park at 859626. Walk SE for a distance of approximately 1.8km to reach the loch. This loch has been seldom visited in recent times so little is known about the quality of fishing. Historical records have shown fish of over 2lbs being caught in the past, well worth a visit for the determined, adventurous angler.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference: <strong>872 614</strong></p>"
-    ]
+    "description": "Leave the A836 Thurso/Bettyhill road at Grid reference 868651 and follow the road south. This is a rough track so a 4×4 will be necessary to drive to the end and park at 859626. Walk SE for a distance of approximately 1.8km to reach the loch. This loch has been seldom visited in recent times so little is known about the quality of fishing. Historical records have shown fish of over 2lbs being caught in the past, well worth a visit for the determined, adventurous angler.",
+    "lat_lng": "58.52606014061739,-3.938639170194343"
   },
   {
     "name": "Loch Grassie",
-    "season": "Fishing season 1st April to 5th October.",
-    "description": [
-      "<p><span style=\"font-weight: 400;\">Approach from Forsinain via forestry track leading to and beyond Altnabreac. 4\u00d74 or vehicle with high clearance is required to negotiate the bumpy track. Continue along track past Loch Caise for 1/2 mile where a sign for Grassie will be found pointing through a forestry ride. A short 5 minute walk through this very wet and boggy ride will bring anglers to the southerly shore \u2013 waders are recommended to ensure dry feet! Anglers will encounter fewer fish in the loch\u2019s considerable amount of shallow water in the westerly bay which reaches towards loch Caise, the deeper water extending along the opposite shore will produce most success. A fantastic little loch to visit and combine with either of the nearby lochs for added variation to the day. Grassie holds a smaller head of fish than neighbouring Garbh or Caise but trumps them both on size and quality with fish of over a pound often encountered.</span></p>"
-    ],
-    "lat_lng": [
-      "<p>Grid Reference:\u00a0<b>030 468</b></p>"
-    ]
+    "description": "Approach from Forsinain via forestry track leading to and beyond Altnabreac. 4×4 or vehicle with high clearance is required to negotiate the bumpy track. Continue along track past Loch Caise for 1/2 mile where a sign for Grassie will be found pointing through a forestry ride. A short 5 minute walk through this very wet and boggy ride will bring anglers to the southerly shore – waders are recommended to ensure dry feet! Anglers will encounter fewer fish in the loch’s considerable amount of shallow water in the westerly bay which reaches towards loch Caise, the deeper water extending along the opposite shore will produce most success. A fantastic little loch to visit and combine with either of the nearby lochs for added variation to the day. Grassie holds a smaller head of fish than neighbouring Garbh or Caise but trumps them both on size and quality with fish of over a pound often encountered.",
+    "lat_lng": "58.36522625098868,-5.369641506889919"
+  },
+  {
+    "name": "Loch Badaidh na Meana",
+    "description": "Leave A897 Helmsdale/Melvich road at Grid reference 892555, follow the minor road north to park at Upper Bighouse 888575. Head west up the hill for a distance of approximately 3km, an energetic 45 minute walk. The loch can also be approached from the Strathy forest track. Little is known about the fishing in this loch but it is well worth a visit combined with other lochs in the area. One for the adventurous angler.",
+    "lat_lng": "58.4907309,-3.965182899999945"
   }
 ]

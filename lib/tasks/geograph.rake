@@ -25,7 +25,7 @@ namespace :geograph do
 
   desc 'Download and save photos using a json file of locations'
   task :download_photos_from_json_file do
-    fishery = 'assynt-crofters-trust'
+    fishery = 'forsinard-fly-fishers'
     waters = JSON.parse(File.read(Dir.pwd + "/lib/tasks/json_files/#{fishery}.json"))
     waters.each do |water|
       folder_name = water['name'].first.tr(' ', '-')
