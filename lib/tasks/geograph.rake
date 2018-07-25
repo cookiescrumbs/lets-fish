@@ -28,7 +28,7 @@ namespace :geograph do
     fishery = 'forsinard-fly-fishers'
     waters = JSON.parse(File.read(Dir.pwd + "/lib/tasks/json_files/#{fishery}.json"))
     waters.each do |water|
-      folder_name = water['name'].first.tr(' ', '-')
+      folder_name = water['name'].tr(' ', '-')
       loch_location = water['lat_lng'].strip
       FileUtils.mkpath Dir.pwd + "/lib/tasks/water_images/#{fishery}/#{folder_name}"
       [*0..3].each do |n|
