@@ -19,7 +19,9 @@ module Lets
     end
 
     def self.random
-      Water.where(published: true).includes(:fishery).where('fisheries.published' => true).order("RANDOM()").first
+      water = Water.where(published: true).includes(:fishery).where('fisheries.published' => true).order("RANDOM()").first
+      return water if water.hero_image.present?
+      random
     end
 
     def self.random_from(fishery_slug)
