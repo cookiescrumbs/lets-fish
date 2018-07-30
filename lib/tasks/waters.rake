@@ -2,7 +2,6 @@
 
 require 'northern_pike'
 require 'httparty'
-require 'byebug'
 
 namespace :waters do
   desc 'Add waters from a JSON file'
