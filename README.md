@@ -195,4 +195,3 @@ proj is used to calculate and convert the lat,lng from a OS grid ref. It is a re
 
 ```brew install proj```
 
-
