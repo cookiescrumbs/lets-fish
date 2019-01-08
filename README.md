@@ -193,7 +193,4 @@ Member to use ``` asset_path () ``` and change the css file from ```.css to .css
 
 proj is used to calculate and convert the lat,lng from a OS grid ref. It is a requirement of the global_convert gem, which is a requirement of the Northern Pike gem.
 
-```brew install proj```
-
-
-
+```brew install proj``
