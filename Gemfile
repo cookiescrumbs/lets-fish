@@ -37,6 +37,7 @@ gem 'meta-tags'
 gem 'devise'
 gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
+gem 'sprockets', '>= 3.7.2'
 
 gem 'northern_pike'
 
