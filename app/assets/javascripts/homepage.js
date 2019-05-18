@@ -13,3 +13,4 @@
 //= require jquery.easing.min
 //= require suggested-search.min
 //= require navigation
+//= require search_analytics
