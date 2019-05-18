@@ -6,6 +6,12 @@ $(document).ready(function() {
             eventCategory: 'search',
             eventAction: 'search',
             eventLabel: event.srcElement.value
-          });
+        });
+        console.log({
+            hitType: 'search',
+            eventCategory: 'search',
+            eventAction: 'search',
+            eventLabel: event.srcElement.value
+        });
     });
 });
