@@ -34,7 +34,7 @@ gem 'aws-sdk-s3'
 gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
 gem 'meta-tags'
-gem 'devise'
+gem "devise", ">= 4.6.0"
 gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
 gem 'sprockets', '>= 3.7.2'
