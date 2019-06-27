@@ -2,7 +2,7 @@ class FeaturedWatersController < ApplicationController
     include Lets
   
     def index
-      @waters = Lets::Waters::Featured(6)
+      @waters = Lets::Waters::featured(6)
     end
   end
   
