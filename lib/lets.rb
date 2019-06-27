@@ -29,5 +29,9 @@ module Lets
     def self.featured(number = 3) 
         Water.where(published: true, featured: true).includes(:fishery).where('fisheries.published' => true).order(name: :asc).limit(number)
     end
+
+    def self.featured_all() 
+        Water.where(published: true, featured: true).includes(:fishery).where('fisheries.published' => true).order(name: :asc)
+    end
   end
 end
