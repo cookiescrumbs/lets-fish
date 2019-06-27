@@ -1,5 +1,5 @@
-<% if !@waters.nil? && @waters.exists? %>
-    <% @waters.each do | water | %>
+<% if !locals[:waters].nil? && locals[:waters].exists? %>
+    <% locals[:waters].each do | water | %>
         <div class="simple-card col-md-4 col-sm-12">
             <a href="<%= fishery_water_path water.fishery, water %>" class="explore-link" >
                 <% image_styles = (water.images.first)? '' : 'missing-image max-width-54 p-top5 p-bottom5' %>

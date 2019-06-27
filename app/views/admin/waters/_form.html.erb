@@ -101,17 +101,31 @@
       <% end %>
   </div>
 
-  <div class="form-group">
-     <label for="publish">Publish this water</label>
-      <div class="radio">
+    <div class="form-group">
+        <label for="publish">Publish this water</label>
+        <div class="radio">
         <%= label :publish, "Unpublished" %>
         <%= radio_button :water, :published, false %>
-      </div>
-      <div class="radio">
+        </div>
+        <div class="radio">
         <%= label :publish, "Publish" %>
         <%= radio_button :water, :published, true %>
-      </div>
-  </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="featured">Featured water</label>
+        <div class="radio">
+        <%= label :featured, "not featured" %>
+        <%= radio_button :water, :featured, false %>
+        </div>
+        <div class="radio">
+        <%= label :featurd, "featured" %>
+        <%= radio_button :water, :featured, true %>
+        </div>
+    </div>
+
+
 
   <div class="form-group hidden">
     <label for="water_annotation">Annotation</label>

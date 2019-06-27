@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="row">
-        <%= render 'shared/waters' %>
+        <%= render 'shared/waters', locals: {:waters => @waters} %>
         </div>
         <a href="/waters" class="btn btn-default btn-lg m-top17">View all waters</a>
     </div>

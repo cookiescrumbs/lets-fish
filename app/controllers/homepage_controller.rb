@@ -7,6 +7,7 @@ class HomepageController < ApplicationController
     # fresh_when @waters, public: true
     @fisheries = Lets::Fisheries::recently_added 6
     # fresh_when @fisheries, public: true
+    @featured_waters = Lets::Waters::featured 6
   end
 end
 
