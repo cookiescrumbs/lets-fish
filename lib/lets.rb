@@ -25,5 +25,9 @@ module Lets
     def self.random_from(fishery_slug)
       Water.where(published: true).includes(:fishery).where('fisheries.published' => true, 'fisheries.slug' => fishery_slug).order("RANDOM()").first
     end
+
+    def self.featured(number = 3) 
+        Water.where(published: true, featured: true).includes(:fishery).where('fisheries.published' => true).order(name: :asc).limit(number)
+    end
   end
 end

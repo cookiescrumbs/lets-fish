@@ -10,6 +10,7 @@ FactoryGirl.define do
     season_end '2014-10-20'
     images { create_list(:image, 1) }
     published { true }
+    featured { true }
     fishery
   end
 end
