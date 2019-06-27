@@ -39,7 +39,7 @@ LetsFish::Application.routes.draw do
   get '/destinations',  to: 'browse_destinations#index'
   get '/sitemaps',        to: 'sitemaps#index'
 
-  get '/featured/waters',  to: 'features_waters#index'
+  get '/featured/waters',  to: 'featured_waters#index'
 
   get '/search',  to: 'search#index'
   get '/weather', to: 'weather#forecast'
