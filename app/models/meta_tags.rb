@@ -11,7 +11,7 @@ module MetaTags
     end
 
     def image_src
-      images.first ? images.first.image.path(:original) : '/images/missing.png'
+      hero_image.present? ? hero_image.image.path(:original) : '/images/missing.png'
     end
 
     def image_path
