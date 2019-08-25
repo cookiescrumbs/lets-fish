@@ -43,6 +43,7 @@ gem 'rubyzip', '>= 1.2.2'
 gem 'ffi', '>= 1.9.24'
 gem 'activejob', '>= 5.0.1'
 gem 'loofah', '>= 2.2.3'
+gem "nokogiri", ">= 1.10.4"
 
 gem 'northern_pike'
 
