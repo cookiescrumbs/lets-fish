@@ -13,10 +13,14 @@
     <label for="fishery-name">Fishery Name</label>
     <%= f.text_field :name, class: "form-control", id:"fishery-name", placeholder: "Enter fishery name"%>
   </div>
-  <div class="form-group">
-    <label for="fishery-name">Url Slug</label>
-    <%= f.text_field :slug , class: "form-control", id:"slug" %>
-  </div>
+  
+    <% if @fishery.persisted? %>
+        <div class="form-group">
+            <label for="fishery-name">Url Slug</label>
+            <%= f.text_field :slug , class: "form-control", id:"slug" %>
+        </div>
+    <% end %>
+
   <div class="form-group">
     <label for="map-zoom-level">Google Map Zoom Level</label>
     <%= f.select(:map_zoom_level, [*1..20]) %>
