@@ -31,7 +31,8 @@ LetsFish::Application.configure do
 
   # cache static assets for 30 days - 2592000 seconds
   config.public_file_server.headers = {
-    'Access-Control-Allow-Origin' => 'https://www.lets.fish',
+    
+    'Access-Control-Allow-Origin' => '*',
     'Access-Control-Request-Method' => %w{GET OPTIONS}.join(","),
     'Cache-Control' => 'public, max-age=2592000',
     'Expires' => "#{1.year.from_now.to_formatted_s (:rfc822)}"
