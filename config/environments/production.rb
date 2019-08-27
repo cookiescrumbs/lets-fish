@@ -26,12 +26,12 @@ LetsFish::Application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.font_assets.origin = 'https://lets.fish'
+  config.font_assets.origin = 'https://www.lets.fish'
 
 
   # cache static assets for 30 days - 2592000 seconds
   config.public_file_server.headers = {
-    'Access-Control-Allow-Origin' => 'https://lets.fish',
+    'Access-Control-Allow-Origin' => 'https://www.lets.fish',
     'Access-Control-Request-Method' => %w{GET OPTIONS}.join(","),
     'Cache-Control' => 'public, max-age=2592000',
     'Expires' => "#{1.year.from_now.to_formatted_s (:rfc822)}"
