@@ -52,6 +52,14 @@ initdb /usr/local/var/postgres
 pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
 
 ```
+*May need to symlink the socket for postgres*
+
+```
+mkdir /var/pgsql_socket/ 
+ln -s /private/tmp/.s.PGSQL.5432 /var/pgsql_socket/
+```
+
+
 [More information about installing Postgres for Rails](http://railscasts.com/episodes/342-migrating-to-postgresql)
 
 ##### Start Postgres

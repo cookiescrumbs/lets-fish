@@ -38,7 +38,7 @@ gem "devise", ">= 4.7.1"
 gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
 gem 'sprockets', '>= 3.7.2'
-gem 'rubyzip', '>= 1.2.2'
+gem "rubyzip"
 gem 'ffi', '>= 1.9.24'
 gem 'activejob', '>= 5.0.1'
 gem "loofah", ">= 2.3.1"
