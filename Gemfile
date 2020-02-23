@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.1'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem "puma", ">= 3.12.2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -15,7 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 
-gem 'rack-cors', require: 'rack/cors'
+gem "rack-cors", ">= 1.0.4", require: 'rack/cors'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -34,17 +34,18 @@ gem 'aws-sdk-s3'
 gem 'friendly_id', '~>5.1.0'
 gem 'httparty'
 gem 'meta-tags'
-gem "devise", ">= 4.6.0"
+gem "devise", ">= 4.7.1"
 gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
 gem 'sprockets', '>= 3.7.2'
 gem 'rubyzip', '>= 1.2.2'
 gem 'ffi', '>= 1.9.24'
 gem 'activejob', '>= 5.0.1'
-gem 'loofah', '>= 2.2.3'
+gem "loofah", ">= 2.3.1"
 gem "nokogiri", ">= 1.10.4"
+gem "rack"
 
-gem 'northern_pike'
+# gem 'northern_pike'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
