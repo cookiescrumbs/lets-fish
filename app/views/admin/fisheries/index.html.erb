@@ -42,7 +42,8 @@
                                <img src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=650&h=350" %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
                               </div>
                             <div class="explore-caption border-none">
-                                <h4><%= water.name %></h4>
+                                <h4><%= water.name %></h4> 
+                                <span class="label label-info"><%= (water.published)? 'published' : 'unpublished' %></span>
                                 <p class="text-muted"><%= water.short_address %></p>
                                 <%= link_to 'Preview water page', fishery_water_path(fishery, water), class: 'btn btn-default btn-sm' %>
                                 <%= link_to 'Edit details', edit_admin_fishery_water_path(fishery, water), class: 'btn btn-default btn-sm edit-water' %>
