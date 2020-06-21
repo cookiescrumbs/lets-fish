@@ -1,0 +1,48 @@
+<%= render 'shared/navigation' %>
+
+<section id="contributors" class="m-top70">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-heading">Our Contributors</h3>
+                <h3 class="section-subheading text-muted">The ones who returned to tell their tale...</h3>
+                <div style="font-size:20px; font-style: normal; margin-bottom: 40px;">🏔️⚡🐟🗺️🦌⛈️⛺🥾🏞️🗒️🖊️</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="team-member">
+                    <%= image_tag "contributors/steven-cook.jpg",  class: "mx-auto rounded-circle" %>
+                    <h4>Steven Cook</h4>
+                    <br />
+                    <p>
+                        Wind enthusiast, tippet collector and leader length obsessive. Steven knows only trout. His education was hindered by his lack of attention to anything that wasn't trout fishing.
+                        If you can find him he's usually at the front; over the furthest headland, bay or peninsula, pulling a team of wets and whistling the theme to The Littest Hobo.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="team-member">
+                    <%= image_tag "contributors/tom-grahame.jpg",  class: "mx-auto rounded-circle" %>
+                    <h4>Tom Grahame</h4>
+                    <br />
+                    <p>After trying coarse fishing as a teenager and sea fishing on family holidays to North Wales, Tom discovered fly-fishing for wild brown trout through the persistence of a good friend. He can be found stumbling around the banks of Cumbrian waters or the remote lochs of Scotland.
+                        A tall man, he's the designated pack mule and is capable of carrying campfire wood over great distances.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="team-member">
+                    <%= image_tag "contributors/sybil.jpg",  class: "mx-auto rounded-circle" %>
+                    <h4>Sybil ... AKA "Plonker"</h4>
+                    <br />
+                    <p>A connoisseur of pub carpet.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<%= render 'shared/contributor', locals: { background_color: true }%>

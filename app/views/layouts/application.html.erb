@@ -28,10 +28,6 @@
     </head>
 
 <body <%= @page_id %> >
-<script src="//fast.appcues.com/36326.js"></script>
-<script>
-    Appcues.anonymous();
-</script>
     <%= yield %>
     <%= render 'cookies_eu/consent_banner' %>
     <%= render 'shared/footer' %>

@@ -76,8 +76,8 @@
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 </section>
-<hr />
-<%= render 'shared/how_it_works' %>
+
+<%= render 'shared/contributor', locals: { background_color: true }%>
 <script type="application/ld+json">
     <%= raw render 'schema_org.json.jbuilder' %>
 </script>
