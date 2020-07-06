@@ -1,4 +1,4 @@
+# frozen_string_literal: true
+
 class BrowseDestinationsController < ApplicationController
-  def all
-  end
 end

@@ -9,13 +9,14 @@ class Water < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
-  belongs_to              :fishery, touch: true
-  belongs_to              :water_type
+  belongs_to :fishery, touch: true
+  belongs_to :water_type
 
   has_many :species_waters
   has_many :species, through: :species_waters
 
-  has_many :images, dependent: :destroy
+  has_many :images
+  accepts_nested_attributes_for :images, reject_if: ->(i) { (i[:image].blank? && i[:id].blank?) }, allow_destroy: true
 
   validates :fishery_id, presence: true
 
@@ -43,11 +44,25 @@ class Water < ActiveRecord::Base
   end
 
   def lat
-    self.latitude
+    latitude
   end
 
   def lng
-    self.longitude
+    longitude
+  end
+
+  def images_without_hero
+    images.reject(&:hero)
+  end
+
+  def hero_image
+    images.reject do |image|
+      !image.hero
+    end.first
+  end
+
+  def negotiated_permission_tickets
+    self[:permission_tickets].present? ? self[:permission_tickets] : fishery.permission_tickets
   end
 
   private

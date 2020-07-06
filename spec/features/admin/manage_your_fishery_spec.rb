@@ -14,7 +14,7 @@ describe 'Manage your fishery', type: :feature do
     end
 
     let(:fishery) { @fishery_manager.fisheries.last}
-    let(:last_water) { fishery.waters.last }
+    let(:first_water) { fishery.waters.first }
     let(:edit_button) { page.all('.edit-fishery').first }
 
     it 'updates a fishery\'s details' do
@@ -43,11 +43,11 @@ describe 'Manage your fishery', type: :feature do
     end
 
     it 'has a button to edit a water' do
-       expect(page.all('div.water').first).to have_link 'Edit details', href: edit_admin_fishery_water_path(fishery, last_water)
+      expect(page.all('div.water').first).to have_link 'Edit details', href: edit_admin_fishery_water_path(fishery, first_water)
     end
 
     it 'has not got a button to add a new fishery' do
-        expect(page).not_to have_link 'Add a new fishery', href: new_admin_fishery_path
+      expect(page).not_to have_link 'Add a new fishery', href: new_admin_fishery_path
     end
 
     it 'has not got a button to delete a fishery' do

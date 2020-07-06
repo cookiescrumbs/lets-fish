@@ -1,16 +1,18 @@
-<ul class="forecast text-muted">
-    <li>
-        <i class="wi <%=@weather.icon%> fa-2x"></i>
-    </li>
-    <li>
-        <%=@weather.wind_speed%> mph <i class="wi wi-strong-wind"></i>
-    </li>
-    <li>
-        <i class="wi wi-wind from-<%=@weather.wind_bearing%>-deg fa-2x"></i>
-        <%=@weather.wind_direction_string%>
-    </li>
-    <li>
-        <%=@weather.temperature %>
-        <i class="wi wi-celsius fa-2x"></i>
-    </li>
-</ul>
+<a href="https://darksky.net/forecast/<%=@weather.lat%>,<%=@weather.lng%>/us12/en">
+    <ul class="forecast text-muted">
+        <li>
+            <i class="wi <%=@weather.icon%> fa-2x"></i>
+        </li>
+        <li>
+            <%=@weather.wind_speed%> mph <i class="wi wi-strong-wind"></i>
+        </li>
+        <li>
+            <i class="wi wi-wind from-<%=@weather.wind_bearing%>-deg fa-2x"></i>
+            <%=@weather.wind_direction_string%>
+        </li>
+        <li>
+            <%=@weather.temperature %>
+            <i class="wi wi-celsius fa-2x"></i>
+        </li>
+    </ul>
+</a>

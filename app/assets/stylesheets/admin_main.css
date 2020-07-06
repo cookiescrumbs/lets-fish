@@ -1,34 +1,31 @@
-
 #admin-waters #map {
   margin: 0;
   padding: 0;
   width: 100%;
-  height:450px !important;
+  height: 450px !important;
   margin-top: 0px;
   margin-bottom: 40px;
 }
 
-
 #admin-waters #map-search-box {
-    background-color: #fff;
-    font-size: 15px;
-    font-weight: 300;
-    margin-left: 12px;
-    margin-top: 10px;
-    padding: 7px;
-    text-overflow: ellipsis;
-    width: 50%;
-  }
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  margin-top: 10px;
+  padding: 7px;
+  text-overflow: ellipsis;
+  width: 50%;
+}
 
 #admin-waters #map-search-box:focus {
-    border-color: #4d90fe;
+  border-color: #4d90fe;
 }
 
 #admin-waters form img.preview {
   width: 50%;
   height: 50%;
 }
-
 
 #admin-waters form img.missing {
   width: 25%;

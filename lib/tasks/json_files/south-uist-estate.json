@@ -1,0 +1,132 @@
+[
+    {
+        "name": "Lower Kildonan",
+        "description": "blah blah",
+        "lat_lng": "738275"
+    },
+    {
+        "name": "Coragrimsaig",
+        "description": "blah blah",
+        "lat_lng": "799221"
+    },
+    {
+        "name": "Upper Kildonan",
+        "description": "blah blah",
+        "lat_lng": "738275"
+    },
+    {
+        "name": "An Ath Ruaidh (Upper Mill)",
+        "description": "blah blah",
+        "lat_lng": "755264"
+    },
+    {
+        "name": "Snigislett",
+        "description": "blah blah",
+        "lat_lng": "797251"
+    },
+    {
+        "name": "Bornish",
+        "description": "blah blah",
+        "lat_lng": "733295"
+    },
+    {
+        "name": "Mid Ollay",
+        "description": "blah blah",
+        "lat_lng": "740325"
+    },
+    {
+        "name": "East Ollay",
+        "description": "blah blah",
+        "lat_lng": "765313"
+    },
+    {
+        "name": "West Ollay",
+        "description": "blah blah",
+        "lat_lng": "740325"
+    },
+    {
+        "name": "Altabrug",
+        "description": "blah blah",
+        "lat_lng": "745345"
+    },
+    {
+        "name": "Fada",
+        "description": "blah blah",
+        "lat_lng": "755345"
+    },
+    {
+        "name": "Roag",
+        "description": "blah blah",
+        "lat_lng": "764355"
+    },
+    {
+        "name": "Howmore River",
+        "description": "blah blah",
+        "lat_lng": "755360"
+    },
+    {
+        "name": "Roag Burn",
+        "description": "blah blah",
+        "lat_lng": "764350"
+    },
+    {
+        "name": "Upper Roag",
+        "description": "blah blah",
+        "lat_lng": "793356"
+    },
+    {
+        "name": "School House",
+        "description": "blah blah",
+        "lat_lng": "764365"
+    },
+    {
+        "name": "Spotal",
+        "description": "blah blah",
+        "lat_lng": "834367"
+    },
+    {
+        "name": "An Eilein (Castle)",
+        "description": "blah blah",
+        "lat_lng": "765373"
+    },
+    {
+        "name": "Stilligarry",
+        "description": "blah blah",
+        "lat_lng": "765381"
+    },
+    {
+        "name": "Grogarry",
+        "description": "blah blah",
+        "lat_lng": "763395"
+    },
+    {
+        "name": "Nam Balgan",
+        "description": "blah blah",
+        "lat_lng": "762400"
+    },
+    {
+        "name": "Upper Bornish",
+        "description": "blah blah",
+        "lat_lng": "745294"
+    },
+    {
+        "name": "Airigh Amhlaidh",
+        "description": "blah blah",
+        "lat_lng": "793355"
+    },
+    {
+        "name": "Hallan",
+        "description": "blah blah",
+        "lat_lng": "740220"
+    },
+    {
+        "name": "Stulaval",
+        "description": "blah blah",
+        "lat_lng": "800225"
+    },
+    {
+        "name": "Cnoc a\u2019 Buidhe",
+        "description": "blah blah",
+        "lat_lng": "748258"
+    }
+]

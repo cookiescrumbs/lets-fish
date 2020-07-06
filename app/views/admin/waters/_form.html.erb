@@ -17,33 +17,56 @@
     </div>
   <% end %>
   <div class="form-group">
-    <label for="water_name">Water Name</label>
+
     <%= f.text_field :name, class: "form-control", placeholder: "Enter water name" %>
   </div>
 
   <% if !@water.address.nil? %>
     <div class="form-group">
-      <label for="water_name">Water Address (added by Google reverse geolocation)</label>
+      <label for="water_address">Water Address (added by Google reverse geolocation)</label>
       <%= f.text_field :address, class: "form-control", placeholder: "Enter water address" %>
     </div>
   <% end %>
   <div class="form-group">
     <label for="description">Description</label>
-      <%= f.text_area :description, class: "form-control", rows: 10, cols: 25%>
+      <%= f.text_area :description, class: "form-control", rows: 10, cols: 25 %>
+  </div>
+  <div class="form-group">
+    <label for="permission_tickets">Permission &amp; Tickets</label>
+      <%= f.text_area :permission_tickets, class: "form-control", rows: 10, cols: 25 %>
   </div>
 
   <div class="form-group">
-    <label for="water_types">Photo</label>
-      <%= file_field_tag(:file, multiple: false, name: "file[image]") %>
-  </div>
-  <div class="form-group">
-    <% image_src = (@water.images.first)? @water.images.first.image.url(:medium) : '/images/medium/missing.png' %>
-     <img src="<%= image_src %>" class="img-responsive missing-image max-width-25" alt="<%= @water.name %>">
-  </div>
+    <label for="photos">Photos</label>
+    <br />
+    <%= f.fields_for :images do |builder| %>
+    <% unless builder.object.id.nil? %>
+      <% image_src = builder.object.image.path(:original) %>
+      <%= image_tag "https://#{Rails.application.config.imgix[:source]}#{image_src}?auto=enhance&fit=crop&w=645&h=645" %>
+      <br />
+      <%= builder.check_box :_destroy %>
+      <%= builder.label :_destroy, 'Remove' %>
+    <% end %>
+    <br />
+    <%= builder.check_box :hero %>
+    <%= builder.label :hero, 'Hero Image'%>
+    <%= builder.file_field :image, type: :file %>
+    <%= builder.label :geograph_photo_id, 'Geograph ID' %>
+    <br />
+    <%= builder.text_field :geograph_photo_id, class: 'form-control photo-id' %>
+    <br />
+    <%= builder.hidden_field :attribution, class: 'form-control att', value: builder.object.attribution.to_json %>
+    <div class="attribution-example">
+        <% if builder.object.attribution.present? %>
+            <strong>Attribution from Geograph:</strong>
+            Image &copy; Copyright <a href="<%= builder.object.attribution['profile_url'] %>"><%= builder.object.attribution['name'] %></a>
+            and licensed for reuse under this <a href="<%= builder.object.attribution['licence'] %>">Creative Commons Licence</a>
+            <a href="<%= builder.object.attribution['photo_url'] %>">More information about this image at Geograph</a>.
+        <% end %>
+    </div>
+    <hr />
+    <% end %>
 
-  <div class="form-group">
-    <label for="attribution">Geograph Photo Id</label>
-    <%= text_field :image, :geograph_photo_id, class: "form-control" %>
   </div>
 
   <div class="form-group hidden">
@@ -77,6 +100,32 @@
       </div>
       <% end %>
   </div>
+
+    <div class="form-group">
+        <label for="publish">Publish this water</label>
+        <div class="radio">
+        <%= label :publish, "Unpublished" %>
+        <%= radio_button :water, :published, false %>
+        </div>
+        <div class="radio">
+        <%= label :publish, "Publish" %>
+        <%= radio_button :water, :published, true %>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="featured">Featured water</label>
+        <div class="radio">
+        <%= label :featured, "not featured" %>
+        <%= radio_button :water, :featured, false %>
+        </div>
+        <div class="radio">
+        <%= label :featurd, "featured" %>
+        <%= radio_button :water, :featured, true %>
+        </div>
+    </div>
+
+
 
   <div class="form-group hidden">
     <label for="water_annotation">Annotation</label>

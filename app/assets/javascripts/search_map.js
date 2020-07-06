@@ -6,10 +6,6 @@ $(document).ready(function() {
   //   return;
   // }
 
-  //Remove the server side result list it doesn't always tally with the pins on the map
-  //but the server side list is used on mobile becuase this js doesn't load under 768px
-  $('#results-container').empty();
-
   var geocoder = new google.maps.Geocoder(),
   mapOptions = {
     scrollwheel: false,
@@ -18,70 +14,30 @@ $(document).ready(function() {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
       mapTypeIds: [
+        google.maps.MapTypeId.HYBRID,
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
       ]
-    }
+    },
+    mapTypeId: google.maps.MapTypeId.HYBRID
   },
   markers =[],
   mapElement = document.getElementById('map'),
   zoom = getZoom(),
-  location = getLocation(),
-  lat = getLat(),
-  lng = getLng();
+  location = getLocation();
 
   //make the a new instance of google maps
   map = new google.maps.Map(mapElement, mapOptions);
 
-
-  ///////Search Box
-  // Create the search box and link it to the UI element.
-  // var input = (document.getElementById('map-search-box'));
-  // map.controls[
-  //   google.maps.ControlPosition.TOP_LEFT
-  // ].push(input);
-  // searchBox = new google.maps.places.SearchBox((input));
-
-  // Listen for the event fired when the user selects an item from the
-  // pick list. Retrieve the matching places for that item.
-  // google.maps.event.addListener(searchBox, 'places_changed', function() {
-  //   var places = searchBox.getPlaces();
-  //   if (places.length <= 0) {
-  //     return;
-  //   }
-  //   // get the first selected result if there are multiple matches
-  //   var firstResult = places[0];
-  //   var bounds = new google.maps.LatLngBounds();
-  //   bounds.extend(firstResult.geometry.location);
-  //   map.fitBounds(bounds);
-  //   map.setZoom(10);
-  //   boundingBox = getBoundingBoxFromMap(map);
-  //   getMarkersAndResultsFromBounds(boundingBox);
-  // });
-  ///////////////////////////
-
-  ////////Adding markers when map first loads
-  google.maps.event.addListenerOnce(map,'idle', function(){
-    buildMapRoundLocation(location);
-    buildMapRoundGeographicalCenter(lat,lng);
-    ////////////////////////////
-  });
+  buildMapRoundLocation(location);
 
   function getLocation() {
     var location;
-    if(!document.getElementById('map').dataset.location && !urlParam('location')) {
+    if(!urlParam('location')) {
       return null;
     }
-    location = urlParam('location') ||  mapElement.dataset.location;
+    location = urlParam('location');
     return decodeURIComponent(location);
-  }
-
-  function getLat() {
-    return parseFloat(mapElement.dataset.lat) || null;
-  }
-
-  function getLng() {
-    return parseFloat(mapElement.dataset.lng) || null;
   }
 
   function getZoom() {
@@ -89,11 +45,11 @@ $(document).ready(function() {
   }
 
   /////Adding markers when the user zooms the map
-  // google.maps.event.addListener(map, 'zoom_changed', function() {
-  //   // add markers to map within bounding box
-  //   boundingBox = getBoundingBoxFromMap(map);
-  //   getMarkersAndResultsFromBounds(boundingBox);
-  // });
+  google.maps.event.addListener(map, 'zoom_changed', function() {
+    // add markers to map within bounding box
+    boundingBox = getBoundingBoxFromMap(map);
+    getMarkersAndResultsFromBounds(boundingBox);
+  });
   ////////////////////////
 
   ///////Adding markers when the user drags the map
@@ -103,19 +59,6 @@ $(document).ready(function() {
     getMarkersAndResultsFromBounds(boundingBox);
   });
   /////////////////////////
-
-  function buildMapRoundGeographicalCenter(lat, lng) {
-
-      if(!lat && !lng) {
-        return;
-      }
-
-      map.setCenter(new google.maps.LatLng(lat,lng));
-      map.setZoom(zoom);
-      var boundingBox = getBoundingBoxFromMap(map);
-      var center = getCenterFromMap(map);
-      getMarkersAndResultsFromBounds(boundingBox);
-  }
 
   function buildMapRoundLocation(location) {
 

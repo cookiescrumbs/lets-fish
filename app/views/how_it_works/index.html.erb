@@ -1,0 +1,20 @@
+<%= render 'shared/navigation' %>
+<section id="contributors" class="m-top70">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12 text-center m-bottom34">
+              <h3 class="section-heading">How it works</h3>
+            <p>Let's fish is the result of fishing trip planning. We all know how hard it is to plan a fishing trip with information spread across the web, magazines and books.
+            As a group of friends who go fishing together; this website is an attempt to collate information about <a class="block-color" href="/waters">waters we'd like to fish</a> and <a class="block-color"  href="/featured/waters">waters we've fished</a>.
+            </p>
+            </div>
+            
+             <%= image_tag "group.jpg",  class: "group-photo img-responsive center-block" , alt: "James, Steven, Tom, Andrew & Dan before the arduous climb to Loch Enocho for three nights of fishing and wildcamping" %>
+            <p><small>James, Steven, Tom, Andrew & Dan before the arduous climb to <a class="block-color" href="fisheries/galloway-forest-park/waters/loch-enoch">Loch Encoh</a> for three days of fishing and wild camping.<small></p>
+        </div>
+    </div>
+</section>
+
+<%= render 'shared/contributor', locals: { background_color: true } %>
+
+

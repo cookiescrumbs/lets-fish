@@ -1,10 +1,17 @@
 LetsFish::Application.routes.draw do
 
-devise_for :users
+  devise_for :users
 
-as :user do
-  get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
-end
+  as :user do
+    get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
+  end
+
+  #api
+  namespace :api do
+    scope module: :v1 do
+      post '/water/fishery/:slug', to: 'waters#create'
+    end
+  end
 
   namespace :admin do
     resources :water_types
@@ -14,28 +21,41 @@ end
       end
   end
 
+  get '/fisheries',  to: 'browse_fisheries#index'
+
+  resources :fisheries do
+    resources :waters
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
-  get '/add/water/:id',   to: 'homepage#new_water'
   get 'search/within-bounding-box', to: 'search#within_bounding_box'
-  get '/waters/all',  to: 'browse_waters#all'
-  get '/destinations/all',  to: 'browse_destinations#all'
-  get '/fisheries/all',  to: 'browse_fisheries#all'
-  get '/waters/:id',      to: 'waters#show'
-  get '/fisheries/:id',   to: 'fisheries#show'
-  get '/trips/:username/:id', to: 'trips#show'
+  get 'search/waters', to: 'search#waters'
+  get 'search/suggested', to: 'search#suggested'
+  get '/waters',  to: 'browse_waters#index'
+  get '/destinations',  to: 'browse_destinations#index'
   get '/sitemaps',        to: 'sitemaps#index'
+
+  get '/contributors',        to: 'contributors#index'
+  get '/how-it-works',        to: 'how_it_works#index'
+
+  get '/featured/waters',  to: 'featured_waters#index'
+
+  get '/search',  to: 'search#index'
+  get '/weather', to: 'weather#forecast'
+
+  get 'suggested/all', to: 'suggested#all'
+  get 'suggested/waters', to: 'suggested#waters'
+  get 'suggested/fisheries', to: 'suggested#fisheries'
 
   get '/your/fishery', to: 'admin/fisheries#index'
 
-  get 'weather', to: 'weather#forecast'
-  get 'search',  to: 'search#index'
-  get 'places', to: 'places#index'
-  get 'places/info-window', to: 'places#info_window'
+  get '/image/attribution', to: 'image#attribution'
 
+  get '/:destination', to: 'search#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

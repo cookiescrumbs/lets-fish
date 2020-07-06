@@ -1,0 +1,95 @@
+<%= render "shared/navigation" %>
+<section class="bg-light-gray m-top70">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-heading">Destinations</h3>
+                <h3 class="section-subheading text-muted">Popular fly fishing destinations</h3>
+            </div>
+        </div>
+            <div class="row">
+                <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/assynt?location=loch+assynt">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Assynt</h2>
+                            </div>
+                        </div>
+                    <img src="https://letsfish.imgix.net/images/images/000/000/415/original/allt-nan-damh-and-heather-geograph-4651864-by-Peter-Moore-original.jpg?auto=enhance&fit=crop&w=650&h=350" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/orkney?location=backaland+orkney" class="result-link">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Orkney Islands</h2>
+                            </div>
+                        </div>
+                        <img src="https://letsfish.imgix.net/images/images/000/000/379/original/1C4A732A-04BE-4B38-9AF5-632DF635E404.jpeg?auto=enhance&fit=crop&w=650&h=350" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/jura?location=Isle+of+Jura">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Isle of Jura</h2>
+                            </div>
+                        </div>
+                        <img src="https://dur8xuaowfaya.cloudfront.net/images/images/000/000/072/medium/Jura_17.jpg?1476433566" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/galloway?location=Galloway+Forest+Park+Scotland" class="result-link">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Galloway Forest Park</h2>
+                            </div>
+                        </div>
+                        <img src="https://dur8xuaowfaya.cloudfront.net/images/images/000/000/077/medium/neldricken.jpg?1476951599" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/shetland?location=shetland+scotland" class="result-link">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>The Shetland Isles</h2>
+                            </div>
+                        </div>
+                        <img src="<%= image_path 'the-shetland-isles-destination.jpg' %>" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/snowdonia?location=blaenau-ffestiniog" class="result-link">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Snowdonia National Park</h2>
+                            </div>
+                        </div>
+                        <img src="https://dur8xuaowfaya.cloudfront.net/images/images/000/000/063/medium/geograph-1942933-by-Chris-Andrews.jpg?1457382874" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                 <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/forsinard?location=Forsinard+Scotland" class="result-link">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Forsinard</h2>
+                            </div>
+                        </div>
+                        <img src="https://letsfish.imgix.net/images/images/000/000/450/original/loch-preas-an-lochan_-sutherland-geograph-4731229-by-Claire-Pegrum-original.jpg?auto=enhance&fit=crop&w=650&h=350" class="img-responsive img-centered" >
+                    </a>
+                </div>
+                 <div class="photo-with-text-overlay col-md-6 col-sm-12">
+                    <a href="/lake-district-national-park?location=Lake+District+National+Park+England" class="result-link">
+                        <div class="title-header-outer">
+                            <div class="title-header">
+                                <h2>Lake District National Park</h2>
+                            </div>
+                        </div>
+                        <img src="https://letsfish.imgix.net/images/images/000/000/091/original/crummock-water.jpg?auto=enhance&fit=crop&w=650&h=350" class="img-responsive img-centered" >
+                    </a>
+                </div>
+
+            </div>
+    </div>
+</section>
+<%= render 'shared/contributor', locals: { background_color: false }%>

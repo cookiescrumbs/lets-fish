@@ -1,17 +1,26 @@
  <div id="carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+
   <ol class="carousel-indicators">
-    <% locals[:photos].length.times do |i|%>
+    <% locals[:photos].length.times do |i| %>
         <li data-target="#carousel" data-slide-to="<%=i%>" <%=(i == 0)? 'class=active' : '' %>></li>
     <% end %>
   </ol>
 
-  <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <% locals[:photos].each_with_index do |photo, i| %>
-        <div class="item  <%=(i == 0)? 'active' : '' %>">
-            <img src="<%=photo.url%>" class="img-responsive center-block" alt="">
-        </div>
+    <% locals[:photos].each_with_index do |photo, i|
+      image_src = "https://#{Rails.application.config.imgix[:source]}#{ photo.image.path(:original)}"
+    %>
+     <div class="item  <%=(i == 0)? 'active' : '' %>">
+        <img alt="<%= @water.name %>" srcset="
+        <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
+        <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=725&amp;h=725  725w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=965 965w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
+        <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
+        sizes="100vw"
+        src="<%= image_src %>?auto=enhance&amp;fit=clip %>" class="img-responsive center-block" >
+    </div>
     <% end %>
   </div>
 

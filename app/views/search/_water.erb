@@ -3,7 +3,7 @@ water = locals[:water]
 count = locals[:count]
 %>
 <div class="col-md-6 col-sm-12 result-item">
-    <a href="/waters/<%= water.slug %>" class="result-link">
+    <a href="<%= fishery_water_path water.fishery, water %> " class="result-link">
     <div class="title-header-outer">
         <div class="title-header">
             <h4 class="water-name" ><%= water.name %></h4>
@@ -14,11 +14,15 @@ count = locals[:count]
         </div>
     </div>
     <div>
-        <% image_src = (water.images.first)? water.images.first.image.url(:medium) : '/images/missing.png' %>
-        <% image_styles = (water.images.first)? '' : 'missing-image' %>
-            <div class="image-background">
-                <img src="<%= image_src %>" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
-            </div>
+        <div class="image-background">
+                    
+            <% image_styles = (water.hero_image.present?)? '' : 'missing-image max-width-54 p-top5 p-bottom5' %>
+            <% 
+                image_src = (water.hero_image.present?)? water.hero_image.image.path(:original): '/images/missing.png'
+                image_src = "https://#{Rails.application.config.imgix[:source]}#{image_src}"
+            %> 
+            <img src="<%= image_src %>?fit=crop&w=650&h=350" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+        </div>
         <div class="result-caption">
             <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>
             <%= render '/shared/fish_species', locals: { fish: water.species.select(:name).distinct.map{|s| s.name.capitalize }.to_sentence } %>

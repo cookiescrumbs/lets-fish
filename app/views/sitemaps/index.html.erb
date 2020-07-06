@@ -1,5 +1,5 @@
-<%= render "navigation" %>
-<section class="container sitemap p-top17
+<%= render 'shared/navigation' %>
+<section class="container sitemap m-top70
  ">
     <div class="row">
         <div class="col-md-12">
@@ -11,15 +11,18 @@
         <div class="col-md-3">
             <h4>Destinations</h4>
             <ol class="list-unstyled">
-                <li><a href="/search?location=Isle+of+Jura">Isle of Jura, Scotland</a></li>
-                <li><a href="/search?location=Galloway+Forest+Park+Scotland">Galloway Forest Park, Scotland</a></li>
+                <li><a href="/assynt?location=Assynt+Scotland">Assynt, Scotland</a></li>
+                <li><a href="/galloway?location=Galloway+Forest+Park+Scotland">Galloway Forest Park, Scotland</a></li>
+                <li><a href="/jura?location=Isle+of+Jura">Isle of Jura, Scotland</a></li>
+                <li><a href="/shetland?location=shetland+scotland">The Shetland Isles, Scotland</a></li>
+                <li><a href="/snowdonia?location=blaenau-ffestiniog">Snowdonia National Park, Wales</a></li>
             </ol>
         </div>
         <div class="col-md-4">
             <h4>Fisheries</h4>
             <ol class="list-unstyled">
                 <%  @fisheries.each do | fishery | %>
-                    <li><a href="/fisheries/<%= fishery.slug %>"><%= fishery.name %></span></a></li>
+                    <li><a href="<%= fishery_path fishery %>"><%= fishery.name %></span></a></li>
                 <% end %>
             </ol>
         </div>
@@ -27,7 +30,7 @@
             <h4>Waters</h4>
             <ol class="list-unstyled">
                 <%  @waters.each do | water| %>
-                    <li><a href="/waters/<%= water.slug %>"><%= water.name %></a></li>
+                    <li><a href="<%= fishery_water_path water.fishery, water %>"><%= water.name %></a></li>
                 <% end %>
             </ol>
         </div>

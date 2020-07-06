@@ -13,3 +13,4 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require cookies_eu
+//= require polyfill.min

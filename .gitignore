@@ -31,10 +31,13 @@ config/secrets.yml
 logfile
 
 .byebug_history
-<<<<<<< HEAD
-=======
 
 /public/assets
+/public/system
 
 env.sh
->>>>>>> master
+.env
+
+/node_modules
+
+.vscode

@@ -12,7 +12,6 @@ module LetsFish
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -27,5 +26,12 @@ module LetsFish
     config.i18n.enforce_available_locales = true
     config.admin = 'admin'
     config.fishery_manager = 'fishery manager'
-  end
+
+    Rails.application.configure do
+      config.imgix = {
+        source: 'letsfish.imgix.net',
+        hostname_to_replace: ENV['ASSET_HOST']
+      }
+    end
+   end
 end

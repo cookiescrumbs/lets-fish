@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <%= render 'application/favicon' %>
         <%= display_meta_tags(default_meta_tags) %>
         <link rel="canonical" href="<%= request.original_url %>">
-        <%= stylesheet_link_tag "application","http://fonts.googleapis.com/css?family=Montserrat:400,700","http://fonts.googleapis.com/css?family=Kaushan+Script","http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic","http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700", media: "all", "data-turbolinks-track" => false%>
+        <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Montserrat:400,700", "https://fonts.googleapis.com/css?family=Kaushan+Script","https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic","https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700", media: "all", "data-turbolinks-track" => false %>
         <%= csrf_meta_tags %>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,36 +28,10 @@
     </head>
 
 <body <%= @page_id %> >
-    <div id="page-top"></div>
     <%= yield %>
     <%= render 'cookies_eu/consent_banner' %>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="mailto:stevenjamescook@gmail.com?Subject=I%27d%20like%20my%20fishery%20to%20be%20featured">Get your fishery featured</a></li>
-                        <li><a href="mailto:stevenjamescook@gmail.com?Subject=General%20Enquires">General enquiries</a></li>
-                        <li><a href="/sitemaps">Site map</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li>
-                            <a href="https://twitter.com/letsgoflyfish"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/letsgoflyfishing/"><i class="fa fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Let's Fish</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-<%= javascript_include_tag "application", params[:controller], "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws&libraries=places,drawing", "data-turbolinks-track" => false%>
+    <%= render 'shared/footer' %>
+    <%= javascript_include_tag "application", params[:controller], "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws&libraries=places,drawing", "data-turbolinks-track" => false %>
 </body>
 </html>
 

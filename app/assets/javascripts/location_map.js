@@ -11,11 +11,12 @@ $(document).ready(function() {
     streetViewControl: false,
     mapTypeControlOptions: {
       mapTypeIds: [
+        google.maps.MapTypeId.HYBRID,
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.ROADMAP
       ]
     },
-    mapTypeId: google.maps.MapTypeId.SATELLITE
+    mapTypeId: google.maps.MapTypeId.HYBRID
   };
   ////////Map
   //make a new instance of google maps

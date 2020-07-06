@@ -10,7 +10,7 @@ if defined? Rack::Cors
                 https://www.lets.fish
                 http://www.lets.fish
             ]
-            resource '/assets/*'
+            resource '/assets/*', headers: :any, methods: [:get, :options]
         end
     end
 end

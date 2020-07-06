@@ -1,29 +1,31 @@
-<%= render 'navigation' %>
-<header style="background-image: url(<%=(@water.images.first)? @water.images.first.image.url(:large) : '/images/missing.png'%>)" class="img-responsive img-centered" alt="<%= @water.name %>">
+<%= render 'shared/navigation' %>
+<header>
+   <%= render 'shared/hero_image' %>
     <div class="image-trans">
-        <div class="container">
-            <div class="intro-text" style="<%=(@image_attribution.blank?)? 'padding-top: 240px;' : ''%>">
+        <div class="container col-md-offset-2 col-md-8">
+            <div class="intro-text">
                 <div class="intro-heading"><%= @fishery.name %></div>
                 <div class="intro-lead-in">
                     Explore the rest of <a href="/search?location=<%=u"#{@fishery.address.short}"%>"><%= @fishery.address.short %></a>
                 </div>
             </div>
         </div>
-        <% if !@image_attribution.blank? %>
+        <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
             <div class="attribution">
-               Image &copy; Copyright
-                <a href="<%= @image_attribution[:profile_url] %>"><%= @image_attribution[:name] %></a>
+                Image &copy; Copyright
+                <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
                 and licensed for reuse under this
-                <a rel="license" href="<%= @image_attribution[:licence] %>">Creative Commons Licence</a>.
-                <a href="<%= @image_attribution[:photo_url]%>">More information about this image at Geograph</a>.
+                <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
+                <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
             </div>
         <% end %>
     </div>
 </header>
-<section id="about-the-fishery">
+<%= render 'navigation' %>
+<section id="about-this-fishery">
     <div class="container">
         <div class="row">
-         <h4 class="m-bottom24">About the fishery</h4>
+         <h4 class="m-bottom24">About this fishery</h4>
             <div class="col-md-3 remove-padding-left p-bottom10">
                 <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>
@@ -45,7 +47,7 @@
           </div>
         </div>
         <div class="row">
-            <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>"></div>
+            <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>" data-slug="<%=@fishery.slug%>"></div>
         </div>
         <div class="row">
             <div id="results-container">
@@ -54,13 +56,13 @@
         </div>
     </div>
 </section>
-<% if !@photos.empty? %>
-    <section id="photos">
-        <div class="container">
-            <h4 class="m-bottom24">Photos</h4>
-            <%= render '/shared/photo_carousel', locals: { photos: @photos } %>
-        </div>
-    </section>
+<% if @fishery.permission_tickets.present? %>
+<section id="permission">
+    <div class="container">
+        <h4 class="m-bottom24">Permission &amp; Tickets</h4>
+        <%= simple_format @fishery.permission_tickets %>
+    </div>
+</section>
 <% end %>
 <section id="contact">
     <div class="container">
@@ -74,12 +76,8 @@
         <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
     </div>
 </section>
+
+<%= render 'shared/contributor', locals: { background_color: true }%>
 <script type="application/ld+json">
     <%= raw render 'schema_org.json.jbuilder' %>
 </script>
-
-
-
-
-
-
