@@ -23,6 +23,21 @@ describe Water, type: :model do
     )
   end
 
+  it 'has a contributor' do
+    @water.name = 'scoat tarn'
+    expect(@water.contributor).to include(
+        photo: 'jerry-slater', 
+        name: 'Jerry Slater',
+        bio: 'Jerry loves his wild places and he started fishing for trout as a boy, in the streams of mid Wales, and the hill lochs on the west coast of Scotland. These days he tends to be knee deep in small Pennine rivers, or fishing the Llyns and tarns of North Wales and the Lake District. The experience is more important than the size of the fish, and wild is beautiful.'
+
+    )
+  end
+
+  it "doesn't have a contributor" do
+    @water.name = 'Sybil Tarn'
+    expect(@water.contributor).to eql nil
+  end
+
   it 'is not valid without a name' do
     @water.name = nil
     expect(@water).not_to be_valid

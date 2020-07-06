@@ -1,11 +1,14 @@
 require_relative 'meta_tags'
 require_relative 'map_marker'
 
+require_relative 'contributors'
+
 class Water < ActiveRecord::Base
   extend FriendlyId
 
   include MetaTags::Water
   include MapMarker::Water
+  include Contributors
 
   friendly_id :name, use: :slugged
 
@@ -63,6 +66,10 @@ class Water < ActiveRecord::Base
 
   def negotiated_permission_tickets
     self[:permission_tickets].present? ? self[:permission_tickets] : fishery.permission_tickets
+  end
+
+  def contributor
+    get_contributor_by_water self.name
   end
 
   private

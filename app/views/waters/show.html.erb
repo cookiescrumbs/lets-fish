@@ -72,6 +72,9 @@
         </div>
     </section>
 <% end %>
+<% if @water.contributor %>
+ <%= render 'shared/contributed_by', locals: @water.contributor %> 
+<% end %>
 
 <%= render 'shared/contributor', locals: { background_color: true }%>
 
