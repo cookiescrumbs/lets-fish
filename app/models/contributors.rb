@@ -1,6 +1,9 @@
 module Contributors
     @@waters = { 
-        jerry_slater: ['scoat tarn'],
+        jerry_slater: [
+            'scoat tarn',
+            'easdale tarn'
+        ],
         tom_grahame: [
             'ennerdale water',
             'llyn du bach',
