@@ -4,7 +4,8 @@ module Contributors
         tom_grahame: [
             'ennerdale water',
             'llyn du bach',
-            'llyn dubach y bont'
+            'llyn dubach y bont',
+            'loch enoch'
         ],
         steven_cook: [
             'angle tarn', 
