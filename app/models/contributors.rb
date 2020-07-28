@@ -2,13 +2,16 @@ module Contributors
     @@waters = { 
         jerry_slater: [
             'scoat tarn',
-            'easdale tarn'
+            'easdale tarn',
+            'llyn adar lake'
         ],
         tom_grahame: [
             'ennerdale water',
             'llyn du bach',
             'llyn dubach y bont',
-            'loch enoch'
+            'loch enoch',
+            'duck loch'
+
         ],
         steven_cook: [
             'angle tarn', 
