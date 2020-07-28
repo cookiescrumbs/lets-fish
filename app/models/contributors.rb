@@ -3,7 +3,7 @@ module Contributors
         jerry_slater: [
             'scoat tarn',
             'easdale tarn',
-            'llyn adar lake'
+            'llyn adar'
         ],
         tom_grahame: [
             'ennerdale water',
