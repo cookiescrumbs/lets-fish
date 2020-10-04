@@ -57,6 +57,8 @@ LetsFish::Application.routes.draw do
 
   get '/:destination', to: 'search#index'
 
+  get '/trips/:id', to: 'static#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
