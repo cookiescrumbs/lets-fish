@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { TripsComponent } from './trips/trips.component';
 
 
 const routes: Routes = [
-    { path: 'trips/:tripId', component: AppComponent }
+    { path: 'trips/:tripId', component: TripsComponent }
 ];
 
 @NgModule({

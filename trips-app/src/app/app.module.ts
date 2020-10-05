@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
 import { LivePhotoComponent } from './live-photo/live-photo.component';
 import { MapComponent } from './map/map.component';
+import { TripsComponent } from './trips/trips.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPostsComponent,
     LivePhotoComponent,
-    MapComponent
+    MapComponent,
+    TripsComponent
   ],
   imports: [
     AppRoutingModule,
