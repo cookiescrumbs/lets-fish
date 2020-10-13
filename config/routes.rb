@@ -42,6 +42,9 @@ LetsFish::Application.routes.draw do
   get '/contributors',        to: 'contributors#index'
   get '/how-it-works',        to: 'how_it_works#index'
 
+  get '/trips/:id', to: 'static#index'
+  get '/trips', to: 'trips#index'
+
   get '/featured/waters',  to: 'featured_waters#index'
 
   get '/search',  to: 'search#index'
@@ -56,6 +59,7 @@ LetsFish::Application.routes.draw do
   get '/image/attribution', to: 'image#attribution'
 
   get '/:destination', to: 'search#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

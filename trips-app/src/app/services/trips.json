@@ -1,0 +1,42 @@
+{
+    "trips": [
+        {
+            "start": {
+                "title": "Wild Camping at Angle Tarn.",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies volutpat ipsum in ullamcorper. Ut vel aliquet dolor. Nam porta elit mi, vel facilisis arcu suscipit eu. In hendrerit lorem sed nisl porttitor tincidunt. Donec mattis odio magna, in ultricies nulla porttitor ac. Maecenas porta ullamcorper dui, at pulvinar turpis tristique scelerisque. Proin vehicula luctus erat et malesuada. Aenean pulvinar volutpat rhoncus. Maecenas venenatis lacus ut ligula dapibus ullamcorper. Nullam rhoncus eleifend eros sit amet pellentesque. Nulla lobortis sem ullamcorper tortor facilisis tristique.",
+                "media": {
+                    "type": "image",
+                    "imageSrc": "assets/mocks/photos/2.jpeg"
+                },
+                "timeStamp": 1559569798
+            },
+            "posts": [
+                {
+                    "location": {
+                        "lat": 54.508788,
+                        "lng": -2.912059
+                    },
+                    "media": {
+                        "type": "image",
+                        "imageSrc": "assets/mocks/photos/2.jpeg"
+                    },
+                    "timeStamp": 1559569798,
+                    "content": "<p>It was the hottest and driest summer in 25 years and a good opportunity for the first wild camping and fishing trip with little Sybil.</p><p> As Tom, Dan, Sybil and I set off from Hartsop, the heavans opened and big fat rain drops started to fall from the sky like fat wet frogs.</p>"
+                },
+                {
+                    "location": {
+                        "lat": 54.508890,
+                        "lng": -2.892662
+                    },
+                    "media": {
+                        "type": "live-photo",
+                        "videoSrc": "assets/mocks/videos/3.mov",
+                        "imageSrc": "assets/mocks/photos/3.jpeg"
+                    },
+                    "timeStamp": 1559583344,
+                    "content": "<p>We'd never been up to Angle Tarn before. <br /> We'd fished Hayes Water a number of times but never Angle Tarn. Where the path splits, we took the left fork and headed up past the Filter House in Hayeswater Gill.</p>"
+                }
+            ]
+        }
+    ]
+}
