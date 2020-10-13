@@ -1,21 +1,21 @@
 <div class="list-container">
-    <!-- <div class="post">
+    <div class="post">
+        <app-live-photo
+            [media]=start.media
+        ></app-live-photo>
         <div class="content">
             <div class="header">
                 <div>
-                    <h3>Wild Camping at Angle Tarn</h3>
+                    <h3>{{start.title}}</h3>
                 </div>
                 <div>
-                    <span class="date-time">{{ '2018-07-28T11:45:09.000Z' | date: 'mediumDate' }}</span>
+                    <span class="date-time">{{  start.timeStamp | date: 'mediumDate' }}</span>
                 </div>
             </div>
-            <div class="main">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricies volutpat ipsum in ullamcorper. Ut vel aliquet dolor. Nam porta elit mi, vel facilisis arcu suscipit eu. In hendrerit lorem sed nisl porttitor tincidunt. Donec mattis odio magna, in ultricies nulla porttitor ac. Maecenas porta ullamcorper dui, at pulvinar turpis tristique scelerisque. Proin vehicula luctus erat et malesuada. Aenean pulvinar volutpat rhoncus. Maecenas venenatis lacus ut ligula dapibus ullamcorper. Nullam rhoncus eleifend eros sit amet pellentesque. Nulla lobortis sem ullamcorper tortor facilisis tristique.
-            </p>
+            <div class="main" [innerHTML]="start.content">
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="post" *ngFor="let post of posts">
         <app-live-photo
             (inView)="postService.setCurrentPost($event, post)"

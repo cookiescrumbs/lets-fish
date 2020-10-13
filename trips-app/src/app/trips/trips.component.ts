@@ -4,7 +4,7 @@ import { tap } from 'rxjs/operators';
 import { PostService } from '../services/post.service';
 import { MapService } from '../services/map.service';
 
-import { Post, Marker } from '../types';
+import { Post, Marker, Start } from '../types';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -18,6 +18,7 @@ export class TripsComponent implements OnInit {
 
 
     public posts$: Observable<Post[]>;
+    public start$: Observable<Start>;
     public markers$: Observable<Marker[]>;
     public currentPost$: Observable<Post>;
 
@@ -35,11 +36,11 @@ export class TripsComponent implements OnInit {
             if (tripId) {
                 this._tripId = tripId;
                 this._getPosts();
+                this._getStart();
                 this._getMarkers();
             }
         });
     }
-
 
     private _getPosts(): void {
         this.posts$ = this.postService.getPosts(this._tripId)
@@ -54,8 +55,12 @@ export class TripsComponent implements OnInit {
         this.markers$ = this.mapService.markers;
     }
 
+    private _getStart(): void {
+        this.start$ = this.postService.getStart(this._tripId);
+    }
+
     public onClickBack(): void {
-        document.location.href = '/waters/';
+        document.location.href = '/trips/';
     }
 
 }

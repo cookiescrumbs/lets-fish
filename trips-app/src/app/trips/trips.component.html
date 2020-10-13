@@ -1,9 +1,9 @@
 <div id="nav">
     <button class="badge back" (click)="onClickBack()">&#60;</button>
 </div>
-<div>
-    <app-list-posts [posts]="posts$ | async"></app-list-posts>
-    <div id="map">
-        <app-map [markers]="markers$ | async" [currentPost]="currentPost$ | async"></app-map>
-    </div>
+<div *ngIf="(start$ | async ) as start">
+    <app-list-posts [posts]="posts$ | async" [start]="start"></app-list-posts>
+</div>
+<div id="map" >
+    <app-map [markers]="markers$ | async" [currentPost]="currentPost$ | async"></app-map>
 </div>

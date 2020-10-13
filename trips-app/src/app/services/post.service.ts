@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../types';
+import { Post, Start} from '../types';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MapService } from './map.service';
+
 
 
 @Injectable({
@@ -24,7 +25,7 @@ export class PostService {
 
     public getPosts(tripId: string): Observable<Post[]> {
 
-        return this.http.get(`${this.postsUrl}/trips/${tripId}/posts.json`)
+        return this.http.get<Post[]>(`${this.postsUrl}/trips/${tripId}/posts.json`)
         .pipe(
             map(responseData => {
                 const keys = Object.keys(responseData);
@@ -47,29 +48,9 @@ export class PostService {
         );
     }
 
-    // public createPost(): void {
-    //     const post: Post = {
-    //         location:  {
-    //             lat: 54.511348,
-    //             lng: -2.888967
-    //         },
-    //         media:
-    //         {
-    //             type: 'live-photo',
-    //             videoSrc: 'assets/mocks/videos/7.mov',
-    //             imageSrc: 'assets/mocks/photos/7.jpeg'
-    //         },
-    //         timeStamp: 1559583344,
-    //         content: 'new post her'
-    //     };
-
-    //     this.http.post<Post>(
-    //         `${this.postsUrl}/trips/0/posts.json`,
-    //         post
-    //     )
-    //     .subscribe(responseData => console.log(responseData));
-
-    // }
+    public getStart(tripId: string): Observable<Start>{
+        return this.http.get<Start>(`${this.postsUrl}/trips/${tripId}/start.json`);
+    }
 
     public setCurrentPost(inView: boolean, post: Post): void {
         if (inView && this._currentPostId !== post.id) {

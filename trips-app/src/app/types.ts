@@ -19,6 +19,13 @@ export interface Post {
     markerOptions?: any;
 }
 
+export interface Start {
+    content: string;
+    media: Media;
+    timeStamp: number;
+    title: string;
+}
+
 export interface Marker {
     id: string;
     location: LatLng;
