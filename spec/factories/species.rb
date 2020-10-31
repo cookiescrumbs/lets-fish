@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :species do
     name { 'brown trout' }
   end

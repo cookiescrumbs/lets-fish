@@ -1,7 +1,7 @@
 describe Address, type: :model do
   before do
     stub_google_geocode_address
-    @address = FactoryGirl.create(:address)
+    @address = FactoryBot.create(:address)
   end
 
   describe 'formatted address' do

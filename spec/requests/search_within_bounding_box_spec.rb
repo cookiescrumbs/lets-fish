@@ -4,14 +4,14 @@ describe 'Search within bounding box', type: :request do
     stub_google_geocode_address
 
     ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
-      FactoryGirl.create :species, name: name
+      FactoryBot.create :species, name: name
     end
 
     %w(lake river).map do |category|
-      FactoryGirl.create :water_type, category: category
+      FactoryBot.create :water_type, category: category
     end
 
-    FactoryGirl.create_list(
+    FactoryBot.create_list(
       :water,
       23,
       latitude: 53.501942,

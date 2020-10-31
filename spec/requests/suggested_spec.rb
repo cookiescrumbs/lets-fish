@@ -3,7 +3,7 @@ describe 'Suggested', type: :request do
     before(:each) do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
-      FactoryGirl.create_list(:fishery_with_waters, 2, published: true)
+      FactoryBot.create_list(:fishery_with_waters, 2, published: true)
     end
 
     it 'GET /suggested/all' do

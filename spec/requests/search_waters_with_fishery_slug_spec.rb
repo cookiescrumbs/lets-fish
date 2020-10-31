@@ -3,7 +3,7 @@ describe 'Search waters with fishery slug', type: :request do
     before(:each) do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
-      @fishery = FactoryGirl.create_list(:fishery_with_waters, 5, published: true)
+      @fishery = FactoryBot.create_list(:fishery_with_waters, 5, published: true)
     end
 
     it 'GET /search/waters with fishery slug' do
@@ -22,7 +22,7 @@ describe 'Search waters with fishery slug', type: :request do
     before(:each) do
       stub_google_geocode_lat_lng
       stub_google_geocode_address
-      @fishery = FactoryGirl.create_list(:fishery_with_waters, 5, published: false)
+      @fishery = FactoryBot.create_list(:fishery_with_waters, 5, published: false)
     end
 
     it 'GET /search/waters with fishery slug' do

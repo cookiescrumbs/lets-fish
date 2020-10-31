@@ -6,9 +6,9 @@ describe Api::V1, type: :request do
       # stub for when the water is created
       stub_google_geocode_lat_lng
 
-      species = FactoryGirl.create :species
-      water_type = FactoryGirl.create :water_type
-      @fishery = FactoryGirl.create :fishery
+      species = FactoryBot.create :species
+      water_type = FactoryBot.create :water_type
+      @fishery = FactoryBot.create :fishery
 
       @params = {
         water: {

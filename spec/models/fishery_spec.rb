@@ -4,18 +4,18 @@ describe Fishery, type: :model do
     stub_google_geocode_address
     create_species
     create_water_types
-    water_one = FactoryGirl.create(:water, name: 'z', species_ids: [1, 2], water_type_id: 1)
-    water_two = FactoryGirl.create(:water, name: 'a', species_ids: [1, 2, 3], water_type_id: 2)
-    FactoryGirl.create(:fishery, name: 'my fishery', waters: [water_one, water_two])
+    water_one = FactoryBot.create(:water, name: 'z', species_ids: [1, 2], water_type_id: 1)
+    water_two = FactoryBot.create(:water, name: 'a', species_ids: [1, 2, 3], water_type_id: 2)
+    FactoryBot.create(:fishery, name: 'my fishery', waters: [water_one, water_two])
   end
 
   describe 'validate fields' do
     it 'is not valid without a name' do
-      expect(FactoryGirl.build(:fishery, name: nil)).not_to be_valid
+      expect(FactoryBot.build(:fishery, name: nil)).not_to be_valid
     end
 
     it 'is not valid without a description' do
-      expect(FactoryGirl.build(:fishery, description: nil)).not_to be_valid
+      expect(FactoryBot.build(:fishery, description: nil)).not_to be_valid
     end
   end
 
@@ -40,7 +40,7 @@ describe Fishery, type: :model do
   describe 'latitude and longitude' do
       before do
         stub_google_geocode_address
-        FactoryGirl.create(:fishery)
+        FactoryBot.create(:fishery)
       end
 
       it 'uses address model latitude' do

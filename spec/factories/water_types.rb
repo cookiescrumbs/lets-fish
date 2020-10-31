@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :water_type do
     category { 'lake' }
   end
