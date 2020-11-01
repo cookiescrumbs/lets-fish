@@ -8,19 +8,19 @@ describe 'Suggested', type: :request do
 
     it 'GET /suggested/all' do
       get '/suggested/all', params: {}, headers: { 'Accept' => 'application/json' }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json.length).to eq 12
     end
 
     it 'GET /suggested/waters' do
       get '/suggested/waters', params: {}, headers: { 'Accept' => 'application/json' }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json.length).to eq 10
     end
 
     it 'GET /suggested/fisheries' do
       get '/suggested/fisheries', params: {}, headers: { 'Accept' => 'application/json' }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json.length).to eq 2
     end
   end

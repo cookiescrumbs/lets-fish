@@ -28,7 +28,7 @@ describe 'Search within bounding box', type: :request do
 
     get '/search/within-bounding-box', params: params, headers: {'Accept' => 'application/json'}
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect(json.length).to eq 2
     expect(json['markers'].first['name']).to eql waters.first.name
   end
@@ -40,7 +40,7 @@ describe 'Search within bounding box', type: :request do
 
     get '/search/within-bounding-box', params: params, headers: {'Accept' => 'application/json'}
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect(json['markers'].length).to eq 20
     expect(json['markers'].first['name']).to eql waters.first.name
   end

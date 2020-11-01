@@ -34,14 +34,14 @@ describe Api::V1, type: :request do
 
         post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
 
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response.status).to eql 200
         expect(response.body).to include "Successfully added #{water_name} to #{fishery_name}"
         expect(response.body).to include(
           water_name,
           water_description,
-          latitude,
-          longitude
+          latitude.to_s,
+          longitude.to_s
         )
       end
     end

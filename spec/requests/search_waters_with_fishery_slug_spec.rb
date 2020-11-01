@@ -13,7 +13,7 @@ describe 'Search waters with fishery slug', type: :request do
 
       get '/search/waters', params: params, headers: { 'Accept' => 'application/json' }
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json['markers'].length).to eq 5
     end
   end
@@ -32,7 +32,7 @@ describe 'Search waters with fishery slug', type: :request do
 
       get '/search/waters', params: params, headers: { 'Accept' => 'application/json' }
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json['markers'].length).to eq 0
     end
   end

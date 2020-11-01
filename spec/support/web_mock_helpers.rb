@@ -2,13 +2,13 @@ module WebMockHelpers
   module GoogleApis
     def stub_google_geocode_lat_lng
       body = File.read('spec/fixtures/googleapis/geocode/manchester.json')
-      stub_request(:get, /https:\/\/nominatim.openstreetmap.org\/reverse\?accept-language=en&addressdetails=1&format=json&lat=(\-?\d+(\.\d+)?)&lon=(\-?\d+(\.\d+)?)/)
+      stub_request(:get, /https:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?key=([\w\W]+)&language=en&latlng=(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)&sensor=false/)
         .to_return(status: 200, body: body, headers: { 'Content-Type' => 'application/json' })
     end
 
     def stub_google_geocode_address
       body = File.read('spec/fixtures/googleapis/geocode/manchester.json')
-      stub_request(:get, /https:\/\/nominatim.openstreetmap.org\/search\?accept-language=en&addressdetails=1&format=json&q=([\w\W]+)/)
+      stub_request(:get, /https:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=([\w\W]+)&key=([\w\W]+)&language=en&sensor=false/)
         .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
         .to_return(status: 200, body: body, headers: { 'Content-Type' => 'application/json' })
     end
