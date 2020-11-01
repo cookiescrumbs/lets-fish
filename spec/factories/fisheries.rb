@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :fishery do
     name { Array(1..3).map { Faker::Lorem.word }.join(' ') }
-    description { Faker::Lorem.paragraph(4) }
+    description { Faker::Lorem.paragraph(sentence_count: 4) }
     permission_tickets { Faker::Lorem.paragraph }
     slug { nil&.(name.parameterize) }
     address { create(:address) }
@@ -11,20 +11,20 @@ FactoryGirl.define do
     factory :fishery_with_waters do
 
       transient do
-        water_count 5
+        water_count { 5 }
       end
 
       after(:create) do |fishery, evaluator|
 
         ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
-          FactoryGirl.create :species, name: name
+          FactoryBot.create :species, name: name
         end
 
         %w(lake river).map do |category|
-          FactoryGirl.create :water_type, category: category
+          FactoryBot.create :water_type, category: category
         end
 
-        FactoryGirl.create_list(
+        FactoryBot.create_list(
           :water,
           evaluator.water_count,
           fishery: fishery,

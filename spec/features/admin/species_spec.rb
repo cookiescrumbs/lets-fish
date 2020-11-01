@@ -4,14 +4,14 @@ describe 'Species', type: :feature do
   before(:each) do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
-    @fishery_manager = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
+    @fishery_manager = FactoryBot.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.fishery_manager
 
     sign_in @fishery_manager
   end
 
   describe 'Manage species' do
     it 'lists all species' do
-      FactoryGirl.create(:species, name: 'rainbow trout')
+      FactoryBot.create(:species, name: 'rainbow trout')
       visit admin_species_index_path
       expect(page).to have_content 'rainbow trout'
     end

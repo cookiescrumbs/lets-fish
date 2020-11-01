@@ -6,9 +6,9 @@ describe Api::V1, type: :request do
       # stub for when the water is created
       stub_google_geocode_lat_lng
 
-      species = FactoryGirl.create :species
-      water_type = FactoryGirl.create :water_type
-      @fishery = FactoryGirl.create :fishery
+      species = FactoryBot.create :species
+      water_type = FactoryBot.create :water_type
+      @fishery = FactoryBot.create :fishery
 
       @params = {
         water: {
@@ -34,14 +34,14 @@ describe Api::V1, type: :request do
 
         post "/api/water/fishery/#{fishery_slug}", params: @params, headers: { 'Accept' => 'application/json' }
 
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response.status).to eql 200
         expect(response.body).to include "Successfully added #{water_name} to #{fishery_name}"
         expect(response.body).to include(
           water_name,
           water_description,
-          latitude,
-          longitude
+          latitude.to_s,
+          longitude.to_s
         )
       end
     end

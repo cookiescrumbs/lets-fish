@@ -1,9 +1,9 @@
-ruby '2.4.2'
+ruby '2.7.0'
 
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '6.0.3.4'
 
 # Use Puma as the app server
 gem "puma", ">= 3.12.2"
@@ -56,12 +56,11 @@ end
 group :test do
   gem 'faker'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
   gem 'webmock'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'site_prism'
 end

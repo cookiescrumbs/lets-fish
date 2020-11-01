@@ -5,7 +5,7 @@ describe 'New fishery page', type: :feature do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
 
-    @admin = FactoryGirl.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.admin
+    @admin = FactoryBot.create :user, email: 'fishery_manager@fishery.com', password: '5lbBr0wnTr0ut', auth: Rails.application.config.admin
 
     sign_in @admin
     visit your_fishery_path
@@ -18,7 +18,7 @@ describe 'New fishery page', type: :feature do
     before do
       visit new_admin_fishery_path
 
-      @fishery_details = FactoryGirl.build(:fishery)
+      @fishery_details = FactoryBot.build(:fishery)
 
       fill_in 'fishery-name', with: @fishery_details.name
       fill_in 'fishery-description', with: @fishery_details.description

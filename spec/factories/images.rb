@@ -1,5 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
-FactoryGirl.define do
+FactoryBot.define do
   factory :image do
     hero { false }
     image_file_name { 'loch.jpg' }

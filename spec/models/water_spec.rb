@@ -2,10 +2,10 @@ describe Water, type: :model do
   before do
     stub_google_geocode_lat_lng
     stub_google_geocode_address
-    @species    = FactoryGirl.create_list :species, 5
-    @water_type = FactoryGirl.create_list :water_type, 5
+    @species    = FactoryBot.create_list :species, 5
+    @water_type = FactoryBot.create_list :water_type, 5
 
-    @water = FactoryGirl.create(
+    @water = FactoryBot.create(
       :water,
       address: nil,
       latitude: -41.21924848834151,
@@ -13,7 +13,7 @@ describe Water, type: :model do
       species: [ Species.last ],
       water_type_id: WaterType.first.id
     )
-    @water_with_address = FactoryGirl.create(
+    @water_with_address = FactoryBot.create(
       :water,
       address: 'Somewhere, Wales',
       latitude: -41.21924848834151,
@@ -111,9 +111,9 @@ describe Water, type: :model do
 
     it 'return all the images minus the hero image' do
       @water.images = [
-        FactoryGirl.create(:image, hero: true),
-        FactoryGirl.create(:image, hero: false),
-        FactoryGirl.create(:image, hero: false)
+        FactoryBot.create(:image, hero: true),
+        FactoryBot.create(:image, hero: false),
+        FactoryBot.create(:image, hero: false)
      ]
         expect(@water.images_without_hero.length).to eql 2
         expect(@water.images_without_hero.first.hero).to eql false
@@ -125,9 +125,9 @@ describe Water, type: :model do
 
     it 'returns the hero image' do
       @water.images = [
-        FactoryGirl.create(:image, hero: true, image_file_name: 'i-could-be-your-hero-baby.jpg'),
-        FactoryGirl.create(:image, hero: false),
-        FactoryGirl.create(:image, hero: false)
+        FactoryBot.create(:image, hero: true, image_file_name: 'i-could-be-your-hero-baby.jpg'),
+        FactoryBot.create(:image, hero: false),
+        FactoryBot.create(:image, hero: false)
      ]
       expect(@water.hero_image.image_file_name).to eql 'i-could-be-your-hero-baby.jpg'
     end

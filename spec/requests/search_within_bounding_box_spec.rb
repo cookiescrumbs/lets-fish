@@ -4,14 +4,14 @@ describe 'Search within bounding box', type: :request do
     stub_google_geocode_address
 
     ['brown trout', 'rainbow trout', 'grayling', 'sea trout'].map do |name|
-      FactoryGirl.create :species, name: name
+      FactoryBot.create :species, name: name
     end
 
     %w(lake river).map do |category|
-      FactoryGirl.create :water_type, category: category
+      FactoryBot.create :water_type, category: category
     end
 
-    FactoryGirl.create_list(
+    FactoryBot.create_list(
       :water,
       23,
       latitude: 53.501942,
@@ -28,7 +28,7 @@ describe 'Search within bounding box', type: :request do
 
     get '/search/within-bounding-box', params: params, headers: {'Accept' => 'application/json'}
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect(json.length).to eq 2
     expect(json['markers'].first['name']).to eql waters.first.name
   end
@@ -40,7 +40,7 @@ describe 'Search within bounding box', type: :request do
 
     get '/search/within-bounding-box', params: params, headers: {'Accept' => 'application/json'}
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect(json['markers'].length).to eq 20
     expect(json['markers'].first['name']).to eql waters.first.name
   end

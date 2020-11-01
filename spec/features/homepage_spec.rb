@@ -9,8 +9,8 @@ describe 'Homepage', type: :feature do
       before do
         stub_google_geocode_lat_lng
         stub_google_geocode_address
-        @fishery = FactoryGirl.create :fishery_with_waters, published: true
-        @fishery_without_waters = FactoryGirl.create :fishery, name: 'fishery with no waters'
+        @fishery = FactoryBot.create :fishery_with_waters, published: true
+        @fishery_without_waters = FactoryBot.create :fishery, name: 'fishery with no waters'
         @homepage = PageObjects::Homepage.new
         @homepage.load
       end
@@ -37,7 +37,7 @@ end
 #     context "user knows the name of the fishery and clicks yes" do
 
 #       before do
-#         @fishery_details = FactoryGirl.build(:fishery)
+#         @fishery_details = FactoryBot.build(:fishery)
 #         @homepage = PageObjects::Homepage.new
 #         @homepage.load
 #         @homepage.yes.click
@@ -83,8 +83,8 @@ end
 #     context "user doesn't know the fishery name and clicks no" do
 
 #       before do
-#         @species    = FactoryGirl.create_list :species, 5
-#         @water_type = FactoryGirl.create_list :water_type, 5
+#         @species    = FactoryBot.create_list :species, 5
+#         @water_type = FactoryBot.create_list :water_type, 5
 #         @homepage        = PageObjects::Homepage.new
 #         @homepage.load
 #         @homepage.no.click
@@ -125,9 +125,9 @@ end
 #     context "water form is filled out correctly" do
 
 #       before do
-#         @species    = FactoryGirl.create_list :species, 5
-#         @water_type = FactoryGirl.create_list :water_type, 5
-#         @fishery    = FactoryGirl.create(:fishery)
+#         @species    = FactoryBot.create_list :species, 5
+#         @water_type = FactoryBot.create_list :water_type, 5
+#         @fishery    = FactoryBot.create(:fishery)
 
 #         @homepage_add_water = PageObjects::HomepageAddWater.new
 #         @homepage_add_water.load(id: @fishery.id)
@@ -156,7 +156,7 @@ end
 #     context "water form is filled out incorrectly" do
 
 #       before do
-#         @fishery    = FactoryGirl.create(:fishery)
+#         @fishery    = FactoryBot.create(:fishery)
 
 #         @homepage_add_water = PageObjects::HomepageAddWater.new
 #         @homepage_add_water.load(id: @fishery.id)
