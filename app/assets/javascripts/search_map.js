@@ -10,8 +10,9 @@ $(document).ready(function() {
   mapOptions = {
     scrollwheel: false,
     streetViewControl: false,
+    mapTypeControl: false,
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      style: google.maps.MapTypeControlStyle.DEFAULT,
       position: google.maps.ControlPosition.LEFT_BOTTOM,
       mapTypeIds: [
         google.maps.MapTypeId.HYBRID,
