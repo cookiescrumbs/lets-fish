@@ -9,6 +9,7 @@ $(document).ready(function() {
   mapOptions = {
     scrollwheel: false,
     streetViewControl: false,
+    zoomControl: true,
     mapTypeControlOptions: {
       mapTypeIds: [
         google.maps.MapTypeId.HYBRID,
