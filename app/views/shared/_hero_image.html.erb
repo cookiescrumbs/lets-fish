@@ -3,12 +3,12 @@
   image_src = "https://#{Rails.application.config.imgix[:source]}#{image_src}"
 %>
   <img alt="<%= @water.name %>" srcset="
-  <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=645&amp;h=645 645w,
-  <%= image_src %>?auto=enhance&amp;fit=crop&amp;w=725&amp;h=725  725w,
-  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=965 965w,
-  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1065 1065w,
-  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1225 1225w,
-  <%= image_src %>?auto=enhance&amp;fit=clip&amp;w=1920 1920w"
+  <%= image_src %>?auto=enhance&amp;q=0&amp;fit=crop&amp;w=645&amp;h=645 645w,
+  <%= image_src %>?auto=enhance&amp;q=0&amp;fit=crop&amp;w=725&amp;h=725  725w,
+  <%= image_src %>?auto=enhance&amp;q=0&amp;fit=clip&amp;w=965 965w,
+  <%= image_src %>?auto=enhance&amp;q=0&amp;fit=clip&amp;w=1065 1065w,
+  <%= image_src %>?auto=enhance&amp;q=0&amp;fit=clip&amp;w=1225 1225w,
+  <%= image_src %>?auto=enhance&amp;q=0&amp;fit=clip&amp;w=1920 1920w"
   sizes="100vw"
-  src="<%= image_src %>?auto=enhance&amp;fit=clip %>"
+  src="<%= image_src %>?auto=enhance&amp;q=0&amp;fit=clip %>"
 >

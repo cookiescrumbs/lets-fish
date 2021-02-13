@@ -26,6 +26,7 @@ module LetsFish
     config.i18n.enforce_available_locales = true
     config.admin = 'admin'
     config.fishery_manager = 'fishery manager'
+    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
 
     Rails.application.configure do
       config.imgix = {

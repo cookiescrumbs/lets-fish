@@ -5,7 +5,7 @@
                 <% 
                     image_src = "https://#{Rails.application.config.imgix[:source]}#{trip[:image]}"
                 %> 
-                <img src="<%= image_src %>?fit=crop&w=650&h=350" class="img-responsive img-centered" alt="<%= trip[:title]%>">
+                <img src="<%= image_src %>?fit=crop&q=0&w=650&h=350" class="img-responsive img-centered" alt="<%= trip[:title]%>">
             <div class="caption">
                 <h4><%= trip[:title] %></h4>
                 <p class="text-muted"><%= trip[:short_address] %></p>

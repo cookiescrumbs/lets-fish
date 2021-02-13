@@ -21,7 +21,7 @@ count = locals[:count]
                 image_src = (water.hero_image.present?)? water.hero_image.image.path(:original): '/images/missing.png'
                 image_src = "https://#{Rails.application.config.imgix[:source]}#{image_src}"
             %> 
-            <img src="<%= image_src %>?fit=crop&w=650&h=350" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
+            <img src="<%= image_src %>?fit=crop&q=0&w=650&h=350" class="img-responsive img-centered <%= image_styles %>" alt="<%= water.name %>">
         </div>
         <div class="result-caption">
             <%= render '/shared/water_type', locals: { category: water.water_type.category.capitalize }%>
