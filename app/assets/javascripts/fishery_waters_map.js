@@ -11,7 +11,7 @@ $(document).ready(function () {
       scrollwheel: false,
       streetViewControl: false,
       mapTypeControl: false,
-      zoomControl: false,
+      zoomControl:  true,
       mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         position: google.maps.ControlPosition.LEFT_BOTTOM,
