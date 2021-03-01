@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-    <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
+        <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
         <div class="attribution">
             Image &copy; Copyright
             <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
@@ -19,7 +19,7 @@
             <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
             <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
         </div>
-    <% end %>
+        <% end %>
     </div>
 </header>
 <%= render 'navigation' %>
@@ -33,11 +33,18 @@
             <div class="col-md-3 remove-padding-left p-bottom10">
                 <%= render '/shared/water_type', locals: { category: @water.water_type.category.capitalize }%>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.name.capitalize }.to_sentence } %>
-                <%= render '/shared/location', locals: { location: @water.address } %>
+                <div class="location clearfix">
+                    <img src="/images/location.png" class="pull-left" />
+                    <strong>OS Grid Ref: </strong> <%=  @water.os_map %>
+                    <br />
+                    <strong>Latitude: </strong> <%=  @water.latitude.round(11) %>
+                    <br />
+                    <strong>Longitude: </strong> <%=  @water.longitude.round(11) %>
+                </div>
             </div>
             <div class="col-md-9 remove-padding-left remove-padding-right">
                 <% if !@water.description.blank? %>
-                    <p><%= simple_format @water.description %></p>
+                <p><%= simple_format @water.description %></p>
                 <% end %>
             </div>
         </div>
@@ -47,38 +54,33 @@
 <section id="location">
     <div class="container">
         <h4 class="m-bottom24">Water map</h4>
-        <div
-        id="location-map"
-        data-zoom="14"
-        data-lat="<%=@water.latitude %>"
-        data-lng="<%=@water.longitude%>"
-        data-annotation=<%=  @water.annotation %>>
+        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>" data-annotation=<%=  @water.annotation %>>
         </div>
     </div>
 </section>
 
 <% unless @water.images_without_hero.empty? %>
-    <section id="photos">
-        <div class="container">
-            <h4 class="m-bottom24">Photos</h4>
-            <%= render '/shared/photo_carousel', locals: { photos: @water.images_without_hero } %>
-        </div>
-    </section>
+<section id="photos">
+    <div class="container">
+        <h4 class="m-bottom24">Photos</h4>
+        <%= render '/shared/photo_carousel', locals: { photos: @water.images_without_hero } %>
+    </div>
+</section>
 <% end %>
 <% if @water.negotiated_permission_tickets.present? %>
-    <section id="permission">
-        <div class="container">
-            <h4 class="m-bottom24">Permission &amp; Tickets</h4>
-            <%= simple_format @water.negotiated_permission_tickets %>
-        </div>
-    </section>
+<section id="permission">
+    <div class="container">
+        <h4 class="m-bottom24">Permission &amp; Tickets</h4>
+        <%= simple_format @water.negotiated_permission_tickets %>
+    </div>
+</section>
 <% end %>
 <% if @water.contributor %>
- <%= render 'shared/contributed_by', locals: @water.contributor %> 
+<%= render 'shared/contributed_by', locals: @water.contributor %>
 <% end %>
 
 <%= render 'shared/contributor', locals: { background_color: true }%>
 
 <script type="application/ld+json">
-    <%= raw render 'schema_org.json.jbuilder' %>
+    < %= raw render 'schema_org.json.jbuilder' % >
 </script>

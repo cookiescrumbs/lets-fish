@@ -1,8 +1,4 @@
 <div class="location clearfix">
     <img src="/images/location.png" class="pull-left"/>
-                <strong>OS Grid Ref: </strong> <%=  @water.os_map %> 
-                <br /> 
-                <strong>Latitude: </strong> <%=  @water.latitude.round(11) %>
-                 <br /> 
-                <strong>Longitude: </strong> <%=  @water.longitude.round(11) %>
+    <h6><%= locals[:location] %></h6>
 </div>
