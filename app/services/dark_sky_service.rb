@@ -9,7 +9,7 @@ module DarkSkyService
       response = get("/forecast/#{DarkSkyService::API_KEY}/#{lat},#{lng}/?units=uk2", timeout: 1)
       return {} unless response.code === 200
       response
-    rescue
+    rescue 
       {}
     end
   end
