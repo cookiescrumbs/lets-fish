@@ -45,7 +45,6 @@ gem "loofah", ">= 2.3.1"
 gem "nokogiri", ">= 1.10.4"
 gem "rack"
 
-# gem 'northern_pike'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -79,3 +78,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
+
+gem "northern_pike", "~> 0.1.1", :group => :development

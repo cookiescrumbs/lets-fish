@@ -33,6 +33,7 @@ class Water < ActiveRecord::Base
 
   after_validation :update_address
 
+
   def season_start=(value)
     super(Date.parse(value).change(year: 2012))
   end
@@ -55,7 +56,7 @@ class Water < ActiveRecord::Base
   end
 
   def os_map
-    EuropeanPerchService::get_OS_map_ref(lat: self.lat, lng: self.lng)['os_map_ref']
+    EuropeanPerchService::get_OS_map(lat: self.lat, lng: self.lng)
   end
 
   def images_without_hero
@@ -81,4 +82,5 @@ class Water < ActiveRecord::Base
   def update_address
     reverse_geocode if address.blank?
   end
+
 end

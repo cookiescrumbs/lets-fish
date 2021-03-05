@@ -33,14 +33,31 @@
             <div class="col-md-3 remove-padding-left p-bottom10">
                 <%= render '/shared/water_type', locals: { category: @water.water_type.category.capitalize }%>
                 <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.name.capitalize }.to_sentence } %>
+         
                 <div class="location clearfix">
-                    <img src="/images/location.png" class="pull-left" />
-                    <strong>OS Grid Ref: </strong> <%=  @water.os_map %>
+                <img src="/images/location.png" class="pull-left" />
+                    <strong>OS Grid Ref: </strong> <%=  @water.os_map['os_ref'] %>
                     <br />
                     <strong>Latitude: </strong> <%=  @water.latitude.round(11) %>
                     <br />
                     <strong>Longitude: </strong> <%=  @water.longitude.round(11) %>
                 </div>
+            <div>
+            <div style="margin-top:30px;padding:0;" >
+                <h5>OS map for this water</h5>
+                <br /> 
+                <a href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&clickref=map&ued=<%= u(@water.os_map['os_map']['url'])%>" target="_blank">
+                    <img style="float: left; width:140px; height: 140px;margin:0;padding:0;" src="<%= @water.os_map['os_map']['images'][0].sub! '50x50', '160x160' %>" alt="">
+
+                    <strong>
+                    <%= @water.os_map['os_map']['series'] %> <br />
+                    <%= @water.os_map['os_map']['sheet'] %><br/>
+                    <%= @water.os_map['os_map']['title'] %> <br />
+                    <%= @water.os_map['os_map']['sub_title'] %>
+                     </strong>
+                </a>
+            </div>
+            </div> 
             </div>
             <div class="col-md-9 remove-padding-left remove-padding-right">
                 <% if !@water.description.blank? %>
