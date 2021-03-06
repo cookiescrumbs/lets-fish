@@ -4,6 +4,7 @@ class WatersController < ApplicationController
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
   before_action :set_species, only: [:show]
+  before_action :set_OS_map, only: [:show]
   before_action :set_meta, only: [:show]
 
   def show
@@ -30,6 +31,10 @@ class WatersController < ApplicationController
 
   def set_species
     @species = Water.friendly.find(params[:id]).species.select(:name).distinct
+  end
+
+  def set_OS_map
+    @os_map = EuropeanPerchService::get_OS_map(lat: @water.lat, lng: @water.lng);
   end
 
   def set_meta

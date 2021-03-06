@@ -55,10 +55,6 @@ class Water < ActiveRecord::Base
     longitude
   end
 
-  def os_map
-    EuropeanPerchService::get_OS_map(lat: self.lat, lng: self.lng)
-  end
-
   def images_without_hero
     images.reject(&:hero)
   end

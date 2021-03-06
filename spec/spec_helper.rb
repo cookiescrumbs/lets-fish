@@ -20,6 +20,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+  config.filter_run_when_matching :focus
   config.include ActiveRecordHelpers
   config.include WebMockHelpers::GoogleApis
   config.include WebMockHelpers::Geograph

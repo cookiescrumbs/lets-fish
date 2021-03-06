@@ -1,0 +1,31 @@
+{
+  "os_ref": "SJ 83995 98253",
+  "os_map": {
+    "sheet": "277",
+    "url": "https://www.ordnancesurvey.co.uk/shop/explorer-map-manchester-salford.html",
+    "title": "Manchester & Salford",
+    "sub_title": "Oldham, Rochdale & Stockport",
+    "series": "Explorer",
+    "images": [
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/50x50/products/2302/1104/277---Manchester-%26-Salford---Explorer-Map---Cover__76362.1596790795.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/50x50/products/2302/1105/277-Explorer-Map-Back-Manchester-%26-Salford__08097.1596790796.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/50x50/products/2302/4396/Explorer-277__22576.1602602764.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/50x50/products/2302/5171/Explorer-277mapzoom__19179.1603900229.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/160w/products/2094/648/OL51---Atholl-Explorer-Map---Cover__28367.1596789855.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/160w/products/2589/1697/109-Landranger-Map-Cover-Manchester-Bolton-Warrington__23934.1596792060.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/160w/products/2718/2003/0085F_Manchester__80181.1596792630.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/160w/products/2861/2178/5060045911063-Toughprint-A4-waterproof-paper-for-laser-printers-1__45765.1596792960.png?c=1",
+      "https://cdn11.bigcommerce.com/s-qc7qegnorm/images/stencil/160w/products/2862/2180/5060045911056-Toughprint-Waterproof-Paper-for-inkjet-A4__99815.1596792961.png?c=1"
+    ],
+    "bounding_box": [
+      {
+        "lat": 53.38821869021138,
+        "lng": -2.3848730265372664
+      },
+      {
+        "lat": 53.635327807733525,
+        "lng": -2.0468444578508684
+      }
+    ]
+  }
+}

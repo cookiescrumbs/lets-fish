@@ -49,6 +49,7 @@ module WebMockHelpers
 
   module EuropeanPerch 
     def stub_european_perch
+      body = File.read('spec/fixtures/european_perch/lat_lng_to_os_ref.json')
       stub_request(:get, "https://still-waters-39747.herokuapp.com/api/v1/lat/53.4807593/lng/-2.24263050000002").
       with(
         headers: {
@@ -56,7 +57,7 @@ module WebMockHelpers
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         'User-Agent'=>'Ruby'
         }).
-      to_return(status: 200, body: "", headers: {})
+      to_return(status: 200, body: body, headers: { 'Content-Type' => 'application/json' })
     end  
   end
 # "https://api.instagram.com/v1/tags/porroofficiisinventore/media/recent?access_token=abcd12345")

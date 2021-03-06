@@ -1,4 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+
 FactoryBot.define do
   factory :water do
     name { Array(1..3).map { Faker::Lorem.word }.join(' ') }
@@ -14,3 +15,4 @@ FactoryBot.define do
     fishery
   end
 end
+
