@@ -41,6 +41,7 @@ LetsFish::Application.routes.draw do
 
   get '/contributors',        to: 'contributors#index'
   get '/how-it-works',        to: 'how_it_works#index'
+  get '/donate',  to: 'donate#index'
 
   get '/trips/:id', to: 'static#index'
   get '/trips', to: 'trips#index'
