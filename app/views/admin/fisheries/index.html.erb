@@ -6,7 +6,7 @@
         <div class="col-lg-12">
           <div class="clearfix">
             <h3 class="m-bottom44
- pull-left">Manage your fishery</h3>
+ pull-left">Manage fisheries</h3>
             <% if current_user.auth === Rails.application.config.admin %>
               <%= link_to 'Add a new fishery', new_admin_fishery_path, class: 'btn btn-warning pull-right', id: 'new-fishery' %>
             <% end %>

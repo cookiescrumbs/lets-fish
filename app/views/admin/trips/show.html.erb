@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @trip.title %>
+</p>
+
+<p>
+  <strong>Short address:</strong>
+  <%= @trip.short_address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @trip.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @trip.date %>
+</p>
+
+<%= link_to 'Edit', edit_admin_trip_path(@trip) %> |
+<%= link_to 'Back', admin_trips_path %>

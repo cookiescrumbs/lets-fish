@@ -33,5 +33,5 @@ module LetsFish
         hostname_to_replace: ENV['ASSET_HOST']
       }
     end
-   end
+  end
 end

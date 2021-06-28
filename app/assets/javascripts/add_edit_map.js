@@ -55,8 +55,10 @@ $(document).ready(function() {
   }
 
   function loadDataLayer(map) {
-    var data = JSON.parse($('#annotation')[0].value);
-
+    var data = {};
+    if($('#annotation')[0] !== undefined ) {
+     return;
+    }
     if ( Object.keys(data).length === 0 ) {
       return;
     }
