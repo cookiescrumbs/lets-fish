@@ -9,4 +9,8 @@ class Post <  ActiveRecord::Base
   def formated_time
     date.strftime("%I:%M %P")
   end
+
+  def time_stamp
+    DateTime.parse(date.to_s).to_i
+  end
 end

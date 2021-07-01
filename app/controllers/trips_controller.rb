@@ -6,6 +6,8 @@ class TripsController < ApplicationController
   end
 
   def show
+    render 'trip'
+    respond_to :json
   end
   
   private

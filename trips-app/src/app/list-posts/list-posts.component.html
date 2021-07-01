@@ -1,21 +1,4 @@
 <div class="list-container">
-    <div class="post">
-        <app-live-photo
-            [media]=start.media
-        ></app-live-photo>
-        <div class="content">
-            <div class="header">
-                <div>
-                    <h3>{{start.title}}</h3>
-                </div>
-                <div>
-                    <span class="date-time">{{  start.timeStamp | date: 'mediumDate' }}</span>
-                </div>
-            </div>
-            <div class="main" [innerHTML]="start.content">
-            </div>
-        </div>
-    </div>
     <div class="post" *ngFor="let post of posts">
         <app-live-photo
             (inView)="postService.setCurrentPost($event, post)"
