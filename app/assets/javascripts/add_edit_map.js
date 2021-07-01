@@ -1,10 +1,25 @@
+// make map instance available on window
+map 
+marker = null;
+function getLatLngFromEditWaterForm(){
+  var lat = $('input#latitude').attr('value');
+  var lng = $('input#longitude').attr('value');
+  
+  if( lat && lng ) {
+    return new google.maps.LatLng(lat,lng);
+  }
+  return false;
+}
+
+function initialiseMap(){
+  return (getLatLngFromEditWaterForm())? getLatLngFromEditWaterForm() : {lat: 53.4807593, lng: -2.2426305000000184};
+}
+
 $(document).ready(function() {
-  var map,
-  infoWindow = new google.maps.InfoWindow(),
+  var infoWindow = new google.maps.InfoWindow(),
   markers =[],
   searchBox,
   searchInput,
-  marker,
   markerLock = false,
   mapOptions = {
     scrollwheel: false,
@@ -131,11 +146,11 @@ $(document).ready(function() {
         draggable: true
       });
 
-      // addAndOpenInfoWindow(
-      //   map,
-      //   marker,
-      //   content = "Drag this pin to the location"
-      // );
+      addAndOpenInfoWindow(
+        map,
+        marker,
+        content = "Drag this pin to the location"
+      );
 
       //add markers to map within bounding box
       boundingBox = getBoundingBoxFromMap(map);
@@ -209,15 +224,6 @@ $(document).ready(function() {
     return !editFormLatLng ? map.getCenter() : editFormLatLng
   }
 
-  function getLatLngFromEditWaterForm(){
-    var lat = $('input#latitude').attr('value');
-    var lng = $('input#longitude').attr('value');
-    if( lat && lng ) {
-      return new google.maps.LatLng(lat,lng);
-    }
-    return false;
-  }
-
   function displayInitialLatLng(){
     var lat = $('input#latitude').attr('value');
     var lng = $('input#longitude').attr('value');
@@ -226,10 +232,6 @@ $(document).ready(function() {
       $('#display-latitude').text(lat);
       $('#display-longitude').text(lng);
     }
-  }
-
-  function initialiseMap(){
-    return (getLatLngFromEditWaterForm())? getLatLngFromEditWaterForm() : {lat: 53.4807593, lng: -2.2426305000000184};
   }
 
   function getBoundingBoxFromMap(map) {

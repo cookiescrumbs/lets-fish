@@ -31,3 +31,8 @@
   width: 25%;
   height: 25%;
 }
+
+
+#admin-fisheries div.explore-item, #admin-trips div.explore-item {
+  padding-bottom: 10px;
+} 
