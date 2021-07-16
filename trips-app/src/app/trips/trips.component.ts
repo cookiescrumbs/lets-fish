@@ -36,7 +36,7 @@ export class TripsComponent implements OnInit {
             if (tripId) {
                 this._tripId = tripId;
                 this._getPosts();
-                // this._getStart();
+                this._getStart();
                 this._getMarkers();
             }
         });
@@ -49,16 +49,15 @@ export class TripsComponent implements OnInit {
                     this.currentPost$ = this.postService.getCurrentPost();
                 })
             );
-        this.posts$.subscribe((posts) => {console.log(posts)})
     }
 
     private _getMarkers(): void {
         this.markers$ = this.mapService.markers;
     }
 
-    // private _getStart(): void {
-    //     this.start$ = this.postService.getStart(this._tripId);
-    // }
+    private _getStart(): void {
+        this.start$ = this.postService.getStart(this._tripId);
+    }
 
     public onClickBack(): void {
         document.location.href = '/trips/';

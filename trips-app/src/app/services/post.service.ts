@@ -24,7 +24,7 @@ export class PostService {
     ) {}
 
     public getPosts(tripId: string): Observable<Post[]> {
-        return this.http.get<Post[]>(`${this.postsUrl}/trips/${tripId}.json`)
+        return this.http.get<Post[]>(`${this.postsUrl}/trips/${tripId}/posts.json`)
         .pipe(
             // map(responseData => {
             //     const keys = Object.keys(responseData);
@@ -47,9 +47,9 @@ export class PostService {
         );
     }
 
-    // public getStart(tripId: string): Observable<Start>{
-    //     return this.http.get<Start>(`${this.postsUrl}/trips/${tripId}/start.json`);
-    // }
+    public getStart(tripId: string): Observable<Start>{
+        return this.http.get<Start>(`${this.postsUrl}/trips/${tripId}.json`);
+    }
 
     public setCurrentPost(inView: boolean, post: Post): void {
         if (inView && this._currentPostId !== post.id) {
@@ -64,7 +64,7 @@ export class PostService {
         return posts.map((post: Post , index: number) => {
             return {
                 ...post,
-                position: index + 1,
+                position: index + 1
             };
         });
     }

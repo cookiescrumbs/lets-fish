@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PostService } from '../services/post.service';
 
-import { Post } from '../types';
+import { Post, Start } from '../types';
 
 @Component({
     selector: 'app-list-posts',
@@ -10,5 +10,8 @@ import { Post } from '../types';
 })
 export class ListPostsComponent {
     @Input() posts: Array<Post>;
+    @Input() start: Start;
+
     constructor(public postService: PostService ) { }
+
 }
