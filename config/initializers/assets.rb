@@ -1,1 +1,1 @@
-LetsFish::Application.config.assets.precompile += %w(homepage.js search.js trips.js waters.js fisheries.js admin/waters.js admin/fisheries.js devise/sessions.js devise/registrations.js weather.js browse_waters.js browse_fisheries.js browse_destinations.js)
+LetsFish::Application.config.assets.precompile += %w(homepage.js search.js waters.js fisheries.js admin/waters.js admin/fisheries.js admin/posts.js devise/sessions.js devise/registrations.js weather.js browse_waters.js browse_fisheries.js browse_destinations.js)

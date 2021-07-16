@@ -1,4 +1,4 @@
-#admin-waters #map {
+#admin-waters #map, #admin-posts #map {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -7,7 +7,7 @@
   margin-bottom: 40px;
 }
 
-#admin-waters #map-search-box {
+#admin-waters #map-search-box, #admin-posts #map-search-box {
   background-color: #fff;
   font-size: 15px;
   font-weight: 300;
@@ -18,7 +18,7 @@
   width: 50%;
 }
 
-#admin-waters #map-search-box:focus {
+#admin-waters #map-search-box:focus, #admin-posts #map-search-box:focus {
   border-color: #4d90fe;
 }
 
@@ -31,3 +31,8 @@
   width: 25%;
   height: 25%;
 }
+
+
+#admin-fisheries div.explore-item, #admin-trips div.explore-item {
+  padding-bottom: 10px;
+} 

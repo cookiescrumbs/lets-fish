@@ -1,0 +1,11 @@
+<%= render 'navigation' %>
+  <section class="container p-top17">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+                  <h3 class="m-bottom44">Editing <%= @trip.title %> taken on the <%= @trip.formated_date %></h3>
+          <%= render 'form', trip: @trip %>
+        </div>
+      </div>
+    </div>
+  </section>

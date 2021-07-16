@@ -1,0 +1,44 @@
+<%=  form_for([:admin, trip] ,:html => {:role => "form"}) do |f| %>
+  <% if trip.errors.any? %>
+    <div class="alert alert-danger">
+       <strong><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</strong>
+      <ul>
+        <% trip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+    <div class="form-group">
+        <label for="image">Photo</label>
+        <%= f.file_field :image, type: :file %>
+        <br /> 
+        <% image_src = (@trip.image.path(:original))? @trip.image.path(:original) : '/images/missing.png' %>
+        <img src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=645&h=645" %>" class="img-responsive img-centered">
+    </div>
+
+  <div class="form-group">
+    <%= f.label :short_address %>
+    <%= f.text_field :short_address %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+    <div class="form-group">
+    <%= button_tag "Submit trip", class: "btn btn-warning  m-p-top17
+ pull-right" %>
+<% end %>

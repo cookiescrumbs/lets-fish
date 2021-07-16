@@ -1,0 +1,53 @@
+<input id="map-search-box" class="controls" type="text" placeholder="Search Box">
+<div id="map"></div>
+<%=  form_for([:admin, @trip, @post] ,:html => {:role => "form",  multipart: true }) do |f| %>
+<% if @post.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <ul>
+        <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+    <label for="latitude">Latitude</label>
+    <div id="display-latitude"></div>
+        <%= f.hidden_field :latitude, class: "form-control", id:"latitude", placeholder: "latitude" %>
+    </div>
+    <label for="longitude">Longitude</label>
+    <div id="display-longitude"></div>
+        <%= f.hidden_field :longitude, class: "form-control", id:"longitude", placeholder: "longitude" %>
+    </div>
+</div>
+<br />
+<div class="form-group">
+    <%= f.label :date %>
+    <div id="display-date-time"></div>
+    <br />  
+    <%= f.datetime_local_field :date %>
+</div>
+
+<br />
+
+<div class="form-group">
+    <label for="image">Photo</label>
+    <input type="file" name="post[image]" id="post_image" onchange="onChange(event)">
+    <br /> 
+    <% image_src = (@post.image.path(:original))? @post.image.path(:original) : '/images/missing.png' %>
+    <img src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=645&h=645" %>" class="img-responsive img-centered">
+</div>
+
+
+<div class="form-group">
+    <label for="description">Description</label>
+    <%= f.text_area :description, class: "form-control", rows: 10, cols: 25 %>
+</div>
+
+<div class="form-group">
+    <%= button_tag "Submit", class: "btn btn-warning  m-p-top17
+ pull-right" %>
+</div>
+<% end %>

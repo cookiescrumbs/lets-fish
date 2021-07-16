@@ -1,5 +1,4 @@
 LetsFish::Application.routes.draw do
-
   devise_for :users
 
   as :user do
@@ -13,7 +12,11 @@ LetsFish::Application.routes.draw do
     end
   end
 
+
   namespace :admin do
+    resources :trips do
+      resources :posts
+    end
     resources :water_types
     resources :species
       resources :fisheries do
@@ -22,6 +25,8 @@ LetsFish::Application.routes.draw do
   end
 
   get '/fisheries',  to: 'browse_fisheries#index'
+
+  get '/your/fishery', to: 'admin/fisheries#index'
 
   resources :fisheries do
     resources :waters
@@ -43,8 +48,11 @@ LetsFish::Application.routes.draw do
   get '/how-it-works',        to: 'how_it_works#index'
   get '/donate',  to: 'donate#index'
 
-  get '/trips/:id', to: 'static#index'
-  get '/trips', to: 'trips#index'
+  get '/trip/:id', to: 'static#index'
+  
+  resources :trips do
+    resources :posts
+  end
 
   get '/featured/waters',  to: 'featured_waters#index'
 
@@ -55,7 +63,7 @@ LetsFish::Application.routes.draw do
   get 'suggested/waters', to: 'suggested#waters'
   get 'suggested/fisheries', to: 'suggested#fisheries'
 
-  get '/your/fishery', to: 'admin/fisheries#index'
+  get '/login', to: 'admin/fisheries#index'
 
   get '/image/attribution', to: 'image#attribution'
 
