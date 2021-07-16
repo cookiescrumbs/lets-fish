@@ -1,4 +1,5 @@
 class Admin::TripsController < AdminController
+  before_action :authenticate_user!
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   # GET /trips
