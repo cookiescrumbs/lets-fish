@@ -9,8 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:build": "ng build --aot  --deploy-url /trips-app/ --source-map --watch",
-    "prod:build": "ng build --prod --deploy-url /trips-app/"
+    "remove-built-app": "rm -rf ../public/trips-app",
+    "dev:build": "npm run remove-built-app && ng build --aot  --deploy-url /trips-app/ --source-map --watch",
+    "prod:build": "npm run remove-built-app &&  ng build --prod --deploy-url /trips-app/"
   },
   "private": true,
   "dependencies": {
