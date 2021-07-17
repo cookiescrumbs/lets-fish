@@ -1,4 +1,6 @@
 class Trip < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   # database handles cleaning up the associated records so we don't need 'dependent: :destroy'
   has_many :posts, -> { order date: :asc }

@@ -48,7 +48,7 @@ LetsFish::Application.routes.draw do
   get '/how-it-works',        to: 'how_it_works#index'
   get '/donate',  to: 'donate#index'
 
-  get '/trip/:id', to: 'static#index'
+  get '/trip/:friendly_id', to: 'static#index'
   
   resources :trips do
     resources :posts

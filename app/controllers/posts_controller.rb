@@ -10,6 +10,6 @@ class PostsController < ApplicationController
   private
 
   def set_trip
-    @posts = Trip.find(params[:trip_id]).posts
+    @posts = Trip.friendly.find(params[:trip_id]).posts
   end
 end
