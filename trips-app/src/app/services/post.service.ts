@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MapService } from './map.service';
+import { environment } from '../../environments/environment';
+
 
 
 
@@ -16,7 +18,7 @@ export class PostService {
     private _currentPostId: string;
 
     private _currentPost$: BehaviorSubject<Post>;
-    private postsUrl = 'http://localhost:5000';
+    private apiUrl = environment.apiUrl;
 
     constructor(
         private http: HttpClient,
@@ -24,18 +26,8 @@ export class PostService {
     ) {}
 
     public getPosts(tripId: string): Observable<Post[]> {
-        return this.http.get<Post[]>(`${this.postsUrl}/trips/${tripId}/posts.json`)
+        return this.http.get<Post[]>(`${this.apiUrl}/trips/${tripId}/posts.json`)
         .pipe(
-            // map(responseData => {
-            //     const keys = Object.keys(responseData);
-            //     return keys.map((key): Post => {
-            //         const post: Post = responseData[key];
-            //         return {
-            //             ...post,
-            //             id: key
-            //         };
-            //     });
-            // }),
             map(posts => this._addPosition(posts)),
             tap(posts => this.mapService.initMarkers(posts)),
             tap((posts) => {
@@ -48,7 +40,7 @@ export class PostService {
     }
 
     public getStart(tripId: string): Observable<Start>{
-        return this.http.get<Start>(`${this.postsUrl}/trips/${tripId}.json`);
+        return this.http.get<Start>(`${this.apiUrl}/trips/${tripId}.json`);
     }
 
     public setCurrentPost(inView: boolean, post: Post): void {
