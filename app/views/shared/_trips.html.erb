@@ -1,7 +1,7 @@
-<% if !locals[:trips].nil? %>
-    <% locals[:trips].each do | trip | %>
+<% if !@trips.nil? %>
+    <% @trips.each do | trip | %>
         <div class="simple-card col-md-4 col-sm-12">
-            <a href="/trip/<%= trip.id %>" class="explore-link" >
+            <a href="/trip/<%=trip.friendly_id%>" class="explore-link" >
                 <% image_src = (trip.image.path(:original))? trip.image.path(:original) : '/images/missing.png' %>
                 <img src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&q=0&w=650&h=350" %>" class="img-responsive img-centered">
             <div class="caption">
