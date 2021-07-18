@@ -65,7 +65,7 @@ class Admin::PostsController < AdminController
   private
 
   def set_trip
-    @trip = Trip.find_by(id: params[:trip_id])
+    @trip = Trip.friendly.find(params[:trip_id])
   end
 
     # Use callbacks to share common setup or constraints between actions.
