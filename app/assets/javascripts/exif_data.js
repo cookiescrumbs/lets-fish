@@ -8,11 +8,14 @@ function onChange(event) {
     console.log('gps', exif.latitude, exif.longitude);
     console.log('datetime', exif.DateTimeOriginal);
     console.log('ISODateTime', ISODateTime);
-    $('#latitude')[0].value = lat;
-    $('#longitude')[0].value = lng;
+    if (lat !== undefined && lng !== undefined) {
+      $('#latitude')[0].value = lat;
+      $('#longitude')[0].value = lng;
+      $('#display-latitude').text(lat);
+      $('#display-longitude').text(lng);
+    }
     $('#post_date')[0].value = ISODateTime;
-    $('#display-latitude').text(lat);
-    $('#display-longitude').text(lng);
+
     map.setCenter(initialiseMap());
     marker.setPosition(map.getCenter());
   });
