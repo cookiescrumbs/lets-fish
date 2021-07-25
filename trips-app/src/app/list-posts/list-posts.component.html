@@ -1,9 +1,7 @@
 <div class="list-container">
     <div class="post">
-        <app-live-photo
-            [media]=start.media
-        ></app-live-photo>
         <div class="content">
+            <app-image [imageSrc]="start.media.imageSrc"></app-image>
             <div class="header">
                 <div>
                     <h3>{{start.title}}</h3>
@@ -17,11 +15,11 @@
         </div>
     </div>
     <div class="post" *ngFor="let post of posts">
-        <app-live-photo
-            (inView)="postService.setCurrentPost($event, post)"
-            [media]=post.media
-        ></app-live-photo>
         <div class="content">
+            <app-image
+            (inView)="postService.setCurrentPost($event, post)"
+            [imageSrc]="post.media.imageSrc"
+            ></app-image>
             <div class="header">
                 <div>
                     <span class="badge">{{post.position}}</span>

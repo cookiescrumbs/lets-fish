@@ -22,17 +22,17 @@ export class MapComponent implements OnChanges {
         disableDoubleClickZoom: false,
         streetViewControl: false,
         mapTypeControl: false,
-        fullscreenControl: false
+        fullscreenControl: false,
+        scaleControl: false,
+        draggable: false,
+        draggableCursor: 'default'
     };
     public zoom = 15;
     public center: google.maps.LatLngLiteral;
 
     public ngOnChanges(changes: SimpleChanges): void {
-        console.log('ngOnChanges marker', this.markers);
         if (changes.currentPost && this.currentPost) {
             this.map.panTo(this._setCentreToCurrentPost());
-            // this.center = this._setCentreToCurrentPost();
-
         }
     }
 
