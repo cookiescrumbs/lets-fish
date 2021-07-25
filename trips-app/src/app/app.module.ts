@@ -6,17 +6,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
-import { LivePhotoComponent } from './live-photo/live-photo.component';
 import { MapComponent } from './map/map.component';
 import { TripsComponent } from './trips/trips.component';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPostsComponent,
-    LivePhotoComponent,
     MapComponent,
-    TripsComponent
+    TripsComponent,
+    ImageComponent
   ],
   imports: [
     AppRoutingModule,
