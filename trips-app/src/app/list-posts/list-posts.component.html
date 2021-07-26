@@ -21,12 +21,8 @@
             [imageSrc]="post.media.imageSrc"
             ></app-image>
             <div class="header">
-                <div>
-                    <span class="badge">{{post.position}}</span>
-                </div>
-                <div>
-                    <span class="date-time">{{ post.timeStamp | date: 'shortTime' }}</span>
-                </div>
+                <div class="number-circle">{{post.position}}</div>
+                <span class="date-time">{{ post.timeStamp | date: 'medium' }}</span>
             </div>
             <div class="main" [innerHTML]="post.content">
             </div>
