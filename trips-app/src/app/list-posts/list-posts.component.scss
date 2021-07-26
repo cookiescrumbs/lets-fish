@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 10px;
 }
 
 .header > div {
@@ -40,8 +41,7 @@
 .date-time {
     display: block;
     white-space: nowrap;
-    font-size: 14px;
-    // padding: 15px 5px;
+    font-size: 15px;
 }
 
 .main {
@@ -57,3 +57,14 @@
 }
 
 
+.number-circle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 10px;
+
+    background: #fed136;
+    color: #fff;
+    text-align: center;
+    font-size: 31px;
+}
