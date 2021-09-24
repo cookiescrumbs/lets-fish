@@ -8,6 +8,8 @@ class HomepageController < ApplicationController
     @fisheries = Lets::Fisheries::recently_added 6
     # fresh_when @fisheries, public: true
     @featured_waters = Lets::Waters::featured 6
+
+    @trips = Trip.all.limit(6)
   end
 end
 
