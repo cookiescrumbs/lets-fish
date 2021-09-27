@@ -3,7 +3,7 @@ class TripsController < ApplicationController
   
   # all trips
   def index
-    @trips = Trip.all
+    @trips = Lets::Trips::private_all false
   end
 
   # show one trip

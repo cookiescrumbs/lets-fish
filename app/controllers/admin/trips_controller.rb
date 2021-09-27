@@ -70,6 +70,6 @@ class Admin::TripsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:image, :title, :short_address, :description, :date)
+      params.require(:trip).permit(:image, :title, :short_address, :description, :private, :date)
     end
 end

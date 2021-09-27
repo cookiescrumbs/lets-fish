@@ -16,6 +16,19 @@
   </div>
 
     <div class="form-group">
+        <label for="publish">Make this trip private</label>
+        <div class="radio">
+        <%= label :private, "Private" %>
+        <%= radio_button :trip, :private, true %>
+        </div>
+        <div class="radio">
+        <%= label :private, "Public" %>
+        <%= radio_button :trip, :private, false %>
+        </div>
+    </div>
+
+
+    <div class="form-group">
         <label for="image">Photo</label>
         <%= f.file_field :image, type: :file %>
         <br /> 
@@ -37,6 +50,7 @@
     <%= f.label :date %>
     <%= f.date_field :date %>
   </div>
+
 
     <div class="form-group">
     <%= button_tag "Submit trip", class: "btn btn-warning  m-p-top17

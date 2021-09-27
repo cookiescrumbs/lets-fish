@@ -34,4 +34,13 @@ module Lets
         Water.where(published: true, featured: true).includes(:fishery).where('fisheries.published' => true).order(name: :asc)
     end
   end
+
+  module Trips
+    def self.private(status= false, number = 6)
+      Trip.where(private: status ).limit(number)
+    end
+    def self.private_all(status= false)
+      Trip.where(private: status )
+    end
+  end
 end

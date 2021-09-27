@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_17_164123) do
+ActiveRecord::Schema.define(version: 2021_09_27_093614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2021_07_17_164123) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.string "slug"
+    t.boolean "private", default: true
     t.index ["slug"], name: "index_trips_on_slug", unique: true
   end
 

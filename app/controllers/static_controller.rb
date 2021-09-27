@@ -10,7 +10,10 @@ class StaticController < ApplicationController
   private
 
   def authenticate
-    http_basic_authenticate_or_request_with name:  ENV['TRIPS_USERNAME'],
-                                            password: ENV['TRIPS_PASSWORD']
+    trip = Trip.friendly.find(params[:friendly_id])
+    if trip.private 
+      http_basic_authenticate_or_request_with name:  ENV['TRIPS_USERNAME'],
+                                              password: ENV['TRIPS_PASSWORD']
+    end
   end
 end
