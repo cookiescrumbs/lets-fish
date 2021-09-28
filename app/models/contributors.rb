@@ -5,7 +5,8 @@ module Contributors
             'easdale tarn',
             'llyn adar',
             'llyn eigiau',
-            'llynnau\'r cwn'
+            'llynnau’r cwn'
+
         ],
         tom_grahame: [
             'ennerdale water',
@@ -22,7 +23,7 @@ module Contributors
             'fishing loch',
             'haweswater',
             'hayeswater',
-            'lindsay\'s loch',
+            'lindsay’s loch',
             'crummock water',
             'llyn conglog',
             'loch valley',
