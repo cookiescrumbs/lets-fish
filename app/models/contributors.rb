@@ -4,7 +4,8 @@ module Contributors
             'scoat tarn',
             'easdale tarn',
             'llyn adar',
-            'llyn eigiau'
+            'llyn eigiau',
+            'llynnau\'r cwn'
         ],
         tom_grahame: [
             'ennerdale water',
