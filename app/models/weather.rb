@@ -7,7 +7,11 @@ class Weather
   end
 
   def forecast
-    { time: time_at, lat: lat, lng: lng, wind_speed: wind_speed, wind_bearing: wind_bearing, wind_direction_string: wind_direction_string, summary: summary, icon: icon }
+    { time: time_at, lat: lat, lng: lng, wind_speed: wind_speed_miles_per_hour, wind_bearing: wind_bearing, wind_direction_string: wind_direction_string, summary: summary, icon: icon }
+  end
+
+  def wind_speed_miles_per_hour
+    (self.wind_speed * 2.2369).ceil
   end
 
   def wind_direction_string
@@ -20,17 +24,23 @@ class Weather
   end
 
   def icon
+    puts self.condition
     condition_to_icon = {
-      'clear-day' => 'wi-day-sunny',
-      'clear-night' => 'wi-night-clear',
-      'rain' => 'wi-showers',
-      'snow' => 'wi-snow',
-      'sleet'=> 'wi-sleet',
-      'wind' => 'wi-strong-wind',
-      'fog' => 'wi-strong-wind',
-      'cloudy' => 'wi-cloudy',
-      'partly-cloudy-day' => 'wi-day-cloudy',
-      'partly-cloudy-night' => 'wi-night-alt-cloudy'
+      '01d' => 'wi-day-sunny',
+      '01n' => 'wi-night-clear',
+      '02n' => 'wi-night-partly-cloudy',
+      '02d' => 'wi-cloudy',
+      '10d' => 'wi-showers',
+      '10n' => 'wi-showers',
+      '13d' => 'wi-snow',
+      '13n' => 'wi-snow',
+      # 'sleet'=> 'wi-sleet',
+      '50d' => 'wi-strong-wind',
+      '50n' => 'wi-strong-wind',
+      # 'fog' => 'wi-strong-wind',
+      '03d' => 'wi-cloudy',
+      '04d' => 'wi-day-cloudy',
+      '04n' => 'wi-night-alt-cloudy'
     }
     condition_to_icon[self.condition]
   end
