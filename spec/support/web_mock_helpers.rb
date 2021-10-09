@@ -47,6 +47,15 @@ module WebMockHelpers
     end
   end
 
+  # module OpenWeather
+  #   def stub_open_weather
+  #     body = File.read('spec/fixtures/open_weather/forecast.json')
+  #     stub_request(:get, /https:\/\/api.darksky.net\/forecast\/([\w\W]+)\/(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)/)
+  #       .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
+  #       .to_return(status: 200, body: body, headers: { 'Content-Type' => 'application/json' })
+  #   end
+  # end
+
   module EuropeanPerch 
     def stub_european_perch
       body = File.read('spec/fixtures/european_perch/lat_lng_to_os_ref.json')
