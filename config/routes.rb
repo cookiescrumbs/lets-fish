@@ -58,6 +58,7 @@ LetsFish::Application.routes.draw do
 
   get '/search',  to: 'search#index'
   get '/weather', to: 'weather#forecast'
+  get '/weather/historic', to: 'weather#historic'
 
   get 'suggested/all', to: 'suggested#all'
   get 'suggested/waters', to: 'suggested#waters'

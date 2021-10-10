@@ -30,14 +30,21 @@
     <%= f.datetime_local_field :date %>
 </div>
 
-<br />
+<div class="form-group">
+    <label>Weather</label>
+    <br />
+    <br />
+    <div id="weather-forecast" style="float:left; padding: 20px;"></div>
+</div>
+
+<br style="clear: left;" />
 
 <div class="form-group">
     <label for="image">Photo</label>
     <input type="file" name="post[image]" id="post_image" onchange="onChange(event)">
     <br /> 
     <% image_src = (@post.image.path(:original))? @post.image.path(:original) : '/images/missing.png' %>
-    <img src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=645&h=645" %>" class="img-responsive img-centered">
+    <img id="photo" src="<%= "https://#{Rails.application.config.imgix[:source]}#{image_src}?fit=crop&w=645&h=645" %>" class="img-responsive img-centered">
 </div>
 
 
