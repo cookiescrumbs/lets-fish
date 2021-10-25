@@ -1,7 +1,11 @@
 
-function addWeatherToPage(html){
+function addWeatherWidgetToPage(html){
   var weatherElement = $('#weather-forecast');
   weatherElement.html(html);
+}
+
+function addWeatherDataToFormField(data) {
+  $('#weather-data')[0].value = JSON.stringify(data);
 }
 
 function weather(lat, lng, timeStamp) {
@@ -21,7 +25,8 @@ function weather(lat, lng, timeStamp) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(data) {
-      addWeatherToPage(data.html_forecast)
+      addWeatherWidgetToPage(data.html_forecast);
+      addWeatherDataToFormField(data);
     },
     failure: function(errMsg) {
       alert(errMsg);
@@ -33,7 +38,7 @@ function weather(lat, lng, timeStamp) {
 
 function previewUploadedPhoto(file) {
   var photoPreview = document.getElementById('photo');
-  photoPreview .src = URL.createObjectURL(file);
+  photoPreview.src = URL.createObjectURL(file);
 }
 
 function onChange(event) {
