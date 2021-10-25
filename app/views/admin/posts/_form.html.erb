@@ -34,8 +34,10 @@
     <label>Weather</label>
     <br />
     <br />
-    <div id="weather-forecast" style="float:left; padding: 20px;"></div>
-     <%= f.hidden_field :weather, class: "form-control", id:"weather-data", placeholder: " " %>
+    <div id="weather-forecast" style="float:left; padding: 20px;">
+    <%= sanitize @post.html_forecast %>
+    </div>
+     <%= f.text_area :weather, class: "form-control", id:"weather-data", placeholder: "" %>
 </div>
 
 <br style="clear: left;" />
