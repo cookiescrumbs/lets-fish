@@ -7,7 +7,6 @@ describe 'Water page', type: :feature do
       stub_geograph_photo_details
       stub_google_geocode_lat_lng
       stub_google_geocode_address
-      stub_dark_sky
       stub_european_perch
       stub_instagram_media_by_tags
       @species    = FactoryBot.create_list :species, 5
