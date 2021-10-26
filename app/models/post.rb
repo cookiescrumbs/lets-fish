@@ -13,4 +13,11 @@ class Post <  ActiveRecord::Base
   def time_stamp
     DateTime.parse(date.to_s).to_i
   end
+
+  def html_forecast  
+    unless self.weather.empty? 
+      w = JSON.parse(self.weather)
+      w['html_forecast'] if w.key? 'html_forecast'
+    end
+  end
 end

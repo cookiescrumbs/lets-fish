@@ -38,14 +38,14 @@ module WebMockHelpers
     end
   end
 
-  module DarkSky
-    def stub_dark_sky
-      body = File.read('spec/fixtures/dark_sky/forecast.json')
-      stub_request(:get, /https:\/\/api.darksky.net\/forecast\/([\w\W]+)\/(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)/)
-        .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
-        .to_return(status: 200, body: body, headers: { 'Content-Type' => 'application/json' })
-    end
-  end
+  # module DarkSky
+  #   def stub_dark_sky
+  #     body = File.read('spec/fixtures/dark_sky/forecast.json')
+  #     stub_request(:get, /https:\/\/api.darksky.net\/forecast\/([\w\W]+)\/(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)/)
+  #       .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby' })
+  #       .to_return(status: 200, body: body, headers: { 'Content-Type' => 'application/json' })
+  #   end
+  # end
 
   # module OpenWeather
   #   def stub_open_weather

@@ -9,9 +9,12 @@ class OpenWeatherService
   base_uri 'https://api.openweathermap.org/data/2.5'
   API_KEY = Rails.application.config.open_weather_api_key
 
-  def self.timemachine(lat:, lng:, dt: )
+  def self.timemachine(lat:, lng:, timestamp: ) 
+    # https://api.openweathermap.org/data/2.5/onecall/timemachine?lat={lat}&lon={lon}&dt={time}&appid={API key}
+    # dt:Unix time, UTC time zone 
+
     begin
-      response = get("/onecall/timemachine?units=metric&lat=#{lat}&lon=#{lng}&dt=#{dt}&appid=#{OpenWeatherService::API_KEY}", timeout: 1)
+      response = get("/onecall/timemachine?units=metric&lat=#{lat}&lon=#{lng}&dt=#{timestamp}&appid=#{OpenWeatherService::API_KEY}", timeout: 1)
       return {} unless response.code === 200
       response
     rescue
