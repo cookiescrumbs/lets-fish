@@ -6,6 +6,7 @@ json.array! @posts do | post |
     json.lat post.latitude
     json.lng post.longitude
   end
+  json.htmlForecast post.html_forecast 
   json.set! :media do 
     json.imageSrc "https://#{Rails.application.config.imgix[:source]}#{post.image.path(:original)}"
     json.type 'image'

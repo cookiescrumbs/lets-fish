@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/weather-icons/css/weather-icons.min.css",
+              "src/assets/weather-icons/css/weather-icons-wind.min.css"
             ],
             "scripts": []
           },

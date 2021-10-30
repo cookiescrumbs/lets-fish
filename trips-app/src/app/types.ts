@@ -17,6 +17,7 @@ export interface Post {
     content: string;
     position?: number;
     markerOptions?: any;
+    htmlForecast: any;
 }
 
 export interface Start {
