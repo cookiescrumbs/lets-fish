@@ -22,6 +22,7 @@
             ></app-image>
             <div class="header">
                 <div class="number-circle">{{post.position}}</div>
+                <div id="weather-forecast" [innerHTML]="post.htmlForecast"></div>
                 <span class="date-time">{{ post.timeStamp | date: 'short' : 'GMT'}}</span>
             </div>
             <div class="main" [innerHTML]="post.content">

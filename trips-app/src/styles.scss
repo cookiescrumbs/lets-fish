@@ -21,3 +21,40 @@ body {
     padding: 2px 10px;
     font-size: 1.5em;
 }
+
+
+// Weather widget styles ////////
+#weather-forecast a {
+    text-decoration: none !important;
+}
+
+#weather-forecast {
+  font-size: 14px;
+  padding: 40px 0 0 0;
+}
+
+#weather-forecast ul.forecast {
+  margin-left: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#weather-forecast ul.forecast li {
+  display: inline;
+  position: static;
+  padding-left: 10px;
+}
+
+#weather-forecast a, a:hover, a:focus, a:active, a.active {
+   text-decoration: none;
+}
+
+.fa-2x {
+    font-size: 1.2em;
+}
+
+.text-muted {
+    color: #777777;
+}
+
+//////////////////////////////////////
