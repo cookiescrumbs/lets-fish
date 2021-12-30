@@ -11,6 +11,11 @@ namespace :pg_db do
     `pg_ctl -D /usr/local/var/postgres -l logfile start`
   end
 
+  desc 'Stop Postgres'
+  task stop: :environment do
+    `pg_ctl -D /usr/local/var/postgres -l logfile stop`
+  end
+
   desc 'Create and load the development database'
   task create_development: :environment do
     sh 'RAILS_ENV=development bundle exec rake db:create'

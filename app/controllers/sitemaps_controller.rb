@@ -14,7 +14,8 @@ class SitemapsController < ApplicationController
   end
 
   def set_fisheries
-    @fisheries = Lets::Fisheries::all
+    @fisheries = Fishery.all_alpha_order
     # fresh_when @fisheries, public: true
   end
 end
+
