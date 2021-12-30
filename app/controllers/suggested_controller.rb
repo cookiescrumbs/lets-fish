@@ -4,7 +4,7 @@ class SuggestedController < ApplicationController
 
   def all
     @waters = Lets::Waters::all
-    @fisheries = Lets::Fisheries::all
+    @fisheries = Fishery.all_alpha_order
     render 'all'
   end
 
@@ -14,7 +14,7 @@ class SuggestedController < ApplicationController
   end
 
   def fisheries
-    @fisheries = Lets::Fisheries::all
+    @fisheries = Fishery.all_alpha_order
     render 'fisheries'
   end
 end

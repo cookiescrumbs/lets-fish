@@ -23,6 +23,10 @@ class Fishery < ActiveRecord::Base
 
   belongs_to :membership
 
+  scope :recently_added, -> (number=3) { where(published: true).includes(:waters).where.not('waters.id' => nil).where('waters.published' => true).order('fisheries.id desc').limit(number) }
+
+  scope :all_alpha_order, -> { where(published: true).includes(:waters).where.not('waters.id' => nil).where('waters.published' => true).order(name: :asc) }
+
   # need to get all species from across all waters ["brown trout", "salmon", "sea trout"]
   def species
     self.waters.map{|water| water.species.map{|s| s.name } }.flatten.uniq.sort

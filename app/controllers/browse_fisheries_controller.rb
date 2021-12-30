@@ -2,7 +2,7 @@ class BrowseFisheriesController < ApplicationController
   include Lets
 
   def index
-    @fisheries = Lets::Fisheries::all
+    @fisheries = Fishery.all_alpha_order
   end
 
 end
