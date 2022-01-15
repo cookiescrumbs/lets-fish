@@ -95,6 +95,10 @@
 <%= render 'shared/contributed_by', locals: @water.contributor %>
 <% end %>
 
+<% unless @water.article_magazine.empty? %>
+    <%= render 'shared/article' %>
+<% end %>
+
 <%= render 'shared/contributor', locals: { background_color: true }%>
 
 <script type="application/ld+json">

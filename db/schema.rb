@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_082340) do
+ActiveRecord::Schema.define(version: 2022_01_09_210831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_082340) do
     t.boolean "published", default: false
     t.text "permission_tickets"
     t.boolean "featured", default: false
+    t.jsonb "articles", default: {}, null: false
     t.index ["fishery_id"], name: "index_waters_on_fishery_id"
     t.index ["slug"], name: "index_waters_on_slug", unique: true
   end

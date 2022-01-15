@@ -29,6 +29,8 @@ class Water < ActiveRecord::Base
   validates :latitude, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
   validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
 
+  store_accessor :articles, :article_magazine, :article_date, :article_page, :article_author, :article_affiliate_link, :article_affiliate_mag_image, :article_headline, :article_subheadline
+
   reverse_geocoded_by :latitude, :longitude
 
   after_validation :update_address

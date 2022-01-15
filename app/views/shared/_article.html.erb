@@ -1,0 +1,25 @@
+<hr/> 
+<section id="t&s-article">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3 class="section-heading">This water was featured in the Trout & Salmon</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-12 text-center">
+                <a  style="color: #333;" href="<%=@water.article_affiliate_link %>/#61e1e680e7336">
+                <div class="team-member">
+                    <%= image_tag @water.article_affiliate_mag_image,  class: "mx-auto rounded-circle" %>
+                    <h3><%=@water.article_headline%></h3>
+                    <h4><%=@water.article_subheadline%></h4>
+                    <br />
+                   <strong class="text-muted">You can find this article in the <%= @water.article_date.to_date.strftime('%B %Y') %> issue of the T&S on page <%= @water.article_page %></strong>
+                   <br /> 
+                   <br /> 
+                   <a class="block-color" href="<%=@water.article_affiliate_link %>/#61e1e680e7336">Buy the issue here</a>
+                </div>
+                </a>
+            </div>
+    </div>
+</section>
