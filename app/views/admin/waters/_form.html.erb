@@ -125,6 +125,54 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label>Featured in a fishing article </label>
+        <div class="form-group">
+            <label for="article_magazine">Magazine</label>
+            <br />
+            <%= f.select(:article_magazine, ['Trout & Salmon']) %>
+        </div>
+        <div class="form-group">
+            <label for="article_author">Author</label>
+            <br />
+            <%= f.text_field :article_author %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.label :article_date %>
+            <br />
+            <%= f.text_field :article_date %>
+        </div> 
+
+        <div class="form-group">
+            <label for="article_page">Page</label>
+            <br />
+            <%= f.select(:article_page, [*1..200]) %>
+        </div>
+        <div class="form-group">
+            <label for="article_affiliate_link">Affiliate Link</label>
+            <br />
+            <%= f.text_field :article_affiliate_link,  class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <label for="article_affiliate_mag_image">Affiliate Magazine Image</label>
+            <br />
+            <%= f.text_field :article_affiliate_mag_image,  class: "form-control"%>
+        </div>
+
+        <div class="form-group">
+            <label for="article_headline">Article Headline</label>
+            <br />
+            <%= f.text_field :article_headline, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <label for="article_headline">Article Subheadline</label>
+            <br />
+            <%= f.text_field :article_subheadline, class: "form-control" %>
+        </div>
+    
+    </div>
 
 
   <div class="form-group hidden">

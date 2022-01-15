@@ -17,6 +17,11 @@
                     <a class="page-scroll" href="#permission">Permission &amp; Tickets</a>
                 </li>
             <% end %>
+            <% unless @water.articles.nil? %>
+                <li>
+                    <a class="page-scroll" href="#t&s-article">Trout &amp; Salmon Article</a>
+                </li>
+            <% end %>
         </ul>
     </div>
 </nav>
