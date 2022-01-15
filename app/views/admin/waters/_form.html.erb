@@ -130,7 +130,7 @@
         <div class="form-group">
             <label for="article_magazine">Magazine</label>
             <br />
-            <%= f.select(:article_magazine, ['Trout & Salmon']) %>
+            <%= f.select(:article_magazine, ['', 'Trout & Salmon']) %>
         </div>
         <div class="form-group">
             <label for="article_author">Author</label>
@@ -147,7 +147,7 @@
         <div class="form-group">
             <label for="article_page">Page</label>
             <br />
-            <%= f.select(:article_page, [*1..200]) %>
+            <%= f.select(:article_page, ['', *1..200]) %>
         </div>
         <div class="form-group">
             <label for="article_affiliate_link">Affiliate Link</label>

@@ -92,7 +92,7 @@
 </section>
 <% end %>
 
-<% unless @water.article_magazine.nil? %>
+<% unless @water.article_magazine.nil? || @water.article_magazine.empty? %>
     <%= render 'shared/article' %>
 <% end %>
 
