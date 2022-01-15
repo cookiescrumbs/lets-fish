@@ -95,7 +95,7 @@
 <%= render 'shared/contributed_by', locals: @water.contributor %>
 <% end %>
 
-<% unless @water.article_magazine.empty? %>
+<% unless @water.article_magazine.nil? %>
     <%= render 'shared/article' %>
 <% end %>
 
