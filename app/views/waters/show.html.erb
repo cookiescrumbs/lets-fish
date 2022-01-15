@@ -91,13 +91,16 @@
     </div>
 </section>
 <% end %>
-<% if @water.contributor %>
-<%= render 'shared/contributed_by', locals: @water.contributor %>
-<% end %>
 
 <% unless @water.article_magazine.nil? %>
     <%= render 'shared/article' %>
 <% end %>
+
+<% if @water.contributor %>
+<%= render 'shared/contributed_by', locals: @water.contributor %>
+<% end %>
+
+
 
 <%= render 'shared/contributor', locals: { background_color: true }%>
 
