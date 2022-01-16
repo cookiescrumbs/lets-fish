@@ -17,7 +17,7 @@
                     <a class="page-scroll" href="#permission">Permission &amp; Tickets</a>
                 </li>
             <% end %>
-            <% unless @water.articles.nil? %>
+            <% unless @water.article_magazine.nil? || @water.article_magazine.empty? %>
                 <li>
                     <a class="page-scroll" href="#t&s-article">Trout &amp; Salmon Article</a>
                 </li>
