@@ -21,6 +21,7 @@ class Water < ActiveRecord::Base
   has_many :images
   accepts_nested_attributes_for :images, reject_if: ->(i) { (i[:image].blank? && i[:id].blank?) }, allow_destroy: true
 
+  scope :with_articles, -> (number=3) { Water.where.not(articles: {}).limit(number) }
   validates :fishery_id, presence: true
 
   validates :name, presence: { message: "Water name can't be blank" }

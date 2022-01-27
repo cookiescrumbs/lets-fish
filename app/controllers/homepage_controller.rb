@@ -4,6 +4,7 @@ class HomepageController < ApplicationController
   def index
     @waters = Lets::Waters::recently_added 6
     @water = Lets::Waters::random
+    @waters_with_articles = Water.with_articles 6
     # fresh_when @waters, public: true
     @fisheries = Fishery.recently_added 6
     # fresh_when @fisheries, public: true
