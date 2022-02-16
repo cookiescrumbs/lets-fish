@@ -2,8 +2,8 @@
 
 An app for documenting our fishing trips
 
-** This is only the view for viewing the trips. **
-** Adding a trip is contained in the rails app. I may move it into the Angular app later. **
+**This is only the view for viewing the trips.**
+**Adding a trip is contained in the rails app. I may move it into the Angular app later.**
 
 #### Development
 
