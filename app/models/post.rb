@@ -7,7 +7,7 @@ class Post <  ActiveRecord::Base
 
 
   def formated_time
-    date.strftime("%I:%M %P")
+    date.strftime("%I:%M %P") unless date.nil?
   end
 
   def time_stamp
