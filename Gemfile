@@ -80,3 +80,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'capistrano', group: :development
 
 # gem "northern_pike", "~> 0.1.1", :group => :development
+
+
+## upgrade stuff ruby 3.1.0
+
+gem 'net-smtp', require: false
+gem 'net-pop', require: false
+gem 'net-imap', require: false
