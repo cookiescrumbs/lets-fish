@@ -67,6 +67,12 @@ ln -s /private/tmp/.s.PGSQL.5432 /var/pgsql_socket/
 bundle exec rake pg_db:start
 ```
 
+or for postgresql installed via Brew
+
+```
+brew services start postgresql
+```
+
 ##### Create development and test db
 ```
 bundle exec rake pg_db:create_development #create and load the dev db

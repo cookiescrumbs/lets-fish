@@ -100,10 +100,8 @@
 <%= render 'shared/contributed_by', locals: @water.contributor %>
 <% end %>
 
-
-
 <%= render 'shared/contributor', locals: { background_color: true }%>
 
 <script type="application/ld+json">
-    <%= raw render 'schema_org.json.jbuilder' %>
+    <%= raw render 'schema_org' %>
 </script>
