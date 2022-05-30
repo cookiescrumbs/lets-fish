@@ -10,8 +10,8 @@
     <div class="alert alert-danger">
       <strong><%= pluralize(@water.errors.count, "error") %> prohibited this water from being saved:</strong>
         <ul>
-        <% @water.errors.each do | attr, msg| %>
-          <li><%= msg %></li>
+        <% @water.errors.each do | e | %>
+          <li><%= e.options[:message] %></li>
         <% end %>
         </ul>
     </div>
