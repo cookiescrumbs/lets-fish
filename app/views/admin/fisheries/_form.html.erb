@@ -2,11 +2,11 @@
   <% if @fishery.errors.any? %>
     <div class="alert alert-danger">
       <strong><%= pluralize(@fishery.errors.count, "error") %> prohibited this fishery from being saved:</strong>
-      <ul>
-      <% @fishery.errors.each do | attr, msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @fishery.errors.each do | e | %>
+          <li><%= e.options[:message] %></li>
+        <% end %>
+        </ul>
     </div>
   <% end %>
   <div class="form-group">

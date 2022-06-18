@@ -8,7 +8,7 @@
 ">Edit your user account</h3>
         <h4>Change your password</h4>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
+        <%= render "devise/shared/error_messages", resource: resource %>
          <% if flash[:notice] %>
             <div class="alert alert-warning"><%= flash[:notice] %></div>
           <% end %>
@@ -45,4 +45,3 @@
     </div>
   </div>
 </section>
-

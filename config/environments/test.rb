@@ -44,4 +44,7 @@ LetsFish::Application.configure do
   config.google_api_key = 'abcd12345'
   config.instagram_api_key = 'abcd12345'
 
+  # https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+  config.active_record.legacy_connection_handling = false
+
 end
