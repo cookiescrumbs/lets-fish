@@ -138,8 +138,6 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
-    heroku-deflater (0.6.3)
-      rack (>= 1.4.5)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -373,7 +371,6 @@ DEPENDENCIES
   ffi (>= 1.9.24)
   friendly_id (~> 5.1.0)
   geocoder
-  heroku-deflater
   httparty
   imgix-rails
   jbuilder (~> 2.5)
