@@ -58,4 +58,8 @@ LetsFish::Application.configure do
   config.instagram_api_key = ENV['INSTAGRAM_API_KEY']
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+  # https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+  config.active_record.legacy_connection_handling = false
 end

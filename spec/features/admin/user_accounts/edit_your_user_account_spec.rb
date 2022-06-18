@@ -14,15 +14,12 @@ describe 'Edit your user account', type: :feature do
     describe 'User changes their password' do
 
       context 'successfully fills in the change password form' do
-
-
-        it 'shows a helpful validation messages for required fields' do   
+        it 'shows successful message confirming the changes has been made' do   
 
           fill_in 'Email', with: 'changed@gmail.com'
           fill_in 'New Password', with: 'newpassword'
           fill_in 'Confirm New Password', with: 'newpassword'
-          fill_in 'Current Password', with: '5lbBr0wnTr0ut'
-
+          fill_in 'Current Password', with: @fishery_manager.password
           click_on 'Update details'
       
           expect(page).to have_content 'Your account has been updated successfully.'
@@ -35,11 +32,10 @@ describe 'Edit your user account', type: :feature do
         it 'has an error message' do
 
           fill_in 'Email', with: 'blah@blah.com'
-          fill_in 'New Password', with: 'asadsadsad'
-          fill_in 'Confirm New Password', with: 'nsadasdsadsadass'
-          fill_in 'Current Password', with: 'sadasdasdasdasdsa'
+          fill_in 'New Password', with: 'sdssdsdd'
+          fill_in 'Confirm New Password', with: 'sdsdssdsdsdd'
 
-          click_on 'Update details'
+          click_on 'Update'
           expect(page).to have_content 'Something went wrong!'
         end
       end
