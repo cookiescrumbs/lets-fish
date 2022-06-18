@@ -37,7 +37,7 @@ gem 'meta-tags'
 gem "devise", ">= 4.7.1"
 gem 'cookies_eu'
 gem 'heroku-deflater', :group => :production
-gem 'sprockets', '>= 3.7.2'
+gem 'sprockets-rails'
 gem "rubyzip"
 gem 'ffi', '>= 1.9.24'
 gem 'activejob', '>= 5.0.1'
