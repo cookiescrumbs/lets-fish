@@ -4,13 +4,14 @@
 if defined? Rack::Cors
     Rails.configuration.middleware.insert_before 0, Rack::Cors do
         allow do
-            origins %w[
-                https://lets.fish
-                http://lets.fish
-                https://www.lets.fish
-                http://www.lets.fish
-            ]
-            resource '/assets/*', headers: :any, methods: [:get, :options]
+            origins '*'
+            # origins %w[
+            #     https://lets.fish
+            #     http://lets.fish
+            #     https://www.lets.fish
+            #     http://www.lets.fish
+            # ]
+            resource '*', headers: :any, methods: [:get, :options]
         end
     end
 end
