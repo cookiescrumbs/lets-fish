@@ -15,7 +15,7 @@ module TripPlanner
       @parsed_body["rows"].first["elements"].first["distance"]["text"] + "les"
     end
 
-    def duration
+    def in_time
       @parsed_body["rows"].first["elements"].first["duration"]["text"]
     end
 

@@ -16,7 +16,7 @@ describe TripPlanner::Distance, test: "small" do
         expect(subject.miles).to eql miles
       end
       it "returns the duration of travel as a string" do
-        expect(subject.duration).to eql "9 hours 40 mins"
+        expect(subject.in_time).to eql "9 hours 40 mins"
       end
     end
 
