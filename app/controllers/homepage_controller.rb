@@ -1,6 +1,6 @@
-class HomepageController < ApplicationController
-  include Lets
+require 'Lets'
 
+class HomepageController < ApplicationController
   def index
     @waters = Lets::Waters::recently_added 6
     @water = Lets::Waters::random

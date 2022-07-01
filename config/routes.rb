@@ -49,6 +49,8 @@ LetsFish::Application.routes.draw do
   get '/donate',  to: 'donate#index'
 
   get '/trip/:friendly_id', to: 'static#index'
+
+  get 'destination/start/:start/finish/:finish', to: 'destination#distance'
   
   resources :trips do
     resources :posts
