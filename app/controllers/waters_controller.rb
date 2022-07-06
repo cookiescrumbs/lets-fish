@@ -16,6 +16,11 @@ class WatersController < ApplicationController
     @waters = Lets::Waters::all
   end
 
+  def nearby
+    @waters = Water.near(location, within)
+    render 'nearby/index'
+  end
+
   private
 
   def set_water
@@ -47,5 +52,13 @@ class WatersController < ApplicationController
     set_meta_tags water.twitter
 
     # set_meta_tags amphtml: water.amp_html(fishery_water_url(water.fishery, water)) unless request.format == :amp
+  end
+
+  def location
+    params['location'] || '0,0'
+  end
+
+  def within
+    params['within'] || '200'
   end
 end

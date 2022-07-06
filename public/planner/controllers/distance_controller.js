@@ -1,17 +1,32 @@
 import { Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
 
+
+const getDistancMessage = async (start, finish) => {
+  const response = await fetch(`/destination/start/${start}/finish/${finish}`);
+  return response.text();
+}
+
+
 export default class extends Controller {
 
-  static targets = ['postcode', 'destination', 'message']
+  static targets = ['postcode', 'destination', 'message'];
+
+  connect() {
+    this.setDestination();
+  }
   
   setDestination() {
-    this._destination = this.destination
+    this._destination = this.destination;
   }
 
   message() {
-    if(this.postcode && this._destination) {
-      // some fetch code here to get the distance message
-      this.messageTarget.innerHTML = `<mark>${this.postcode} is 378 miles from ${this.destination}</mark>`
+    if(this.postcode && this.destination) {
+      const start = this.postcode;
+      const finish = this.destination;
+      getDistancMessage(start, finish)
+      .then((message) => {
+        this.messageTarget.innerHTML = message;
+      });
     }
   }
 

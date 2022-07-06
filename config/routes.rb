@@ -50,6 +50,9 @@ LetsFish::Application.routes.draw do
 
   get '/trip/:friendly_id', to: 'static#index'
 
+
+  get '/waters/nearby/location/:location/within/:within', to: 'waters#nearby'
+
   get 'destination/start/:start/finish/:finish', to: 'destination#distance'
   
   resources :trips do

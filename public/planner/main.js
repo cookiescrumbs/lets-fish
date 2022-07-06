@@ -2,5 +2,5 @@
 
 import { application } from "./controllers/application.js"
 
-import HelloController from "./controllers/hello_controller.js"
-application.register("hello", HelloController);
+import DistanceController from "./controllers/distance_controller.js"
+application.register("distance", DistanceController);
