@@ -1,4 +1,4 @@
-require 'Lets'
+require 'lets'
 
 class HomepageController < ApplicationController
   def index
