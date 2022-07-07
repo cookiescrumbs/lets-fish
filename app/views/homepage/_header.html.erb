@@ -3,21 +3,21 @@
    
     <div class="image-trans">
         <div class="container col-md-offset-2 col-md-8">
-                    <div id="planner" data-controller="distance">
-                        <h1> Let's plan you a wild fishing trip 🐟🏔🥾🗺🏕🦌  </h1>
-                        <div class="flex-container">
-                            <div class="form-group">
-                                <p class="title"><strong>Where are you starting your trip from?</p></strong>
-                                <label for="postcode">Postcode</label><br>
-                                <input type="text" id="postcode" name="postcode" class="form-control">
-                            </div>
-                    
-                        </div>
-                             <div class="create-my-trip">
-                                <button type="submit" class="btn btn-warning btn-lg">Create my trip</button>
-                            </div>
+            <div id="planner" data-controller="nearby-form">
+                <h1> Let's plan your wild fishing trip 🐟🏔🥾🗺🏕🦌  </h1>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <p class="title"><strong>Where are you starting your trip from?</p></strong>
+                        <label for="postcode">Postcode</label><br>
+                        <input type="text" data-nearby-form-target="postcode" id="postcode" name="postcode" class="form-control">
+                        <span class="error"></span>
                     </div>
-       
+            
+                </div>
+                <div class="create-my-trip">
+                    <button type="submit" class="btn btn-warning btn-lg" data-action="click->nearby-form#submit">Find me some wild waters</button>
+                </div>
+            </div>
             <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
                 <div class="attribution">
                     Image &copy; Copyright

@@ -13,7 +13,6 @@ class DestinationController < ApplicationController
     )
     destination = TripPlanner::Destination.new(distance: distance)
     render html: "
-      <p class=\"title\"><strong>Distance, time and mode of travel</p></strong>
       <p><mark>#{destination.distance}</mark></p>
       <p><mark>#{destination.time_and_mode}</mark></p>
     ".html_safe

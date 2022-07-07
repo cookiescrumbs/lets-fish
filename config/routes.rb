@@ -53,7 +53,9 @@ LetsFish::Application.routes.draw do
 
   get '/waters/nearby/location/:location/within/:within', to: 'waters#nearby'
 
-  get 'destination/start/:start/finish/:finish', to: 'destination#distance'
+  get 'destination/start/:start/finish/:finish', constraints: { finish: /.*/}, to: 'destination#distance'
+
+  # match '/spots/new_popup/:coords', :constraints => {:coords => /.*/}, :controller => 'spots', :action => 'new_popup'
   
   resources :trips do
     resources :posts

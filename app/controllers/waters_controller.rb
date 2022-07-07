@@ -18,6 +18,8 @@ class WatersController < ApplicationController
 
   def nearby
     @waters = Water.near(location, within)
+    @location = location
+    @within = within
     render 'nearby/index'
   end
 

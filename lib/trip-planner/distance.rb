@@ -19,6 +19,14 @@ module TripPlanner
       @parsed_body["rows"].first["elements"].first["duration"]["text"]
     end
 
+    def destination_address
+      @parsed_body["destination_addresses"].first
+    end
+
+    def origin_address
+      @parsed_body["origin_addresses"].first
+    end
+
     private
 
     def get_response(http)

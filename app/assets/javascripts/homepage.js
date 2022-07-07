@@ -9,6 +9,4 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require suggested-search.min
 //= require navigation
-//= require search_analytics
