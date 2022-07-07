@@ -1,4 +1,4 @@
-require 'Lets'
+require 'lets'
 
 class BrowseWatersController < ApplicationController
   def index
