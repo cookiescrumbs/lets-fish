@@ -1,5 +1,6 @@
+require 'lets'
+
 class SitemapsController < ApplicationController
-  include Lets
   before_action :set_waters, only: [:index]
   before_action :set_fisheries, only: [:index]
 
