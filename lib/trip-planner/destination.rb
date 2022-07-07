@@ -9,7 +9,7 @@ module TripPlanner
     end
 
     def time_and_mode
-      "It will take you #{@distance.in_time} by car 🚗 and ferry ⛴ to reach your destination."
+      "It will take you #{@distance.in_time} by car 🚗 to reach your destination."
     end
   end
 end
