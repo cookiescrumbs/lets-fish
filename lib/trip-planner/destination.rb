@@ -5,11 +5,11 @@ module TripPlanner
     end
 
     def distance
-      "#{@distance.origin_address} is <strong>#{@distance.miles}</strong> from #{@distance.destination_address}."
+      "You are <strong>#{@distance.miles}</strong> from this water."
     end
 
     def time_and_mode
-      "It will take you <strong>#{@distance.in_time}</strong> by car 🚗 to reach #{@distance.destination_address}."
+      "It is a <strong>#{@distance.in_time}</strong> drive 🚗 away."
     end
   end
 end

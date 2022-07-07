@@ -39,10 +39,7 @@ gem 'cookies_eu'
 gem 'sprockets-rails'
 gem "rubyzip"
 gem 'ffi', '>= 1.9.24'
-gem 'activejob', '>= 5.0.1'
-gem "loofah", ">= 2.3.1"
 gem "nokogiri", ">= 1.10.4"
-gem "rack"
 
 
 group :development, :test do

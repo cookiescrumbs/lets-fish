@@ -358,7 +358,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activejob (>= 5.0.1)
   aws-sdk-s3
   bcrypt (~> 3.1.1)
   byebug
@@ -375,7 +374,6 @@ DEPENDENCIES
   imgix-rails
   jbuilder (~> 2.5)
   jquery-rails
-  loofah (>= 2.3.1)
   meta-tags
   net-imap
   net-pop
@@ -386,7 +384,6 @@ DEPENDENCIES
   poltergeist
   possessive
   puma (>= 3.12.2)
-  rack
   rack-cors (>= 1.0.4)
   rails (= 7.0.3)
   rails-erd
