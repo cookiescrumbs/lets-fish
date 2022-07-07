@@ -1,5 +1,7 @@
+require 'Lets'
+
 class FisheriesController < ApplicationController
-  include Lets
+
 
   before_action :set_fishery, only: [:show]
   before_action :set_waters, only: [:show]

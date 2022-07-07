@@ -1,5 +1,7 @@
+require 'lets'
+
 class WatersController < ApplicationController
-  include Lets
+
   before_action :set_water, only: [:show]
   before_action :set_waters, only: [:show]
   before_action :set_fishery, only: [:show]
@@ -12,6 +14,13 @@ class WatersController < ApplicationController
 
   def all
     @waters = Lets::Waters::all
+  end
+
+  def nearby
+    @waters = Water.near(location, within)
+    @location = location
+    @within = within
+    render 'nearby/index'
   end
 
   private
@@ -45,5 +54,13 @@ class WatersController < ApplicationController
     set_meta_tags water.twitter
 
     # set_meta_tags amphtml: water.amp_html(fishery_water_url(water.fishery, water)) unless request.format == :amp
+  end
+
+  def location
+    params['location'] || '0,0'
+  end
+
+  def within
+    params['within'] || '200'
   end
 end

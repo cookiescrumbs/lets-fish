@@ -1,20 +1,33 @@
 <header>
    <%= render 'shared/hero_image' %>
+   
     <div class="image-trans">
         <div class="container col-md-offset-2 col-md-8">
-            <div class="intro-text">
-                <div class="intro-lead-in">Find wild places to catch wild fish</div>
+            <div id="planner" data-controller="nearby-form">
+                <h1> Let's plan your wild fishing trip 🐟🏔🥾🗺🏕🦌  </h1>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <p class="title"><strong>Where are you starting your trip from?</p></strong>
+                        <label for="postcode">Postcode</label><br>
+                        <input type="text" data-nearby-form-target="postcode" id="postcode" name="postcode" class="form-control">
+                        <span class="error"></span>
+                    </div>
+            
+                </div>
+                <div class="create-my-trip">
+                    <button type="submit" class="btn btn-warning btn-lg" data-action="click->nearby-form#submit">Find me some wild waters</button>
+                </div>
             </div>
+            <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
+                <div class="attribution">
+                    Image &copy; Copyright
+                    <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
+                    and licensed for reuse under this
+                    <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
+                    <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
+                </div>
+            <% end %>
         </div>
-        <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
-            <div class="attribution">
-                Image &copy; Copyright
-                <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
-                and licensed for reuse under this
-                <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
-                <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
-            </div>
-        <% end %>
     </div>
 </header>
-<div id="suggested-search"></div>
+

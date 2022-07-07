@@ -1,0 +1,15 @@
+<%= render 'shared/navigation' %>
+<section id="waters" class="bg-light-gray">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-heading">Wild fishing trips within <%= @within %> miles of <%= @location %> </h3>
+                <h3 class="section-subheading text-muted">Waters listed in order of proximity</h3>
+            </div>
+        </div>
+        <div class="row m-top30">
+            <%= render 'shared/waters', locals: {:waters => @waters} %>
+        </div>
+    </div>
+</section>
+<%= render 'shared/contributor', locals: { background_color: false }%>
