@@ -1,6 +1,7 @@
+require 'lets'
+
 class SuggestedController < ApplicationController
   respond_to :json
-  include Lets
 
   def all
     @waters = Lets::Waters::all
