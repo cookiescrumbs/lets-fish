@@ -12,22 +12,26 @@ module TripPlanner
     end
 
     def miles
-      @parsed_body["rows"].first["elements"].first["distance"]["text"] + "les"
+      zero_results? ? 'no results' : @parsed_body["rows"].first["elements"].first["distance"]["text"] + 'les'
     end
 
     def in_time
-      @parsed_body["rows"].first["elements"].first["duration"]["text"]
+      zero_results? ? 'no results' : @parsed_body["rows"].first["elements"].first["duration"]["text"]
     end
 
     def destination_address
-      @parsed_body["destination_addresses"].first
+      zero_results? ? 'no results' : @parsed_body["destination_addresses"].first
     end
 
     def origin_address
-      @parsed_body["origin_addresses"].first
+      zero_results? ? 'no results' : @parsed_body["origin_addresses"].first
     end
 
     private
+
+    def zero_results?
+      @parsed_body["rows"].first["elements"][0]["status"] == 'ZERO_RESULTS'
+    end
 
     def get_response(http)
       response = http.get url

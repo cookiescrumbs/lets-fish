@@ -20,6 +20,18 @@ describe TripPlanner::Distance, test: "small" do
       end
     end
 
+    context "Successful response with no results" do
+      let(:response) { instance_double("HTTParty::Response", body: no_results.to_json, code: 200) }
+      let(:http) { class_double("HTTParty", get: response) }
+      subject { TripPlanner::Distance.new(start: start, finish: finish, http: http, api_key: api_key) }
+      it "returns 'no results'" do
+        expect(subject.miles).to eql 'no results'
+      end
+      it "returns 'no results'" do
+        expect(subject.in_time).to eql 'no results'
+      end
+    end
+
     context "Unsuccessful response" do
       describe "incorrect API key" do
         let(:response) { instance_double("HTTParty::Response", body: incorrect_api_key.to_json, code: 200) }
@@ -49,6 +61,27 @@ def incorrect_api_key
     "origin_addresses" => [],
     "rows" => [],
     "status" => "REQUEST_DENIED"
+  }
+end
+
+def no_results
+  {
+    "destination_addresses": [
+      "55.97241953259185,-5.9312356122584333"
+    ],
+    "origin_addresses": [
+      "Huddersfield Rd, Mossley, Ashton-under-Lyne OL5 9BT, UK"
+    ],
+    "rows": [
+      {
+        "elements": [
+          {
+            "status": "ZERO_RESULTS"
+          }
+        ]
+      }
+    ],
+    "status": "OK"
   }
 end
 
