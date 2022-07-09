@@ -6,6 +6,8 @@ export default class extends Controller {
     this.element.innerHTML = "Loading....";
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.currentPosition);
+    } else { 
+      alert("Geolocation is not supported by this browser please enter a location");
     }
   }
 

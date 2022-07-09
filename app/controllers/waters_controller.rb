@@ -19,6 +19,7 @@ class WatersController < ApplicationController
   def nearby
     @waters = Water.near(location, within)
     @location = location
+    @current_location = isCurrentLocation?(location);
     @within = within
     render 'nearby/index'
   end
@@ -63,4 +64,11 @@ class WatersController < ApplicationController
   def within
     params['within'] || '200'
   end
+
+
+  def isCurrentLocation?(location)
+    location.to_i != 0
+  end
+
+
 end
