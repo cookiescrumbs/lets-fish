@@ -9,7 +9,7 @@ export default class extends Controller {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.currentPosition, this.error);
     } else { 
-      alert("Geolocation is not supported by this browser please enter a location");
+      alert("Geolocation is not supported by this browser please enter a postcode.");
     }
   }
   
@@ -19,7 +19,7 @@ export default class extends Controller {
 
   error() {
     const el = document.getElementById('current-location-button');
-    el.innerHTML = '<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Unable to retrieve your location. Please enter a postcode.'; 
+    el.innerHTML = '<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Unable to retrieve your location. <br> Please enter a postcode.'; 
     el.classList.add('alert');
     el.classList.add('alert-danger');
     el.classList.remove('btn-primary');
