@@ -112,6 +112,7 @@ LetsFish::Application.configure do
     config.open_weather_api_key = ENV['OPEN_WEATHER_API_KEY']
     config.dark_sky_api_key = ENV['DARK_SKY_API']
     config.google_api_key_browser = ENV['GOOGLE_API_KEY_BROWSER']
+    config.google_api_key_server = ENV['GOOGLE_API_KEY_SERVER']
     config.instagram_api_key = ENV['INSTAGRAM_API_KEY']
 
     # https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling

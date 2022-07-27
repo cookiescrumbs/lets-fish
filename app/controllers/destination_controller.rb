@@ -4,7 +4,7 @@ require 'trip-planner/distance'
 class DestinationController < ApplicationController
 
   def distance
-    api_key = Rails.application.config.google_api_key_browser
+    api_key = Rails.application.config.google_api_key_server
     distance = TripPlanner::Distance.new(
       start: start,
       finish: finish,
