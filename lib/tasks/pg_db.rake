@@ -33,6 +33,6 @@ namespace :pg_db do
     sh 'bundle exec rake db:drop'
     sh 'bundle exec rake db:create'
     sh 'bundle exec rake db:schema:load'
-    `pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development < ./db/pg_backups/lets_fish_development.dump`
+    `pg_restore  --verbose  --no-acl --no-owner -h localhost --data-only -d lets_fish_development < ./db/pg_backups/lets_fish.dump`
   end
 end
