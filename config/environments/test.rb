@@ -41,8 +41,10 @@ LetsFish::Application.configure do
   config.geograph_api_key = 'a5ecd893c8'
   config.dark_sky_api_key = '0a41a01031a5b6fa9241b180875eb218'
   config.open_weather_api_key = '54321'
-  config.google_api_key = 'abcd12345'
+  config.google_api_key_browser = 'hsjhdfsjahfsjf'
+  config.google_api_key_server = 'dsjfkdsfjdskjf'
   config.instagram_api_key = 'abcd12345'
+
 
   # https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
   config.active_record.legacy_connection_handling = false
