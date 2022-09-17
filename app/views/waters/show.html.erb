@@ -1,106 +1,126 @@
 <%= render 'shared/navigation' %>
-<header>
-    <%= render 'shared/hero_image' %>
-    <div class="image-trans">
-        <div class="container col-md-offset-2 col-md-8">
-            <div class="intro-text">
-                <div class="intro-heading"><%= @water.name %></div>
-                <h2><%= @water.address %></h2>
-                <div class="intro-lead-in">
-                    managed by <a href="/fisheries/<%= @fishery.slug %>"><%= @fishery.name %></a>
+    <header>
+        <%= render 'shared/hero_image' %>
+            <div class="image-trans">
+                <div class="container col-md-offset-2 col-md-8">
+                    <div class="intro-text">
+                        <div class="intro-heading">
+                            <%= @water.name %>
+                        </div>
+                        <h2>
+                            <%= @water.address %>
+                        </h2>
+                        <div class="intro-lead-in">
+                            managed by <a href="/fisheries/<%= @fishery.slug %>">
+                                <%= @fishery.name %>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
+                    <div class="attribution">
+                        Image &copy; Copyright
+                        <a href="<%= @water.hero_image.attribution['profile_url'] %>">
+                            <%= @water.hero_image.attribution['name'] %>
+                        </a>
+                        and licensed for reuse under this
+                        <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
+                        <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at
+                            Geograph</a>.
+                    </div>
+                    <% end %>
+            </div>
+    </header>
+    <%= render 'navigation' %>
+        <section id="about-this-water">
+            <div class="container">
+                <h4 class="m-bottom24">About this water</h4>
+                <div class="row">
+                    <div id="weather-forecast" data-lat="<%=@water.latitude%>" data-lng="<%=@water.longitude%>"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 remove-padding-left p-bottom10">
+                        <%= render '/shared/water_type' , locals: { category: @water.water_type.category.capitalize }%>
+                            <%= render '/shared/fish_species' , locals: { fish: @species.map{|s| s.name.capitalize
+                                }.to_sentence } %>
+
+                                <div class="location clearfix">
+                                    <img src="/images/location.png" class="pull-left" />
+                                    <strong>OS Grid Ref:</strong> <a
+                                        href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&ued=<%= u("
+                                        https://osmaps.ordnancesurvey.co.uk/#{@water.latitude.round(11)},#{@water.longitude.round(11)},15/pin")
+                                        %>"><%= @os_map['os_ref'] %></a>
+                                    <br />
+                                    <strong>Latitude: </strong>
+                                    <%= @water.latitude.round(11) %>
+                                        <br />
+                                        <strong>Longitude: </strong>
+                                        <%= @water.longitude.round(11) %>
+                                </div>
+                                <div>
+                                    <div id="os-map">
+                                        <h5>OS map for this water</h5>
+                                        <br />
+                                        <a href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&clickref=map&ued=<%= u(@os_map['os_map']['url'])%>"
+                                            target="_blank">
+                                            <img style="float: left; width:140px; height: 140px;margin:0;padding:0;"
+                                                src="<%= @os_map['os_map']['images'][0] %>" alt="OS map for this water">
+                                            <strong>
+                                                <%= @os_map['os_map']['sheet'] %> - <%= @os_map['os_map']['series'] %>
+                                                        <br />
+                                                        <%= @os_map['os_map']['title'] %> <br />
+                                                            <%= @os_map['os_map']['sub_title'] %>
+                                            </strong>
+                                        </a>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="col-md-9 remove-padding-left remove-padding-right">
+                        <% if !@water.description.blank? %>
+                            <p>
+                                <%= simple_format @water.description %>
+                            </p>
+                            <% end %>
+                    </div>
                 </div>
             </div>
-        </div>
-        <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
-        <div class="attribution">
-            Image &copy; Copyright
-            <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
-            and licensed for reuse under this
-            <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
-            <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
-        </div>
-        <% end %>
-    </div>
-</header>
-<%= render 'navigation' %>
-<section id="about-this-water">
-    <div class="container">
-        <h4 class="m-bottom24">About this water</h4>
-        <div class="row">
-            <div id="weather-forecast" data-lat="<%=@water.latitude%>" data-lng="<%=@water.longitude%>"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 remove-padding-left p-bottom10">
-                <%= render '/shared/water_type', locals: { category: @water.water_type.category.capitalize }%>
-                <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.name.capitalize }.to_sentence } %>
-         
-                <div class="location clearfix">
-                <img src="/images/location.png" class="pull-left" />
-                    <strong>OS Grid Ref:</strong> <a href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&ued=<%= u("https://osmaps.ordnancesurvey.co.uk/#{@water.latitude.round(11)},#{@water.longitude.round(11)},15/pin") %>"><%=  @os_map['os_ref'] %></a>
-                    <br />
-                    <strong>Latitude: </strong> <%=  @water.latitude.round(11) %>
-                    <br />
-                    <strong>Longitude: </strong> <%=  @water.longitude.round(11) %>
+        </section>
+
+        <section id="location">
+            <div class="container">
+                <h4 class="m-bottom24">Water map</h4>
+                <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>"
+                    data-annotation=<%=@water.annotation %>>
                 </div>
-            <div>
-            <div id="os-map" >
-                <h5>OS map for this water</h5>
-                <br /> 
-                <a href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&clickref=map&ued=<%= u(@os_map['os_map']['url'])%>" target="_blank">
-                    <img style="float: left; width:140px; height: 140px;margin:0;padding:0;" src="<%= @os_map['os_map']['images'][0] %>"  
-                    alt="OS map for this water">
-                    <strong>
-                    <%= @os_map['os_map']['sheet'] %> - <%= @os_map['os_map']['series'] %><br />
-                    <%= @os_map['os_map']['title'] %> <br />
-                    <%= @os_map['os_map']['sub_title'] %>
-                     </strong>
-                </a>
             </div>
-            </div> 
-            </div>
-            <div class="col-md-9 remove-padding-left remove-padding-right">
-                <% if !@water.description.blank? %>
-                <p><%= simple_format @water.description %></p>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section id="location">
-    <div class="container">
-        <h4 class="m-bottom24">Water map</h4>
-        <div id="location-map" data-zoom="14" data-lat="<%=@water.latitude %>" data-lng="<%=@water.longitude%>" data-annotation=<%=  @water.annotation %>>
-        </div>
-    </div>
-</section>
+        <% unless @water.images_without_hero.empty? %>
+            <section id="photos">
+                <div class="container">
+                    <h4 class="m-bottom24">Photos</h4>
+                    <%= render '/shared/photo_carousel' , locals: { photos: @water.images_without_hero } %>
+                </div>
+            </section>
+            <% end %>
+                <% if @water.negotiated_permission_tickets.present? %>
+                    <section id="permission">
+                        <div class="container">
+                            <h4 class="m-bottom24">Permission &amp; Tickets</h4>
+                            <%= simple_format @water.negotiated_permission_tickets %>
+                        </div>
+                    </section>
+                    <% end %>
 
-<% unless @water.images_without_hero.empty? %>
-<section id="photos">
-    <div class="container">
-        <h4 class="m-bottom24">Photos</h4>
-        <%= render '/shared/photo_carousel', locals: { photos: @water.images_without_hero } %>
-    </div>
-</section>
-<% end %>
-<% if @water.negotiated_permission_tickets.present? %>
-<section id="permission">
-    <div class="container">
-        <h4 class="m-bottom24">Permission &amp; Tickets</h4>
-        <%= simple_format @water.negotiated_permission_tickets %>
-    </div>
-</section>
-<% end %>
+                        <% unless @water.article_magazine.nil? || @water.article_magazine.empty? %>
+                            <%= render 'shared/article' %>
+                                <% end %>
 
-<% unless @water.article_magazine.nil? || @water.article_magazine.empty? %>
-    <%= render 'shared/article' %>
-<% end %>
+                                    <% if @water.contributor %>
+                                        <%= render 'shared/contributed_by' , locals: @water.contributor %>
+                                            <% end %>
 
-<% if @water.contributor %>
-<%= render 'shared/contributed_by', locals: @water.contributor %>
-<% end %>
-
-<%= render 'shared/contributor', locals: { background_color: true }%>
+                                                <%= render 'shared/mailer_sign_up' , locals: { background_color: true }%>
 
 <script type="application/ld+json">
     <%= raw render 'schema_org' %>

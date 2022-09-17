@@ -1,83 +1,109 @@
 <%= render 'shared/navigation' %>
-<header>
-   <%= render 'shared/hero_image' %>
-    <div class="image-trans">
-        <div class="container col-md-offset-2 col-md-8">
-            <div class="intro-text">
-                <div class="intro-heading"><%= @fishery.name %></div>
-                <div class="intro-lead-in">
-                    Explore the rest of <a href="/search?location=<%=u"#{@fishery.address.short}"%>"><%= @fishery.address.short %></a>
+    <header>
+        <%= render 'shared/hero_image' %>
+            <div class="image-trans">
+                <div class="container col-md-offset-2 col-md-8">
+                    <div class="intro-text">
+                        <div class="intro-heading">
+                            <%= @fishery.name %>
+                        </div>
+                        <div class="intro-lead-in">
+                            Explore the rest of <a href="/search?location=<%=u" #{@fishery.address.short}"%>"><%=
+                                    @fishery.address.short %></a>
+                        </div>
+                    </div>
+                </div>
+                <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
+                    <div class="attribution">
+                        Image &copy; Copyright
+                        <a href="<%= @water.hero_image.attribution['profile_url'] %>">
+                            <%= @water.hero_image.attribution['name'] %>
+                        </a>
+                        and licensed for reuse under this
+                        <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
+                        <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at
+                            Geograph</a>.
+                    </div>
+                    <% end %>
+            </div>
+    </header>
+    <%= render 'navigation' %>
+        <section id="about-this-fishery">
+            <div class="container">
+                <div class="row">
+                    <h4 class="m-bottom24">About this fishery</h4>
+                    <div class="col-md-3 remove-padding-left p-bottom10">
+                        <%= render '/shared/water_type' , locals: { category: @water_types.map{|wt| wt.capitalize
+                            }.to_sentence } %>
+                            <%= render '/shared/fish_species' , locals: { fish: @species.map{|s| s.capitalize
+                                }.to_sentence } %>
+                                <%= render '/shared/location' , locals: { location: @fishery.address.short } %>
+                    </div>
+                    <div class="col-md-9 remove-padding-left remove-padding-right">
+                        <% if !@fishery.description.blank? %>
+                            <%= simple_format @fishery.description %>
+                                <% end %>
+                    </div>
                 </div>
             </div>
-        </div>
-        <% if @water.hero_image.present? && @water.hero_image.attribution.present? %>
-            <div class="attribution">
-                Image &copy; Copyright
-                <a href="<%= @water.hero_image.attribution['profile_url'] %>"><%= @water.hero_image.attribution['name'] %></a>
-                and licensed for reuse under this
-                <a href="<%= @water.hero_image.attribution['licence'] %>">Creative Commons Licence</a>.
-                <a href="<%= @water.hero_image.attribution['photo_url']%>">More information about this image at Geograph</a>.
+        </section>
+        <section id="waters" class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+                    <h4>Waters</h4>
+                    <div id="weather-forecast" data-lat="<%=@fishery.geographic_center_of_waters[0]%>"
+                        data-lng="<%=@fishery.geographic_center_of_waters[1]%>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="map" data-zoom="<%=@fishery.map_zoom_level%>"
+                        data-lat="<%=@fishery.geographic_center_of_waters[0]%>"
+                        data-lng="<%=@fishery.geographic_center_of_waters[1]%>" data-slug="<%=@fishery.slug%>"></div>
+                </div>
+                <div class="row">
+                    <div id="results-container">
+                        <%= render '/search/results' %>
+                    </div>
+                </div>
             </div>
-        <% end %>
-    </div>
-</header>
-<%= render 'navigation' %>
-<section id="about-this-fishery">
-    <div class="container">
-        <div class="row">
-         <h4 class="m-bottom24">About this fishery</h4>
-            <div class="col-md-3 remove-padding-left p-bottom10">
-                <%= render '/shared/water_type', locals: { category: @water_types.map{|wt| wt.capitalize }.to_sentence } %>
-                <%= render '/shared/fish_species', locals: { fish: @species.map{|s| s.capitalize }.to_sentence } %>
-                <%= render '/shared/location', locals: { location: @fishery.address.short } %>
-            </div>
-            <div class="col-md-9 remove-padding-left remove-padding-right">
-                <% if !@fishery.description.blank? %>
-                    <%= simple_format @fishery.description %>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="waters" class="bg-light-gray">
-    <div class="container">
-        <div class="row">
-          <h4>Waters</h4>
-          <div id="weather-forecast" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>">
-          </div>
-        </div>
-        <div class="row">
-            <div id="map" data-zoom="<%=@fishery.map_zoom_level%>" data-lat="<%=@fishery.geographic_center_of_waters[0]%>" data-lng="<%=@fishery.geographic_center_of_waters[1]%>" data-slug="<%=@fishery.slug%>"></div>
-        </div>
-        <div class="row">
-            <div id="results-container">
-                <%= render '/search/results' %>
-            </div>
-        </div>
-    </div>
-</section>
-<% if @fishery.permission_tickets.present? %>
-<section id="permission">
-    <div class="container">
-        <h4 class="m-bottom24">Permission &amp; Tickets</h4>
-        <%= simple_format @fishery.permission_tickets %>
-    </div>
-</section>
-<% end %>
-<section id="contact">
-    <div class="container">
-        <h4>Contact Details</h4>
-        <p><%= @fishery.name %></p>
-        <p><%= @fishery.contact_details.name %></p>
-        <p><%= @fishery.address.formatted %></p>
-        <p><%= @fishery.contact_details.telephone %></p>
-        <p><%= @fishery.contact_details.mobile %></p>
-        <p><a href="mailto:<%= @fishery.contact_details.email %>?Subject=Enquiry regarding fishing at <%= @water.name %>"><%= @fishery.contact_details.email %></a></p>
-        <p><a href="<%= @fishery.contact_details.website %>"><%= @fishery.contact_details.website %></a></p>
-    </div>
-</section>
+        </section>
+        <% if @fishery.permission_tickets.present? %>
+            <section id="permission">
+                <div class="container">
+                    <h4 class="m-bottom24">Permission &amp; Tickets</h4>
+                    <%= simple_format @fishery.permission_tickets %>
+                </div>
+            </section>
+            <% end %>
+                <section id="contact">
+                    <div class="container">
+                        <h4>Contact Details</h4>
+                        <p>
+                            <%= @fishery.name %>
+                        </p>
+                        <p>
+                            <%= @fishery.contact_details.name %>
+                        </p>
+                        <p>
+                            <%= @fishery.address.formatted %>
+                        </p>
+                        <p>
+                            <%= @fishery.contact_details.telephone %>
+                        </p>
+                        <p>
+                            <%= @fishery.contact_details.mobile %>
+                        </p>
+                        <p><a
+                                href="mailto:<%= @fishery.contact_details.email %>?Subject=Enquiry regarding fishing at <%= @water.name %>">
+                                <%= @fishery.contact_details.email %>
+                            </a></p>
+                        <p><a href="<%= @fishery.contact_details.website %>">
+                                <%= @fishery.contact_details.website %>
+                            </a></p>
+                    </div>
+                </section>
 
-<%= render 'shared/contributor', locals: { background_color: true }%>
-<script type="application/ld+json">
+                <%= render 'shared/mailer_sign_up' , locals: { background_color: false }%>
+                    <script type="application/ld+json">
     <%= raw render 'schema_org' %>
 </script>
