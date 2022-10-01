@@ -16,7 +16,7 @@ No hot-reload so you'll need to refresh the browser like it 2012 👻
 
 These routes should work in rails...
 
-http://localhost:5000/trip/-MIYqXXPkV0d4hfhpZAN
+http://localhost:3000/trip/withnail-mayfly
 
 
  #### Production 

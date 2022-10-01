@@ -47,9 +47,8 @@
                                 <div class="location clearfix">
                                     <img src="/images/location.png" class="pull-left" />
                                     <strong>OS Grid Ref:</strong> <a
-                                        href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&ued=<%= u("
-                                        https://osmaps.ordnancesurvey.co.uk/#{@water.latitude.round(11)},#{@water.longitude.round(11)},15/pin")
-                                        %>"><%= @os_map['os_ref'] %></a>
+                                        href="https://osmaps.ordnancesurvey.co.uk/<%= @water.latitude.round(11) %>,<%= @water.longitude.round(11)%>,15/pin">
+                                        <%= @os_map['os_ref'] %></a>
                                     <br />
                                     <strong>Latitude: </strong>
                                     <%= @water.latitude.round(11) %>
@@ -61,7 +60,7 @@
                                     <div id="os-map">
                                         <h5>OS map for this water</h5>
                                         <br />
-                                        <a href="https://www.awin1.com/cread.php?awinmid=2495&awinaffid=844181&clickref=map&ued=<%= u(@os_map['os_map']['url'])%>"
+                                        <a href="<%= @os_map['os_map']['url'] %>"
                                             target="_blank">
                                             <img style="float: left; width:140px; height: 140px;margin:0;padding:0;"
                                                 src="<%= @os_map['os_map']['images'][0] %>" alt="OS map for this water">
