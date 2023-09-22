@@ -1,5 +1,4 @@
 require_relative 'meta_tags'
-require_relative 'map_marker'
 
 require_relative 'contributors'
 
